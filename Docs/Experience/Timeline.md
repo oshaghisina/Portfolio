@@ -6,7 +6,7 @@ updated: 2026-09-19
 span_start: ""            # earliest start (computed by docs:index once dates exist)
 span_end: ""              # latest end or today
 years_calendar: 0         # calendar span in years (computed)
-years_summed: 0           # sum of individual role durations (computed)
+years_summed: 15.9           # sum of individual role durations (computed)
 open_questions: 4
 ---
 
@@ -33,15 +33,15 @@ Rows are in resume order. **Start / End / Approx?** are yours; **Computed durati
 <!-- index:start -->
 | # | Company (folder) | Role | Employment | Start | End | Approx? | Resume duration | Computed duration | Overlaps with | Notes |
 |---|---|---|---|---|---|---|---|---|---|---|
-| 1 | Digikala (`Digikala`) | Designer / Marketer / B developer — Digital Gold | full-time | | | | 2.5 yr | | | ❓ Q1 |
-| 2 | Carsparency & Khodro45 (`Carsparency-Khodro45`) | Product designer | full-time | | | | 2.5 yr | | | |
-| 3 | Hadish Mall (`Hadish-Mall`) | Marketing | part-time | | | | 1 yr | | | |
-| 4 | Fibona (`Fibona`) | Product Manager | part-time | | | | 2 yr | | | |
-| 5 | OTeacher (`OTeacher`) | Product Manager & designer | part-time | | | | 1 yr | | | |
-| 6 | Arvan Cloud (`Arvan-Cloud`) | Product designer | full-time | | | | 2 yr | | | |
-| 7 | Biomaze (`Biomaze`) | Product Manager & designer | part-time | | | | 3 yr | | | |
-| 8 | Didestan (`Didestan`) | UI/UX designer | full-time | | | | 8 mos | | | |
-| 9 | A1Paradise (`A1Paradise`) | UI/UX designer | full-time | | | | 1.2 yr | | | ❓ Q4 |
+| 1 | Digikala (`Digikala`) | Designer / Marketer / B developer — Digital Gold | full-time | — | — | — | 2.5 yr | — | — | ❓ Q1 |
+| 2 | Carsparency & Khodro45 (`Carsparency-Khodro45`) | Product designer | full-time | — | — | — | 2.5 yr | — | — | — |
+| 3 | Hadish Mall (`Hadish-Mall`) | Marketing | part-time | — | — | — | 1 yr | — | — | — |
+| 4 | Fibona (`Fibona`) | Product Manager | part-time | — | — | — | 2 yr | — | — | — |
+| 5 | OTeacher (`OTeacher`) | Product Manager & designer | part-time | — | — | — | 1 yr | — | — | — |
+| 6 | Arvan Cloud (`Arvan-Cloud`) | Product designer | full-time | — | — | — | 2 yr | — | — | — |
+| 7 | Biomaze (`Biomaze`) | Product Manager & designer | part-time | — | — | — | 3 yr | — | — | — |
+| 8 | Didestan (`Didestan`) | UI/UX designer | full-time | — | — | — | 8 mos | — | — | — |
+| 9 | A1Paradise (`A1Paradise`) | UI/UX designer | full-time | — | — | — | 1.2 yr | — | — | ❓ Q4 |
 <!-- index:end -->
 
 ## Reconciling the "10 yr" header

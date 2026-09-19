@@ -1,3 +1,11 @@
+---
+title: Resume
+doc_type: resume
+status: ready
+updated: 2026-09-19
+source: Resume.pdf          # transcribed verbatim from the PDF; typos preserved on purpose
+---
+
 # Sina Oshaghi
 
 **Product Designer & Manager**

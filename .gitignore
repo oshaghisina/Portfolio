@@ -28,3 +28,6 @@ node_modules/
 # Docs benchmark screenshots are local-only research assets
 Docs/Benchmarks/*/assets/*
 !Docs/Benchmarks/*/assets/.gitkeep
+
+# TypeScript incremental build info
+tsconfig.tsbuildinfo
