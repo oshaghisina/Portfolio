@@ -18,7 +18,8 @@ Ordered as in the resume (most recent first).
 | [Didestan](Didestan/README.md) | UI/UX designer | 8 mos | Full-time | Media | 0 |
 | [A1Paradise](A1Paradise/README.md) | UI/UX designer | 1.2 yr | Full-time | Telecom / Gaming | 0 |
 
-## Still to capture
-- Exact start/end dates for every role (resume only has durations)
-- Team sizes, tools per role, and the numbers behind each achievement
-- Which projects are **featured** on the portfolio vs. listed only
+## Working documents
+
+- [Timeline.md](Timeline.md) — real start/end dates per role (fill-in); the source for every duration on the site
+- [Inventory.md](Inventory.md) — all 25 candidate projects with featured / priority flags (fill-in)
+- [_template.md](_template.md) — case-study template for project files
