@@ -1,13 +1,44 @@
 ---
 title: "Pleurat Shala — pleurat.com"
 url: "https://www.pleurat.com/"
+slug: pleurat-com
 type: content
 owner: "Pleurat Shala"
 owner_role: "Product Designer & AI Product Builder"
 site_kind: personal-portfolio
+lang: en
+generator: "Vite + React SPA (react-router, TypeScript); images from Sanity CDN; private /editor route"
 date_added: 2026-09-19
 relevance: 5
+scores:
+  ia: 4
+  depth: 4
+  proof: 4
+  personality: 5
+summary: "Numbered case-study skeleton (meta strip → sections → stats → “What shipped”), typographic employer grid, NDA marquee and a dedicated differentiator page (/ai) — the same content problem as Sina's design + marketing + product story"
 tags: [case-studies, numbered-sections, meta-strip, stats, nda-work, ai-differentiator, lead-magnet, sanity-cms, spa]
+screenshots:
+  - desktop.png
+  - desktop-fold.png
+  - mobile.png
+  - mobile-menu.png
+  - work-desktop.png
+  - work-mobile.png
+  - about-desktop.png
+  - about-mobile.png
+  - ai-desktop.png
+  - ai-mobile.png
+  - contact-desktop.png
+  - contact-mobile.png
+  - case-otee-desktop.png
+  - case-otee-mobile.png
+  - case-mindpath-desktop.png
+  - case-mindpath-mobile.png
+  - case-ai-journey-desktop.png
+  - case-codex-desktop.png
+  - case-appello-desktop.png
+  - case-valuehut-desktop.png
+  - frames/
 status: draft
 ---
 
@@ -92,6 +123,15 @@ copying — the thing that makes you different gets its own top-level nav item w
   rather than described". Voice is plain, slightly terse, allergic to buzzwords ("It's not just vibe
   coding"). Photos of the person appear only on `/about`.
 
+## Bilingual / RTL notes
+None. `html lang="en"`, single language, no language switch, no RTL. Two things are still worth
+recording for the EN + FA site (D-009): (1) the copy is **short by design** — one-line summaries,
+2–4-sentence sections, mono captions of 2–5 words — which is exactly the shape that keeps a `_fa`
+twin cheap to write and easy to keep in parity; (2) the content that would *not* translate cleanly is
+the decorative English inside illustrations and the simulated console (`open workspace`, `axe ·
+contrast 4.9:1 — AA`) — if Sina uses similar "tool artefact" content it should be treated as
+non-localized decoration, not as copy.
+
 ## Takeaways for Sina
 - **Borrow:**
   - The **meta strip** (Role · Tools · Type · Year · Live/Client) at the top of every case study — becomes fixed fields in Payload, not prose.
@@ -117,7 +157,7 @@ copying — the thing that makes you different gets its own top-level nav item w
   - No contact form or booking link — fine for Pleurat's inbound, but Sina's audience includes clients; at least add a mailto with subject presets or a Cal link.
 
 ## Payload implications
-Which collections / fields / blocks this suggests for the CMS.
+Which collections / fields / blocks this suggests for the CMS (feeds `../../Content-Model.md`).
 
 - **`projects`** (exists in draft mapping) — add: `summary` (one line), `category` (select), `cover` (media),
   `meta` group `{ role, tools[], type, yearFrom, yearTo, liveUrl, client }`, `hero` (media),
@@ -131,10 +171,27 @@ Which collections / fields / blocks this suggests for the CMS.
 - **`site` global** — `nav[]`, `footerColumns[]`, `socials[] { platform, handle, url }`, `email`, `location`, `responseTime`.
 - All `label`, `heading`, `body`, `caption`, `blurb` fields are **localized** (EN default, FA twin) per D-009; media `alt` too.
 
-## Screenshots
-Local-only (gitignored, D-008) under `assets/pleurat-com/`:
+## Scores
+Justification for each `scores.*` value and `relevance` — see [Rubric](../Rubric.md).
 
-`desktop.png` · `mobile.png` · `mobile-menu.png` — home at 1440 / 390
-`work-desktop.png` · `work-mobile.png` · `about-desktop.png` · `about-mobile.png` · `ai-desktop.png` · `ai-mobile.png` · `contact-desktop.png` · `contact-mobile.png`
-`case-{otee,mindpath,ai-journey,codex,appello,valuehut}-desktop.png` · `case-{otee,mindpath}-mobile.png`
+- **ia: 4** — five-item nav, every visitor type reaches work / method / person / contact in one
+  click, and every section ends in a CTA; held back from 5 by redundancy (employer grid twice, tools
+  three times), an employer grid that is a dead end, and `/ai` missing from the sitemap.
+- **depth: 4** — every study runs problem → discovery artefacts → decisions → result with a "What
+  shipped" close; not a 5 because nothing says what *didn't* work, depth is uneven (Codex 5 sections vs.
+  MindPath 10) and AI Journey is written in a different register from the other five.
+- **proof: 4** — numbers with captions everywhere, named employers and roles, "Live" links, an honest
+  NDA marquee; only one testimonial, and the headline numbers ("150+ websites") carry no context or source.
+- **personality: 5** — a consistent, dry voice on every page including the footer and console; a clear
+  point of view ("AI does not design. It does the other 80%"); the person is memorable without a
+  hero portrait.
+- **relevance: 5** — Avg 4.25, within the rubric's 1.5 band. A model site for *content shape*: a
+  multidisciplinary designer selling one differentiator through case studies, an employer grid and a
+  method page — structurally the same brief as Sina's (D-007).
+
+## Screenshots
+Local-only, in `assets/pleurat-com/` (gitignored, D-008): `desktop.png` (1440) · `mobile.png` (390) · `desktop-fold.png` (1440×900, first viewport).
+
+Additional captures: `mobile-menu.png` · `work-desktop.png` · `work-mobile.png` · `about-desktop.png` · `about-mobile.png` · `ai-desktop.png` · `ai-mobile.png` · `contact-desktop.png` · `contact-mobile.png` · `case-{otee,mindpath,ai-journey,codex,appello,valuehut}-desktop.png` · `case-{otee,mindpath}-mobile.png`.
+
 `frames/` — viewport-by-viewport frames (1440×900) of `/`, `/work`, `/ai` and `/work/otee`; needed because the scroll-pinned sections (numbers chart, selected-work wall, footer transit map) render blank in full-page captures.

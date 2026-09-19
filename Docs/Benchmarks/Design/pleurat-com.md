@@ -1,13 +1,45 @@
 ---
 title: "Pleurat Shala — pleurat.com"
 url: "https://www.pleurat.com/"
+slug: pleurat-com
 type: design
 owner: "Pleurat Shala"
 owner_role: "Product Designer & AI Product Builder"
 site_kind: personal-portfolio
+lang: en
+generator: "Vite + React SPA (react-router, TypeScript); General Sans (Fontshare) + IBM Plex Mono; images from Sanity CDN"
 date_added: 2026-09-19
 relevance: 4
+scores:
+  distinctiveness: 5
+  typography: 4
+  motion: 3
+  brand: 5
+  mobile: 3
+summary: "One metaphor (the designer's bench) on cream ruled paper with a single amber accent, mono drafting labels and thin-line illustration; scroll-driven numbers as the one spectacle — motif overload and reveal-only sections are the cautionary part"
 tags: [warm-paper, single-accent, mono-labels, line-illustration, scroll-driven, workshop-metaphor, editorial, light]
+screenshots:
+  - desktop.png
+  - desktop-fold.png
+  - mobile.png
+  - mobile-menu.png
+  - work-desktop.png
+  - work-mobile.png
+  - about-desktop.png
+  - about-mobile.png
+  - ai-desktop.png
+  - ai-mobile.png
+  - contact-desktop.png
+  - contact-mobile.png
+  - case-otee-desktop.png
+  - case-otee-mobile.png
+  - case-mindpath-desktop.png
+  - case-mindpath-mobile.png
+  - case-ai-journey-desktop.png
+  - case-codex-desktop.png
+  - case-appello-desktop.png
+  - case-valuehut-desktop.png
+  - frames/
 status: draft
 ---
 
