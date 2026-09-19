@@ -1,5 +1,8 @@
 ---
 title: ""                 # Project / case-study name
+title_fa: ""              # Persian title (shown on the fa site)
+slug: ""                  # kebab-case; equals this file's name
+inventory_id: ""          # e.g. DGK-01 — row in ../Inventory.md
 company: ""               # Must match the company folder
 product: ""               # Product or business unit, if different from company
 role: ""                  # Sina's role on this project
@@ -9,6 +12,8 @@ period:
 employment: ""            # full-time | part-time | freelance
 domain: ""                # fintech | edtech | cloud | automotive | retail | ...
 team: ""                  # e.g. "1 PM, 2 devs, me as sole designer"
+summary: ""               # one line; shown in indices and cards
+summary_fa: ""            # Persian summary
 tools: []                 # e.g. [Figma, GA4, Amplitude]
 skills: []                # e.g. [user-research, prototyping, growth]
 figma: []                 # Figma file / frame URLs

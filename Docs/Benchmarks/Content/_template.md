@@ -1,13 +1,23 @@
 ---
 title: ""                 # Site / project name
 url: ""
+slug: ""                  # domain in kebab-case; equals this file's name
 type: content
 owner: ""                 # Person or studio behind it
 owner_role: ""            # e.g. Product Designer, PM, Design Engineer
 site_kind: ""             # personal-portfolio | studio | agency | product | other
+lang: ""                  # html lang, e.g. en
+generator: ""             # tech hint from meta generator / obvious stack, if any
 date_added: YYYY-MM-DD
-relevance: 0              # 1–5: how relevant to Sina's portfolio
+relevance: 0              # 1–5 relevance to Sina's site — see ../Rubric.md
+scores:                   # 0 = not scored yet (draft only); 1–5 per ../Rubric.md
+  ia: 0
+  depth: 0
+  proof: 0
+  personality: 0
+summary: ""               # one-line takeaway; shown in the index
 tags: []                  # e.g. [case-studies, writing, long-form, minimal]
+screenshots: []           # filled by docs:benchmark; local-only files
 status: draft
 ---
 
@@ -38,13 +48,20 @@ Sitemap / navigation, ordering, how a visitor moves from landing → proof → c
 - **Proof & metrics:** (how impact is stated, testimonials, logos)
 - **Personality:** (voice, tone, how the person shows through the content)
 
+## Bilingual / RTL notes
+Does the site offer more than one language or a right-to-left layout? How is it switched, what
+changes (typography, layout mirroring, content parity)? Write "none" if not applicable.
+
 ## Takeaways for Sina
 - **Borrow:** 
 - **Adapt:** 
 - **Avoid:** 
 
 ## Payload implications
-Which collections / fields / blocks this suggests for the CMS.
+Which collections / fields / blocks this suggests for the CMS (feeds ../../Content-Model.md).
+
+## Scores
+Justify each `scores.*` value and `relevance` in a sentence each — see [Rubric](../Rubric.md).
 
 ## Screenshots
-`assets/{slug}/desktop.png` · `assets/{slug}/mobile.png`
+Local-only, in `assets/{slug}/`: `desktop.png` (1440) · `mobile.png` (390) · `desktop-fold.png`
