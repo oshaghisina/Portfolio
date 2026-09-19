@@ -24,3 +24,7 @@ node_modules/
 # SQLite database
 *.db
 *.db-journal
+
+# Docs benchmark screenshots are local-only research assets
+Docs/Benchmarks/*/assets/*
+!Docs/Benchmarks/*/assets/.gitkeep
