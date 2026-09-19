@@ -34,6 +34,9 @@ site and linked here in the docs. Plain meanings are written for a reader outsid
 | Segmentation | — | Grouping users by traits or behaviour so each group gets relevant messaging | Digikala |
 | Event-driven engagement | — | Messages triggered by what a user just did (or stopped doing) rather than on a schedule | Digikala automation |
 | Performance marketing | — | Paid channels judged on measurable results (clicks, sign-ups, sales) | Digikala |
+| BI | Business intelligence | Turning raw data into dashboards and reports a team can steer by | Digikala ("BI developer", BI dashboards) |
+| B2C | Business to consumer | Products sold to individuals rather than to companies | A1Paradise |
+| GA4 | Google Analytics 4 | Google's current web/app analytics product | Tools |
 | PR | Public relations | Earned coverage — press and influencers — as opposed to paid ads | Digikala, Hadish Mall |
 
 ## Design & product
