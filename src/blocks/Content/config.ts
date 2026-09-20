@@ -14,6 +14,9 @@ const columnFields: Field[] = [
     name: 'size',
     type: 'select',
     defaultValue: 'oneThird',
+    admin: {
+      condition: (_data, _siblingData, { blockData }) => blockData?.layout !== 'editorial',
+    },
     options: [
       {
         label: 'One Third',
@@ -67,6 +70,19 @@ export const Content: Block = {
   slug: 'content',
   interfaceName: 'ContentBlock',
   fields: [
+    {
+      // DS-13: `editorial` fixes heading start / body end (5/12 + 7/12 at lg) and ignores `size`.
+      name: 'layout',
+      type: 'select',
+      defaultValue: 'columns',
+      options: [
+        { label: 'Columns', value: 'columns' },
+        { label: 'Editorial (heading start · body end)', value: 'editorial' },
+      ],
+      admin: {
+        description: 'Editorial: the first column is the heading side (5/12), the rest stack on the body side (7/12).',
+      },
+    },
     {
       name: 'columns',
       type: 'array',

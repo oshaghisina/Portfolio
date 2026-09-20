@@ -201,7 +201,7 @@ export interface Page {
       | null;
     media?: (number | null) | Media;
   };
-  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock)[];
+  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | MetricsStripBlock)[];
   meta?: {
     title?: string | null;
     /**
@@ -493,6 +493,10 @@ export interface CallToActionBlock {
  * via the `definition` "ContentBlock".
  */
 export interface ContentBlock {
+  /**
+   * Editorial: the first column is the heading side (5/12), the rest stack on the body side (7/12).
+   */
+  layout?: ('columns' | 'editorial') | null;
   columns?:
     | {
         size?: ('oneThird' | 'half' | 'twoThirds' | 'full') | null;
@@ -772,6 +776,55 @@ export interface Form {
     | null;
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MetricsStripBlock".
+ */
+export interface MetricsStripBlock {
+  sectionHeader?: SectionHeaderField;
+  metrics?:
+    | {
+        /**
+         * Short — "30%", "20+", "~$0.03"
+         */
+        value: string;
+        /**
+         * What the number measures
+         */
+        caption: string;
+        /**
+         * Where it comes from (report, dashboard, date) — every number is traceable
+         */
+        source?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'metricsStrip';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SectionHeaderField".
+ */
+export interface SectionHeaderField {
+  /**
+   * Short label on the rule, e.g. "Work" or "By the numbers"
+   */
+  tag?: string | null;
+  /**
+   * First part of the heading, in ink
+   */
+  lead?: string | null;
+  /**
+   * Second part of the heading, muted (optional)
+   */
+  tail?: string | null;
+  /**
+   * One or two sentences under the heading (optional)
+   */
+  lede?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1081,6 +1134,7 @@ export interface PagesSelect<T extends boolean = true> {
         mediaBlock?: T | MediaBlockSelect<T>;
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
+        metricsStrip?: T | MetricsStripBlockSelect<T>;
       };
   meta?:
     | T
@@ -1125,6 +1179,7 @@ export interface CallToActionBlockSelect<T extends boolean = true> {
  * via the `definition` "ContentBlock_select".
  */
 export interface ContentBlockSelect<T extends boolean = true> {
+  layout?: T;
   columns?:
     | T
     | {
@@ -1179,6 +1234,33 @@ export interface FormBlockSelect<T extends boolean = true> {
   introContent?: T;
   id?: T;
   blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MetricsStripBlock_select".
+ */
+export interface MetricsStripBlockSelect<T extends boolean = true> {
+  sectionHeader?: T | SectionHeaderFieldSelect<T>;
+  metrics?:
+    | T
+    | {
+        value?: T;
+        caption?: T;
+        source?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SectionHeaderField_select".
+ */
+export interface SectionHeaderFieldSelect<T extends boolean = true> {
+  tag?: T;
+  lead?: T;
+  tail?: T;
+  lede?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

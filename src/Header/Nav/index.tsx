@@ -8,18 +8,23 @@ import { CMSLink } from '@/components/Link'
 import Link from 'next/link'
 import { SearchIcon } from 'lucide-react'
 
+import { MobileNav } from './MobileNav'
+
 export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
   const navItems = data?.navItems || []
 
   return (
-    <nav className="flex gap-3 items-center">
-      {navItems.map(({ link }, i) => {
-        return <CMSLink key={i} {...link} appearance="link" />
-      })}
-      <Link href="/search">
-        <span className="sr-only">Search</span>
-        <SearchIcon className="w-5 text-primary" />
-      </Link>
-    </nav>
+    <>
+      <nav className="hidden md:flex gap-6 items-center">
+        {navItems.map(({ link }, i) => {
+          return <CMSLink className="text-small" key={i} {...link} appearance="link" />
+        })}
+        <Link className="text-foreground hover:text-brand transition-colors duration-(--duration-fast)" href="/search">
+          <span className="sr-only">Search</span>
+          <SearchIcon className="size-5" />
+        </Link>
+      </nav>
+      <MobileNav data={data} />
+    </>
   )
 }
