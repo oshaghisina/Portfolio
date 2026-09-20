@@ -21,10 +21,6 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 
-# SQLite database
-*.db
-*.db-journal
-
 # Docs benchmark screenshots are local-only research assets
 Docs/Benchmarks/*/assets/*
 !Docs/Benchmarks/*/assets/.gitkeep

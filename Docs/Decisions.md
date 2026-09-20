@@ -2,7 +2,7 @@
 title: Decisions
 doc_type: decisions
 status: ready
-updated: 2026-09-19
+updated: 2026-09-20
 ---
 
 # Decisions
@@ -15,7 +15,7 @@ Status: `proposed` → `accepted` → `superseded by D-xxx`
 | ID | Date | Decision | Why | Status |
 |---|---|---|---|---|
 | D-001 | 2026-09-19 | Build on the Payload 3 **website** template (Next.js) rather than the blank template or a custom frontend | Pages + layout builder, posts, media, SEO, live preview and drafts out of the box; closest starting point for a portfolio | accepted |
-| D-002 | 2026-09-19 | **SQLite** (`file:./portfolio.db`) for development | Zero local setup; the adapter in `src/payload.config.ts` can be swapped to Postgres before deploy | accepted |
+| D-002 | 2026-09-19 | **SQLite** (`file:./portfolio.db`) for development | Zero local setup; the adapter in `src/payload.config.ts` can be swapped to Postgres before deploy | superseded by D-019 |
 | D-003 | 2026-09-19 | **pnpm** as the package manager | Payload's recommended manager; already installed locally | accepted |
 | D-004 | 2026-09-19 | `Docs/` is the **source of truth**, every doc carries YAML frontmatter, lifecycle `draft → review → ready` | Docs will be seeded into Payload collections; frontmatter makes that mechanical | accepted |
 | D-005 | 2026-09-19 | Benchmarks: **one file per URL + a machine-generated index** per folder; slug = domain in kebab-case; desktop 1440 / mobile 390 screenshots | Individually reviewable analyses; indices never drift | accepted |
@@ -32,3 +32,4 @@ Status: `proposed` → `accepted` → `superseded by D-xxx`
 | D-016 | 2026-09-19 | **Type pairing: Geist Sans + Geist Mono (installed) + Vazirmatn** (`next/font/google`) as the Persian partner. Labels/codes are a real mono (`.eyebrow`, `.index-code`); Persian metrics (taller leading, zero tracking, no uppercase, 13px eyebrow floor) are `font.fa.*` tokens emitted inside `:lang(fa)`; Latin digits and codes stay mono in every locale | Zero licensing friction, matching x-height and weight; script-specific values as tokens keep components free of `if (fa)` | accepted |
 | D-017 | 2026-09-19 | **The accent is a placeholder cobalt** (`color.*.brand`, `brand-foreground`, `ring`); the single-accent *rule* (CTA · section tag · live data) is adopted, the *value* is not — DS-01 Q1 stays open. Swapping it is a tokens edit + `pnpm tokens:build`, never a code change | Unblocks the build without borrowing pleurat's amber; keeps the decision visible in the docs | accepted |
 | D-018 | 2026-09-19 | **Emitter contract**: `pnpm tokens:build` generates `src/app/(frontend)/theme.css` (`@theme static` + colour scopes + `@theme inline` bridge + `:lang(fa)`) and `src/cssVariables.js` from `sina.tokens.json`; both files are generated, prettier/eslint-ignored and drift-checked by `pnpm docs:check`. Colour roles (`--paper`, `--ink-2` …) are the design vocabulary; shadcn slots (`--background`, `--card` …) are DTCG aliases in the tokens file so `src/components/ui` keeps working. `tailwind.config.mjs` is removed | One source of truth (D-014) with the mapping to Tailwind v4 as data, and the template UI untouched | accepted |
+| D-019 | 2026-09-20 | **MongoDB** replaces SQLite for both local dev and production; local dev runs it via the existing Docker Compose `mongo` service (`docker compose up -d mongo`) | Matches the production Mongo hosting plan (e.g. Atlas) with no SQL migration step; the compose file already had an unused `mongo` service | accepted |

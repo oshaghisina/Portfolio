@@ -41,6 +41,7 @@ pnpx create-payload-app my-project -t website
 
 1. First [clone the repo](#clone) if you have not done so already
 1. `cd my-project && cp .env.example .env` to copy the example environment variables
+1. `docker compose up -d mongo` to start a local MongoDB instance (see [Docker](#docker))
 1. `pnpm install && pnpm dev` to install dependencies and start the dev server
 1. open `http://localhost:3000` to open the app in your browser
 
@@ -180,47 +181,36 @@ Although Next.js includes a robust set of caching strategies out of the box, Pay
 
 To spin up this example locally, follow the [Quick Start](#quick-start). Then [Seed](#seed) the database with a few pages, posts, and projects.
 
-### Working with Postgres
+### Working with MongoDB
 
-Postgres and other SQL-based databases follow a strict schema for managing your data. In comparison to our MongoDB adapter, this means that there's a few extra steps to working with Postgres.
+This project uses `@payloadcms/db-mongodb`. MongoDB is schemaless, so there's no migration step to manage locally — adding, modifying, or removing fields and collections just works against a running Mongo instance.
 
-Note that often times when making big schema changes you can run the risk of losing data if you're not manually migrating it.
-
-#### Local development
-
-Ideally we recommend running a local copy of your database so that schema updates are as fast as possible. By default the Postgres adapter has `push: true` for development environments. This will let you add, modify and remove fields and collections without needing to run any data migrations.
-
-If your database is pointed to production you will want to set `push: false` otherwise you will risk losing data or having your migrations out of sync.
-
-#### Migrations
-
-[Migrations](https://payloadcms.com/docs/database/migrations) are essentially SQL code versions that keeps track of your schema. When deploy with Postgres you will need to make sure you create and then run your migrations.
-
-Locally create a migration
-
-```bash
-pnpm payload migrate:create
-```
-
-This creates the migration files you will need to push alongside with your new configuration.
-
-On the server after building and before running `pnpm start` you will want to run your migrations
-
-```bash
-pnpm payload migrate
-```
-
-This command will check for any migrations that have not yet been run and try to run them and it will keep a record of migrations that have been run in the database.
+The one thing to be aware of: Payload's Local API uses multi-document transactions for multi-step operations (like the seed script), and MongoDB only supports those on a replica set (or sharded cluster), not a bare standalone instance. Hosted MongoDB (e.g. Atlas) is always a replica set, so this only matters for local dev — see [Docker](#docker) below if you hit a `Transaction numbers are only allowed on a replica set member or mongos` error.
 
 ### Docker
 
-Alternatively, you can use [Docker](https://www.docker.com) to spin up this template locally. To do so, follow these steps:
+Use [Docker](https://www.docker.com) to run a local MongoDB instance — the `docker-compose.yml` at the repo root defines a `mongo` service for exactly this:
 
-1. Follow [steps 1 and 2 from above](#development), the docker-compose file will automatically use the `.env` file in your project root
-1. Next run `docker-compose up`
-1. Follow [steps 4 and 5 from above](#development) to login and create your first admin user
+```bash
+docker compose up -d mongo
+```
 
-That's it! The Docker instance will help you get up and running quickly while also standardizing the development environment across your teams.
+This uses the `DATABASE_URL` from your `.env` file (see [Development](#development)). The bundled `payload` service in that same compose file (which tries to run the whole app in a container) is unmaintained boilerplate — run the app normally with `pnpm dev` on your host instead.
+
+If writes fail with a replica-set transaction error, turn the container into a single-node replica set:
+
+```yaml
+# docker-compose.yml
+mongo:
+  image: mongo:8
+  command: ["mongod", "--replSet", "rs0"]
+```
+
+then one-time initialize it:
+
+```bash
+docker compose exec mongo mongosh --eval "rs.initiate()"
+```
 
 ### Seed
 
@@ -244,25 +234,7 @@ To run Payload in production, you need to build and start the Admin panel. To do
 
 ### Deploying to Vercel
 
-This template can also be deployed to Vercel for free. You can get started by choosing the Vercel DB adapter during the setup of the template or by manually installing and configuring it:
-
-```bash
-pnpm add @payloadcms/db-vercel-postgres
-```
-
-```ts
-// payload.config.ts
-import { vercelPostgresAdapter } from '@payloadcms/db-vercel-postgres'
-
-export default buildConfig({
-  // ...
-  db: vercelPostgresAdapter({
-    pool: {
-      connectionString: process.env.POSTGRES_URL || '',
-    },
-  }),
-  // ...
-```
+This project uses MongoDB, so no Vercel-specific database adapter package is needed — set `DATABASE_URL` in your Vercel project's environment variables to a hosted MongoDB connection string (e.g. [Atlas](https://www.mongodb.com/atlas) or self-hosted) and the existing `mongooseAdapter` config in `payload.config.ts` picks it up as-is.
 
 We also support Vercel's blob storage:
 
@@ -286,8 +258,6 @@ export default buildConfig({
   ],
   // ...
 ```
-
-There is also a simplified [one click deploy](https://github.com/payloadcms/payload/tree/3.x/templates/with-vercel-postgres) to Vercel should you need it.
 
 ### Self-hosting
 
