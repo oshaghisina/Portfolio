@@ -197,14 +197,34 @@ research, roadmap, end to end.
 
 ## 8. Visual brand hints
 
-Deliberately empty until the Design benchmarks and [Synthesis](../Benchmarks/Synthesis.md) give
-evidence. Two constraints are already known:
+Records only what is **adopted** — candidates stay in [`../Design-System/`](../Design-System/README.md)
+(D-013). First sprint adopted on 2026-09-19 (D-015 … D-018), all visible on `/design`:
+
+- **Colour** — one paper, one panel, three inks, two hairlines, one accent with its foreground and
+  focus ring (DS-02). Light is a near-neutral warm paper, dark is a true slate — two palettes, not an
+  inversion (D-015). The single-accent rule holds: CTA, section tag, live data, nowhere else (DS-01);
+  the cobalt is a **placeholder** until Q1 of DS-01 is decided (D-017).
+- **Type** — two roles: Geist Sans for reading, Geist Mono for labels and codes; Vazirmatn as the
+  Persian partner, switched by `lang` (DS-04, D-016). Sizes are fluid roles (display · h1 · h2 · h3 ·
+  lede · body · small · caption · eyebrow · button · num), each with its own leading and tracking;
+  Persian takes taller leading, zero tracking, no uppercase and a 13px label floor (DS-03, DS-09).
+- **Devices** — two-tone headline (lead in ink, tail muted — DS-08), section opener with the tag on
+  the rule (DS-12), mono eyebrow caps and index codes as ornament (DS-09, DS-10), tag chips (DS-22).
+- **Rhythm and controls** — fluid section padding and gutters (DS-05), 48px / 36px controls with
+  4px radii — a decision, not pleurat's 0px by accident (DS-07, DS-16), one easing
+  `cubic-bezier(.22, 1, .36, 1)` and a −2px hover lift (DS-06).
+- **Patterns** — button pair (DS-16), case-study meta strip with *Company* first (DS-17), metrics
+  strip with a source line under every number (DS-18), typographic employer grid instead of a logo
+  wall (DS-20), "What shipped" list with a configurable label (DS-27), mobile drawer with numbered
+  links and a language switch in its foot (DS-32), editorial two-column content (DS-13).
+
+Every value lives in `Design-System/tokens/sina.tokens.json` and reaches the site through
+`pnpm tokens:build` (D-014, D-018). Two constraints stay in force:
 
 - **Bilingual typography** — every type choice must have a Persian counterpart that holds the same
-  weight and rhythm, and layouts must mirror cleanly for RTL. This rules out a lot of
-  display-typeface-led portfolio styles, or at least makes them twice the work.
+  weight and rhythm, and layouts must mirror cleanly for RTL (logical properties only).
 - **Photography exists** — the resume has a portrait; whether the site is photo-led or
-  work-led is a design-benchmark question.
+  work-led is still a design-benchmark question.
 
 ## 9. Review checklist
 

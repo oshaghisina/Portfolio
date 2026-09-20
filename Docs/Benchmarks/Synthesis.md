@@ -18,6 +18,9 @@ for Sina's site. Anything that changes the site's shape is mirrored in
 **Update rule:** when the number of benchmark files exceeds `benchmarks_reviewed` by 3 or more,
 update this page (`docs:validate` warns). Record the update in the log at the bottom.
 
+Design patterns that have a measured item in [../Design-System/](../Design-System/README.md) link to
+it by id (`DS-NN`); a verdict here flips that item's `adoption`.
+
 ## How to read this page
 
 - **Pattern** — something seen in ≥ 2 benchmarks, named plainly.

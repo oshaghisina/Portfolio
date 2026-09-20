@@ -23,6 +23,7 @@ any value the site will display carries a `<key>_fa` twin (see Conventions).
 | [Experience/](Experience/) | One folder per company, one file per project (case study); Figma exports in `assets/` |
 | [Experience/Timeline.md](Experience/Timeline.md) | Real start/end dates per role — the source for every duration on the site |
 | [Experience/Inventory.md](Experience/Inventory.md) | Every candidate project across all companies, with featured/priority flags |
+| [Design-System/](Design-System/) | Design-system inspiration: one file per cross-benchmark item (`DS-NN-<slug>.md`) with measured anatomy, take and adoption; DTCG token files in `tokens/`, capture manifests in `sources/` |
 | [Content-Model.md](Content-Model.md) | The bridge from this research to Payload: proposed collections, fields, blocks, localization |
 | [Decisions.md](Decisions.md) | Decision log (what, why, status) |
 | [Glossary.md](Glossary.md) | Business, marketing, design and repo terms used across the docs |
@@ -41,10 +42,12 @@ any value the site will display carries a `<key>_fa` twin (see Conventions).
   for content. Changing a template means updating `scripts/docs/lib/schema.ts` too.
 - **Persian values** — `<key>_fa` holds the Persian version of `<key>` (e.g. `title_fa`,
   `summary_fa`). Missing `_fa` values fall back to English on the site.
-- **Screenshots are local-only** — `Benchmarks/*/assets/` is gitignored. The `.md` analysis is
-  the durable record; screenshots are working material on this machine.
+- **Screenshots are local-only** — `Benchmarks/*/assets/` and `Design-System/assets/` are
+  gitignored. The `.md` analysis (and, for design-system items, the measured `tokens/*.tokens.json`)
+  is the durable record; screenshots, crops, frames and videos are working material on this machine.
 - **Slugs** — benchmarks: the site's domain in kebab-case (`linear.app` → `linear-app`);
-  experience: the company folder name in lowercase; projects: kebab-case working title.
+  experience: the company folder name in lowercase; projects: kebab-case working title;
+  design-system items: `DS-NN-<kebab-title>` where `NN` is the next free number.
 
 ## Workflow
 
@@ -63,6 +66,23 @@ fill `summary` (the one-line takeaway shown in the index). Every ~3 benchmarks,
 [Synthesis.md](Benchmarks/Synthesis.md) is updated and any pattern that changes the site's
 shape is reflected in [Content-Model.md](Content-Model.md).
 
+### Capturing a design-system item
+
+Anything on a benchmark worth borrowing for Sina's design system becomes an item in
+[Design-System/](Design-System/README.md):
+
+1. `pnpm docs:ds new "<title>" --category <c> --take <borrow|adapt|avoid> --source <slug>:design:"<Section>"`
+   (or `pnpm docs:ds seed <items.json>` for a batch) scaffolds `DS-NN-<slug>.md` from the template.
+2. Add the item to `Design-System/sources/<slug>.capture.json` — route, selectors or text anchors,
+   viewports, what to capture (`element@2x`, `bbox+computed`, `states`, `frames`, `video`).
+3. `pnpm docs:ds-capture <slug> --item DS-NN` crops and measures it, writes `assets/<slug>/DS-NN.json`,
+   merges measured tokens into `tokens/<slug>.tokens.json` and fills the item's `evidence[]`.
+4. Write **Measured / Anatomy** from the JSON, then **For Sina** (take · RTL · Persian) and
+   **Target mapping**; set `adoption` when Synthesis/Decisions decide.
+5. When an item is built: put Sina's values in `Design-System/tokens/sina.tokens.json`
+   (with `derivedFrom` / `item` provenance), run `pnpm tokens:build`, flip `adoption: adopted`,
+   point `target` at the real file and check it on `/design`.
+
 ### Sending a project (experience)
 Send the project name, company, and Figma link(s). I:
 
@@ -80,7 +100,10 @@ Send the project name, company, and Figma link(s). I:
 | `pnpm docs:benchmark <url> <content\|design> [--slug s] [--no-screenshot] [--force]` | Intake a benchmark URL (see above) |
 | `pnpm docs:index [--check]` | Regenerate every machine-owned table from frontmatter; `--check` fails if anything would change |
 | `pnpm docs:validate [paths...] [--strict]` | Validate frontmatter against `scripts/docs/lib/schema.ts`; `--strict` turns warnings into errors |
-| `pnpm docs:check` | `docs:index --check` + `docs:validate` — run before committing |
+| `pnpm docs:check` | `docs:index --check` + `tokens:build --check` + `docs:validate` — run before committing |
+| `pnpm tokens:build [--check]` | Emit `src/app/(frontend)/theme.css` and `src/cssVariables.js` from `Design-System/tokens/sina.tokens.json` (D-018); `--check` fails on drift |
+| `pnpm docs:ds new\|seed\|list` | Scaffold design-system items from `Design-System/_template.md` (or a JSON batch); list them |
+| `pnpm docs:ds-capture <slug> [--item DS-NN] [--dry-run]` | Crop, measure and record tokens for design-system items per `Design-System/sources/<slug>.capture.json` |
 
 Scripts live in `scripts/docs/`; see its README for details.
 

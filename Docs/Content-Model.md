@@ -17,7 +17,7 @@ already gives us, what the Docs frontmatter needs from Payload, and how English 
 localization works. It is a **spec that evolves**: every time [Benchmarks/Synthesis.md](Benchmarks/Synthesis.md)
 flips a verdict that changes the site's shape, this file gets a changelog row.
 
-Paths are relative to the repo root. Nothing here is implemented yet — see §13.
+Paths are relative to the repo root. Collections and localization are not implemented yet (§13); the design-system layer is — see §2 and §10.
 
 ## 1. Purpose & update rule
 
@@ -36,7 +36,9 @@ Paths are relative to the repo root. Nothing here is implemented yet — see §1
 | `categories` | `src/collections/Categories.ts` | **Extend** | Reuse as the *domain* taxonomy (fintech, cloud, edtech…) for experiences and projects; nested-docs already enabled |
 | `users` | `src/collections/Users/index.ts` | **Keep** | Admin auth only |
 | `header`, `footer` | `src/Header/config.ts`, `src/Footer/config.ts` | **Keep** | `navItems` of `link`; `link.relationTo` must widen (§11) |
-| Blocks | `src/blocks/*/config.ts` | **Keep** | `cta`, `content`, `mediaBlock`, `archive`, `formBlock` for pages; `banner`, `code` inside rich text |
+| Blocks | `src/blocks/*/config.ts` | **Keep** | `cta`, `content` (+ `layout: columns \| editorial`, DS-13), `mediaBlock`, `archive`, `formBlock`, **`metricsStrip`** (DS-18) for pages; `banner`, `code` inside rich text |
+| `sectionHeader` group | `src/fields/sectionHeader.ts` | **New** | `tag · lead · tail · lede` (DS-12), reused by every block that opens a section; all four become `localized: true` with §3 |
+| Design tokens | `Docs/Design-System/tokens/sina.tokens.json` → `src/app/(frontend)/theme.css` | **New** | Emitted by `pnpm tokens:build` (D-014, D-018); `src/utilities/locale.ts` drives `<html lang dir>` until §3 lands |
 | Heros | `src/heros/config.ts` | **Keep** | `none / highImpact / mediumImpact / lowImpact`; reused by projects (§6) |
 | `link` field | `src/fields/link.ts`, `src/fields/linkGroup.ts` | **Extend** | Reused for experience/project links; widen `relationTo` |
 | Plugins | `src/plugins/index.ts` | **Extend** | redirects, nested-docs, seo, form-builder, search — all kept; configs widen to new collections |
@@ -184,20 +186,26 @@ happen in one place.
 
 ## 10. Blocks
 
-**Reused as-is:** `cta`, `content`, `mediaBlock`, `archive` (widened to `projects`, §11), `formBlock`.
+**Reused as-is:** `cta`, `content` (now with `layout: editorial`), `mediaBlock`, `archive` (widened to `projects`, §11), `formBlock`.
+
+**Implemented (2026-09-19):** `metricsStrip` — `src/blocks/MetricsStrip/{config,Component}.tsx`, `metrics[] { value, caption, source }` (1–4) + `sectionHeader` group; the `logoWall` candidate is answered by the `ExperienceGrid` component (names in type, no logos) whose block waits for `experiences` (§5).
 
 **Candidates — TBD pending benchmarks.** Each becomes real only when Synthesis shows the pattern
 earns its place; until then it is a hypothesis.
 
-| Block | Would do | Evidence needed | Synthesis link |
-|---|---|---|---|
-| `projectGrid` | featured projects on the home page with kind/domain filter | ≥ 2 Content benchmarks where a filterable grid beats a list for a hybrid profile | — |
-| `experienceTimeline` | the nine roles on a time axis with overlaps visible | a Design benchmark that visualizes a career without looking like a CV | — |
-| `metricsStrip` | 3–4 headline numbers per case study | Content benchmarks scoring ≥ 4 on `proof` | — |
-| `testimonial` | quotes from colleagues/clients | Sina has publishable quotes (Brand Brief Q7) | — |
-| `logoWall` | company logos | decide whether it reads as proof or as noise for this audience | — |
-| `processSteps` | research → prototype → test → ship as a visual | Design benchmarks that show process without a generic "double diamond" | — |
-| `beforeAfter` | slider or side-by-side for redesigns (Arvan, OTeacher) | assets exist in Figma | — |
+| Block | Would do | Evidence needed | DS item | Synthesis link |
+|---|---|---|---|---|
+| `projectGrid` | featured projects on the home page with kind/domain filter | ≥ 2 Content benchmarks where a filterable grid beats a list for a hybrid profile | [DS-24](Design-System/DS-24-project-rail-column.md) · [DS-25](Design-System/DS-25-gallery-with-tabs-and-lightbox.md) | — |
+| `experienceTimeline` | the nine roles on a time axis with overlaps visible | a Design benchmark that visualizes a career without looking like a CV | [DS-38](Design-System/DS-38-employer-ticker.md) · [DS-19](Design-System/DS-19-scroll-filled-stat-bars.md) | — |
+| `metricsStrip` | 3–4 headline numbers per case study — **implemented** (`src/blocks/MetricsStrip`) | pleurat-com `proof` = 4; DS-18 adopted | [DS-18](Design-System/DS-18-stats-trio.md) (+ [DS-35](Design-System/DS-35-scroll-pinned-count-up-chart.md) motion, later) | — |
+| `testimonial` | quotes from colleagues/clients | Sina has publishable quotes (Brand Brief Q7) | [DS-29](Design-System/DS-29-testimonial.md) | — |
+| `logoWall` | company logos → **names in type** (`ExperienceGrid` component built; block follows `experiences`) | DS-20 adopted | [DS-20](Design-System/DS-20-typographic-employer-grid.md) | — |
+| `processSteps` | research → prototype → test → ship as a visual | Design benchmarks that show process without a generic "double diamond" | [DS-31](Design-System/DS-31-numbered-table-rows.md) | — |
+| `beforeAfter` | slider or side-by-side for redesigns (Arvan, OTeacher) | assets exist in Figma | — | — |
+
+The `DS item` column links each candidate to the [Design-System](Design-System/README.md) item that
+holds its measured anatomy and “For Sina” notes (D-013). A candidate becomes a real block when its
+DS item is `adopted`.
 
 ## 11. Cross-cutting changes checklist (when building)
 
@@ -238,9 +246,12 @@ Everything in the template that assumes only `pages` and `posts`:
 | 3 | Is `about` a global or a `pages` document with special blocks? | global + a page that reads it |
 | 4 | Persian slugs — shared with English (default) or separate? | shared |
 | 5 | Should `figma[]` links ever render publicly? | no; admin reference only |
+| 6 | `/design` is a static route (the style guide) and shadows a `pages` document with slug `design` | keep the route; reserve the slug |
 
 ## 14. Changelog
 
 | Date | Change | Trigger |
 |---|---|---|
 | 2026-09-19 | Created: baseline, localization plan, `experiences` / `projects` / `about`, block candidates, cross-cutting checklist | Docs improvement plan |
+| 2026-09-19 | §10: added the `DS item` column linking block candidates to `Design-System/` items; `metricsStrip` evidence updated (pleurat-com `proof` = 4) | D-013 |
+| 2026-09-19 | §2 + §10: `metricsStrip` block, Content `layout: editorial`, `sectionHeader` field group and the tokens → `theme.css` pipeline implemented; `logoWall` answered by `ExperienceGrid`; §13 Q6 `/design` route | D-015 … D-018 |

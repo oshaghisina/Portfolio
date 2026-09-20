@@ -59,6 +59,13 @@ site and linked here in the docs. Plain meanings are written for a reader outsid
 
 | Term | Plain meaning | Where it appears |
 |---|---|---|
+| Design token | A named design value — a colour, a size, an easing — stored as data so code and design read the same source instead of copying numbers | `Design-System/tokens/` |
+| DTCG | The W3C Design Tokens Community Group JSON format: every token has `$value` and `$type`, optional `$description` and `$extensions` | `Design-System/tokens/*.tokens.json`, D-014 |
+| Capture manifest | A per-site JSON file telling `docs:ds-capture` what to crop and measure for each Design-System item (routes, selectors, viewports, probes) | `Design-System/sources/` |
+| DS item | One design-system inspiration pattern (`DS-NN-<slug>.md`) with sources, measured anatomy, take (borrow/adapt/avoid) and adoption state | `Design-System/`, D-013 |
+| House tokens | Sina's own design tokens (`Design-System/tokens/sina.tokens.json`) — decisions, not measurements; each carries `derivedFrom` and `item` provenance and is the only input of the emitter | D-014, D-018 |
+| Emitter | `pnpm tokens:build` — turns the house tokens into `src/app/(frontend)/theme.css` (Tailwind v4 `@theme`) and `src/cssVariables.js`; `--check` guards drift in `docs:check` | `scripts/tokens/`, D-018 |
+| Role vs slot | A colour *role* is design vocabulary (`--paper`, `--ink-2`, `--brand`); a *slot* is the shadcn name the template UI expects (`--background`, `--card`), kept as an alias of a role | `theme.css`, D-018 |
 | Frontmatter | The YAML block at the top of a Markdown file holding structured fields | every doc |
 | Collection | A content type in Payload (e.g. `projects`); each entry is a document | Content-Model |
 | Global | A single-instance content type in Payload (e.g. header, footer, about) | Content-Model |
