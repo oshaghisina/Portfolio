@@ -1,14 +1,15 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
+/* Generated from Docs/Design-System/tokens/sina.tokens.json by `pnpm tokens:build` (D-014). */
+@import './theme.css';
 
-@config '../../../tailwind.config.mjs';
+@plugin "@tailwindcss/typography";
 
-@custom-variant dark (&:is([data-theme='dark'] *));
-@custom-variant sm (@media (width >= theme(--breakpoint-sm)));
-@custom-variant md (@media (width >= theme(--breakpoint-md)));
-@custom-variant lg (@media (width >= theme(--breakpoint-lg)));
-@custom-variant xl (@media (width >= theme(--breakpoint-xl)));
-@custom-variant 2xl (@media (width >= theme(--breakpoint-2xl)));
+/* Themes are attribute-driven (InitTheme sets data-theme before paint); a section can
+   invert itself with data-theme="dark". The variant matches the scoped element too. */
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+/* Persian subtree — for the few utility-level tweaks the :lang(fa) tokens do not cover. */
+@custom-variant fa (&:lang(fa));
 
 @layer base {
   h1,
@@ -20,10 +21,29 @@
     font-weight: unset;
     font-size: unset;
   }
+
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans text-body min-h-screen flex flex-col;
+  }
+
+  /* Preflight sets font-family once on <html>; a Persian subtree must re-apply it so the
+     --font-sans override from theme.css (:lang(fa)) takes effect. Attribute selector on
+     purpose: it fires at the subtree root only and leaves .font-mono children alone. */
+  [lang='fa'] {
+    font-family: var(--font-sans);
+  }
+
+  ::selection {
+    background: var(--brand);
+    color: var(--brand-foreground);
+  }
 }
 
-@plugin "@tailwindcss/typography";
-
+/* Dynamic class strings the scanner cannot see (Content columns, Banner styles). */
 @source inline("lg:col-span-4");
 @source inline("lg:col-span-6");
 @source inline("lg:col-span-8");
@@ -37,21 +57,11 @@
 @source inline("border-warning");
 @source inline("bg-warning/30");
 
-@theme {
-  --breakpoint-sm: 40rem;
-  --breakpoint-md: 48rem;
-  --breakpoint-lg: 64rem;
-  --breakpoint-xl: 80rem;
-  --breakpoint-2xl: 86rem;
-  --font-mono: var(--font-geist-mono);
-  --font-sans: var(--font-geist-sans);
-}
-
 @layer utilities {
   .container {
     width: 100%;
     margin-inline: auto;
-    padding-inline: 1rem;
+    padding-inline: var(--spacing-gutter);
   }
 
   @variant sm {
@@ -63,7 +73,6 @@
   @variant md {
     .container {
       max-width: var(--breakpoint-md);
-      padding-inline: 2rem;
     }
   }
 
@@ -81,139 +90,100 @@
 
   @variant 2xl {
     .container {
-      max-width: var(--breakpoint-2xl);
+      max-width: var(--container-page);
     }
   }
 }
 
-:root {
-  --background: oklch(100% 0 0deg);
-  --foreground: oklch(14.5% 0 0deg);
-  --card: oklch(96.5% 0.005 265deg);
-  --card-foreground: oklch(14.5% 0 0deg);
-  --popover: oklch(100% 0 0deg);
-  --popover-foreground: oklch(14.5% 0 0deg);
-  --primary: oklch(20.5% 0 0deg);
-  --primary-foreground: oklch(98.5% 0 0deg);
-  --secondary: oklch(97% 0 0deg);
-  --secondary-foreground: oklch(20.5% 0 0deg);
-  --muted: oklch(97% 0 0deg);
-  --muted-foreground: oklch(55.6% 0 0deg);
-  --accent: oklch(97% 0 0deg);
-  --accent-foreground: oklch(20.5% 0 0deg);
-  --destructive: oklch(57.7% 0.245 27.325deg);
-  --destructive-foreground: oklch(57.7% 0.245 27.325deg);
-  --border: oklch(92.2% 0 0deg);
-  --input: oklch(92.2% 0 0deg);
-  --ring: oklch(70.8% 0 0deg);
-  --chart-1: oklch(64.6% 0.222 41.116deg);
-  --chart-2: oklch(60% 0.118 184.704deg);
-  --chart-3: oklch(39.8% 0.07 227.392deg);
-  --chart-4: oklch(82.8% 0.189 84.429deg);
-  --chart-5: oklch(76.9% 0.188 70.08deg);
-  --radius: 0.625rem;
-  --sidebar: oklch(98.5% 0 0deg);
-  --sidebar-foreground: oklch(14.5% 0 0deg);
-  --sidebar-primary: oklch(20.5% 0 0deg);
-  --sidebar-primary-foreground: oklch(98.5% 0 0deg);
-  --sidebar-accent: oklch(97% 0 0deg);
-  --sidebar-accent-foreground: oklch(20.5% 0 0deg);
-  --sidebar-border: oklch(92.2% 0 0deg);
-  --sidebar-ring: oklch(70.8% 0 0deg);
-  --success: oklch(78% 0.08 200deg);
-  --warning: oklch(89% 0.1 75deg);
-  --error: oklch(75% 0.15 25deg);
-}
+/* DS-09 — mono eyebrow caps. Readable meta (role, year, client): ink-2 at the 12px floor.
+   Persian: the size/tracking differences arrive through the :lang(fa) variables; only the
+   uppercase has to go, and the label falls back to the Persian sans. */
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-eyebrow);
+  line-height: var(--text-eyebrow--line-height);
+  letter-spacing: var(--text-eyebrow--letter-spacing);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  color: var(--ink-2);
 
-[data-theme='dark'] {
-  --background: oklch(14.5% 0 0deg);
-  --foreground: oklch(98.5% 0 0deg);
-  --card: oklch(17% 0 0deg);
-  --card-foreground: oklch(98.5% 0 0deg);
-  --popover: oklch(14.5% 0 0deg);
-  --popover-foreground: oklch(98.5% 0 0deg);
-  --primary: oklch(98.5% 0 0deg);
-  --primary-foreground: oklch(20.5% 0 0deg);
-  --secondary: oklch(26.9% 0 0deg);
-  --secondary-foreground: oklch(98.5% 0 0deg);
-  --muted: oklch(26.9% 0 0deg);
-  --muted-foreground: oklch(70.8% 0 0deg);
-  --accent: oklch(26.9% 0 0deg);
-  --accent-foreground: oklch(98.5% 0 0deg);
-  --destructive: oklch(39.6% 0.141 25.723deg);
-  --destructive-foreground: oklch(63.7% 0.237 25.331deg);
-  --border: oklch(26.9% 0 0deg);
-  --input: oklch(26.9% 0 0deg);
-  --ring: oklch(43.9% 0 0deg);
-  --chart-1: oklch(48.8% 0.243 264.376deg);
-  --chart-2: oklch(69.6% 0.17 162.48deg);
-  --chart-3: oklch(76.9% 0.188 70.08deg);
-  --chart-4: oklch(62.7% 0.265 303.9deg);
-  --chart-5: oklch(64.5% 0.246 16.439deg);
-  --sidebar: oklch(20.5% 0 0deg);
-  --sidebar-foreground: oklch(98.5% 0 0deg);
-  --sidebar-primary: oklch(48.8% 0.243 264.376deg);
-  --sidebar-primary-foreground: oklch(98.5% 0 0deg);
-  --sidebar-accent: oklch(26.9% 0 0deg);
-  --sidebar-accent-foreground: oklch(98.5% 0 0deg);
-  --sidebar-border: oklch(26.9% 0 0deg);
-  --sidebar-ring: oklch(43.9% 0 0deg);
-  --success: oklch(28% 0.1 200deg);
-  --warning: oklch(35% 0.08 70deg);
-  --error: oklch(45% 0.1 25deg);
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-success: var(--success);
-  --color-warning: var(--warning);
-  --color-error: var(--error);
-}
-
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground min-h-[100vh] flex flex-col;
+  &:lang(fa) {
+    text-transform: none;
+    font-family: var(--font-sans-fa);
   }
 }
 
+/* DS-10 — index codes as ornament (01, 02 …): decorative, so ink-3; Latin digits stay mono in every locale. */
+@utility index-code {
+  font-family: var(--font-mono);
+  font-size: var(--text-eyebrow);
+  line-height: var(--text-eyebrow--line-height);
+  letter-spacing: var(--text-eyebrow--letter-spacing);
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-3);
+}
+
+/* Prose (RichText) reads the type roles instead of the typography plugin's defaults.
+   Its own layer, declared after Tailwind's (theme, base, components, utilities), so it wins
+   over the plugin's rules, which land in @layer utilities. */
+@layer prose-tokens;
+@layer prose-tokens {
+  .prose {
+    --tw-prose-body: var(--ink-2);
+    --tw-prose-headings: var(--ink);
+    --tw-prose-lead: var(--ink-2);
+    --tw-prose-links: var(--ink);
+    --tw-prose-bold: var(--ink);
+    --tw-prose-counters: var(--ink-3);
+    --tw-prose-bullets: var(--ink-3);
+    --tw-prose-hr: var(--line);
+    --tw-prose-quotes: var(--ink);
+    --tw-prose-quote-borders: var(--brand);
+    --tw-prose-captions: var(--ink-3);
+    --tw-prose-code: var(--ink);
+    --tw-prose-th-borders: var(--line);
+    --tw-prose-td-borders: var(--line-soft);
+    --tw-prose-invert-body: var(--ink-2);
+    --tw-prose-invert-headings: var(--ink);
+    --tw-prose-invert-links: var(--ink);
+    --tw-prose-invert-bold: var(--ink);
+    --tw-prose-invert-counters: var(--ink-3);
+    --tw-prose-invert-bullets: var(--ink-3);
+    --tw-prose-invert-hr: var(--line);
+    --tw-prose-invert-quotes: var(--ink);
+    --tw-prose-invert-quote-borders: var(--brand);
+    --tw-prose-invert-captions: var(--ink-3);
+    --tw-prose-invert-code: var(--ink);
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+    max-width: var(--container-measure);
+  }
+
+  .prose :where(h1, h2, h3, h4):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
+    font-weight: var(--font-weight-medium);
+    text-wrap: balance;
+  }
+
+  .prose :where(h1):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
+    font-size: var(--text-h1);
+    line-height: var(--text-h1--line-height);
+    letter-spacing: var(--text-h1--letter-spacing);
+  }
+
+  .prose :where(h2):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
+    font-size: var(--text-h2);
+    line-height: var(--text-h2--line-height);
+    letter-spacing: var(--text-h2--letter-spacing);
+  }
+
+  .prose :where(h3):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
+    font-size: var(--text-h3);
+    line-height: var(--text-h3--line-height);
+    letter-spacing: var(--text-h3--letter-spacing);
+  }
+}
+
+/* Anti-flash: stay invisible until InitTheme has set data-theme. */
 html {
   opacity: 0;
 }
