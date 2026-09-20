@@ -1,0 +1,72 @@
+import type { Locale } from '@/utilities/locale'
+
+/** Sample copy for the style guide — placeholders, not Sina's real content. */
+export const SAMPLES: Record<
+  Locale,
+  {
+    lead: string
+    tail: string
+    tag: string
+    lede: string
+    body: string
+    eyebrow: string
+    pangram: string
+    nav: string[]
+    metrics: { value: string; caption: string; source?: string }[]
+    outcomes: string[]
+    employers: { name: string; role: string; blurb: string }[]
+    meta: { company: string; role: string; period: string; type: string; tools: string[] }
+    footNote: string
+  }
+> = {
+  en: {
+    lead: 'Product designer',
+    tail: 'who reads the dashboards.',
+    tag: 'Work',
+    lede: 'Design, growth and product on one surface — six case studies with numbers that have a source.',
+    body: 'Owned the checkout redesign end to end: research, prototype, test, ship. Conversion moved from 2.1 % to 2.9 % in the first quarter after launch, measured on the same segment.',
+    eyebrow: 'Case study · 2024',
+    pangram: 'Sphinx of black quartz, judge my vow. 0123456789',
+    nav: ['Work', 'Experience', 'About', 'Contact'],
+    metrics: [
+      { value: '+38%', caption: 'Checkout conversion', source: 'GA4, Q3 2024 vs Q2' },
+      { value: '20+', caption: 'Dashboards shipped', source: 'Internal BI inventory' },
+      { value: '−$0.03', caption: 'Cost per click', source: 'Google Ads, 90-day window' },
+    ],
+    outcomes: ['Redesigned onboarding, four screens fewer', 'Weekly cohort dashboard for the growth team', 'Design system adopted by two product squads'],
+    employers: [
+      { name: 'Company A', role: 'Product designer', blurb: 'Fintech onboarding and BI dashboards.' },
+      { name: 'Company B', role: 'Growth marketer', blurb: 'Performance campaigns and automation.' },
+      { name: 'Company C', role: 'Product manager', blurb: 'B2C marketplace, checkout and retention.' },
+      { name: 'Company D', role: 'UX researcher', blurb: 'Interviews, surveys, usability tests.' },
+      { name: 'Company E', role: 'Industrial designer', blurb: 'Where it started.' },
+    ],
+    meta: { company: 'Company A', role: 'Product designer', period: '2023 – 2024', type: 'Case study', tools: ['Figma', 'GA4', 'Metabase'] },
+    footNote: 'Tehran · hello@example.com',
+  },
+  fa: {
+    lead: 'طراح محصول',
+    tail: 'که داشبوردها را می‌خواند.',
+    tag: 'نمونه‌کارها',
+    lede: 'طراحی، رشد و محصول روی یک سطح — شش مطالعهٴ موردی با اعدادی که منبع دارند.',
+    body: 'بازطراحی فرایند پرداخت را از ابتدا تا انتها پیش بردم: پژوهش، نمونهٴ اولیه، آزمون، انتشار. نرخ تبدیل در سه‌ماههٴ اول پس از انتشار از ۲٫۱ درصد به ۲٫۹ درصد رسید، روی همان بخش از کاربران.',
+    eyebrow: 'مطالعهٴ موردی · ۲۰۲۴',
+    pangram: 'بر جادهٴ خاکی، یک صد خرگوش چاق و بی‌قواره غلت زدند. ۰۱۲۳۴۵۶۷۸۹',
+    nav: ['نمونه‌کارها', 'تجربه', 'درباره', 'تماس'],
+    metrics: [
+      { value: '+38%', caption: 'نرخ تبدیل پرداخت', source: 'GA4، سه‌ماههٴ سوم ۲۰۲۴' },
+      { value: '20+', caption: 'داشبورد منتشرشده', source: 'فهرست داخلی BI' },
+      { value: '−$0.03', caption: 'هزینهٴ هر کلیک', source: 'Google Ads، بازهٴ ۹۰ روزه' },
+    ],
+    outcomes: ['بازطراحی ورود کاربر با چهار صفحه کمتر', 'داشبورد هفتگی کوهورت برای تیم رشد', 'به‌کارگیری دیزاین‌سیستم در دو تیم محصول'],
+    employers: [
+      { name: 'شرکت الف', role: 'طراح محصول', blurb: 'ورود کاربر فین‌تک و داشبوردهای BI.' },
+      { name: 'شرکت ب', role: 'بازاریاب رشد', blurb: 'کمپین‌های عملکردی و اتوماسیون.' },
+      { name: 'شرکت پ', role: 'مدیر محصول', blurb: 'بازار B2C، پرداخت و بازگشت کاربر.' },
+      { name: 'شرکت ت', role: 'پژوهشگر تجربهٴ کاربری', blurb: 'مصاحبه، پرسش‌نامه، آزمون کاربردپذیری.' },
+      { name: 'شرکت ث', role: 'طراح صنعتی', blurb: 'جایی که شروع شد.' },
+    ],
+    meta: { company: 'شرکت الف', role: 'طراح محصول', period: '۱۴۰۲ – ۱۴۰۳', type: 'مطالعهٴ موردی', tools: ['Figma', 'GA4', 'Metabase'] },
+    footNote: 'تهران · hello@example.com',
+  },
+}
