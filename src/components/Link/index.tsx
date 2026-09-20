@@ -7,6 +7,8 @@ import type { Page, Post } from '@/payload-types'
 
 type CMSLinkType = {
   appearance?: 'inline' | ButtonProps['variant']
+  /** Trailing ↗ on button appearances (DS-16). */
+  arrow?: boolean
   children?: React.ReactNode
   className?: string
   label?: string | null
@@ -20,10 +22,22 @@ type CMSLinkType = {
   url?: string | null
 }
 
+/** Resolve a Payload `link` group to an href — shared with the header nav for active-state matching. */
+export function hrefFromLink(
+  link: Pick<CMSLinkType, 'type' | 'reference' | 'url'> | null | undefined,
+): string | null | undefined {
+  if (!link) return null
+  const { type, reference, url } = link
+  return type === 'reference' && typeof reference?.value === 'object' && reference.value.slug
+    ? `${reference?.relationTo !== 'pages' ? `/${reference?.relationTo}` : ''}/${reference.value.slug}`
+    : url
+}
+
 export const CMSLink: React.FC<CMSLinkType> = (props) => {
   const {
     type,
     appearance = 'inline',
+    arrow = false,
     children,
     className,
     label,
@@ -33,12 +47,7 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
     url,
   } = props
 
-  const href =
-    type === 'reference' && typeof reference?.value === 'object' && reference.value.slug
-      ? `${reference?.relationTo !== 'pages' ? `/${reference?.relationTo}` : ''}/${
-          reference.value.slug
-        }`
-      : url
+  const href = hrefFromLink({ type, reference, url })
 
   if (!href) return null
 
@@ -56,7 +65,7 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
   }
 
   return (
-    <Button asChild className={className} size={size} variant={appearance}>
+    <Button arrow={arrow} asChild className={className} size={size} variant={appearance}>
       <Link className={cn(className)} href={href || url || ''} {...newTabProps}>
         {label && label}
         {children && children}
