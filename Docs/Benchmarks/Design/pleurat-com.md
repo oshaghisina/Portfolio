@@ -150,6 +150,26 @@ every page. Warmth comes from the paper, the illustrations and the dry humour, n
 - **Mobile** (`mobile.png`, `mobile-menu.png`): one column, drawer nav with numbered oversized links; the
   bench is dropped rather than squeezed; stat bars go 2×2; every section still opens with its amber tag.
 
+## Bilingual / RTL notes
+No second language, no RTL (`lang="en"` only). What would survive a Persian version and what would not:
+
+- **Survives:** the paper + single-amber palette; hairline rules and section tags (mirror to top-right);
+  the two-role type idea (readable sans + mono metadata) — mono captions can stay Latin/numeric, which
+  is common in Persian editorial design; stat bars and counters (Persian or Latin digits is a decision to
+  make once); line illustrations, which carry no script.
+- **Needs a Persian partner face:** **General Sans has no Arabic-script glyphs.** Headline weights
+  (500, tight −1.75px tracking, 1.04 leading) do not transfer to Persian, which needs looser leading and
+  no negative tracking. The two-tone headline works in RTL, but the muted "second clause" lands on the
+  left, so the visual weight flips.
+- **Mirrors as layout:** the two-column editorial block (heading left / body right), the sticky
+  left-margin section index, the left-anchored amber tags, the left-aligned meta strip, the `↳` bullets,
+  the `↗` on CTAs and the drawer nav's numbers — all pure `dir="rtl"` flips if built with logical
+  properties (`margin-inline-start`), a second layout if not.
+- **Does not translate:** English decoration baked into illustrations and the console
+  (`BENCH · LIVE`, `FIG. 004`, `1440 · 12 COL`, the terminal log); the lower-case logotype; the horizontal
+  employer ticker, which reads left-to-right with its walking character — an RTL version would need the
+  commuter to walk the other way.
+
 ## Takeaways for Sina
 - **Borrow:**
   - **One accent colour, used sparingly and always for the same jobs** (CTA, section tag, "live" state) — the restraint is what makes the amber read as brand.
@@ -180,11 +200,30 @@ every page. Warmth comes from the paper, the illustrations and the dry humour, n
 - **Accessibility:** focus ring token (`--focus-ring`), semantic `h1–h4`, alt text on all Sanity images (some lazy: "3", "4"). Contrast of tertiary mono text is borderline. Reveal-on-scroll with no visible reduced-motion path. Theme toggle has no visible label.
 - **Quirks:** typos ("Industries workd", "Lets get in touch!"); `/ai` absent from `sitemap.xml`; duplicate section label in Otee ("03 · DISCOVERY PHASE", "04 · DISCOVERY PHASE"); `--mono` var is overridden to General Sans in one theme so mono labels partly fall back to `ui-monospace`; the "light" theme is nearly indistinguishable.
 - **Recognition:** Awwwards profile linked (`awwwards.com/Pleurats`), Dribbble, ThemeForest author (730+ clients) — the ThemeForest past explains the front-end fluency.
+- **Design-system items extracted:** 40 items (DS-01…DS-40) in [`../../Design-System/`](../../Design-System/README.md) with measured anatomy from this site; measured tokens in [`tokens/pleurat-com.tokens.json`](../../Design-System/tokens/pleurat-com.tokens.json). Two findings from the measurements that this analysis missed: the `:root` variables (`--fs-*`, `--color-accent`, the lime palette) are a theme layer the shipped `.sv-*` components mostly override — the visible design is set per component — and the lime is still alive as the **focus ring**. The "mono" role is General Sans styled as mono; IBM Plex Mono is declared but never loads.
+
+## Scores
+Justification for each `scores.*` value and `relevance` — see [Rubric](../Rubric.md).
+
+- **distinctiveness: 5** — recognisable from any single section without the logo: cream ruled paper,
+  one amber, mono drafting labels, the bench. The design is itself the statement "I am a maker".
+- **typography: 4** — deliberate fluid scale, a clean two-role system (General Sans for reading, mono
+  caps for metadata) and the two-tone headline device; rough spots are the 9–11px tertiary mono captions
+  at ≈3.3:1 contrast and the `--mono` token falling back inconsistently.
+- **motion: 3** — the numbers chart and the zoom wall are purposeful and reward scrolling, but whole
+  sections are reveal-only (blank until intersect), no reduced-motion path is visible, and five motifs
+  animate on one page.
+- **brand: 5** — colour, illustration, layout and micro-copy all say the same thing; experience is
+  *visualised* three ways (ticker, chart, grid) rather than listed, and place (Pristina · CET) is part of it.
+- **mobile: 3** — designed, not just responsive (numbered drawer, 2×2 stats, tags kept), but the
+  signature bench is deleted rather than redesigned, pages run to 15–17k px, and mono meta stays tiny.
+- **relevance: 4** — Avg 4.0. A strong reference for the *system* (accent discipline, section tags,
+  two-role type, meta strip, employer grid, numbered drawer) and a cautionary one on motion and motif
+  count; not a 5 because the metaphor is Pleurat's and the type system has no Persian path (D-009).
 
 ## Screenshots
-Local-only (gitignored, D-008) under `assets/pleurat-com/`:
+Local-only, in `assets/pleurat-com/` (gitignored, D-008): `desktop.png` (1440) · `mobile.png` (390) · `desktop-fold.png` (1440×900, first viewport).
 
-`desktop.png` · `mobile.png` · `mobile-menu.png` — home at 1440 / 390
-`work-desktop.png` · `work-mobile.png` · `about-desktop.png` · `about-mobile.png` · `ai-desktop.png` · `ai-mobile.png` · `contact-desktop.png` · `contact-mobile.png`
-`case-{otee,mindpath,ai-journey,codex,appello,valuehut}-desktop.png` · `case-{otee,mindpath}-mobile.png`
+Additional captures: `mobile-menu.png` · `work-desktop.png` · `work-mobile.png` · `about-desktop.png` · `about-mobile.png` · `ai-desktop.png` · `ai-mobile.png` · `contact-desktop.png` · `contact-mobile.png` · `case-{otee,mindpath,ai-journey,codex,appello,valuehut}-desktop.png` · `case-{otee,mindpath}-mobile.png`.
+
 `frames/` — viewport frames (1440×900) of `/`, `/work`, `/ai`, `/work/otee`: the pinned sections (numbers chart, work wall, transit-map footer, bench) only render in these, not in full-page captures.

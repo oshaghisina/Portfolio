@@ -11,11 +11,14 @@ import { parseArgs } from 'node:util'
 
 import {
   DOCS_ROOT,
+  DS_DIR,
   EXPERIENCE_DIR,
   benchmarkDir,
   companyDirs,
   discover,
   fromRepo,
+  tokenBenchmarks,
+  tokensFile,
   type DocRef,
 } from './lib/docs'
 import { readDoc, setFields } from './lib/frontmatter'
@@ -30,8 +33,9 @@ import {
   round1,
   yearsOf,
 } from './lib/period'
-import { BENCHMARK_TYPES, SCORES, type BenchmarkType } from './lib/schema'
+import { BENCHMARK_TYPES, QUESTION_MARK, SCORES, TOKEN_PATH, type BenchmarkType } from './lib/schema'
 import { mdTable, parseTable } from './lib/table'
+import { readTokens, setTokenItems, stringifyTokens } from './lib/tokens'
 
 export interface RegenResult {
   file: string
@@ -257,6 +261,67 @@ function timelineTable(companies: Company[], existingBlock: string | null) {
 }
 
 // ---------------------------------------------------------------------------
+// Design-System items
+
+const DS_HEADERS = ['ID', 'Item', 'Category', 'Take', 'Priority', 'Sources', 'Target', 'Adoption', 'Status', 'File']
+
+/** `sources[]` → unique benchmark slugs, each linked to its benchmark file (type from the first mention). */
+function sourceLinks(sources: unknown): string {
+  if (!Array.isArray(sources)) return ''
+  const seen = new Map<string, string>()
+  for (const src of sources) {
+    if (!src || typeof src !== 'object') continue
+    const slug = str((src as Data).benchmark)
+    const type = str((src as Data).type).toLowerCase() === 'content' ? 'Content' : 'Design'
+    if (slug && !seen.has(slug)) seen.set(slug, `[${slug}](../Benchmarks/${type}/${slug}.md)`)
+  }
+  return [...seen.values()].join(', ')
+}
+
+function dsTable(docs: DocRef[]): string {
+  const rows = docs
+    .filter((d) => d.kind === 'dsitem')
+    .map((d) => ({ d, data: readDoc(d.file).data }))
+    .sort((a, b) => str(a.data.id).localeCompare(str(b.data.id)))
+    .map(({ d, data }) => {
+      const file = path.basename(d.file)
+      const target = (data.target ?? {}) as Data
+      const targetCell = [str(target.kind), str(target.name) || str(target.path)].filter(Boolean).join(' · ')
+      const priority = num(data.priority)
+      return [
+        str(data.id) || d.dsId || '',
+        `[${str(data.title) || file}](${file})`,
+        str(data.category),
+        str(data.take),
+        priority ? `P${priority}` : '',
+        sourceLinks(data.sources),
+        targetCell,
+        str(data.adoption),
+        str(data.status),
+        `[${file}](${file})`,
+      ]
+    })
+  return mdTable(DS_HEADERS, rows)
+}
+
+/** Token path → DS ids that list it in `tokens[]`. */
+function tokenItems(docs: DocRef[]): Map<string, string[]> {
+  const map = new Map<string, string[]>()
+  for (const d of docs) {
+    if (d.kind !== 'dsitem') continue
+    const { data } = readDoc(d.file)
+    const id = str(data.id)
+    if (!id || !Array.isArray(data.tokens)) continue
+    for (const t of data.tokens) {
+      const p = str(t)
+      if (!TOKEN_PATH.test(p)) continue
+      map.set(p, [...(map.get(p) ?? []), id])
+    }
+  }
+  return map
+}
+
+// ---------------------------------------------------------------------------
 // Orchestration
 
 function updateFile(file: string, next: string, write: boolean, results: RegenResult[]) {
@@ -297,6 +362,26 @@ export function regenerateAll(write: boolean): RegenResult[] {
     const { table, fields } = timelineTable(companies, extractBetween(current))
     const next = setFields(replaceBetween(current, table, fromRepo(timelineFile)), fields)
     updateFile(timelineFile, next, write, results)
+  }
+
+  // Design-System: index table, per-item ❓ counts, token back-references
+  const dsIndex = path.join(DS_DIR, 'README.md')
+  if (fs.existsSync(dsIndex)) {
+    const current = fs.readFileSync(dsIndex, 'utf8')
+    updateFile(dsIndex, replaceBetween(current, dsTable(docs), fromRepo(dsIndex)), write, results)
+  }
+  for (const d of docs) {
+    if (d.kind !== 'dsitem') continue
+    const { raw, body } = readDoc(d.file)
+    const questions = body.split(QUESTION_MARK).length - 1
+    updateFile(d.file, setFields(raw, { open_questions: questions }), write, results)
+  }
+  const items = tokenItems(docs)
+  for (const benchmark of tokenBenchmarks()) {
+    const file = tokensFile(benchmark)
+    const json = readTokens(file)
+    if (!json) continue
+    updateFile(file, stringifyTokens(setTokenItems(json, items)), write, results)
   }
 
   return results

@@ -31,3 +31,7 @@ Docs/Benchmarks/*/assets/*
 
 # TypeScript incremental build info
 tsconfig.tsbuildinfo
+
+# Design-System crops/frames/video of third-party sites are local-only research assets
+Docs/Design-System/assets/*
+!Docs/Design-System/assets/.gitkeep

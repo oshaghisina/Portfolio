@@ -35,9 +35,9 @@ export interface CaptureResult {
   warnings: string[]
 }
 
-const MAX_FULL_PAGE_HEIGHT = 15000
+export const MAX_FULL_PAGE_HEIGHT = 15000
 /** tsx/esbuild `keepNames` emits `__name(fn, 'x')` around named functions; give pages a no-op. */
-const KEEP_NAMES_SHIM = 'window.__name = window.__name || ((fn) => fn)'
+export const KEEP_NAMES_SHIM = 'window.__name = window.__name || ((fn) => fn)'
 const NETWORK_IDLE_CAP_MS = 10_000
 
 const COOKIE_BUTTONS = [
@@ -57,11 +57,37 @@ const HIDE_BANNERS_CSS = `
   [class*="cookie" i], [id*="cookie" i], [class*="consent" i], [id*="consent" i],
   [class*="gdpr" i], [id*="gdpr" i] { display: none !important; }
 `
-const FREEZE_MOTION_CSS = `
+export const FREEZE_MOTION_CSS = `
   *, *::before, *::after {
     animation: none !important; transition: none !important; scroll-behavior: auto !important;
   }
 `
+
+export interface ContextOptions {
+  /** Device pixel ratio; desktop defaults to 1, mobile to 2 */
+  scale?: number
+  keepMotion?: boolean
+  /** Record a video of the context into this directory (Playwright names the file) */
+  recordVideoDir?: string
+}
+
+/**
+ * A browser context set up the way the benchmark screenshots are: desktop 1440×900 with the
+ * Desktop Chrome UA, or mobile 390×844 as iPhone 14 @2x. Motion is frozen unless `keepMotion`.
+ */
+export async function newContextFor(browser: Browser, viewport: 'desktop' | 'mobile', opts: ContextOptions = {}) {
+  const base =
+    viewport === 'mobile'
+      ? { ...devices['iPhone 14'], viewport: VIEWPORTS.mobile, deviceScaleFactor: opts.scale ?? 2 }
+      : { viewport: VIEWPORTS.desktop, userAgent: devices['Desktop Chrome']?.userAgent, deviceScaleFactor: opts.scale ?? 1 }
+  const ctx = await browser.newContext({
+    ...base,
+    reducedMotion: opts.keepMotion ? 'no-preference' : 'reduce',
+    ...(opts.recordVideoDir ? { recordVideo: { dir: opts.recordVideoDir, size: VIEWPORTS[viewport] } } : {}),
+  })
+  await ctx.addInitScript(KEEP_NAMES_SHIM)
+  return ctx
+}
 
 /** Load `url` on desktop and mobile, collect metadata, and write the three screenshots. */
 export async function captureSite(url: string, opts: CaptureOptions): Promise<CaptureResult> {
@@ -112,7 +138,7 @@ export async function captureSite(url: string, opts: CaptureOptions): Promise<Ca
   }
 }
 
-async function load(page: Page, url: string, opts: CaptureOptions, warnings: string[]) {
+export async function load(page: Page, url: string, opts: Pick<CaptureOptions, 'timeoutMs' | 'keepMotion'>, warnings: string[]) {
   const attempt = async () => {
     await page.goto(url, { waitUntil: 'domcontentloaded', timeout: opts.timeoutMs })
     await page.waitForLoadState('networkidle', { timeout: NETWORK_IDLE_CAP_MS }).catch(() => {
@@ -130,7 +156,7 @@ async function load(page: Page, url: string, opts: CaptureOptions, warnings: str
   if (!opts.keepMotion) await page.addStyleTag({ content: FREEZE_MOTION_CSS }).catch(() => undefined)
 }
 
-async function dismissCookieBanners(page: Page) {
+export async function dismissCookieBanners(page: Page) {
   for (const selector of COOKIE_BUTTONS) {
     try {
       const btn = page.locator(selector).first()
@@ -147,7 +173,7 @@ async function dismissCookieBanners(page: Page) {
 }
 
 /** Scroll to the bottom in viewport steps so lazy-loaded media appears, then back to top. */
-async function scrollThrough(page: Page) {
+export async function scrollThrough(page: Page) {
   await page
     .evaluate(async () => {
       const step = window.innerHeight
@@ -216,7 +242,7 @@ async function readMeta(page: Page): Promise<SiteMeta> {
   }
 }
 
-async function closeQuietly(browser: Browser | BrowserContext) {
+export async function closeQuietly(browser: Browser | BrowserContext) {
   try {
     await browser.close()
   } catch {

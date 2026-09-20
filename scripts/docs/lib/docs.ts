@@ -3,12 +3,12 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 import type { BenchmarkType } from './schema'
-import { BENCHMARK_TYPES } from './schema'
+import { BENCHMARK_TYPES, DS_FILE } from './schema'
 
 export const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..')
 export const DOCS_ROOT = path.join(REPO_ROOT, 'Docs')
 
-export type DocKind = 'benchmark' | 'experience' | 'project' | 'meta' | 'index'
+export type DocKind = 'benchmark' | 'experience' | 'project' | 'dsitem' | 'meta' | 'index'
 
 export interface DocRef {
   /** Absolute path */
@@ -19,6 +19,8 @@ export interface DocRef {
   benchmarkType?: BenchmarkType
   /** Company folder name for experience/project docs */
   company?: string
+  /** `DS-NN` for design-system items (from the file name, so validate can catch id/name drift) */
+  dsId?: string
 }
 
 /** Folder that holds one benchmark type. */
@@ -26,6 +28,14 @@ export const benchmarkDir = (type: BenchmarkType) =>
   path.join(DOCS_ROOT, 'Benchmarks', type === 'content' ? 'Content' : 'Design')
 
 export const EXPERIENCE_DIR = path.join(DOCS_ROOT, 'Experience')
+
+/** Design-System folder and its sub-folders (see Docs/README.md). */
+export const DS_DIR = path.join(DOCS_ROOT, 'Design-System')
+export const DS_TOKENS_DIR = path.join(DS_DIR, 'tokens')
+export const DS_SOURCES_DIR = path.join(DS_DIR, 'sources')
+export const dsAssetsDir = (benchmark: string) => path.join(DS_DIR, 'assets', benchmark)
+export const tokensFile = (benchmark: string) => path.join(DS_TOKENS_DIR, `${benchmark}.tokens.json`)
+export const manifestFile = (benchmark: string) => path.join(DS_SOURCES_DIR, `${benchmark}.capture.json`)
 
 export const toRel = (file: string) => path.relative(DOCS_ROOT, file).split(path.sep).join('/')
 export const fromRepo = (file: string) => path.relative(REPO_ROOT, file).split(path.sep).join('/')
@@ -35,6 +45,7 @@ const INDEX_FILES = new Set([
   'Benchmarks/Content/README.md',
   'Benchmarks/Design/README.md',
   'Experience/README.md',
+  'Design-System/README.md',
 ])
 
 /** Decide what kind of doc a Docs-relative path is; null for files we don't manage. */
@@ -56,6 +67,11 @@ export function classify(rel: string): Omit<DocRef, 'file'> | null {
     return base === 'README.md'
       ? { rel, kind: 'experience', company }
       : { rel, kind: 'project', company }
+  }
+  if (parts[0] === 'Design-System') {
+    // tokens/ and sources/ hold JSON; a stray .md there is not a doc we manage
+    if (parts.length > 2) return null
+    if (base.startsWith('DS-')) return { rel, kind: 'dsitem', dsId: DS_FILE.exec(base)?.[1] }
   }
   return { rel, kind: 'meta' }
 }
@@ -80,6 +96,36 @@ export function discover(): DocRef[] {
       return c ? { file, ...c } : null
     })
     .filter((d): d is DocRef => d !== null)
+}
+
+/** Design-System item files (`DS-NN-*.md`), sorted — so ids come out in order. */
+export function dsItemFiles(): string[] {
+  if (!fs.existsSync(DS_DIR)) return []
+  return fs
+    .readdirSync(DS_DIR)
+    .filter((f) => f.startsWith('DS-') && f.endsWith('.md'))
+    .sort()
+    .map((f) => path.join(DS_DIR, f))
+}
+
+/** Benchmark slugs that have a tokens file, sorted. */
+export function tokenBenchmarks(): string[] {
+  if (!fs.existsSync(DS_TOKENS_DIR)) return []
+  return fs
+    .readdirSync(DS_TOKENS_DIR)
+    .filter((f) => f.endsWith('.tokens.json'))
+    .map((f) => f.replace(/\.tokens\.json$/, ''))
+    .sort()
+}
+
+/** Benchmark slugs that have a capture manifest, sorted. */
+export function manifestBenchmarks(): string[] {
+  if (!fs.existsSync(DS_SOURCES_DIR)) return []
+  return fs
+    .readdirSync(DS_SOURCES_DIR)
+    .filter((f) => f.endsWith('.capture.json'))
+    .map((f) => f.replace(/\.capture\.json$/, ''))
+    .sort()
 }
 
 /** Company folders under Experience/ that have a README.md. */
