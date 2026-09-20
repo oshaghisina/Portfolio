@@ -4,10 +4,15 @@ import { authenticated } from '../../access/authenticated'
 import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
 import { Archive } from '../../blocks/ArchiveBlock/config'
 import { CallToAction } from '../../blocks/CallToAction/config'
+import { Capabilities } from '../../blocks/Capabilities/config'
 import { Content } from '../../blocks/Content/config'
+import { ExperienceCatalogue } from '../../blocks/ExperienceCatalogue/config'
 import { FormBlock } from '../../blocks/Form/config'
 import { MediaBlock } from '../../blocks/MediaBlock/config'
 import { MetricsStrip } from '../../blocks/MetricsStrip/config'
+import { SelectedWork } from '../../blocks/SelectedWork/config'
+import { Workspace } from '../../blocks/Workspace/config'
+import { WorkflowStages } from '../../blocks/WorkflowStages/config'
 import { hero } from '@/heros/config'
 import { slugField } from 'payload'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
@@ -73,7 +78,19 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, MetricsStrip],
+              blocks: [
+                CallToAction,
+                Content,
+                MediaBlock,
+                Archive,
+                FormBlock,
+                MetricsStrip,
+                SelectedWork,
+                Workspace,
+                Capabilities,
+                WorkflowStages,
+                ExperienceCatalogue,
+              ],
               required: true,
               admin: {
                 initCollapsed: true,

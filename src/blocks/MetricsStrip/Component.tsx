@@ -19,22 +19,22 @@ export type MetricsStripProps = Pick<MetricsStripBlockProps, 'metrics' | 'sectio
 }
 
 /**
- * DS-18 metrics strip. Values sit in the numeral track in brand (the accent's "live data"
- * job); captions are eyebrows; the source line keeps every number honest.
+ * DS-18 metrics strip, reworked as a proof transition: larger value scale and heavier vertical
+ * rhythm so the section reads as a beat in the page, not a small stats row.
  */
 export const MetricsStripBlock: React.FC<MetricsStripProps> = ({ className, disableInnerContainer, metrics, sectionHeader }) => {
   const rows = (metrics ?? []).slice(0, 4)
   if (!rows.length) return null
 
   return (
-    <section className={cn(!disableInnerContainer && 'container', className)}>
-      <SectionHeader {...sectionHeader} className="mb-10" />
-      <dl className={cn('grid grid-cols-1 gap-x-6 gap-y-8 border-t border-line pt-10', COLS[rows.length])}>
+    <section className={cn(!disableInnerContainer && 'container', 'py-section', className)}>
+      <SectionHeader {...sectionHeader} className="mb-14" />
+      <dl className={cn('grid grid-cols-1 gap-x-10 gap-y-12 border-y border-line py-14', COLS[rows.length])}>
         {rows.map((m, i) => (
           // DOM keeps dt before dd (valid <dl>); CSS order shows value → caption → source.
-          <div className="flex flex-col gap-2" key={m.id ?? i}>
+          <div className="flex flex-col gap-3" key={m.id ?? i}>
             <dt className="order-2 eyebrow">{m.caption}</dt>
-            <dd className="order-1 text-num font-medium text-brand tabular-nums" dir="ltr">
+            <dd className="order-1 text-display font-medium text-brand tabular-nums" dir="ltr">
               {m.value}
             </dd>
             {m.source ? <dd className="order-3 text-caption text-ink-3">{m.source}</dd> : null}

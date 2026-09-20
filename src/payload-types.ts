@@ -159,7 +159,7 @@ export interface Page {
   id: number;
   title: string;
   hero: {
-    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
+    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact' | 'homeImpact';
     richText?: {
       root: {
         type: string;
@@ -201,7 +201,19 @@ export interface Page {
       | null;
     media?: (number | null) | Media;
   };
-  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | MetricsStripBlock)[];
+  layout: (
+    | CallToActionBlock
+    | ContentBlock
+    | MediaBlock
+    | ArchiveBlock
+    | FormBlock
+    | MetricsStripBlock
+    | SelectedWorkBlock
+    | WorkspaceBlock
+    | CapabilitiesBlock
+    | WorkflowStagesBlock
+    | ExperienceCatalogueBlock
+  )[];
   meta?: {
     title?: string | null;
     /**
@@ -828,6 +840,162 @@ export interface SectionHeaderField {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SelectedWorkBlock".
+ */
+export interface SelectedWorkBlock {
+  sectionHeader?: SectionHeaderField;
+  /**
+   * Provisional entries are fine for V1 — replace with real case-study rows as they become available.
+   */
+  items?:
+    | {
+        title: string;
+        /**
+         * e.g. "Product · Growth"
+         */
+        category: string;
+        /**
+         * Sina's role, e.g. "Designer / Marketer / BI"
+         */
+        role?: string | null;
+        /**
+         * One or two sentences — source-backed, no unverified outcomes
+         */
+        summary: string;
+        /**
+         * Show as a larger feature row instead of the compact supporting list
+         */
+        featured?: boolean | null;
+        /**
+         * Only enable once there is a real case study or live URL to link to
+         */
+        enableLink?: boolean | null;
+        link?: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: number | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: number | Post;
+              } | null);
+          url?: string | null;
+          label: string;
+          /**
+           * Choose how the link should be rendered.
+           */
+          appearance?: ('default' | 'outline') | null;
+        };
+        /**
+         * Optional — leave empty for a provisional entry
+         */
+        media?: (number | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'selectedWork';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "WorkspaceBlock".
+ */
+export interface WorkspaceBlock {
+  sectionHeader?: SectionHeaderField;
+  tracks?:
+    | {
+        /**
+         * e.g. "S1"
+         */
+        code: string;
+        label: string;
+        description: string;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'workspace';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CapabilitiesBlock".
+ */
+export interface CapabilitiesBlock {
+  sectionHeader?: SectionHeaderField;
+  groups?:
+    | {
+        /**
+         * e.g. "01"
+         */
+        index: string;
+        title: string;
+        description: string;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'capabilities';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "WorkflowStagesBlock".
+ */
+export interface WorkflowStagesBlock {
+  sectionHeader?: SectionHeaderField;
+  stages?:
+    | {
+        /**
+         * e.g. "R1"
+         */
+        code: string;
+        label: string;
+        /**
+         * Comma-separated tool names
+         */
+        tools: string;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'workflowStages';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ExperienceCatalogueBlock".
+ */
+export interface ExperienceCatalogueBlock {
+  sectionHeader?: SectionHeaderField;
+  items?:
+    | {
+        /**
+         * e.g. "A1"
+         */
+        index: string;
+        name: string;
+        /**
+         * e.g. "Designer / Marketer / BI developer · 2.5 yr"
+         */
+        role: string;
+        /**
+         * Optional one-line description
+         */
+        blurb?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'experienceCatalogue';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1135,6 +1303,11 @@ export interface PagesSelect<T extends boolean = true> {
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
         metricsStrip?: T | MetricsStripBlockSelect<T>;
+        selectedWork?: T | SelectedWorkBlockSelect<T>;
+        workspace?: T | WorkspaceBlockSelect<T>;
+        capabilities?: T | CapabilitiesBlockSelect<T>;
+        workflowStages?: T | WorkflowStagesBlockSelect<T>;
+        experienceCatalogue?: T | ExperienceCatalogueBlockSelect<T>;
       };
   meta?:
     | T
@@ -1261,6 +1434,106 @@ export interface SectionHeaderFieldSelect<T extends boolean = true> {
   lead?: T;
   tail?: T;
   lede?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SelectedWorkBlock_select".
+ */
+export interface SelectedWorkBlockSelect<T extends boolean = true> {
+  sectionHeader?: T | SectionHeaderFieldSelect<T>;
+  items?:
+    | T
+    | {
+        title?: T;
+        category?: T;
+        role?: T;
+        summary?: T;
+        featured?: T;
+        enableLink?: T;
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+              appearance?: T;
+            };
+        media?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "WorkspaceBlock_select".
+ */
+export interface WorkspaceBlockSelect<T extends boolean = true> {
+  sectionHeader?: T | SectionHeaderFieldSelect<T>;
+  tracks?:
+    | T
+    | {
+        code?: T;
+        label?: T;
+        description?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CapabilitiesBlock_select".
+ */
+export interface CapabilitiesBlockSelect<T extends boolean = true> {
+  sectionHeader?: T | SectionHeaderFieldSelect<T>;
+  groups?:
+    | T
+    | {
+        index?: T;
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "WorkflowStagesBlock_select".
+ */
+export interface WorkflowStagesBlockSelect<T extends boolean = true> {
+  sectionHeader?: T | SectionHeaderFieldSelect<T>;
+  stages?:
+    | T
+    | {
+        code?: T;
+        label?: T;
+        tools?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ExperienceCatalogueBlock_select".
+ */
+export interface ExperienceCatalogueBlockSelect<T extends boolean = true> {
+  sectionHeader?: T | SectionHeaderFieldSelect<T>;
+  items?:
+    | T
+    | {
+        index?: T;
+        name?: T;
+        role?: T;
+        blurb?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
