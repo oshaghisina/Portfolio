@@ -23,7 +23,7 @@ export const ExperienceCatalogueBlock: React.FC<ExperienceCatalogueProps> = ({
 
   return (
     <section className={cn(!disableInnerContainer && 'container', className)}>
-      <SectionHeader {...sectionHeader} className="mb-10" />
+      <SectionHeader {...sectionHeader} className="mb-10" tagTone="mono" />
       <ExperienceGrid
         items={rows.map((item) => ({
           index: item.index,

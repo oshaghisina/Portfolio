@@ -12,7 +12,7 @@ export const Capabilities: Block = {
     {
       name: 'groups',
       type: 'array',
-      minRows: 2,
+      minRows: 1,
       maxRows: 6,
       labels: { singular: 'Group', plural: 'Groups' },
       fields: [

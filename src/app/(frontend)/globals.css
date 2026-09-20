@@ -93,6 +93,32 @@
       max-width: var(--container-page);
     }
   }
+
+  /* Homepage-only narrow canvas (~74-78vw at lg+) with hairline "ledger" rails.
+     Deliberately separate from .container, which every other route keeps using untouched. */
+  .canvas {
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: var(--spacing-gutter);
+  }
+
+  @variant lg {
+    .canvas {
+      max-width: min(78vw, var(--container-page));
+      border-inline: 1px solid var(--line);
+    }
+  }
+
+  /* Homepage-only ruled-paper texture — decoration, never a section divider. */
+  .home-ruled-paper {
+    background-image: repeating-linear-gradient(
+      to bottom,
+      var(--line-soft) 0,
+      var(--line-soft) 1px,
+      transparent 1px,
+      transparent 2.5rem
+    );
+  }
 }
 
 /* DS-09 — mono eyebrow caps. Readable meta (role, year, client): ink-2 at the 12px floor.

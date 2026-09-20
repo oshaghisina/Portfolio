@@ -7,21 +7,22 @@ type PageHero = RequiredDataFromCollectionSlug<'pages'>['hero']
 
 /**
  * The homepage content shared by the static fallback (`home-static.ts`) and the database seed
- * (`home.ts`). Both need the identical Sina-specific narrative — Hero → Selected Work → How I
- * Work → Capabilities → Proof/Metrics → Tools/AI workflow → Experience → Contact — so it lives
- * here once rather than drifting between two hand-kept copies.
+ * (`home.ts`). Both need the identical Sina-specific narrative, so it lives here once rather than
+ * drifting between two hand-kept copies.
  *
- * V2: recomposed into art-directed, purpose-built sections (dedicated hero, feature-rail
- * Selected Work, connected-rail Workspace/WorkflowStages, indexed Capabilities catalogue,
- * typographic Experience catalogue, plain editorial Contact close) instead of stacked generic
- * `content` blocks. No new facts — same source material as V1, regrouped to fit the new
- * section vocabulary.
+ * V4: rebuilt into a long, sparse editorial composition — Hero → Workbench → Primary Focus →
+ * Metrics → AI tooling → Experience matrix → Featured Project → Contact — with a dominant
+ * workbench artifact, one calm focus, one featured project and real whitespace intervals, instead
+ * of a sequence of roughly equal-weight catalogue blocks (see Docs/Benchmarks/Design/pleurat-com.md).
+ * Hero H1 revised to describe the work, not the name (Sina Oshaghi moves to a small kicker),
+ * sourced from the already-drafted headline option in Docs/About-Me/Brand-Brief.md — no new
+ * marketing copy invented.
  */
 
 export const heroRichText = richText(
-  heading('Sina Oshaghi', 'h1'),
+  heading('Product designer who also runs growth', 'h1'),
   paragraph(
-    'Product designer and manager who also runs growth — from research to campaigns to the dashboards that prove it.',
+    'From research to campaigns to the dashboards that prove it — ten years across fintech, cloud, automotive, edtech and media.',
   ),
 )
 
@@ -50,56 +51,7 @@ export const heroLinks: NonNullable<PageHero['links']> = [
 
 export const homeLayout: PageLayout = [
   {
-    blockName: 'Selected Work',
-    blockType: 'selectedWork',
-    sectionHeader: {
-      tag: 'Work',
-      lead: 'Selected',
-      tail: 'work',
-      lede: 'A sample of the range — product, growth and research work across nine companies.',
-    },
-    items: [
-      {
-        title: 'Digital Gold — product vision & growth',
-        category: 'Product · Growth',
-        role: 'Designer, Marketer, BI developer',
-        featured: true,
-        summary:
-          "Defined the product vision, features and growth strategy for Digikala's gold-trading product — from campaigns and segmentation to the BI dashboards that tracked them.",
-      },
-      {
-        title: 'Cloud platform redesign & IA',
-        category: 'Product Design',
-        role: 'Product Designer',
-        featured: true,
-        summary:
-          "Redesigned Arvan Cloud's UI/UX and information architecture around the server metrics users actually needed.",
-      },
-      {
-        title: 'UAE car buy & sell platform',
-        category: 'Product Design',
-        role: 'Product Designer',
-        summary:
-          'Designed a complete car buy-and-sell marketplace for UAE sellers and buyers, refined through usability testing.',
-      },
-      {
-        title: 'Teacher–student matchmaking redesign',
-        category: 'Product & Research',
-        role: 'PM & Designer',
-        summary:
-          "Redesigned OTeacher's matchmaking from research with both educators and learners into a validated roadmap.",
-      },
-      {
-        title: 'Design system for fast development',
-        category: 'Design System',
-        role: 'PM & Designer',
-        summary:
-          'Built a component design system at Biomaze so developers could ship the website and education panel quickly.',
-      },
-    ],
-  },
-  {
-    blockName: 'How I Work',
+    blockName: 'Workbench',
     blockType: 'workspace',
     sectionHeader: {
       tag: 'Workspace',
@@ -131,34 +83,19 @@ export const homeLayout: PageLayout = [
     ],
   },
   {
-    blockName: 'Capabilities',
+    blockName: 'Primary Focus',
     blockType: 'capabilities',
     sectionHeader: {
-      tag: 'Capabilities',
+      tag: 'Focus',
       lead: 'What I',
       tail: 'bring',
     },
     groups: [
       {
         index: '01',
-        title: 'Product strategy & roadmapping',
+        title: 'Product, design and growth — in one person',
         description:
-          'Product ownership, vision-setting and roadmapping — from a fintech product line to a brand strategy engagement.',
-      },
-      {
-        index: '02',
-        title: 'Design systems & UX',
-        description: 'Interaction design, rapid prototyping and design-system management that lets teams ship fast.',
-      },
-      {
-        index: '03',
-        title: 'Research & testing',
-        description: 'User research, usability testing and A/B/n testing to validate before building.',
-      },
-      {
-        index: '04',
-        title: 'Growth & data',
-        description: 'Marketing automation, behavioural segmentation and the BI dashboards that track what happened.',
+          'Product ownership and roadmapping, interaction design and design systems, research and testing, and the growth and BI work that proves it — carried by one person from insight to measurable outcome, instead of handed off between three roles.',
       },
     ],
   },
@@ -189,10 +126,10 @@ export const homeLayout: PageLayout = [
     ],
   },
   {
-    blockName: 'Tools & AI workflow',
+    blockName: 'AI & Daily Tooling',
     blockType: 'workflowStages',
     sectionHeader: {
-      tag: 'Workflow',
+      tag: 'Tooling',
       lead: 'Tools &',
       tail: 'AI workflow',
     },
@@ -200,22 +137,22 @@ export const homeLayout: PageLayout = [
       {
         code: 'R1',
         label: 'Research',
-        tools: 'GA4, Amplitude, Heap, FullStory, Clarity, Hotjar',
+        tools: 'GA4, Amplitude',
       },
       {
         code: 'M1',
         label: 'Model & prototype',
-        tools: 'Figma, FigJam, Higgsfield',
+        tools: 'Figma, FigJam',
       },
       {
         code: 'B1',
         label: 'Build',
-        tools: 'Cursor, Copilot, VS Code, Claude, OpenAI tools',
+        tools: 'Cursor, Claude',
       },
       {
         code: 'I1',
         label: 'Instrument & learn',
-        tools: 'Tag Manager, Google Ads, Search Console, Sentry, Google Optimize',
+        tools: 'Google Ads',
       },
     ],
   },
@@ -228,15 +165,80 @@ export const homeLayout: PageLayout = [
       tail: 'nine roles',
     },
     items: [
-      { index: 'A1', name: 'Digikala (Digital Gold)', role: 'Designer / Marketer / BI developer · 2.5 yr' },
-      { index: 'A2', name: 'Carsparency & Khodro45', role: 'Product designer · 2.5 yr' },
-      { index: 'A3', name: 'Hadish Mall', role: 'Marketing · 1 yr' },
-      { index: 'A4', name: 'Fibona', role: 'Product Manager · 2 yr' },
-      { index: 'A5', name: 'OTeacher', role: 'Product Manager & designer · 1 yr' },
-      { index: 'A6', name: 'Arvan Cloud', role: 'Product designer · 2 yr' },
-      { index: 'A7', name: 'Biomaze', role: 'Product Manager & designer · 3 yr' },
-      { index: 'A8', name: 'Didestan', role: 'UI/UX designer · 8 mos' },
-      { index: 'A9', name: 'A1Paradise', role: 'UI/UX designer · 1.2 yr' },
+      {
+        index: 'A1',
+        name: 'Digikala (Digital Gold)',
+        role: 'Designer / Marketer / BI developer · 2.5 yr',
+        blurb: 'Replaced spreadsheets with BI dashboards and ran the campaigns that grew acquisition and engagement.',
+      },
+      {
+        index: 'A2',
+        name: 'Carsparency & Khodro45',
+        role: 'Product designer · 2.5 yr',
+        blurb: 'Raised sell-through with usability testing and validated prototypes across the full car marketplace.',
+      },
+      {
+        index: 'A3',
+        name: 'Hadish Mall',
+        role: 'Marketing · 1 yr',
+        blurb: 'Grew visitor turnout through campaigns and influencer partnerships, and proposed a mall management app.',
+      },
+      {
+        index: 'A4',
+        name: 'Fibona',
+        role: 'Product Manager · 2 yr',
+        blurb: 'Aligned stakeholders around a new brand identity, tagline and website from the ground up.',
+      },
+      {
+        index: 'A5',
+        name: 'OTeacher',
+        role: 'Product Manager & designer · 1 yr',
+        blurb: 'Turned educator and learner research into a validated teacher–student matchmaking roadmap.',
+      },
+      {
+        index: 'A6',
+        name: 'Arvan Cloud',
+        role: 'Product designer · 2 yr',
+        blurb: 'Redesigned the platform around the server metrics users actually needed, lifting NPS.',
+      },
+      {
+        index: 'A7',
+        name: 'Biomaze',
+        role: 'Product Manager & designer · 3 yr',
+        blurb: 'Built the website, education panel and a design system so developers could ship fast.',
+      },
+      {
+        index: 'A8',
+        name: 'Didestan',
+        role: 'UI/UX designer · 8 mos',
+        blurb: 'Designed a data-driven video platform prototype from lean UX research.',
+      },
+      {
+        index: 'A9',
+        name: 'A1Paradise',
+        role: 'UI/UX designer · 1.2 yr',
+        blurb: 'Designed gamified microgames and a desktop and B2C calling app.',
+      },
+    ],
+  },
+  {
+    blockName: 'Featured Project',
+    blockType: 'selectedWork',
+    sectionHeader: {
+      tag: 'Work',
+      lead: 'Featured',
+      tail: 'project',
+      lede: 'One project from the range — product, growth and research across nine companies.',
+    },
+    items: [
+      {
+        title: 'Digital Gold — product vision & growth',
+        category: 'Product · Growth',
+        role: 'Designer, Marketer, BI developer',
+        featured: true,
+        summary:
+          "Defined the product vision, features and growth strategy for Digikala's gold-trading product — from campaigns and segmentation to the BI dashboards that tracked them.",
+      },
     ],
   },
   {

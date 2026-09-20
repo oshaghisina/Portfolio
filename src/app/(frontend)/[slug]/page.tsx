@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
 import { PayloadRedirects } from '@/components/PayloadRedirects'
+import { cn } from '@/utilities/ui'
 import configPromise from '@payload-config'
 import { getPayload, type RequiredDataFromCollectionSlug } from 'payload'
 import { draftMode } from 'next/headers'
@@ -65,17 +66,21 @@ export default async function Page({ params: paramsPromise }: Args) {
   }
 
   const { hero, layout } = page
+  const isHome = page.slug === 'home'
 
   return (
-    <article className="pt-16 pb-24">
+    <article className={cn('pt-16 pb-24', isHome && 'home-ruled-paper')}>
       <PageClient />
       {/* Allows redirects for valid pages too */}
       <PayloadRedirects disableNotFound url={url} />
 
       {draft && <LivePreviewListener />}
 
-      <RenderHero {...hero} />
-      <RenderBlocks blocks={layout} />
+      {/* Homepage-only narrow canvas: every hero/block section relies on this one ancestor for width. */}
+      <div className={cn(isHome && 'canvas')}>
+        <RenderHero {...hero} />
+        <RenderBlocks blocks={layout} />
+      </div>
     </article>
   )
 }

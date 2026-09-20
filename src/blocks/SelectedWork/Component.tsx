@@ -17,93 +17,61 @@ type WorkItem = NonNullable<SelectedWorkBlockProps['items']>[number]
 
 const withLink = (item: WorkItem, children: React.ReactNode) =>
   item.enableLink && item.link ? (
-    <CMSLink appearance="inline" className="block h-full" {...item.link}>
+    <CMSLink appearance="inline" className="block" {...item.link}>
       {children}
     </CMSLink>
   ) : (
     children
   )
 
-/**
- * Feature rail: featured rows read as the portfolio showcase (big title, media anchor),
- * remaining rows read as a compact supporting list — hierarchy by typographic scale rather
- * than by image, since no real case-study media exists yet.
- */
+/** Featured Project: one large full-canvas visual event, not a multi-project grid. */
 export const SelectedWorkBlock: React.FC<SelectedWorkProps> = ({
   className,
   disableInnerContainer,
   items,
   sectionHeader,
 }) => {
-  const rows = items ?? []
-  if (!rows.length) return null
+  const item = (items ?? [])[0]
+  if (!item) return null
 
-  const featured = rows.filter((item) => item.featured)
-  const supporting = rows.filter((item) => !item.featured)
+  const media = item.media
 
   return (
-    <section className={cn(!disableInnerContainer && 'container', className)} id="selected-work">
-      <SectionHeader {...sectionHeader} className="mb-10" />
-
-      {featured.length ? (
-        <ol className="grid grid-cols-1 gap-x-10 gap-y-14 border-t border-line pt-10 lg:grid-cols-2">
-          {featured.map((item, i) => {
-            const media = item.media
-            return (
-              <li key={item.id ?? `featured-${i}`}>
-                {withLink(
-                  item,
-                  <div className="flex h-full flex-col gap-4">
-                    <span className="index-code text-ink-3">{String(i + 1).padStart(2, '0')}</span>
-                    {media && typeof media === 'object' ? (
-                      <Media
-                        className="overflow-hidden rounded-media"
-                        imgClassName="aspect-video object-cover"
-                        resource={media}
-                      />
-                    ) : null}
-                    <Tag className="self-start" tone="soft">
-                      {item.category}
-                    </Tag>
-                    <h3 className="text-h2 font-medium text-foreground">{item.title}</h3>
-                    {item.role ? <span className="eyebrow text-ink-3">{item.role}</span> : null}
-                    <p className="max-w-measure text-body text-ink-2">{item.summary}</p>
-                  </div>,
-                )}
-              </li>
-            )
-          })}
-        </ol>
-      ) : null}
-
-      {supporting.length ? (
-        <ol
-          className={cn(
-            'divide-y divide-line',
-            featured.length ? 'mt-14 border-t border-line' : 'border-t border-line',
+    <section
+      className={cn(!disableInnerContainer && 'container', 'pb-[28vh] lg:pb-[34vh]', className)}
+      id="selected-work"
+    >
+      <SectionHeader {...sectionHeader} className="mb-10" tagTone="brand" />
+      {withLink(
+        item,
+        <div className="flex flex-col gap-8">
+          {media && typeof media === 'object' ? (
+            <Media
+              className="overflow-hidden rounded-media"
+              imgClassName="aspect-[21/9] object-cover"
+              resource={media}
+            />
+          ) : (
+            <div className="relative flex aspect-[21/9] items-end overflow-hidden rounded-media border border-line bg-panel p-8">
+              <span aria-hidden className="absolute inset-x-0 top-0 h-1 bg-brand" />
+              <span className="text-num tracking-num font-medium leading-none text-ink-3/20 tabular-nums">
+                01
+              </span>
+            </div>
           )}
-        >
-          {supporting.map((item, i) => (
-            <li className="py-5" key={item.id ?? `supporting-${i}`}>
-              {withLink(
-                item,
-                <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
-                  <div className="flex items-baseline gap-4">
-                    <span className="index-code text-ink-3">
-                      {String(featured.length + i + 1).padStart(2, '0')}
-                    </span>
-                    <h3 className="text-h3 font-medium text-foreground">{item.title}</h3>
-                  </div>
-                  <div className="flex flex-wrap items-baseline gap-3 ps-9 sm:ps-0">
-                    <Tag tone="soft">{item.category}</Tag>
-                    {item.role ? <span className="eyebrow text-ink-3">{item.role}</span> : null}
-                  </div>
-                </div>,
-              )}
-            </li>
-          ))}
-        </ol>
-      ) : null}
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
+            <div className="flex items-baseline gap-4">
+              <span className="index-code text-ink-3">01</span>
+              <h3 className="text-h2 font-medium text-foreground">{item.title}</h3>
+            </div>
+            <div className="flex flex-wrap items-baseline gap-3">
+              <Tag tone="soft">{item.category}</Tag>
+              {item.role ? <span className="eyebrow text-ink-3">{item.role}</span> : null}
+            </div>
+          </div>
+          <p className="max-w-measure text-body text-ink-2">{item.summary}</p>
+        </div>,
+      )}
     </section>
   )
 }

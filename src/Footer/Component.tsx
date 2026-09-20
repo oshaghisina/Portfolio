@@ -2,8 +2,8 @@ import { getCachedGlobal } from '@/utilities/getGlobals'
 import Link from 'next/link'
 import React from 'react'
 
-import { ThemeSelector } from '@/providers/Theme/ThemeSelector'
 import { CMSLink } from '@/components/Link'
+import { SystemLandscape } from '@/components/SystemLandscape'
 
 export async function Footer() {
   const footerData = await getCachedGlobal('footer', 1)()
@@ -11,21 +11,20 @@ export async function Footer() {
   const navItems = footerData?.navItems || []
 
   return (
-    // Forced dark scope: an inverted band in the light theme, the same slate in the dark one.
-    <footer className="mt-auto border-t border-line bg-background text-foreground" data-theme="dark">
-      <div className="container py-10 gap-8 flex flex-col md:flex-row md:justify-between">
-        <Link className="flex items-center text-h3 font-medium tracking-h3" href="/">
+    <footer className="mt-auto border-t border-line bg-background text-foreground">
+      <div className="container">
+        <SystemLandscape labels={['Figma', 'Cursor', 'Claude']} />
+      </div>
+      <div className="container flex flex-col gap-6 py-8 md:flex-row md:items-center md:justify-between">
+        <Link className="flex items-center text-small font-medium text-ink-2" href="/">
           Sina Oshaghi
         </Link>
 
-        <div className="flex flex-col-reverse items-start md:flex-row gap-4 md:items-center">
-          <ThemeSelector />
-          <nav className="flex flex-col md:flex-row gap-4">
-            {navItems.map(({ link }, i) => {
-              return <CMSLink className="text-small hover:text-brand" key={i} {...link} />
-            })}
-          </nav>
-        </div>
+        <nav className="flex flex-col items-start gap-4 md:flex-row md:items-center">
+          {navItems.map(({ link }, i) => {
+            return <CMSLink className="eyebrow text-ink-3 hover:text-brand" key={i} {...link} />
+          })}
+        </nav>
       </div>
     </footer>
   )

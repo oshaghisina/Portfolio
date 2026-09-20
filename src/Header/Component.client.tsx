@@ -1,5 +1,6 @@
 'use client'
 import { useHeaderTheme } from '@/providers/HeaderTheme'
+import { cn } from '@/utilities/ui'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
@@ -28,8 +29,10 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [headerTheme])
 
+  const isHome = pathname === '/'
+
   return (
-    <header className="container relative z-20" {...(theme ? { 'data-theme': theme } : {})}>
+    <header className={cn(isHome ? 'canvas' : 'container', 'relative z-20')} {...(theme ? { 'data-theme': theme } : {})}>
       <div className="py-6 flex items-center justify-between gap-6">
         {/* Wordmark until a real mark exists — text keeps it bilingual for free. */}
         <Link className="text-h3 font-medium tracking-h3 text-foreground" href="/">
