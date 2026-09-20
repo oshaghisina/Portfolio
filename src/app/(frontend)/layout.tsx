@@ -16,7 +16,8 @@ import { draftMode } from 'next/headers'
 
 import './globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
-import { DEFAULT_LOCALE, langAttrs } from '@/utilities/locale'
+import { getLocale } from '@/utilities/getLocale'
+import { langAttrs } from '@/utilities/locale'
 
 // Persian partner face (DS-04, D-016). Not preloaded: English pages never use it; a
 // lang="fa" subtree pulls it in through --font-sans-fa.
@@ -29,11 +30,12 @@ const vazirmatn = Vazirmatn({
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { isEnabled } = await draftMode()
+  const locale = await getLocale()
 
   return (
     <html
       className={cn(GeistSans.variable, GeistMono.variable, vazirmatn.variable)}
-      {...langAttrs(DEFAULT_LOCALE)}
+      {...langAttrs(locale)}
       suppressHydrationWarning
     >
       <head>
@@ -49,9 +51,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             }}
           />
 
-          <Header />
+          <Header locale={locale} />
           {children}
-          <Footer />
+          <Footer locale={locale} />
         </Providers>
       </body>
     </html>

@@ -2002,6 +2002,10 @@ export interface Header {
           url?: string | null;
           label: string;
         };
+        /**
+         * Persian label shown when the language toggle is set to فارسی. Falls back to the English label above if left blank.
+         */
+        labelFa?: string | null;
         id?: string | null;
       }[]
     | null;
@@ -2031,6 +2035,10 @@ export interface Footer {
           url?: string | null;
           label: string;
         };
+        /**
+         * Persian label shown when the language toggle is set to فارسی. Falls back to the English label above if left blank.
+         */
+        labelFa?: string | null;
         id?: string | null;
       }[]
     | null;
@@ -2054,6 +2062,7 @@ export interface HeaderSelect<T extends boolean = true> {
               url?: T;
               label?: T;
             };
+        labelFa?: T;
         id?: T;
       };
   updatedAt?: T;
@@ -2077,6 +2086,7 @@ export interface FooterSelect<T extends boolean = true> {
               url?: T;
               label?: T;
             };
+        labelFa?: T;
         id?: T;
       };
   updatedAt?: T;

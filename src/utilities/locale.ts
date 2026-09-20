@@ -1,11 +1,13 @@
 /**
- * Locale plumbing for the frontend (D-009). Until Payload `localization` and `/fa` routing
- * land, this is the single place `<html lang dir>` is derived from.
+ * Locale plumbing for the frontend (D-009). `<html lang dir>` is derived from a cookie-backed
+ * preference (see `getLocale.ts`), not a URL segment — there's no Payload `localization` or
+ * `/fa` routing, since no page/post content has a Farsi translation yet.
  */
 export const LOCALES = ['en', 'fa'] as const
 export type Locale = (typeof LOCALES)[number]
 
 export const DEFAULT_LOCALE: Locale = 'en'
+export const LOCALE_COOKIE = 'payload-locale'
 const RTL: readonly Locale[] = ['fa']
 
 export const isLocale = (v: unknown): v is Locale => typeof v === 'string' && (LOCALES as readonly string[]).includes(v)

@@ -96,7 +96,7 @@ export const Patterns: React.FC<{ locale: Locale }> = ({ locale }) => {
 
         <Demo ds="DS-32 · MobileNav" note="Native <dialog>: focus trap, ESC and an inert page for free; slides in from the inline-end side." title="Mobile drawer">
           <div className="flex items-center gap-4">
-            <MobileNav alwaysVisible data={header} foot={<span>{s.footNote}</span>} />
+            <MobileNav alwaysVisible data={header} foot={<span>{s.footNote}</span>} locale={locale} />
             <span className="text-small text-ink-2">{locale === 'fa' ? 'منو را باز کنید' : 'Open the menu'}</span>
           </div>
         </Demo>

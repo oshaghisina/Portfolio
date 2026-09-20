@@ -4,8 +4,9 @@ import React from 'react'
 
 import { CMSLink } from '@/components/Link'
 import { SystemLandscape } from '@/components/SystemLandscape'
+import type { Locale } from '@/utilities/locale'
 
-export async function Footer() {
+export async function Footer({ locale }: { locale: Locale }) {
   const footerData = await getCachedGlobal('footer', 1)()
 
   const navItems = footerData?.navItems || []
@@ -21,8 +22,9 @@ export async function Footer() {
         </Link>
 
         <nav className="flex flex-col items-start gap-4 md:flex-row md:items-center">
-          {navItems.map(({ link }, i) => {
-            return <CMSLink className="eyebrow text-ink-3 hover:text-brand" key={i} {...link} />
+          {navItems.map(({ link, labelFa }, i) => {
+            const label = locale === 'fa' && labelFa ? labelFa : link?.label
+            return <CMSLink className="eyebrow text-ink-3 hover:text-brand" key={i} {...link} label={label} />
           })}
         </nav>
       </div>

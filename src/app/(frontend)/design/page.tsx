@@ -4,7 +4,7 @@ import { cn } from '@/utilities/ui'
 import Link from 'next/link'
 import React from 'react'
 
-import { ThemeSelector } from '@/providers/Theme/ThemeSelector'
+import { ThemeToggle } from '@/providers/Theme/ThemeToggle'
 import { DEFAULT_LOCALE, LOCALES, isLocale, langAttrs } from '@/utilities/locale'
 
 import { Colour } from './sections/Colour'
@@ -51,7 +51,7 @@ export default async function DesignPage({ searchParams }: Args) {
                 </React.Fragment>
               ))}
             </nav>
-            <ThemeSelector />
+            <ThemeToggle locale={locale} />
           </div>
         </div>
         <h1 className="text-display font-medium text-balance">

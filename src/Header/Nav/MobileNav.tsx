@@ -10,6 +10,8 @@ import type { Header as HeaderType } from '@/payload-types'
 
 import { hrefFromLink } from '@/components/Link'
 import { Button } from '@/components/ui/button'
+import type { Locale } from '@/utilities/locale'
+import { uiCopy } from '@/utilities/uiCopy'
 
 /**
  * DS-32 mobile drawer: numbered oversized links, the active one in brand, a foot row for
@@ -18,6 +20,7 @@ import { Button } from '@/components/ui/button'
  */
 export interface MobileNavProps {
   data: HeaderType
+  locale: Locale
   /** Bottom row: contact, location, language switch … */
   foot?: React.ReactNode
   /** Show the trigger at every width (style guide); default is below `md`. */
@@ -25,7 +28,7 @@ export interface MobileNavProps {
   className?: string
 }
 
-export const MobileNav: React.FC<MobileNavProps> = ({ alwaysVisible = false, className, data, foot }) => {
+export const MobileNav: React.FC<MobileNavProps> = ({ alwaysVisible = false, className, data, foot, locale }) => {
   const dialogRef = useRef<HTMLDialogElement>(null)
   const [open, setOpen] = useState(false)
   const pathname = usePathname()
@@ -59,7 +62,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({ alwaysVisible = false, cla
       <Button
         aria-controls={id}
         aria-expanded={open}
-        aria-label="Open menu"
+        aria-label={uiCopy[locale].openMenu}
         onClick={() => setOpen(true)}
         size="icon-sm"
         variant="ghost"
@@ -68,7 +71,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({ alwaysVisible = false, cla
       </Button>
 
       <dialog
-        aria-label="Menu"
+        aria-label={uiCopy[locale].openMenu}
         className={cn(
           // reset the UA dialog box, then pin to the inline-end edge
           'fixed inset-y-0 end-0 start-auto m-0 h-dvh max-h-none w-full max-w-sm p-0',
@@ -90,14 +93,14 @@ export const MobileNav: React.FC<MobileNavProps> = ({ alwaysVisible = false, cla
         ref={dialogRef}
       >
         <div className="flex items-center justify-end px-4 pt-4">
-          <Button aria-label="Close menu" autoFocus onClick={close} size="icon-sm" variant="ghost">
+          <Button aria-label={uiCopy[locale].closeMenu} autoFocus onClick={close} size="icon-sm" variant="ghost">
             <X />
           </Button>
         </div>
 
         <nav className="flex-1 overflow-y-auto px-6 pt-10">
           <ol className="flex flex-col">
-            {navItems.map(({ link }, i) => {
+            {navItems.map(({ link, labelFa }, i) => {
               const href = hrefFromLink(link) ?? '#'
               const active = pathname === href
               return (
@@ -113,7 +116,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({ alwaysVisible = false, cla
                     {...(link?.newTab ? { rel: 'noopener noreferrer', target: '_blank' } : {})}
                   >
                     <span className="index-code">{String(i + 1).padStart(2, '0')}</span>
-                    {link?.label}
+                    {locale === 'fa' && labelFa ? labelFa : link?.label}
                   </Link>
                 </li>
               )

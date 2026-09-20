@@ -6,14 +6,16 @@ import { usePathname } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 
 import type { Header } from '@/payload-types'
+import type { Locale } from '@/utilities/locale'
 
 import { HeaderNav } from './Nav'
 
 interface HeaderClientProps {
   data: Header
+  locale: Locale
 }
 
-export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
+export const HeaderClient: React.FC<HeaderClientProps> = ({ data, locale }) => {
   /* Storing the value in a useState to avoid hydration errors */
   const [theme, setTheme] = useState<string | null>(null)
   const { headerTheme, setHeaderTheme } = useHeaderTheme()
@@ -38,7 +40,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
         <Link className="text-h3 font-medium tracking-h3 text-foreground" href="/">
           Sina Oshaghi
         </Link>
-        <HeaderNav data={data} />
+        <HeaderNav data={data} locale={locale} />
       </div>
     </header>
   )

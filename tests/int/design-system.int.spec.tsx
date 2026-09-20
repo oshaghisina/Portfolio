@@ -152,7 +152,7 @@ describe('MobileNav (DS-32)', () => {
   } as unknown as Header
 
   it('renders a native dialog with numbered links and a foot slot', () => {
-    const { container } = render(<MobileNav data={data} foot={<span>Tehran</span>} />)
+    const { container } = render(<MobileNav data={data} foot={<span>Tehran</span>} locale="en" />)
     // The closed <dialog> is hidden from the a11y tree, so query the DOM directly.
     const dialog = container.querySelector('dialog')!
     expect(dialog).not.toBeNull()
