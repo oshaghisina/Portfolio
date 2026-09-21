@@ -3,19 +3,27 @@ import { cn } from '@/utilities/ui'
 import Link from 'next/link'
 import React from 'react'
 
-import type { Page, Post } from '@/payload-types'
+import type { Page, Post, Project } from '@/payload-types'
+
+import { localizeInternalHref } from '@/i18n/navigation'
+import { docPath, type RoutedCollection } from '@/i18n/routes'
+import { DEFAULT_LOCALE, type Locale } from '@/utilities/locale'
 
 type CMSLinkType = {
   appearance?: 'inline' | ButtonProps['variant']
+  /** Marks the current page in navigation (the nav decides, via `isActivePath`). */
+  'aria-current'?: 'page'
   /** Trailing ↗ on button appearances (DS-16). */
   arrow?: boolean
   children?: React.ReactNode
   className?: string
   label?: string | null
+  /** Current locale — internal hrefs get this locale's prefix (D-009). Defaults to English/unprefixed. */
+  locale?: Locale
   newTab?: boolean | null
   reference?: {
-    relationTo: 'pages' | 'posts'
-    value: Page | Post | string | number
+    relationTo: RoutedCollection
+    value: Page | Post | Project | string | number
   } | null
   size?: ButtonProps['size'] | null
   type?: 'custom' | 'reference' | null
@@ -29,7 +37,7 @@ export function hrefFromLink(
   if (!link) return null
   const { type, reference, url } = link
   return type === 'reference' && typeof reference?.value === 'object' && reference.value.slug
-    ? `${reference?.relationTo !== 'pages' ? `/${reference?.relationTo}` : ''}/${reference.value.slug}`
+    ? docPath(reference.relationTo, reference.value.slug)
     : url
 }
 
@@ -37,17 +45,20 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
   const {
     type,
     appearance = 'inline',
+    'aria-current': ariaCurrent,
     arrow = false,
     children,
     className,
     label,
+    locale = DEFAULT_LOCALE,
     newTab,
     reference,
     size: sizeFromProps,
     url,
   } = props
 
-  const href = hrefFromLink({ type, reference, url })
+  const resolvedHref = hrefFromLink({ type, reference, url })
+  const href = resolvedHref ? localizeInternalHref(locale, resolvedHref) : resolvedHref
 
   if (!href) return null
 
@@ -57,7 +68,7 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
   /* Ensure we don't break any styles set by richText */
   if (appearance === 'inline') {
     return (
-      <Link className={cn(className)} href={href || url || ''} {...newTabProps}>
+      <Link aria-current={ariaCurrent} className={cn(className)} href={href || url || ''} {...newTabProps}>
         {label && label}
         {children && children}
       </Link>
@@ -66,7 +77,7 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
 
   return (
     <Button arrow={arrow} asChild className={className} size={size} variant={appearance}>
-      <Link className={cn(className)} href={href || url || ''} {...newTabProps}>
+      <Link aria-current={ariaCurrent} className={cn(className)} href={href || url || ''} {...newTabProps}>
         {label && label}
         {children && children}
       </Link>

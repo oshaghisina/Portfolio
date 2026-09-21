@@ -69,8 +69,10 @@ export interface Config {
   collections: {
     pages: Page;
     posts: Post;
+    projects: Project;
     media: Media;
     categories: Category;
+    experiences: Experience;
     users: User;
     redirects: Redirect;
     forms: Form;
@@ -91,8 +93,10 @@ export interface Config {
   collectionsSelect: {
     pages: PagesSelect<false> | PagesSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
+    projects: ProjectsSelect<false> | ProjectsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
+    experiences: ExperiencesSelect<false> | ExperiencesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
@@ -108,16 +112,23 @@ export interface Config {
   db: {
     defaultIDType: string;
   };
-  fallbackLocale: null;
+  fallbackLocale:
+    | ('false' | 'none' | 'null')
+    | false
+    | null
+    | ('en' | 'fa' | 'ar' | 'es' | 'de' | 'fr' | 'ja')
+    | ('en' | 'fa' | 'ar' | 'es' | 'de' | 'fr' | 'ja')[];
   globals: {
     header: Header;
     footer: Footer;
+    about: About;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
+    about: AboutSelect<false> | AboutSelect<true>;
   };
-  locale: null;
+  locale: 'en' | 'fa' | 'ar' | 'es' | 'de' | 'fr' | 'ja';
   widgets: {
     collections: CollectionsWidget;
   };
@@ -188,6 +199,10 @@ export interface Page {
               | ({
                   relationTo: 'posts';
                   value: string | Post;
+                } | null)
+              | ({
+                  relationTo: 'projects';
+                  value: string | Project;
                 } | null);
             url?: string | null;
             label: string;
@@ -210,9 +225,16 @@ export interface Page {
     | MetricsStripBlock
     | SelectedWorkBlock
     | WorkspaceBlock
-    | CapabilitiesBlock
+    | TracksBlock
     | WorkflowStagesBlock
     | ExperienceCatalogueBlock
+    | ProjectArchiveBlock
+    | CareerJourneyBlock
+    | ThinkingMapBlock
+    | PrinciplesBlock
+    | TeamProcessBlock
+    | PersonalSideBlock
+    | NowSectionBlock
   )[];
   meta?: {
     title?: string | null;
@@ -453,6 +475,77 @@ export interface User {
   collection: 'users';
 }
 /**
+ * What a project is: title, organisation, role, one-paragraph summary, cover. How it appears is decided by the page that references it. Publish a project to list it on /work; set "Case study" to published only once /work/<slug> has real content.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "projects".
+ */
+export interface Project {
+  id: string;
+  title: string;
+  /**
+   * Organisation or product owner — "Independent" for freelance work.
+   */
+  company: string;
+  /**
+   * Sina's role on this project, e.g. "Product designer".
+   */
+  role?: string | null;
+  /**
+   * One or two sentences — source-backed, no unverified outcomes or numbers.
+   */
+  summary: string;
+  /**
+   * The nature of the work (not the tools). One or two values; drives the /work filter.
+   */
+  kind?: ('product' | 'growth' | 'data' | 'research' | 'systems' | 'concept')[] | null;
+  /**
+   * Leave empty until dates are confirmed — the archive shows the organisation instead.
+   */
+  period?: {
+    start?: string | null;
+    end?: string | null;
+    present?: boolean | null;
+  };
+  /**
+   * Real project evidence — UI, dashboard, artifact. Portrait screens are fine; the page frames them instead of cropping. Leave empty to show the "media pending" placeholder.
+   */
+  cover?: (string | null) | Media;
+  /**
+   * Optional. A live product or external page; archive rows show it with an outward arrow.
+   */
+  liveUrl?: string | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (string | null) | Media;
+    description?: string | null;
+  };
+  /**
+   * Show in the featured section at the top of /work (the first three by order).
+   */
+  featured?: boolean | null;
+  /**
+   * Editorial order on /work — lower first. Featured projects use the same number.
+   */
+  order: number;
+  /**
+   * Separate from publishing the project: only "Published" turns archive rows into links.
+   */
+  caseStudyStatus: 'none' | 'draft' | 'published';
+  publishedAt?: string | null;
+  /**
+   * When enabled, the slug will auto-generate from the title field on save and autosave.
+   */
+  generateSlug?: boolean | null;
+  slug: string;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "CallToActionBlock".
  */
@@ -485,6 +578,10 @@ export interface CallToActionBlock {
             | ({
                 relationTo: 'posts';
                 value: string | Post;
+              } | null)
+            | ({
+                relationTo: 'projects';
+                value: string | Project;
               } | null);
           url?: string | null;
           label: string;
@@ -539,6 +636,10 @@ export interface ContentBlock {
             | ({
                 relationTo: 'posts';
                 value: string | Post;
+              } | null)
+            | ({
+                relationTo: 'projects';
+                value: string | Project;
               } | null);
           url?: string | null;
           label: string;
@@ -845,57 +946,9 @@ export interface SectionHeaderField {
 export interface SelectedWorkBlock {
   sectionHeader?: SectionHeaderField;
   /**
-   * Provisional entries are fine for V1 — replace with real case-study rows as they become available.
+   * Project facts (title, organisation, role, summary, cover) come from the Projects collection. Publish the project in each language it should appear in.
    */
-  items?:
-    | {
-        title: string;
-        /**
-         * e.g. "Product · Growth"
-         */
-        category: string;
-        /**
-         * Sina's role, e.g. "Designer / Marketer / BI"
-         */
-        role?: string | null;
-        /**
-         * One or two sentences — source-backed, no unverified outcomes
-         */
-        summary: string;
-        /**
-         * Show as a larger feature row instead of the compact supporting list
-         */
-        featured?: boolean | null;
-        /**
-         * Only enable once there is a real case study or live URL to link to
-         */
-        enableLink?: boolean | null;
-        link?: {
-          type?: ('reference' | 'custom') | null;
-          newTab?: boolean | null;
-          reference?:
-            | ({
-                relationTo: 'pages';
-                value: string | Page;
-              } | null)
-            | ({
-                relationTo: 'posts';
-                value: string | Post;
-              } | null);
-          url?: string | null;
-          label: string;
-          /**
-           * Choose how the link should be rendered.
-           */
-          appearance?: ('default' | 'outline') | null;
-        };
-        /**
-         * Optional — leave empty for a provisional entry
-         */
-        media?: (string | null) | Media;
-        id?: string | null;
-      }[]
-    | null;
+  project: string | Project;
   id?: string | null;
   blockName?: string | null;
   blockType: 'selectedWork';
@@ -923,24 +976,25 @@ export interface WorkspaceBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "CapabilitiesBlock".
+ * via the `definition` "TracksBlock".
  */
-export interface CapabilitiesBlock {
+export interface TracksBlock {
   sectionHeader?: SectionHeaderField;
-  groups?:
+  tracks?:
     | {
-        /**
-         * e.g. "01"
-         */
-        index: string;
+        key: 'productDesign' | 'aiWorkflow' | 'designSystems';
         title: string;
+        /**
+         * Optional short duration label, e.g. "10 yrs". Leave blank until source-verified.
+         */
+        experience?: string | null;
         description: string;
         id?: string | null;
       }[]
     | null;
   id?: string | null;
   blockName?: string | null;
-  blockType: 'capabilities';
+  blockType: 'tracks';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -993,6 +1047,276 @@ export interface ExperienceCatalogueBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'experienceCatalogue';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ProjectArchiveBlock".
+ */
+export interface ProjectArchiveBlock {
+  sectionHeader?: SectionHeaderField;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'projectArchive';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CareerJourneyBlock".
+ */
+export interface CareerJourneyBlock {
+  sectionHeader?: SectionHeaderField;
+  stages?:
+    | {
+        /**
+         * Company/role/period authority — edit facts on the Experiences collection, not here.
+         */
+        experience: string | Experience;
+        /**
+         * What changed in Sina’s thinking or responsibility at this stage — not a duties list.
+         */
+        narrative: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        };
+        /**
+         * Optional plain-text reference, e.g. "Selected work → Digital Gold" — no /work route exists yet to link to.
+         */
+        relatedProjectLabel?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'careerJourney';
+}
+/**
+ * Company/role/period reference data — no confirmed calendar dates exist yet, so periods are shown as a duration label, not a year.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "experiences".
+ */
+export interface Experience {
+  id: string;
+  /**
+   * Admin-facing row title, e.g. "Digikala — Digital Gold".
+   */
+  title: string;
+  company: string;
+  /**
+   * Business unit or product, if different from the company, e.g. "Digital Gold".
+   */
+  product?: string | null;
+  /**
+   * Verbatim resume role string — do not silently resolve title ambiguities.
+   */
+  role: string;
+  employment: 'full-time' | 'part-time' | 'freelance' | 'contract';
+  /**
+   * Leave start/end empty until real calendar dates are confirmed — the duration label is the only date-shaped fact seeded today.
+   */
+  period?: {
+    start?: string | null;
+    end?: string | null;
+    present?: boolean | null;
+    approx?: boolean | null;
+    /**
+     * e.g. "2.5 yrs" — resume-sourced, the only duration shown until dates are confirmed.
+     */
+    durationLabel?: string | null;
+  };
+  /**
+   * Plain text, e.g. "fintech" — not a relationship, to avoid taxonomy scope creep.
+   */
+  domain?: string | null;
+  /**
+   * One line, resume-sourced.
+   */
+  summary: string;
+  /**
+   * Manual sort key (resume order).
+   */
+  order: number;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ThinkingMapBlock".
+ */
+export interface ThinkingMapBlock {
+  sectionHeader?: SectionHeaderField;
+  /**
+   * Optional short intro above the diagram.
+   */
+  intro?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Exactly 6, in this order: Business, Product, User, System, Execution, Learning — the diagram layout is fixed to this order.
+   */
+  nodes?:
+    | {
+        label: string;
+        /**
+         * Short — one sentence.
+         */
+        annotation?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'thinkingMap';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PrinciplesBlock".
+ */
+export interface PrinciplesBlock {
+  sectionHeader?: SectionHeaderField;
+  items?:
+    | {
+        /**
+         * Short, specific — avoid slogans ("Design with empathy").
+         */
+        title: string;
+        /**
+         * One concise explanation — what this reveals about how decisions get made.
+         */
+        description: string;
+        /**
+         * Optional, e.g. "Seen in → Digital Gold".
+         */
+        evidenceLabel?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'principles';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TeamProcessBlock".
+ */
+export interface TeamProcessBlock {
+  sectionHeader?: SectionHeaderField;
+  /**
+   * Optional short intro above the diagram.
+   */
+  intro?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Exactly 6, in this order: Business Context, Product Decision, Design, Engineering, Validation, Learning.
+   */
+  nodes?:
+    | {
+        label: string;
+        annotation?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Only include statements with real supporting evidence — leave empty rather than pad with generic collaboration claims.
+   */
+  statements?:
+    | {
+        title: string;
+        description: string;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'teamProcess';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PersonalSideBlock".
+ */
+export interface PersonalSideBlock {
+  sectionHeader?: SectionHeaderField;
+  items?:
+    | {
+        title: string;
+        description: string;
+        /**
+         * Optional. Leave empty — the section works fine with typography alone.
+         */
+        media?: (string | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'personalSide';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "NowSectionBlock".
+ */
+export interface NowSectionBlock {
+  sectionHeader?: SectionHeaderField;
+  statement: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  /**
+   * Optional — leave empty until /lab exists. Do not link to a page that doesn’t exist yet.
+   */
+  link?: {
+    url?: string | null;
+    label?: string | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'nowSection';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1193,12 +1517,20 @@ export interface PayloadLockedDocument {
         value: string | Post;
       } | null)
     | ({
+        relationTo: 'projects';
+        value: string | Project;
+      } | null)
+    | ({
         relationTo: 'media';
         value: string | Media;
       } | null)
     | ({
         relationTo: 'categories';
         value: string | Category;
+      } | null)
+    | ({
+        relationTo: 'experiences';
+        value: string | Experience;
       } | null)
     | ({
         relationTo: 'users';
@@ -1305,9 +1637,16 @@ export interface PagesSelect<T extends boolean = true> {
         metricsStrip?: T | MetricsStripBlockSelect<T>;
         selectedWork?: T | SelectedWorkBlockSelect<T>;
         workspace?: T | WorkspaceBlockSelect<T>;
-        capabilities?: T | CapabilitiesBlockSelect<T>;
+        tracks?: T | TracksBlockSelect<T>;
         workflowStages?: T | WorkflowStagesBlockSelect<T>;
         experienceCatalogue?: T | ExperienceCatalogueBlockSelect<T>;
+        projectArchive?: T | ProjectArchiveBlockSelect<T>;
+        careerJourney?: T | CareerJourneyBlockSelect<T>;
+        thinkingMap?: T | ThinkingMapBlockSelect<T>;
+        principles?: T | PrinciplesBlockSelect<T>;
+        teamProcess?: T | TeamProcessBlockSelect<T>;
+        personalSide?: T | PersonalSideBlockSelect<T>;
+        nowSection?: T | NowSectionBlockSelect<T>;
       };
   meta?:
     | T
@@ -1441,28 +1780,7 @@ export interface SectionHeaderFieldSelect<T extends boolean = true> {
  */
 export interface SelectedWorkBlockSelect<T extends boolean = true> {
   sectionHeader?: T | SectionHeaderFieldSelect<T>;
-  items?:
-    | T
-    | {
-        title?: T;
-        category?: T;
-        role?: T;
-        summary?: T;
-        featured?: T;
-        enableLink?: T;
-        link?:
-          | T
-          | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
-              label?: T;
-              appearance?: T;
-            };
-        media?: T;
-        id?: T;
-      };
+  project?: T;
   id?: T;
   blockName?: T;
 }
@@ -1485,15 +1803,16 @@ export interface WorkspaceBlockSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "CapabilitiesBlock_select".
+ * via the `definition` "TracksBlock_select".
  */
-export interface CapabilitiesBlockSelect<T extends boolean = true> {
+export interface TracksBlockSelect<T extends boolean = true> {
   sectionHeader?: T | SectionHeaderFieldSelect<T>;
-  groups?:
+  tracks?:
     | T
     | {
-        index?: T;
+        key?: T;
         title?: T;
+        experience?: T;
         description?: T;
         id?: T;
       };
@@ -1537,6 +1856,123 @@ export interface ExperienceCatalogueBlockSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ProjectArchiveBlock_select".
+ */
+export interface ProjectArchiveBlockSelect<T extends boolean = true> {
+  sectionHeader?: T | SectionHeaderFieldSelect<T>;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CareerJourneyBlock_select".
+ */
+export interface CareerJourneyBlockSelect<T extends boolean = true> {
+  sectionHeader?: T | SectionHeaderFieldSelect<T>;
+  stages?:
+    | T
+    | {
+        experience?: T;
+        narrative?: T;
+        relatedProjectLabel?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ThinkingMapBlock_select".
+ */
+export interface ThinkingMapBlockSelect<T extends boolean = true> {
+  sectionHeader?: T | SectionHeaderFieldSelect<T>;
+  intro?: T;
+  nodes?:
+    | T
+    | {
+        label?: T;
+        annotation?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PrinciplesBlock_select".
+ */
+export interface PrinciplesBlockSelect<T extends boolean = true> {
+  sectionHeader?: T | SectionHeaderFieldSelect<T>;
+  items?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        evidenceLabel?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TeamProcessBlock_select".
+ */
+export interface TeamProcessBlockSelect<T extends boolean = true> {
+  sectionHeader?: T | SectionHeaderFieldSelect<T>;
+  intro?: T;
+  nodes?:
+    | T
+    | {
+        label?: T;
+        annotation?: T;
+        id?: T;
+      };
+  statements?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PersonalSideBlock_select".
+ */
+export interface PersonalSideBlockSelect<T extends boolean = true> {
+  sectionHeader?: T | SectionHeaderFieldSelect<T>;
+  items?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        media?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "NowSectionBlock_select".
+ */
+export interface NowSectionBlockSelect<T extends boolean = true> {
+  sectionHeader?: T | SectionHeaderFieldSelect<T>;
+  statement?: T;
+  link?:
+    | T
+    | {
+        url?: T;
+        label?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "posts_select".
  */
 export interface PostsSelect<T extends boolean = true> {
@@ -1560,6 +1996,42 @@ export interface PostsSelect<T extends boolean = true> {
         id?: T;
         name?: T;
       };
+  generateSlug?: T;
+  slug?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "projects_select".
+ */
+export interface ProjectsSelect<T extends boolean = true> {
+  title?: T;
+  company?: T;
+  role?: T;
+  summary?: T;
+  kind?: T;
+  period?:
+    | T
+    | {
+        start?: T;
+        end?: T;
+        present?: T;
+      };
+  cover?: T;
+  liveUrl?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
+  featured?: T;
+  order?: T;
+  caseStudyStatus?: T;
+  publishedAt?: T;
   generateSlug?: T;
   slug?: T;
   updatedAt?: T;
@@ -1677,6 +2149,31 @@ export interface CategoriesSelect<T extends boolean = true> {
         label?: T;
         id?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "experiences_select".
+ */
+export interface ExperiencesSelect<T extends boolean = true> {
+  title?: T;
+  company?: T;
+  product?: T;
+  role?: T;
+  employment?: T;
+  period?:
+    | T
+    | {
+        start?: T;
+        end?: T;
+        present?: T;
+        approx?: T;
+        durationLabel?: T;
+      };
+  domain?: T;
+  summary?: T;
+  order?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -1998,17 +2495,18 @@ export interface Header {
             | ({
                 relationTo: 'posts';
                 value: string | Post;
+              } | null)
+            | ({
+                relationTo: 'projects';
+                value: string | Project;
               } | null);
           url?: string | null;
           label: string;
         };
-        /**
-         * Persian label shown when the language toggle is set to فارسی. Falls back to the English label above if left blank.
-         */
-        labelFa?: string | null;
         id?: string | null;
       }[]
     | null;
+  _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -2018,6 +2516,22 @@ export interface Header {
  */
 export interface Footer {
   id: string;
+  /**
+   * Short blurb under the wordmark.
+   */
+  description?: string | null;
+  social?:
+    | {
+        kind: 'linkedin' | 'email';
+        /**
+         * Full URL, or mailto:.
+         */
+        href: string;
+        ariaLabel: string;
+        id?: string | null;
+      }[]
+    | null;
+  pagesTitle?: string | null;
   navItems?:
     | {
         link: {
@@ -2031,17 +2545,115 @@ export interface Footer {
             | ({
                 relationTo: 'posts';
                 value: string | Post;
+              } | null)
+            | ({
+                relationTo: 'projects';
+                value: string | Project;
               } | null);
           url?: string | null;
           label: string;
         };
-        /**
-         * Persian label shown when the language toggle is set to فارسی. Falls back to the English label above if left blank.
-         */
-        labelFa?: string | null;
         id?: string | null;
       }[]
     | null;
+  /**
+   * aria-label for the nav; defaults to "Footer navigation" if left blank.
+   */
+  navLabel?: string | null;
+  about?: {
+    title?: string | null;
+    text?: string | null;
+    linkLabel?: string | null;
+    linkHref?: string | null;
+  };
+  contact?: {
+    title?: string | null;
+    text?: string | null;
+    linkLabel?: string | null;
+    /**
+     * e.g. /contact or mailto:you@example.com
+     */
+    linkHref?: string | null;
+  };
+  metaBlock?:
+    | {
+        key: string;
+        value: string;
+        id?: string | null;
+      }[]
+    | null;
+  copyright?: string | null;
+  legalLinks?:
+    | {
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: string | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: string | Post;
+              } | null)
+            | ({
+                relationTo: 'projects';
+                value: string | Project;
+              } | null);
+          url?: string | null;
+          label: string;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  _status?: ('draft' | 'published') | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "about".
+ */
+export interface About {
+  id: string;
+  name?: string | null;
+  /**
+   * Small resume-style line, e.g. "Product Designer & Manager".
+   */
+  headline?: string | null;
+  /**
+   * ≤ 12 words, optional.
+   */
+  tagline?: string | null;
+  /**
+   * ~20-word one-liner, used for SEO/footer.
+   */
+  bioShort?: string | null;
+  /**
+   * Left empty — not yet confirmed.
+   */
+  basedIn?: string | null;
+  /**
+   * Left empty — not yet confirmed.
+   */
+  openTo?: ('full-time' | 'freelance' | 'consulting' | 'advisory')[] | null;
+  /**
+   * Optional. Leave empty unless a genuinely appropriate editorial portrait exists.
+   */
+  portrait?: (string | null) | Media;
+  /**
+   * The downloadable CV (PDF).
+   */
+  resume?: (string | null) | Media;
+  links?:
+    | {
+        platform: 'email' | 'linkedin' | 'dribbble' | 'behance';
+        url: string;
+        id?: string | null;
+      }[]
+    | null;
+  _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -2062,9 +2674,9 @@ export interface HeaderSelect<T extends boolean = true> {
               url?: T;
               label?: T;
             };
-        labelFa?: T;
         id?: T;
       };
+  _status?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -2074,6 +2686,16 @@ export interface HeaderSelect<T extends boolean = true> {
  * via the `definition` "footer_select".
  */
 export interface FooterSelect<T extends boolean = true> {
+  description?: T;
+  social?:
+    | T
+    | {
+        kind?: T;
+        href?: T;
+        ariaLabel?: T;
+        id?: T;
+      };
+  pagesTitle?: T;
   navItems?:
     | T
     | {
@@ -2086,9 +2708,73 @@ export interface FooterSelect<T extends boolean = true> {
               url?: T;
               label?: T;
             };
-        labelFa?: T;
         id?: T;
       };
+  navLabel?: T;
+  about?:
+    | T
+    | {
+        title?: T;
+        text?: T;
+        linkLabel?: T;
+        linkHref?: T;
+      };
+  contact?:
+    | T
+    | {
+        title?: T;
+        text?: T;
+        linkLabel?: T;
+        linkHref?: T;
+      };
+  metaBlock?:
+    | T
+    | {
+        key?: T;
+        value?: T;
+        id?: T;
+      };
+  copyright?: T;
+  legalLinks?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+            };
+        id?: T;
+      };
+  _status?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "about_select".
+ */
+export interface AboutSelect<T extends boolean = true> {
+  name?: T;
+  headline?: T;
+  tagline?: T;
+  bioShort?: T;
+  basedIn?: T;
+  openTo?: T;
+  portrait?: T;
+  resume?: T;
+  links?:
+    | T
+    | {
+        platform?: T;
+        url?: T;
+        id?: T;
+      };
+  _status?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -2119,6 +2805,10 @@ export interface TaskSchedulePublish {
       | ({
           relationTo: 'posts';
           value: string | Post;
+        } | null)
+      | ({
+          relationTo: 'projects';
+          value: string | Project;
         } | null);
     global?: string | null;
     user?: {

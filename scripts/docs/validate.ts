@@ -216,10 +216,10 @@ function checkProject(r: Report, d: DocRef, data: Data, body: string, inventoryI
   checkCommon(r, data, body, REQUIRED.project)
   checkUnknownKeys(r, data, KNOWN_KEYS.project)
   checkReadyNonEmpty(r, data, READY_NONEMPTY.project)
-  const expectedSlug = path.basename(d.file, '.md')
-  if (data.slug !== expectedSlug) r.error('slug', `must equal the file name "${expectedSlug}"`)
+  const expectedSlug = path.basename(path.dirname(d.file))
+  if (data.slug !== expectedSlug) r.error('slug', `must equal the project folder name "${expectedSlug}"`)
 
-  const readmeFile = path.join(path.dirname(d.file), 'README.md')
+  const readmeFile = path.join(path.dirname(path.dirname(d.file)), 'README.md')
   const company = fs.existsSync(readmeFile) ? readDoc(readmeFile).data : null
   if (!company) {
     r.error('company', 'folder has no README.md')

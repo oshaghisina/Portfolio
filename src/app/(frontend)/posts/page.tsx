@@ -7,16 +7,22 @@ import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import React from 'react'
 import PageClient from './page.client'
+import { getLocale } from '@/utilities/getLocale'
+import { uiCopy } from '@/utilities/uiCopy'
 
-export const revalidate = 600
-
+// No `revalidate` export: reading the locale requires `headers()`, a dynamic API, so this route
+// is rendered per-request rather than time-based ISR'd — a fixed revalidate window would let one
+// locale's fetch silently populate the shared cache for every other locale.
 export default async function Page() {
   const payload = await getPayload({ config: configPromise })
+  const locale = await getLocale()
 
   const posts = await payload.find({
     collection: 'posts',
     depth: 1,
+    fallbackLocale: false,
     limit: 12,
+    locale,
     overrideAccess: false,
     select: {
       title: true,
@@ -31,7 +37,7 @@ export default async function Page() {
       <PageClient />
       <div className="container mb-16">
         <div className="prose dark:prose-invert max-w-none">
-          <h1>Posts</h1>
+          <h1>{uiCopy[locale].postsArchiveTitle}</h1>
         </div>
       </div>
 
@@ -55,8 +61,9 @@ export default async function Page() {
   )
 }
 
-export function generateMetadata(): Metadata {
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale()
   return {
-    title: `Payload Website Template Posts`,
+    title: `${uiCopy[locale].postsArchiveTitle} | Payload Website Template`,
   }
 }

@@ -28,6 +28,7 @@ export const WorkflowStages: Block = {
             {
               name: 'label',
               type: 'text',
+              localized: true,
               required: true,
               admin: { width: '75%' },
             },
@@ -36,6 +37,7 @@ export const WorkflowStages: Block = {
         {
           name: 'tools',
           type: 'text',
+          localized: true,
           required: true,
           admin: { description: 'Comma-separated tool names' },
         },

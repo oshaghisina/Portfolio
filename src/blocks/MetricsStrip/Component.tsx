@@ -17,33 +17,74 @@ export type MetricsStripProps = Pick<MetricsStripBlockProps, 'metrics' | 'sectio
  */
 const BAR_WEIGHT = ['100%', '70%', '46%', '30%']
 
-/** Metrics as a stacked editorial transition, not an equal-column stats row. */
+/** Phone-only graphic per row: one accent fill, then hatch / outline / neutral fill. */
+const PhoneBar: React.FC<{ index: number }> = ({ index }) => {
+  const width = BAR_WEIGHT[index] ?? '30%'
+  if (index === 0) return <span aria-hidden className="mx-auto block h-2 bg-brand sm:hidden" style={{ width }} />
+  if (index === 1) {
+    return (
+      <span
+        aria-hidden
+        className="mx-auto block h-2 border border-line sm:hidden"
+        style={{
+          width,
+          backgroundImage: 'repeating-linear-gradient(135deg, var(--line) 0 1px, transparent 1px 5px)',
+        }}
+      />
+    )
+  }
+  if (index === 2) return <span aria-hidden className="mx-auto block h-2 border border-line sm:hidden" style={{ width }} />
+  return <span aria-hidden className="mx-auto block h-2 bg-line sm:hidden" style={{ width }} />
+}
+
+/**
+ * Metrics as a stacked editorial transition, not an equal-column stats row. On phones the ruled
+ * rows become a centered vertical data composition (value, small graphic, tiny label) and the
+ * block owns the first long silence of the page through its bottom padding.
+ */
 export const MetricsStripBlock: React.FC<MetricsStripProps> = ({ className, disableInnerContainer, metrics, sectionHeader }) => {
   const rows = (metrics ?? []).slice(0, 4)
   if (!rows.length) return null
 
   return (
-    <section className={cn(!disableInnerContainer && 'container', 'pb-[28vh] lg:pb-[34vh]', className)}>
-      <SectionHeader {...sectionHeader} className="mb-4" tagTone="mono" />
-      <dl className="divide-y divide-line border-t border-line">
+    <section className={cn(!disableInnerContainer && 'container', 'pb-[70svh] sm:pb-[44vh] lg:pb-[52vh]', className)}>
+      <SectionHeader
+        {...sectionHeader}
+        className="mb-4 max-sm:mb-10 max-sm:border-t-0 max-sm:pt-0 max-sm:text-center max-sm:[&>span]:justify-center max-sm:[&_p]:mx-auto"
+        tagTone="mono"
+      />
+      <dl className="flex flex-col gap-12 sm:grid sm:grid-cols-2 sm:gap-x-12 sm:gap-y-14 lg:grid-cols-4">
         {rows.map((m, i) => (
           <div
-            className="flex flex-col gap-4 py-8 sm:flex-row sm:items-baseline sm:gap-10 lg:py-10"
+            className="flex min-w-0 flex-col gap-3 max-sm:items-center max-sm:text-center"
             key={m.id ?? i}
           >
-            <dd className="text-num tracking-num font-medium text-brand tabular-nums" dir="ltr">
+            <dd
+              className={cn(
+                'text-num tracking-num font-medium tabular-nums',
+                i === 0 ? 'text-brand' : 'text-foreground',
+              )}
+              dir="ltr"
+            >
               {m.value}
             </dd>
-            <div className="relative h-px flex-1 self-center bg-line">
+            <div className="relative mt-2 h-3 w-full overflow-hidden border border-line max-sm:hidden">
               <span
                 aria-hidden
-                className="absolute inset-y-0 start-0 bg-brand"
+                className={cn(
+                  'absolute inset-y-0 start-0',
+                  i === 0 && 'bg-brand',
+                  i === 1 &&
+                    '[background-image:repeating-linear-gradient(135deg,var(--line)_0_1px,transparent_1px_5px)]',
+                  i === 2 && 'border-e border-line bg-line-soft',
+                  i === 3 && 'bg-line',
+                )}
                 style={{ width: BAR_WEIGHT[i] ?? '30%' }}
               />
             </div>
-            <div className="flex flex-col gap-1 sm:items-end sm:text-end">
+            <PhoneBar index={i} />
+            <div className="flex flex-col gap-1 max-sm:items-center">
               <dt className="eyebrow">{m.caption}</dt>
-              {m.source ? <dd className="text-caption text-ink-3">{m.source}</dd> : null}
             </div>
           </div>
         ))}

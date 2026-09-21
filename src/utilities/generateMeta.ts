@@ -2,6 +2,9 @@ import type { Metadata } from 'next'
 
 import type { Media, Page, Post, Config } from '../payload-types'
 
+import { getLocaleReadinessMap } from '@/i18n/contentReady'
+import { localePath } from '@/i18n/navigation'
+import { DEFAULT_LOCALE, LOCALES, type Locale } from './locale'
 import { mergeOpenGraph } from './mergeOpenGraph'
 import { getServerSideURL } from './getURL'
 
@@ -21,8 +24,12 @@ const getImageURL = (image?: Media | Config['db']['defaultIDType'] | null) => {
 
 export const generateMeta = async (args: {
   doc: Partial<Page> | Partial<Post> | null
+  /** Current locale — drives the canonical URL and which `alternates.languages` are emitted. */
+  locale?: Locale
+  /** Unprefixed logical path, e.g. `/about` or `/posts/hello` — defaults to the homepage. */
+  logicalPath?: string
 }): Promise<Metadata> => {
-  const { doc } = args
+  const { doc, locale = DEFAULT_LOCALE, logicalPath = '/' } = args
 
   const ogImage = getImageURL(doc?.meta?.image)
 
@@ -30,7 +37,25 @@ export const generateMeta = async (args: {
     ? doc?.meta?.title + ' | Payload Website Template'
     : 'Payload Website Template'
 
+  const serverUrl = getServerSideURL()
+  const canonicalPath = localePath(locale, logicalPath)
+
+  // English is unprefixed and always canonical/x-default; other locales appear only once their
+  // copy of this logical page is actually publicly ready (D-009) — never advertise a hreflang
+  // alternate that resolves to not-found.
+  const readiness = await getLocaleReadinessMap(logicalPath)
+  const languages: Record<string, string> = {
+    'x-default': `${serverUrl}${localePath(DEFAULT_LOCALE, logicalPath)}`,
+  }
+  for (const candidate of LOCALES) {
+    if (readiness[candidate]) languages[candidate] = `${serverUrl}${localePath(candidate, logicalPath)}`
+  }
+
   return {
+    alternates: {
+      canonical: `${serverUrl}${canonicalPath}`,
+      languages,
+    },
     description: doc?.meta?.description,
     openGraph: mergeOpenGraph({
       description: doc?.meta?.description || '',
@@ -42,7 +67,7 @@ export const generateMeta = async (args: {
           ]
         : undefined,
       title,
-      url: Array.isArray(doc?.slug) ? doc?.slug.join('/') : '/',
+      url: canonicalPath,
     }),
     title,
   }

@@ -28,6 +28,9 @@ Docs/Benchmarks/*/assets/*
 # TypeScript incremental build info
 tsconfig.tsbuildinfo
 
+# Local MongoDB dumps taken before schema-affecting migrations
+.backup/
+
 # Design-System crops/frames/video of third-party sites are local-only research assets
 Docs/Design-System/assets/*
 !Docs/Design-System/assets/.gitkeep

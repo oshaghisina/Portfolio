@@ -3,6 +3,9 @@ import { getPayload } from 'payload'
 import config from '@payload-config'
 import { unstable_cache } from 'next/cache'
 
+import { localePath } from '@/i18n/navigation'
+import { LOCALES } from '@/utilities/locale'
+
 const getPostsSitemap = unstable_cache(
   async () => {
     const payload = await getPayload({ config })
@@ -11,36 +14,42 @@ const getPostsSitemap = unstable_cache(
       process.env.VERCEL_PROJECT_PRODUCTION_URL ||
       'https://example.com'
 
-    const results = await payload.find({
-      collection: 'posts',
-      overrideAccess: false,
-      draft: false,
-      depth: 0,
-      limit: 1000,
-      pagination: false,
-      where: {
-        _status: {
-          equals: 'published',
-        },
-      },
-      select: {
-        slug: true,
-        updatedAt: true,
-      },
-    })
-
     const dateFallback = new Date().toISOString()
 
-    const sitemap = results.docs
-      ? results.docs
+    // One query per locale (D-009) — a locale only contributes a URL once its own copy of the
+    // post is published, never English's.
+    const perLocale = await Promise.all(
+      LOCALES.map(async (locale) => {
+        const results = await payload.find({
+          collection: 'posts',
+          overrideAccess: false,
+          draft: false,
+          depth: 0,
+          fallbackLocale: false,
+          limit: 1000,
+          locale,
+          pagination: false,
+          where: {
+            _status: {
+              equals: 'published',
+            },
+          },
+          select: {
+            slug: true,
+            updatedAt: true,
+          },
+        })
+
+        return results.docs
           .filter((post) => Boolean(post?.slug))
           .map((post) => ({
-            loc: `${SITE_URL}/posts/${post?.slug}`,
+            loc: `${SITE_URL}${localePath(locale, `/posts/${post?.slug}`)}`,
             lastmod: post.updatedAt || dateFallback,
           }))
-      : []
+      }),
+    )
 
-    return sitemap
+    return perLocale.flat()
   },
   ['posts-sitemap'],
   {

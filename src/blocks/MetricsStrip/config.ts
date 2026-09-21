@@ -28,6 +28,7 @@ export const MetricsStrip: Block = {
             {
               name: 'caption',
               type: 'text',
+              localized: true,
               required: true,
               admin: { description: 'What the number measures', width: '60%' },
             },
@@ -36,6 +37,7 @@ export const MetricsStrip: Block = {
         {
           name: 'source',
           type: 'text',
+          localized: true,
           admin: { description: 'Where it comes from (report, dashboard, date) — every number is traceable' },
         },
       ],

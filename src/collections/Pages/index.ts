@@ -4,13 +4,20 @@ import { authenticated } from '../../access/authenticated'
 import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
 import { Archive } from '../../blocks/ArchiveBlock/config'
 import { CallToAction } from '../../blocks/CallToAction/config'
-import { Capabilities } from '../../blocks/Capabilities/config'
+import { CareerJourney } from '../../blocks/CareerJourney/config'
+import { Tracks } from '../../blocks/Tracks/config'
 import { Content } from '../../blocks/Content/config'
 import { ExperienceCatalogue } from '../../blocks/ExperienceCatalogue/config'
 import { FormBlock } from '../../blocks/Form/config'
 import { MediaBlock } from '../../blocks/MediaBlock/config'
 import { MetricsStrip } from '../../blocks/MetricsStrip/config'
+import { NowSection } from '../../blocks/NowSection/config'
+import { PersonalSide } from '../../blocks/PersonalSide/config'
+import { Principles } from '../../blocks/Principles/config'
+import { ProjectArchive } from '../../blocks/ProjectArchive/config'
 import { SelectedWork } from '../../blocks/SelectedWork/config'
+import { TeamProcess } from '../../blocks/TeamProcess/config'
+import { ThinkingMap } from '../../blocks/ThinkingMap/config'
 import { Workspace } from '../../blocks/Workspace/config'
 import { WorkflowStages } from '../../blocks/WorkflowStages/config'
 import { hero } from '@/heros/config'
@@ -64,6 +71,7 @@ export const Pages: CollectionConfig<'pages'> = {
     {
       name: 'title',
       type: 'text',
+      localized: true,
       required: true,
     },
     {
@@ -87,9 +95,16 @@ export const Pages: CollectionConfig<'pages'> = {
                 MetricsStrip,
                 SelectedWork,
                 Workspace,
-                Capabilities,
+                Tracks,
                 WorkflowStages,
                 ExperienceCatalogue,
+                ProjectArchive,
+                CareerJourney,
+                ThinkingMap,
+                Principles,
+                TeamProcess,
+                PersonalSide,
+                NowSection,
               ],
               required: true,
               admin: {
@@ -147,6 +162,9 @@ export const Pages: CollectionConfig<'pages'> = {
       autosave: {
         interval: 100, // We set this interval for optimal live preview
       },
+      // A locale can't be publicly ready just because English is published (D-009); requires
+      // `experimental.localizeStatus` in payload.config.ts.
+      localizeStatus: true,
       schedulePublish: true,
     },
     maxPerDoc: 50,

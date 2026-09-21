@@ -1,18 +1,29 @@
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
+import { ar } from '@payloadcms/translations/languages/ar'
+import { de } from '@payloadcms/translations/languages/de'
+import { en } from '@payloadcms/translations/languages/en'
+import { es } from '@payloadcms/translations/languages/es'
+import { fa } from '@payloadcms/translations/languages/fa'
+import { fr } from '@payloadcms/translations/languages/fr'
+import { ja } from '@payloadcms/translations/languages/ja'
 import sharp from 'sharp'
 import path from 'path'
 import { buildConfig, PayloadRequest } from 'payload'
 import { fileURLToPath } from 'url'
 
 import { Categories } from './collections/Categories'
+import { Experiences } from './collections/Experiences'
 import { Media } from './collections/Media'
 import { Pages } from './collections/Pages'
 import { Posts } from './collections/Posts'
+import { Projects } from './collections/Projects'
 import { Users } from './collections/Users'
+import { About } from './About/config'
 import { Footer } from './Footer/config'
 import { Header } from './Header/config'
 import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
+import { LOCALES } from './utilities/locale'
 import { getServerSideURL } from './utilities/getURL'
 
 const filename = fileURLToPath(import.meta.url)
@@ -60,9 +71,36 @@ export default buildConfig({
   db: mongooseAdapter({
     url: process.env.DATABASE_URL || '',
   }),
-  collections: [Pages, Posts, Media, Categories, Users],
+  collections: [Pages, Posts, Projects, Media, Categories, Experiences, Users],
   cors: [getServerSideURL()].filter(Boolean),
-  globals: [Header, Footer],
+  globals: [Header, Footer, About],
+  // Visitor-facing content locales (D-009). English is the default and the only one with
+  // content today; every other locale is dormant until translated in the admin UI — public
+  // queries always pass `fallbackLocale: false`, so an untranslated locale never silently
+  // shows English.
+  localization: {
+    locales: [
+      { code: 'en', label: 'English' },
+      { code: 'fa', label: 'فارسی', rtl: true },
+      { code: 'ar', label: 'العربية', rtl: true },
+      { code: 'es', label: 'Español' },
+      { code: 'de', label: 'Deutsch' },
+      { code: 'fr', label: 'Français' },
+      { code: 'ja', label: '日本語' },
+    ].filter((locale) => (LOCALES as readonly string[]).includes(locale.code)),
+    defaultLocale: 'en',
+    fallback: false,
+  },
+  // Admin UI translations, independent of the visitor-facing `localization` locales above.
+  i18n: {
+    supportedLanguages: { ar, de, en, es, fa, fr, ja },
+    fallbackLanguage: 'en',
+  },
+  // Per-locale publish status: a locale can't be treated as publicly ready just because
+  // English is published (Pages/Posts/Header/Footer opt in via `versions.drafts.localizeStatus`).
+  experimental: {
+    localizeStatus: true,
+  },
   plugins,
   secret: process.env.PAYLOAD_SECRET,
   sharp,

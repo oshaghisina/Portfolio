@@ -39,9 +39,9 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
   if (!lead && !tag && !lede) return null
 
   return (
-    <header className={cn('relative border-t border-line pt-section-sm', className)}>
+    <header className={cn('relative pt-section-sm', className)}>
       {tag && tagTone === 'brand' ? (
-        <span className="absolute top-0 start-0 -translate-y-1/2 inline-flex items-center gap-2 bg-brand text-brand-foreground rounded-chip px-3 py-1.5 eyebrow">
+        <span className="mb-6 inline-flex items-center gap-2 rounded-none bg-brand px-3 py-1.5 eyebrow text-brand-foreground">
           {index ? <span className="index-code text-brand-foreground/70">{index}</span> : null}
           {tag}
         </span>

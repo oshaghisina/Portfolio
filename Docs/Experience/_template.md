@@ -1,8 +1,10 @@
 ---
+# Copy this file to <Company>/<project-slug>/README.md — each project gets its own directory;
+# put its Figma exports etc. in a sibling `assets/` folder inside that same directory.
 title: ""                 # Project / case-study name
 title_fa: ""              # Persian title (shown on the fa site)
-slug: ""                  # kebab-case; equals this file's name
-inventory_id: ""          # e.g. DGK-01 — row in ../Inventory.md
+slug: ""                  # kebab-case; equals this project's folder name
+inventory_id: ""          # e.g. DGK-01 — row in ../../Inventory.md
 company: ""               # Must match the company folder
 product: ""               # Product or business unit, if different from company
 role: ""                  # Sina's role on this project
@@ -49,4 +51,4 @@ Numbers where available; otherwise qualitative results and what changed for the 
 What Sina would do differently, and what this project says about how they work.
 
 ## Assets
-`assets/{project-slug}/` — exported Figma frames, before/after, campaign visuals.
+`assets/` — exported Figma frames, before/after, campaign visuals.

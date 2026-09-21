@@ -28,6 +28,7 @@ export const Workspace: Block = {
             {
               name: 'label',
               type: 'text',
+              localized: true,
               required: true,
               admin: { width: '75%' },
             },
@@ -36,6 +37,7 @@ export const Workspace: Block = {
         {
           name: 'description',
           type: 'textarea',
+          localized: true,
           required: true,
         },
       ],

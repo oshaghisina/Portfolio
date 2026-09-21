@@ -1,6 +1,7 @@
 import type { RequiredDataFromCollectionSlug } from 'payload'
 
-import { heroLinks, heroRichText, homeLayout, homeMetaDescription, homeMetaTitle } from './home-content'
+import { buildHomeLayout, heroLinks, heroRichText, homeMetaDescription, homeMetaTitle } from './home-content'
+import { featuredHomeProjectStatic } from './projects'
 
 // Used for pre-seeded content so that the homepage is not empty
 export const homeStatic: RequiredDataFromCollectionSlug<'pages'> = {
@@ -11,7 +12,7 @@ export const homeStatic: RequiredDataFromCollectionSlug<'pages'> = {
     richText: heroRichText,
     links: heroLinks,
   },
-  layout: homeLayout,
+  layout: buildHomeLayout({ project: featuredHomeProjectStatic }),
   meta: {
     title: homeMetaTitle,
     description: homeMetaDescription,

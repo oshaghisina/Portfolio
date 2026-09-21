@@ -2,7 +2,7 @@
 title: Content Model
 doc_type: content-model
 status: draft
-updated: 2026-09-19
+updated: 2026-09-21
 payload_version: 3.90.1
 locales: [en, fa]
 default_locale: en
@@ -109,6 +109,16 @@ One document per company/role. Slug `experiences`, `admin.useAsTitle: 'company'`
 One document per case study. Slug `projects`, `admin.useAsTitle: 'title'`, drafts + autosave +
 live preview like Pages, `defaultPopulate` limited to card fields (as Posts does).
 
+**Implemented 2026-09-21 as a V1 subset (D-021)** — `src/collections/Projects/index.ts`: `title` · `slug` ·
+`summary` · `company` (text, localized — stands in for `experience` until §5 exists) · `role` · `kind`
+(select hasMany: `product · growth · data · research · systems · concept`, labels in
+`src/collections/Projects/kinds.ts`) · `period {start, end, present}` · `cover` (upload) · `liveUrl` ·
+`caseStudyStatus` (`none · draft · published` — the case-study gate, separate from `_status`) ·
+`featured` · `order` (required, default 50) · `meta` · `publishedAt`. Drafts + `localizeStatus`
+like Pages; no live preview until `/work/[slug]`. Everything below that is not in this list
+(`experience`, `product`, `domain`, `team`, `tools`, `skills`, `hero`, the case-study tab, `extras`,
+`metrics`, `figma`, `links`, `gallery`) is still the spec for the case-study task.
+
 | Field | Payload type | Req | Frontmatter key | Localized | Notes |
 |---|---|---|---|---|---|
 | `title` | text | ✓ | `title` / `title_fa` | ✓ | |
@@ -135,7 +145,7 @@ live preview like Pages, `defaultPopulate` limited to card fields (as Posts does
 | `metrics` | array `{ label: text, value: text, context: text }` | | `metrics[]` | label/context ✓ | value stays text ("+18%", "3.2 → 4.1") |
 | `figma` | array `{ url: text, label: text }` | | `figma[]` | label ✓ | admin-only reference, not rendered publicly by default |
 | `links` | array of `link` | | `links[]` | label ✓ | live site, articles |
-| `gallery` | array `{ media: upload → media, caption: text }` | | `assets/<slug>/` | caption ✓ | exported Figma frames |
+| `gallery` | array `{ media: upload → media, caption: text }` | | `<project-slug>/assets/` | caption ✓ | exported Figma frames |
 | `featured` | checkbox | | `featured` | | drives home-page selection; 6–8 true (D-010) |
 | `order` | number | | Inventory priority / rank | | |
 | `meta` | SEO tab | | — | ✓ | |
@@ -178,7 +188,7 @@ happen in one place.
 
 ## 9. Media conventions
 
-- `Docs/Experience/<Co>/assets/<project>/` → uploaded to `media`, titled `<project>-<n>`, `alt`
+- `Docs/Experience/<Co>/<project>/assets/` → uploaded to `media`, titled `<project>-<n>`, `alt`
   from a sidecar caption or the case-study text. Existing `imageSizes` (`src/collections/Media.ts`)
   are sufficient; `og` size covers social cards.
 - Benchmark screenshots are **never** uploaded (local-only, D-008).
@@ -189,6 +199,12 @@ happen in one place.
 **Reused as-is:** `cta`, `content` (now with `layout: editorial`), `mediaBlock`, `archive` (widened to `projects`, §11), `formBlock`.
 
 **Implemented (2026-09-19):** `metricsStrip` — `src/blocks/MetricsStrip/{config,Component}.tsx`, `metrics[] { value, caption, source }` (1–4) + `sectionHeader` group; the `logoWall` candidate is answered by the `ExperienceGrid` component (names in type, no logos) whose block waits for `experiences` (§5).
+
+**Implemented (2026-09-21):** `projectArchive` — `src/blocks/ProjectArchive/{config,Component}.tsx`, the whole
+body of the `/work` page: `sectionHeader` intro (rendered as the page `h1`), the three `featured` projects
+in a large → medium → medium rhythm, then a numbered index of every published project with a single-select
+`kind` filter (DS-10 index codes, DS-20-style rows, DS-22 tags). Reads the `projects` collection directly;
+holds no project copy of its own. `selectedWork` (home) now references one `projects` document.
 
 **Candidates — TBD pending benchmarks.** Each becomes real only when Synthesis shows the pattern
 earns its place; until then it is a hypothesis.
@@ -255,3 +271,4 @@ Everything in the template that assumes only `pages` and `posts`:
 | 2026-09-19 | Created: baseline, localization plan, `experiences` / `projects` / `about`, block candidates, cross-cutting checklist | Docs improvement plan |
 | 2026-09-19 | §10: added the `DS item` column linking block candidates to `Design-System/` items; `metricsStrip` evidence updated (pleurat-com `proof` = 4) | D-013 |
 | 2026-09-19 | §2 + §10: `metricsStrip` block, Content `layout: editorial`, `sectionHeader` field group and the tokens → `theme.css` pipeline implemented; `logoWall` answered by `ExperienceGrid`; §13 Q6 `/design` route | D-015 … D-018 |
+| 2026-09-21 | §6: `projects` implemented as a V1 subset; §10: `projectArchive` implemented, `selectedWork` re-pointed at `projects`; `/work` is a CMS page | D-021 |

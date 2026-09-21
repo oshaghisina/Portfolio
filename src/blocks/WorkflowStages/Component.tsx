@@ -5,12 +5,17 @@ import type { WorkflowStagesBlock as WorkflowStagesBlockProps } from '@/payload-
 
 import { SectionHeader } from '@/components/SectionHeader'
 
+import { ToolGlyph } from './ToolGlyph'
+
 export type WorkflowStagesProps = Pick<WorkflowStagesBlockProps, 'sectionHeader' | 'stages'> & {
   className?: string
   disableInnerContainer?: boolean
 }
 
-/** AI / daily tooling: one editorial heading plus a single compact row of tools — no categories. */
+/**
+ * AI / daily tooling: one editorial heading plus a single compact row of tools — no categories.
+ * The tools remain visual objects at every viewport rather than turning into a software-list row.
+ */
 export const WorkflowStagesBlock: React.FC<WorkflowStagesProps> = ({
   className,
   disableInnerContainer,
@@ -28,11 +33,16 @@ export const WorkflowStagesBlock: React.FC<WorkflowStagesProps> = ({
 
   return (
     <section className={cn(!disableInnerContainer && 'container', className)}>
-      <SectionHeader {...sectionHeader} className="mb-10" tagTone="mono" />
-      <ul className="flex flex-wrap gap-3">
+      <SectionHeader
+        {...sectionHeader}
+        className="mb-10 max-md:mb-8 max-md:border-t-0 max-md:pt-0 max-md:[&_h2]:max-w-[11ch]"
+        tagTone="mono"
+      />
+      <ul className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-7">
         {tools.map((tool) => (
-          <li key={tool}>
-            <span className="inline-flex h-11 items-center rounded-control border border-line px-4 eyebrow text-ink-2">
+          <li className="min-w-0" key={tool}>
+            <span className="flex aspect-square w-full flex-col items-center justify-center gap-3 border border-line bg-background/70 p-3 text-center eyebrow text-ink-2">
+              <ToolGlyph className="size-6" name={tool} />
               {tool}
             </span>
           </li>

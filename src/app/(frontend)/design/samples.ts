@@ -1,8 +1,19 @@
 import type { Locale } from '@/utilities/locale'
 
+/**
+ * The style guide only ever previews English and Persian — the two scripts/directions the
+ * design system's typography actually branches on (`:lang(fa)`). The other 5 site locales share
+ * English's LTR/Latin typography, so a preview toggle for them would show nothing new; adding
+ * real Spanish/German/French/Japanese/Arabic sample copy here would be invented content with no
+ * home in the CMS.
+ */
+export type PreviewLocale = Extract<Locale, 'en' | 'fa'>
+export const PREVIEW_LOCALES: readonly PreviewLocale[] = ['en', 'fa']
+export const isPreviewLocale = (v: unknown): v is PreviewLocale => v === 'en' || v === 'fa'
+
 /** Sample copy for the style guide — placeholders, not Sina's real content. */
 export const SAMPLES: Record<
-  Locale,
+  PreviewLocale,
   {
     lead: string
     tail: string

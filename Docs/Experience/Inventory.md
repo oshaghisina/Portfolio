@@ -2,10 +2,10 @@
 title: Project Inventory
 doc_type: inventory
 status: draft
-updated: 2026-09-19
+updated: 2026-09-21
 featured_target: "6-8"     # D-010
-candidates: 25
-open_questions: 3
+candidates: 28
+open_questions: 4
 ---
 
 # Project Inventory
@@ -31,7 +31,7 @@ items become a bullet in the company `README.md`. Target: **6–8 featured** (D-
 
 | ID | Company | Project (working title) | One-liner | Kind | Years | Sina's role | Figma? | Metrics? | Visuals? | Featured? | Priority | Status | File |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| DGK-01 | Digikala | Digital Gold — product vision & roadmap | Defined vision, features and growth strategy for Digikala's gold-trading product | product | | Designer / Marketer / BI | ? | ? | ? | ? | | not-started | |
+| DGK-01 | Digikala | Digital Gold — product vision & roadmap | Defined vision, features and growth strategy for Digikala's gold-trading product | product | | Designer / Marketer / BI | ? | ? | ? | yes | | not-started | |
 | DGK-02 | Digikala | Zero-fee campaign | Fee-free trading campaign to drive acquisition | campaign | | design + marketing | ? | ? | ? | ? | | not-started | |
 | DGK-03 | Digikala | Installment campaign | Buy gold in installments — campaign design and execution | campaign | | design + marketing | ? | ? | ? | ? | | not-started | |
 | DGK-04 | Digikala | Gift-card campaign | Gold gift cards — campaign design and execution | campaign | | design + marketing | ? | ? | ? | ? | | not-started | |
@@ -47,15 +47,18 @@ items become a bullet in the company `README.md`. Target: **6–8 featured** (D-
 | HDM-02 | Hadish Mall | Mall-management app concept | App concept for tenant–customer engagement | concept | | originator | ? | no | ? | ? | | not-started | |
 | FIB-01 | Fibona | Brand positioning & tagline | Stakeholder interviews → positioning and identity-aligned tagline | brand | | product manager | no | no | ? | ? | | not-started | |
 | FIB-02 | Fibona | Website | Site built on analysis of traditional business processes | product | | product manager | ? | ? | ? | ? | | not-started | |
-| OTE-01 | OTeacher | Matchmaking redesign | Teacher–student matching redesigned from two-sided research | product | | PM & designer | ? | partial | ? | ? | | not-started | |
-| OTE-02 | OTeacher | Research → roadmap & design sprints | Friction research translated into a roadmap, validated in sprints | research | | PM & designer | ? | no | ? | ? | | not-started | |
-| ARV-01 | Arvan Cloud | Cloud platform redesign & IA | UI/UX and information-architecture redesign of the platform | product | | product designer | ? | yes (NPS) | ? | ? | | not-started | |
+| OTE-01 | OTeacher | Matchmaking redesign | Teacher–student matching redesigned from two-sided research | product | | PM & designer | partial | partial | partial | ? | | draft | [OTeacher/matchmaking-redesign/README.md](OTeacher/matchmaking-redesign/README.md) |
+| OTE-02 | OTeacher | Research → roadmap & design sprints | Friction research translated into a roadmap, validated in sprints | research | | PM & designer | yes | no | yes | ? | | draft | [OTeacher/product-roadmap-and-strategy/README.md](OTeacher/product-roadmap-and-strategy/README.md) |
+| OTE-03 | OTeacher | Panel redesign | Packages, wallet, financial report, profile, calendar and messenger panel — original pass plus an edit iteration | product | | Product designer | yes | no | yes | ? | | draft | [OTeacher/panel-redesign/README.md](OTeacher/panel-redesign/README.md) |
+| OTE-04 | OTeacher | Website redesign | "New website" named in the strategy deck; no confirmed Figma design page found yet | product | | Product designer | partial | no | no | ? | | draft | [OTeacher/website-redesign/README.md](OTeacher/website-redesign/README.md) |
+| OTE-05 | OTeacher | Education unit program | Teacher supervisory team, interview process and standards, upskilling classes | research | | PM & designer | partial | no | no | ? | | draft | [OTeacher/education-unit-program/README.md](OTeacher/education-unit-program/README.md) |
+| ARV-01 | Arvan Cloud | Cloud platform redesign & IA | UI/UX and information-architecture redesign of the platform | product | | product designer | ? | yes (NPS) | ? | yes | | not-started | |
 | ARV-02 | Arvan Cloud | Server-metrics dashboard research | Which server metrics users actually need, from behaviour data | research | | product designer | ? | ? | ? | ? | | not-started | |
 | BIO-01 | Biomaze | Website & education panel | Public site and the learning panel | product | | PM & designer | ? | ? | ? | ? | | not-started | |
 | BIO-02 | Biomaze | Design system | Component system that let developers ship fast | design-system | | PM & designer | ? | no | ? | ? | | not-started | |
 | DID-01 | Didestan | Video platform | Data-driven video platform; mid-fi prototypes on Material; Lean UX | product | | UI/UX designer | ? | ? | ? | ? | | not-started | |
-| A1P-01 | A1Paradise | Gamified microgames | Gamified microgames | product | | UI/UX designer | ? | no | ? | ? | | not-started | |
 | A1P-02 | A1Paradise | Desktop call app & WiFon B2C app | Desktop calling app and the WiFon consumer call app | product | | UI/UX designer | ? | no | ? | ? | | not-started | |
+| PRJ-01 | Freelance / Independent Projects | RP1 — Multi-Game Play-to-Earn Arena | Mobile play-to-earn arena aggregating HTML5 games under one competitive/economic layer | product | | Product designer & strategist | yes | no | yes | yes | | draft | [Projects/rp1-arena/README.md](Projects/rp1-arena/README.md) |
 
 Some Digikala rows will likely merge into one case study (e.g. DGK-01 as the umbrella with
 DGK-02…07 as chapters). Decide that when marking Featured.
@@ -85,8 +88,12 @@ industries. Change freely.
 > ❓ **Q3 — Confirm:** Anything missing? Projects outside these nine roles — side projects, concept
 > work, writing — belong here too if they might appear on the site.
 
+> ❓ **Q4 — Provide:** OTE-04 (`website-redesign`) has no confirmed Figma source page — supply a
+> node-id, or confirm it stays a thin placeholder file.
+
 ## Review checklist
 
 - [ ] Q1 — Featured + Priority set for 6–8 rows
 - [ ] Q2 — Figma / Metrics / Visuals filled for featured rows
 - [ ] Q3 — Missing projects added
+- [ ] Q4 — Figma source provided for OTE-04, or confirmed list-only

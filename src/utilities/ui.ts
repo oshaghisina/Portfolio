@@ -6,7 +6,20 @@ import { extendTailwindMerge } from 'tailwind-merge'
  * cannot tell `text-h2` (a size) from `text-foreground` (a colour) on its own and would drop
  * one of them — so the roles are declared here. Kept in sync by tests/int/tokens-build.
  */
-export const TYPE_ROLES = ['display', 'h1', 'h2', 'h3', 'lede', 'body', 'small', 'caption', 'eyebrow', 'button', 'num'] as const
+export const TYPE_ROLES = [
+  'display',
+  'h1',
+  'h2',
+  'h3',
+  'lede',
+  'body',
+  'small',
+  'caption',
+  'eyebrow',
+  'button',
+  'num',
+  'track-title',
+] as const
 
 const twMerge = extendTailwindMerge({
   extend: {

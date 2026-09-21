@@ -9,9 +9,33 @@ import { DEFAULT_LOCALE } from '@/utilities/locale'
  * configurable because marketing work ships campaigns, not apps.
  */
 export const SHIPPED_LABELS = {
-  shipped: { en: 'What shipped', fa: 'چه چیزی منتشر شد' },
-  changed: { en: 'What changed', fa: 'چه چیزی تغییر کرد' },
-  learned: { en: 'What we learned', fa: 'چه یاد گرفتیم' },
+  shipped: {
+    en: 'What shipped',
+    fa: 'چه چیزی منتشر شد',
+    ar: 'ما تم إطلاقه',
+    es: 'Qué se lanzó',
+    de: 'Was veröffentlicht wurde',
+    fr: 'Ce qui a été livré',
+    ja: '公開したもの',
+  },
+  changed: {
+    en: 'What changed',
+    fa: 'چه چیزی تغییر کرد',
+    ar: 'ما الذي تغيّر',
+    es: 'Qué cambió',
+    de: 'Was sich geändert hat',
+    fr: 'Ce qui a changé',
+    ja: '変更点',
+  },
+  learned: {
+    en: 'What we learned',
+    fa: 'چه یاد گرفتیم',
+    ar: 'ما تعلمناه',
+    es: 'Qué aprendimos',
+    de: 'Was wir gelernt haben',
+    fr: 'Ce que nous avons appris',
+    ja: '学んだこと',
+  },
 } as const satisfies Record<string, Record<Locale, string>>
 export type ShippedLabel = keyof typeof SHIPPED_LABELS
 

@@ -5,8 +5,9 @@ import Link from 'next/link'
 import React from 'react'
 
 import { ThemeToggle } from '@/providers/Theme/ThemeToggle'
-import { DEFAULT_LOCALE, LOCALES, isLocale, langAttrs } from '@/utilities/locale'
+import { langAttrs } from '@/utilities/locale'
 
+import { isPreviewLocale, PREVIEW_LOCALES } from './samples'
 import { Colour } from './sections/Colour'
 import { Controls } from './sections/Controls'
 import { Foundations } from './sections/Foundations'
@@ -28,7 +29,7 @@ type Args = { searchParams: Promise<{ lang?: string }> }
  */
 export default async function DesignPage({ searchParams }: Args) {
   const { lang } = await searchParams
-  const locale = isLocale(lang) ? lang : DEFAULT_LOCALE
+  const locale = isPreviewLocale(lang) ? lang : 'en'
   const json = loadTokens()
 
   return (
@@ -38,13 +39,13 @@ export default async function DesignPage({ searchParams }: Args) {
           <p className="eyebrow">Design system · pleurat.com-derived · v0</p>
           <div className="flex items-center gap-4">
             <nav aria-label="Preview language" className="flex items-center gap-1 index-code">
-              {LOCALES.map((l, i) => (
+              {PREVIEW_LOCALES.map((l, i) => (
                 <React.Fragment key={l}>
                   {i ? <span aria-hidden>·</span> : null}
                   <Link
                     aria-current={l === locale ? 'page' : undefined}
                     className={cn('px-1 hover:text-foreground', l === locale && 'text-brand')}
-                    href={l === DEFAULT_LOCALE ? '/design' : `/design?lang=${l}`}
+                    href={l === 'en' ? '/design' : `/design?lang=${l}`}
                   >
                     {l.toUpperCase()}
                   </Link>

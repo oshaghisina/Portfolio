@@ -1,7 +1,7 @@
 import React from 'react'
 
 import type { TokensFile } from '../../../../../scripts/docs/lib/tokens'
-import type { Locale } from '@/utilities/locale'
+import type { PreviewLocale } from '../samples'
 import { SAMPLES } from '../samples'
 import { rows } from '../tokens'
 import { Spec, Var } from './Spec'
@@ -21,7 +21,7 @@ const ROLE_CLASS: Record<string, string> = {
   num: 'text-num font-medium tabular-nums',
 }
 
-const SAMPLE: Record<string, (l: Locale) => string> = {
+const SAMPLE: Record<string, (l: PreviewLocale) => string> = {
   display: (l) => SAMPLES[l].lead,
   h1: (l) => `${SAMPLES[l].lead} ${SAMPLES[l].tail}`,
   h2: (l) => `${SAMPLES[l].lead} ${SAMPLES[l].tail}`,

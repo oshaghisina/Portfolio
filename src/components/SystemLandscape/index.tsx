@@ -4,7 +4,9 @@ import React from 'react'
 /**
  * Decorative "technical landscape" strip bridging Hero → Workbench and CTA → Footer — a thin
  * baseline, tick marks and a few mono labels. Purely presentational: no data, no interaction.
- * The system's second (and last) signature motif alongside the Workbench.
+ * The system's second (and last) signature motif alongside the Workbench. Below `sm` the labels
+ * go (four of them never fit a phone) and the strip clips inside its own box — baseline, ticks
+ * and the accent point stay.
  */
 export interface SystemLandscapeProps {
   labels?: string[]
@@ -14,7 +16,7 @@ export interface SystemLandscapeProps {
 const TICK_COUNT = 24
 
 export const SystemLandscape: React.FC<SystemLandscapeProps> = ({ className, labels = [] }) => (
-  <div aria-hidden className={cn('relative flex h-[4.75rem] items-end sm:h-24', className)}>
+  <div aria-hidden className={cn('relative flex h-14 items-end overflow-hidden sm:h-24', className)}>
     <div className="absolute inset-x-0 bottom-6 flex items-end gap-[3px]">
       {Array.from({ length: TICK_COUNT }).map((_, i) => (
         <span
@@ -26,7 +28,7 @@ export const SystemLandscape: React.FC<SystemLandscapeProps> = ({ className, lab
     </div>
     <div className="absolute inset-x-0 bottom-0 border-t border-line" />
     {labels.length ? (
-      <div className="absolute inset-x-0 bottom-8 flex justify-between">
+      <div className="absolute inset-x-0 bottom-8 hidden justify-between sm:flex">
         {labels.map((label) => (
           <span className="eyebrow text-ink-3" key={label}>
             {label}

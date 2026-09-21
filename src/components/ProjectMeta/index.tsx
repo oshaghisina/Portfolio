@@ -20,6 +20,11 @@ export type ProjectMetaValue = string | string[] | { href: string; label: string
 export const PROJECT_META_LABELS: Record<Locale, Record<ProjectMetaKey, string>> = {
   en: { company: 'Company', role: 'Role', period: 'Period', type: 'Type', tools: 'Tools', client: 'Client', link: 'Live' },
   fa: { company: 'شرکت', role: 'نقش', period: 'دوره', type: 'نوع', tools: 'ابزارها', client: 'کارفرما', link: 'نسخهٴ زنده' },
+  ar: { company: 'الشركة', role: 'الدور', period: 'الفترة', type: 'النوع', tools: 'الأدوات', client: 'العميل', link: 'الرابط' },
+  es: { company: 'Empresa', role: 'Rol', period: 'Período', type: 'Tipo', tools: 'Herramientas', client: 'Cliente', link: 'En vivo' },
+  de: { company: 'Unternehmen', role: 'Rolle', period: 'Zeitraum', type: 'Typ', tools: 'Werkzeuge', client: 'Kunde', link: 'Live' },
+  fr: { company: 'Entreprise', role: 'Rôle', period: 'Période', type: 'Type', tools: 'Outils', client: 'Client', link: 'En ligne' },
+  ja: { company: '会社', role: '役割', period: '期間', type: '種類', tools: 'ツール', client: 'クライアント', link: '公開ページ' },
 }
 
 export interface ProjectMetaProps {

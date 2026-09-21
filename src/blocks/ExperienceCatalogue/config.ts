@@ -39,12 +39,14 @@ export const ExperienceCatalogue: Block = {
         {
           name: 'role',
           type: 'text',
+          localized: true,
           required: true,
           admin: { description: 'e.g. "Designer / Marketer / BI developer · 2.5 yr"' },
         },
         {
           name: 'blurb',
           type: 'textarea',
+          localized: true,
           admin: { description: 'Optional one-line description' },
         },
       ],

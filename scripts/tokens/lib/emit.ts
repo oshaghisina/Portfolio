@@ -13,7 +13,11 @@ export const THEME_SELECTORS = {
   dark: "[data-theme='dark']",
 } as const
 export type ThemeName = keyof typeof THEME_SELECTORS
-export const FA_SELECTOR = ':lang(fa)'
+/** Locale token overrides (e.g. `font.fa.*`, `font.ar.*`) are emitted inside their own selector. */
+export const LOCALE_OVERRIDE_SELECTORS: Record<string, string> = {
+  fa: ':lang(fa)',
+  ar: ':lang(ar)',
+}
 
 // ---------------------------------------------------------------------------
 // Names
@@ -37,9 +41,12 @@ const RULES: Rule[] = [
   [/^breakpoint\.([a-z0-9-]+)$/, (m) => `--breakpoint-${m[1]}`],
 ]
 
-/** `font.fa.leading.body` → `font.leading.body` (Persian overrides reuse the base names). */
-export const baseOf = (path: string) => path.replace(/^([a-z]+)\.fa\./, '$1.')
-export const isFa = (path: string) => /^[a-z]+\.fa\./.test(path)
+const LOCALE_OVERRIDE_RE = new RegExp(`^([a-z]+)\\.(${Object.keys(LOCALE_OVERRIDE_SELECTORS).join('|')})\\.`)
+
+/** `font.fa.leading.body` → `font.leading.body` (locale overrides reuse the base names). */
+export const baseOf = (path: string) => path.replace(LOCALE_OVERRIDE_RE, '$1.')
+/** The override locale a path belongs to (e.g. `fa`), or null for a base token. */
+export const overrideLocale = (path: string): string | null => LOCALE_OVERRIDE_RE.exec(path)?.[2] ?? null
 export const themeOf = (path: string): ThemeName | null => {
   const m = /^color\.(light|dark)\./.exec(path)
   return m ? (m[1] as ThemeName) : null
@@ -164,7 +171,9 @@ export function emitThemeCss(json: TokensFile): string {
 
   const theme: string[] = []
   const scopes: Record<ThemeName, string[]> = { light: [], dark: [] }
-  const fa: string[] = []
+  const localeOverrides: Record<string, string[]> = Object.fromEntries(
+    Object.keys(LOCALE_OVERRIDE_SELECTORS).map((locale) => [locale, []]),
+  )
   const colorNames = new Set<string>()
 
   for (const e of entries) {
@@ -175,14 +184,16 @@ export function emitThemeCss(json: TokensFile): string {
       colorNames.add(role(e.path))
       continue
     }
-    if (isFa(e.path)) {
+    const locale = overrideLocale(e.path)
+    if (locale) {
       const base = baseOf(e.path)
       if (!has(base)) throw new Error(`tokens: ${e.path} overrides ${base}, which does not exist`)
-      fa.push(decl)
+      const bucket = localeOverrides[locale]!
+      bucket.push(decl)
       // Companion vars are resolved where declared, so the override must restate them.
       const m = /^font\.(leading|tracking)\.([a-z0-9-]+)$/.exec(base)
       if (m && has(`font.size.${m[2]}`))
-        fa.push(`--text-${m[2]}--${m[1] === 'leading' ? 'line-height' : 'letter-spacing'}: ${cssValue(e)};`)
+        bucket.push(`--text-${m[2]}--${m[1] === 'leading' ? 'line-height' : 'letter-spacing'}: ${cssValue(e)};`)
       continue
     }
     theme.push(decl)
@@ -212,7 +223,9 @@ export function emitThemeCss(json: TokensFile): string {
     `/* Colour utilities (bg-paper, text-ink-2, border-line …) read the live variable. */`,
     block('@theme inline', bridge),
     `/* Persian overrides — same variables, script-specific values (D-016). */`,
-    block(FA_SELECTOR, fa),
+    block(LOCALE_OVERRIDE_SELECTORS.fa!, localeOverrides.fa!),
+    `/* Arabic overrides — same variables; Vazirmatn already covers the Arabic subset. */`,
+    block(LOCALE_OVERRIDE_SELECTORS.ar!, localeOverrides.ar!),
   ]
     .filter(Boolean)
     .join('\n')

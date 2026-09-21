@@ -4,8 +4,14 @@ import React from 'react'
 
 import type { Locale } from '@/utilities/locale'
 
-export async function Header({ locale }: { locale: Locale }) {
-  const headerData = await getCachedGlobal('header', 1)()
+interface HeaderProps {
+  locale: Locale
+  logicalPath: string
+  readiness: Partial<Record<Locale, boolean>>
+}
 
-  return <HeaderClient data={headerData} locale={locale} />
+export async function Header({ locale, logicalPath, readiness }: HeaderProps) {
+  const headerData = await getCachedGlobal('header', locale, 1)()
+
+  return <HeaderClient data={headerData} locale={locale} logicalPath={logicalPath} readiness={readiness} />
 }

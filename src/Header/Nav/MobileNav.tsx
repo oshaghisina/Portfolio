@@ -10,6 +10,7 @@ import type { Header as HeaderType } from '@/payload-types'
 
 import { hrefFromLink } from '@/components/Link'
 import { Button } from '@/components/ui/button'
+import { isActivePath, localizeInternalHref, parseLocalePath } from '@/i18n/navigation'
 import type { Locale } from '@/utilities/locale'
 import { uiCopy } from '@/utilities/uiCopy'
 
@@ -100,9 +101,10 @@ export const MobileNav: React.FC<MobileNavProps> = ({ alwaysVisible = false, cla
 
         <nav className="flex-1 overflow-y-auto px-6 pt-10">
           <ol className="flex flex-col">
-            {navItems.map(({ link, labelFa }, i) => {
-              const href = hrefFromLink(link) ?? '#'
-              const active = pathname === href
+            {navItems.map(({ link }, i) => {
+              const logicalHref = hrefFromLink(link) ?? '#'
+              const active = isActivePath(parseLocalePath(pathname).logicalPath, logicalHref)
+              const href = localizeInternalHref(locale, logicalHref)
               return (
                 <li className="border-b border-line" key={i}>
                   <Link
@@ -116,7 +118,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({ alwaysVisible = false, cla
                     {...(link?.newTab ? { rel: 'noopener noreferrer', target: '_blank' } : {})}
                   >
                     <span className="index-code">{String(i + 1).padStart(2, '0')}</span>
-                    {locale === 'fa' && labelFa ? labelFa : link?.label}
+                    {link?.label}
                   </Link>
                 </li>
               )

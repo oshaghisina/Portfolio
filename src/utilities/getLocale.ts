@@ -1,10 +1,9 @@
-import { cookies } from 'next/headers'
+import { headers } from 'next/headers'
 
-import { DEFAULT_LOCALE, isLocale, LOCALE_COOKIE, type Locale } from './locale'
+import { DEFAULT_LOCALE, isLocale, LOCALE_HEADER, type Locale } from './locale'
 
-/** Server-only: resolves the visitor's locale preference from the `payload-locale` cookie. */
+/** Server-only: resolves the visitor's locale from the `x-locale` header `src/proxy.ts` sets. */
 export async function getLocale(): Promise<Locale> {
-  const store = await cookies()
-  const value = store.get(LOCALE_COOKIE)?.value
+  const value = (await headers()).get(LOCALE_HEADER)
   return isLocale(value) ? value : DEFAULT_LOCALE
 }

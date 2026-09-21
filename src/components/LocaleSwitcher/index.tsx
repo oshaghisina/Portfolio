@@ -1,0 +1,78 @@
+import { Globe } from 'lucide-react'
+import Link from 'next/link'
+import React from 'react'
+
+import { localePath } from '@/i18n/navigation'
+import { cn } from '@/utilities/ui'
+import { LOCALE_LABELS, LOCALES, type Locale } from '@/utilities/locale'
+import { switchToLanguageLabel, uiCopy } from '@/utilities/uiCopy'
+
+export interface LocaleSwitcherProps {
+  locale: Locale
+  /** The current page's logical (unprefixed) path, e.g. `/about` or `/`. */
+  logicalPath: string
+  /** Which locales have a publicly ready copy of the current logical page. */
+  readiness: Partial<Record<Locale, boolean>>
+  className?: string
+  /** `above` opens the list upward — for triggers near the bottom of a container (drawer foot). */
+  placement?: 'above' | 'below'
+}
+
+/**
+ * A native `<details>` disclosure — no extra JS state, free click-to-toggle and Escape-adjacent
+ * dismissal on blur — listing every other site locale. Preserves the current logical route when
+ * that locale's copy is ready; falls back to that locale's homepage otherwise, so the switcher
+ * never sends a visitor straight into a not-found page (D-009).
+ *
+ * Deliberately not `'use client'` and deliberately not using the `<Button>` component (which
+ * renders a real `<button>` — invalid nested inside `<summary>`, itself already an interactive
+ * disclosure trigger). The trigger's classes are inlined rather than pulled from
+ * `buttonVariants()`, since that helper lives in a `'use client'` module and this component must
+ * stay server-renderable (it's now rendered directly from server components — Header and Footer
+ * alike — not just from inside a client subtree).
+ */
+export const LocaleSwitcher: React.FC<LocaleSwitcherProps> = ({
+  className,
+  locale,
+  logicalPath,
+  placement = 'below',
+  readiness,
+}) => {
+  const label = uiCopy[locale].language
+
+  return (
+    <details className={cn('relative', className)}>
+      <summary
+        aria-label={label}
+        className="inline-flex size-(--size-control-height-sm) list-none items-center justify-center rounded-control text-foreground transition-colors duration-(--duration-fast) hover:bg-panel focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring [&::-webkit-details-marker]:hidden"
+        title={label}
+      >
+        <Globe aria-hidden className="size-4" />
+      </summary>
+      <ul
+        className={cn(
+          'absolute end-0 z-30 flex min-w-40 flex-col gap-1 rounded-panel border border-line bg-background p-2 shadow-md',
+          placement === 'above' ? 'bottom-full mb-2' : 'mt-2',
+        )}
+      >
+        {LOCALES.filter((l) => l !== locale).map((l) => {
+          const ready = l === 'en' || Boolean(readiness[l])
+          const href = localePath(l, ready ? logicalPath : '/')
+          const switchLabel = switchToLanguageLabel(locale, LOCALE_LABELS[l])
+          return (
+            <li key={l}>
+              <Link
+                aria-label={switchLabel}
+                className="block rounded-control px-2 py-1.5 text-small text-foreground hover:bg-panel"
+                href={href}
+                title={switchLabel}
+              >
+                {LOCALE_LABELS[l]}
+              </Link>
+            </li>
+          )
+        })}
+      </ul>
+    </details>
+  )
+}

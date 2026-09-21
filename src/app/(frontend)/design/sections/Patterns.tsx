@@ -10,7 +10,7 @@ import { SectionHeader } from '@/components/SectionHeader'
 import { ShippedList } from '@/components/ShippedList'
 import { TwoTone } from '@/components/TwoTone'
 import { MobileNav } from '@/Header/Nav/MobileNav'
-import type { Locale } from '@/utilities/locale'
+import type { PreviewLocale } from '../samples'
 import { SAMPLES } from '../samples'
 import { Spec, Var } from './Spec'
 
@@ -25,7 +25,7 @@ const Demo: React.FC<{ title: string; ds: string; note?: string; children: React
   </div>
 )
 
-export const Patterns: React.FC<{ locale: Locale }> = ({ locale }) => {
+export const Patterns: React.FC<{ locale: PreviewLocale }> = ({ locale }) => {
   const s = SAMPLES[locale]
   const header = {
     id: 0,

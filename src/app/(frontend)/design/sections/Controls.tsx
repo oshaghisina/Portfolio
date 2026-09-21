@@ -2,14 +2,14 @@ import React from 'react'
 
 import { Button } from '@/components/ui/button'
 import { Tag, TagList } from '@/components/Tag'
-import type { Locale } from '@/utilities/locale'
+import type { PreviewLocale } from '../samples'
 import { SAMPLES } from '../samples'
 import { Spec, Var } from './Spec'
 
 const VARIANTS = ['default', 'outline', 'secondary', 'ghost', 'link', 'destructive'] as const
 const SIZES = ['sm', 'default', 'lg'] as const
 
-export const Controls: React.FC<{ locale: Locale }> = ({ locale }) => {
+export const Controls: React.FC<{ locale: PreviewLocale }> = ({ locale }) => {
   const s = SAMPLES[locale]
   return (
     <Spec

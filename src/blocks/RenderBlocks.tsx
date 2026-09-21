@@ -1,37 +1,55 @@
 import React, { Fragment } from 'react'
 
 import type { Page } from '@/payload-types'
+import type { Locale } from '@/utilities/locale'
 
 import { ArchiveBlock } from '@/blocks/ArchiveBlock/Component'
 import { CallToActionBlock } from '@/blocks/CallToAction/Component'
-import { CapabilitiesBlock } from '@/blocks/Capabilities/Component'
+import { CareerJourneyBlock } from '@/blocks/CareerJourney/Component'
 import { ContentBlock } from '@/blocks/Content/Component'
 import { ExperienceCatalogueBlock } from '@/blocks/ExperienceCatalogue/Component'
 import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { MetricsStripBlock } from '@/blocks/MetricsStrip/Component'
+import { NowSectionBlock } from '@/blocks/NowSection/Component'
+import { PersonalSideBlock } from '@/blocks/PersonalSide/Component'
+import { PrinciplesBlock } from '@/blocks/Principles/Component'
+import { ProjectArchiveBlock } from '@/blocks/ProjectArchive/Component'
 import { SelectedWorkBlock } from '@/blocks/SelectedWork/Component'
+import { TeamProcessBlock } from '@/blocks/TeamProcess/Component'
+import { ThinkingMapBlock } from '@/blocks/ThinkingMap/Component'
+import { TracksBlock } from '@/blocks/Tracks/Component.client'
 import { WorkflowStagesBlock } from '@/blocks/WorkflowStages/Component'
 import { WorkspaceBlock } from '@/blocks/Workspace/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
-  capabilities: CapabilitiesBlock,
+  careerJourney: CareerJourneyBlock,
   content: ContentBlock,
-  cta: CallToActionBlock,
   experienceCatalogue: ExperienceCatalogueBlock,
+  cta: CallToActionBlock,
   formBlock: FormBlock,
   mediaBlock: MediaBlock,
   metricsStrip: MetricsStripBlock,
+  nowSection: NowSectionBlock,
+  personalSide: PersonalSideBlock,
+  principles: PrinciplesBlock,
+  projectArchive: ProjectArchiveBlock,
   selectedWork: SelectedWorkBlock,
+  teamProcess: TeamProcessBlock,
+  thinkingMap: ThinkingMapBlock,
+  tracks: TracksBlock,
   workflowStages: WorkflowStagesBlock,
   workspace: WorkspaceBlock,
 }
 
 export const RenderBlocks: React.FC<{
   blocks: Page['layout'][0][]
+  /** True on the homepage, whose `.canvas` ancestor supplies the width; elsewhere blocks bring their own `.container`. */
+  disableInnerContainer?: boolean
+  locale: Locale
 }> = (props) => {
-  const { blocks } = props
+  const { blocks, disableInnerContainer = false, locale } = props
 
   const hasBlocks = blocks && Array.isArray(blocks) && blocks.length > 0
 
@@ -48,7 +66,7 @@ export const RenderBlocks: React.FC<{
               return (
                 <div className="my-block" key={index}>
                   {/* @ts-expect-error there may be some mismatch between the expected types here */}
-                  <Block {...block} disableInnerContainer />
+                  <Block {...block} disableInnerContainer={disableInnerContainer} locale={locale} />
                 </div>
               )
             }

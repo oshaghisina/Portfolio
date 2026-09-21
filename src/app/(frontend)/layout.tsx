@@ -17,6 +17,9 @@ import { draftMode } from 'next/headers'
 import './globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
 import { getLocale } from '@/utilities/getLocale'
+import { getPathname } from '@/utilities/getPathname'
+import { getLocaleReadinessMap } from '@/i18n/contentReady'
+import { parseLocalePath } from '@/i18n/navigation'
 import { langAttrs } from '@/utilities/locale'
 
 // Persian partner face (DS-04, D-016). Not preloaded: English pages never use it; a
@@ -31,6 +34,9 @@ const vazirmatn = Vazirmatn({
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { isEnabled } = await draftMode()
   const locale = await getLocale()
+  const pathname = await getPathname()
+  const { logicalPath } = parseLocalePath(pathname)
+  const readiness = await getLocaleReadinessMap(logicalPath)
 
   return (
     <html
@@ -51,9 +57,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             }}
           />
 
-          <Header locale={locale} />
+          <Header locale={locale} logicalPath={logicalPath} readiness={readiness} />
           {children}
-          <Footer locale={locale} />
+          <Footer locale={locale} logicalPath={logicalPath} readiness={readiness} />
         </Providers>
       </body>
     </html>

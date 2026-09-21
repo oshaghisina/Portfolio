@@ -396,6 +396,22 @@
           }
         }
       },
+      "track-accent": {
+        "$description": "Warm construction-orange accent for the Tracks section — distinct from warning (amber) and danger (red).",
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.72,
+            0.16,
+            45
+          ]
+        },
+        "$extensions": {
+          "com.sinaoshaghi.docs": {
+            "origin": "manual"
+          }
+        }
+      },
       "warning": {
         "$description": "Warning banner tint.",
         "$value": {
@@ -799,6 +815,22 @@
           }
         }
       },
+      "track-accent": {
+        "$description": "Warm construction-orange accent for the Tracks section — distinct from warning (amber) and danger (red).",
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.64,
+            0.19,
+            45
+          ]
+        },
+        "$extensions": {
+          "com.sinaoshaghi.docs": {
+            "origin": "manual"
+          }
+        }
+      },
       "warning": {
         "$description": "Warning banner tint.",
         "$value": {
@@ -819,6 +851,193 @@
   },
   "font": {
     "$description": "Two type roles (sans for reading, mono for labels/codes) plus a Persian partner face. Sizes are roles, not steps; fluid ones are {min, vw, max}. `font.fa.*` overrides are emitted inside :lang(fa).",
+    "ar": {
+      "$description": "Arabic overrides: same variable names, emitted inside :lang(ar). Reuses the fa-tuned scale (taller leading, no negative tracking, no uppercase) as a starting default; Vazirmatn already covers the Arabic subset.",
+      "family": {
+        "$type": "fontFamily",
+        "sans": {
+          "$description": "--font-sans becomes the Arabic face inside :lang(ar).",
+          "$value": "{font.family.sans-fa}",
+          "$extensions": {
+            "com.sinaoshaghi.docs": {
+              "item": "DS-04",
+              "origin": "manual"
+            }
+          }
+        }
+      },
+      "leading": {
+        "$type": "number",
+        "body": {
+          "$type": "number",
+          "$value": 1.75,
+          "$extensions": {
+            "com.sinaoshaghi.docs": {
+              "item": "DS-03",
+              "origin": "manual"
+            }
+          }
+        },
+        "display": {
+          "$type": "number",
+          "$value": 1.15,
+          "$extensions": {
+            "com.sinaoshaghi.docs": {
+              "item": "DS-03",
+              "origin": "manual"
+            }
+          }
+        },
+        "h1": {
+          "$type": "number",
+          "$value": 1.2,
+          "$extensions": {
+            "com.sinaoshaghi.docs": {
+              "item": "DS-03",
+              "origin": "manual"
+            }
+          }
+        },
+        "h2": {
+          "$type": "number",
+          "$value": 1.25,
+          "$extensions": {
+            "com.sinaoshaghi.docs": {
+              "item": "DS-03",
+              "origin": "manual"
+            }
+          }
+        },
+        "h3": {
+          "$type": "number",
+          "$value": 1.4,
+          "$extensions": {
+            "com.sinaoshaghi.docs": {
+              "item": "DS-03",
+              "origin": "manual"
+            }
+          }
+        },
+        "lede": {
+          "$type": "number",
+          "$value": 1.6,
+          "$extensions": {
+            "com.sinaoshaghi.docs": {
+              "item": "DS-03",
+              "origin": "manual"
+            }
+          }
+        },
+        "small": {
+          "$type": "number",
+          "$value": 1.7,
+          "$extensions": {
+            "com.sinaoshaghi.docs": {
+              "item": "DS-03",
+              "origin": "manual"
+            }
+          }
+        }
+      },
+      "size": {
+        "$type": "dimension",
+        "eyebrow": {
+          "$description": "13 px — Arabic at 12 px is unreadable.",
+          "$type": "dimension",
+          "$value": {
+            "unit": "rem",
+            "value": 0.8125
+          },
+          "$extensions": {
+            "com.sinaoshaghi.docs": {
+              "item": "DS-09",
+              "origin": "manual"
+            }
+          }
+        }
+      },
+      "tracking": {
+        "$type": "dimension",
+        "display": {
+          "$type": "dimension",
+          "$value": {
+            "unit": "em",
+            "value": 0
+          },
+          "$extensions": {
+            "com.sinaoshaghi.docs": {
+              "item": "DS-03",
+              "origin": "manual"
+            }
+          }
+        },
+        "eyebrow": {
+          "$type": "dimension",
+          "$value": {
+            "unit": "em",
+            "value": 0
+          },
+          "$extensions": {
+            "com.sinaoshaghi.docs": {
+              "item": "DS-09",
+              "origin": "manual"
+            }
+          }
+        },
+        "h1": {
+          "$type": "dimension",
+          "$value": {
+            "unit": "em",
+            "value": 0
+          },
+          "$extensions": {
+            "com.sinaoshaghi.docs": {
+              "item": "DS-03",
+              "origin": "manual"
+            }
+          }
+        },
+        "h2": {
+          "$type": "dimension",
+          "$value": {
+            "unit": "em",
+            "value": 0
+          },
+          "$extensions": {
+            "com.sinaoshaghi.docs": {
+              "item": "DS-03",
+              "origin": "manual"
+            }
+          }
+        },
+        "h3": {
+          "$type": "dimension",
+          "$value": {
+            "unit": "em",
+            "value": 0
+          },
+          "$extensions": {
+            "com.sinaoshaghi.docs": {
+              "item": "DS-03",
+              "origin": "manual"
+            }
+          }
+        },
+        "num": {
+          "$type": "dimension",
+          "$value": {
+            "unit": "em",
+            "value": 0
+          },
+          "$extensions": {
+            "com.sinaoshaghi.docs": {
+              "item": "DS-03",
+              "origin": "manual"
+            }
+          }
+        }
+      }
+    },
     "fa": {
       "$description": "Persian overrides: same variable names, emitted inside :lang(fa). Persian needs taller leading, no negative tracking, no uppercase, and a larger eyebrow floor.",
       "family": {
@@ -1486,6 +1705,32 @@
             "item": "DS-03",
             "origin": "manual"
           }
+        }
+      },
+      "track-title": {
+        "$extensions": {
+          "com.sinaoshaghi.docs": {
+            "fluid": true,
+            "origin": "manual"
+          }
+        },
+        "max": {
+          "$type": "dimension",
+          "$value": {
+            "unit": "rem",
+            "value": 2
+          }
+        },
+        "min": {
+          "$type": "dimension",
+          "$value": {
+            "unit": "rem",
+            "value": 1.375
+          }
+        },
+        "vw": {
+          "$type": "number",
+          "$value": 2.21
         }
       }
     },

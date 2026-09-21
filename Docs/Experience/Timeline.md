@@ -42,6 +42,7 @@ Rows are in resume order. **Start / End / Approx?** are yours; **Computed durati
 | 7 | Biomaze (`Biomaze`) | Product Manager & designer | part-time | — | — | — | 3 yr | — | — | — |
 | 8 | Didestan (`Didestan`) | UI/UX designer | full-time | — | — | — | 8 mos | — | — | — |
 | 9 | A1Paradise (`A1Paradise`) | UI/UX designer | full-time | — | — | — | 1.2 yr | — | — | ❓ Q4 |
+| 10 | Freelance / Independent Projects (`Projects`) | UI/UX designer | freelance | — | — | — | — | — | — | — |
 <!-- index:end -->
 
 ## Reconciling the "10 yr" header

@@ -10,20 +10,58 @@ export const Footer: GlobalConfig = {
   },
   fields: [
     {
+      name: 'description',
+      type: 'textarea',
+      admin: { description: 'Short blurb under the wordmark.' },
+      localized: true,
+    },
+    {
+      name: 'social',
+      type: 'array',
+      maxRows: 4,
+      fields: [
+        {
+          type: 'row',
+          fields: [
+            {
+              name: 'kind',
+              type: 'select',
+              admin: { width: '50%' },
+              options: [
+                { label: 'LinkedIn', value: 'linkedin' },
+                { label: 'Email', value: 'email' },
+              ],
+              required: true,
+            },
+            {
+              name: 'href',
+              type: 'text',
+              admin: { description: 'Full URL, or mailto:.', width: '50%' },
+              required: true,
+            },
+          ],
+        },
+        {
+          name: 'ariaLabel',
+          type: 'text',
+          localized: true,
+          required: true,
+        },
+      ],
+    },
+    {
+      name: 'pagesTitle',
+      type: 'text',
+      defaultValue: 'Pages',
+      localized: true,
+    },
+    {
       name: 'navItems',
       type: 'array',
       fields: [
         link({
           appearances: false,
         }),
-        {
-          name: 'labelFa',
-          type: 'text',
-          admin: {
-            description:
-              'Persian label shown when the language toggle is set to فارسی. Falls back to the English label above if left blank.',
-          },
-        },
       ],
       maxRows: 6,
       admin: {
@@ -33,8 +71,74 @@ export const Footer: GlobalConfig = {
         },
       },
     },
+    {
+      name: 'navLabel',
+      type: 'text',
+      admin: { description: 'aria-label for the nav; defaults to "Footer navigation" if left blank.' },
+      localized: true,
+    },
+    {
+      name: 'about',
+      type: 'group',
+      fields: [
+        { name: 'title', type: 'text', defaultValue: 'About', localized: true },
+        { name: 'text', type: 'textarea', localized: true },
+        { name: 'linkLabel', type: 'text', localized: true },
+        { name: 'linkHref', type: 'text' },
+      ],
+    },
+    {
+      name: 'contact',
+      type: 'group',
+      fields: [
+        { name: 'title', type: 'text', defaultValue: 'Get in touch', localized: true },
+        { name: 'text', type: 'textarea', localized: true },
+        { name: 'linkLabel', type: 'text', localized: true },
+        {
+          name: 'linkHref',
+          type: 'text',
+          admin: { description: 'e.g. /contact or mailto:you@example.com' },
+        },
+      ],
+    },
+    {
+      name: 'metaBlock',
+      type: 'array',
+      maxRows: 6,
+      fields: [
+        {
+          type: 'row',
+          fields: [
+            { name: 'key', type: 'text', admin: { width: '50%' }, localized: true, required: true },
+            { name: 'value', type: 'text', admin: { width: '50%' }, localized: true, required: true },
+          ],
+        },
+      ],
+    },
+    {
+      name: 'copyright',
+      type: 'text',
+      localized: true,
+    },
+    {
+      name: 'legalLinks',
+      type: 'array',
+      fields: [
+        link({
+          appearances: false,
+        }),
+      ],
+      maxRows: 4,
+    },
   ],
   hooks: {
     afterChange: [revalidateFooter],
+  },
+  versions: {
+    drafts: {
+      // A locale's nav labels aren't ready just because English's are (D-009); requires
+      // `experimental.localizeStatus` in payload.config.ts.
+      localizeStatus: true,
+    },
   },
 }

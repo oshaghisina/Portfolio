@@ -71,7 +71,7 @@ describe('SectionHeader (DS-12)', () => {
   it('renders the tag as a real element and nothing when empty', () => {
     const { container, rerender } = render(<SectionHeader lead="Work" tag="By the numbers" />)
     expect(screen.getByText('By the numbers').tagName).toBe('SPAN')
-    expect(screen.getByText('By the numbers').className).toContain('start-0')
+    expect(screen.getByText('By the numbers').className).toContain('bg-brand')
     rerender(<SectionHeader />)
     expect(container.innerHTML).toBe('')
   })
@@ -117,14 +117,20 @@ describe('ExperienceGrid (DS-20)', () => {
 
 describe('MetricsStrip block (DS-18)', () => {
   const metrics = Array.from({ length: 5 }, (_, i) => ({ id: String(i), value: `${i}%`, caption: `c${i}`, source: 's' }))
-  it('caps at four and picks the column class from the count', () => {
+  it('caps at four and lays them out as a four-column grid from lg', () => {
     const { container } = render(<MetricsStripBlock disableInnerContainer metrics={metrics} />)
-    expect(container.querySelectorAll('dd').length).toBe(8) // value + source per metric
+    expect(container.querySelectorAll('dt').length).toBe(4)
+    expect(container.querySelectorAll('dd').length).toBe(4) // one value per metric
     expect(container.querySelector('dl')!.className).toContain('lg:grid-cols-4')
   })
-  it('uses three columns for a trio', () => {
+  it('gives only the first row the accent fill in the phone composition', () => {
     const { container } = render(<MetricsStripBlock disableInnerContainer metrics={metrics.slice(0, 3)} />)
-    expect(container.querySelector('dl')!.className).toContain('sm:grid-cols-3')
+    const rows = Array.from(container.querySelectorAll('dl > div'))
+    expect(rows).toHaveLength(3)
+    const phoneBars = rows.map((row) => row.querySelector('span.sm\\:hidden')!)
+    expect(phoneBars[0].className).toContain('bg-brand')
+    expect(phoneBars[1].className).not.toContain('bg-brand')
+    expect(phoneBars[2].className).not.toContain('bg-brand')
   })
 })
 

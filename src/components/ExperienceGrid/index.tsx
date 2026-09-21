@@ -7,7 +7,8 @@ import React from 'react'
  * DS-20 typographic employer grid: names set in type, no logos — the answer to the
  * `logoWall` candidate. Presentational; the `experienceGrid` block arrives with the
  * `experiences` collection. Compact 5-up matrix on desktop — whitespace, not a ruled
- * grid, does the separating; a hairline divider only appears in the single-column mobile stack.
+ * grid, does the separating; on phones each employer is one editorial entry (no index, a soft
+ * hairline between entries).
  */
 export interface ExperienceGridItem {
   index: string
@@ -30,13 +31,13 @@ export const ExperienceGrid: React.FC<ExperienceGridProps> = ({ className, items
   return (
     <ol
       className={cn(
-        'grid grid-cols-1 gap-x-6 gap-y-8 divide-y divide-line sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-5',
+        'grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-5',
         className,
       )}
     >
       {items.map((item) => (
-        <li className="flex flex-col gap-2 pt-6 first:pt-0 sm:pt-0" key={item.index + item.name}>
-          <span className="index-code">{item.index}</span>
+        <li className="flex min-w-0 flex-col gap-2" key={item.index + item.name}>
+          <span className="index-code hidden sm:inline">{item.index}</span>
           <h3 className="text-h3 tracking-h3 font-medium text-foreground">
             {item.href ? (
               <Link className="hover:text-brand transition-colors duration-(--duration-fast)" href={item.href}>

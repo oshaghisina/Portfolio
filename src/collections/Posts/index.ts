@@ -69,6 +69,7 @@ export const Posts: CollectionConfig<'posts'> = {
     {
       name: 'title',
       type: 'text',
+      localized: true,
       required: true,
     },
     {
@@ -84,6 +85,7 @@ export const Posts: CollectionConfig<'posts'> = {
             {
               name: 'content',
               type: 'richText',
+              localized: true,
               editor: lexicalEditor({
                 features: ({ rootFeatures }) => {
                   return [
@@ -226,6 +228,9 @@ export const Posts: CollectionConfig<'posts'> = {
       autosave: {
         interval: 100, // We set this interval for optimal live preview
       },
+      // A locale can't be publicly ready just because English is published (D-009); requires
+      // `experimental.localizeStatus` in payload.config.ts.
+      localizeStatus: true,
       schedulePublish: true,
     },
     maxPerDoc: 50,

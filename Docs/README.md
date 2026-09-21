@@ -20,7 +20,7 @@ any value the site will display carries a `<key>_fa` twin (see Conventions).
 | [Benchmarks/Design/](Benchmarks/Design/) | One file per site: how the **design** expresses a personal brand (typography, color, layout, motion, storytelling) |
 | [Benchmarks/Rubric.md](Benchmarks/Rubric.md) | What `relevance` and each `scores.*` criterion mean (1 / 3 / 5 anchors) |
 | [Benchmarks/Synthesis.md](Benchmarks/Synthesis.md) | Patterns across benchmarks and the resulting **we will / we won't** decisions for Sina's site |
-| [Experience/](Experience/) | One folder per company, one file per project (case study); Figma exports in `assets/` |
+| [Experience/](Experience/) | One folder per company, one folder per project (case study) inside it; Figma exports in that project's own `assets/` |
 | [Experience/Timeline.md](Experience/Timeline.md) | Real start/end dates per role — the source for every duration on the site |
 | [Experience/Inventory.md](Experience/Inventory.md) | Every candidate project across all companies, with featured/priority flags |
 | [Design-System/](Design-System/) | Design-system inspiration: one file per cross-benchmark item (`DS-NN-<slug>.md`) with measured anatomy, take and adoption; DTCG token files in `tokens/`, capture manifests in `sources/` |
@@ -88,9 +88,9 @@ Send the project name, company, and Figma link(s). I:
 
 1. Check it against [Inventory.md](Experience/Inventory.md) (featured? priority?).
 2. Read the Figma file via the Figma MCP (screens, flows, components).
-3. Write `Experience/<Company>/<project-slug>.md` from `Experience/_template.md` as a case
-   study: context → problem → role → process → solution → outcome → learnings.
-4. Export key frames to `Experience/<Company>/assets/<project-slug>/`.
+3. Write `Experience/<Company>/<project-slug>/README.md` from `Experience/_template.md` as a
+   case study: context → problem → role → process → solution → outcome → learnings.
+4. Export key frames to `Experience/<Company>/<project-slug>/assets/`.
 5. Run `pnpm docs:index` so the company page and the Experience index update.
 
 ## Tooling

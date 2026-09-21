@@ -1,5 +1,7 @@
 import type { RequiredDataFromCollectionSlug } from 'payload'
 
+import type { Project } from '@/payload-types'
+
 import { heading, paragraph, richText } from './lexical-helpers'
 
 type PageLayout = RequiredDataFromCollectionSlug<'pages'>['layout']
@@ -49,7 +51,12 @@ export const heroLinks: NonNullable<PageHero['links']> = [
   },
 ]
 
-export const homeLayout: PageLayout = [
+/**
+ * The homepage layout. `project` is the Featured Project record — a database id when seeding,
+ * the full static document for the no-database fallback — so the block carries no project copy
+ * of its own (D-021).
+ */
+export const buildHomeLayout = ({ project }: { project: string | Project }): PageLayout => [
   {
     blockName: 'Workbench',
     blockType: 'workspace',
@@ -83,19 +90,33 @@ export const homeLayout: PageLayout = [
     ],
   },
   {
-    blockName: 'Primary Focus',
-    blockType: 'capabilities',
+    blockName: 'Tracks',
+    blockType: 'tracks',
     sectionHeader: {
-      tag: 'Focus',
-      lead: 'What I',
-      tail: 'bring',
+      tag: 'Tracks',
+      lead: 'Primarily',
+      tail: 'focused on',
+      lede: 'Ten years across product design, day-to-day AI tooling, and the systems that hold it together.',
     },
-    groups: [
+    tracks: [
       {
-        index: '01',
-        title: 'Product, design and growth — in one person',
+        key: 'productDesign',
+        title: 'Product Design',
+        experience: '10 yrs',
         description:
-          'Product ownership and roadmapping, interaction design and design systems, research and testing, and the growth and BI work that proves it — carried by one person from insight to measurable outcome, instead of handed off between three roles.',
+          'Product ownership and roadmapping, interaction design, and the research that proves what shipped actually worked.',
+      },
+      {
+        key: 'aiWorkflow',
+        title: 'AI Workflow',
+        description:
+          'Day-to-day work runs through Cursor and Claude, plus the analytics stack — GA4, Amplitude, Search Console — that keeps decisions instrumented.',
+      },
+      {
+        key: 'designSystems',
+        title: 'Design Systems',
+        description:
+          'Built a design system at Biomaze that let developers ship fast — the product became the first mover in its category.',
       },
     ],
   },
@@ -104,8 +125,8 @@ export const homeLayout: PageLayout = [
     blockType: 'metricsStrip',
     sectionHeader: {
       tag: 'Proof',
-      lead: 'By the',
-      tail: 'numbers',
+      lead: 'Ten years,',
+      tail: 'by the numbers.',
     },
     metrics: [
       {
@@ -129,9 +150,10 @@ export const homeLayout: PageLayout = [
     blockName: 'AI & Daily Tooling',
     blockType: 'workflowStages',
     sectionHeader: {
-      tag: 'Tooling',
-      lead: 'Tools &',
-      tail: 'AI workflow',
+      tag: 'AI / Daily',
+      lead: 'AI is part of how I',
+      tail: 'design & build, every day.',
+      lede: 'Research, synthesis, prototyping and measurement — one connected working loop.',
     },
     stages: [
       {
@@ -161,8 +183,9 @@ export const homeLayout: PageLayout = [
     blockType: 'experienceCatalogue',
     sectionHeader: {
       tag: 'Experience',
-      lead: '10 years,',
-      tail: 'nine roles',
+      lead: "Where I've",
+      tail: 'worked',
+      lede: 'Selected roles across product, design, growth and technical collaboration.',
     },
     items: [
       {
@@ -230,16 +253,7 @@ export const homeLayout: PageLayout = [
       tail: 'project',
       lede: 'One project from the range — product, growth and research across nine companies.',
     },
-    items: [
-      {
-        title: 'Digital Gold — product vision & growth',
-        category: 'Product · Growth',
-        role: 'Designer, Marketer, BI developer',
-        featured: true,
-        summary:
-          "Defined the product vision, features and growth strategy for Digikala's gold-trading product — from campaigns and segmentation to the BI dashboards that tracked them.",
-      },
-    ],
+    project,
   },
   {
     blockName: 'Contact',

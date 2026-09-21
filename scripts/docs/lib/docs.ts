@@ -62,11 +62,11 @@ export function classify(rel: string): Omit<DocRef, 'file'> | null {
       return { rel, kind: 'benchmark', benchmarkType: type as BenchmarkType }
     }
   }
-  if (parts[0] === 'Experience' && parts.length === 3) {
-    const company = parts[1]
-    return base === 'README.md'
-      ? { rel, kind: 'experience', company }
-      : { rel, kind: 'project', company }
+  if (parts[0] === 'Experience' && parts.length === 3 && base === 'README.md') {
+    return { rel, kind: 'experience', company: parts[1] }
+  }
+  if (parts[0] === 'Experience' && parts.length === 4 && base === 'README.md') {
+    return { rel, kind: 'project', company: parts[1] }
   }
   if (parts[0] === 'Design-System') {
     // tokens/ and sources/ hold JSON; a stray .md there is not a doc we manage

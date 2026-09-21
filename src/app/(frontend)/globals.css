@@ -30,10 +30,11 @@
     @apply bg-background text-foreground font-sans text-body min-h-screen flex flex-col;
   }
 
-  /* Preflight sets font-family once on <html>; a Persian subtree must re-apply it so the
-     --font-sans override from theme.css (:lang(fa)) takes effect. Attribute selector on
-     purpose: it fires at the subtree root only and leaves .font-mono children alone. */
-  [lang='fa'] {
+  /* Preflight sets font-family once on <html>; a Persian or Arabic subtree must re-apply it so
+     the --font-sans override from theme.css (:lang(fa)/:lang(ar)) takes effect. Attribute
+     selector on purpose: it fires at the subtree root only and leaves .font-mono children alone. */
+  [lang='fa'],
+  [lang='ar'] {
     font-family: var(--font-sans);
   }
 
@@ -95,11 +96,23 @@
   }
 
   /* Homepage-only narrow canvas (~74-78vw at lg+) with hairline "ledger" rails.
-     Deliberately separate from .container, which every other route keeps using untouched. */
+     Deliberately separate from .container, which every other route keeps using untouched.
+     Phones get their own frame: ~8px of outside breathing room, faint rails, ~12px inner inset;
+     the tablet/desktop behaviour returns from md. */
   .canvas {
-    width: 100%;
-    margin-inline: auto;
-    padding-inline: var(--spacing-gutter);
+    width: auto;
+    margin-inline: 0.5rem;
+    padding-inline: 0.75rem;
+    border-inline: 1px solid var(--line-soft);
+  }
+
+  @variant md {
+    .canvas {
+      width: 100%;
+      margin-inline: auto;
+      padding-inline: var(--spacing-gutter);
+      border-inline: 0;
+    }
   }
 
   @variant lg {
@@ -119,11 +132,24 @@
       transparent 2.5rem
     );
   }
+
+  /* Tracks-section-only ruled paper: same texture as .home-ruled-paper, denser repeat — scoped
+     to that one section, never strengthens the page-wide separators above. */
+  .tracks-ruled-paper {
+    background-image: repeating-linear-gradient(
+      to bottom,
+      var(--line-soft) 0,
+      var(--line-soft) 1px,
+      transparent 1px,
+      transparent 0.875rem
+    );
+  }
 }
 
 /* DS-09 — mono eyebrow caps. Readable meta (role, year, client): ink-2 at the 12px floor.
-   Persian: the size/tracking differences arrive through the :lang(fa) variables; only the
-   uppercase has to go, and the label falls back to the Persian sans. */
+   Persian/Arabic: the size/tracking differences arrive through the :lang(fa)/:lang(ar)
+   variables; only the uppercase has to go (neither script has case), and the label falls back
+   to the shared Persian/Arabic sans (Vazirmatn covers both). */
 @utility eyebrow {
   font-family: var(--font-mono);
   font-size: var(--text-eyebrow);
@@ -133,7 +159,8 @@
   text-transform: uppercase;
   color: var(--ink-2);
 
-  &:lang(fa) {
+  &:lang(fa),
+  &:lang(ar) {
     text-transform: none;
     font-family: var(--font-sans-fa);
   }

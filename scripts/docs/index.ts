@@ -97,10 +97,16 @@ function loadCompanies(): Company[] {
   return companyDirs().map((dir) => {
     const full = path.join(EXPERIENCE_DIR, dir)
     const projects = fs
-      .readdirSync(full)
-      .filter((f) => f.endsWith('.md') && f !== 'README.md' && !f.startsWith('_'))
+      .readdirSync(full, { withFileTypes: true })
+      .filter(
+        (e) => e.isDirectory() && e.name !== 'assets' && fs.existsSync(path.join(full, e.name, 'README.md')),
+      )
+      .map((e) => e.name)
       .sort()
-      .map((f) => ({ file: f, data: readDoc(path.join(full, f)).data }))
+      .map((slug) => ({
+        file: `${slug}/README.md`,
+        data: readDoc(path.join(full, slug, 'README.md')).data,
+      }))
     return { dir, data: readDoc(path.join(full, 'README.md')).data, projects }
   })
 }

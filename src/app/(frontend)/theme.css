@@ -49,6 +49,7 @@
   --text-small: 0.9375rem;
   --text-small--line-height: 1.5;
   --text-small--letter-spacing: 0em;
+  --text-track-title: clamp(1.375rem, 2.21vw, 2rem);
   --tracking-body: 0em;
   --tracking-button: 0em;
   --tracking-caption: 0em;
@@ -127,6 +128,7 @@
   --secondary: var(--panel);
   --secondary-foreground: var(--ink);
   --success: oklch(72% 0.12 155);
+  --track-accent: oklch(64% 0.19 45);
   --warning: oklch(80% 0.13 80);
 }
 
@@ -162,6 +164,7 @@
   --secondary: var(--panel);
   --secondary-foreground: var(--ink);
   --success: oklch(60% 0.12 155);
+  --track-accent: oklch(72% 0.16 45);
   --warning: oklch(70% 0.12 80);
 }
 
@@ -198,11 +201,44 @@
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-success: var(--success);
+  --color-track-accent: var(--track-accent);
   --color-warning: var(--warning);
 }
 
 /* Persian overrides — same variables, script-specific values (D-016). */
 :lang(fa) {
+  --font-sans: var(--font-sans-fa);
+  --leading-body: 1.75;
+  --text-body--line-height: 1.75;
+  --leading-display: 1.15;
+  --text-display--line-height: 1.15;
+  --leading-h1: 1.2;
+  --text-h1--line-height: 1.2;
+  --leading-h2: 1.25;
+  --text-h2--line-height: 1.25;
+  --leading-h3: 1.4;
+  --text-h3--line-height: 1.4;
+  --leading-lede: 1.6;
+  --text-lede--line-height: 1.6;
+  --leading-small: 1.7;
+  --text-small--line-height: 1.7;
+  --text-eyebrow: 0.8125rem;
+  --tracking-display: 0em;
+  --text-display--letter-spacing: 0em;
+  --tracking-eyebrow: 0em;
+  --text-eyebrow--letter-spacing: 0em;
+  --tracking-h1: 0em;
+  --text-h1--letter-spacing: 0em;
+  --tracking-h2: 0em;
+  --text-h2--letter-spacing: 0em;
+  --tracking-h3: 0em;
+  --text-h3--letter-spacing: 0em;
+  --tracking-num: 0em;
+  --text-num--letter-spacing: 0em;
+}
+
+/* Arabic overrides — same variables; Vazirmatn already covers the Arabic subset. */
+:lang(ar) {
   --font-sans: var(--font-sans-fa);
   --leading-body: 1.75;
   --text-body--line-height: 1.75;
