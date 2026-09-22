@@ -71,7 +71,7 @@ export const NextProject: React.FC<NextProjectProps> = ({
           kinds={kindLabels(project.kind, locale)}
           pendingLabel={pendingLabel}
           resource={nextProjectMedia(project)}
-          size="(min-width: 768px) 40vw, 100vw"
+          size="(min-width: 768px) 39vw, 100vw"
         />
       </Link>
     ) : null}

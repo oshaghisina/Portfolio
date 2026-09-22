@@ -67,7 +67,7 @@ export const FeaturedProject: React.FC<FeaturedProjectProps> = ({ className, ind
       pendingLabel={copy.workMediaPending}
       priority={primary}
       resource={project.cover}
-      size={primary ? '(min-width: 1024px) 80vw, 100vw' : '(min-width: 1024px) 40vw, 100vw'}
+      size={primary ? '(min-width: 768px) 78vw, 100vw' : '(min-width: 768px) 39vw, 100vw'}
     />
   )
 

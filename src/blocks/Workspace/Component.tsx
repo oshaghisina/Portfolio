@@ -7,7 +7,6 @@ import { SectionHeader } from '@/components/SectionHeader'
 
 export type WorkspaceProps = Pick<WorkspaceBlockProps, 'sectionHeader' | 'tracks'> & {
   className?: string
-  disableInnerContainer?: boolean
 }
 
 // Phone-only canvas nodes (one per track, up to the schema's six): fixed percentages in the lower
@@ -33,7 +32,6 @@ const NODE_POSITIONS = [
  */
 export const WorkspaceBlock: React.FC<WorkspaceProps> = ({
   className,
-  disableInnerContainer,
   sectionHeader,
   tracks,
 }) => {
@@ -45,7 +43,7 @@ export const WorkspaceBlock: React.FC<WorkspaceProps> = ({
   const nodes = rows.slice(0, NODE_POSITIONS.length).map((track, i) => ({ track, ...NODE_POSITIONS[i] }))
 
   return (
-    <section className={cn(!disableInnerContainer && 'container', className)}>
+    <section className={cn(className)}>
       <SectionHeader {...sectionHeader} className="mb-10 max-md:mb-8 max-md:border-t-0 max-md:pt-0" tagTone="mono" />
 
       <div className="overflow-hidden border border-line bg-panel/30">

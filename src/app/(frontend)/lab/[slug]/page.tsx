@@ -10,6 +10,7 @@ import RichText from '@/components/RichText'
 
 import type { Post } from '@/payload-types'
 
+import { PageFrame } from '@/components/PageFrame'
 import { PostHero } from '@/heros/PostHero'
 import { docPath } from '@/i18n/routes'
 import { generateMeta } from '@/utilities/generateMeta'
@@ -56,7 +57,7 @@ export default async function Post({ params: paramsPromise }: Args) {
   if (!post) return <PayloadRedirects locale={locale} url={url} />
 
   return (
-    <article className="pt-16 pb-16">
+    <PageFrame>
       <PageClient />
 
       {/* Allows redirects for valid pages too */}
@@ -64,21 +65,20 @@ export default async function Post({ params: paramsPromise }: Args) {
 
       {draft && <LivePreviewListener />}
 
-      <PostHero post={post} />
+      <article>
+        <PostHero post={post} />
 
-      <div className="flex flex-col items-center gap-4 pt-8">
-        <div className="container">
-          <RichText className="max-w-[48rem] mx-auto" data={post.content} enableGutter={false} locale={locale} />
-          {post.relatedPosts && post.relatedPosts.length > 0 && (
-            <RelatedPosts
-              className="mt-12 max-w-[52rem] lg:grid lg:grid-cols-subgrid col-start-1 col-span-3 grid-rows-[2fr]"
-              docs={post.relatedPosts.filter((post) => typeof post === 'object')}
-              locale={locale}
-            />
-          )}
-        </div>
-      </div>
-    </article>
+        <RichText className="mt-12 max-w-measure md:mt-16" data={post.content} enableGutter={false} locale={locale} />
+
+        {post.relatedPosts && post.relatedPosts.length > 0 && (
+          <RelatedPosts
+            className="mt-section"
+            docs={post.relatedPosts.filter((post) => typeof post === 'object')}
+            locale={locale}
+          />
+        )}
+      </article>
+    </PageFrame>
   )
 }
 

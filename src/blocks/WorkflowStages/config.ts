@@ -2,46 +2,116 @@ import type { Block } from 'payload'
 
 import { sectionHeader } from '@/fields/sectionHeader'
 
-/** WorkflowStages: tools shown as an operating system (stage → tools), not a software list. */
+import { CATEGORY_OPTIONS, TOOL_LOGOS, TOOL_OPTIONS } from './toolLogos'
+
+/**
+ * TOOLS / STACK — the working stack as categorised brand marks: research, design, build,
+ * measurement and the infrastructure it runs on, read as one connected stack rather than six
+ * separate toolkits.
+ *
+ * The slug stays `workflowStages` so the existing homepage layout records survive; only the
+ * field list changed (it previously modelled stage → comma-separated tool names).
+ *
+ * House pattern — shared array, localized leaves: the arrays themselves are not localized,
+ * `key` and `toolKey` are shared identities, and only `title` is translated. Product names are
+ * never localized; they come from `./toolLogos`, which also supplies the select options.
+ */
 export const WorkflowStages: Block = {
   slug: 'workflowStages',
   interfaceName: 'WorkflowStagesBlock',
-  labels: { singular: 'Workflow stage', plural: 'Workflow stages' },
   fields: [
     sectionHeader(),
     {
-      name: 'stages',
+      name: 'categories',
       type: 'array',
-      minRows: 2,
+      admin: {
+        description:
+          'Rendered in the canonical order defined in toolLogos.ts (01 Design & Prototyping → 06 Infrastructure & Operations). The two-digit index follows that order, not the row order here.',
+        initCollapsed: true,
+      },
+      labels: { plural: 'Categories', singular: 'Category' },
       maxRows: 6,
-      labels: { singular: 'Stage', plural: 'Stages' },
+      minRows: 2,
+      // Payload has no cross-row uniqueness constraint, so the two rules that would otherwise
+      // read as mistakes on the page are enforced here.
+      validate: (value: unknown) => {
+        const rows = Array.isArray(value) ? value : []
+
+        const categoryKeys = rows
+          .map((row) => (row as { key?: string })?.key)
+          .filter(Boolean) as string[]
+        const duplicateCategories = [
+          ...new Set(categoryKeys.filter((key, i) => categoryKeys.indexOf(key) !== i)),
+        ]
+        if (duplicateCategories.length) {
+          return `Each category can only appear once. Duplicated: ${duplicateCategories.join(', ')}.`
+        }
+
+        const toolKeys = rows.flatMap((row) => {
+          const tools = (row as { tools?: unknown })?.tools
+          return Array.isArray(tools)
+            ? (tools.map((tool) => (tool as { toolKey?: string })?.toolKey).filter(Boolean) as string[])
+            : []
+        })
+        const duplicateTools = [...new Set(toolKeys.filter((key, i) => toolKeys.indexOf(key) !== i))]
+        if (duplicateTools.length) {
+          const names = duplicateTools.map(
+            (key) => TOOL_LOGOS[key as keyof typeof TOOL_LOGOS]?.name ?? key,
+          )
+          return `A tool can only appear in one category. Duplicated: ${names.join(', ')}.`
+        }
+
+        return true
+      },
       fields: [
         {
           type: 'row',
           fields: [
             {
-              name: 'code',
-              type: 'text',
+              name: 'key',
+              type: 'select',
+              admin: {
+                description: 'Stable id — sets the render order and the index code',
+                width: '50%',
+              },
+              options: CATEGORY_OPTIONS,
               required: true,
-              admin: { description: 'e.g. "R1"', width: '25%' },
             },
             {
-              name: 'label',
+              name: 'title',
               type: 'text',
+              admin: {
+                description: 'Shown above the matrix, e.g. "Design & Prototyping"',
+                width: '50%',
+              },
               localized: true,
               required: true,
-              admin: { width: '75%' },
             },
           ],
         },
         {
           name: 'tools',
-          type: 'text',
-          localized: true,
-          required: true,
-          admin: { description: 'Comma-separated tool names' },
+          type: 'array',
+          labels: { plural: 'Tools', singular: 'Tool' },
+          // Eight is the cap the layout is built around: at `lg` a category is exactly one row of
+          // `tools.length` columns, so a ninth tool would wrap and orphan a cell. Eight is also
+          // where the cells stop being wide enough to hold a two-word product name on two lines.
+          maxRows: 8,
+          minRows: 1,
+          fields: [
+            {
+              name: 'toolKey',
+              type: 'select',
+              admin: {
+                description: 'Resolves to a brand mark and its canonical product name (toolLogos.ts).',
+              },
+              options: TOOL_OPTIONS,
+              required: true,
+            },
+          ],
         },
       ],
     },
   ],
+  labels: { plural: 'Tools / stack', singular: 'Tools / stack' },
 }

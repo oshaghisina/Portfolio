@@ -10,7 +10,6 @@ import { DEFAULT_LOCALE } from '@/utilities/locale'
 
 export type CareerJourneyProps = Pick<CareerJourneyBlockProps, 'sectionHeader' | 'stages'> & {
   className?: string
-  disableInnerContainer?: boolean
   locale?: Locale
 }
 
@@ -51,7 +50,6 @@ const periodLabel = (experience: Experience, locale: Locale): string => {
  */
 export const CareerJourneyBlock: React.FC<CareerJourneyProps> = ({
   className,
-  disableInnerContainer,
   locale = DEFAULT_LOCALE,
   sectionHeader,
   stages,
@@ -62,7 +60,7 @@ export const CareerJourneyBlock: React.FC<CareerJourneyProps> = ({
   const labels = LABELS[locale]
 
   return (
-    <section className={cn(!disableInnerContainer && 'container', className)}>
+    <section className={cn(className)}>
       <SectionHeader {...sectionHeader} className="mb-10 max-md:mb-8 max-md:border-t-0 max-md:pt-0" tagTone="mono" />
       <ol className="flex flex-col divide-y divide-line border-y border-line">
         {rows.map((stage, i) => {

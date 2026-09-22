@@ -18,13 +18,16 @@ export type FigureBlockProps = CaseStudyFigureBlock &
 
 type Visual = NonNullable<CaseStudyFigureBlock['items']>[number]
 
-/** `sizes` per layout — the widest an image can render in that pattern. */
+/**
+ * `sizes` per layout — the widest an image can render in that pattern, as a share of the canvas
+ * (`size.canvas` = 78vw from `md`, capped at `size.container` = 86rem from ~110rem up).
+ */
 const SIZES: Record<FigureLayout, string> = {
-  full: '(min-width: 86rem) 76rem, 100vw',
-  split: '(min-width: 48rem) 50vw, 100vw',
-  sequence: '(min-width: 64rem) 25vw, 50vw',
-  annotated: '(min-width: 64rem) 58vw, 100vw',
-  compare: '(min-width: 48rem) 50vw, 100vw',
+  full: '(min-width: 110rem) 76rem, (min-width: 48rem) 78vw, 100vw',
+  split: '(min-width: 48rem) 39vw, 100vw',
+  sequence: '(min-width: 64rem) 20vw, 50vw',
+  annotated: '(min-width: 64rem) 45vw, 100vw',
+  compare: '(min-width: 48rem) 39vw, 100vw',
 }
 
 /** Literal class strings so the Tailwind scanner sees every count. */

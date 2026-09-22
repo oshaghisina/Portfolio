@@ -55,7 +55,7 @@ const jsxConverters =
           {...node.fields}
           captionClassName="mx-auto max-w-[48rem]"
           enableGutter={false}
-          disableInnerContainer={true}
+         
         />
       ),
       code: ({ node }) => <CodeBlock className="col-start-2" {...node.fields} />,

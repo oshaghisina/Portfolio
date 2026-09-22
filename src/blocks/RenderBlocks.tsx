@@ -45,11 +45,9 @@ const blockComponents = {
 
 export const RenderBlocks: React.FC<{
   blocks: Page['layout'][0][]
-  /** True on the homepage, whose `.canvas` ancestor supplies the width; elsewhere blocks bring their own `.container`. */
-  disableInnerContainer?: boolean
   locale: Locale
 }> = (props) => {
-  const { blocks, disableInnerContainer = false, locale } = props
+  const { blocks, locale } = props
 
   const hasBlocks = blocks && Array.isArray(blocks) && blocks.length > 0
 
@@ -64,9 +62,11 @@ export const RenderBlocks: React.FC<{
 
             if (Block) {
               return (
-                <div className="my-block" key={index}>
+                // `first:mt-0` keeps a page that opens straight on a block (no hero, e.g. /work)
+                // flush against the header, exactly as the homepage's opener is.
+                <div className="my-block first:mt-0" key={index}>
                   {/* @ts-expect-error there may be some mismatch between the expected types here */}
-                  <Block {...block} disableInnerContainer={disableInnerContainer} locale={locale} />
+                  <Block {...block} locale={locale} />
                 </div>
               )
             }

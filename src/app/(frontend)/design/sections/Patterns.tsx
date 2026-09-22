@@ -77,7 +77,6 @@ export const Patterns: React.FC<{ locale: PreviewLocale }> = ({ locale }) => {
 
         <Demo ds="DS-18 · metricsStrip block" title="Metrics strip">
           <MetricsStripBlock
-            disableInnerContainer
             metrics={s.metrics.map((m, i) => ({ id: String(i), ...m }))}
             sectionHeader={{ tag: locale === 'fa' ? 'در اعداد' : 'By the numbers', lead: s.lead, tail: s.tail }}
           />

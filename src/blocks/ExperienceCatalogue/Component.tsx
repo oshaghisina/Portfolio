@@ -8,13 +8,11 @@ import { SectionHeader } from '@/components/SectionHeader'
 
 export type ExperienceCatalogueProps = Pick<ExperienceCatalogueBlockProps, 'items' | 'sectionHeader'> & {
   className?: string
-  disableInnerContainer?: boolean
 }
 
 /** Typographic employer catalogue — no CV bullet list. */
 export const ExperienceCatalogueBlock: React.FC<ExperienceCatalogueProps> = ({
   className,
-  disableInnerContainer,
   items,
   sectionHeader,
 }) => {
@@ -22,7 +20,7 @@ export const ExperienceCatalogueBlock: React.FC<ExperienceCatalogueProps> = ({
   if (!rows.length) return null
 
   return (
-    <section className={cn(!disableInnerContainer && 'container', className)} id="experience">
+    <section className={cn(className)} id="experience">
       <SectionHeader {...sectionHeader} className="mb-6 max-md:mb-6 max-md:border-t-0 max-md:pt-0" tagTone="mono" />
       <ExperienceGrid
         items={rows.map((item) => ({

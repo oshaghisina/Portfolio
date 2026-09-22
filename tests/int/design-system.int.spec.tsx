@@ -118,13 +118,13 @@ describe('ExperienceGrid (DS-20)', () => {
 describe('MetricsStrip block (DS-18)', () => {
   const metrics = Array.from({ length: 5 }, (_, i) => ({ id: String(i), value: `${i}%`, caption: `c${i}`, source: 's' }))
   it('caps at four and lays them out as a four-column grid from lg', () => {
-    const { container } = render(<MetricsStripBlock disableInnerContainer metrics={metrics} />)
+    const { container } = render(<MetricsStripBlock metrics={metrics} />)
     expect(container.querySelectorAll('dt').length).toBe(4)
     expect(container.querySelectorAll('dd').length).toBe(4) // one value per metric
     expect(container.querySelector('dl')!.className).toContain('lg:grid-cols-4')
   })
   it('gives only the first row the accent fill in the phone composition', () => {
-    const { container } = render(<MetricsStripBlock disableInnerContainer metrics={metrics.slice(0, 3)} />)
+    const { container } = render(<MetricsStripBlock metrics={metrics.slice(0, 3)} />)
     const rows = Array.from(container.querySelectorAll('dl > div'))
     expect(rows).toHaveLength(3)
     const phoneBars = rows.map((row) => row.querySelector('span.sm\\:hidden')!)

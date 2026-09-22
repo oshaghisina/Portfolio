@@ -39,8 +39,8 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({ data, locale, logicalPath,
   const isHome = parseLocalePath(usePathname()).logicalPath === '/'
 
   return (
-    <>
-      <nav className="hidden items-center gap-6 md:flex">
+    <div className="flex items-center gap-6">
+      <nav className="hidden items-center gap-4 md:flex">
         {navItems.map(({ link }, i) => {
           const active = isActivePath(logicalPath, hrefFromLink(link))
           return (
@@ -82,6 +82,6 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({ data, locale, logicalPath,
           locale={locale}
         />
       </div>
-    </>
+    </div>
   )
 }

@@ -57,7 +57,8 @@ export const AdminBar: React.FC<{
         hidden: !show,
       })}
     >
-      <div className="container">
+      {/* The admin strip sits above the header — `.canvas` so its controls line up with the sheet. */}
+      <div className="canvas">
         <PayloadAdminBar
           {...adminBarProps}
           className="py-2 text-white"

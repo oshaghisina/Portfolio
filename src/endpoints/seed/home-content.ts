@@ -13,7 +13,7 @@ type PageHero = RequiredDataFromCollectionSlug<'pages'>['hero']
  * drifting between two hand-kept copies.
  *
  * V4: rebuilt into a long, sparse editorial composition — Hero → Workbench → Primary Focus →
- * Metrics → AI tooling → Experience matrix → Featured Project → Contact — with a dominant
+ * Metrics → Tools / Stack → Experience matrix → Featured Project → Contact — with a dominant
  * workbench artifact, one calm focus, one featured project and real whitespace intervals, instead
  * of a sequence of roughly equal-weight catalogue blocks (see Docs/Benchmarks/Design/pleurat-com.md).
  * Hero H1 revised to describe the work, not the name (Sina Oshaghi moves to a small kicker),
@@ -56,6 +56,93 @@ export const heroLinks: NonNullable<PageHero['links']> = [
  * the full static document for the no-database fallback — so the block carries no project copy
  * of its own (D-021).
  */
+/**
+ * TOOLS / STACK. Exported on its own so the additive `seed:home-tools` script and
+ * `buildHomeLayout` can never drift apart.
+ *
+ * `tag` is stored Title Case: the `eyebrow` utility uppercases it for Latin locales and leaves it
+ * alone for fa/ar, where uppercase does not exist. Storing it pre-uppercased would break Persian.
+ * Category titles are the only localized leaves here — tool names are brand names and come from
+ * the shared resolver, never from content.
+ */
+export const toolsStackBlock: NonNullable<PageLayout>[number] = {
+  blockName: 'Tools / Stack',
+  blockType: 'workflowStages',
+  sectionHeader: {
+    tag: 'Tools / Stack',
+    lead: 'The systems behind how I',
+    tail: 'think, design & ship.',
+    lede: 'Research, design, build, measurement and the infrastructure it runs on \u2014 one connected stack, not six separate toolkits.',
+  },
+  categories: [
+    {
+      key: 'designPrototyping',
+      title: 'Design & Prototyping',
+      tools: [{ toolKey: 'figma' }, { toolKey: 'figjam' }, { toolKey: 'higgsfield' }],
+    },
+    {
+      key: 'aiAgents',
+      title: 'AI & Agents',
+      // Assistants, then the coding agents, then the plumbing they all run through.
+      tools: [
+        { toolKey: 'chatgpt' },
+        { toolKey: 'claude' },
+        { toolKey: 'grok' },
+        { toolKey: 'codex' },
+        { toolKey: 'githubCopilot' },
+        { toolKey: 'openrouter' },
+        { toolKey: 'langchain' },
+        { toolKey: 'typesafeAi' },
+      ],
+    },
+    {
+      key: 'buildDelivery',
+      title: 'Build & Delivery',
+      tools: [
+        { toolKey: 'cursor' },
+        { toolKey: 'antigravity' },
+        { toolKey: 'vscode' },
+        { toolKey: 'payloadCms' },
+        { toolKey: 'nextjs' },
+        { toolKey: 'docker' },
+      ],
+    },
+    {
+      key: 'dataIntelligence',
+      title: 'Data & Product Intelligence',
+      tools: [
+        { toolKey: 'ga4' },
+        { toolKey: 'amplitude' },
+        { toolKey: 'heap' },
+        { toolKey: 'fullstory' },
+        { toolKey: 'clarity' },
+        { toolKey: 'hotjar' },
+        { toolKey: 'umami' },
+      ],
+    },
+    {
+      key: 'growthMeasurement',
+      title: 'Growth & Measurement',
+      tools: [
+        { toolKey: 'googleTagManager' },
+        { toolKey: 'googleAds' },
+        { toolKey: 'googleSearchConsole' },
+      ],
+    },
+    {
+      key: 'infraOperations',
+      title: 'Infrastructure & Operations',
+      tools: [
+        { toolKey: 'supabase' },
+        { toolKey: 'vercel' },
+        { toolKey: 'coolify' },
+        { toolKey: 'gitea' },
+        { toolKey: 'sentry' },
+      ],
+    },
+  ],
+}
+
 export const buildHomeLayout = ({ project }: { project: string | Project }): PageLayout => [
   {
     blockName: 'Workbench',
@@ -146,38 +233,7 @@ export const buildHomeLayout = ({ project }: { project: string | Project }): Pag
       },
     ],
   },
-  {
-    blockName: 'AI & Daily Tooling',
-    blockType: 'workflowStages',
-    sectionHeader: {
-      tag: 'AI / Daily',
-      lead: 'AI is part of how I',
-      tail: 'design & build, every day.',
-      lede: 'Research, synthesis, prototyping and measurement — one connected working loop.',
-    },
-    stages: [
-      {
-        code: 'R1',
-        label: 'Research',
-        tools: 'GA4, Amplitude',
-      },
-      {
-        code: 'M1',
-        label: 'Model & prototype',
-        tools: 'Figma, FigJam',
-      },
-      {
-        code: 'B1',
-        label: 'Build',
-        tools: 'Cursor, Claude',
-      },
-      {
-        code: 'I1',
-        label: 'Instrument & learn',
-        tools: 'Google Ads',
-      },
-    ],
-  },
+  toolsStackBlock,
   {
     blockName: 'Experience',
     blockType: 'experienceCatalogue',

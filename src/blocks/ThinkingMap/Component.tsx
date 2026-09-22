@@ -11,7 +11,6 @@ import { DEFAULT_LOCALE } from '@/utilities/locale'
 
 export type ThinkingMapProps = Pick<ThinkingMapBlockProps, 'intro' | 'nodes' | 'sectionHeader'> & {
   className?: string
-  disableInnerContainer?: boolean
   locale?: Locale
 }
 
@@ -35,7 +34,6 @@ const CONNECTIONS: [number, number][] = [
 
 export const ThinkingMapBlock: React.FC<ThinkingMapProps> = ({
   className,
-  disableInnerContainer,
   intro,
   locale = DEFAULT_LOCALE,
   nodes,
@@ -52,7 +50,7 @@ export const ThinkingMapBlock: React.FC<ThinkingMapProps> = ({
   }))
 
   return (
-    <section className={cn(!disableInnerContainer && 'container', className)}>
+    <section className={cn(className)}>
       <SectionHeader {...sectionHeader} className="mb-10 max-md:mb-8 max-md:border-t-0 max-md:pt-0" tagTone="mono" />
       {intro ? (
         <RichText

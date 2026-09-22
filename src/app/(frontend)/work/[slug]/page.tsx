@@ -17,6 +17,7 @@ import { SectionIndex } from '@/components/CaseStudy/SectionIndex'
 import { Snapshot } from '@/components/CaseStudy/Snapshot'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 import { NextProject, type NextProjectDoc } from '@/components/NextProject'
+import { PageFrame } from '@/components/PageFrame'
 import { PayloadRedirects } from '@/components/PayloadRedirects'
 import { localePath } from '@/i18n/navigation'
 import { hasPublicCaseStudy, projectPath } from '@/i18n/routes'
@@ -71,33 +72,48 @@ export default async function ProjectPage({ params: paramsPromise }: Args) {
   const chapters = buildChapters(sections, copy)
   const next = await queryNextProject({ current: project, locale })
   const serverUrl = getServerSideURL()
-  const jsonLd = buildCreativeWorkJsonLd({ locale, project, serverUrl, url: `${serverUrl}${localePath(locale, url)}` })
+  const jsonLd = buildCreativeWorkJsonLd({
+    locale,
+    project,
+    serverUrl,
+    url: `${serverUrl}${localePath(locale, url)}`,
+  })
 
   return (
-    <article className="pt-8 pb-section md:pt-14">
+    <>
       <PageClient />
       <PayloadRedirects disableNotFound locale={locale} url={url} />
       {draft && <LivePreviewListener />}
-      <script dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }} type="application/ld+json" />
+      <script
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
+        type="application/ld+json"
+      />
 
-      <div className="container">
-        <CaseStudyHeader copy={copy} locale={locale} project={project} />
-        <CaseStudyHero className="mt-12 md:mt-16" copy={copy} hero={project.hero} />
-        <Snapshot className="mt-12 md:mt-20" copy={copy} snapshot={project.snapshot} />
-        {/* Wide viewports get the DS-14 margin index in an inline-start rail; below `xl` the narrative takes the full width. */}
-        <div className="xl:grid xl:grid-cols-[9rem_minmax(0,1fr)] xl:gap-x-10">
-          <SectionIndex chapters={chapters} className="xl:pt-section" label={copy.contents} />
-          <RenderCaseStudy copy={copy} firstFigure={hasHeroMedia(project.hero) ? 2 : 1} locale={locale} sections={sections} />
-        </div>
-        <NextProject
-          className="mt-section"
-          copy={copy}
-          locale={locale}
-          pendingLabel={uiCopy[locale].workMediaPending}
-          project={next}
-        />
-      </div>
-    </article>
+      <PageFrame>
+        <article>
+          <CaseStudyHeader copy={copy} locale={locale} project={project} />
+          <CaseStudyHero className="mt-12 md:mt-16" copy={copy} hero={project.hero} />
+          <Snapshot className="mt-12 md:mt-20" copy={copy} snapshot={project.snapshot} />
+          {/* Wide viewports get the DS-14 margin index in an inline-start rail; below `xl` the narrative takes the full width. */}
+          <div className="xl:grid xl:grid-cols-[9rem_minmax(0,1fr)] xl:gap-x-10">
+            <SectionIndex chapters={chapters} className="xl:pt-section" label={copy.contents} />
+            <RenderCaseStudy
+              copy={copy}
+              firstFigure={hasHeroMedia(project.hero) ? 2 : 1}
+              locale={locale}
+              sections={sections}
+            />
+          </div>
+          <NextProject
+            className="mt-section"
+            copy={copy}
+            locale={locale}
+            pendingLabel={uiCopy[locale].workMediaPending}
+            project={next}
+          />
+        </article>
+      </PageFrame>
+    </>
   )
 }
 
@@ -135,9 +151,20 @@ const queryProjectBySlug = cache(async ({ locale, slug }: { locale: Locale; slug
  * in this locale, otherwise the next published case study by `order`, wrapping around to the first.
  */
 const queryNextProject = cache(
-  async ({ current, locale }: { current: Project; locale: Locale }): Promise<NextProjectDoc | null> => {
+  async ({
+    current,
+    locale,
+  }: {
+    current: Project
+    locale: Locale
+  }): Promise<NextProjectDoc | null> => {
     const explicit = current.nextProject
-    if (explicit && typeof explicit === 'object' && hasPublicCaseStudy(explicit) && explicit.slug !== current.slug) {
+    if (
+      explicit &&
+      typeof explicit === 'object' &&
+      hasPublicCaseStudy(explicit) &&
+      explicit.slug !== current.slug
+    ) {
       return explicit
     }
 
@@ -156,7 +183,10 @@ const queryNextProject = cache(
     const published = { caseStudyStatus: { equals: 'published' } }
     const notSelf = { slug: { not_equals: current.slug } }
 
-    const after = await payload.find({ ...query, where: { and: [published, notSelf, { order: { greater_than: current.order } }] } })
+    const after = await payload.find({
+      ...query,
+      where: { and: [published, notSelf, { order: { greater_than: current.order } }] },
+    })
     if (after.docs[0]) return after.docs[0]
 
     const wrap = await payload.find({ ...query, where: { and: [published, notSelf] } })

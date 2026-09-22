@@ -19,7 +19,6 @@ const FEATURED_VARIANTS: FeaturedVariant[] = ['primary', 'split', 'split-reverse
 
 export type ProjectArchiveProps = ProjectArchiveBlockProps & {
   className?: string
-  disableInnerContainer?: boolean
   locale?: Locale
 }
 
@@ -30,7 +29,6 @@ export type ProjectArchiveProps = ProjectArchiveBlockProps & {
  */
 export const ProjectArchiveBlock: React.FC<ProjectArchiveProps> = async ({
   className,
-  disableInnerContainer,
   locale = DEFAULT_LOCALE,
   sectionHeader,
 }) => {
@@ -53,7 +51,7 @@ export const ProjectArchiveBlock: React.FC<ProjectArchiveProps> = async ({
   const [primary, ...secondary] = featured
 
   return (
-    <section className={cn(!disableInnerContainer && 'container', className)}>
+    <section className={cn(className)}>
       <WorkIntro
         companyCount={countCompanies(docs)}
         locale={locale}

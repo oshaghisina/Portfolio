@@ -7,7 +7,6 @@ import { SectionHeader } from '@/components/SectionHeader'
 
 export type MetricsStripProps = Pick<MetricsStripBlockProps, 'metrics' | 'sectionHeader'> & {
   className?: string
-  disableInnerContainer?: boolean
 }
 
 /**
@@ -42,12 +41,12 @@ const PhoneBar: React.FC<{ index: number }> = ({ index }) => {
  * rows become a centered vertical data composition (value, small graphic, tiny label) and the
  * block owns the first long silence of the page through its bottom padding.
  */
-export const MetricsStripBlock: React.FC<MetricsStripProps> = ({ className, disableInnerContainer, metrics, sectionHeader }) => {
+export const MetricsStripBlock: React.FC<MetricsStripProps> = ({ className, metrics, sectionHeader }) => {
   const rows = (metrics ?? []).slice(0, 4)
   if (!rows.length) return null
 
   return (
-    <section className={cn(!disableInnerContainer && 'container', 'pb-[70svh] sm:pb-[44vh] lg:pb-[52vh]', className)}>
+    <section className={cn('pb-[70svh] sm:pb-[44vh] lg:pb-[52vh]', className)}>
       <SectionHeader
         {...sectionHeader}
         className="mb-4 max-sm:mb-10 max-sm:border-t-0 max-sm:pt-0 max-sm:text-center max-sm:[&>span]:justify-center max-sm:[&_p]:mx-auto"

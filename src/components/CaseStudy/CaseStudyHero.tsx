@@ -36,7 +36,7 @@ export const CaseStudyHero: React.FC<CaseStudyHeroProps> = ({ className, copy, h
         <FigureMedia
           priority
           resource={items[0]!.media}
-          sizes="(min-width: 86rem) 76rem, 100vw"
+          sizes="(min-width: 110rem) 76rem, (min-width: 48rem) 78vw, 100vw"
           standalone
           treatment="auto"
         />

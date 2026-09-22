@@ -33,15 +33,11 @@ export const ContentBlock: React.FC<ContentBlockProps & { locale?: Locale }> = (
   })
 
   if (layout === 'editorial') {
-    return (
-      <div className="container">
-        <EditorialGrid>{cells}</EditorialGrid>
-      </div>
-    )
+    return <EditorialGrid>{cells}</EditorialGrid>
   }
 
   return (
-    <div className="container">
+    <div>
       <div className="grid grid-cols-4 lg:grid-cols-12 gap-y-8 gap-x-16">
         {(columns ?? []).map((col, index) => {
           const { size } = col

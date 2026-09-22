@@ -12,14 +12,12 @@ import { DEFAULT_LOCALE } from '@/utilities/locale'
 
 export type NowSectionProps = Pick<NowSectionBlockProps, 'link' | 'sectionHeader' | 'statement'> & {
   className?: string
-  disableInnerContainer?: boolean
   locale?: Locale
 }
 
 /** Small, quiet closing composition before the contact CTA — statement, then an optional link toward /lab. */
 export const NowSectionBlock: React.FC<NowSectionProps> = ({
   className,
-  disableInnerContainer,
   link,
   locale = DEFAULT_LOCALE,
   sectionHeader,
@@ -28,7 +26,7 @@ export const NowSectionBlock: React.FC<NowSectionProps> = ({
   if (!statement) return null
 
   return (
-    <section className={cn(!disableInnerContainer && 'container', className)}>
+    <section className={cn(className)}>
       <SectionHeader {...sectionHeader} className="mb-8 max-md:border-t-0 max-md:pt-0" tagTone="mono" />
       <RichText
         className="text-lede text-ink-2 max-w-measure [&_p]:mt-0"

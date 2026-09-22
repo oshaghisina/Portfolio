@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
+import { PageFrame } from '@/components/PageFrame'
 import { PayloadRedirects } from '@/components/PayloadRedirects'
-import { cn } from '@/utilities/ui'
 import configPromise from '@payload-config'
 import { getPayload, type RequiredDataFromCollectionSlug } from 'payload'
 import { draftMode } from 'next/headers'
@@ -85,7 +85,6 @@ export default async function Page({ params: paramsPromise }: Args) {
   }
 
   const { hero, layout } = page
-  const isHome = page.slug === 'home'
   const isAbout = page.slug === 'about'
 
   // Person JSON-LD is About-only — no need to fetch the `about` global on every page.
@@ -93,8 +92,11 @@ export default async function Page({ params: paramsPromise }: Args) {
     ? buildPersonJsonLd({ about: await getCachedGlobal('about', locale, 1)(), serverUrl: getServerSideURL() })
     : null
 
+  // Every page opens flush against the header: the sheet and the header are both `.canvas`, so
+  // with no gap between them the hairline rails run unbroken through the header's bottom border.
+  // The opener carries its own top padding, so the headline still breathes.
   return (
-    <article className={cn('pt-6 pb-16 md:pt-16 md:pb-24', isHome && 'home-ruled-paper')}>
+    <>
       <PageClient />
       {/* Allows redirects for valid pages too */}
       <PayloadRedirects disableNotFound locale={locale} url={url} />
@@ -104,13 +106,11 @@ export default async function Page({ params: paramsPromise }: Args) {
         <script dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }} type="application/ld+json" />
       )}
 
-      {/* Homepage-only narrow canvas: every hero/block section relies on this one ancestor for width;
-          everywhere else each block renders its own `.container`. */}
-      <div className={cn(isHome && 'canvas')}>
+      <PageFrame>
         <RenderHero {...hero} locale={locale} />
-        <RenderBlocks blocks={layout} disableInnerContainer={isHome} locale={locale} />
-      </div>
-    </article>
+        <RenderBlocks blocks={layout} locale={locale} />
+      </PageFrame>
+    </>
   )
 }
 

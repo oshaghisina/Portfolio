@@ -113,12 +113,13 @@
     }
   }
 
-  /* Homepage-only narrow canvas (~74-78vw at lg+) with hairline "ledger" rails.
-     Deliberately separate from .container, which every other route keeps using untouched.
-     Phones get their own frame: ~8px of outside breathing room, faint rails, ~12px inner inset;
-     the tablet/desktop behaviour returns from md.
-     Opaque paper fill: this is where .home-ruled-paper's global rules stop — everything inside
-     owns its own surface (e.g. Tracks' denser local pattern) instead of showing the article's grid. */
+  /* DS-11 — the site frame: one sheet with hairline "ledger" rails and an opaque paper fill,
+     applied by PageFrame so every route reads as the same ruled page. Phones get a tighter
+     version: ~8px of outside breathing room, faint rails, ~12px inner inset. From `md` a single
+     width rule runs all the way up — the sheet never jumps between tablet and desktop; only the
+     rails firm up at `lg`.
+     Opaque paper fill: this is where .ruled-paper's page-wide rules stop — everything inside owns
+     its own surface (e.g. Tracks' denser local pattern) instead of showing the page's grid. */
   .canvas {
     width: auto;
     margin-inline: 0.5rem;
@@ -132,19 +133,28 @@
       width: 100%;
       margin-inline: auto;
       padding-inline: var(--spacing-gutter);
-      border-inline: 0;
+      max-width: min(var(--container-canvas), var(--container-page));
     }
   }
 
   @variant lg {
     .canvas {
-      max-width: min(78vw, var(--container-page));
       border-inline: 1px solid var(--line);
     }
   }
 
-  /* Homepage-only ruled-paper texture — decoration, never a section divider. */
-  .home-ruled-paper {
+  /* The frame owns width. A block that still brings its own .container would double the gutter
+     and re-cap the measure, so a nested one is neutralised here instead of at every call site. */
+  .canvas :where(.container) {
+    width: 100%;
+    max-width: none;
+    margin-inline: 0;
+    padding-inline: 0;
+  }
+
+  /* Ruled-paper texture behind the sheet, visible in the margins beside it — decoration, never a
+     section divider. */
+  .ruled-paper {
     background-image: repeating-linear-gradient(
       to bottom,
       var(--line-soft) 0,
@@ -154,16 +164,65 @@
     );
   }
 
-  /* Tracks-section-only ruled paper: same texture as .home-ruled-paper, denser repeat — scoped
-     to that one section, never strengthens the page-wide separators above. */
-  .tracks-ruled-paper {
-    background-image: repeating-linear-gradient(
-      to bottom,
-      var(--line-soft) 0,
-      var(--line-soft) 1px,
-      transparent 1px,
-      transparent 0.875rem
-    );
+  /* Tracks section: a fixed dark "blueprint" plate — always dark-themed regardless of the
+     site's light/dark toggle, echoing the illustration's drafting-plate motif. Re-declares the
+     dark-theme colour roles locally (same values as [data-theme='dark'] in theme.css) so every
+     descendant utility (text-ink-2, border-line, bg-panel, etc.) and the track illustrations
+     — which already read these same vars — render correctly without any component changes.
+     The 3rem drafting grid is a pure background-image layer; nothing in it is positioned against
+     the content, so it stays texture and never competes with the title block ruled across the
+     plate's foot. */
+  .tracks-blueprint {
+    --accent: var(--panel);
+    --accent-foreground: var(--ink);
+    --background: var(--paper);
+    --border: var(--line);
+    --brand: oklch(72% 0.15 262);
+    --brand-foreground: oklch(18% 0.03 262);
+    --card: var(--panel);
+    --card-foreground: var(--ink);
+    --danger: oklch(62% 0.19 27);
+    --destructive: var(--danger);
+    --destructive-foreground: var(--paper);
+    --error: var(--danger);
+    --foreground: var(--ink);
+    --ink: oklch(96% 0.005 85);
+    --ink-2: oklch(80% 0.01 262);
+    --ink-3: oklch(66% 0.012 262);
+    --input: var(--line);
+    --line: oklch(96% 0.005 85 / 0.16);
+    --line-soft: oklch(96% 0.005 85 / 0.08);
+    --muted: var(--panel);
+    --muted-foreground: var(--ink-3);
+    --panel: oklch(25% 0.014 262);
+    --paper: oklch(20% 0.012 262);
+    --popover: var(--paper);
+    --popover-foreground: var(--ink);
+    --primary: var(--brand);
+    --primary-foreground: var(--brand-foreground);
+    --ring: oklch(72% 0.15 262);
+    --secondary: var(--panel);
+    --secondary-foreground: var(--ink);
+    --success: oklch(60% 0.12 155);
+    --track-accent: oklch(72% 0.16 45);
+    --warning: oklch(70% 0.12 80);
+
+    background-color: var(--paper);
+    background-image:
+      repeating-linear-gradient(
+        to bottom,
+        var(--line-soft) 0,
+        var(--line-soft) 1px,
+        transparent 1px,
+        transparent 3rem
+      ),
+      repeating-linear-gradient(
+        to right,
+        var(--line-soft) 0,
+        var(--line-soft) 1px,
+        transparent 1px,
+        transparent 3rem
+      );
   }
 }
 

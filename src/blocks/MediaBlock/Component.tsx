@@ -15,7 +15,6 @@ type Props = MediaBlockProps & {
   enableGutter?: boolean
   imgClassName?: string
   staticImage?: StaticImageData
-  disableInnerContainer?: boolean
 }
 
 export const MediaBlock: React.FC<Props> = (props) => {
@@ -26,7 +25,6 @@ export const MediaBlock: React.FC<Props> = (props) => {
     imgClassName,
     media,
     staticImage,
-    disableInnerContainer,
   } = props
 
   let caption
@@ -53,10 +51,7 @@ export const MediaBlock: React.FC<Props> = (props) => {
         <div
           className={cn(
             'mt-6',
-            {
-              container: !disableInnerContainer,
-            },
-            captionClassName,
+                        captionClassName,
           )}
         >
           <RichText data={caption} enableGutter={false} />

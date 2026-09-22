@@ -33,6 +33,7 @@ const RULES: Rule[] = [
   [/^font\.weight\.([a-z0-9-]+)$/, (m) => `--font-weight-${m[1]}`],
   [/^space\.([a-z0-9-]+)$/, (m) => `--spacing-${m[1]}`],
   [/^size\.container$/, () => '--container-page'],
+  [/^size\.canvas$/, () => '--container-canvas'],
   [/^size\.measure$/, () => '--container-measure'],
   [/^size\.control\.([a-z0-9-]+)$/, (m) => `--size-control-${m[1]}`],
   [/^radius\.([a-z0-9-]+)$/, (m) => `--radius-${m[1]}`],

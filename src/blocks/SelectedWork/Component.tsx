@@ -15,7 +15,6 @@ import { cn } from '@/utilities/ui'
 
 export type SelectedWorkProps = Pick<SelectedWorkBlockProps, 'project' | 'sectionHeader'> & {
   className?: string
-  disableInnerContainer?: boolean
   locale?: Locale
 }
 
@@ -28,7 +27,6 @@ export type SelectedWorkProps = Pick<SelectedWorkBlockProps, 'project' | 'sectio
  */
 export const SelectedWorkBlock: React.FC<SelectedWorkProps> = ({
   className,
-  disableInnerContainer,
   locale = DEFAULT_LOCALE,
   project,
   sectionHeader,
@@ -45,7 +43,7 @@ export const SelectedWorkBlock: React.FC<SelectedWorkProps> = ({
 
   return (
     <section
-      className={cn(!disableInnerContainer && 'container', 'pb-[110svh] md:pb-[64vh] lg:pb-[76vh]', className)}
+      className={cn('pb-[110svh] md:pb-[64vh] lg:pb-[76vh]', className)}
       id="selected-work"
     >
       <SectionHeader {...sectionHeader} className="mb-10" tagTone="brand" />
@@ -56,7 +54,8 @@ export const SelectedWorkBlock: React.FC<SelectedWorkProps> = ({
           kinds={kinds}
           pendingLabel={copy.workMediaPending}
           resource={project.cover}
-          size="(min-width: 1024px) 78vw, 100vw"
+          // 78vw is `size.canvas` — the sheet the image sits in. `sizes` cannot read a CSS variable.
+          size="(min-width: 768px) 78vw, 100vw"
         />
         <div className="flex flex-col gap-3">
           <div className="flex min-w-0 flex-col gap-2 sm:flex-row sm:items-baseline sm:gap-4">

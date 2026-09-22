@@ -1,47 +1,46 @@
-'use client'
-import { useHeaderTheme } from '@/providers/HeaderTheme'
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import type { Page } from '@/payload-types'
 
 import { CMSLink } from '@/components/Link'
-import { Media } from '@/components/Media'
+import { PageOpener } from '@/components/PageOpener'
 import RichText from '@/components/RichText'
 import type { Locale } from '@/utilities/locale'
 
-export const HighImpactHero: React.FC<Page['hero'] & { locale?: Locale }> = ({ links, locale, media, richText }) => {
-  const { setHeaderTheme } = useHeaderTheme()
+import { HeroFigure } from '../HeroFigure'
+import { HERO_RICH_TEXT_CLASS } from '../richText'
 
-  useEffect(() => {
-    setHeaderTheme('dark')
-  })
-
-  return (
-    <div
-      className="relative -mt-[10.4rem] flex items-center justify-center text-white"
-      data-theme="dark"
-    >
-      <div className="container mb-8 z-10 relative flex items-center justify-center">
-        <div className="max-w-[36.5rem] md:text-center">
-          {richText && <RichText className="mb-6" data={richText} enableGutter={false} />}
-          {Array.isArray(links) && links.length > 0 && (
-            <ul className="flex md:justify-center gap-4">
-              {links.map(({ link }, i) => {
-                return (
-                  <li key={i}>
-                    <CMSLink locale={locale} {...link} />
-                  </li>
-                )
-              })}
-            </ul>
-          )}
-        </div>
-      </div>
-      <div className="min-h-[80vh] select-none">
-        {media && typeof media === 'object' && (
-          <Media fill imgClassName="-z-10 object-cover" priority resource={media} />
-        )}
-      </div>
-    </div>
-  )
-}
+/**
+ * The same opener as every other page, with the image carrying more weight (loaded eagerly as
+ * the page's LCP candidate). It no longer reaches under the header or forces the header dark —
+ * nothing bleeds outside the sheet.
+ */
+export const HighImpactHero: React.FC<Page['hero'] & { locale?: Locale }> = ({
+  links,
+  locale,
+  media,
+  richText,
+}) => (
+  <>
+    <PageOpener
+      actions={
+        Array.isArray(links) && links.length > 0
+          ? links.map(({ link }, i) => (
+              <CMSLink arrow={i === 0} key={i} locale={locale} {...link} />
+            ))
+          : null
+      }
+      titleSlot={
+        richText ? (
+          <RichText
+            className={HERO_RICH_TEXT_CLASS}
+            data={richText}
+            enableGutter={false}
+            enableProse={false}
+          />
+        ) : null
+      }
+    />
+    <HeroFigure media={media} priority />
+  </>
+)

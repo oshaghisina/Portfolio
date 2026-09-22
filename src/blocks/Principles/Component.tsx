@@ -7,16 +7,15 @@ import { SectionHeader } from '@/components/SectionHeader'
 
 export type PrinciplesProps = Pick<PrinciplesBlockProps, 'items' | 'sectionHeader'> & {
   className?: string
-  disableInnerContainer?: boolean
 }
 
 /** Numbered (01, 02…) full-width stacked entries — no cards, mirrors WorkflowStages' restraint. */
-export const PrinciplesBlock: React.FC<PrinciplesProps> = ({ className, disableInnerContainer, items, sectionHeader }) => {
+export const PrinciplesBlock: React.FC<PrinciplesProps> = ({ className, items, sectionHeader }) => {
   const rows = items ?? []
   if (!rows.length) return null
 
   return (
-    <section className={cn(!disableInnerContainer && 'container', className)}>
+    <section className={cn(className)}>
       <SectionHeader {...sectionHeader} className="mb-10 max-md:mb-8 max-md:border-t-0 max-md:pt-0" tagTone="mono" />
       <ol className="flex flex-col divide-y divide-line border-y border-line">
         {rows.map((item, i) => (

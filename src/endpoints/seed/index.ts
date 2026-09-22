@@ -508,6 +508,19 @@ export const seed = async ({
             href: 'https://ir.linkedin.com/in/sinaoshaghi',
             ariaLabel: 'Sina on LinkedIn',
           },
+          // Same destinations the `about` global already publishes as `sameAs` (about-global.ts).
+          // Telegram and Instagram are selectable in the admin but unseeded: no confirmed handle
+          // exists yet, and a dead social action is worse than a missing one.
+          {
+            kind: 'dribbble',
+            href: 'https://dribbble.com/ceendesign',
+            ariaLabel: 'Sina on Dribbble',
+          },
+          {
+            kind: 'behance',
+            href: 'https://behance.net/sinaoshaghi',
+            ariaLabel: 'Sina on Behance',
+          },
         ],
         about: {
           title: 'Approach',

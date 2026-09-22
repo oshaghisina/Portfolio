@@ -18,7 +18,9 @@ export const Footer: GlobalConfig = {
     {
       name: 'social',
       type: 'array',
-      maxRows: 4,
+      // One row per platform, so six covers the full set below. Row order is ignored: SocialLinks
+      // renders in a fixed order, the same one these options are listed in.
+      maxRows: 6,
       fields: [
         {
           type: 'row',
@@ -28,8 +30,12 @@ export const Footer: GlobalConfig = {
               type: 'select',
               admin: { width: '50%' },
               options: [
-                { label: 'LinkedIn', value: 'linkedin' },
                 { label: 'Email', value: 'email' },
+                { label: 'LinkedIn', value: 'linkedin' },
+                { label: 'Telegram', value: 'telegram' },
+                { label: 'Instagram', value: 'instagram' },
+                { label: 'Dribbble', value: 'dribbble' },
+                { label: 'Behance', value: 'behance' },
               ],
               required: true,
             },

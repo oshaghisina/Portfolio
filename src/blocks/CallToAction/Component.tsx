@@ -11,10 +11,10 @@ import { cn } from '@/utilities/ui'
  * Tiny, centered final action — a quiet close, not another editorial chapter.
  */
 export const CallToActionBlock: React.FC<
-  CTABlockProps & { disableInnerContainer?: boolean; locale?: Locale }
-> = ({ disableInnerContainer, links, locale = DEFAULT_LOCALE, richText }) => {
+  CTABlockProps & { locale?: Locale }
+> = ({ links, locale = DEFAULT_LOCALE, richText }) => {
   return (
-    <div className={cn(!disableInnerContainer && 'container', 'py-10 md:py-14')}>
+    <div className={cn('py-10 md:py-14')}>
       <div className="mx-auto flex max-w-[24rem] flex-col items-center gap-5 text-center">
         {richText && (
           <RichText

@@ -5,9 +5,9 @@ import React from 'react'
 import { CMSLink } from '@/components/Link'
 import { LocaleSwitcher } from '@/components/LocaleSwitcher'
 import { SystemLandscape } from '@/components/SystemLandscape'
+import { TechnicalFrameMarks } from '@/components/TechnicalFrameMarks'
 import { localePath, localizeInternalHref } from '@/i18n/navigation'
 import type { Locale } from '@/utilities/locale'
-import { cn } from '@/utilities/ui'
 
 import { MetaStrip } from './MetaStrip'
 import { SocialLinks } from './SocialLinks'
@@ -26,9 +26,20 @@ export async function Footer({ locale, logicalPath, readiness }: FooterProps) {
   const about = footerData?.about
   const contact = footerData?.contact
 
+  // No `mt-auto` on the footer: PageFrame's `flex-1` is what pushes it down now, and an auto
+  // margin would absorb the free space first, stopping the sheet's rails short on a short page.
   return (
-    <footer className="mt-auto bg-background text-foreground">
-      <div className={cn(logicalPath === '/' ? 'canvas' : 'container')}>
+    <footer className="bg-background text-foreground">
+      {/* The marks live inside this wrapper, not the <footer>, so they land on the same rails the
+          footer's content already uses instead of introducing a second width system. */}
+      <div className="relative isolate canvas">
+        <TechnicalFrameMarks
+          corners={['bottom-start', 'bottom-end']}
+          segments={[
+            { className: 'h-px w-16', side: 'start' },
+            { className: 'h-px w-16', side: 'end' },
+          ]}
+        />
         <SystemLandscape labels={['Figma', 'Cursor', 'Claude']} />
 
         <div className="grid grid-cols-2 gap-x-5 gap-y-10 py-10 md:gap-8 md:py-14 lg:grid-cols-4">

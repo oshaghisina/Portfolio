@@ -25,6 +25,7 @@ export interface ProjectSeedRow {
   period?: { start: string }
   /** Repo-relative path of a real cover, read at seed time (dev only — `Docs/` is not deployed). */
   cover?: { path: string; alt: string }
+  liveUrl?: string
 }
 
 const DIGIKALA = 'Digikala'
@@ -355,6 +356,95 @@ export const PROJECT_SEED: ProjectSeedRow[] = [
     order: 90,
     status: 'published',
   },
+
+  // ── Independent — freelance projects ────────────────────────────────────────────────────
+  {
+    slug: 'arash-rezvani',
+    title: 'Arash Rezvani — personal brand & blog',
+    summary:
+      'A Persian-default bilingual site and blog for a writer, teacher and photographer — a written design language, a Shamsi booking system, and a stack kept entirely inside Iran.',
+    company: 'Independent',
+    role: 'Product designer & developer',
+    kind: ['product'],
+    order: 100,
+    status: 'published',
+    period: { start: '2026-08-01T00:00:00.000Z' },
+    liveUrl: 'https://arashrezvani.me',
+  },
+  {
+    slug: 'marqevon',
+    title: 'Marqevon — corporate site for a petroleum trading principal',
+    summary:
+      'A seven-locale corporate site for a physical petroleum trading principal, designed around the question a counterparty is silently asking: is this entity real and checkable?',
+    company: 'Independent',
+    role: 'Product designer & developer',
+    kind: ['product'],
+    order: 101,
+    status: 'published',
+    period: { start: '2026-06-01T00:00:00.000Z' },
+  },
+  {
+    slug: 'faymen',
+    title: 'Fayman — Persian RTL menswear storefront',
+    summary:
+      'A live Persian RTL menswear storefront — an international commerce template rebuilt around Iranian payments, phone-only identity and an in-country stack.',
+    company: 'Independent',
+    role: 'Product designer & developer',
+    kind: ['product'],
+    order: 102,
+    status: 'published',
+    period: { start: '2026-06-01T00:00:00.000Z' },
+    liveUrl: 'https://faymen.ir',
+  },
+  {
+    slug: 'renova-plus',
+    title: 'Renova+ — managed-renovation platform & portfolio OS',
+    summary:
+      'Two surfaces for one Dubai product: a full design phase for a managed-renovation platform, and a working prototype of the institutional portfolio layer that sells it.',
+    company: 'Independent',
+    role: 'Product designer & strategist',
+    kind: ['product'],
+    order: 103,
+    status: 'published',
+    period: { start: '2026-02-01T00:00:00.000Z' },
+  },
+  {
+    slug: 'vin-app',
+    title: 'VIN — connection-first networking for Dubai',
+    summary:
+      "A connection-first networking app for Dubai's professional community — a product brief, a 57-problem inventory with its own KPI dictionary, a brand architecture and a B2B venue-revenue layer, audited against the promises the product makes to its own users.",
+    company: 'Independent',
+    role: 'Product designer & strategist',
+    kind: ['product'],
+    order: 104,
+    status: 'published',
+    period: { start: '2026-02-01T00:00:00.000Z' },
+  },
+  {
+    slug: 'razhmana',
+    title: 'Razhmana — freight marketplace process audit',
+    summary:
+      "A forensic audit of an Iranian freight marketplace's design file, turned into a 42-process architecture and an input-readiness gate.",
+    company: 'Independent',
+    role: 'Design researcher & process architect',
+    kind: ['research'],
+    order: 105,
+    status: 'published',
+    period: { start: '2026-08-01T00:00:00.000Z' },
+  },
+  {
+    slug: 'greenrest',
+    title: 'GreenRest — e-commerce UX audit',
+    summary:
+      'A scored, bilingual UX audit of a live Iranian mattress storefront, with a prioritised redesign roadmap built on a reusable e-commerce analysis toolkit.',
+    company: 'Independent',
+    role: 'UX researcher',
+    kind: ['research'],
+    order: 106,
+    status: 'published',
+    period: { start: '2026-02-01T00:00:00.000Z' },
+    liveUrl: 'https://greenrest.ir',
+  },
 ]
 
 /** Payload create data for one row; `coverId` is the seeded media document when the row has one. */
@@ -374,6 +464,7 @@ export const toProjectData = (
   caseStudyStatus: 'none',
   ...(row.period ? { period: { start: row.period.start } } : {}),
   ...(coverId ? { cover: coverId } : {}),
+  ...(row.liveUrl ? { liveUrl: row.liveUrl } : {}),
 })
 
 const STATIC_TIMESTAMP = '2026-09-21T00:00:00.000Z'
@@ -392,6 +483,7 @@ export const toStaticProject = (row: ProjectSeedRow): Project => ({
   featured: row.featured ?? false,
   caseStudyStatus: 'none',
   period: row.period ? { start: row.period.start } : undefined,
+  liveUrl: row.liveUrl,
   createdAt: STATIC_TIMESTAMP,
   updatedAt: STATIC_TIMESTAMP,
 })

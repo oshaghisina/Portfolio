@@ -1,6 +1,8 @@
 import type { Metadata } from 'next/types'
 
 import { CollectionArchive } from '@/components/CollectionArchive'
+import { PageFrame } from '@/components/PageFrame'
+import { PageOpener } from '@/components/PageOpener'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import React from 'react'
@@ -66,24 +68,25 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
   })
 
   return (
-    <div className="pt-24 pb-24">
+    <PageFrame>
       <PageClient />
-      <div className="container mb-16">
-        <div className="prose dark:prose-invert max-w-none text-center">
-          <h1 className="mb-8 lg:mb-16">{uiCopy[locale].search}</h1>
-
-          <div className="max-w-[50rem] mx-auto">
+      <PageOpener
+        actions={
+          <div className="basis-full max-w-[34rem]">
             <Search locale={locale} />
           </div>
-        </div>
-      </div>
+        }
+        title={uiCopy[locale].search}
+      />
 
-      {posts.totalDocs > 0 ? (
-        <CollectionArchive locale={locale} posts={posts.docs as CardPostData[]} />
-      ) : (
-        <div className="container">{uiCopy[locale].searchNoResults}</div>
-      )}
-    </div>
+      <div className="mt-12 md:mt-16">
+        {posts.totalDocs > 0 ? (
+          <CollectionArchive locale={locale} posts={posts.docs as CardPostData[]} />
+        ) : (
+          <p className="text-body text-ink-2">{uiCopy[locale].searchNoResults}</p>
+        )}
+      </div>
+    </PageFrame>
   )
 }
 

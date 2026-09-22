@@ -1351,17 +1351,66 @@ export interface TracksBlock {
  */
 export interface WorkflowStagesBlock {
   sectionHeader?: SectionHeaderField;
-  stages?:
+  /**
+   * Rendered in the canonical order defined in toolLogos.ts (01 Design & Prototyping → 06 Infrastructure & Operations). The two-digit index follows that order, not the row order here.
+   */
+  categories?:
     | {
         /**
-         * e.g. "R1"
+         * Stable id — sets the render order and the index code
          */
-        code: string;
-        label: string;
+        key:
+          | 'designPrototyping'
+          | 'aiAgents'
+          | 'buildDelivery'
+          | 'dataIntelligence'
+          | 'growthMeasurement'
+          | 'infraOperations';
         /**
-         * Comma-separated tool names
+         * Shown above the matrix, e.g. "Design & Prototyping"
          */
-        tools: string;
+        title: string;
+        tools?:
+          | {
+              /**
+               * Resolves to a brand mark and its canonical product name (toolLogos.ts).
+               */
+              toolKey:
+                | 'figma'
+                | 'figjam'
+                | 'higgsfield'
+                | 'chatgpt'
+                | 'claude'
+                | 'grok'
+                | 'codex'
+                | 'githubCopilot'
+                | 'openrouter'
+                | 'langchain'
+                | 'typesafeAi'
+                | 'cursor'
+                | 'antigravity'
+                | 'vscode'
+                | 'payloadCms'
+                | 'nextjs'
+                | 'docker'
+                | 'ga4'
+                | 'amplitude'
+                | 'heap'
+                | 'fullstory'
+                | 'clarity'
+                | 'hotjar'
+                | 'umami'
+                | 'googleTagManager'
+                | 'googleAds'
+                | 'googleSearchConsole'
+                | 'supabase'
+                | 'vercel'
+                | 'coolify'
+                | 'gitea'
+                | 'sentry';
+              id?: string | null;
+            }[]
+          | null;
         id?: string | null;
       }[]
     | null;
@@ -2178,12 +2227,17 @@ export interface TracksBlockSelect<T extends boolean = true> {
  */
 export interface WorkflowStagesBlockSelect<T extends boolean = true> {
   sectionHeader?: T | SectionHeaderFieldSelect<T>;
-  stages?:
+  categories?:
     | T
     | {
-        code?: T;
-        label?: T;
-        tools?: T;
+        key?: T;
+        title?: T;
+        tools?:
+          | T
+          | {
+              toolKey?: T;
+              id?: T;
+            };
         id?: T;
       };
   id?: T;
@@ -3057,7 +3111,7 @@ export interface Footer {
   description?: string | null;
   social?:
     | {
-        kind: 'linkedin' | 'email';
+        kind: 'email' | 'linkedin' | 'telegram' | 'instagram' | 'dribbble' | 'behance';
         /**
          * Full URL, or mailto:.
          */

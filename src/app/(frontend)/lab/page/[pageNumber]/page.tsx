@@ -1,6 +1,8 @@
 import type { Metadata } from 'next/types'
 
 import { CollectionArchive } from '@/components/CollectionArchive'
+import { PageFrame } from '@/components/PageFrame'
+import { PageOpener } from '@/components/PageOpener'
 import { PageRange } from '@/components/PageRange'
 import { Pagination } from '@/components/Pagination'
 import configPromise from '@payload-config'
@@ -40,26 +42,28 @@ export default async function Page({ params: paramsPromise }: Args) {
   })
 
   return (
-    <div className="pt-24 pb-24">
+    <PageFrame>
       <PageClient />
-      <div className="container mb-16">
-        <div className="prose dark:prose-invert max-w-none">
-          <h1>{uiCopy[locale].labArchiveTitle}</h1>
-        </div>
+      <PageOpener
+        aside={<PageRange currentPage={posts.page} limit={12} locale={locale} totalDocs={posts.totalDocs} />}
+        asideAlign="end"
+        title={uiCopy[locale].labArchiveTitle}
+      />
+
+      <div className="mt-12 md:mt-16">
+        <CollectionArchive locale={locale} posts={posts.docs} />
       </div>
 
-      <div className="container mb-8">
-        <PageRange currentPage={posts.page} limit={12} locale={locale} totalDocs={posts.totalDocs} />
-      </div>
-
-      <CollectionArchive locale={locale} posts={posts.docs} />
-
-      <div className="container">
-        {posts?.page && posts?.totalPages > 1 && (
-          <Pagination basePath={docPath('posts', 'page')} locale={locale} page={posts.page} totalPages={posts.totalPages} />
-        )}
-      </div>
-    </div>
+      {posts?.page && posts?.totalPages > 1 && (
+        <Pagination
+          basePath={docPath('posts', 'page')}
+          className="mt-block"
+          locale={locale}
+          page={posts.page}
+          totalPages={posts.totalPages}
+        />
+      )}
+    </PageFrame>
   )
 }
 

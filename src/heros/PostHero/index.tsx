@@ -4,70 +4,66 @@ import React from 'react'
 import type { Post } from '@/payload-types'
 
 import { Media } from '@/components/Media'
+import { PageOpener } from '@/components/PageOpener'
 import { formatAuthors } from '@/utilities/formatAuthors'
 
+/** At most the canvas width, capped where the sheet stops growing. */
+const COVER_SIZES = '(min-width: 110rem) 76rem, (min-width: 48rem) 78vw, 100vw'
+
+/**
+ * A post's opener. It used to be a full-bleed cover reaching under the sticky header, which was
+ * the only thing on the site that broke out of the sheet; the cover is now a framed figure under
+ * the same opening gesture every other page uses.
+ */
 export const PostHero: React.FC<{
   post: Post
 }> = ({ post }) => {
   const { categories, heroImage, populatedAuthors, publishedAt, title } = post
 
-  const hasAuthors =
-    populatedAuthors && populatedAuthors.length > 0 && formatAuthors(populatedAuthors) !== ''
+  const authors = populatedAuthors?.length ? formatAuthors(populatedAuthors) : ''
+  const labels =
+    categories?.flatMap((category) =>
+      typeof category === 'object' && category !== null ? [category.title || 'Untitled category'] : [],
+    ) ?? []
 
   return (
-    <div className="relative -mt-[10.4rem] flex items-end">
-      <div className="container z-10 relative lg:grid lg:grid-cols-[1fr_48rem_1fr] text-white pb-8">
-        <div className="col-start-1 col-span-1 md:col-start-2 md:col-span-2">
-          <div className="uppercase text-sm mb-6">
-            {categories?.map((category, index) => {
-              if (typeof category === 'object' && category !== null) {
-                const { title: categoryTitle } = category
-
-                const titleToUse = categoryTitle || 'Untitled category'
-
-                const isLast = index === categories.length - 1
-
-                return (
-                  <React.Fragment key={index}>
-                    {titleToUse}
-                    {!isLast && <React.Fragment>, &nbsp;</React.Fragment>}
-                  </React.Fragment>
-                )
-              }
-              return null
-            })}
-          </div>
-
-          <div className="">
-            <h1 className="mb-6 text-3xl md:text-5xl lg:text-6xl">{title}</h1>
-          </div>
-
-          <div className="flex flex-col md:flex-row gap-4 md:gap-16">
-            {hasAuthors && (
-              <div className="flex flex-col gap-4">
-                <div className="flex flex-col gap-1">
-                  <p className="text-sm">Author</p>
-
-                  <p>{formatAuthors(populatedAuthors)}</p>
+    <>
+      <PageOpener
+        aside={
+          authors || publishedAt ? (
+            <dl className="grid w-full grid-cols-2 gap-x-6 gap-y-5 lg:w-[18rem] lg:shrink-0 lg:grid-cols-1">
+              {authors ? (
+                <div className="border-t border-line pt-3">
+                  <dt className="eyebrow text-ink-3">Author</dt>
+                  <dd className="mt-1 text-small">{authors}</dd>
                 </div>
-              </div>
-            )}
-            {publishedAt && (
-              <div className="flex flex-col gap-1">
-                <p className="text-sm">Date Published</p>
-
-                <time dateTime={publishedAt}>{formatDateTime(publishedAt)}</time>
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-      <div className="min-h-[80vh] select-none">
-        {heroImage && typeof heroImage !== 'string' && (
-          <Media fill priority imgClassName="-z-10 object-cover" resource={heroImage} />
-        )}
-        <div className="absolute pointer-events-none left-0 bottom-0 w-full h-1/2 bg-linear-to-t from-black to-transparent" />
-      </div>
-    </div>
+              ) : null}
+              {publishedAt ? (
+                <div className="border-t border-line pt-3">
+                  <dt className="eyebrow text-ink-3">Published</dt>
+                  <dd className="mt-1 text-small">
+                    <time dateTime={publishedAt}>{formatDateTime(publishedAt)}</time>
+                  </dd>
+                </div>
+              ) : null}
+            </dl>
+          ) : null
+        }
+        asideAlign="end"
+        eyebrow={labels.length ? labels.join(' · ') : null}
+        title={title}
+      />
+      {heroImage && typeof heroImage !== 'string' ? (
+        <figure className="mt-12 md:mt-16">
+          <Media
+            className="overflow-hidden rounded-media border border-line bg-panel"
+            imgClassName="h-auto w-full"
+            priority
+            resource={heroImage}
+            size={COVER_SIZES}
+          />
+        </figure>
+      ) : null}
+    </>
   )
 }
