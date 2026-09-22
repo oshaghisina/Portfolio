@@ -1,5 +1,4 @@
 import { Globe } from 'lucide-react'
-import Link from 'next/link'
 import React from 'react'
 
 import { localePath } from '@/i18n/navigation'
@@ -61,14 +60,25 @@ export const LocaleSwitcher: React.FC<LocaleSwitcherProps> = ({
           const switchLabel = switchToLanguageLabel(locale, LOCALE_LABELS[l])
           return (
             <li key={l}>
-              <Link
+              {/* A plain `<a>`, deliberately — not `next/link`. `proxy.ts` rewrites `/fa/about`
+                  onto the same physical route as `/about`, so a client-side navigation between
+                  locales presents the router with an identical segment tree and it patches
+                  nothing: the URL changes and the page stays in the old language until a reload.
+                  A locale switch also has to re-render the root layout — it owns `<html lang>`,
+                  `dir`, the font stack, the header and the footer — and App Router root layouts
+                  never re-render on client navigation. A full document load is the only thing
+                  that gets all of it, and it re-runs the proxy so `x-locale` is right. Losing
+                  prefetch is a gain here: prefetching a rewrite target would warm the cache with
+                  the wrong locale. */}
+              <a
                 aria-label={switchLabel}
                 className="block rounded-control px-2 py-1.5 text-small text-foreground hover:bg-panel"
                 href={href}
+                hrefLang={l}
                 title={switchLabel}
               >
                 {LOCALE_LABELS[l]}
-              </Link>
+              </a>
             </li>
           )
         })}

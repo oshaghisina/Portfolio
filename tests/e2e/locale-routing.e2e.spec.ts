@@ -37,6 +37,27 @@ test.describe('Locale routing', () => {
     }
   })
 
+  test('the locale switcher changes the language on the click, not on the next reload', async ({ page }) => {
+    // `proxy.ts` rewrites `/fa/about` onto the same physical route as `/about`, so a client-side
+    // navigation between locales hands the router an identical segment tree and it patches
+    // nothing — and the root layout, which owns `<html lang>`/`dir`, never re-renders on client
+    // navigation anyway. The switcher therefore has to trigger a full document load. This asserts
+    // the observable consequence rather than the mechanism, so it holds if the mechanism changes
+    // (a real `[locale]` segment would satisfy it too) but fails the moment a `next/link` creeps
+    // back in and the page goes back to needing a manual reload.
+    await page.goto('http://localhost:3000/about')
+    await expect(page.locator('html')).toHaveAttribute('lang', 'en')
+
+    const switcher = page.locator('header').first().locator('details').first()
+    await switcher.locator('summary').click()
+    await switcher.locator('a[hreflang="fa"]').click()
+
+    // No reload() anywhere in here — that is the whole point of the test.
+    await page.waitForURL('**/fa/about')
+    await expect(page.locator('html')).toHaveAttribute('lang', 'fa')
+    await expect(page.locator('html')).toHaveAttribute('dir', 'rtl')
+  })
+
   test('the nav renders translated labels, not English ones', async ({ page }) => {
     // The site chrome's `<header>` is the first on the page — block content (`SectionHeader`)
     // also renders `<header>` elements, so this must not match those too.
