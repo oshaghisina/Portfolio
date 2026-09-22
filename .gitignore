@@ -34,3 +34,6 @@ tsconfig.tsbuildinfo
 # Design-System crops/frames/video of third-party sites are local-only research assets
 Docs/Design-System/assets/*
 !Docs/Design-System/assets/.gitkeep
+
+# Legacy SQLite database from before the MongoDB migration (37b1539)
+portfolio.db

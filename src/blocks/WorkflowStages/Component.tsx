@@ -35,13 +35,13 @@ export const WorkflowStagesBlock: React.FC<WorkflowStagesProps> = ({
     <section className={cn(!disableInnerContainer && 'container', className)}>
       <SectionHeader
         {...sectionHeader}
-        className="mb-10 max-md:mb-8 max-md:border-t-0 max-md:pt-0 max-md:[&_h2]:max-w-[11ch]"
+        className="mb-6 max-md:mb-6 max-md:border-t-0 max-md:pt-0 max-md:[&_h2]:max-w-[11ch]"
         tagTone="mono"
       />
-      <ul className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-7">
+      <ul className="grid grid-cols-2 gap-px border-y border-line bg-line sm:grid-cols-4 lg:grid-cols-7">
         {tools.map((tool) => (
-          <li className="min-w-0" key={tool}>
-            <span className="flex aspect-square w-full flex-col items-center justify-center gap-3 border border-line bg-background/70 p-3 text-center eyebrow text-ink-2">
+          <li className="min-w-0 bg-paper max-sm:[&:last-child:nth-child(2n+1)]:col-span-2" key={tool}>
+            <span className="flex flex-col items-center justify-center gap-2 px-3 py-5 text-center eyebrow text-ink-2">
               <ToolGlyph className="size-6" name={tool} />
               {tool}
             </span>
