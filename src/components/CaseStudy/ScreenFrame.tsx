@@ -19,11 +19,19 @@ export interface ScreenFrameProps {
  * and the panel colour, no device bezel — the screenshot is evidence, not decoration. The frame
  * uses no directional properties, so RTL pages never mirror the product.
  */
-export const ScreenFrame: React.FC<ScreenFrameProps> = ({ className, priority, resource, sizes }) => {
+export const ScreenFrame: React.FC<ScreenFrameProps> = ({
+  className,
+  priority,
+  resource,
+  sizes,
+}) => {
   if (!resource || typeof resource !== 'object') return null
   return (
     <Media
-      className={cn('relative aspect-[390/844] overflow-hidden rounded-media border border-line bg-panel', className)}
+      className={cn(
+        'relative aspect-[390/844] overflow-hidden rounded-media border border-line bg-panel',
+        className,
+      )}
       fill
       imgClassName="object-cover object-top"
       priority={priority}

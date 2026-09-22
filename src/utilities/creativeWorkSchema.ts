@@ -2,7 +2,10 @@ import type { Media, Project } from '@/payload-types'
 
 import type { Locale } from '@/utilities/locale'
 
-const mediaUrl = (serverUrl: string, media: Media | string | number | null | undefined): string | undefined =>
+const mediaUrl = (
+  serverUrl: string,
+  media: Media | string | number | null | undefined,
+): string | undefined =>
   media && typeof media === 'object' && media.url ? `${serverUrl}${media.url}` : undefined
 
 /**

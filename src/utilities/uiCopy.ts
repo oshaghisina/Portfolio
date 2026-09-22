@@ -4,15 +4,26 @@ import type { Locale } from './locale'
 export type PluralCopy = Partial<Record<Intl.LDMLPluralRule, string>> & { other: string }
 
 export interface UiCopy {
+  /** `/lab` and `/search` chrome: the "no docs matched" line under `PageRange`. */
+  archiveNoResults: string
+  /** `/lab` and `/search` chrome: `{range}` is `"start–end"` (or a bare count), `{total}` is `pluralCopy(docsLabel)`. */
+  archiveRange: string
   closeMenu: string
-  openMenu: string
+  /** Generic plural label for `PageRange`'s count line — e.g. "3 docs". */
+  docsLabel: PluralCopy
+  /** `/lab` archive index title and nav label. */
+  labArchiveTitle: string
   language: string
   next: string
   /** Screen-reader suffix for links that open a new tab. */
   opensInNewTab: string
-  postsArchiveTitle: string
+  openMenu: string
   previous: string
   search: string
+  /** `/search` input's `<Input placeholder>` — distinct from the `search` label. */
+  searchPlaceholder: string
+  /** `/search` empty-state line. */
+  searchNoResults: string
   /** `{language}` is replaced with the target locale's native name — see `switchToLanguageLabel`. */
   switchToLanguage: string
   theme: string
@@ -32,14 +43,19 @@ export interface UiCopy {
 /** Hand-translated interface chrome — not CMS content, so translating it directly is safe. */
 export const uiCopy: Record<Locale, UiCopy> = {
   en: {
+    archiveNoResults: 'Search produced no results.',
+    archiveRange: 'Showing {range} of {total}',
     closeMenu: 'Close menu',
-    openMenu: 'Open menu',
+    docsLabel: { one: '{n} doc', other: '{n} docs' },
+    labArchiveTitle: 'Lab',
     language: 'Language',
     next: 'Next',
     opensInNewTab: 'opens in a new tab',
-    postsArchiveTitle: 'Posts',
+    openMenu: 'Open menu',
     previous: 'Previous',
     search: 'Search',
+    searchNoResults: 'No results found.',
+    searchPlaceholder: 'Search',
     switchToLanguage: 'Switch to {language}',
     theme: 'Toggle theme',
     workArchiveTag: 'Archive',
@@ -54,14 +70,19 @@ export const uiCopy: Record<Locale, UiCopy> = {
     workProjects: { one: '{n} project', other: '{n} projects' },
   },
   fa: {
+    archiveNoResults: 'جستجو نتیجه‌ای نداشت.',
+    archiveRange: 'نمایش {range} از {total}',
     closeMenu: 'بستن منو',
-    openMenu: 'باز کردن منو',
+    docsLabel: { other: '{n} مورد' },
+    labArchiveTitle: 'آزمایشگاه',
     language: 'زبان',
     next: 'بعدی',
     opensInNewTab: 'در برگهٴ جدید باز می‌شود',
-    postsArchiveTitle: 'نوشته‌ها',
+    openMenu: 'باز کردن منو',
     previous: 'قبلی',
     search: 'جستجو',
+    searchNoResults: 'نتیجه‌ای یافت نشد.',
+    searchPlaceholder: 'جستجو',
     switchToLanguage: 'تغییر زبان به {language}',
     theme: 'تغییر پوسته',
     workArchiveTag: 'آرشیو',
@@ -76,14 +97,19 @@ export const uiCopy: Record<Locale, UiCopy> = {
     workProjects: { other: '{n} پروژه' },
   },
   ar: {
+    archiveNoResults: 'لم يُسفر البحث عن أي نتائج.',
+    archiveRange: 'عرض {range} من {total}',
     closeMenu: 'إغلاق القائمة',
-    openMenu: 'فتح القائمة',
+    docsLabel: { one: 'مستند واحد', two: 'مستندان', few: '{n} مستندات', other: '{n} مستندًا' },
+    labArchiveTitle: 'المختبر',
     language: 'اللغة',
     next: 'التالي',
     opensInNewTab: 'يُفتح في علامة تبويب جديدة',
-    postsArchiveTitle: 'المقالات',
+    openMenu: 'فتح القائمة',
     previous: 'السابق',
     search: 'بحث',
+    searchNoResults: 'لم يتم العثور على نتائج.',
+    searchPlaceholder: 'بحث',
     switchToLanguage: 'التبديل إلى {language}',
     theme: 'تبديل المظهر',
     workArchiveTag: 'الأرشيف',
@@ -98,14 +124,19 @@ export const uiCopy: Record<Locale, UiCopy> = {
     workProjects: { one: 'مشروع واحد', two: 'مشروعان', few: '{n} مشاريع', other: '{n} مشروعًا' },
   },
   es: {
+    archiveNoResults: 'La búsqueda no produjo resultados.',
+    archiveRange: 'Mostrando {range} de {total}',
     closeMenu: 'Cerrar menú',
-    openMenu: 'Abrir menú',
+    docsLabel: { one: '{n} documento', other: '{n} documentos' },
+    labArchiveTitle: 'Laboratorio',
     language: 'Idioma',
     next: 'Siguiente',
     opensInNewTab: 'se abre en una pestaña nueva',
-    postsArchiveTitle: 'Publicaciones',
+    openMenu: 'Abrir menú',
     previous: 'Anterior',
     search: 'Buscar',
+    searchNoResults: 'No se encontraron resultados.',
+    searchPlaceholder: 'Buscar',
     switchToLanguage: 'Cambiar a {language}',
     theme: 'Cambiar tema',
     workArchiveTag: 'Archivo',
@@ -120,14 +151,19 @@ export const uiCopy: Record<Locale, UiCopy> = {
     workProjects: { one: '{n} proyecto', other: '{n} proyectos' },
   },
   de: {
+    archiveNoResults: 'Die Suche ergab keine Treffer.',
+    archiveRange: '{range} von {total} werden angezeigt',
     closeMenu: 'Menü schließen',
-    openMenu: 'Menü öffnen',
+    docsLabel: { one: '{n} Dokument', other: '{n} Dokumente' },
+    labArchiveTitle: 'Labor',
     language: 'Sprache',
     next: 'Weiter',
     opensInNewTab: 'öffnet in neuem Tab',
-    postsArchiveTitle: 'Beiträge',
+    openMenu: 'Menü öffnen',
     previous: 'Zurück',
     search: 'Suche',
+    searchNoResults: 'Keine Ergebnisse gefunden.',
+    searchPlaceholder: 'Suche',
     switchToLanguage: 'Zu {language} wechseln',
     theme: 'Design wechseln',
     workArchiveTag: 'Archiv',
@@ -142,14 +178,19 @@ export const uiCopy: Record<Locale, UiCopy> = {
     workProjects: { one: '{n} Projekt', other: '{n} Projekte' },
   },
   fr: {
+    archiveNoResults: "La recherche n'a produit aucun résultat.",
+    archiveRange: 'Affichage de {range} sur {total}',
     closeMenu: 'Fermer le menu',
-    openMenu: 'Ouvrir le menu',
+    docsLabel: { one: '{n} document', other: '{n} documents' },
+    labArchiveTitle: 'Laboratoire',
     language: 'Langue',
     next: 'Suivant',
     opensInNewTab: "s'ouvre dans un nouvel onglet",
-    postsArchiveTitle: 'Articles',
+    openMenu: 'Ouvrir le menu',
     previous: 'Précédent',
     search: 'Rechercher',
+    searchNoResults: 'Aucun résultat trouvé.',
+    searchPlaceholder: 'Rechercher',
     switchToLanguage: 'Passer en {language}',
     theme: 'Changer de thème',
     workArchiveTag: 'Archives',
@@ -164,14 +205,19 @@ export const uiCopy: Record<Locale, UiCopy> = {
     workProjects: { one: '{n} projet', other: '{n} projets' },
   },
   ja: {
+    archiveNoResults: '検索結果はありませんでした。',
+    archiveRange: '{total}件中{range}件を表示',
     closeMenu: 'メニューを閉じる',
-    openMenu: 'メニューを開く',
+    docsLabel: { other: '{n}件のドキュメント' },
+    labArchiveTitle: 'ラボ',
     language: '言語',
     next: '次へ',
     opensInNewTab: '新しいタブで開きます',
-    postsArchiveTitle: '記事',
+    openMenu: 'メニューを開く',
     previous: '前へ',
     search: '検索',
+    searchNoResults: '該当する結果がありません。',
+    searchPlaceholder: '検索',
     switchToLanguage: '{language}に切り替え',
     theme: 'テーマを切り替え',
     workArchiveTag: 'アーカイブ',

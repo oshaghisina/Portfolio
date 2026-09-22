@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
+import { useLenis } from 'lenis/react'
 
 import type { Chapter } from '@/blocks/CaseStudy/chapters'
 
@@ -24,6 +25,7 @@ export const SECTION_INDEX_MIN_CHAPTERS = 4
  */
 export const SectionIndex: React.FC<SectionIndexProps> = ({ chapters, className, label }) => {
   const [active, setActive] = useState<string | null>(null)
+  const lenis = useLenis()
 
   useEffect(() => {
     if (typeof IntersectionObserver === 'undefined') return
@@ -32,16 +34,24 @@ export const SectionIndex: React.FC<SectionIndexProps> = ({ chapters, className,
       .filter((el): el is HTMLElement => el instanceof HTMLElement)
     if (!targets.length) return
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)
-        if (visible[0]) setActive(visible[0].target.id)
-      },
-      { rootMargin: '-30% 0px -55% 0px' },
-    )
+    // The active chapter is the last one whose top has passed the reading line (30% down the
+    // viewport); above the first chapter nothing is active. Computed from geometry on every
+    // observer callback, so a fast scroll in either direction never leaves a stale entry.
+    const update = () => {
+      const line = window.innerHeight * 0.3
+      let current: string | null = null
+      for (const el of targets) {
+        if (el.getBoundingClientRect().top <= line) current = el.id
+        else break
+      }
+      setActive(current)
+    }
+    const observer = new IntersectionObserver(update, {
+      rootMargin: '-30% 0px -60% 0px',
+      threshold: [0, 1],
+    })
     targets.forEach((el) => observer.observe(el))
+    update()
     return () => observer.disconnect()
   }, [chapters])
 
@@ -61,8 +71,15 @@ export const SectionIndex: React.FC<SectionIndexProps> = ({ chapters, className,
                   current ? 'text-foreground' : 'text-ink-3 hover:text-foreground',
                 )}
                 href={`#${chapter.id}`}
+                onClick={(e) => {
+                  if (!lenis) return // reduced motion / no Lenis instance: let the native href navigate
+                  e.preventDefault()
+                  lenis.scrollTo(`#${chapter.id}`)
+                }}
               >
-                <span className={cn('index-code shrink-0', current && 'text-brand')}>{chapter.number}</span>
+                <span className={cn('index-code shrink-0', current && 'text-brand')}>
+                  {chapter.number}
+                </span>
                 <span>{chapter.label}</span>
               </a>
             </li>

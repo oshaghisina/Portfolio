@@ -20,7 +20,9 @@ export interface SnapshotProps {
  * nothing while the snapshot is empty, so a half-written case study never shows empty labels.
  */
 export const Snapshot: React.FC<SnapshotProps> = ({ className, copy, snapshot }) => {
-  const rows = KEYS.map((key) => ({ key, value: snapshot?.[key]?.trim() })).filter((row) => row.value)
+  const rows = KEYS.map((key) => ({ key, value: snapshot?.[key]?.trim() })).filter(
+    (row) => row.value,
+  )
   if (!rows.length) return null
 
   return (

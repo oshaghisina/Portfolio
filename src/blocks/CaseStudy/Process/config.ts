@@ -17,7 +17,10 @@ export const CaseStudyProcess: Block = {
           name: 'heading',
           type: 'text',
           localized: true,
-          admin: { description: 'Optional short title, e.g. "Six passes, in order".', width: '60%' },
+          admin: {
+            description: 'Optional short title, e.g. "Six passes, in order".',
+            width: '60%',
+          },
         },
         {
           name: 'kind',
@@ -46,9 +49,18 @@ export const CaseStudyProcess: Block = {
               type: 'text',
               required: true,
               maxLength: 4,
-              admin: { description: 'Latin code, e.g. "R1" — stays mono in every locale.', width: '25%' },
+              admin: {
+                description: 'Latin code, e.g. "R1" — stays mono in every locale.',
+                width: '25%',
+              },
             },
-            { name: 'label', type: 'text', localized: true, required: true, admin: { width: '75%' } },
+            {
+              name: 'label',
+              type: 'text',
+              localized: true,
+              required: true,
+              admin: { width: '75%' },
+            },
           ],
         },
         {

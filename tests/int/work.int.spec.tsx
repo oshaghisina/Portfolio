@@ -52,7 +52,7 @@ const media = (overrides: Partial<Media> = {}): Media => ({
 describe('routes', () => {
   it('builds every collection path from one table', () => {
     expect(docPath('pages', 'work')).toBe('/work')
-    expect(docPath('posts', 'hi')).toBe('/posts/hi')
+    expect(docPath('posts', 'hi')).toBe('/lab/hi')
     expect(docPath('projects', 'rp1-arena')).toBe('/work/rp1-arena')
     expect(hrefFromLink({ type: 'reference', reference: { relationTo: 'projects', value: { slug: 'rp1-arena' } as never } })).toBe(
       '/work/rp1-arena',

@@ -1,6 +1,6 @@
 ---
 title: "RP1 (ReadyPlayerOne) — Multi-Game Play-to-Earn Arena"
-title_fa: ""              # Persian title (shown on the fa site)
+title_fa: "RP1 — آرنای چندبازیِ Play-to-Earn"
 slug: "rp1-arena"
 inventory_id: "PRJ-01"    # row in ../../Inventory.md
 company: "Freelance / Independent Projects"
@@ -13,7 +13,7 @@ employment: "freelance"
 domain: "gaming / play-to-earn"
 team: ""
 summary: "Product design and strategy for RP1, a multi-game play-to-earn arena — competitive-platform research, MVP scoping, and a full wireframe spec across 16 sections."
-summary_fa: ""
+summary_fa: "طراحی محصول و استراتژی برای RP1، یک آرنای چندبازیِ Play-to-Earn — پژوهش پلتفرم‌های رقابتی، تعیین دامنهٔ MVP و مشخصات کامل وایرفریم در ۱۶ بخش."
 tools: [Figma, React]
 skills: [product-strategy, gamification-design, ui-design, wireframing, design-systems, competitive-research]
 figma:
@@ -139,6 +139,20 @@ re-read surfaces.
 Legend, Duel, Lucky Wheel, Chat, Notification, Wallet, Profile, Setting, Animations), mirroring
 the Figma canvas.
 
+## Published case study
+`/work/rp1-arena` (D-022) is seeded from this file by `src/endpoints/seed/case-studies/rp1-arena.ts`
+— every sentence on the page traces back to a section above; the project is pre-launch, so the
+outcomes are delivered outputs without numbers. Screens used: `games/games-main-duel`,
+`today-spotlight/{not-yet-played,time-remaining,high-rank,spotlight-ended}`, `weekly-legend/ranking`,
+`duel/{duel-main,duel-time-limited-3,duel-race-to-target}`, `wallet/wallet-balance`,
+`animations/anim-levelup-{1,2,3}`, `notification/notification-friends`. Not used on purpose:
+`1st-enter/*` (a third-party stock photo with a visible watermark sits behind the onboarding
+sheet), `games/games-main-1.png` (8 MB, 780×10046), `wallet/wallet-saved-wallets.png` (592 B,
+broken export), `profile/profile-{my-profile,others-friends,roadmap}.png` (blank exports),
+`notification/notification-games.png` (empty export).
+
 ## Review checklist
 - [ ] Q1 — RP1's current status and `period.end` confirmed
 - [ ] Q2 — Interactive Octalysis tool's authorship confirmed
+- [ ] fa / ar / de copy on `/work/rp1-arena` is machine-drafted — native review pending (`translationReviewed` stays unticked per locale until then)
+- [ ] Re-export the blank/oversized screens listed above, or confirm they stay out

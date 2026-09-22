@@ -31,7 +31,10 @@ const getProjectsSitemap = unstable_cache(
           locale,
           pagination: false,
           where: {
-            and: [{ _status: { equals: 'published' } }, { caseStudyStatus: { equals: 'published' } }],
+            and: [
+              { _status: { equals: 'published' } },
+              { caseStudyStatus: { equals: 'published' } },
+            ],
           },
           select: { slug: true, updatedAt: true },
         })

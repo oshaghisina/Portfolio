@@ -5,16 +5,16 @@ slug: "sticky-margin-section-index"                  # kebab-case; the file is <
 category: "layout"              # foundation | type-device | layout | component | motion | signature
 take: "borrow"                  # borrow | adapt | avoid
 priority: 2               # 1 = first sprint · 2 = next · 3 = later
-adoption: "candidate"       # candidate | adopted | rejected | superseded
+adoption: "adopted"       # candidate | adopted | rejected | superseded
 superseded_by: ""         # DS-NN, only when adoption = superseded
 sources:                  # every benchmark where the pattern was seen — grows over time
   - benchmark: "pleurat-com"
     type: design
     section: "Key screens"
 target:                   # where it lands in the codebase (no code yet)
-  kind: "layout"
-  path: "src/app/(frontend)/work/[slug]/page.tsx"
-  name: "sticky index"
+  kind: "component"
+  path: "src/components/CaseStudy/SectionIndex.tsx"
+  name: "SectionIndex"
 rtl: "mirrors"                   # mirrors | neutral | needs-redesign
 localization: "labels"          # none | labels | copy | typeface — what needs a fa twin
 tokens: []                # token paths in tokens/<benchmark>.tokens.json, e.g. [color.brand, motion.ease.out]
@@ -22,7 +22,7 @@ evidence: ["pleurat-com/DS-14-1-desktop-chapter-rail.png", "pleurat-com/DS-14-2-
 related: []               # other DS ids
 open_questions: 0         # ❓ count in the body — computed by docs:index
 date_added: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-22"
 status: "draft"             # draft | review | ready
 ---
 
@@ -53,7 +53,9 @@ _To write when the item is picked up. Until then the measured table and crops ca
 ## Target mapping
 | Kind | Path | Name | Notes |
 |---|---|---|---|
-| layout | `src/app/(frontend)/work/[slug]/page.tsx` | sticky index | Part of the frontend layout / page template, not CMS-editable. |
+| component | `src/components/CaseStudy/SectionIndex.tsx` | SectionIndex | Page chrome of `/work/[slug]`, not CMS-editable; fed by `buildChapters()` from the controlled `csNarrative` labels (D-022). |
+
+**Implemented (2026-09-22):** chapter numbers + labels as plain anchors in a sticky inline-start rail, `xl` and up only (phones and tablets get no index — content first); active chapter from geometry on IntersectionObserver callbacks, announced with `aria-current`; smooth in-page scrolling only under `prefers-reduced-motion: no-preference`; rendered only when a case study has 4+ chapters. Labels come from `src/components/CaseStudy/copy.ts` in all seven locales.
 
 ## Evidence
 Local-only, in `assets/pleurat-com/` (gitignored):

@@ -62,7 +62,7 @@ export default async function ProjectPage({ params: paramsPromise }: Args) {
   const url = projectPath({ slug: decodedSlug })
   const project = await queryProjectBySlug({ locale, slug: decodedSlug })
 
-  if (!project) return <PayloadRedirects url={url} />
+  if (!project) return <PayloadRedirects locale={locale} url={url} />
 
   const sections = project.sections ?? []
   if (!draft && !(hasPublicCaseStudy(project) && sections.length)) notFound()
@@ -76,7 +76,7 @@ export default async function ProjectPage({ params: paramsPromise }: Args) {
   return (
     <article className="pt-8 pb-section md:pt-14">
       <PageClient />
-      <PayloadRedirects disableNotFound url={url} />
+      <PayloadRedirects disableNotFound locale={locale} url={url} />
       {draft && <LivePreviewListener />}
       <script dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }} type="application/ld+json" />
 

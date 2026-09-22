@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import { cn } from '@/utilities/ui'
 import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
-import { Vazirmatn } from 'next/font/google'
+import { Noto_Sans_JP, Vazirmatn } from 'next/font/google'
 import React from 'react'
 
 import { AdminBar } from '@/components/AdminBar'
@@ -31,6 +31,14 @@ const vazirmatn = Vazirmatn({
   preload: false,
 })
 
+// Japanese partner face. Also not preloaded; a lang="ja" subtree pulls it in through
+// --font-sans-ja (CJK glyphs arrive as unicode-range slices, so no subset is declared).
+const notoSansJp = Noto_Sans_JP({
+  variable: '--font-noto-sans-jp',
+  display: 'swap',
+  preload: false,
+})
+
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { isEnabled } = await draftMode()
   const locale = await getLocale()
@@ -40,7 +48,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
   return (
     <html
-      className={cn(GeistSans.variable, GeistMono.variable, vazirmatn.variable)}
+      className={cn(GeistSans.variable, GeistMono.variable, vazirmatn.variable, notoSansJp.variable)}
       {...langAttrs(locale)}
       suppressHydrationWarning
     >

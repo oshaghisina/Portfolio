@@ -13,6 +13,11 @@ function isLocaleSegment(segment: string): segment is Locale {
  * resolved locale carried on the `x-locale` request header (see `getLocale.ts`). `/en/...` is a
  * permanent redirect to the unprefixed equivalent — there's exactly one canonical URL per page.
  *
+ * `/posts` was renamed to `/lab` (the `posts` Payload collection slug is unchanged, only the
+ * public path moved — see `src/i18n/routes.ts`). A leading `posts` logical segment is rewritten
+ * to `lab` here too, so an old `/posts...` or `/xx/posts...` link resolves with one redirect
+ * instead of bouncing through the retired route first.
+ *
  * Runs Node.js-only (Next 16's `proxy.ts` convention has no Edge runtime option), so this can
  * grow beyond string/URL manipulation without hitting Edge-runtime API limits.
  */
@@ -20,8 +25,18 @@ export function proxy(request: NextRequest) {
   const { pathname, search } = request.nextUrl
   const [, first, ...rest] = pathname.split('/')
 
-  if (first === DEFAULT_LOCALE) {
-    const target = `/${rest.join('/')}${search}`
+  const isExplicitEnglish = first === DEFAULT_LOCALE
+  const hasLocalePrefix = isLocaleSegment(first)
+  // English is never a URL prefix, even though it's a member of `LOCALES` for other purposes.
+  const localeSegment = hasLocalePrefix && !isExplicitEnglish ? first : null
+  const logicalSegments = isExplicitEnglish || hasLocalePrefix ? rest : [first, ...rest]
+
+  const renamed = logicalSegments[0] === 'posts'
+  if (renamed) logicalSegments[0] = 'lab'
+
+  if (isExplicitEnglish || renamed) {
+    const targetPrefix = localeSegment ? `/${localeSegment}` : ''
+    const target = `${targetPrefix}/${logicalSegments.join('/')}${search}`
     return NextResponse.redirect(new URL(target || '/', request.url), 308)
   }
 
@@ -30,9 +45,9 @@ export function proxy(request: NextRequest) {
   // `getPathname.ts` / `src/i18n/contentReady.ts`.
   requestHeaders.set(PATHNAME_HEADER, pathname)
 
-  if (isLocaleSegment(first)) {
+  if (hasLocalePrefix) {
     requestHeaders.set(LOCALE_HEADER, first)
-    const logicalPath = `/${rest.join('/')}` || '/'
+    const logicalPath = `/${logicalSegments.join('/')}` || '/'
     return NextResponse.rewrite(new URL(`${logicalPath}${search}`, request.url), {
       request: { headers: requestHeaders },
     })

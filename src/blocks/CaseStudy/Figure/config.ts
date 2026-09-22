@@ -63,8 +63,14 @@ export const CaseStudyFigure: Block = {
       minRows: 1,
       maxRows: 4,
       labels: { singular: 'Visual', plural: 'Visuals' },
-      admin: { description: 'Full / annotated: exactly one. Split / compare: exactly two. Sequence: two to four.' },
-      validate: (value: unknown, { siblingData }: { siblingData: Partial<{ layout: FigureLayout }> }) => {
+      admin: {
+        description:
+          'Full / annotated: exactly one. Split / compare: exactly two. Sequence: two to four.',
+      },
+      validate: (
+        value: unknown,
+        { siblingData }: { siblingData: Partial<{ layout: FigureLayout }> },
+      ) => {
         const count = Array.isArray(value) ? value.length : 0
         const layout = siblingData?.layout
         const range = layout ? FIGURE_ITEM_COUNT[layout] : undefined
@@ -82,7 +88,10 @@ export const CaseStudyFigure: Block = {
           name: 'caption',
           type: 'text',
           localized: true,
-          admin: { description: 'Optional per-visual note; keep the explanation in the figure caption below.' },
+          admin: {
+            description:
+              'Optional per-visual note; keep the explanation in the figure caption below.',
+          },
         },
       ],
     },
@@ -93,7 +102,8 @@ export const CaseStudyFigure: Block = {
       labels: { singular: 'Annotation', plural: 'Annotations' },
       admin: {
         condition: (_data, siblingData) => siblingData?.layout === 'annotated',
-        description: 'Numbered key rendered beside the visual (01, 02 …). Number the callouts on the image to match.',
+        description:
+          'Numbered key rendered beside the visual (01, 02 …). Number the callouts on the image to match.',
       },
       fields: [{ name: 'text', type: 'text', localized: true, required: true }],
     },
@@ -101,7 +111,9 @@ export const CaseStudyFigure: Block = {
       name: 'caption',
       type: 'text',
       localized: true,
-      admin: { description: 'What we are looking at and why it matters — not a repeat of the visible UI.' },
+      admin: {
+        description: 'What we are looking at and why it matters — not a repeat of the visible UI.',
+      },
     },
   ],
 }

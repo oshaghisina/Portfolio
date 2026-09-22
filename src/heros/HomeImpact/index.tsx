@@ -6,6 +6,7 @@ import { CMSLink } from '@/components/Link'
 import { ConsolePanel } from '@/components/ConsolePanel'
 import RichText from '@/components/RichText'
 import { SystemLandscape } from '@/components/SystemLandscape'
+import type { Locale } from '@/utilities/locale'
 
 /**
  * Dedicated homepage hero: dominant first viewport (headline + one-liner + links) paired with a
@@ -20,7 +21,7 @@ const WORKSPACE_INDEX = [
   { code: '04', label: 'Growth' },
 ]
 
-export const HomeImpactHero: React.FC<Page['hero']> = ({ links, richText }) => {
+export const HomeImpactHero: React.FC<Page['hero'] & { locale?: Locale }> = ({ links, locale, richText }) => {
   return (
     <section className="flex flex-col">
       <div className="flex flex-col gap-10 pt-6 pb-12 md:gap-12 md:pt-16 md:pb-16 lg:flex-row lg:items-center lg:justify-between lg:gap-16 lg:pt-24 lg:pb-20">
@@ -47,6 +48,7 @@ export const HomeImpactHero: React.FC<Page['hero']> = ({ links, richText }) => {
                       : 'max-sm:h-auto max-sm:justify-start max-sm:border-0 max-sm:bg-transparent max-sm:px-0 max-sm:text-small max-sm:text-ink-2 max-sm:hover:translate-y-0 max-sm:hover:bg-transparent max-sm:hover:text-foreground'
                   }
                   key={i}
+                  locale={locale}
                   {...link}
                 />
               ))}

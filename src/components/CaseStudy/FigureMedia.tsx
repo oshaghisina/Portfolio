@@ -36,14 +36,31 @@ export interface FigureMediaProps {
  * hairline), or a diagram (natural aspect on the drafting plate). Layout components decide the
  * grid; this decides the treatment — the only two kinds of choice the system exposes.
  */
-export const FigureMedia: React.FC<FigureMediaProps> = ({ className, priority, resource, sizes, standalone, treatment }) => {
+export const FigureMedia: React.FC<FigureMediaProps> = ({
+  className,
+  priority,
+  resource,
+  sizes,
+  standalone,
+  treatment,
+}) => {
   if (!resource || typeof resource !== 'object') return null
   const resolved = resolveTreatment(treatment, resource)
 
   if (resolved === 'screen') {
-    const frame = <ScreenFrame className="mx-auto w-full max-w-xs" priority={priority} resource={resource} sizes={sizes} />
+    const frame = (
+      <ScreenFrame
+        className="mx-auto w-full max-w-xs"
+        priority={priority}
+        resource={resource}
+        sizes={sizes}
+      />
+    )
     return standalone ? (
-      <div className={cn('border border-line bg-panel px-6 py-8 sm:px-10 sm:py-12', className)} style={PLATE_STYLE}>
+      <div
+        className={cn('border border-line bg-panel px-6 py-8 sm:px-10 sm:py-12', className)}
+        style={PLATE_STYLE}
+      >
         {frame}
       </div>
     ) : (

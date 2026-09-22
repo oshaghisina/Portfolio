@@ -7,6 +7,9 @@ import React, { Fragment } from 'react'
 import type { Post } from '@/payload-types'
 
 import { Media } from '@/components/Media'
+import { localePath } from '@/i18n/navigation'
+import { docPath, type RoutedCollection } from '@/i18n/routes'
+import { DEFAULT_LOCALE, type Locale } from '@/utilities/locale'
 
 export type CardPostData = Pick<Post, 'slug' | 'categories' | 'meta' | 'title'>
 
@@ -14,12 +17,13 @@ export const Card: React.FC<{
   alignItems?: 'center'
   className?: string
   doc?: CardPostData
-  relationTo?: 'posts'
+  locale?: Locale
+  relationTo?: RoutedCollection
   showCategories?: boolean
   title?: string
 }> = (props) => {
   const { card, link } = useClickableCard({})
-  const { className, doc, relationTo, showCategories, title: titleFromProps } = props
+  const { className, doc, locale = DEFAULT_LOCALE, relationTo, showCategories, title: titleFromProps } = props
 
   const { slug, categories, meta, title } = doc || {}
   const { description, image: metaImage } = meta || {}
@@ -27,7 +31,7 @@ export const Card: React.FC<{
   const hasCategories = categories && Array.isArray(categories) && categories.length > 0
   const titleToUse = titleFromProps || title
   const sanitizedDescription = description?.replace(/\s/g, ' ') // replace non-breaking space with white space
-  const href = `/${relationTo}/${slug}`
+  const href = relationTo && slug ? localePath(locale, docPath(relationTo, slug)) : undefined
 
   return (
     <article
@@ -64,7 +68,7 @@ export const Card: React.FC<{
             })}
           </div>
         )}
-        {titleToUse && (
+        {titleToUse && href && (
           <div className="prose">
             <h3>
               <Link className="not-prose" href={href} ref={link.ref}>

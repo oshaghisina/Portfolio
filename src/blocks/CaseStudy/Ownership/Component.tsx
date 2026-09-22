@@ -6,7 +6,8 @@ import { cn } from '@/utilities/ui'
 
 import type { CaseStudyBlockContext } from '../types'
 
-export type OwnershipBlockProps = CaseStudyOwnershipBlock & CaseStudyBlockContext & { headingId?: string }
+export type OwnershipBlockProps = CaseStudyOwnershipBlock &
+  CaseStudyBlockContext & { headingId?: string }
 
 const COLUMNS = ['own', 'coOwn', 'collaborate'] as const
 
@@ -14,7 +15,16 @@ const COLUMNS = ['own', 'coOwn', 'collaborate'] as const
  * The ownership map: three short lists under mono labels — owned (brand marker), co-owned and
  * collaborated (muted). Deliberately small: it gives credit precisely instead of listing skills.
  */
-export const OwnershipBlock: React.FC<OwnershipBlockProps> = ({ collaborate, coOwn, copy, heading, headingId, intro, note, own }) => {
+export const OwnershipBlock: React.FC<OwnershipBlockProps> = ({
+  collaborate,
+  coOwn,
+  copy,
+  heading,
+  headingId,
+  intro,
+  note,
+  own,
+}) => {
   const lists = { own: own ?? [], coOwn: coOwn ?? [], collaborate: collaborate ?? [] }
   const hasLists = COLUMNS.some((key) => lists[key].length)
 
@@ -33,7 +43,13 @@ export const OwnershipBlock: React.FC<OwnershipBlockProps> = ({ collaborate, coO
                 {lists[key].length ? (
                   lists[key].map((item, i) => (
                     <li className="flex gap-3 text-small text-foreground" key={i}>
-                      <span aria-hidden className={cn('shrink-0 font-mono rtl:-scale-x-100', key === 'own' ? 'text-brand' : 'text-ink-3')}>
+                      <span
+                        aria-hidden
+                        className={cn(
+                          'shrink-0 font-mono rtl:-scale-x-100',
+                          key === 'own' ? 'text-brand' : 'text-ink-3',
+                        )}
+                      >
                         ↳
                       </span>
                       {item}

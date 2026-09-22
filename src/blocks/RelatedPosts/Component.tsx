@@ -6,15 +6,17 @@ import type { Post } from '@/payload-types'
 
 import { Card } from '../../components/Card'
 import { DefaultTypedEditorState } from '@payloadcms/richtext-lexical'
+import { DEFAULT_LOCALE, type Locale } from '@/utilities/locale'
 
 export type RelatedPostsProps = {
   className?: string
   docs?: Post[]
   introContent?: DefaultTypedEditorState
+  locale?: Locale
 }
 
 export const RelatedPosts: React.FC<RelatedPostsProps> = (props) => {
-  const { className, docs, introContent } = props
+  const { className, docs, introContent, locale = DEFAULT_LOCALE } = props
 
   return (
     <div className={clsx('lg:container', className)}>
@@ -24,7 +26,7 @@ export const RelatedPosts: React.FC<RelatedPostsProps> = (props) => {
         {docs?.map((doc, index) => {
           if (typeof doc === 'string') return null
 
-          return <Card key={index} doc={doc} relationTo="posts" showCategories />
+          return <Card key={index} doc={doc} locale={locale} relationTo="posts" showCategories />
         })}
       </div>
     </div>

@@ -7,7 +7,8 @@ import { pad } from '@/components/CaseStudy/plate'
 
 import type { CaseStudyBlockContext } from '../types'
 
-export type LessonsBlockProps = CaseStudyLessonsBlock & CaseStudyBlockContext & { headingId?: string }
+export type LessonsBlockProps = CaseStudyLessonsBlock &
+  CaseStudyBlockContext & { headingId?: string }
 
 /** What I learned — a numbered list of concrete lessons at reading measure; the intellectual close. */
 export const LessonsBlock: React.FC<LessonsBlockProps> = ({ copy, heading, headingId, items }) => {

@@ -60,7 +60,9 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
   const resolvedHref = hrefFromLink({ type, reference, url })
   const href = resolvedHref ? localizeInternalHref(locale, resolvedHref) : resolvedHref
 
-  if (!href) return null
+  // No destination, or nothing to show (an untranslated locale leaves `label` empty and there's
+  // no `children` fallback) — render nothing rather than a visible, empty, clickable anchor.
+  if (!href || (!label && !children)) return null
 
   const size = appearance === 'link' ? 'clear' : sizeFromProps
   const newTabProps = newTab ? { rel: 'noopener noreferrer', target: '_blank' } : {}

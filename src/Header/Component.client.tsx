@@ -30,14 +30,18 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data, locale, logica
   }, [pathname])
 
   useEffect(() => {
-    if (headerTheme && headerTheme !== theme) setTheme(headerTheme)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // Mirror `headerTheme` exactly, including back to `null` — a stale-truthy guard here would
+    // leave the header pinned to a hero's forced theme after navigating to a page with no hero.
+    setTheme(headerTheme ?? null)
   }, [headerTheme])
 
   const isHome = parseLocalePath(pathname).logicalPath === '/'
 
   return (
-    <header className={cn(isHome ? 'canvas' : 'container', 'relative z-20')} {...(theme ? { 'data-theme': theme } : {})}>
+    <header
+      className={cn(isHome ? 'canvas' : 'container', 'sticky top-0 z-20 bg-background border-b border-line')}
+      {...(theme ? { 'data-theme': theme } : {})}
+    >
       <div className="flex min-h-12 items-center justify-between gap-6 py-1 md:min-h-14 md:py-3">
         {/* Wordmark until a real mark exists — text keeps it bilingual for free. */}
         <Link

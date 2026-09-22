@@ -245,3 +245,17 @@ export const experienceEnData = (entry: ExperienceSeedEntry): RequiredDataFromCo
     durationLabel: entry.en.durationLabel,
   },
 })
+
+/** The `fa` locale's leaf fields only — `employment`/`order`/`period.present`/`period.approx` are
+ * not localized and were already set by `experienceEnData` on create. */
+export const experienceFaData = (entry: ExperienceSeedEntry): Partial<RequiredDataFromCollectionSlug<'experiences'>> => ({
+  title: entry.fa.title,
+  company: entry.fa.company,
+  product: entry.fa.product,
+  role: entry.fa.role,
+  domain: entry.fa.domain,
+  summary: entry.fa.summary,
+  period: {
+    durationLabel: entry.fa.durationLabel,
+  },
+})

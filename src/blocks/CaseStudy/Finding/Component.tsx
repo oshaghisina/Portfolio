@@ -10,7 +10,13 @@ export type FindingBlockProps = CaseStudyFindingBlock & CaseStudyBlockContext
  * Research evidence at reading measure: a verbatim quote on a brand rule with its attribution, or
  * a synthesised finding set as a statement with its source and method in the caption line.
  */
-export const FindingBlock: React.FC<FindingBlockProps> = ({ attribution, copy, kind, method, text }) => {
+export const FindingBlock: React.FC<FindingBlockProps> = ({
+  attribution,
+  copy,
+  kind,
+  method,
+  text,
+}) => {
   const meta = [attribution?.trim(), method?.trim()].filter(Boolean).join(' · ')
 
   if (kind === 'quote') {

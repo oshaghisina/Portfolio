@@ -7,6 +7,7 @@ import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import React from 'react'
 import PageClient from './page.client'
+import { docPath } from '@/i18n/routes'
 import { getLocale } from '@/utilities/getLocale'
 import { uiCopy } from '@/utilities/uiCopy'
 
@@ -37,24 +38,19 @@ export default async function Page() {
       <PageClient />
       <div className="container mb-16">
         <div className="prose dark:prose-invert max-w-none">
-          <h1>{uiCopy[locale].postsArchiveTitle}</h1>
+          <h1>{uiCopy[locale].labArchiveTitle}</h1>
         </div>
       </div>
 
       <div className="container mb-8">
-        <PageRange
-          collection="posts"
-          currentPage={posts.page}
-          limit={12}
-          totalDocs={posts.totalDocs}
-        />
+        <PageRange currentPage={posts.page} limit={12} locale={locale} totalDocs={posts.totalDocs} />
       </div>
 
-      <CollectionArchive posts={posts.docs} />
+      <CollectionArchive locale={locale} posts={posts.docs} />
 
       <div className="container">
         {posts.totalPages > 1 && posts.page && (
-          <Pagination page={posts.page} totalPages={posts.totalPages} />
+          <Pagination basePath={docPath('posts', 'page')} locale={locale} page={posts.page} totalPages={posts.totalPages} />
         )}
       </div>
     </div>
@@ -64,6 +60,6 @@ export default async function Page() {
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale()
   return {
-    title: `${uiCopy[locale].postsArchiveTitle} | Payload Website Template`,
+    title: uiCopy[locale].labArchiveTitle,
   }
 }

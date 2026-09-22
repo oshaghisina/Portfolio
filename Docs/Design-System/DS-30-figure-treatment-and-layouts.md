@@ -5,7 +5,7 @@ slug: "figure-treatment-and-layouts"                  # kebab-case; the file is 
 category: "component"              # foundation | type-device | layout | component | motion | signature
 take: "borrow"                  # borrow | adapt | avoid
 priority: 2               # 1 = first sprint · 2 = next · 3 = later
-adoption: "candidate"       # candidate | adopted | rejected | superseded
+adoption: "adopted"       # candidate | adopted | rejected | superseded
 superseded_by: ""         # DS-NN, only when adoption = superseded
 sources:                  # every benchmark where the pattern was seen — grows over time
   - benchmark: "pleurat-com"
@@ -13,8 +13,8 @@ sources:                  # every benchmark where the pattern was seen — grows
     section: "Key screens"
 target:                   # where it lands in the codebase (no code yet)
   kind: "block"
-  path: "src/blocks/MediaBlock/config.ts"
-  name: "layouts: full · two · three"
+  path: "src/blocks/CaseStudy/Figure/config.ts"
+  name: "csFigure: full · split · sequence · annotated · compare"
 rtl: "neutral"                   # mirrors | neutral | needs-redesign
 localization: "labels"          # none | labels | copy | typeface — what needs a fa twin
 tokens: []                # token paths in tokens/<benchmark>.tokens.json, e.g. [color.brand, motion.ease.out]
@@ -22,7 +22,7 @@ evidence: ["pleurat-com/DS-30-1-desktop-figure.png", "pleurat-com/DS-30-2-deskto
 related: []               # other DS ids
 open_questions: 0         # ❓ count in the body — computed by docs:index
 date_added: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-22"
 status: "draft"             # draft | review | ready
 ---
 
@@ -55,7 +55,9 @@ _To write when the item is picked up. Until then the measured table and crops ca
 ## Target mapping
 | Kind | Path | Name | Notes |
 |---|---|---|---|
-| block | `src/blocks/MediaBlock/config.ts` | layouts: full · two · three | New Payload block: `config.ts` + `Component.tsx` in `src/blocks/`, registered in `RenderBlocks.tsx`; fields per Content-Model §10. |
+| block | `src/blocks/CaseStudy/Figure/config.ts` | csFigure | Case-study block (`projects.sections`), `Component.tsx` beside it; editors pick a pattern and a treatment, never a size. |
+
+**Implemented (2026-09-22):** five patterns — `full`, `split` (stacks on phones), `sequence` (2–4 states, two-up on phones), `annotated` (visual + numbered key), `compare` (Before / After) — and a `treatment` (`auto · screen · plain · diagram`): portrait phone captures are framed as a 390×844 viewport (`ScreenFrame`, top-aligned, never mirrored under RTL), landscape media keeps its aspect, diagrams sit on the drafting plate. Rows made only of screens sit on the plate as one composition. Every figure is numbered after the hero ("Figure 02 …") with a tiny mono label and a caption that explains, not repeats.
 
 ## Evidence
 Local-only, in `assets/pleurat-com/` (gitignored):

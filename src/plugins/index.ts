@@ -13,10 +13,9 @@ import { beforeSyncWithSearch } from '@/search/beforeSync'
 import { Page, Post, Project } from '@/payload-types'
 import { docPath, isRoutedCollection } from '@/i18n/routes'
 import { getServerSideURL } from '@/utilities/getURL'
+import { withSiteName } from '@/utilities/site'
 
-const generateTitle: GenerateTitle<Post | Page | Project> = ({ doc }) => {
-  return doc?.title ? `${doc.title} | Payload Website Template` : 'Payload Website Template'
-}
+const generateTitle: GenerateTitle<Post | Page | Project> = ({ doc }) => withSiteName(doc?.title)
 
 const generateURL: GenerateURL<Post | Page | Project> = ({ collectionSlug, doc }) => {
   const url = getServerSideURL()
@@ -27,7 +26,7 @@ const generateURL: GenerateURL<Post | Page | Project> = ({ collectionSlug, doc }
 
 export const plugins: Plugin[] = [
   redirectsPlugin({
-    collections: ['pages', 'posts'],
+    collections: ['pages', 'posts', 'projects'],
     overrides: {
       // @ts-expect-error - This is a valid override, mapped fields don't resolve to the same type
       fields: ({ defaultFields }) => {

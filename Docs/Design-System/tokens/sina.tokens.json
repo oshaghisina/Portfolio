@@ -1288,6 +1288,194 @@
             "var": "--font-vazirmatn"
           }
         }
+      },
+      "sans-ja": {
+        "$description": "Japanese partner face (next/font/google), selected by :lang(ja).",
+        "$type": "fontFamily",
+        "$value": [
+          "Noto Sans JP",
+          "Hiragino Sans",
+          "Yu Gothic",
+          "system-ui",
+          "sans-serif"
+        ],
+        "$extensions": {
+          "com.sinaoshaghi.docs": {
+            "item": "DS-04",
+            "origin": "manual",
+            "var": "--font-noto-sans-jp"
+          }
+        }
+      }
+    },
+    "ja": {
+      "$description": "Japanese overrides: same variable names, emitted inside :lang(ja). CJK needs taller leading everywhere, no negative tracking (kanji have no sidebearings to tighten), and a slightly tracked eyebrow instead of uppercase.",
+      "family": {
+        "$type": "fontFamily",
+        "sans": {
+          "$description": "--font-sans becomes the Japanese face inside :lang(ja).",
+          "$value": "{font.family.sans-ja}",
+          "$extensions": {
+            "com.sinaoshaghi.docs": {
+              "item": "DS-04",
+              "origin": "manual"
+            }
+          }
+        }
+      },
+      "leading": {
+        "$type": "number",
+        "body": {
+          "$type": "number",
+          "$value": 1.8,
+          "$extensions": {
+            "com.sinaoshaghi.docs": {
+              "item": "DS-03",
+              "origin": "manual"
+            }
+          }
+        },
+        "display": {
+          "$type": "number",
+          "$value": 1.25,
+          "$extensions": {
+            "com.sinaoshaghi.docs": {
+              "item": "DS-03",
+              "origin": "manual"
+            }
+          }
+        },
+        "h1": {
+          "$type": "number",
+          "$value": 1.3,
+          "$extensions": {
+            "com.sinaoshaghi.docs": {
+              "item": "DS-03",
+              "origin": "manual"
+            }
+          }
+        },
+        "h2": {
+          "$type": "number",
+          "$value": 1.35,
+          "$extensions": {
+            "com.sinaoshaghi.docs": {
+              "item": "DS-03",
+              "origin": "manual"
+            }
+          }
+        },
+        "h3": {
+          "$type": "number",
+          "$value": 1.5,
+          "$extensions": {
+            "com.sinaoshaghi.docs": {
+              "item": "DS-03",
+              "origin": "manual"
+            }
+          }
+        },
+        "lede": {
+          "$type": "number",
+          "$value": 1.6,
+          "$extensions": {
+            "com.sinaoshaghi.docs": {
+              "item": "DS-03",
+              "origin": "manual"
+            }
+          }
+        },
+        "small": {
+          "$type": "number",
+          "$value": 1.75,
+          "$extensions": {
+            "com.sinaoshaghi.docs": {
+              "item": "DS-03",
+              "origin": "manual"
+            }
+          }
+        }
+      },
+      "tracking": {
+        "$type": "dimension",
+        "display": {
+          "$type": "dimension",
+          "$value": {
+            "unit": "em",
+            "value": 0
+          },
+          "$extensions": {
+            "com.sinaoshaghi.docs": {
+              "item": "DS-03",
+              "origin": "manual"
+            }
+          }
+        },
+        "eyebrow": {
+          "$type": "dimension",
+          "$value": {
+            "unit": "em",
+            "value": 0.06
+          },
+          "$extensions": {
+            "com.sinaoshaghi.docs": {
+              "item": "DS-09",
+              "origin": "manual"
+            }
+          }
+        },
+        "h1": {
+          "$type": "dimension",
+          "$value": {
+            "unit": "em",
+            "value": 0
+          },
+          "$extensions": {
+            "com.sinaoshaghi.docs": {
+              "item": "DS-03",
+              "origin": "manual"
+            }
+          }
+        },
+        "h2": {
+          "$type": "dimension",
+          "$value": {
+            "unit": "em",
+            "value": 0
+          },
+          "$extensions": {
+            "com.sinaoshaghi.docs": {
+              "item": "DS-03",
+              "origin": "manual"
+            }
+          }
+        },
+        "h3": {
+          "$type": "dimension",
+          "$value": {
+            "unit": "em",
+            "value": 0
+          },
+          "$extensions": {
+            "com.sinaoshaghi.docs": {
+              "item": "DS-03",
+              "origin": "manual"
+            }
+          }
+        },
+        "num": {
+          "$type": "dimension",
+          "$value": {
+            "unit": "em",
+            "value": 0
+          },
+          "$extensions": {
+            "com.sinaoshaghi.docs": {
+              "item": "DS-03",
+              "origin": "manual"
+            }
+          }
+        }
       }
     },
     "leading": {

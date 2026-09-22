@@ -29,6 +29,12 @@ const collectionLabels = {
   },
 }
 
+/** `useSelectedLayoutSegments()[1]` is the physical route segment — projects live under `/work`. */
+const SEGMENT_TO_COLLECTION: Record<string, keyof typeof collectionLabels> = {
+  posts: 'posts',
+  work: 'projects',
+}
+
 const Title: React.FC = () => <span>Dashboard</span>
 
 export const AdminBar: React.FC<{
@@ -37,9 +43,7 @@ export const AdminBar: React.FC<{
   const { adminBarProps } = props || {}
   const segments = useSelectedLayoutSegments()
   const [show, setShow] = useState(false)
-  const collection = (
-    collectionLabels[segments?.[1] as keyof typeof collectionLabels] ? segments[1] : 'pages'
-  ) as keyof typeof collectionLabels
+  const collection = SEGMENT_TO_COLLECTION[segments?.[1] ?? ''] ?? 'pages'
   const router = useRouter()
 
   const onAuthChange = React.useCallback((user: PayloadMeUser) => {

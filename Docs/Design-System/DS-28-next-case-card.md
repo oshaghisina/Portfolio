@@ -5,7 +5,7 @@ slug: "next-case-card"                  # kebab-case; the file is <id>-<slug>.md
 category: "component"              # foundation | type-device | layout | component | motion | signature
 take: "borrow"                  # borrow | adapt | avoid
 priority: 2               # 1 = first sprint · 2 = next · 3 = later
-adoption: "candidate"       # candidate | adopted | rejected | superseded
+adoption: "adopted"       # candidate | adopted | rejected | superseded
 superseded_by: ""         # DS-NN, only when adoption = superseded
 sources:                  # every benchmark where the pattern was seen — grows over time
   - benchmark: "pleurat-com"
@@ -22,7 +22,7 @@ evidence: ["pleurat-com/DS-28-1-desktop-card.png", "pleurat-com/DS-28-2-desktop-
 related: []               # other DS ids
 open_questions: 0         # ❓ count in the body — computed by docs:index
 date_added: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-22"
 status: "draft"             # draft | review | ready
 ---
 
@@ -55,7 +55,9 @@ _To write when the item is picked up. Until then the measured table and crops ca
 ## Target mapping
 | Kind | Path | Name | Notes |
 |---|---|---|---|
-| component | `src/components/NextProject/index.tsx` | NextProject | New React component; cva for interactive variants, plain `cn()` compound for layout (see `src/components/ui/button.tsx` vs `card.tsx`). |
+| component | `src/components/NextProject/index.tsx` | NextProject | Plain `cn()` compound: one link, hairline frame, `ProjectCover` for the media slot. |
+
+**Implemented (2026-09-22):** NEXT PROJECT eyebrow · title · positioning line · "Read the case study" cue · the project's cover (else its first hero screen) as one `<Link>`, plus a quiet "All work" line back to `/work`. The target is the editor's `nextProject` pick when that case study is public in the locale, otherwise the next published case study by `order` (wrapping); with none, only the way back renders. Copy in `src/components/CaseStudy/copy.ts`.
 
 ## Evidence
 Local-only, in `assets/pleurat-com/` (gitignored):

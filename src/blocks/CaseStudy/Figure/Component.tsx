@@ -3,6 +3,7 @@ import React from 'react'
 import type { CaseStudyFigureBlock } from '@/payload-types'
 
 import { FigureMedia, resolveTreatment } from '@/components/CaseStudy/FigureMedia'
+import { isPortraitMedia } from '@/components/ProjectCover'
 import { PLATE_STYLE, pad } from '@/components/CaseStudy/plate'
 import { cn } from '@/utilities/ui'
 
@@ -40,18 +41,40 @@ const PLATE = 'border border-line bg-panel p-4 sm:p-8 lg:p-12'
  * two-up) — never a body-level horizontal scroll. Rows made only of phone screens sit on the
  * drafting plate as one composition; mixed or landscape rows keep their natural aspect.
  */
-export const FigureBlock: React.FC<FigureBlockProps> = ({ annotations, caption, copy, items, layout, number, treatment }) => {
-  const visuals = (items ?? []).filter((item): item is Visual & { media: object } => typeof item.media === 'object' && !!item.media)
+export const FigureBlock: React.FC<FigureBlockProps> = ({
+  annotations,
+  caption,
+  copy,
+  items,
+  layout,
+  number,
+  treatment,
+}) => {
+  const visuals = (items ?? []).filter(
+    (item): item is Visual & { media: object } => typeof item.media === 'object' && !!item.media,
+  )
   if (!visuals.length) return null
 
   const label = `${copy.figure} ${number}`
   const sizes = SIZES[layout]
   const allScreens = visuals.every((item) => resolveTreatment(treatment, item.media) === 'screen')
 
-  const cell = (item: Visual, i: number, lead?: React.ReactNode, className?: string) => (
+  const cell = (
+    item: Visual,
+    i: number,
+    lead?: React.ReactNode,
+    className?: string,
+    mediaClassName?: string,
+  ) => (
     <div className={cn('flex flex-col gap-3', className)} key={item.id ?? i}>
       {lead}
-      <FigureMedia resource={item.media} sizes={sizes} standalone={layout === 'full' || layout === 'annotated'} treatment={treatment} />
+      <FigureMedia
+        className={mediaClassName}
+        resource={item.media}
+        sizes={sizes}
+        standalone={layout === 'full' || layout === 'annotated'}
+        treatment={treatment}
+      />
       {item.caption ? <p className="text-caption text-ink-3">{item.caption}</p> : null}
     </div>
   )
@@ -60,7 +83,10 @@ export const FigureBlock: React.FC<FigureBlockProps> = ({ annotations, caption, 
   switch (layout) {
     case 'split':
       body = (
-        <div className={cn('grid gap-4 md:grid-cols-2 md:gap-6', allScreens && PLATE)} style={allScreens ? PLATE_STYLE : undefined}>
+        <div
+          className={cn('grid gap-4 md:grid-cols-2 md:gap-6', allScreens && PLATE)}
+          style={allScreens ? PLATE_STYLE : undefined}
+        >
           {visuals.slice(0, 2).map((item, i) => cell(item, i))}
         </div>
       )
@@ -69,7 +95,11 @@ export const FigureBlock: React.FC<FigureBlockProps> = ({ annotations, caption, 
       const row = visuals.slice(0, 4)
       body = (
         <div
-          className={cn('grid grid-cols-2 gap-3 md:gap-6', SEQUENCE_COLUMNS[row.length] ?? 'lg:grid-cols-4', allScreens && PLATE)}
+          className={cn(
+            'grid grid-cols-2 gap-3 md:gap-6',
+            SEQUENCE_COLUMNS[row.length] ?? 'lg:grid-cols-4',
+            allScreens && PLATE,
+          )}
           style={allScreens ? PLATE_STYLE : undefined}
         >
           {row.map((item, i) => cell(item, i))}
@@ -79,9 +109,14 @@ export const FigureBlock: React.FC<FigureBlockProps> = ({ annotations, caption, 
     }
     case 'annotated': {
       const key = (annotations ?? []).filter((a) => a.text?.trim())
+      // A full-page portrait capture shown whole (the key points at parts below the first
+      // viewport) is kept to a phone's width on large screens instead of filling the column.
+      const tall =
+        isPortraitMedia(visuals[0]!.media) &&
+        resolveTreatment(treatment, visuals[0]!.media) !== 'screen'
       body = (
         <div className="grid gap-8 lg:grid-cols-12 lg:gap-x-12">
-          {cell(visuals[0]!, 0, undefined, 'lg:col-span-7')}
+          {cell(visuals[0]!, 0, undefined, 'lg:col-span-7', tall ? 'lg:max-w-xs' : undefined)}
           {key.length ? (
             <ol className="flex flex-col gap-4 lg:col-span-5 lg:pt-2">
               {key.map((a, i) => (
@@ -98,10 +133,21 @@ export const FigureBlock: React.FC<FigureBlockProps> = ({ annotations, caption, 
     }
     case 'compare':
       body = (
-        <div className={cn('grid gap-6 md:grid-cols-2 md:gap-8', allScreens && PLATE)} style={allScreens ? PLATE_STYLE : undefined}>
+        <div
+          className={cn('grid gap-6 md:grid-cols-2 md:gap-8', allScreens && PLATE)}
+          style={allScreens ? PLATE_STYLE : undefined}
+        >
           {visuals
             .slice(0, 2)
-            .map((item, i) => cell(item, i, <span className="eyebrow text-ink-3">{i === 0 ? copy.compare.before : copy.compare.after}</span>))}
+            .map((item, i) =>
+              cell(
+                item,
+                i,
+                <span className="eyebrow text-ink-3">
+                  {i === 0 ? copy.compare.before : copy.compare.after}
+                </span>,
+              ),
+            )}
         </div>
       )
       break

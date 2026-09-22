@@ -11,6 +11,7 @@ import RichText from '@/components/RichText'
 import type { Post } from '@/payload-types'
 
 import { PostHero } from '@/heros/PostHero'
+import { docPath } from '@/i18n/routes'
 import { generateMeta } from '@/utilities/generateMeta'
 import { getLocale } from '@/utilities/getLocale'
 import type { Locale } from '@/utilities/locale'
@@ -49,17 +50,17 @@ export default async function Post({ params: paramsPromise }: Args) {
   const { slug = '' } = await paramsPromise
   // Decode to support slugs with special characters
   const decodedSlug = decodeURIComponent(slug)
-  const url = '/posts/' + decodedSlug
+  const url = docPath('posts', decodedSlug)
   const post = await queryPostBySlug({ locale, slug: decodedSlug })
 
-  if (!post) return <PayloadRedirects url={url} />
+  if (!post) return <PayloadRedirects locale={locale} url={url} />
 
   return (
     <article className="pt-16 pb-16">
       <PageClient />
 
       {/* Allows redirects for valid pages too */}
-      <PayloadRedirects disableNotFound url={url} />
+      <PayloadRedirects disableNotFound locale={locale} url={url} />
 
       {draft && <LivePreviewListener />}
 
@@ -72,6 +73,7 @@ export default async function Post({ params: paramsPromise }: Args) {
             <RelatedPosts
               className="mt-12 max-w-[52rem] lg:grid lg:grid-cols-subgrid col-start-1 col-span-3 grid-rows-[2fr]"
               docs={post.relatedPosts.filter((post) => typeof post === 'object')}
+              locale={locale}
             />
           )}
         </div>
@@ -87,7 +89,7 @@ export async function generateMetadata({ params: paramsPromise }: Args): Promise
   const decodedSlug = decodeURIComponent(slug)
   const post = await queryPostBySlug({ locale, slug: decodedSlug })
 
-  return generateMeta({ doc: post, locale, logicalPath: `/posts/${decodedSlug}` })
+  return generateMeta({ doc: post, locale, logicalPath: docPath('posts', decodedSlug) })
 }
 
 const queryPostBySlug = cache(async ({ locale, slug }: { locale: Locale; slug: string }) => {

@@ -19,7 +19,9 @@ export const CaseStudyOutcomes: Block = {
       name: 'intro',
       type: 'textarea',
       localized: true,
-      admin: { description: 'One or two sentences of context — including what cannot be reported yet.' },
+      admin: {
+        description: 'One or two sentences of context — including what cannot be reported yet.',
+      },
     },
     {
       name: 'items',
@@ -35,7 +37,8 @@ export const CaseStudyOutcomes: Block = {
               name: 'value',
               type: 'text',
               admin: {
-                description: 'Only a credible number — "34", "+18%". Leave empty for a qualitative outcome.',
+                description:
+                  'Only a credible number — "34", "+18%". Leave empty for a qualitative outcome.',
                 width: '30%',
               },
             },
@@ -44,7 +47,10 @@ export const CaseStudyOutcomes: Block = {
               type: 'text',
               localized: true,
               required: true,
-              admin: { description: 'What it is — the statement itself when there is no number.', width: '70%' },
+              admin: {
+                description: 'What it is — the statement itself when there is no number.',
+                width: '70%',
+              },
             },
           ],
         },
@@ -72,7 +78,10 @@ export const CaseStudyOutcomes: Block = {
               name: 'source',
               type: 'text',
               localized: true,
-              admin: { description: 'Provenance — dashboard, report, document, date.', width: '60%' },
+              admin: {
+                description: 'Provenance — dashboard, report, document, date.',
+                width: '60%',
+              },
             },
           ],
         },

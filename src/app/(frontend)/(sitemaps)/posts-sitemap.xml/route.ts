@@ -4,6 +4,7 @@ import config from '@payload-config'
 import { unstable_cache } from 'next/cache'
 
 import { localePath } from '@/i18n/navigation'
+import { docPath } from '@/i18n/routes'
 import { LOCALES } from '@/utilities/locale'
 
 const getPostsSitemap = unstable_cache(
@@ -43,7 +44,7 @@ const getPostsSitemap = unstable_cache(
         return results.docs
           .filter((post) => Boolean(post?.slug))
           .map((post) => ({
-            loc: `${SITE_URL}${localePath(locale, `/posts/${post?.slug}`)}`,
+            loc: `${SITE_URL}${localePath(locale, docPath('posts', post.slug ?? ''))}`,
             lastmod: post.updatedAt || dateFallback,
           }))
       }),

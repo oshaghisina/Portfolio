@@ -29,7 +29,12 @@ export interface RenderCaseStudyProps {
 /** Chapters that open the page's two big transitions: decisions → evidence, outcome → learning. */
 const BIG_TRANSITION = new Set<Chapter['key']>(['decisions', 'outcomes'])
 
-function renderBlock(block: CaseStudySection, ctx: CaseStudyBlockContext, chapter?: Chapter, figure?: string): React.ReactNode {
+function renderBlock(
+  block: CaseStudySection,
+  ctx: CaseStudyBlockContext,
+  chapter?: Chapter,
+  figure?: string,
+): React.ReactNode {
   const headingId = chapter ? `${chapter.id}-heading` : undefined
   switch (block.blockType) {
     case 'csNarrative':
@@ -58,7 +63,13 @@ function renderBlock(block: CaseStudySection, ctx: CaseStudyBlockContext, chapte
  * kicker ("01 CONTEXT"); evidence blocks (figures, process maps, findings) follow inside the
  * chapter above them. Typed on `Project['sections']`, so an unknown block is a compile error.
  */
-export const RenderCaseStudy: React.FC<RenderCaseStudyProps> = ({ className, copy, firstFigure = 1, locale, sections }) => {
+export const RenderCaseStudy: React.FC<RenderCaseStudyProps> = ({
+  className,
+  copy,
+  firstFigure = 1,
+  locale,
+  sections,
+}) => {
   const blocks = sections ?? []
   if (!blocks.length) return null
   const chapters = buildChapters(blocks, copy)
@@ -74,16 +85,25 @@ export const RenderCaseStudy: React.FC<RenderCaseStudyProps> = ({ className, cop
         if (!content) return null
         const key = block.id ?? `${block.blockType}-${index}`
         if (!chapter) {
+          // A finding is prose evidence, so it sits in the chapter's reading column (DS-13);
+          // figures and process maps take the whole canvas.
+          const reading = block.blockType === 'csFinding'
           return (
-            <div className="mt-block" key={key}>
-              {content}
+            <div
+              className={cn('mt-block', reading && 'lg:grid lg:grid-cols-12 lg:gap-x-16')}
+              key={key}
+            >
+              {reading ? <div className="lg:col-span-7 lg:col-start-6">{content}</div> : content}
             </div>
           )
         }
         return (
           <section
             aria-labelledby={`${chapter.id}-heading`}
-            className={cn('scroll-mt-28 pt-section', BIG_TRANSITION.has(chapter.key) && 'mt-section border-t border-line')}
+            className={cn(
+              'scroll-mt-28 pt-section',
+              BIG_TRANSITION.has(chapter.key) && 'mt-section border-t border-line',
+            )}
             id={chapter.id}
             key={key}
           >

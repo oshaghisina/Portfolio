@@ -10,7 +10,7 @@ import type { Locale } from '@/utilities/locale'
  */
 export const COLLECTION_PATH_PREFIX = {
   pages: '',
-  posts: '/posts',
+  posts: '/lab',
   projects: '/work',
 } as const
 

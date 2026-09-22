@@ -4,15 +4,17 @@ import type { Page, Post, Project } from '@/payload-types'
 import { docPath, isRoutedCollection } from '@/i18n/routes'
 import { getCachedDocument } from '@/utilities/getDocument'
 import { getCachedRedirects } from '@/utilities/getRedirects'
+import type { Locale } from '@/utilities/locale'
 import { notFound, redirect } from 'next/navigation'
 
 interface Props {
   disableNotFound?: boolean
+  locale: Locale
   url: string
 }
 
 /* This component helps us with SSR based dynamic redirects */
-export const PayloadRedirects: React.FC<Props> = async ({ disableNotFound, url }) => {
+export const PayloadRedirects: React.FC<Props> = async ({ disableNotFound, locale, url }) => {
   const redirects = await getCachedRedirects()()
 
   const redirectItem = redirects.find((redirect) => redirect.from === url)
@@ -29,7 +31,11 @@ export const PayloadRedirects: React.FC<Props> = async ({ disableNotFound, url }
       let slug: string | undefined
 
       if (typeof reference.value === 'string') {
-        const document = (await getCachedDocument(collection, reference.value)()) as Page | Post | Project | null
+        const document = (await getCachedDocument(
+          collection,
+          reference.value,
+          locale,
+        )()) as Page | Post | Project | null
         slug = document?.slug
       } else if (typeof reference.value === 'object') {
         slug = reference.value?.slug

@@ -26,7 +26,9 @@ export interface NextProjectProps {
 }
 
 /** The visual a project leads with: its archive cover, else the first hero screen. */
-export const nextProjectMedia = (project: NextProjectDoc): Media | string | number | null | undefined => {
+export const nextProjectMedia = (
+  project: NextProjectDoc,
+): Media | string | number | null | undefined => {
   if (project.cover && typeof project.cover === 'object') return project.cover
   const first = project.hero?.items?.[0]?.media
   return first && typeof first === 'object' ? first : project.cover
@@ -37,7 +39,13 @@ export const nextProjectMedia = (project: NextProjectDoc): Media | string | numb
  * NEXT PROJECT, title, positioning line, "read" cue and the project's cover — one link, hairline
  * frame, no hover theatre. A quiet "All work" line underneath is the way back to the archive.
  */
-export const NextProject: React.FC<NextProjectProps> = ({ className, copy, locale, pendingLabel, project }) => (
+export const NextProject: React.FC<NextProjectProps> = ({
+  className,
+  copy,
+  locale,
+  pendingLabel,
+  project,
+}) => (
   <aside aria-label={copy.nextProject} className={cn('flex flex-col gap-8', className)}>
     {project ? (
       <Link
@@ -49,7 +57,9 @@ export const NextProject: React.FC<NextProjectProps> = ({ className, copy, local
           <h2 className="text-h2 font-medium text-balance text-foreground transition-colors duration-(--duration-fast) group-hover:text-brand">
             {project.title}
           </h2>
-          <p className="max-w-measure text-lede text-ink-2">{project.statement || project.summary}</p>
+          <p className="max-w-measure text-lede text-ink-2">
+            {project.statement || project.summary}
+          </p>
           <span className="mt-auto inline-flex items-center gap-2 pt-4 eyebrow text-foreground">
             {copy.explore}
             <ArrowRight aria-hidden className="size-3.5 rtl:-scale-x-100" />
@@ -66,7 +76,10 @@ export const NextProject: React.FC<NextProjectProps> = ({ className, copy, local
       </Link>
     ) : null}
     <Link
-      className="eyebrow inline-flex items-center gap-2 self-start text-ink-3 transition-colors duration-(--duration-fast) hover:text-foreground"
+      className={cn(
+        'eyebrow inline-flex items-center gap-2 self-start text-ink-3 transition-colors duration-(--duration-fast) hover:text-foreground',
+        !project && 'w-full border-t border-line pt-8',
+      )}
       href={localePath(locale, WORK_PATH)}
     >
       <ArrowLeft aria-hidden className="size-3.5 rtl:-scale-x-100" />

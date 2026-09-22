@@ -28,14 +28,20 @@ export const CaseStudyDecisions: Block = {
       minRows: 2,
       maxRows: 6,
       labels: { singular: 'Decision', plural: 'Decisions' },
-      admin: { description: 'Three to six decisions that materially shaped the result.', initCollapsed: true },
+      admin: {
+        description: 'Three to six decisions that materially shaped the result.',
+        initCollapsed: true,
+      },
       fields: [
         {
           name: 'title',
           type: 'text',
           localized: true,
           required: true,
-          admin: { description: 'The decision as a statement — "Reduce onboarding from six steps to four."' },
+          admin: {
+            description:
+              'The decision as a statement — "Reduce onboarding from six steps to four."',
+          },
         },
         {
           name: 'why',
@@ -44,9 +50,24 @@ export const CaseStudyDecisions: Block = {
           required: true,
           admin: { description: 'Why this direction was chosen.' },
         },
-        { name: 'alternatives', type: 'textarea', localized: true, admin: { description: 'What else was considered.' } },
-        { name: 'tradeoff', type: 'textarea', localized: true, admin: { description: 'What was gained and what was given up.' } },
-        { name: 'evidence', type: 'textarea', localized: true, admin: { description: 'What supported the decision — data, research, a documented log.' } },
+        {
+          name: 'alternatives',
+          type: 'textarea',
+          localized: true,
+          admin: { description: 'What else was considered.' },
+        },
+        {
+          name: 'tradeoff',
+          type: 'textarea',
+          localized: true,
+          admin: { description: 'What was gained and what was given up.' },
+        },
+        {
+          name: 'evidence',
+          type: 'textarea',
+          localized: true,
+          admin: { description: 'What supported the decision — data, research, a documented log.' },
+        },
         {
           name: 'media',
           type: 'upload',

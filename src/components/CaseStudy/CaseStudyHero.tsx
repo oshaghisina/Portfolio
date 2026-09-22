@@ -33,16 +33,27 @@ export const CaseStudyHero: React.FC<CaseStudyHeroProps> = ({ className, copy, h
   return (
     <figure className={className}>
       {items.length === 1 ? (
-        <FigureMedia priority resource={items[0]!.media} sizes="(min-width: 86rem) 76rem, 100vw" standalone treatment="auto" />
+        <FigureMedia
+          priority
+          resource={items[0]!.media}
+          sizes="(min-width: 86rem) 76rem, 100vw"
+          standalone
+          treatment="auto"
+        />
       ) : (
         <div
           className="relative grid grid-cols-1 gap-4 border border-line bg-panel px-4 pt-11 pb-4 sm:grid-cols-3 sm:gap-6 sm:px-8 sm:pt-12 sm:pb-8 lg:gap-10 lg:px-12 lg:pt-14 lg:pb-12"
           style={PLATE_STYLE}
         >
-          <span className="eyebrow absolute top-4 start-4 text-ink-3 sm:start-6 lg:start-8">{label}</span>
+          <span className="eyebrow absolute top-4 start-4 text-ink-3 sm:start-6 lg:start-8">
+            {label}
+          </span>
           {items.map((item, i) => (
             <ScreenFrame
-              className={cn('w-full', i === 0 ? 'mx-auto max-w-[17rem] sm:max-w-none' : 'max-sm:hidden')}
+              className={cn(
+                'w-full',
+                i === 0 ? 'mx-auto max-w-[17rem] sm:max-w-none' : 'max-sm:hidden',
+              )}
               key={item.id ?? i}
               priority={i === 0}
               resource={item.media}

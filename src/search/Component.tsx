@@ -5,15 +5,20 @@ import React, { useState, useEffect } from 'react'
 import { useDebounce } from '@/utilities/useDebounce'
 import { useRouter } from 'next/navigation'
 
-export const Search: React.FC = () => {
+import { localePath } from '@/i18n/navigation'
+import { DEFAULT_LOCALE, type Locale } from '@/utilities/locale'
+import { uiCopy } from '@/utilities/uiCopy'
+
+export const Search: React.FC<{ locale?: Locale }> = ({ locale = DEFAULT_LOCALE }) => {
   const [value, setValue] = useState('')
   const router = useRouter()
+  const copy = uiCopy[locale]
 
   const debouncedValue = useDebounce(value)
 
   useEffect(() => {
-    router.push(`/search${debouncedValue ? `?q=${debouncedValue}` : ''}`)
-  }, [debouncedValue, router])
+    router.push(localePath(locale, `/search${debouncedValue ? `?q=${debouncedValue}` : ''}`))
+  }, [debouncedValue, locale, router])
 
   return (
     <div>
@@ -23,14 +28,14 @@ export const Search: React.FC = () => {
         }}
       >
         <Label htmlFor="search" className="sr-only">
-          Search
+          {copy.search}
         </Label>
         <Input
           id="search"
           onChange={(event) => {
             setValue(event.target.value)
           }}
-          placeholder="Search"
+          placeholder={copy.searchPlaceholder}
         />
         <button type="submit" className="sr-only">
           submit

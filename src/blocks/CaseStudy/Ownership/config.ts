@@ -19,7 +19,10 @@ export const CaseStudyOwnership: Block = {
       name: 'intro',
       type: 'textarea',
       localized: true,
-      admin: { description: 'Two to four sentences: scope, who else was involved, what was decided vs. contributed to.' },
+      admin: {
+        description:
+          'Two to four sentences: scope, who else was involved, what was decided vs. contributed to.',
+      },
     },
     {
       name: 'own',

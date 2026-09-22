@@ -74,7 +74,8 @@ export const CaseStudyNarrative: Block = {
       localized: true,
       required: true,
       admin: {
-        description: 'A short verdict, not a label — e.g. "Competitive and rewarding without becoming a casino."',
+        description:
+          'A short verdict, not a label — e.g. "Competitive and rewarding without becoming a casino."',
       },
     },
     {
@@ -90,14 +91,18 @@ export const CaseStudyNarrative: Block = {
           InlineToolbarFeature(),
         ],
       }),
-      admin: { description: 'Two to four sentences per chapter reads best; lists are fine for constraints.' },
+      admin: {
+        description:
+          'Two to four sentences per chapter reads best; lists are fine for constraints.',
+      },
     },
     {
       name: 'insight',
       type: 'textarea',
       localized: true,
       admin: {
-        description: 'Optional one-sentence takeaway, set as a pull line after the body — the line you would want someone to remember.',
+        description:
+          'Optional one-sentence takeaway, set as a pull line after the body — the line you would want someone to remember.',
       },
     },
   ],

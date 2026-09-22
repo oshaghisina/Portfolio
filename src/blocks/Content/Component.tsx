@@ -6,6 +6,7 @@ import type { ContentBlock as ContentBlockProps } from '@/payload-types'
 
 import { CMSLink } from '../../components/Link'
 import { EditorialGrid } from './EditorialGrid'
+import type { Locale } from '@/utilities/locale'
 
 export { EditorialGrid }
 
@@ -16,8 +17,8 @@ const colsSpanClasses = {
   twoThirds: '8',
 }
 
-export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
-  const { columns } = props
+export const ContentBlock: React.FC<ContentBlockProps & { locale?: Locale }> = (props) => {
+  const { columns, locale } = props
   // Rows created before the field existed have no value → columns.
   const layout = props.layout ?? 'columns'
 
@@ -26,7 +27,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
     return (
       <React.Fragment key={index}>
         {richText && <RichText data={richText} enableGutter={false} />}
-        {enableLink && <CMSLink {...link} />}
+        {enableLink && <CMSLink locale={locale} {...link} />}
       </React.Fragment>
     )
   })

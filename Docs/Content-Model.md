@@ -2,7 +2,7 @@
 title: Content Model
 doc_type: content-model
 status: draft
-updated: 2026-09-21
+updated: 2026-09-22
 payload_version: 3.90.1
 locales: [en, fa]
 default_locale: en
@@ -133,28 +133,42 @@ like Pages; no live preview until `/work/[slug]`. Everything below that is not i
 | `skills` | select hasMany | | `skills` | labels ✓ | options seeded from the resume Skills list |
 | `summary` | textarea | ✓ | `summary` / `summary_fa` | ✓ | |
 | `hero` | group — reuse `src/heros/config.ts` | | — | richText ✓ | cover image + intro |
-| **Case study** tab | | | | | one richText per template heading — trivially seedable |
-| `context` | richText | | `## Context` | ✓ | |
-| `problem` | richText | | `## Problem` | ✓ | |
-| `myRole` | richText | | `## My role` | ✓ | |
-| `process` | richText | | `## Process` | ✓ | |
-| `solution` | richText | | `## Solution` | ✓ | |
-| `outcome` | richText | | `## Outcome & impact` | ✓ | |
-| `learnings` | richText | | `## Learnings` | ✓ | |
-| `extras` | blocks `[content, mediaBlock, cta]` + §10 candidates | | — | ✓ | free-form additions below the fixed sections |
-| `metrics` | array `{ label: text, value: text, context: text }` | | `metrics[]` | label/context ✓ | value stays text ("+18%", "3.2 → 4.1") |
+| **Case study** tab — **implemented 2026-09-22 (D-022)**, `src/collections/Projects/caseStudy.ts` | | | | | a controlled block narrative, not seven fixed rich-text fields (see below) |
+| `statement` | text (≤ 160) | | `> one-line summary` | ✓ | the positioning line under the title; falls back to `summary` |
+| `industry` · `team` | text | | `domain` · `team` | ✓ | header facts; `industry` is free text until a domain taxonomy is decided (§13 Q7) |
+| `projectStatus` | select `shipped · in-progress · pre-launch · paused · concept` | | — | labels in code | header fact; labels in `src/components/CaseStudy/copy.ts` |
+| `tools` | text hasMany | | `tools[]` | | Latin tool names, not translated |
+| `hero` | group `{ items[1–3] { media }, caption }` | | `assets/` | caption ✓ | 1 item = one full-width visual; 2–3 = a row of framed screens on the drafting plate |
+| `snapshot` | group `{ problem, role, result }` textarea | | — | ✓ | THE PROBLEM · THE ROLE · THE RESULT, one sentence each |
+| `sections` | blocks — `csNarrative` · `csFigure` · `csFinding` · `csProcess` · `csOwnership` · `csDecisions` · `csOutcomes` · `csLessons` | | `## …` headings | leaves ✓, structure shared | `src/blocks/CaseStudy/*/config.ts`; the blocks array is **not** localized, every text leaf inside it is, so block order and media are shared across locales and rows merge by `id` |
+| `nextProject` | relationship → `projects` | | — | | optional; empty = next published case study by `order`, wrapping |
+| `translationReviewed` | checkbox, sidebar | | — | ✓ | per-locale flag: machine-drafted locales stay unticked |
+| `metrics` | → `csOutcomes.items[] { value, label, context, source, kind: measured · delivered }` | | `metrics[]` | label/context/source ✓ | value stays text ("+18%"); a delivered output has no value and never pretends to |
 | `figma` | array `{ url: text, label: text }` | | `figma[]` | label ✓ | admin-only reference, not rendered publicly by default |
 | `links` | array of `link` | | `links[]` | label ✓ | live site, articles |
-| `gallery` | array `{ media: upload → media, caption: text }` | | `<project-slug>/assets/` | caption ✓ | exported Figma frames |
+| `gallery` | → `csFigure` blocks (`full · split · sequence · annotated · compare`) | | `<project-slug>/assets/` | caption ✓ | figures are evidence inside a chapter, never a gallery |
 | `featured` | checkbox | | `featured` | | drives home-page selection; 6–8 true (D-010) |
 | `order` | number | | Inventory priority / rank | | |
 | `meta` | SEO tab | | — | ✓ | |
 | `publishedAt` | date | | — | | |
 
-Why fixed case-study fields rather than one big `layout` blocks field: every case study has the
-same seven sections (that *is* the format), seeding from Markdown headings becomes 1:1, and the
-frontend can render a consistent reading experience with a sticky section nav. `extras` keeps
-the flexibility for anything that doesn't fit.
+Why a controlled block narrative rather than seven fixed rich-text fields (D-022, superseding the
+2026-09-19 sketch): the argument is the same everywhere — context → problem → constraints →
+ownership → approach → decisions → evidence → outcomes → learning — but its *evidence* differs per
+project (a process map here, a before/after there), and decisions, ownership and outcomes are
+structured data, not prose. So `csNarrative` carries a controlled `label` (`context · problem ·
+constraints · approach · solution · research · outcome · custom`) that becomes the numbered chapter
+kicker ("01 CONTEXT") and the sticky section index (DS-14), while `csOwnership`, `csDecisions`,
+`csOutcomes` and `csLessons` open chapters with their own fields; `csFigure`, `csProcess` and
+`csFinding` are evidence inside the current chapter. No block exposes spacing, size or column
+controls — editors choose a pattern, the page decides the composition.
+
+**Publication rule.** `/work/<slug>` renders only when the project is published *for that locale*
+(`_status`, `localizeStatus`), `caseStudyStatus = published` (the validator refuses it with no
+sections) and at least one section exists; otherwise the archive never links to it and a direct
+hit is a 404 outside draft mode. `src/i18n/contentReady.ts` applies the same rule, so hreflang
+alternates and the locale switcher never advertise an archive-only project. Live preview opens
+`/<locale>/work/<slug>` from the admin's locale (`generatePreviewPath`).
 
 ## 7. `about` global (new)
 
@@ -206,6 +220,13 @@ in a large → medium → medium rhythm, then a numbered index of every publishe
 `kind` filter (DS-10 index codes, DS-20-style rows, DS-22 tags). Reads the `projects` collection directly;
 holds no project copy of its own. `selectedWork` (home) now references one `projects` document.
 
+**Implemented (2026-09-22, D-022):** the case-study blocks in `src/blocks/CaseStudy/` — `csNarrative`,
+`csFigure` (DS-30: full · split · sequence · annotated · compare; portrait captures framed as screens,
+diagrams on the drafting plate), `csFinding`, `csProcess` (nodes + hairlines, `process` or `loop`),
+`csOwnership`, `csDecisions`, `csOutcomes` (DS-18 type roles + DS-27 `ShippedList`), `csLessons`.
+They belong to `projects.sections` only, never to `pages.layout`. `processSteps` and `beforeAfter`
+below are answered by `csProcess` and `csFigure.compare`.
+
 **Candidates — TBD pending benchmarks.** Each becomes real only when Synthesis shows the pattern
 earns its place; until then it is a hypothesis.
 
@@ -216,8 +237,8 @@ earns its place; until then it is a hypothesis.
 | `metricsStrip` | 3–4 headline numbers per case study — **implemented** (`src/blocks/MetricsStrip`) | pleurat-com `proof` = 4; DS-18 adopted | [DS-18](Design-System/DS-18-stats-trio.md) (+ [DS-35](Design-System/DS-35-scroll-pinned-count-up-chart.md) motion, later) | — |
 | `testimonial` | quotes from colleagues/clients | Sina has publishable quotes (Brand Brief Q7) | [DS-29](Design-System/DS-29-testimonial.md) | — |
 | `logoWall` | company logos → **names in type** (`ExperienceGrid` component built; block follows `experiences`) | DS-20 adopted | [DS-20](Design-System/DS-20-typographic-employer-grid.md) | — |
-| `processSteps` | research → prototype → test → ship as a visual | Design benchmarks that show process without a generic "double diamond" | [DS-31](Design-System/DS-31-numbered-table-rows.md) | — |
-| `beforeAfter` | slider or side-by-side for redesigns (Arvan, OTeacher) | assets exist in Figma | — | — |
+| `processSteps` | research → prototype → test → ship as a visual — **answered by `csProcess`** (case studies only) | Design benchmarks that show process without a generic "double diamond" | [DS-31](Design-System/DS-31-numbered-table-rows.md) | — |
+| `beforeAfter` | slider or side-by-side for redesigns (Arvan, OTeacher) — **answered by `csFigure.compare`** (side by side, labelled) | assets exist in Figma | — | — |
 
 The `DS item` column links each candidate to the [Design-System](Design-System/README.md) item that
 holds its measured anatomy and “For Sina” notes (D-013). A candidate becomes a real block when its
@@ -228,21 +249,29 @@ DS item is `adopted`.
 Everything in the template that assumes only `pages` and `posts`:
 
 - [ ] `src/payload.config.ts` — add `Experiences`, `Projects` to `collections`; add `About` to `globals`; add `localization` (§3)
-- [ ] `src/plugins/index.ts:16-17` — `generateTitle` suffix `| Payload Website Template` → `| Sina Oshaghi`; widen `GenerateTitle<Post | Page>` to include `Project | Experience`
-- [ ] `src/plugins/index.ts:28` — redirects `collections` add `'projects'`, `'experiences'`
-- [ ] `src/plugins/index.ts:84` — search `collections` add `'projects'`; extend `beforeSyncWithSearch` and `searchFields` for project cards
+- [x] `src/plugins/index.ts` — `generateTitle` suffix → `| Sina Oshaghi` via `src/utilities/site.ts` (`withSiteName`, also used by `generateMeta` and `mergeOpenGraph`); typed `Post | Page | Project`
+- [x] `src/plugins/index.ts` — redirects `collections` add `'projects'` (`experiences` has no public route)
+- [ ] `src/plugins/index.ts` — search `collections` add `'projects'`; extend `beforeSyncWithSearch` and `searchFields` for project cards — **deferred**: the search page is posts-only chrome today
 - [ ] `src/fields/link.ts:78` — `relationTo: ['pages', 'posts']` → add `'projects'`, `'experiences'`
 - [ ] `src/blocks/ArchiveBlock/config.ts:45-87` — `relationTo` options + `selectedDocs.relationTo` add `'projects'`; `src/blocks/ArchiveBlock/Component.tsx` renders project cards
 - [ ] `src/components/Card/index.tsx:17` — `relationTo?: 'posts'` → union with `'projects'`; href prefix map
-- [ ] `src/utilities/generatePreviewPath.ts:4` — `collectionPrefixMap` add `projects: '/work'`, `experiences: '/experience'`
-- [ ] New routes: `src/app/(frontend)/work/page.tsx`, `work/[slug]/page.tsx`, `experience/page.tsx`; locale prefix strategy for `/fa` (TBD: middleware vs. `[locale]` segment)
-- [ ] `src/app/(frontend)/(sitemaps)/` — add `projects-sitemap.xml`; `next-sitemap.config.cjs` entries
-- [ ] Revalidation hooks for the new collections, modelled on `src/collections/Pages/hooks/revalidatePage.ts`
-- [ ] `src/endpoints/seed/index.ts` — wipe list add `projects`, `experiences`; header nav → Work / Experience / About / Contact
+- [x] `src/utilities/generatePreviewPath.ts` — reads `src/i18n/routes.ts` (`projects: '/work'`); `Projects.admin.livePreview` / `preview` wired, locale-aware
+- [x] Routes: `/work` is a CMS page (D-021); `src/app/(frontend)/work/[slug]/page.tsx` renders the case study (D-022); locale prefix via `src/proxy.ts` (header-based, no `[locale]` segment); `experience/page.tsx` not planned
+- [x] `src/app/(frontend)/(sitemaps)/projects-sitemap.xml/route.ts` (published + public case study, per locale); `next-sitemap.config.cjs` entries
+- [x] `src/collections/Projects/hooks/revalidateProject.ts` — every locale path + the `projects-sitemap` tag
+- [x] `src/endpoints/seed/index.ts` — wipe list has `projects`; the RP1 case study seeds additively (`src/endpoints/seed/case-studies/`, also `pnpm seed:case-studies` against a live database)
 - [ ] Live-preview breakpoints (`src/payload.config.ts:40-52`): 375 / 768 / 1440 — fine; benchmarks use 390 for mobile, close enough
-- [ ] `pnpm generate:types` after every schema change; `src/payload-types.ts` is committed
+- [x] `pnpm generate:types` after every schema change; `src/payload-types.ts` is committed
 
-## 12. Seeding path (pointers only — out of scope here)
+## 12. Seeding path
+
+**Implemented for case studies (2026-09-22):** `src/endpoints/seed/case-studies/` — `media.ts` uploads
+or reuses assets by filename and writes localized `alt`; `rp1-arena.ts` holds the content in en/fa/ar/de
+with deterministic row ids so each locale's `update` merges into the same blocks; `index.ts` is
+additive and idempotent (runs at the end of the main seed and standalone via `pnpm seed:case-studies`).
+Non-English copy is machine-drafted and flagged with `translationReviewed: false`. The pointers below
+still describe the generic Docs → Payload path for the remaining collections.
+
 
 - Extend `seed()` in `src/endpoints/seed/index.ts` with a `seedFromDocs` step, or add a
   `pnpm seed:docs` script calling `getPayload({ config })` the way `tests/helpers/seedUser.ts` does.
@@ -263,6 +292,7 @@ Everything in the template that assumes only `pages` and `posts`:
 | 4 | Persian slugs — shared with English (default) or separate? | shared |
 | 5 | Should `figma[]` links ever render publicly? | no; admin reference only |
 | 6 | `/design` is a static route (the style guide) and shadows a `pages` document with slug `design` | keep the route; reserve the slug |
+| 7 | Domain taxonomy: keep `projects.industry` as free text, or move to a `categories` relationship once filtering by industry is needed? | free text until a second consumer exists |
 
 ## 14. Changelog
 
@@ -272,3 +302,4 @@ Everything in the template that assumes only `pages` and `posts`:
 | 2026-09-19 | §10: added the `DS item` column linking block candidates to `Design-System/` items; `metricsStrip` evidence updated (pleurat-com `proof` = 4) | D-013 |
 | 2026-09-19 | §2 + §10: `metricsStrip` block, Content `layout: editorial`, `sectionHeader` field group and the tokens → `theme.css` pipeline implemented; `logoWall` answered by `ExperienceGrid`; §13 Q6 `/design` route | D-015 … D-018 |
 | 2026-09-21 | §6: `projects` implemented as a V1 subset; §10: `projectArchive` implemented, `selectedWork` re-pointed at `projects`; `/work` is a CMS page | D-021 |
+| 2026-09-22 | §6: case-study layer implemented as a controlled block narrative (8 blocks, publication rule, live preview); §10: `csNarrative … csLessons` implemented, `processSteps` / `beforeAfter` answered; §11: title suffix, redirects, preview, `/work/[slug]`, sitemap, hooks, seed ticked, search deferred; §12: case-study seeder; §13 Q7 | D-022 |

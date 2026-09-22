@@ -8,7 +8,13 @@ import { caseStudyBlocks } from '@/blocks/CaseStudy'
  * contents: header metadata, the "Case study" tab, the per-locale translation flag, and the
  * publish rule for `caseStudyStatus`.
  */
-export const PROJECT_STATUSES = ['shipped', 'in-progress', 'pre-launch', 'paused', 'concept'] as const
+export const PROJECT_STATUSES = [
+  'shipped',
+  'in-progress',
+  'pre-launch',
+  'paused',
+  'concept',
+] as const
 export type ProjectStatusValue = (typeof PROJECT_STATUSES)[number]
 
 /** Appended to the "Project" tab after `period`: the compact header metadata. */
@@ -21,7 +27,8 @@ export const projectHeaderFields: Field[] = [
         type: 'text',
         localized: true,
         admin: {
-          description: 'e.g. "Gaming · play-to-earn". Free text until a domain taxonomy is decided (Content-Model §13).',
+          description:
+            'e.g. "Gaming · play-to-earn". Free text until a domain taxonomy is decided (Content-Model §13).',
           width: '50%',
         },
       },
@@ -29,7 +36,10 @@ export const projectHeaderFields: Field[] = [
         name: 'team',
         type: 'text',
         localized: true,
-        admin: { description: 'Who else was on it, one line — roles, not names unless public.', width: '50%' },
+        admin: {
+          description: 'Who else was on it, one line — roles, not names unless public.',
+          width: '50%',
+        },
       },
     ],
   },
@@ -47,7 +57,10 @@ export const projectHeaderFields: Field[] = [
           { label: 'Paused', value: 'paused' },
           { label: 'Concept', value: 'concept' },
         ],
-        admin: { description: 'Shown in the case-study header; labels are translated in code.', width: '50%' },
+        admin: {
+          description: 'Shown in the case-study header; labels are translated in code.',
+          width: '50%',
+        },
       },
       {
         name: 'tools',
@@ -104,7 +117,9 @@ export const caseStudyTab: Tab = {
       name: 'snapshot',
       type: 'group',
       interfaceName: 'CaseStudySnapshot',
-      admin: { description: 'One sentence each — a reader should get the whole case in ten seconds.' },
+      admin: {
+        description: 'One sentence each — a reader should get the whole case in ten seconds.',
+      },
       fields: [
         { name: 'problem', type: 'textarea', localized: true },
         { name: 'role', type: 'textarea', localized: true },
@@ -122,7 +137,9 @@ export const caseStudyTab: Tab = {
       type: 'relationship',
       relationTo: 'projects',
       filterOptions: ({ id }) => {
-        const where: Where = { and: [{ id: { not_in: [id] } }, { caseStudyStatus: { equals: 'published' } }] }
+        const where: Where = {
+          and: [{ id: { not_in: [id] } }, { caseStudyStatus: { equals: 'published' } }],
+        }
         return where
       },
       admin: {
@@ -140,7 +157,8 @@ export const translationReviewedField: Field = {
   defaultValue: false,
   label: 'Translation reviewed',
   admin: {
-    description: 'Tick per language once a native speaker has reviewed this locale. Machine-drafted locales stay unticked.',
+    description:
+      'Tick per language once a native speaker has reviewed this locale. Machine-drafted locales stay unticked.',
     position: 'sidebar',
   },
 }

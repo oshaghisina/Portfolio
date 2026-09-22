@@ -49,7 +49,7 @@ describe('CMSLink', () => {
   it('resolves references and custom urls the same way for nav and buttons', () => {
     expect(hrefFromLink({ type: 'custom', url: '/about' })).toBe('/about')
     expect(hrefFromLink({ type: 'reference', reference: { relationTo: 'pages', value: { slug: 'work' } as never } })).toBe('/work')
-    expect(hrefFromLink({ type: 'reference', reference: { relationTo: 'posts', value: { slug: 'hi' } as never } })).toBe('/posts/hi')
+    expect(hrefFromLink({ type: 'reference', reference: { relationTo: 'posts', value: { slug: 'hi' } as never } })).toBe('/lab/hi')
   })
 
   it('passes arrow through to the button appearance', () => {

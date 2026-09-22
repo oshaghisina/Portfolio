@@ -508,6 +508,22 @@ export interface Project {
     present?: boolean | null;
   };
   /**
+   * e.g. "Gaming · play-to-earn". Free text until a domain taxonomy is decided (Content-Model §13).
+   */
+  industry?: string | null;
+  /**
+   * Who else was on it, one line — roles, not names unless public.
+   */
+  team?: string | null;
+  /**
+   * Shown in the case-study header; labels are translated in code.
+   */
+  projectStatus?: ('shipped' | 'in-progress' | 'pre-launch' | 'paused' | 'concept') | null;
+  /**
+   * Tool names in Latin — not translated.
+   */
+  tools?: string[] | null;
+  /**
    * Real project evidence — UI, dashboard, artifact. Portrait screens are fine; the page frames them instead of cropping. Leave empty to show the "media pending" placeholder.
    */
   cover?: (string | null) | Media;
@@ -515,6 +531,28 @@ export interface Project {
    * Optional. A live product or external page; archive rows show it with an outward arrow.
    */
   liveUrl?: string | null;
+  /**
+   * One-line positioning under the title — "Building a digital gold product from proposition to growth system." Falls back to the summary.
+   */
+  statement?: string | null;
+  hero?: CaseStudyHero;
+  snapshot?: CaseStudySnapshot;
+  sections?:
+    | (
+        | CaseStudyNarrativeBlock
+        | CaseStudyFigureBlock
+        | CaseStudyFindingBlock
+        | CaseStudyProcessBlock
+        | CaseStudyOwnershipBlock
+        | CaseStudyDecisionsBlock
+        | CaseStudyOutcomesBlock
+        | CaseStudyLessonsBlock
+      )[]
+    | null;
+  /**
+   * Optional. Empty = the next published case study by order (wrapping around).
+   */
+  nextProject?: (string | null) | Project;
   meta?: {
     title?: string | null;
     /**
@@ -535,6 +573,10 @@ export interface Project {
    * Separate from publishing the project: only "Published" turns archive rows into links.
    */
   caseStudyStatus: 'none' | 'draft' | 'published';
+  /**
+   * Tick per language once a native speaker has reviewed this locale. Machine-drafted locales stay unticked.
+   */
+  translationReviewed?: boolean | null;
   publishedAt?: string | null;
   /**
    * When enabled, the slug will auto-generate from the title field on save and autosave.
@@ -544,6 +586,313 @@ export interface Project {
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
+}
+/**
+ * One dominant visual after the header. One item = a full-width visual; two or three = a row of screens on a panel. Portrait phone captures are framed, never mocked into a device.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CaseStudyHero".
+ */
+export interface CaseStudyHero {
+  items?:
+    | {
+        media: string | Media;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * What the hero shows and why it matters.
+   */
+  caption?: string | null;
+}
+/**
+ * One sentence each — a reader should get the whole case in ten seconds.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CaseStudySnapshot".
+ */
+export interface CaseStudySnapshot {
+  problem?: string | null;
+  role?: string | null;
+  result?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CaseStudyNarrativeBlock".
+ */
+export interface CaseStudyNarrativeBlock {
+  /**
+   * Opens a numbered chapter ("01 CONTEXT"). Labels are translated in code.
+   */
+  label: 'context' | 'problem' | 'constraints' | 'approach' | 'solution' | 'research' | 'outcome' | 'custom';
+  /**
+   * Short — one or two words.
+   */
+  customLabel?: string | null;
+  /**
+   * A short verdict, not a label — e.g. "Competitive and rewarding without becoming a casino."
+   */
+  heading: string;
+  /**
+   * Two to four sentences per chapter reads best; lists are fine for constraints.
+   */
+  body?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Optional one-sentence takeaway, set as a pull line after the body — the line you would want someone to remember.
+   */
+  insight?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'csNarrative';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CaseStudyFigureBlock".
+ */
+export interface CaseStudyFigureBlock {
+  layout: 'full' | 'split' | 'sequence' | 'annotated' | 'compare';
+  /**
+   * What the media is, not how big it should be.
+   */
+  treatment?: ('auto' | 'screen' | 'plain' | 'diagram') | null;
+  /**
+   * Full / annotated: exactly one. Split / compare: exactly two. Sequence: two to four.
+   */
+  items?:
+    | {
+        media: string | Media;
+        /**
+         * Optional per-visual note; keep the explanation in the figure caption below.
+         */
+        caption?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Numbered key rendered beside the visual (01, 02 …). Number the callouts on the image to match.
+   */
+  annotations?:
+    | {
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * What we are looking at and why it matters — not a repeat of the visible UI.
+   */
+  caption?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'csFigure';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CaseStudyFindingBlock".
+ */
+export interface CaseStudyFindingBlock {
+  kind: 'finding' | 'quote';
+  text: string;
+  /**
+   * Who or what it comes from, e.g. "RP1 tone guideline".
+   */
+  attribution?: string | null;
+  /**
+   * How it was gathered, e.g. "8 interviews, aggregated".
+   */
+  method?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'csFinding';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CaseStudyProcessBlock".
+ */
+export interface CaseStudyProcessBlock {
+  /**
+   * Optional short title, e.g. "Six passes, in order".
+   */
+  heading?: string | null;
+  kind?: ('process' | 'loop') | null;
+  steps?:
+    | {
+        /**
+         * Latin code, e.g. "R1" — stays mono in every locale.
+         */
+        code: string;
+        label: string;
+        /**
+         * Optional technical annotation under the label.
+         */
+        note?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'csProcess';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CaseStudyOwnershipBlock".
+ */
+export interface CaseStudyOwnershipBlock {
+  /**
+   * Optional — defaults to "My role" in the page language.
+   */
+  heading?: string | null;
+  /**
+   * Two to four sentences: scope, who else was involved, what was decided vs. contributed to.
+   */
+  intro?: string | null;
+  /**
+   * Areas Sina owned outright.
+   */
+  own?: string[] | null;
+  /**
+   * Shared with a named role.
+   */
+  coOwn?: string[] | null;
+  /**
+   * Owned by others; Sina contributed.
+   */
+  collaborate?: string[] | null;
+  /**
+   * Optional caveat — e.g. who owned engineering or marketing.
+   */
+  note?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'csOwnership';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CaseStudyDecisionsBlock".
+ */
+export interface CaseStudyDecisionsBlock {
+  /**
+   * Optional — defaults to "Key decisions" in the page language.
+   */
+  heading?: string | null;
+  /**
+   * One sentence framing the decisions (optional).
+   */
+  lede?: string | null;
+  /**
+   * Three to six decisions that materially shaped the result.
+   */
+  items?:
+    | {
+        /**
+         * The decision as a statement — "Reduce onboarding from six steps to four."
+         */
+        title: string;
+        /**
+         * Why this direction was chosen.
+         */
+        why: string;
+        /**
+         * What else was considered.
+         */
+        alternatives?: string | null;
+        /**
+         * What was gained and what was given up.
+         */
+        tradeoff?: string | null;
+        /**
+         * What supported the decision — data, research, a documented log.
+         */
+        evidence?: string | null;
+        /**
+         * Optional small visual that shows the decision (not decoration).
+         */
+        media?: (string | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'csDecisions';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CaseStudyOutcomesBlock".
+ */
+export interface CaseStudyOutcomesBlock {
+  /**
+   * Optional — defaults to "Outcomes" in the page language.
+   */
+  heading?: string | null;
+  /**
+   * One or two sentences of context — including what cannot be reported yet.
+   */
+  intro?: string | null;
+  items?:
+    | {
+        /**
+         * Only a credible number — "34", "+18%". Leave empty for a qualitative outcome.
+         */
+        value?: string | null;
+        /**
+         * What it is — the statement itself when there is no number.
+         */
+        label: string;
+        /**
+         * Meaning and time frame.
+         */
+        context?: string | null;
+        kind: 'measured' | 'delivered';
+        /**
+         * Provenance — dashboard, report, document, date.
+         */
+        source?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Optional terse list of what actually shipped (DS-27).
+   */
+  shipped?: string[] | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'csOutcomes';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CaseStudyLessonsBlock".
+ */
+export interface CaseStudyLessonsBlock {
+  /**
+   * Optional — defaults to "What I learned" in the page language.
+   */
+  heading?: string | null;
+  /**
+   * A wrong assumption, what changed after launch, what would be done differently, a principle that became reusable.
+   */
+  items?:
+    | {
+        title: string;
+        body?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'csLessons';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1338,6 +1687,10 @@ export interface Redirect {
       | ({
           relationTo: 'posts';
           value: string | Post;
+        } | null)
+      | ({
+          relationTo: 'projects';
+          value: string | Project;
         } | null);
     url?: string | null;
   };
@@ -2019,8 +2372,28 @@ export interface ProjectsSelect<T extends boolean = true> {
         end?: T;
         present?: T;
       };
+  industry?: T;
+  team?: T;
+  projectStatus?: T;
+  tools?: T;
   cover?: T;
   liveUrl?: T;
+  statement?: T;
+  hero?: T | CaseStudyHeroSelect<T>;
+  snapshot?: T | CaseStudySnapshotSelect<T>;
+  sections?:
+    | T
+    | {
+        csNarrative?: T | CaseStudyNarrativeBlockSelect<T>;
+        csFigure?: T | CaseStudyFigureBlockSelect<T>;
+        csFinding?: T | CaseStudyFindingBlockSelect<T>;
+        csProcess?: T | CaseStudyProcessBlockSelect<T>;
+        csOwnership?: T | CaseStudyOwnershipBlockSelect<T>;
+        csDecisions?: T | CaseStudyDecisionsBlockSelect<T>;
+        csOutcomes?: T | CaseStudyOutcomesBlockSelect<T>;
+        csLessons?: T | CaseStudyLessonsBlockSelect<T>;
+      };
+  nextProject?: T;
   meta?:
     | T
     | {
@@ -2031,12 +2404,174 @@ export interface ProjectsSelect<T extends boolean = true> {
   featured?: T;
   order?: T;
   caseStudyStatus?: T;
+  translationReviewed?: T;
   publishedAt?: T;
   generateSlug?: T;
   slug?: T;
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CaseStudyHero_select".
+ */
+export interface CaseStudyHeroSelect<T extends boolean = true> {
+  items?:
+    | T
+    | {
+        media?: T;
+        id?: T;
+      };
+  caption?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CaseStudySnapshot_select".
+ */
+export interface CaseStudySnapshotSelect<T extends boolean = true> {
+  problem?: T;
+  role?: T;
+  result?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CaseStudyNarrativeBlock_select".
+ */
+export interface CaseStudyNarrativeBlockSelect<T extends boolean = true> {
+  label?: T;
+  customLabel?: T;
+  heading?: T;
+  body?: T;
+  insight?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CaseStudyFigureBlock_select".
+ */
+export interface CaseStudyFigureBlockSelect<T extends boolean = true> {
+  layout?: T;
+  treatment?: T;
+  items?:
+    | T
+    | {
+        media?: T;
+        caption?: T;
+        id?: T;
+      };
+  annotations?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
+  caption?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CaseStudyFindingBlock_select".
+ */
+export interface CaseStudyFindingBlockSelect<T extends boolean = true> {
+  kind?: T;
+  text?: T;
+  attribution?: T;
+  method?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CaseStudyProcessBlock_select".
+ */
+export interface CaseStudyProcessBlockSelect<T extends boolean = true> {
+  heading?: T;
+  kind?: T;
+  steps?:
+    | T
+    | {
+        code?: T;
+        label?: T;
+        note?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CaseStudyOwnershipBlock_select".
+ */
+export interface CaseStudyOwnershipBlockSelect<T extends boolean = true> {
+  heading?: T;
+  intro?: T;
+  own?: T;
+  coOwn?: T;
+  collaborate?: T;
+  note?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CaseStudyDecisionsBlock_select".
+ */
+export interface CaseStudyDecisionsBlockSelect<T extends boolean = true> {
+  heading?: T;
+  lede?: T;
+  items?:
+    | T
+    | {
+        title?: T;
+        why?: T;
+        alternatives?: T;
+        tradeoff?: T;
+        evidence?: T;
+        media?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CaseStudyOutcomesBlock_select".
+ */
+export interface CaseStudyOutcomesBlockSelect<T extends boolean = true> {
+  heading?: T;
+  intro?: T;
+  items?:
+    | T
+    | {
+        value?: T;
+        label?: T;
+        context?: T;
+        kind?: T;
+        source?: T;
+        id?: T;
+      };
+  shipped?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CaseStudyLessonsBlock_select".
+ */
+export interface CaseStudyLessonsBlockSelect<T extends boolean = true> {
+  heading?: T;
+  items?:
+    | T
+    | {
+        title?: T;
+        body?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

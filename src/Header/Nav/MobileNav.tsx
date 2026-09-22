@@ -1,6 +1,7 @@
 'use client'
 
 import { cn } from '@/utilities/ui'
+import { useLenis } from 'lenis/react'
 import { Menu, X } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -35,8 +36,16 @@ export const MobileNav: React.FC<MobileNavProps> = ({ alwaysVisible = false, cla
   const pathname = usePathname()
   const id = useId()
   const navItems = data?.navItems || []
+  const lenis = useLenis()
 
   const close = useCallback(() => setOpen(false), [])
+
+  // The drawer's own backdrop doesn't stop Lenis's window-level wheel listener from smooth-
+  // scrolling the page underneath it — pause/resume inertial scroll in sync with the dialog.
+  useEffect(() => {
+    if (open) lenis?.stop()
+    else lenis?.start()
+  }, [open, lenis])
 
   // Drive the native element from state so React owns the open/close lifecycle.
   // (jsdom has no showModal/close — hence the guards.)
@@ -102,6 +111,11 @@ export const MobileNav: React.FC<MobileNavProps> = ({ alwaysVisible = false, cla
         <nav className="flex-1 overflow-y-auto px-6 pt-10">
           <ol className="flex flex-col">
             {navItems.map(({ link }, i) => {
+              // An untranslated locale leaves `label` empty — a numbered link with no name is
+              // the same "visible but empty" failure `CMSLink` guards against, so skip it too
+              // (this drawer builds its own `<Link>` rather than going through `CMSLink`).
+              if (!link?.label) return null
+
               const logicalHref = hrefFromLink(link) ?? '#'
               const active = isActivePath(parseLocalePath(pathname).logicalPath, logicalHref)
               const href = localizeInternalHref(locale, logicalHref)

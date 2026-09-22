@@ -3,6 +3,7 @@ import path from 'node:path'
 
 import type { CollectionSlug, GlobalSlug, Payload, PayloadRequest, File } from 'payload'
 
+import { COLLECTION_PATH_PREFIX } from '@/i18n/routes'
 import { DEFAULT_LOCALE, LOCALES } from '@/utilities/locale'
 
 import { about, localizeAboutLayoutFa } from './about-page'
@@ -12,9 +13,10 @@ import {
   aboutMetaTitleFa,
 } from './about-page-content'
 import { aboutGlobalEn, aboutGlobalFa } from './about-global'
+import { seedCaseStudies } from './case-studies'
 import { contactForm as contactFormData } from './contact-form'
 import { contact as contactPageData } from './contact-page'
-import { experienceEnData, experiencesData } from './experiences'
+import { experienceEnData, experienceFaData, experiencesData } from './experiences'
 import { home } from './home'
 import { image1 } from './image-1'
 import { image2 } from './image-2'
@@ -264,6 +266,19 @@ export const seed = async ({
       }),
     ),
   )
+  // fa is the only locale with real translated experience copy today (D-009) — every other
+  // locale stays unseeded rather than silently showing English.
+  await Promise.all(
+    experiencesData.map((entry, i) =>
+      payload.update({
+        collection: 'experiences',
+        id: experienceEntries[i]!.id,
+        locale: 'fa',
+        depth: 0,
+        data: experienceFaData(entry),
+      }),
+    ),
+  )
   const experienceDocs: Record<number, (typeof experienceEntries)[number]> = {}
   experiencesData.forEach((entry, i) => {
     experienceDocs[entry.order] = experienceEntries[i]!
@@ -406,7 +421,7 @@ export const seed = async ({
             link: {
               type: 'custom',
               label: 'Lab',
-              url: '/posts',
+              url: COLLECTION_PATH_PREFIX.posts,
             },
           },
           {
@@ -461,7 +476,7 @@ export const seed = async ({
             link: {
               type: 'custom',
               label: 'Lab',
-              url: '/posts',
+              url: COLLECTION_PATH_PREFIX.posts,
             },
           },
           {
@@ -511,6 +526,10 @@ export const seed = async ({
       context: { disableRevalidate: true },
     }),
   ])
+
+  // The RP1 case study sits on top of its archive entry — additive, so it also runs standalone
+  // against a live database via `pnpm seed:case-studies`.
+  await seedCaseStudies({ payload })
 
   payload.logger.info('Seeded database successfully!')
 }

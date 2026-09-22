@@ -25,7 +25,7 @@ evidence: ["pleurat-com/DS-17-1-desktop-strip.png", "pleurat-com/DS-17-2-desktop
 related: []               # other DS ids
 open_questions: 0         # ❓ count in the body — computed by docs:index
 date_added: "2026-09-19"
-updated: "2026-09-19"
+updated: "2026-09-22"
 status: "ready"             # draft | review | ready
 ---
 
@@ -64,6 +64,8 @@ It answers the recruiter's first four questions before the first image and turns
 | component | `src/components/ProjectMeta/index.tsx` | ProjectMeta | Component `src/components/ProjectMeta/index.tsx` rendering `projects` fields; cells generated from a fixed label list so order never drifts. |
 
 **Implemented (2026-09-19):** `PROJECT_META_KEYS` = company · role · period · type · tools · client · link (fixed order, empty keys skipped), EN/FA labels, tools as `TagList`, back link with a mirrored arrow. Shown on `/design`.
+
+**Extended (2026-09-22, D-022):** keys `industry · team · status` (after `type`) with labels in all seven locales, and a `variant="compact"` — hairline rows instead of bordered cells, two columns on phones, one at `lg` — used by the case-study header at `/work/[slug]` so the facts read as structured metadata, not a card.
 
 ## Evidence
 Local-only, in `assets/pleurat-com/` (gitignored):

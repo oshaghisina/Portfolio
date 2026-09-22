@@ -18,7 +18,10 @@ export const CaseStudyLessons: Block = {
       minRows: 2,
       maxRows: 4,
       labels: { singular: 'Lesson', plural: 'Lessons' },
-      admin: { description: 'A wrong assumption, what changed after launch, what would be done differently, a principle that became reusable.' },
+      admin: {
+        description:
+          'A wrong assumption, what changed after launch, what would be done differently, a principle that became reusable.',
+      },
       fields: [
         { name: 'title', type: 'text', localized: true, required: true },
         { name: 'body', type: 'textarea', localized: true },

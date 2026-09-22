@@ -27,13 +27,19 @@ export const CaseStudyFinding: Block = {
           name: 'attribution',
           type: 'text',
           localized: true,
-          admin: { description: 'Who or what it comes from, e.g. "RP1 tone guideline".', width: '50%' },
+          admin: {
+            description: 'Who or what it comes from, e.g. "RP1 tone guideline".',
+            width: '50%',
+          },
         },
         {
           name: 'method',
           type: 'text',
           localized: true,
-          admin: { description: 'How it was gathered, e.g. "8 interviews, aggregated".', width: '50%' },
+          admin: {
+            description: 'How it was gathered, e.g. "8 interviews, aggregated".',
+            width: '50%',
+          },
         },
       ],
     },

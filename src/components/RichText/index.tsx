@@ -21,6 +21,7 @@ import type {
 import { BannerBlock } from '@/blocks/Banner/Component'
 import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 import { localizeInternalHref } from '@/i18n/navigation'
+import { docPath, isRoutedCollection } from '@/i18n/routes'
 import { DEFAULT_LOCALE, type Locale } from '@/utilities/locale'
 import { cn } from '@/utilities/ui'
 
@@ -28,14 +29,15 @@ type NodeTypes =
   | DefaultNodeTypes
   | SerializedBlockNode<CTABlockProps | MediaBlockProps | BannerBlockProps | CodeBlockProps>
 
-const internalDocToHref = (locale: Locale) =>
+const internalDocToHref =
+  (locale: Locale) =>
   ({ linkNode }: { linkNode: SerializedLinkNode }) => {
     const { value, relationTo } = linkNode.fields.doc!
     if (typeof value !== 'object') {
       throw new Error('Expected value to be an object')
     }
     const slug = value.slug
-    const href = relationTo === 'posts' ? `/posts/${slug}` : `/${slug}`
+    const href = isRoutedCollection(relationTo) ? docPath(relationTo, String(slug)) : `/${slug}`
     return localizeInternalHref(locale, href)
   }
 
@@ -70,7 +72,13 @@ type Props = {
 } & React.HTMLAttributes<HTMLDivElement>
 
 export default function RichText(props: Props) {
-  const { className, enableProse = true, enableGutter = true, locale = DEFAULT_LOCALE, ...rest } = props
+  const {
+    className,
+    enableProse = true,
+    enableGutter = true,
+    locale = DEFAULT_LOCALE,
+    ...rest
+  } = props
   return (
     <ConvertRichText
       converters={jsxConverters(locale)}

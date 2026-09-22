@@ -22,12 +22,19 @@ export interface CaseStudyHeaderProps {
 }
 
 /** The header's compact fact list — fixed order (DS-17), empty facts skipped, nothing fabricated. */
-export function headerMeta(project: Project, locale: Locale, copy: CaseStudyCopy): Partial<Record<ProjectMetaKey, ProjectMetaValue>> {
+export function headerMeta(
+  project: Project,
+  locale: Locale,
+  copy: CaseStudyCopy,
+): Partial<Record<ProjectMetaKey, ProjectMetaValue>> {
   const kinds = kindLabels(project.kind, locale)
   let link: ProjectMetaValue = null
   if (project.liveUrl) {
     try {
-      link = { href: project.liveUrl, label: new URL(project.liveUrl).hostname.replace(/^www\./, '') }
+      link = {
+        href: project.liveUrl,
+        label: new URL(project.liveUrl).hostname.replace(/^www\./, ''),
+      }
     } catch {
       link = { href: project.liveUrl, label: project.liveUrl }
     }
@@ -50,7 +57,12 @@ export function headerMeta(project: Project, locale: Locale, copy: CaseStudyCopy
  * statement on the left, and the structured project facts on the right — set as hairline rows,
  * not a card. On phones everything stacks in the same order with the facts in two columns.
  */
-export const CaseStudyHeader: React.FC<CaseStudyHeaderProps> = ({ className, copy, locale, project }) => (
+export const CaseStudyHeader: React.FC<CaseStudyHeaderProps> = ({
+  className,
+  copy,
+  locale,
+  project,
+}) => (
   <header className={cn('grid gap-10 lg:grid-cols-12 lg:gap-x-16', className)}>
     <div className="flex flex-col gap-6 lg:col-span-7">
       <Link

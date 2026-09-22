@@ -81,7 +81,7 @@ export default async function Page({ params: paramsPromise }: Args) {
   }
 
   if (!page) {
-    return <PayloadRedirects url={url} />
+    return <PayloadRedirects locale={locale} url={url} />
   }
 
   const { hero, layout } = page
@@ -97,7 +97,7 @@ export default async function Page({ params: paramsPromise }: Args) {
     <article className={cn('pt-6 pb-16 md:pt-16 md:pb-24', isHome && 'home-ruled-paper')}>
       <PageClient />
       {/* Allows redirects for valid pages too */}
-      <PayloadRedirects disableNotFound url={url} />
+      <PayloadRedirects disableNotFound locale={locale} url={url} />
 
       {draft && <LivePreviewListener />}
       {personJsonLd && (
@@ -107,7 +107,7 @@ export default async function Page({ params: paramsPromise }: Args) {
       {/* Homepage-only narrow canvas: every hero/block section relies on this one ancestor for width;
           everywhere else each block renders its own `.container`. */}
       <div className={cn(isHome && 'canvas')}>
-        <RenderHero {...hero} />
+        <RenderHero {...hero} locale={locale} />
         <RenderBlocks blocks={layout} disableInnerContainer={isHome} locale={locale} />
       </div>
     </article>

@@ -1,12 +1,13 @@
 import type { Metadata } from 'next'
 
-import type { Media, Page, Post, Config } from '../payload-types'
+import type { Media, Page, Post, Project, Config } from '../payload-types'
 
 import { getLocaleReadinessMap } from '@/i18n/contentReady'
 import { localePath } from '@/i18n/navigation'
 import { DEFAULT_LOCALE, LOCALES, type Locale } from './locale'
 import { mergeOpenGraph } from './mergeOpenGraph'
 import { getServerSideURL } from './getURL'
+import { withSiteName } from './site'
 
 const getImageURL = (image?: Media | Config['db']['defaultIDType'] | null) => {
   const serverUrl = getServerSideURL()
@@ -23,19 +24,17 @@ const getImageURL = (image?: Media | Config['db']['defaultIDType'] | null) => {
 }
 
 export const generateMeta = async (args: {
-  doc: Partial<Page> | Partial<Post> | null
+  doc: Partial<Page> | Partial<Post> | Partial<Project> | null
   /** Current locale — drives the canonical URL and which `alternates.languages` are emitted. */
   locale?: Locale
-  /** Unprefixed logical path, e.g. `/about` or `/posts/hello` — defaults to the homepage. */
+  /** Unprefixed logical path, e.g. `/about` or `/lab/hello` — defaults to the homepage. */
   logicalPath?: string
 }): Promise<Metadata> => {
   const { doc, locale = DEFAULT_LOCALE, logicalPath = '/' } = args
 
   const ogImage = getImageURL(doc?.meta?.image)
 
-  const title = doc?.meta?.title
-    ? doc?.meta?.title + ' | Payload Website Template'
-    : 'Payload Website Template'
+  const title = withSiteName(doc?.meta?.title)
 
   const serverUrl = getServerSideURL()
   const canonicalPath = localePath(locale, logicalPath)
@@ -48,7 +47,8 @@ export const generateMeta = async (args: {
     'x-default': `${serverUrl}${localePath(DEFAULT_LOCALE, logicalPath)}`,
   }
   for (const candidate of LOCALES) {
-    if (readiness[candidate]) languages[candidate] = `${serverUrl}${localePath(candidate, logicalPath)}`
+    if (readiness[candidate])
+      languages[candidate] = `${serverUrl}${localePath(candidate, logicalPath)}`
   }
 
   return {

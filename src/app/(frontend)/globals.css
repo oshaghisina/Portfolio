@@ -34,8 +34,26 @@
      the --font-sans override from theme.css (:lang(fa)/:lang(ar)) takes effect. Attribute
      selector on purpose: it fires at the subtree root only and leaves .font-mono children alone. */
   [lang='fa'],
-  [lang='ar'] {
+  [lang='ar'],
+  [lang='ja'] {
     font-family: var(--font-sans);
+  }
+
+  /* Japanese long-form: CJK breaks anywhere, so keep Latin/URL runs from overflowing and let the
+     engine pick strict line-breaking; the leading/tracking differences arrive through :lang(ja). */
+  [lang='ja'] {
+    overflow-wrap: anywhere;
+    line-break: strict;
+  }
+
+  /* In-page anchors (the case-study section index) glide unless the reader asked for no motion.
+     Lenis (src/providers/SmoothScroll) takes over animated scroll motion once it mounts and marks
+     <html class="lenis">; this CSS fallback only fires before/without it — no JS, JS failure, or
+     reduced motion (Lenis is never instantiated for that group; html never gets `.lenis`). */
+  @media (prefers-reduced-motion: no-preference) {
+    html:not(.lenis) {
+      scroll-behavior: smooth;
+    }
   }
 
   ::selection {
@@ -98,12 +116,15 @@
   /* Homepage-only narrow canvas (~74-78vw at lg+) with hairline "ledger" rails.
      Deliberately separate from .container, which every other route keeps using untouched.
      Phones get their own frame: ~8px of outside breathing room, faint rails, ~12px inner inset;
-     the tablet/desktop behaviour returns from md. */
+     the tablet/desktop behaviour returns from md.
+     Opaque paper fill: this is where .home-ruled-paper's global rules stop — everything inside
+     owns its own surface (e.g. Tracks' denser local pattern) instead of showing the article's grid. */
   .canvas {
     width: auto;
     margin-inline: 0.5rem;
     padding-inline: 0.75rem;
     border-inline: 1px solid var(--line-soft);
+    background-color: var(--paper);
   }
 
   @variant md {

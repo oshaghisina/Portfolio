@@ -39,13 +39,17 @@ export function chapterKey(block: CaseStudySection): ChapterKey | null {
 }
 
 /** The chapter list of a case study — feeds the kickers ("01 CONTEXT") and the section index. */
-export function buildChapters(sections: Project['sections'] | null | undefined, copy: CaseStudyCopy): Chapter[] {
+export function buildChapters(
+  sections: Project['sections'] | null | undefined,
+  copy: CaseStudyCopy,
+): Chapter[] {
   const chapters: Chapter[] = []
   ;(sections ?? []).forEach((block, blockIndex) => {
     const key = chapterKey(block)
     if (!key) return
     const number = pad(chapters.length + 1)
-    const custom = block.blockType === 'csNarrative' && key === 'custom' ? block.customLabel?.trim() : undefined
+    const custom =
+      block.blockType === 'csNarrative' && key === 'custom' ? block.customLabel?.trim() : undefined
     chapters.push({
       id: `s${number}-${key}`,
       number,
@@ -58,7 +62,10 @@ export function buildChapters(sections: Project['sections'] | null | undefined, 
 }
 
 /** Figure numbers by block index — the hero (when it has media) is Figure 01, so figures start after it. */
-export function figureNumbers(sections: Project['sections'] | null | undefined, startAt = 1): Map<number, string> {
+export function figureNumbers(
+  sections: Project['sections'] | null | undefined,
+  startAt = 1,
+): Map<number, string> {
   const numbers = new Map<number, string>()
   let n = startAt
   ;(sections ?? []).forEach((block, blockIndex) => {
