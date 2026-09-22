@@ -1,0 +1,447 @@
+import type { Locale } from '@/utilities/locale'
+
+/**
+ * The `experiences` collection in the five locales it was missing — `ar`, `es`, `de`, `fr`, `ja`.
+ *
+ * English and Persian already exist in `experiences.ts` (`experienceEnData` / `experienceFaData`,
+ * D-009's en+fa baseline), so this table deliberately does not include them: it can add the
+ * missing languages without being able to touch the two that are already right.
+ *
+ * Keyed by `order`, which is the stable identity `experiencesData` and the About page's career
+ * journey both use — row position is not.
+ *
+ * Only localized leaves. `employment`, `order` and `period.present` / `period.approx` are shared
+ * and never re-sent (see `experienceFaData`, which set that precedent).
+ *
+ * `durationLabel` carries locale digits in fa and ar per the convention already in
+ * `experiences.ts`; the Latin-script locales keep Latin digits, and Japanese uses its own
+ * counters (年 / か月).
+ */
+export type ExperienceLocale = Exclude<Locale, 'en' | 'fa'>
+
+export interface ExperienceFields {
+  title: string
+  company: string
+  product?: string
+  role: string
+  domain?: string
+  summary: string
+  durationLabel: string
+}
+
+export const experienceCopy: Record<ExperienceLocale, Record<number, ExperienceFields>> = {
+  ar: {
+    1: {
+      title: 'ديجيكالا — الذهب الرقمي',
+      company: 'ديجيكالا',
+      product: 'الذهب الرقمي',
+      role: 'مصمم / مسوّق / مطوّر ذكاء أعمال',
+      domain: 'التقنية المالية',
+      summary: 'تملّكتُ الذهب الرقمي من البداية إلى النهاية — الرؤية والتصميم والحملات والتقسيم ولوحات ذكاء الأعمال خلفها.',
+      durationLabel: 'سنتان ونصف',
+    },
+    2: {
+      title: 'كارسبارنسي وخودرو45',
+      company: 'كارسبارنسي وخودرو45',
+      role: 'مصمم منتج',
+      domain: 'السيارات',
+      summary: 'صمّمتُ منصّة بيع وشراء سيارات كاملة لسوق الإمارات، ورفعتُ التحويل عبر اختبارات قابلية الاستخدام.',
+      durationLabel: 'سنتان ونصف',
+    },
+    3: {
+      title: 'هديش مول',
+      company: 'هديش مول',
+      role: 'تسويق',
+      domain: 'التجزئة',
+      summary: 'زدتُ إقبال الزوّار عبر الحملات وشراكات المؤثّرين، واقترحتُ تطبيقًا لإدارة المركز التجاري.',
+      durationLabel: 'سنة',
+    },
+    4: {
+      title: 'فيبونا',
+      company: 'فيبونا',
+      role: 'مدير منتج',
+      summary: 'واءمتُ أصحاب المصلحة حول هوية علامة وشعار وموقع جديد من الصفر.',
+      durationLabel: 'سنتان',
+    },
+    5: {
+      title: 'أوتيتشر',
+      company: 'أوتيتشر',
+      role: 'مدير منتج ومصمم',
+      domain: 'تقنيات التعليم',
+      summary: 'حوّلتُ بحث المعلّمين والمتعلّمين إلى خارطة طريق مُتحقَّق منها لمطابقة المعلّم بالطالب.',
+      durationLabel: 'سنة',
+    },
+    6: {
+      title: 'أروان كلاود',
+      company: 'أروان كلاود',
+      role: 'مصمم منتج',
+      domain: 'السحابة',
+      summary: 'أعدتُ تصميم المنصّة حول مؤشّرات الخوادم التي احتاجها المستخدمون فعلًا، فارتفع مؤشّر NPS.',
+      durationLabel: 'سنتان',
+    },
+    7: {
+      title: 'بايوميز',
+      company: 'بايوميز',
+      role: 'مدير منتج ومصمم',
+      domain: 'تقنيات التعليم',
+      summary: 'بنيتُ الموقع ولوحة التعليم ونظام تصميم مكّن المطوّرين من الشحن بسرعة.',
+      durationLabel: 'ثلاث سنوات',
+    },
+    8: {
+      title: 'ديدستان',
+      company: 'ديدستان',
+      role: 'مصمم واجهات وتجربة',
+      domain: 'الإعلام',
+      summary: 'صمّمتُ نموذجًا أوّليًا لمنصّة فيديو قائمة على البيانات انطلاقًا من بحث تجربة مستخدم مُقتصد.',
+      durationLabel: 'ثمانية أشهر',
+    },
+    9: {
+      title: 'A1Paradise',
+      company: 'A1Paradise',
+      role: 'مصمم واجهات وتجربة',
+      domain: 'الاتصالات / الألعاب',
+      summary: 'صمّمتُ ألعابًا مصغّرة مُلعَّبة وتطبيق اتصال لسطح المكتب وللمستهلك.',
+      durationLabel: 'سنة وشهران',
+    },
+    10: {
+      title: 'مستقل — RP1 / المنتج والاستراتيجية',
+      company: 'مستقل',
+      product: 'RP1',
+      role: 'مصمم منتج واستراتيجي',
+      summary: 'تحديد نطاق وتصميم ساحة Play-to-Earn متعدّدة الألعاب، بقرارات منتج وأعمال تُتّخذ معًا.',
+      durationLabel: 'مستمر',
+    },
+  },
+
+  es: {
+    1: {
+      title: 'Digikala — Digital Gold',
+      company: 'Digikala',
+      product: 'Digital Gold',
+      role: 'Diseñador / Marketer / Desarrollador BI',
+      domain: 'Fintech',
+      summary: 'Asumí Digital Gold de principio a fin: visión, diseño, campañas, segmentación y los paneles de BI que había detrás.',
+      durationLabel: '2,5 años',
+    },
+    2: {
+      title: 'Carsparency y Khodro45',
+      company: 'Carsparency y Khodro45',
+      role: 'Diseñador de producto',
+      domain: 'Automoción',
+      summary: 'Diseñé una plataforma completa de compraventa de coches para el mercado de los Emiratos; subí la conversión con pruebas de usabilidad.',
+      durationLabel: '2,5 años',
+    },
+    3: {
+      title: 'Hadish Mall',
+      company: 'Hadish Mall',
+      role: 'Marketing',
+      domain: 'Retail',
+      summary: 'Aumenté la afluencia con campañas y acuerdos con influencers; propuse una app de gestión del centro comercial.',
+      durationLabel: '1 año',
+    },
+    4: {
+      title: 'Fibona',
+      company: 'Fibona',
+      role: 'Product Manager',
+      summary: 'Alineé a las partes interesadas en torno a una nueva identidad de marca, eslogan y web desde cero.',
+      durationLabel: '2 años',
+    },
+    5: {
+      title: 'OTeacher',
+      company: 'OTeacher',
+      role: 'Product Manager y diseñador',
+      domain: 'Edtech',
+      summary: 'Convertí la investigación con docentes y estudiantes en una hoja de ruta validada de emparejamiento profesor–alumno.',
+      durationLabel: '1 año',
+    },
+    6: {
+      title: 'Arvan Cloud',
+      company: 'Arvan Cloud',
+      role: 'Diseñador de producto',
+      domain: 'Cloud',
+      summary: 'Rediseñé la plataforma en torno a las métricas de servidor que los usuarios realmente necesitaban, subiendo el NPS.',
+      durationLabel: '2 años',
+    },
+    7: {
+      title: 'Biomaze',
+      company: 'Biomaze',
+      role: 'Product Manager y diseñador',
+      domain: 'Edtech',
+      summary: 'Construí la web, el panel de formación y un sistema de diseño que permitió a los desarrolladores lanzar rápido.',
+      durationLabel: '3 años',
+    },
+    8: {
+      title: 'Didestan',
+      company: 'Didestan',
+      role: 'Diseñador UI/UX',
+      domain: 'Medios',
+      summary: 'Diseñé el prototipo de una plataforma de vídeo basada en datos a partir de investigación lean UX.',
+      durationLabel: '8 meses',
+    },
+    9: {
+      title: 'A1Paradise',
+      company: 'A1Paradise',
+      role: 'Diseñador UI/UX',
+      domain: 'Telecomunicaciones / videojuegos',
+      summary: 'Diseñé microjuegos gamificados y una app de llamadas de escritorio y B2C.',
+      durationLabel: '1,2 años',
+    },
+    10: {
+      title: 'Independiente — RP1 / Producto y estrategia',
+      company: 'Independiente',
+      product: 'RP1',
+      role: 'Diseñador de producto y estratega',
+      summary: 'Acotando y diseñando una arena play-to-earn multijuego, con las decisiones de producto y de negocio tomadas a la vez.',
+      durationLabel: 'En curso',
+    },
+  },
+
+  de: {
+    1: {
+      title: 'Digikala — Digital Gold',
+      company: 'Digikala',
+      product: 'Digital Gold',
+      role: 'Designer / Marketer / BI-Entwickler',
+      domain: 'Fintech',
+      summary: 'Digital Gold Ende zu Ende verantwortet – Vision, Design, Kampagnen, Segmentierung und die BI-Dashboards dahinter.',
+      durationLabel: '2,5 Jahre',
+    },
+    2: {
+      title: 'Carsparency & Khodro45',
+      company: 'Carsparency & Khodro45',
+      role: 'Produktdesigner',
+      domain: 'Automotive',
+      summary: 'Eine vollständige Kauf- und Verkaufsplattform für Autos für den VAE-Markt gestaltet; die Conversion über Usability-Tests gesteigert.',
+      durationLabel: '2,5 Jahre',
+    },
+    3: {
+      title: 'Hadish Mall',
+      company: 'Hadish Mall',
+      role: 'Marketing',
+      domain: 'Handel',
+      summary: 'Besucherzahlen über Kampagnen und Influencer-Partnerschaften gesteigert; eine App zur Center-Verwaltung vorgeschlagen.',
+      durationLabel: '1 Jahr',
+    },
+    4: {
+      title: 'Fibona',
+      company: 'Fibona',
+      role: 'Product Manager',
+      summary: 'Stakeholder um eine neue Markenidentität, Tagline und Website von Grund auf ausgerichtet.',
+      durationLabel: '2 Jahre',
+    },
+    5: {
+      title: 'OTeacher',
+      company: 'OTeacher',
+      role: 'Product Manager & Designer',
+      domain: 'Edtech',
+      summary: 'Recherche mit Lehrenden und Lernenden in eine validierte Roadmap für Lehrer-Schüler-Matching übersetzt.',
+      durationLabel: '1 Jahr',
+    },
+    6: {
+      title: 'Arvan Cloud',
+      company: 'Arvan Cloud',
+      role: 'Produktdesigner',
+      domain: 'Cloud',
+      summary: 'Die Plattform um die Servermetriken herum neu gestaltet, die Nutzer wirklich brauchten – der NPS stieg.',
+      durationLabel: '2 Jahre',
+    },
+    7: {
+      title: 'Biomaze',
+      company: 'Biomaze',
+      role: 'Product Manager & Designer',
+      domain: 'Edtech',
+      summary: 'Website, Schulungspanel und ein Design-System gebaut, mit dem Entwickler schnell ausliefern konnten.',
+      durationLabel: '3 Jahre',
+    },
+    8: {
+      title: 'Didestan',
+      company: 'Didestan',
+      role: 'UI/UX-Designer',
+      domain: 'Medien',
+      summary: 'Aus schlanker UX-Recherche den Prototyp einer datengetriebenen Videoplattform gestaltet.',
+      durationLabel: '8 Monate',
+    },
+    9: {
+      title: 'A1Paradise',
+      company: 'A1Paradise',
+      role: 'UI/UX-Designer',
+      domain: 'Telekommunikation / Gaming',
+      summary: 'Gamifizierte Microgames und eine Desktop- und B2C-Calling-App gestaltet.',
+      durationLabel: '1,2 Jahre',
+    },
+    10: {
+      title: 'Unabhängig — RP1 / Produkt & Strategie',
+      company: 'Unabhängig',
+      product: 'RP1',
+      role: 'Produktdesigner & Stratege',
+      summary: 'Zuschnitt und Gestaltung einer Multi-Game-Play-to-Earn-Arena, Produkt- und Geschäftsentscheidungen gemeinsam getroffen.',
+      durationLabel: 'Laufend',
+    },
+  },
+
+  fr: {
+    1: {
+      title: 'Digikala — Digital Gold',
+      company: 'Digikala',
+      product: 'Digital Gold',
+      role: 'Designer / Marketeur / Développeur BI',
+      domain: 'Fintech',
+      summary: 'J’ai porté Digital Gold de bout en bout — vision, design, campagnes, segmentation et les tableaux de bord BI derrière.',
+      durationLabel: '2,5 ans',
+    },
+    2: {
+      title: 'Carsparency et Khodro45',
+      company: 'Carsparency et Khodro45',
+      role: 'Designer produit',
+      domain: 'Automobile',
+      summary: 'J’ai conçu une plateforme complète d’achat-vente de voitures pour le marché émirati ; la conversion a progressé grâce aux tests d’utilisabilité.',
+      durationLabel: '2,5 ans',
+    },
+    3: {
+      title: 'Hadish Mall',
+      company: 'Hadish Mall',
+      role: 'Marketing',
+      domain: 'Commerce',
+      summary: 'J’ai fait croître la fréquentation via des campagnes et des partenariats d’influence ; j’ai proposé une app de gestion du centre commercial.',
+      durationLabel: '1 an',
+    },
+    4: {
+      title: 'Fibona',
+      company: 'Fibona',
+      role: 'Product manager',
+      summary: 'J’ai aligné les parties prenantes autour d’une nouvelle identité de marque, d’une accroche et d’un site, partis de zéro.',
+      durationLabel: '2 ans',
+    },
+    5: {
+      title: 'OTeacher',
+      company: 'OTeacher',
+      role: 'Product manager et designer',
+      domain: 'Edtech',
+      summary: 'J’ai transformé la recherche auprès des enseignants et des apprenants en une feuille de route validée d’appariement professeur–élève.',
+      durationLabel: '1 an',
+    },
+    6: {
+      title: 'Arvan Cloud',
+      company: 'Arvan Cloud',
+      role: 'Designer produit',
+      domain: 'Cloud',
+      summary: 'J’ai repensé la plateforme autour des métriques serveur dont les utilisateurs avaient réellement besoin, faisant monter le NPS.',
+      durationLabel: '2 ans',
+    },
+    7: {
+      title: 'Biomaze',
+      company: 'Biomaze',
+      role: 'Product manager et designer',
+      domain: 'Edtech',
+      summary: 'J’ai construit le site, le panneau de formation et un design system qui a permis aux développeurs de livrer vite.',
+      durationLabel: '3 ans',
+    },
+    8: {
+      title: 'Didestan',
+      company: 'Didestan',
+      role: 'Designer UI/UX',
+      domain: 'Médias',
+      summary: 'J’ai conçu le prototype d’une plateforme vidéo pilotée par les données, à partir d’une recherche lean UX.',
+      durationLabel: '8 mois',
+    },
+    9: {
+      title: 'A1Paradise',
+      company: 'A1Paradise',
+      role: 'Designer UI/UX',
+      domain: 'Télécoms / jeu vidéo',
+      summary: 'J’ai conçu des micro-jeux gamifiés et une app d’appels desktop et B2C.',
+      durationLabel: '1,2 an',
+    },
+    10: {
+      title: 'Indépendant — RP1 / Produit et stratégie',
+      company: 'Indépendant',
+      product: 'RP1',
+      role: 'Designer produit et stratège',
+      summary: 'Cadrage et conception d’une arène play-to-earn multi-jeux, décisions produit et business prises ensemble.',
+      durationLabel: 'En cours',
+    },
+  },
+
+  ja: {
+    1: {
+      title: 'Digikala — Digital Gold',
+      company: 'Digikala',
+      product: 'Digital Gold',
+      role: 'デザイナー／マーケター／BI開発',
+      domain: 'フィンテック',
+      summary: 'Digital Goldを最初から最後まで担当。ビジョン、デザイン、キャンペーン、セグメンテーション、そしてその裏にあるBIダッシュボードまで。',
+      durationLabel: '2.5年',
+    },
+    2: {
+      title: 'Carsparency・Khodro45',
+      company: 'Carsparency・Khodro45',
+      role: 'プロダクトデザイナー',
+      domain: '自動車',
+      summary: 'UAE市場向けの自動車売買プラットフォームを全体設計。ユーザビリティテストでコンバージョンを引き上げた。',
+      durationLabel: '2.5年',
+    },
+    3: {
+      title: 'Hadish Mall',
+      company: 'Hadish Mall',
+      role: 'マーケティング',
+      domain: '小売',
+      summary: 'キャンペーンとインフルエンサー連携で来場者を増やし、モール管理アプリを提案した。',
+      durationLabel: '1年',
+    },
+    4: {
+      title: 'Fibona',
+      company: 'Fibona',
+      role: 'プロダクトマネージャー',
+      summary: '新しいブランドアイデンティティ、タグライン、ウェブサイトをゼロから立ち上げ、関係者の合意を形成した。',
+      durationLabel: '2年',
+    },
+    5: {
+      title: 'OTeacher',
+      company: 'OTeacher',
+      role: 'プロダクトマネージャー／デザイナー',
+      domain: 'エドテック',
+      summary: '教える側と学ぶ側へのリサーチを、検証済みの教師・生徒マッチングのロードマップに落とし込んだ。',
+      durationLabel: '1年',
+    },
+    6: {
+      title: 'Arvan Cloud',
+      company: 'Arvan Cloud',
+      role: 'プロダクトデザイナー',
+      domain: 'クラウド',
+      summary: 'ユーザーが実際に必要としていたサーバー指標を軸にプラットフォームを再設計し、NPSを改善した。',
+      durationLabel: '2年',
+    },
+    7: {
+      title: 'Biomaze',
+      company: 'Biomaze',
+      role: 'プロダクトマネージャー／デザイナー',
+      domain: 'エドテック',
+      summary: '開発者が速くリリースできるよう、ウェブサイト、教育パネル、デザインシステムを構築した。',
+      durationLabel: '3年',
+    },
+    8: {
+      title: 'Didestan',
+      company: 'Didestan',
+      role: 'UI/UXデザイナー',
+      domain: 'メディア',
+      summary: 'リーンUXリサーチから、データドリブンな動画プラットフォームのプロトタイプを設計した。',
+      durationLabel: '8か月',
+    },
+    9: {
+      title: 'A1Paradise',
+      company: 'A1Paradise',
+      role: 'UI/UXデザイナー',
+      domain: '通信／ゲーム',
+      summary: 'ゲーミフィケーションを取り入れたミニゲームと、デスクトップおよびB2Cの通話アプリを設計した。',
+      durationLabel: '1.2年',
+    },
+    10: {
+      title: '独立 — RP1／プロダクトと戦略',
+      company: '独立',
+      product: 'RP1',
+      role: 'プロダクトデザイナー／ストラテジスト',
+      summary: 'マルチゲームのPlay-to-Earnアリーナのスコープ定義とデザイン。プロダクトと事業の判断を同時に行っている。',
+      durationLabel: '進行中',
+    },
+  },
+}

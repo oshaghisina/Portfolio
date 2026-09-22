@@ -5,14 +5,18 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import React from 'react'
 
+import { DEFAULT_LOCALE, type Locale } from '@/utilities/locale'
+import { uiCopy } from '@/utilities/uiCopy'
+
 import { Error } from '../Error'
 import { Width } from '../Width'
 export const Number: React.FC<
   TextField & {
     errors: Partial<FieldErrorsImpl>
     register: UseFormRegister<FieldValues>
+    locale?: Locale
   }
-> = ({ name, defaultValue, errors, label, register, required, width }) => {
+> = ({ name, defaultValue, errors, label, register, required, width, locale = DEFAULT_LOCALE }) => {
   return (
     <Width width={width}>
       <Label htmlFor={name}>
@@ -20,7 +24,7 @@ export const Number: React.FC<
 
         {required && (
           <span className="required">
-            * <span className="sr-only">(required)</span>
+            * <span className="sr-only">{uiCopy[locale].requiredField}</span>
           </span>
         )}
       </Label>
@@ -30,7 +34,7 @@ export const Number: React.FC<
         type="number"
         {...register(name, { required })}
       />
-      {errors[name] && <Error name={name} />}
+      {errors[name] && <Error locale={locale} name={name} />}
     </Width>
   )
 }

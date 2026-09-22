@@ -10,6 +10,9 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import React from 'react'
+
+import { DEFAULT_LOCALE, type Locale } from '@/utilities/locale'
+import { uiCopy } from '@/utilities/uiCopy'
 import { Controller } from 'react-hook-form'
 
 import { Error } from '../Error'
@@ -20,15 +23,16 @@ export const State: React.FC<
   StateField & {
     control: Control
     errors: Partial<FieldErrorsImpl>
+    locale?: Locale
   }
-> = ({ name, control, errors, label, required, width }) => {
+> = ({ name, control, errors, label, required, width, locale = DEFAULT_LOCALE }) => {
   return (
     <Width width={width}>
       <Label htmlFor={name}>
         {label}
         {required && (
           <span className="required">
-            * <span className="sr-only">(required)</span>
+            * <span className="sr-only">{uiCopy[locale].requiredField}</span>
           </span>
         )}
       </Label>
@@ -58,7 +62,7 @@ export const State: React.FC<
         }}
         rules={{ required }}
       />
-      {errors[name] && <Error name={name} />}
+      {errors[name] && <Error locale={locale} name={name} />}
     </Width>
   )
 }

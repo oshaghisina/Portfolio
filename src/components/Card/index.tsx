@@ -10,6 +10,7 @@ import { Media } from '@/components/Media'
 import { localePath } from '@/i18n/navigation'
 import { docPath, type RoutedCollection } from '@/i18n/routes'
 import { DEFAULT_LOCALE, type Locale } from '@/utilities/locale'
+import { uiCopy } from '@/utilities/uiCopy'
 
 export type CardPostData = Pick<Post, 'slug' | 'categories' | 'meta' | 'title'>
 
@@ -42,7 +43,7 @@ export const Card: React.FC<{
       ref={card.ref}
     >
       <div className="relative w-full ">
-        {!metaImage && <div className="">No image</div>}
+        {!metaImage && <div className="">{uiCopy[locale].noImage}</div>}
         {metaImage && typeof metaImage !== 'string' && <Media resource={metaImage} size="33vw" />}
       </div>
       <div className="p-4">
@@ -52,7 +53,7 @@ export const Card: React.FC<{
               if (typeof category === 'object') {
                 const { title: titleFromCategory } = category
 
-                const categoryTitle = titleFromCategory || 'Untitled category'
+                const categoryTitle = titleFromCategory || uiCopy[locale].untitledCategory
 
                 const isLast = index === categories.length - 1
 

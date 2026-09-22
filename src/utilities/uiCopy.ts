@@ -11,6 +11,41 @@ export interface UiCopy {
   closeMenu: string
   /** Generic plural label for `PageRange`'s count line — e.g. "3 docs". */
   docsLabel: PluralCopy
+  /** Form block: the inline error under a field left empty. */
+  fieldRequired: string
+  /** Form block: the generic failure line when a submission does not go through. */
+  formError: string
+  /** Form block: the in-flight line while a submission is being sent. */
+  formSubmitting: string
+  /** Form block: screen-reader suffix marking a required input, rendered after the `*`. */
+  requiredField: string
+  /** Post hero byline labels. */
+  author: string
+  /** 404 page: the action back to this locale's homepage. */
+  goHome: string
+  /** Pagination: the ellipsis between page-number runs, screen-reader only. */
+  morePages: string
+  /** Pagination: `aria-label` on the `<nav>` wrapping the page numbers. */
+  pagination: string
+  /** Card: placeholder where a document has no cover image. */
+  noImage: string
+  /** 404 page: the line under the numeral. */
+  notFoundLede: string
+  published: string
+  /** `<button type="submit">` label in the search form, screen-reader only. */
+  submit: string
+  /** Card: fallback when a category has no title. */
+  untitledCategory: string
+  /** Homepage hero console: the small "running" badge. Chrome, not CMS content. */
+  heroConsoleStatus: string
+  /** Homepage hero console title — the wordmark stays Latin, the noun is translated. */
+  heroConsoleTitle: string
+  /**
+   * The four disciplines listed in the homepage hero console and its rail. Decorative chrome
+   * mirroring the Workbench below, so it lives here rather than in the CMS. Stored Title Case:
+   * `.eyebrow` uppercases Latin scripts and exempts fa/ar.
+   */
+  heroDisciplines: [string, string, string, string]
   /** `/lab` archive index title and nav label. */
   labArchiveTitle: string
   language: string
@@ -47,6 +82,22 @@ export const uiCopy: Record<Locale, UiCopy> = {
     archiveRange: 'Showing {range} of {total}',
     closeMenu: 'Close menu',
     docsLabel: { one: '{n} doc', other: '{n} docs' },
+    fieldRequired: 'This field is required',
+    formError: 'Something went wrong.',
+    formSubmitting: 'Loading, please wait...',
+    requiredField: '(required)',
+    author: 'Author',
+    goHome: 'Go home',
+    morePages: 'More pages',
+    pagination: 'Pagination',
+    noImage: 'No image',
+    notFoundLede: 'This page could not be found.',
+    published: 'Published',
+    submit: 'Submit',
+    untitledCategory: 'Untitled category',
+    heroConsoleStatus: 'Active',
+    heroConsoleTitle: 'sina — workspace',
+    heroDisciplines: ['Product', 'Design', 'Research', 'Growth'],
     labArchiveTitle: 'Lab',
     language: 'Language',
     next: 'Next',
@@ -74,6 +125,22 @@ export const uiCopy: Record<Locale, UiCopy> = {
     archiveRange: 'نمایش {range} از {total}',
     closeMenu: 'بستن منو',
     docsLabel: { other: '{n} مورد' },
+    fieldRequired: 'این فیلد الزامی است',
+    formError: 'مشکلی پیش آمد.',
+    formSubmitting: 'در حال ارسال، لطفاً صبر کنید…',
+    requiredField: '(الزامی)',
+    author: 'نویسنده',
+    goHome: 'رفتن به خانه',
+    morePages: 'صفحه‌های بیشتر',
+    pagination: 'صفحه‌بندی',
+    noImage: 'بدون تصویر',
+    notFoundLede: 'این صفحه پیدا نشد.',
+    published: 'منتشرشده',
+    submit: 'ارسال',
+    untitledCategory: 'دستهٔ بدون عنوان',
+    heroConsoleStatus: 'فعال',
+    heroConsoleTitle: 'سینا — میز کار',
+    heroDisciplines: ['محصول', 'طراحی', 'پژوهش', 'رشد'],
     labArchiveTitle: 'آزمایشگاه',
     language: 'زبان',
     next: 'بعدی',
@@ -101,6 +168,22 @@ export const uiCopy: Record<Locale, UiCopy> = {
     archiveRange: 'عرض {range} من {total}',
     closeMenu: 'إغلاق القائمة',
     docsLabel: { one: 'مستند واحد', two: 'مستندان', few: '{n} مستندات', other: '{n} مستندًا' },
+    fieldRequired: 'هذا الحقل مطلوب',
+    formError: 'حدث خطأ ما.',
+    formSubmitting: 'جارٍ الإرسال، يُرجى الانتظار…',
+    requiredField: '(مطلوب)',
+    author: 'الكاتب',
+    goHome: 'إلى الرئيسية',
+    morePages: 'صفحات أخرى',
+    pagination: 'ترقيم الصفحات',
+    noImage: 'بلا صورة',
+    notFoundLede: 'تعذّر العثور على هذه الصفحة.',
+    published: 'تاريخ النشر',
+    submit: 'إرسال',
+    untitledCategory: 'تصنيف بلا عنوان',
+    heroConsoleStatus: 'نشط',
+    heroConsoleTitle: 'سينا — مساحة العمل',
+    heroDisciplines: ['منتج', 'تصميم', 'بحث', 'نمو'],
     labArchiveTitle: 'المختبر',
     language: 'اللغة',
     next: 'التالي',
@@ -128,6 +211,22 @@ export const uiCopy: Record<Locale, UiCopy> = {
     archiveRange: 'Mostrando {range} de {total}',
     closeMenu: 'Cerrar menú',
     docsLabel: { one: '{n} documento', other: '{n} documentos' },
+    fieldRequired: 'Este campo es obligatorio',
+    formError: 'Algo ha salido mal.',
+    formSubmitting: 'Enviando, espera un momento…',
+    requiredField: '(obligatorio)',
+    author: 'Autor',
+    goHome: 'Ir al inicio',
+    morePages: 'Más páginas',
+    pagination: 'Paginación',
+    noImage: 'Sin imagen',
+    notFoundLede: 'No se ha encontrado esta página.',
+    published: 'Publicado',
+    submit: 'Enviar',
+    untitledCategory: 'Categoría sin título',
+    heroConsoleStatus: 'Activo',
+    heroConsoleTitle: 'sina — espacio de trabajo',
+    heroDisciplines: ['Producto', 'Diseño', 'Investigación', 'Crecimiento'],
     labArchiveTitle: 'Laboratorio',
     language: 'Idioma',
     next: 'Siguiente',
@@ -155,6 +254,22 @@ export const uiCopy: Record<Locale, UiCopy> = {
     archiveRange: '{range} von {total} werden angezeigt',
     closeMenu: 'Menü schließen',
     docsLabel: { one: '{n} Dokument', other: '{n} Dokumente' },
+    fieldRequired: 'Dieses Feld ist erforderlich',
+    formError: 'Etwas ist schiefgelaufen.',
+    formSubmitting: 'Wird gesendet, bitte warten …',
+    requiredField: '(Pflichtfeld)',
+    author: 'Autor',
+    goHome: 'Zur Startseite',
+    morePages: 'Weitere Seiten',
+    pagination: 'Seitennummerierung',
+    noImage: 'Kein Bild',
+    notFoundLede: 'Diese Seite wurde nicht gefunden.',
+    published: 'Veröffentlicht',
+    submit: 'Senden',
+    untitledCategory: 'Kategorie ohne Titel',
+    heroConsoleStatus: 'Aktiv',
+    heroConsoleTitle: 'sina — Werkbank',
+    heroDisciplines: ['Produkt', 'Design', 'Research', 'Wachstum'],
     labArchiveTitle: 'Labor',
     language: 'Sprache',
     next: 'Weiter',
@@ -182,6 +297,22 @@ export const uiCopy: Record<Locale, UiCopy> = {
     archiveRange: 'Affichage de {range} sur {total}',
     closeMenu: 'Fermer le menu',
     docsLabel: { one: '{n} document', other: '{n} documents' },
+    fieldRequired: 'Ce champ est obligatoire',
+    formError: 'Une erreur est survenue.',
+    formSubmitting: 'Envoi en cours, veuillez patienter…',
+    requiredField: '(obligatoire)',
+    author: 'Auteur',
+    goHome: 'Aller à l’accueil',
+    morePages: 'Autres pages',
+    pagination: 'Pagination',
+    noImage: 'Pas d’image',
+    notFoundLede: 'Cette page est introuvable.',
+    published: 'Publié',
+    submit: 'Envoyer',
+    untitledCategory: 'Catégorie sans titre',
+    heroConsoleStatus: 'Actif',
+    heroConsoleTitle: 'sina — établi',
+    heroDisciplines: ['Produit', 'Design', 'Recherche', 'Croissance'],
     labArchiveTitle: 'Laboratoire',
     language: 'Langue',
     next: 'Suivant',
@@ -209,6 +340,22 @@ export const uiCopy: Record<Locale, UiCopy> = {
     archiveRange: '{total}件中{range}件を表示',
     closeMenu: 'メニューを閉じる',
     docsLabel: { other: '{n}件のドキュメント' },
+    fieldRequired: 'この項目は必須です',
+    formError: '問題が発生しました。',
+    formSubmitting: '送信中です。お待ちください…',
+    requiredField: '(必須)',
+    author: '著者',
+    goHome: 'ホームへ',
+    morePages: 'その他のページ',
+    pagination: 'ページ送り',
+    noImage: '画像なし',
+    notFoundLede: 'ページが見つかりませんでした。',
+    published: '公開日',
+    submit: '送信',
+    untitledCategory: 'タイトルのないカテゴリ',
+    heroConsoleStatus: '稼働中',
+    heroConsoleTitle: 'sina — ワークスペース',
+    heroDisciplines: ['プロダクト', 'デザイン', 'リサーチ', 'グロース'],
     labArchiveTitle: 'ラボ',
     language: '言語',
     next: '次へ',

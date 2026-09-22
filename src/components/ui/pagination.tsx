@@ -5,9 +5,17 @@ import { cn } from '@/utilities/ui'
 import { ChevronLeft, ChevronRight, MoreHorizontal } from 'lucide-react'
 import * as React from 'react'
 
-const Pagination = ({ className, ...props }: React.ComponentProps<'nav'>) => (
+/**
+ * `label` and the `children` of Previous/Next/Ellipsis are the translated strings — this
+ * primitive holds no copy of its own, so `uiCopy` stays the one place UI chrome is written.
+ */
+const Pagination = ({
+  className,
+  label,
+  ...props
+}: { label?: string } & React.ComponentProps<'nav'>) => (
   <nav
-    aria-label="pagination"
+    aria-label={label}
     className={cn('mx-auto flex w-full justify-center', className)}
     role="navigation"
     {...props}
@@ -43,41 +51,48 @@ const PaginationLink = ({ className, isActive, size = 'icon', ...props }: Pagina
   />
 )
 
+// `ps-2.5` not `pl-2.5`, and the chevron flips under RTL: "previous" is inline-start, which is
+// the right-hand side in Persian and Arabic.
 const PaginationPrevious = ({
+  children,
   className,
   ...props
 }: React.ComponentProps<typeof PaginationLink>) => (
   <PaginationLink
-    aria-label="Go to previous page"
-    className={cn('gap-1 pl-2.5', className)}
+    aria-label={typeof children === 'string' ? children : undefined}
+    className={cn('gap-1 ps-2.5', className)}
     size="default"
     {...props}
   >
-    <ChevronLeft className="h-4 w-4" />
-    <span>Previous</span>
+    <ChevronLeft className="h-4 w-4 rtl:rotate-180" />
+    <span>{children}</span>
   </PaginationLink>
 )
 
-const PaginationNext = ({ className, ...props }: React.ComponentProps<typeof PaginationLink>) => (
+const PaginationNext = ({
+  children,
+  className,
+  ...props
+}: React.ComponentProps<typeof PaginationLink>) => (
   <PaginationLink
-    aria-label="Go to next page"
-    className={cn('gap-1 pr-2.5', className)}
+    aria-label={typeof children === 'string' ? children : undefined}
+    className={cn('gap-1 pe-2.5', className)}
     size="default"
     {...props}
   >
-    <span>Next</span>
-    <ChevronRight className="h-4 w-4" />
+    <span>{children}</span>
+    <ChevronRight className="h-4 w-4 rtl:rotate-180" />
   </PaginationLink>
 )
 
-const PaginationEllipsis = ({ className, ...props }: React.ComponentProps<'span'>) => (
+const PaginationEllipsis = ({ children, className, ...props }: React.ComponentProps<'span'>) => (
   <span
     aria-hidden
     className={cn('flex h-9 w-9 items-center justify-center', className)}
     {...props}
   >
     <MoreHorizontal className="h-4 w-4" />
-    <span className="sr-only">More pages</span>
+    <span className="sr-only">{children}</span>
   </span>
 )
 

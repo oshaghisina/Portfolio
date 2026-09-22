@@ -66,7 +66,7 @@ export default async function Post({ params: paramsPromise }: Args) {
       {draft && <LivePreviewListener />}
 
       <article>
-        <PostHero post={post} />
+        <PostHero locale={locale} post={post} />
 
         <RichText className="mt-12 max-w-measure md:mt-16" data={post.content} enableGutter={false} locale={locale} />
 

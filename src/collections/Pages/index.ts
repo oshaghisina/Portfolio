@@ -21,6 +21,7 @@ import { ThinkingMap } from '../../blocks/ThinkingMap/config'
 import { Workspace } from '../../blocks/Workspace/config'
 import { WorkflowStages } from '../../blocks/WorkflowStages/config'
 import { hero } from '@/heros/config'
+import { translationReviewedField } from '@/fields/translationReviewed'
 import { slugField } from 'payload'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
@@ -150,6 +151,7 @@ export const Pages: CollectionConfig<'pages'> = {
         position: 'sidebar',
       },
     },
+    translationReviewedField,
     slugField(),
   ],
   hooks: {

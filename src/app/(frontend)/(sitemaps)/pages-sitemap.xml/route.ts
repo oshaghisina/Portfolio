@@ -4,6 +4,7 @@ import config from '@payload-config'
 import { unstable_cache } from 'next/cache'
 
 import { localePath } from '@/i18n/navigation'
+import { COLLECTION_PATH_PREFIX } from '@/i18n/routes'
 import { LOCALES } from '@/utilities/locale'
 
 const getPagesSitemap = unstable_cache(
@@ -16,16 +17,15 @@ const getPagesSitemap = unstable_cache(
 
     const dateFallback = new Date().toISOString()
 
-    const defaultSitemap = [
-      {
-        loc: `${SITE_URL}/search`,
+    // The two routes with no `pages` document behind them. `/posts` used to be listed here —
+    // it is the retired path the proxy 308s to `/lab`, so it was advertising a redirect. Both
+    // are emitted per locale, like everything else on a seven-locale site.
+    const defaultSitemap = LOCALES.flatMap((locale) =>
+      [COLLECTION_PATH_PREFIX.posts, '/search'].map((path) => ({
+        loc: `${SITE_URL}${localePath(locale, path)}`,
         lastmod: dateFallback,
-      },
-      {
-        loc: `${SITE_URL}/posts`,
-        lastmod: dateFallback,
-      },
-    ]
+      })),
+    )
 
     // One query per locale (D-009) — `_status` is per-locale now, so a locale only contributes a
     // URL when its own copy of the page is actually published, never English's.

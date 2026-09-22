@@ -10,6 +10,7 @@ import {
 } from './rp1-arena'
 import type { CaseStudySeedConfig, CaseStudySeedResult } from './seed-case-study'
 import { seedCaseStudy } from './seed-case-study'
+import { VIN_ASSETS, VIN_MEDIA, VIN_SHARED_FIELDS, VIN_SLUG, vinLocalizedFields } from './vin-app'
 
 /**
  * Every project with a full case study. Add one `CaseStudySeedConfig` entry per project — see
@@ -27,6 +28,16 @@ const CASE_STUDIES: CaseStudySeedConfig<any>[] = [
     createFields: { kind: ['product'], order: 2, featured: true, coverMediaKey: 'duelMain' },
     sharedFields: RP1_SHARED_FIELDS,
     localizedFields: rp1LocalizedFields,
+  },
+  {
+    label: 'VIN',
+    slug: VIN_SLUG,
+    assetsDir: VIN_ASSETS,
+    media: VIN_MEDIA,
+    seedLocales: SEED_LOCALES,
+    createFields: { kind: ['product'], order: 1, featured: true, coverMediaKey: 'heroGoalChips' },
+    sharedFields: VIN_SHARED_FIELDS,
+    localizedFields: vinLocalizedFields,
   },
 ]
 

@@ -2,6 +2,7 @@ import type { CollectionConfig } from 'payload'
 
 import { anyone } from '../../access/anyone'
 import { authenticated } from '../../access/authenticated'
+import { translationReviewedField } from '@/fields/translationReviewed'
 
 /**
  * Reference data only — company/role/period facts, so they have one authoritative source instead
@@ -150,5 +151,6 @@ export const Experiences: CollectionConfig = {
       defaultValue: 50,
       admin: { description: 'Manual sort key (resume order).' },
     },
+    translationReviewedField,
   ],
 }

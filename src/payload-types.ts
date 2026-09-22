@@ -246,6 +246,10 @@ export interface Page {
   };
   publishedAt?: string | null;
   /**
+   * Tick per language once a native speaker has reviewed this locale. Machine-drafted locales stay unticked.
+   */
+  translationReviewed?: boolean | null;
+  /**
    * When enabled, the slug will auto-generate from the title field on save and autosave.
    */
   generateSlug?: boolean | null;
@@ -1377,7 +1381,6 @@ export interface WorkflowStagesBlock {
                */
               toolKey:
                 | 'figma'
-                | 'figjam'
                 | 'higgsfield'
                 | 'chatgpt'
                 | 'claude'
@@ -1544,6 +1547,10 @@ export interface Experience {
    * Manual sort key (resume order).
    */
   order: number;
+  /**
+   * Tick per language once a native speaker has reviewed this locale. Machine-drafted locales stay unticked.
+   */
+  translationReviewed?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -2058,6 +2065,7 @@ export interface PagesSelect<T extends boolean = true> {
         description?: T;
       };
   publishedAt?: T;
+  translationReviewed?: T;
   generateSlug?: T;
   slug?: T;
   updatedAt?: T;
@@ -2763,6 +2771,7 @@ export interface ExperiencesSelect<T extends boolean = true> {
   domain?: T;
   summary?: T;
   order?: T;
+  translationReviewed?: T;
   updatedAt?: T;
   createdAt?: T;
 }

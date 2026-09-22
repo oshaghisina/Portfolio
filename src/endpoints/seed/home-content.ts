@@ -2,6 +2,11 @@ import type { RequiredDataFromCollectionSlug } from 'payload'
 
 import type { Project } from '@/payload-types'
 
+import type { CategoryKey } from '@/blocks/WorkflowStages/toolLogos'
+import { DEFAULT_LOCALE, dirFor, type Locale } from '@/utilities/locale'
+
+import type { HomeCopy } from './home-copy'
+import { homeCopy } from './home-copy'
 import { heading, paragraph, richText } from './lexical-helpers'
 
 type PageLayout = RequiredDataFromCollectionSlug<'pages'>['layout']
@@ -21,35 +26,45 @@ type PageHero = RequiredDataFromCollectionSlug<'pages'>['hero']
  * marketing copy invented.
  */
 
-export const heroRichText = richText(
-  heading('Product designer who also runs growth', 'h1'),
-  paragraph(
-    'From research to campaigns to the dashboards that prove it — ten years across fintech, cloud, automotive, edtech and media.',
-  ),
-)
+/** Hrefs are structure, not copy: identical in every locale, so they never enter `HomeCopy`. */
+const SELECTED_WORK_HREF = '#selected-work'
+const EMAIL_HREF = 'mailto:sinaoshaghi@gmail.com'
+const LINKEDIN_HREF = 'https://ir.linkedin.com/in/sinaoshaghi'
 
-export const homeMetaTitle = 'Sina Oshaghi — Product Designer & Manager'
-export const homeMetaDescription =
-  'Product designer and manager who also runs growth — from research to campaigns to the dashboards that prove it.'
+export const buildHeroRichText = (locale: Locale) => {
+  const copy = homeCopy[locale]
+  const dir = dirFor(locale)
+  return richText(heading(copy.hero.heading, 'h1', dir), paragraph(copy.hero.lede, dir))
+}
 
-export const heroLinks: NonNullable<PageHero['links']> = [
+export const buildHeroLinks = (copy: HomeCopy): NonNullable<PageHero['links']> => [
   {
     link: {
       type: 'custom',
       appearance: 'default',
-      label: 'Selected work',
-      url: '#selected-work',
+      label: copy.hero.primaryLabel,
+      url: SELECTED_WORK_HREF,
     },
   },
   {
     link: {
       type: 'custom',
       appearance: 'outline',
-      label: 'Email Sina',
-      url: 'mailto:sinaoshaghi@gmail.com',
+      label: copy.hero.secondaryLabel,
+      url: EMAIL_HREF,
     },
   },
 ]
+
+/**
+ * English bindings for the two callers that are English by definition: the seed's English create
+ * and `home-static.ts`, the no-database fallback `staticFallback` refuses to serve under any
+ * other locale. Every other locale goes through `localizeHomeHero` / `localizeHomeLayout`.
+ */
+export const heroRichText = buildHeroRichText(DEFAULT_LOCALE)
+export const heroLinks = buildHeroLinks(homeCopy.en)
+export const homeMetaTitle = homeCopy.en.meta.title
+export const homeMetaDescription = homeCopy.en.meta.description
 
 /**
  * The homepage layout. `project` is the Featured Project record — a database id when seeding,
@@ -65,24 +80,19 @@ export const heroLinks: NonNullable<PageHero['links']> = [
  * Category titles are the only localized leaves here — tool names are brand names and come from
  * the shared resolver, never from content.
  */
-export const toolsStackBlock: NonNullable<PageLayout>[number] = {
+export const buildToolsStackBlock = (copy: HomeCopy): NonNullable<PageLayout>[number] => ({
   blockName: 'Tools / Stack',
   blockType: 'workflowStages',
-  sectionHeader: {
-    tag: 'Tools / Stack',
-    lead: 'The systems behind how I',
-    tail: 'think, design & ship.',
-    lede: 'Research, design, build, measurement and the infrastructure it runs on \u2014 one connected stack, not six separate toolkits.',
-  },
+  sectionHeader: copy.tools.header,
   categories: [
     {
       key: 'designPrototyping',
-      title: 'Design & Prototyping',
-      tools: [{ toolKey: 'figma' }, { toolKey: 'figjam' }, { toolKey: 'higgsfield' }],
+      title: copy.tools.categories.designPrototyping,
+      tools: [{ toolKey: 'figma' }, { toolKey: 'higgsfield' }],
     },
     {
       key: 'aiAgents',
-      title: 'AI & Agents',
+      title: copy.tools.categories.aiAgents,
       // Assistants, then the coding agents, then the plumbing they all run through.
       tools: [
         { toolKey: 'chatgpt' },
@@ -97,7 +107,7 @@ export const toolsStackBlock: NonNullable<PageLayout>[number] = {
     },
     {
       key: 'buildDelivery',
-      title: 'Build & Delivery',
+      title: copy.tools.categories.buildDelivery,
       tools: [
         { toolKey: 'cursor' },
         { toolKey: 'antigravity' },
@@ -109,7 +119,7 @@ export const toolsStackBlock: NonNullable<PageLayout>[number] = {
     },
     {
       key: 'dataIntelligence',
-      title: 'Data & Product Intelligence',
+      title: copy.tools.categories.dataIntelligence,
       tools: [
         { toolKey: 'ga4' },
         { toolKey: 'amplitude' },
@@ -122,7 +132,7 @@ export const toolsStackBlock: NonNullable<PageLayout>[number] = {
     },
     {
       key: 'growthMeasurement',
-      title: 'Growth & Measurement',
+      title: copy.tools.categories.growthMeasurement,
       tools: [
         { toolKey: 'googleTagManager' },
         { toolKey: 'googleAds' },
@@ -131,7 +141,7 @@ export const toolsStackBlock: NonNullable<PageLayout>[number] = {
     },
     {
       key: 'infraOperations',
-      title: 'Infrastructure & Operations',
+      title: copy.tools.categories.infraOperations,
       tools: [
         { toolKey: 'supabase' },
         { toolKey: 'vercel' },
@@ -141,201 +151,203 @@ export const toolsStackBlock: NonNullable<PageLayout>[number] = {
       ],
     },
   ],
+})
+
+/**
+ * Ornament and shared facts, Latin in every locale (DS-10) and therefore deliberately absent
+ * from `HomeCopy`: a translator must not be offered "A1" or "S3" to translate. `METRIC_SOURCES`
+ * is a document filename — a localized leaf whose value happens to be identical everywhere, so
+ * it is written once here and carried into each locale by the overlay rather than retyped.
+ */
+const WORKBENCH_CODES = ['S1', 'S2', 'S3', 'S4'] as const
+const TRACK_KEYS = ['productDesign', 'aiWorkflow', 'designSystems'] as const
+const EXPERIENCE_INDEXES = ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9'] as const
+const METRIC_SOURCES = ['Resume.md', 'Resume.md', 'Brand-Brief.md'] as const
+
+export const buildHomeLayout = ({
+  locale,
+  project,
+}: {
+  locale: Locale
+  project: string | Project
+}): PageLayout => {
+  const copy = homeCopy[locale]
+  const dir = dirFor(locale)
+
+  return [
+    {
+      blockName: 'Workbench',
+      blockType: 'workspace',
+      sectionHeader: copy.workbench.header,
+      tracks: copy.workbench.stages.map((stage, i) => ({
+        code: WORKBENCH_CODES[i]!,
+        label: stage.label,
+        description: stage.description,
+      })),
+    },
+    {
+      blockName: 'Tracks',
+      blockType: 'tracks',
+      sectionHeader: copy.tracks.header,
+      tracks: copy.tracks.items.map((item, i) => ({
+        key: TRACK_KEYS[i]!,
+        title: item.title,
+        ...(item.experience ? { experience: item.experience } : {}),
+        description: item.description,
+      })),
+    },
+    {
+      blockName: 'Proof',
+      blockType: 'metricsStrip',
+      sectionHeader: copy.proof.header,
+      metrics: copy.proof.metrics.map((metric, i) => ({
+        value: metric.value,
+        caption: metric.caption,
+        source: METRIC_SOURCES[i]!,
+      })),
+    },
+    buildToolsStackBlock(copy),
+    {
+      blockName: 'Experience',
+      blockType: 'experienceCatalogue',
+      sectionHeader: copy.experience.header,
+      items: copy.experience.items.map((item, i) => ({
+        index: EXPERIENCE_INDEXES[i]!,
+        name: item.name,
+        role: item.role,
+        blurb: item.blurb,
+      })),
+    },
+    {
+      blockName: 'Featured Project',
+      blockType: 'selectedWork',
+      sectionHeader: copy.featured.header,
+      project,
+    },
+    {
+      blockName: 'Contact',
+      blockType: 'cta',
+      richText: richText(
+        heading(copy.contact.heading, 'h3', dir),
+        paragraph(copy.contact.body, dir),
+      ),
+      links: [
+        {
+          link: {
+            type: 'custom',
+            appearance: 'default',
+            label: copy.contact.primaryLabel,
+            url: EMAIL_HREF,
+          },
+        },
+        {
+          link: {
+            type: 'custom',
+            appearance: 'outline',
+            label: copy.contact.secondaryLabel,
+            newTab: true,
+            url: LINKEDIN_HREF,
+          },
+        },
+      ],
+    },
+  ]
 }
 
-export const buildHomeLayout = ({ project }: { project: string | Project }): PageLayout => [
-  {
-    blockName: 'Workbench',
-    blockType: 'workspace',
-    sectionHeader: {
-      tag: 'Workspace',
-      lead: 'How I',
-      tail: 'work',
-      lede: 'Own the problem, ship something real, measure what happened, and learn from it.',
-    },
-    tracks: [
-      {
-        code: 'S1',
-        label: 'Own',
-        description: 'Take a vague business problem and turn it into a clear vision and roadmap.',
-      },
-      {
-        code: 'S2',
-        label: 'Ship',
-        description: 'Design and build the product, campaign or system, end to end.',
-      },
-      {
-        code: 'S3',
-        label: 'Measure',
-        description: 'Instrument it so the dashboards say what actually happened, not what we hoped.',
-      },
-      {
-        code: 'S4',
-        label: 'Learn',
-        description: 'Feed the data back into the next iteration.',
-      },
-    ],
-  },
-  {
-    blockName: 'Tracks',
-    blockType: 'tracks',
-    sectionHeader: {
-      tag: 'Tracks',
-      lead: 'Primarily',
-      tail: 'focused on',
-      lede: 'Ten years across product design, day-to-day AI tooling, and the systems that hold it together.',
-    },
-    tracks: [
-      {
-        key: 'productDesign',
-        title: 'Product Design',
-        experience: '10 yrs',
-        description:
-          'Product ownership and roadmapping, interaction design, and the research that proves what shipped actually worked.',
-      },
-      {
-        key: 'aiWorkflow',
-        title: 'AI Workflow',
-        description:
-          'Day-to-day work runs through Cursor and Claude, plus the analytics stack — GA4, Amplitude, Search Console — that keeps decisions instrumented.',
-      },
-      {
-        key: 'designSystems',
-        title: 'Design Systems',
-        description:
-          'Built a design system at Biomaze that let developers ship fast — the product became the first mover in its category.',
-      },
-    ],
-  },
-  {
-    blockName: 'Proof',
-    blockType: 'metricsStrip',
-    sectionHeader: {
-      tag: 'Proof',
-      lead: 'Ten years,',
-      tail: 'by the numbers.',
-    },
-    metrics: [
-      {
-        value: '10 yrs',
-        caption: 'Experience across product design and growth',
-        source: 'Resume.md',
-      },
-      {
-        value: '9',
-        caption: 'Companies and products',
-        source: 'Resume.md',
-      },
-      {
-        value: '7',
-        caption: 'Industries spanned',
-        source: 'Brand-Brief.md',
-      },
-    ],
-  },
-  toolsStackBlock,
-  {
-    blockName: 'Experience',
-    blockType: 'experienceCatalogue',
-    sectionHeader: {
-      tag: 'Experience',
-      lead: "Where I've",
-      tail: 'worked',
-      lede: 'Selected roles across product, design, growth and technical collaboration.',
-    },
-    items: [
-      {
-        index: 'A1',
-        name: 'Digikala (Digital Gold)',
-        role: 'Designer / Marketer / BI developer · 2.5 yr',
-        blurb: 'Replaced spreadsheets with BI dashboards and ran the campaigns that grew acquisition and engagement.',
-      },
-      {
-        index: 'A2',
-        name: 'Carsparency & Khodro45',
-        role: 'Product designer · 2.5 yr',
-        blurb: 'Raised sell-through with usability testing and validated prototypes across the full car marketplace.',
-      },
-      {
-        index: 'A3',
-        name: 'Hadish Mall',
-        role: 'Marketing · 1 yr',
-        blurb: 'Grew visitor turnout through campaigns and influencer partnerships, and proposed a mall management app.',
-      },
-      {
-        index: 'A4',
-        name: 'Fibona',
-        role: 'Product Manager · 2 yr',
-        blurb: 'Aligned stakeholders around a new brand identity, tagline and website from the ground up.',
-      },
-      {
-        index: 'A5',
-        name: 'OTeacher',
-        role: 'Product Manager & designer · 1 yr',
-        blurb: 'Turned educator and learner research into a validated teacher–student matchmaking roadmap.',
-      },
-      {
-        index: 'A6',
-        name: 'Arvan Cloud',
-        role: 'Product designer · 2 yr',
-        blurb: 'Redesigned the platform around the server metrics users actually needed, lifting NPS.',
-      },
-      {
-        index: 'A7',
-        name: 'Biomaze',
-        role: 'Product Manager & designer · 3 yr',
-        blurb: 'Built the website, education panel and a design system so developers could ship fast.',
-      },
-      {
-        index: 'A8',
-        name: 'Didestan',
-        role: 'UI/UX designer · 8 mos',
-        blurb: 'Designed a data-driven video platform prototype from lean UX research.',
-      },
-      {
-        index: 'A9',
-        name: 'A1Paradise',
-        role: 'UI/UX designer · 1.2 yr',
-        blurb: 'Designed gamified microgames and a desktop and B2C calling app.',
-      },
-    ],
-  },
-  {
-    blockName: 'Featured Project',
-    blockType: 'selectedWork',
-    sectionHeader: {
-      tag: 'Work',
-      lead: 'Featured',
-      tail: 'project',
-      lede: 'One project from the range — product, growth and research across nine companies.',
-    },
-    project,
-  },
-  {
-    blockName: 'Contact',
-    blockType: 'cta',
-    richText: richText(
-      heading("Let's talk", 'h3'),
-      paragraph("If you're hiring, building something, or want to compare notes on product and growth — reach out."),
-    ),
-    links: [
-      {
-        link: {
-          type: 'custom',
-          appearance: 'default',
-          label: 'Email Sina',
-          url: 'mailto:sinaoshaghi@gmail.com',
-        },
-      },
-      {
-        link: {
-          type: 'custom',
-          appearance: 'outline',
-          label: 'LinkedIn',
-          newTab: true,
-          url: 'https://ir.linkedin.com/in/sinaoshaghi',
-        },
-      },
-    ],
-  },
-]
+/**
+ * Overlays one locale's copy onto the English hero and layout Payload just returned — which now
+ * carry a generated `id` for every block and every nested array row. Spreading `...block` /
+ * `...row` preserves those ids, the `selectedWork` relationship and every non-localized leaf;
+ * only known localized leaves are replaced, index-matched against `HomeCopy`'s arrays, which
+ * have the same order and counts as `buildHomeLayout` produced.
+ *
+ * Rebuilding instead of overlaying is the one thing that must never happen here. A row sent
+ * without its `id` is treated as a new row, and because the blocks array is shared across
+ * locales, the English page would silently grow a duplicate section whose text exists in only
+ * one language. That is why these take the fetched document, not a builder's output.
+ */
+export const localizeHomeHero = (locale: Locale, enHero: PageHero): PageHero => {
+  const copy = homeCopy[locale]
+  const hero = enHero as unknown as Record<string, unknown>
+  const labels = [copy.hero.primaryLabel, copy.hero.secondaryLabel]
+
+  return {
+    ...hero,
+    richText: buildHeroRichText(locale),
+    links: ((hero.links ?? []) as Record<string, unknown>[]).map((row, i) => ({
+      ...row,
+      link: { ...(row.link as Record<string, unknown>), label: labels[i] ?? '' },
+    })),
+  } as unknown as PageHero
+}
+
+export const localizeHomeLayout = (
+  locale: Locale,
+  enLayout: NonNullable<PageLayout>,
+): PageLayout => {
+  const copy = homeCopy[locale]
+  const dir = dirFor(locale)
+
+  return (enLayout as unknown as Array<Record<string, unknown>>).map((block) => {
+    const header = block.sectionHeader as Record<string, unknown> | undefined
+    const rows = (key: string) => (block[key] ?? []) as Record<string, unknown>[]
+
+    switch (block.blockType) {
+      case 'workspace':
+        return {
+          ...block,
+          sectionHeader: { ...header, ...copy.workbench.header },
+          tracks: rows('tracks').map((row, i) => ({ ...row, ...copy.workbench.stages[i] })),
+        }
+      case 'tracks':
+        return {
+          ...block,
+          sectionHeader: { ...header, ...copy.tracks.header },
+          tracks: rows('tracks').map((row, i) => ({ ...row, ...copy.tracks.items[i] })),
+        }
+      case 'metricsStrip':
+        // `source` is not in `HomeCopy`; `...row` carries the English filename into this locale,
+        // which is the point — it is a localized leaf with one value everywhere.
+        return {
+          ...block,
+          sectionHeader: { ...header, ...copy.proof.header },
+          metrics: rows('metrics').map((row, i) => ({ ...row, ...copy.proof.metrics[i] })),
+        }
+      case 'workflowStages':
+        // Keyed, not index-matched: category order is editable in the CMS, and `key` is the
+        // stable identity the copy table is written against.
+        return {
+          ...block,
+          sectionHeader: { ...header, ...copy.tools.header },
+          categories: rows('categories').map((row) => ({
+            ...row,
+            title: copy.tools.categories[row.key as CategoryKey] ?? row.title,
+          })),
+        }
+      case 'experienceCatalogue':
+        return {
+          ...block,
+          sectionHeader: { ...header, ...copy.experience.header },
+          items: rows('items').map((row, i) => ({ ...row, ...copy.experience.items[i] })),
+        }
+      case 'selectedWork':
+        return { ...block, sectionHeader: { ...header, ...copy.featured.header } }
+      case 'cta': {
+        const labels = [copy.contact.primaryLabel, copy.contact.secondaryLabel]
+        return {
+          ...block,
+          richText: richText(
+            heading(copy.contact.heading, 'h3', dir),
+            paragraph(copy.contact.body, dir),
+          ),
+          links: rows('links').map((row, i) => ({
+            ...row,
+            link: { ...(row.link as Record<string, unknown>), label: labels[i] ?? '' },
+          })),
+        }
+      }
+      default:
+        return block
+    }
+  }) as unknown as PageLayout
+}

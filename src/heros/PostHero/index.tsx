@@ -6,6 +6,8 @@ import type { Post } from '@/payload-types'
 import { Media } from '@/components/Media'
 import { PageOpener } from '@/components/PageOpener'
 import { formatAuthors } from '@/utilities/formatAuthors'
+import { DEFAULT_LOCALE, type Locale } from '@/utilities/locale'
+import { uiCopy } from '@/utilities/uiCopy'
 
 /** At most the canvas width, capped where the sheet stops growing. */
 const COVER_SIZES = '(min-width: 110rem) 76rem, (min-width: 48rem) 78vw, 100vw'
@@ -16,11 +18,13 @@ const COVER_SIZES = '(min-width: 110rem) 76rem, (min-width: 48rem) 78vw, 100vw'
  * the same opening gesture every other page uses.
  */
 export const PostHero: React.FC<{
+  locale?: Locale
   post: Post
-}> = ({ post }) => {
+}> = ({ locale = DEFAULT_LOCALE, post }) => {
   const { categories, heroImage, populatedAuthors, publishedAt, title } = post
 
-  const authors = populatedAuthors?.length ? formatAuthors(populatedAuthors) : ''
+  const copy = uiCopy[locale]
+  const authors = populatedAuthors?.length ? formatAuthors(populatedAuthors, locale) : ''
   const labels =
     categories?.flatMap((category) =>
       typeof category === 'object' && category !== null ? [category.title || 'Untitled category'] : [],
@@ -34,15 +38,15 @@ export const PostHero: React.FC<{
             <dl className="grid w-full grid-cols-2 gap-x-6 gap-y-5 lg:w-[18rem] lg:shrink-0 lg:grid-cols-1">
               {authors ? (
                 <div className="border-t border-line pt-3">
-                  <dt className="eyebrow text-ink-3">Author</dt>
+                  <dt className="eyebrow text-ink-3">{copy.author}</dt>
                   <dd className="mt-1 text-small">{authors}</dd>
                 </div>
               ) : null}
               {publishedAt ? (
                 <div className="border-t border-line pt-3">
-                  <dt className="eyebrow text-ink-3">Published</dt>
+                  <dt className="eyebrow text-ink-3">{copy.published}</dt>
                   <dd className="mt-1 text-small">
-                    <time dateTime={publishedAt}>{formatDateTime(publishedAt)}</time>
+                    <time dateTime={publishedAt}>{formatDateTime(publishedAt, locale)}</time>
                   </dd>
                 </div>
               ) : null}

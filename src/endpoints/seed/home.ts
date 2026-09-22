@@ -2,6 +2,7 @@ import type { RequiredDataFromCollectionSlug } from 'payload'
 import type { Media } from '@/payload-types'
 
 import { buildHomeLayout, heroLinks, heroRichText, homeMetaDescription, homeMetaTitle } from './home-content'
+import { DEFAULT_LOCALE } from '@/utilities/locale'
 
 type HomeArgs = {
   heroImage: Media
@@ -25,7 +26,7 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
       richText: heroRichText,
       links: heroLinks,
     },
-    layout: buildHomeLayout({ project: featuredProject }),
+    layout: buildHomeLayout({ locale: DEFAULT_LOCALE, project: featuredProject }),
     meta: {
       description: homeMetaDescription,
       image: metaImage.id,

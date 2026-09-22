@@ -7,6 +7,9 @@ import { Checkbox as CheckboxUi } from '@/components/ui/checkbox'
 import { Label } from '@/components/ui/label'
 import React from 'react'
 
+import { DEFAULT_LOCALE, type Locale } from '@/utilities/locale'
+import { uiCopy } from '@/utilities/uiCopy'
+
 import { Error } from '../Error'
 import { Width } from '../Width'
 
@@ -14,8 +17,9 @@ export const Checkbox: React.FC<
   CheckboxField & {
     errors: Partial<FieldErrorsImpl>
     register: UseFormRegister<FieldValues>
+    locale?: Locale
   }
-> = ({ name, defaultValue, errors, label, register, required, width }) => {
+> = ({ name, defaultValue, errors, label, register, required, width, locale = DEFAULT_LOCALE }) => {
   const props = register(name, { required: required })
   const { setValue } = useFormContext()
 
@@ -33,13 +37,13 @@ export const Checkbox: React.FC<
         <Label htmlFor={name}>
           {required && (
             <span className="required">
-              * <span className="sr-only">(required)</span>
+              * <span className="sr-only">{uiCopy[locale].requiredField}</span>
             </span>
           )}
           {label}
         </Label>
       </div>
-      {errors[name] && <Error name={name} />}
+      {errors[name] && <Error locale={locale} name={name} />}
     </Width>
   )
 }

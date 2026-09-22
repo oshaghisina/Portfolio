@@ -42,7 +42,7 @@ export const PROJECT_SEED: ProjectSeedRow[] = [
     company: DIGIKALA,
     role: DIGIKALA_ROLE,
     kind: ['product', 'growth', 'data'],
-    order: 1,
+    order: 2,
     featured: true,
     status: 'published',
   },
@@ -54,7 +54,7 @@ export const PROJECT_SEED: ProjectSeedRow[] = [
     company: 'Independent',
     role: 'Product designer & strategist',
     kind: ['product'],
-    order: 2,
+    order: 3,
     featured: true,
     status: 'published',
     period: { start: '2026-02-01T00:00:00.000Z' },
@@ -71,7 +71,7 @@ export const PROJECT_SEED: ProjectSeedRow[] = [
     company: 'Arvan Cloud',
     role: 'Product designer',
     kind: ['product'],
-    order: 3,
+    order: 4,
     featured: true,
     status: 'published',
   },
@@ -416,7 +416,8 @@ export const PROJECT_SEED: ProjectSeedRow[] = [
     company: 'Independent',
     role: 'Product designer & strategist',
     kind: ['product'],
-    order: 104,
+    order: 1,
+    featured: true,
     status: 'published',
     period: { start: '2026-02-01T00:00:00.000Z' },
   },
@@ -488,7 +489,7 @@ export const toStaticProject = (row: ProjectSeedRow): Project => ({
   updatedAt: STATIC_TIMESTAMP,
 })
 
-export const FEATURED_HOME_SLUG = 'digital-gold'
+export const FEATURED_HOME_SLUG = 'vin-app'
 
 const homeRow = PROJECT_SEED.find((row) => row.slug === FEATURED_HOME_SLUG)
 if (!homeRow) throw new Error(`projects seed: no row with slug "${FEATURED_HOME_SLUG}"`)

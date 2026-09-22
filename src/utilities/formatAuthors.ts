@@ -1,24 +1,24 @@
 import { Post } from '@/payload-types'
 
+import { DEFAULT_LOCALE, type Locale } from './locale'
+
 /**
- * Formats an array of populatedAuthors from Posts into a prettified string.
- * @param authors - The populatedAuthors array from a Post.
- * @returns A prettified string of authors.
- * @example
+ * Formats an array of `populatedAuthors` into one readable string in the visitor's locale.
  *
- * [Author1, Author2] becomes 'Author1 and Author2'
- * [Author1, Author2, Author3] becomes 'Author1, Author2, and Author3'
+ * `Intl.ListFormat` replaces a hardcoded English `" and "` / `", "`: the separator, the
+ * conjunction and whether there is an Oxford comma all differ by language, and Persian and
+ * Arabic use a different comma character entirely.
  *
+ * @example [A, B] → "A and B" (en) · "A و B" (fa) · "A und B" (de)
  */
 export const formatAuthors = (
   authors: NonNullable<NonNullable<Post['populatedAuthors']>[number]>[],
+  locale: Locale = DEFAULT_LOCALE,
 ) => {
-  // Ensure we don't have any authors without a name
-  const authorNames = authors.map((author) => author.name).filter(Boolean)
+  const authorNames = authors.map((author) => author.name).filter(Boolean) as string[]
 
   if (authorNames.length === 0) return ''
   if (authorNames.length === 1) return authorNames[0]
-  if (authorNames.length === 2) return `${authorNames[0]} and ${authorNames[1]}`
 
-  return `${authorNames.slice(0, -1).join(', ')} and ${authorNames[authorNames.length - 1]}`
+  return new Intl.ListFormat(locale, { style: 'long', type: 'conjunction' }).format(authorNames)
 }

@@ -1,6 +1,7 @@
 import type { Field, Tab, Where } from 'payload'
 
 import { caseStudyBlocks } from '@/blocks/CaseStudy'
+import { translationReviewedField } from '@/fields/translationReviewed'
 
 /**
  * The case-study layer of a project (D-022) — everything `/work/<slug>` needs beyond the
@@ -149,19 +150,12 @@ export const caseStudyTab: Tab = {
   ],
 }
 
-/** Sidebar: per-locale review flag so machine-drafted translations are visible as such. */
-export const translationReviewedField: Field = {
-  name: 'translationReviewed',
-  type: 'checkbox',
-  localized: true,
-  defaultValue: false,
-  label: 'Translation reviewed',
-  admin: {
-    description:
-      'Tick per language once a native speaker has reviewed this locale. Machine-drafted locales stay unticked.',
-    position: 'sidebar',
-  },
-}
+/**
+ * Re-exported so `index.ts` keeps importing the case-study layer from one place. The field
+ * itself moved to `@/fields/translationReviewed` once Pages and Experiences started carrying
+ * it too — a drafted translation is a drafted translation whatever collection it sits in.
+ */
+export { translationReviewedField }
 
 /** A published case study needs at least one chapter — otherwise `/work/<slug>` would be an empty page. */
 export const validateCaseStudyStatus = (

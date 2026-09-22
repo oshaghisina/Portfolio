@@ -5,9 +5,17 @@ import type { DefaultTypedEditorState } from '@payloadcms/richtext-lexical'
  * paragraphs/lists across two files — writing that much raw Lexical JSON by hand (as the
  * template originally did) is exactly the kind of repetition that produces structurally
  * invalid trees. These mirror the node shapes Payload's default lexicalEditor emits.
+ *
+ * Every builder takes a trailing `direction`, defaulting to `'ltr'` so the pre-existing English
+ * call sites are unchanged. Persian and Arabic trees must pass `'rtl'` (see `dirFor(locale)` in
+ * `@/utilities/locale`) or the admin editor opens them left-to-right and the stored tree
+ * disagrees with the `dir` the page renders with. `direction` is set on the root as well as on
+ * each node, because Lexical reads it at both levels.
  */
 
 type LexicalNode = Record<string, unknown>
+
+export type TextDirection = 'ltr' | 'rtl'
 
 const text = (value: string): LexicalNode => ({
   type: 'text',
@@ -19,40 +27,48 @@ const text = (value: string): LexicalNode => ({
   version: 1,
 })
 
-export const heading = (value: string, tag: 'h1' | 'h2' | 'h3' | 'h4' = 'h2'): LexicalNode => ({
+export const heading = (
+  value: string,
+  tag: 'h1' | 'h2' | 'h3' | 'h4' = 'h2',
+  direction: TextDirection = 'ltr',
+): LexicalNode => ({
   type: 'heading',
   children: [text(value)],
-  direction: 'ltr',
+  direction,
   format: '',
   indent: 0,
   tag,
   version: 1,
 })
 
-export const paragraph = (value: string): LexicalNode => ({
+export const paragraph = (value: string, direction: TextDirection = 'ltr'): LexicalNode => ({
   type: 'paragraph',
   children: [text(value)],
-  direction: 'ltr',
+  direction,
   format: '',
   indent: 0,
   textFormat: 0,
   version: 1,
 })
 
-export const listItem = (value: string, index: number): LexicalNode => ({
+export const listItem = (value: string, index: number, direction: TextDirection = 'ltr'): LexicalNode => ({
   type: 'listitem',
   children: [text(value)],
-  direction: 'ltr',
+  direction,
   format: '',
   indent: 0,
   value: index + 1,
   version: 1,
 })
 
-export const list = (items: string[], listType: 'bullet' | 'number' = 'bullet'): LexicalNode => ({
+export const list = (
+  items: string[],
+  listType: 'bullet' | 'number' = 'bullet',
+  direction: TextDirection = 'ltr',
+): LexicalNode => ({
   type: 'list',
-  children: items.map((item, index) => listItem(item, index)),
-  direction: 'ltr',
+  children: items.map((item, index) => listItem(item, index, direction)),
+  direction,
   format: '',
   indent: 0,
   listType,
@@ -66,7 +82,8 @@ export const richText = (...children: LexicalNode[]): DefaultTypedEditorState =>
     root: {
       type: 'root',
       children,
-      direction: 'ltr',
+      // Take the root's direction from its first child so a caller never has to state it twice.
+      direction: (children[0]?.direction as TextDirection | undefined) ?? 'ltr',
       format: '',
       indent: 0,
       version: 1,

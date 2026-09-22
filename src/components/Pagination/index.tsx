@@ -14,6 +14,7 @@ import React from 'react'
 
 import { localePath } from '@/i18n/navigation'
 import { DEFAULT_LOCALE, type Locale } from '@/utilities/locale'
+import { uiCopy } from '@/utilities/uiCopy'
 
 export const Pagination: React.FC<{
   /** Logical (unprefixed) path this page number is appended to, e.g. `/lab/page`. */
@@ -33,10 +34,11 @@ export const Pagination: React.FC<{
   const hasExtraNextPages = page + 1 < totalPages
 
   const goToPage = (n: number) => router.push(localePath(locale, `${basePath}/${n}`))
+  const copy = uiCopy[locale]
 
   return (
     <div className={cn('my-12', className)}>
-      <PaginationComponent>
+      <PaginationComponent label={copy.pagination}>
         <PaginationContent>
           <PaginationItem>
             <PaginationPrevious
@@ -44,12 +46,14 @@ export const Pagination: React.FC<{
               onClick={() => {
                 goToPage(page - 1)
               }}
-            />
+            >
+              {copy.previous}
+            </PaginationPrevious>
           </PaginationItem>
 
           {hasExtraPrevPages && (
             <PaginationItem>
-              <PaginationEllipsis />
+              <PaginationEllipsis>{copy.morePages}</PaginationEllipsis>
             </PaginationItem>
           )}
 
@@ -90,7 +94,7 @@ export const Pagination: React.FC<{
 
           {hasExtraNextPages && (
             <PaginationItem>
-              <PaginationEllipsis />
+              <PaginationEllipsis>{copy.morePages}</PaginationEllipsis>
             </PaginationItem>
           )}
 
@@ -100,7 +104,9 @@ export const Pagination: React.FC<{
               onClick={() => {
                 goToPage(page + 1)
               }}
-            />
+            >
+              {copy.next}
+            </PaginationNext>
           </PaginationItem>
         </PaginationContent>
       </PaginationComponent>

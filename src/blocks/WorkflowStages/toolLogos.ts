@@ -48,9 +48,9 @@ export type ToolLogo = ToolLogoBase &
 export const TOOL_LOGOS = {
   // 01 · Design & Prototyping
   figma: { name: 'Figma', onDark: 'none', src: '/tool-logos/figma.svg' },
-  // Figma publishes no standalone FigJam symbol — not in its brand kit, its static app icons or
-  // any catalogue — so FigJam borrows the Figma mark it is a surface of.
-  figjam: { name: 'FigJam', onDark: 'none', src: '/tool-logos/figma.svg' },
+  // No FigJam entry on purpose. Figma publishes no standalone FigJam symbol — not in its brand
+  // kit, its static app icons or any catalogue — and FigJam is a surface of Figma rather than a
+  // separate tool, so the Figma mark stands for both. Add it back here the day a real mark exists.
   // Lime tile with a black glyph, so it holds on both surfaces as shipped.
   higgsfield: { name: 'Higgsfield', onDark: 'none', src: '/tool-logos/higgsfield.png' },
 

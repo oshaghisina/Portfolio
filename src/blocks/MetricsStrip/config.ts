@@ -22,7 +22,12 @@ export const MetricsStrip: Block = {
             {
               name: 'value',
               type: 'text',
+              localized: true,
               required: true,
+              // Localized because a metric is rarely a bare numeral: "10 yrs" carries an English
+              // unit word, and fa/ar want their own digits (DS-10 keeps only ornamental codes
+              // Latin). "30%" happens to translate to itself — that is fine, it still needs a
+              // value per locale under `fallback: false`.
               admin: { description: 'Short — "30%", "20+", "~$0.03"', width: '40%' },
             },
             {

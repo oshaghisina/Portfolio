@@ -42,10 +42,19 @@ export async function readAsset(
   }
 }
 
+/** Where the media collection writes its files — `public/media` unless the config moves it. */
+function mediaStaticDir(payload: Payload): string | undefined {
+  const upload = payload.config.collections.find((c) => c.slug === 'media')?.upload
+  return typeof upload === 'object' && typeof upload.staticDir === 'string'
+    ? upload.staticDir
+    : undefined
+}
+
 /**
  * Upload-or-reuse by filename, then write the localized `alt` for every seed locale. Running the
  * seed twice creates no second copy — the media document keeps its id, so every project that
- * references it keeps working.
+ * references it keeps working. A re-export that changed the bytes (a frame fixed in Figma) replaces
+ * the file on the existing document, so references and the cover survive the swap.
  */
 export async function upsertMedia(
   payload: Payload,
@@ -60,7 +69,8 @@ export async function upsertMedia(
     where: { filename: { equals: spec.name } },
   })
 
-  let id = existing.docs[0]?.id
+  const current = existing.docs[0]
+  let id = current?.id
   if (!id) {
     const file = await readAsset(assetsDir, spec.file, spec.name)
     if (!file) {
@@ -74,6 +84,19 @@ export async function upsertMedia(
       file,
     })
     id = created.id
+  } else {
+    const file = await readAsset(assetsDir, spec.file, spec.name)
+    // A re-export changed the bytes — swap the file on the document rather than adding a second one.
+    if (file && file.size !== current.filesize) {
+      // Payload picks `name-1.png` while the target name is still on disk, so clear the old file
+      // first — the document keeps its id (and every reference to it) and its canonical name.
+      const staticDir = mediaStaticDir(payload)
+      if (staticDir && current.filename) {
+        await fs.rm(path.join(staticDir, current.filename), { force: true })
+      }
+      await payload.update({ collection: 'media', id, depth: 0, data: {}, file })
+      payload.logger.info(`— Replaced changed asset: ${spec.name}`)
+    }
   }
 
   for (const locale of Object.keys(spec.alt) as SeedLocale[]) {

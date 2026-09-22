@@ -2,6 +2,7 @@ import type React from 'react'
 import type { Page, Post, Project } from '@/payload-types'
 
 import { docPath, isRoutedCollection } from '@/i18n/routes'
+import { localePath, localizeInternalHref } from '@/i18n/navigation'
 import { getCachedDocument } from '@/utilities/getDocument'
 import { getCachedRedirects } from '@/utilities/getRedirects'
 import type { Locale } from '@/utilities/locale'
@@ -21,7 +22,7 @@ export const PayloadRedirects: React.FC<Props> = async ({ disableNotFound, local
 
   if (redirectItem) {
     if (redirectItem.to?.url) {
-      redirect(redirectItem.to.url)
+      redirect(localizeInternalHref(locale, redirectItem.to.url))
     }
 
     const reference = redirectItem.to?.reference
@@ -41,7 +42,9 @@ export const PayloadRedirects: React.FC<Props> = async ({ disableNotFound, local
         slug = reference.value?.slug
       }
 
-      if (slug) redirect(docPath(collection, slug))
+      // Keep the visitor in their language: `docPath` returns the logical path, so a redirect
+      // followed under `/fa/…` would otherwise land on the English URL.
+      if (slug) redirect(localePath(locale, docPath(collection, slug)))
     }
   }
 

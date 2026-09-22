@@ -113,24 +113,30 @@ export const TracksBlock: React.FC<TracksProps> = ({
       <TechnicalFrameMarks corners={['top-right', 'bottom-right']} />
 
       <div className="relative flex-1 px-4 pt-16 pb-12 sm:px-8 sm:pt-20 lg:px-12 lg:pb-16">
-        {/* `pt-0` cancels `pt-section-sm`: the plate owns its own padding. Every colour role in
-            here resolves against `.tracks-blueprint`'s local redeclarations, so the shared header
-            needs no dark-surface variant. */}
+        {/* The plate owns its own vertical rhythm, so the opener's `pt-section-sm` has to go.
+            A plain `pt-0` does not do it: tailwind-merge does not recognise `section-sm` as a
+            spacing value, so it never groups the two and both classes survive — with
+            `pt-section-sm` winning on source order. `[&]:pt-0` raises specificity instead, which
+            it cannot lose. (Every other call site passes a *variant* like `max-md:pt-0`, which
+            lands in its own media query and so never hits this.)
+
+            Every colour role in here resolves against `.tracks-blueprint`'s local
+            redeclarations, so the shared header needs no dark-surface variant. */}
         <SectionHeader
-          className="pt-0"
+          className="[&]:pt-0"
           id={HEADING_ID}
           lead={sectionHeader?.lead}
           lede={sectionHeader?.lede}
           tail={sectionHeader?.tail}
         />
 
-        <div className="mt-12 grid items-center gap-10 lg:mt-16 lg:grid-cols-2 lg:gap-16">
-          <div className="order-1 mx-auto grid w-full max-w-[420px] lg:max-w-none lg:rtl:order-2">
+        <div className="mt-8 grid items-center gap-10 lg:mt-10 lg:grid-cols-12 lg:gap-x-16">
+          <div className="order-1 mx-auto grid w-full max-w-[420px] lg:col-span-7 lg:max-w-none lg:rtl:order-2">
             {ordered.map((track, i) => (
               <TrackIllustration
                 className={cn(
                   // `aspect-[5/3]` matches the 0 0 400 240 viewBox exactly.
-                  'col-start-1 row-start-1 aspect-[5/3] w-full transition-opacity duration-(--duration-fast) ease-standard',
+                  'col-start-1 row-start-1 aspect-[5/3] w-full transition-opacity duration-(--duration-fast) ease-standard motion-reduce:transition-none',
                   i === active ? 'opacity-100' : 'opacity-0',
                 )}
                 key={track.key}
@@ -141,21 +147,30 @@ export const TracksBlock: React.FC<TracksProps> = ({
 
           <div
             aria-live="polite"
-            className="order-2 grid min-w-0 lg:rtl:order-1"
+            className="order-2 grid min-w-0 lg:col-span-5 lg:rtl:order-1"
           >
             {ordered.map((track, i) => (
               <div
                 aria-hidden={i !== active}
                 className={cn(
-                  'col-start-1 row-start-1 flex flex-col items-start gap-4 transition-opacity duration-(--duration-fast) ease-standard',
+                  'col-start-1 row-start-1 flex flex-col items-start transition-opacity duration-(--duration-fast) ease-standard motion-reduce:transition-none',
                   i === active ? 'opacity-100' : 'pointer-events-none opacity-0',
                 )}
                 key={track.key}
               >
-                <h3 className="text-track-title font-medium text-balance text-foreground">
+                <div aria-hidden className="flex items-baseline gap-2 eyebrow text-ink-3">
+                  <span className="index-code" dir="ltr">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <span>/ Track</span>
+                </div>
+                <h3 className="mt-3 text-track-title font-medium text-balance text-foreground">
                   {track.title}
                 </h3>
-                <p className="max-w-measure text-body text-ink-2">{track.description}</p>
+                <span className="index-code mt-4" dir="ltr">
+                  {track.experience || '\u00A0'}
+                </span>
+                <p className="mt-6 max-w-measure text-body text-ink-2">{track.description}</p>
               </div>
             ))}
           </div>

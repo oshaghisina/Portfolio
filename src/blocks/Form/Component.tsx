@@ -5,6 +5,8 @@ import { useRouter } from 'next/navigation'
 import React, { useCallback, useState } from 'react'
 import { useForm, FormProvider } from 'react-hook-form'
 import RichText from '@/components/RichText'
+import { DEFAULT_LOCALE, type Locale } from '@/utilities/locale'
+import { uiCopy } from '@/utilities/uiCopy'
 import { Button } from '@/components/ui/button'
 import type { DefaultTypedEditorState } from '@payloadcms/richtext-lexical'
 
@@ -17,6 +19,8 @@ export type FormBlockType = {
   enableIntro: boolean
   form: FormType
   introContent?: DefaultTypedEditorState
+  /** Supplied by `RenderBlocks`; the field components read their chrome from `uiCopy`. */
+  locale?: Locale
 }
 
 export const FormBlock: React.FC<
@@ -29,7 +33,10 @@ export const FormBlock: React.FC<
     form: formFromProps,
     form: { id: formID, confirmationMessage, confirmationType, redirect, submitButtonLabel } = {},
     introContent,
+    locale = DEFAULT_LOCALE,
   } = props
+
+  const copy = uiCopy[locale]
 
   const formMethods = useForm({
     defaultValues: formFromProps.fields,
@@ -103,14 +110,14 @@ export const FormBlock: React.FC<
           console.warn(err)
           setIsLoading(false)
           setError({
-            message: 'Something went wrong.',
+            message: copy.formError,
           })
         }
       }
 
       void submitForm()
     },
-    [router, formID, redirect, confirmationType],
+    [copy, router, formID, redirect, confirmationType],
   )
 
   return (
@@ -123,7 +130,7 @@ export const FormBlock: React.FC<
           {!isLoading && hasSubmitted && confirmationType === 'message' && (
             <RichText data={confirmationMessage} />
           )}
-          {isLoading && !hasSubmitted && <p>Loading, please wait...</p>}
+          {isLoading && !hasSubmitted && <p>{copy.formSubmitting}</p>}
           {error && <div>{`${error.status || '500'}: ${error.message || ''}`}</div>}
           {!hasSubmitted && (
             <form id={formID} onSubmit={handleSubmit(onSubmit)}>
@@ -138,6 +145,7 @@ export const FormBlock: React.FC<
                         <div className="mb-6 last:mb-0" key={index}>
                           <Field
                             form={formFromProps}
+                            locale={locale}
                             {...field}
                             {...formMethods}
                             control={control}

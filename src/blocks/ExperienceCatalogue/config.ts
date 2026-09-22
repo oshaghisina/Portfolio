@@ -31,7 +31,12 @@ export const ExperienceCatalogue: Block = {
             {
               name: 'name',
               type: 'text',
+              localized: true,
               required: true,
+              // Localized to match the `experiences` collection, which already translates
+              // `company`. A company name is a proper noun but it still has a script-appropriate
+              // form — Digikala is دیجی‌کالا in Persian — and the same fact should not follow two
+              // rules depending on which block renders it.
               admin: { width: '80%' },
             },
           ],
