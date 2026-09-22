@@ -21,19 +21,19 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 
-# Docs benchmark screenshots are local-only research assets
-Docs/Benchmarks/*/assets/*
-!Docs/Benchmarks/*/assets/.gitkeep
-
 # TypeScript incremental build info
 tsconfig.tsbuildinfo
 
 # Local MongoDB dumps taken before schema-affecting migrations
 .backup/
 
-# Design-System crops/frames/video of third-party sites are local-only research assets
-Docs/Design-System/assets/*
-!Docs/Design-System/assets/.gitkeep
+# Docs/ is local-only research and source material: RP1 Arena product screenshots,
+# third-party benchmark captures, the resume, and the house design tokens. It never
+# ships, and the seed already treats it as dev-only (src/endpoints/seed/case-studies/media.ts).
+# A clone without Docs/ still builds and serves the site: theme.css is committed, and
+# /design is dynamic (it awaits searchParams) so it is not prerendered. What such a clone
+# cannot do is `pnpm tokens:build`, seed, or open /design — all three read Docs/ from disk.
+Docs/
 
 # Legacy SQLite database from before the MongoDB migration (37b1539)
 portfolio.db
