@@ -26,6 +26,7 @@
     "seed:case-studies": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/seed/case-studies.ts",
     "seed:home-mosaic": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/seed/home-mosaic.ts",
     "seed:home-tools": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/seed/home-tools.ts",
+    "seed:home-experience": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/seed/home-experience.ts",
     "audit:translations": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/seed/audit-translations.ts",
     "seed:translations": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/seed/translations.ts",
     "reinstall": "cross-env NODE_OPTIONS=--no-deprecation rm -rf node_modules && rm pnpm-lock.yaml && pnpm --ignore-workspace install",

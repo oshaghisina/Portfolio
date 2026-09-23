@@ -212,6 +212,19 @@ export const buildToolsStackBlock = (copy: HomeCopy): NonNullable<PageLayout>[nu
  */
 const TRACK_KEYS = ['productDesign', 'aiWorkflow', 'designSystems'] as const
 const EXPERIENCE_INDEXES = ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10'] as const
+/** Stable `companyKey` per index — resolves marks in `companyLogos.ts`. Not localized. */
+export const EXPERIENCE_COMPANY_KEYS = [
+  'tahaGasht',
+  'digikala',
+  'carsparencyKhodro45',
+  'hadishMall',
+  'fibona',
+  'oteacher',
+  'arvanCloud',
+  'biomaze',
+  'didestan',
+  'a1paradise',
+] as const
 // Only the first metric is still the résumé's own claim. The company and industry counts are
 // counted off Docs/Experience/ frontmatter, so they cite the folder that can be re-counted.
 const METRIC_SOURCES = ['Resume.md', 'Experience/', 'Experience/'] as const
@@ -296,6 +309,7 @@ export const buildHomeLayout = ({
       sectionHeader: copy.experience.header,
       items: copy.experience.items.map((item, i) => ({
         index: EXPERIENCE_INDEXES[i]!,
+        companyKey: EXPERIENCE_COMPANY_KEYS[i]!,
         name: item.name,
         role: item.role,
         blurb: item.blurb,

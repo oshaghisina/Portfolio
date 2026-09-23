@@ -82,7 +82,7 @@ export const Patterns: React.FC<{ locale: PreviewLocale }> = ({ locale }) => {
           />
         </Demo>
 
-        <Demo ds="DS-20 · ExperienceGrid" note="Names in type, no logos — the counter-proposal to a logo wall. The block lands with the experiences collection." title="Typographic employer grid">
+        <Demo ds="DS-20 · ExperienceGrid" note="Names stay primary; optional mono logos are secondary markers (D-032). The /design demo stays text-only." title="Typographic employer grid">
           <ExperienceGrid
             items={s.employers.map((e, i) => ({
               index: String(i + 1).padStart(2, '0'),

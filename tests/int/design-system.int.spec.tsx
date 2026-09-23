@@ -113,6 +113,13 @@ describe('ExperienceGrid (DS-20)', () => {
     expect(screen.getAllByRole('listitem')).toHaveLength(2)
     expect(screen.getByText('01').className).toContain('index-code')
   })
+
+  it('keeps text-only when no logo slot is passed', () => {
+    const { container } = render(
+      <ExperienceGrid items={[{ index: '01', name: 'Acme', role: 'Designer' }]} />,
+    )
+    expect(container.querySelector('img')).toBeNull()
+  })
 })
 
 describe('MetricsStrip block (DS-18)', () => {

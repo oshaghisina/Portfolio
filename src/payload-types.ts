@@ -1503,6 +1503,23 @@ export interface ExperienceCatalogueBlock {
         index: string;
         name: string;
         /**
+         * Resolves to a brand mark in companyLogos.ts. Leave empty for a text-only cell.
+         */
+        companyKey?:
+          | (
+              | 'tahaGasht'
+              | 'digikala'
+              | 'carsparencyKhodro45'
+              | 'hadishMall'
+              | 'fibona'
+              | 'oteacher'
+              | 'arvanCloud'
+              | 'biomaze'
+              | 'didestan'
+              | 'a1paradise'
+            )
+          | null;
+        /**
          * e.g. "Designer / Marketer / BI developer · 2.5 yr"
          */
         role: string;
@@ -2612,6 +2629,7 @@ export interface ExperienceCatalogueBlockSelect<T extends boolean = true> {
     | {
         index?: T;
         name?: T;
+        companyKey?: T;
         role?: T;
         blurb?: T;
         id?: T;

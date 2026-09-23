@@ -6,11 +6,16 @@ import type { ExperienceCatalogueBlock as ExperienceCatalogueBlockProps } from '
 import { ExperienceGrid } from '@/components/ExperienceGrid'
 import { SectionHeader } from '@/components/SectionHeader'
 
-export type ExperienceCatalogueProps = Pick<ExperienceCatalogueBlockProps, 'items' | 'sectionHeader'> & {
+import { CompanyLogo } from './CompanyLogo'
+
+export type ExperienceCatalogueProps = Pick<
+  ExperienceCatalogueBlockProps,
+  'items' | 'sectionHeader'
+> & {
   className?: string
 }
 
-/** Typographic employer catalogue — no CV bullet list. */
+/** Employer catalogue — names primary; optional mono logos as secondary markers. */
 export const ExperienceCatalogueBlock: React.FC<ExperienceCatalogueProps> = ({
   className,
   items,
@@ -28,6 +33,7 @@ export const ExperienceCatalogueBlock: React.FC<ExperienceCatalogueProps> = ({
           name: item.name,
           role: item.role,
           blurb: item.blurb,
+          logo: item.companyKey ? <CompanyLogo companyKey={item.companyKey} /> : undefined,
         }))}
       />
     </section>
