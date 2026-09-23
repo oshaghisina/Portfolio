@@ -62,10 +62,12 @@ export const PROJECT_SEED: ProjectSeedRow[] = [
     order: 3,
     featured: true,
     status: 'published',
+    // The order screen's first phone-height, not the 5.2:1 marketing banner: a cover slot crops
+    // landscape media to fill it, and a strip that wide lost most of itself in every slot.
     cover: {
-      path: 'Docs/Experience/Digikala/digital-gold/assets/order/digital-gold--gold-silver-hero-desktop.png',
-      name: 'digital-gold--gold-silver-hero-desktop.png',
-      alt: 'Digikala Digital Gold — the gold and silver buying screen on desktop, with the live gram price and the amount entry',
+      path: 'Docs/Experience/Digikala/digital-gold/assets/order/digital-gold--order-mobile-cover.png',
+      name: 'digital-gold--order-mobile-cover.png',
+      alt: 'Digikala Digital Gold order screen on mobile: gold and silver tabs, the live price per milligram, buy or sell, and an amount entered in rials or in milligrams',
     },
   },
   {
@@ -383,7 +385,7 @@ export const PROJECT_SEED: ProjectSeedRow[] = [
     status: 'published',
   },
   {
-    // Inventory ❓Q4: no confirmed design source yet — kept in the CMS, not exposed.
+    // Inventory Q4: confirmed list-only — no Figma source, so an index row with no case study.
     slug: 'oteacher-website-redesign',
     title: 'Website redesign',
     summary: "Named as a 'new website' initiative in OTeacher's strategy deck; the design source is not yet confirmed.",
@@ -391,7 +393,7 @@ export const PROJECT_SEED: ProjectSeedRow[] = [
     role: 'Product designer',
     kind: ['product'],
     order: 53,
-    status: 'draft',
+    status: 'published',
   },
   {
     slug: 'oteacher-education-unit-program',
@@ -606,9 +608,8 @@ export const PROJECT_SEED: ProjectSeedRow[] = [
     liveUrl: 'https://greenrest.ir',
   },
   {
-    // PRJ-11. Designed in full and never run, and the doc still carries five open questions
-    // (including whether it should be featured at all), so it stays `draft` — present in the CMS,
-    // not exposed on /work. See Docs/Experience/Projects/narian-summer-passport/README.md.
+    // PRJ-11. Designed in full and never run: listed as a concept, not featured, and no case study
+    // until the README's open questions close. See Docs/Experience/Projects/narian-summer-passport/.
     slug: 'narian-summer-passport',
     title: 'Narian Summer Passport — retail campaign',
     summary:
@@ -617,7 +618,7 @@ export const PROJECT_SEED: ProjectSeedRow[] = [
     role: 'Campaign strategist & marketer',
     kind: ['growth', 'concept'],
     order: 107,
-    status: 'draft',
+    status: 'published',
     period: { start: '2026-06-01T00:00:00.000Z' },
   },
 ]

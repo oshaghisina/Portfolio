@@ -23,11 +23,10 @@ export interface ProjectText {
 }
 
 /**
- * `rp1-arena` and `vin-app` still have entries below even though the translation seeder skips
- * any project carrying a case study. They are the es/fr/ja copy those two need, and they land
- * with the case-study translation — which has to write the archive fields and the `sections`
- * chapters in the same call, because several chapter leaves are `required` and Payload validates
- * the whole document per locale.
+ * `rp1-arena`, `vin-app` and `digital-gold` have entries below even though the translation seeder
+ * skips any project carrying a case study: their case-study modules read them instead, because
+ * the archive fields and the `sections` chapters have to be written in the same call — several
+ * chapter leaves are `required` and Payload validates the whole document per locale.
  */
 
 /** Keyed by the English company string exactly as `PROJECT_SEED` spells it. */

@@ -5,15 +5,13 @@ import path from 'path'
 
 import type { Locale } from '@/utilities/locale'
 
-export type SeedLocale = Extract<Locale, 'en' | 'fa' | 'ar' | 'de'>
-
 export interface MediaSpec {
   /** Path inside the project's `assets/` folder in Docs, e.g. `duel/duel-main.png`. */
   file: string
   /** Stored filename — the idempotency key; reuse an existing upload with this name. */
   name: string
-  /** English is the only alt a project cover has; case-study media supply all four. */
-  alt: Partial<Record<SeedLocale, string>>
+  /** English is the only alt a project cover has; case-study media supply one per seed locale. */
+  alt: Partial<Record<Locale, string>>
 }
 
 const MIME: Record<string, string> = {
@@ -100,7 +98,7 @@ export async function upsertMedia(
     }
   }
 
-  for (const [locale, alt] of Object.entries(spec.alt) as [SeedLocale, string | undefined][]) {
+  for (const [locale, alt] of Object.entries(spec.alt) as [Locale, string | undefined][]) {
     if (alt === undefined) continue
     await payload.update({
       collection: 'media',

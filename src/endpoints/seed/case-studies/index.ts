@@ -1,6 +1,14 @@
 import type { Payload } from 'payload'
 
 import {
+  DG_ASSETS,
+  DG_LOCALES,
+  DG_MEDIA,
+  DG_SHARED_FIELDS,
+  DG_SLUG,
+  dgLocalizedFields,
+} from './digital-gold'
+import {
   RP1_ASSETS,
   RP1_MEDIA,
   RP1_SHARED_FIELDS,
@@ -9,7 +17,7 @@ import {
   SEED_LOCALES,
 } from './rp1-arena'
 import type { CaseStudySeedConfig, CaseStudySeedResult } from './seed-case-study'
-import { seedCaseStudy } from './seed-case-study'
+import { assertNoUnseededLocales, seedCaseStudy } from './seed-case-study'
 import { VIN_ASSETS, VIN_MEDIA, VIN_SHARED_FIELDS, VIN_SLUG, vinLocalizedFields } from './vin-app'
 
 /**
@@ -18,7 +26,7 @@ import { VIN_ASSETS, VIN_MEDIA, VIN_SHARED_FIELDS, VIN_SLUG, vinLocalizedFields 
  * the deterministic block-row ids.
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const CASE_STUDIES: CaseStudySeedConfig<any>[] = [
+export const CASE_STUDIES: CaseStudySeedConfig<any, any>[] = [
   {
     label: 'RP1',
     slug: RP1_SLUG,
@@ -39,13 +47,35 @@ const CASE_STUDIES: CaseStudySeedConfig<any>[] = [
     sharedFields: VIN_SHARED_FIELDS,
     localizedFields: vinLocalizedFields,
   },
+  {
+    label: 'Digital Gold',
+    slug: DG_SLUG,
+    assetsDir: DG_ASSETS,
+    media: DG_MEDIA,
+    // All seven: its archive row was already published in es/fr/ja, so a four-locale case study
+    // would have left those three linking to empty chapters.
+    seedLocales: DG_LOCALES,
+    createFields: {
+      kind: ['product', 'growth', 'data'],
+      order: 3,
+      featured: true,
+      coverMediaKey: 'cover',
+    },
+    // The archive seed uploaded a 5.2:1 banner as the cover and never replaces a cover it set.
+    replaceCover: true,
+    sharedFields: DG_SHARED_FIELDS,
+    localizedFields: dgLocalizedFields,
+  },
 ]
 
 export interface SeedCaseStudiesResult {
   results: CaseStudySeedResult[]
 }
 
-/** Seeds every case study in `CASE_STUDIES`, in order — each is independently additive/idempotent. */
+/**
+ * Seeds every case study in `CASE_STUDIES`, in order — each is independently additive/idempotent.
+ * Every config's locale guard runs first, so a failure can't land after earlier ones were written.
+ */
 export async function seedCaseStudies({
   payload,
   rootDir = process.cwd(),
@@ -54,6 +84,8 @@ export async function seedCaseStudies({
   /** Repo root — `Docs/` is resolved from here (dev only; `Docs/` is not deployed). */
   rootDir?: string
 }): Promise<SeedCaseStudiesResult> {
+  for (const config of CASE_STUDIES) await assertNoUnseededLocales(payload, config)
+
   const results: CaseStudySeedResult[] = []
   for (const config of CASE_STUDIES) {
     results.push(await seedCaseStudy(payload, config, rootDir))

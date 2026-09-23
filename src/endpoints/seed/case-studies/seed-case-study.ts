@@ -4,9 +4,10 @@ import path from 'path'
 
 import type { ProjectKind } from '@/collections/Projects/kinds'
 import type { Project } from '@/payload-types'
+import { LOCALES, type Locale } from '@/utilities/locale'
 
 import { upsertMedia } from '../media'
-import type { MediaSpec, SeedLocale } from '../media'
+import type { MediaSpec } from '../media'
 
 /** One locale's case-study fields — everything a `fallback: false` site needs filled per locale.
  *  Omit `hero` entirely (don't pass `hero: undefined`) for a project with no real screenshots yet. */
@@ -24,14 +25,22 @@ export interface CaseStudyLocalizedFields {
   meta: { title: string; description: string; image?: string }
 }
 
-export interface CaseStudySeedConfig<TMediaKey extends string = string> {
+/**
+ * `TLocale` is the set of locales this case study is written in — all seven for every case study
+ * today. Every locale outside the set must stay unpublished — see `assertNoUnseededLocales`.
+ */
+export interface CaseStudySeedConfig<
+  TMediaKey extends string = string,
+  TLocale extends Locale = Locale,
+> {
   /** For log lines only, e.g. "RP1", "VIN". */
   label: string
   slug: string
-  /** Repo-relative path to the project's `Docs/Experience/Projects/<slug>/assets` folder. */
+  /** Repo-relative path to the project's assets folder in `Docs/`. */
   assetsDir: string
   media: Record<TMediaKey, MediaSpec>
-  seedLocales: SeedLocale[]
+  /** Must include `en`. Readonly so `LOCALES` itself (an `as const` tuple) can be passed. */
+  seedLocales: readonly TLocale[]
   /** Archive identity, used only on first create — normally Part A's seed row already exists. */
   createFields: {
     kind: ProjectKind[]
@@ -39,9 +48,15 @@ export interface CaseStudySeedConfig<TMediaKey extends string = string> {
     featured?: boolean
     coverMediaKey?: TMediaKey
   }
+  /**
+   * Also point the cover at `coverMediaKey` when the project already exists. Off by default: the
+   * archive seed sets a cover once and never replaces it, so a case study that needs a different
+   * lead visual than its archive row was seeded with has to say so.
+   */
+  replaceCover?: boolean
   sharedFields: Pick<Project, 'projectStatus' | 'tools' | 'period'>
   localizedFields: (
-    locale: SeedLocale,
+    locale: TLocale,
     media: Partial<Record<TMediaKey, string>>,
   ) => CaseStudyLocalizedFields
 }
@@ -50,6 +65,44 @@ export interface CaseStudySeedResult {
   projectId: string
   created: boolean
   media: Partial<Record<string, string>>
+}
+
+/**
+ * Fails when the project is published in a locale its case study isn't written in. `sections` is
+ * one shared block array (only the leaves are localized) and `caseStudyStatus` isn't localized at
+ * all, so such a locale would pass every public gate and render the chapter scaffolding with no
+ * text in it — linked from the archive, the mosaic and hreflang. Read-only; unpublish that locale
+ * or add it to `seedLocales`.
+ *
+ * `draft: false` on purpose: a draft read returns the latest *version*, which an autosave can flip
+ * to `draft` while the live locale is still published.
+ */
+export async function assertNoUnseededLocales(
+  payload: Payload,
+  config: Pick<CaseStudySeedConfig<string, Locale>, 'label' | 'seedLocales' | 'slug'>,
+): Promise<void> {
+  const seeded: readonly Locale[] = config.seedLocales
+  for (const locale of LOCALES) {
+    if (seeded.includes(locale)) continue
+    const { docs } = await payload.find({
+      collection: 'projects',
+      depth: 0,
+      draft: false,
+      fallbackLocale: false,
+      limit: 1,
+      locale,
+      overrideAccess: true,
+      pagination: false,
+      select: { _status: true },
+      where: { slug: { equals: config.slug } },
+    })
+    if (docs[0]?._status === 'published') {
+      throw new Error(
+        `${config.label}: /${locale}/work/${config.slug} is published but its case study is not ` +
+          `written in ${locale}, so it would render empty chapters. Unpublish ${locale} or add it to seedLocales.`,
+      )
+    }
+  }
 }
 
 /**
@@ -66,11 +119,14 @@ export interface CaseStudySeedResult {
  * Generalized from the RP1 case study's original orchestration (D-022) — see `rp1-arena.ts` for
  * a worked example of building a `CaseStudySeedConfig`.
  */
-export async function seedCaseStudy<TMediaKey extends string>(
+export async function seedCaseStudy<TMediaKey extends string, TLocale extends Locale>(
   payload: Payload,
-  config: CaseStudySeedConfig<TMediaKey>,
+  config: CaseStudySeedConfig<TMediaKey, TLocale>,
   rootDir: string = process.cwd(),
 ): Promise<CaseStudySeedResult> {
+  const seeded: readonly Locale[] = config.seedLocales
+  if (!seeded.includes('en')) throw new Error(`${config.label}: seedLocales must include en`)
+
   payload.logger.info(`— Seeding the ${config.label} case study...`)
   const assetsDir = path.resolve(rootDir, config.assetsDir)
 
@@ -96,15 +152,16 @@ export async function seedCaseStudy<TMediaKey extends string>(
     caseStudyStatus: 'published' as const,
     generateSlug: false,
   }
-  const english = config.localizedFields('en', media)
+  // `en` is in the set (checked above); the cast only tells the compiler so.
+  const english = config.localizedFields('en' as TLocale, media)
 
   let id = existing.docs[0]?.id
   const created = !id
+  const coverId = config.createFields.coverMediaKey
+    ? media[config.createFields.coverMediaKey]
+    : undefined
 
   if (!id) {
-    const coverId = config.createFields.coverMediaKey
-      ? media[config.createFields.coverMediaKey]
-      : undefined
     const doc = await payload.create({
       collection: 'projects',
       depth: 0,
@@ -133,7 +190,13 @@ export async function seedCaseStudy<TMediaKey extends string>(
       depth: 0,
       locale: 'en',
       context,
-      data: { ...caseStudy, ...config.sharedFields, ...published, translationReviewed: true },
+      data: {
+        ...caseStudy,
+        ...config.sharedFields,
+        ...published,
+        ...(config.replaceCover && coverId ? { cover: coverId } : {}),
+        translationReviewed: true,
+      },
     })
   }
 

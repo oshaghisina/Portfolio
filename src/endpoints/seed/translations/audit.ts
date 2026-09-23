@@ -30,7 +30,7 @@ export interface Finding {
 const PAGE_SLUGS = ['home', 'about', 'work', 'contact', 'experience'] as const
 
 /** Collects every `id` in a blocks/array tree, in document order. */
-const collectIds = (value: unknown, out: string[] = []): string[] => {
+export const collectIds = (value: unknown, out: string[] = []): string[] => {
   if (Array.isArray(value)) {
     for (const item of value) collectIds(item, out)
   } else if (value && typeof value === 'object') {
@@ -44,7 +44,7 @@ const collectIds = (value: unknown, out: string[] = []): string[] => {
 }
 
 /** True when a value is a present, non-empty leaf — including a Lexical tree with real text. */
-const hasText = (value: unknown): boolean => {
+export const hasText = (value: unknown): boolean => {
   if (typeof value === 'string') return value.trim().length > 0
   if (Array.isArray(value)) return value.some(hasText)
   if (value && typeof value === 'object') {
