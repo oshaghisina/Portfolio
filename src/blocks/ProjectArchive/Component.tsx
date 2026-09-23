@@ -79,10 +79,10 @@ export const ProjectArchiveBlock: React.FC<ProjectArchiveProps> = async ({
       ) : (
         <>
           {primary ? (
-            <div className="flex flex-col gap-section pt-section">
+            <div className="flex flex-col gap-section-sm pt-section-sm">
               <FeaturedProject index={padIndex(0)} locale={locale} project={primary} variant="primary" />
               {secondary.length ? (
-                <div className="flex flex-col gap-section">
+                <div className="flex flex-col gap-section-sm">
                   {secondary.map((project, i) => (
                     <FeaturedProject
                       index={padIndex(i + 1)}
@@ -97,7 +97,7 @@ export const ProjectArchiveBlock: React.FC<ProjectArchiveProps> = async ({
             </div>
           ) : null}
 
-          <ProjectIndex className="pt-section lg:pt-[18vh]" locale={locale} rows={toIndexRows(docs, locale)} />
+          <ProjectIndex className="pt-section-sm" locale={locale} rows={toIndexRows(docs, locale)} />
         </>
       )}
     </section>

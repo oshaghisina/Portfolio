@@ -1,7 +1,7 @@
 /**
  * `/work` + Projects (jsdom): the route helper, the active-nav rule, and the archive pieces'
- * contracts — rows link only where there is somewhere to go, portrait media is framed not
- * cropped, the pending plate never falls back to English, the filter hides without renumbering.
+ * contracts — rows link only where there is somewhere to go, the shared portrait cover stays
+ * complete, archive detail crops keep a full accessible source, and filters retain row numbers.
  */
 import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import React from 'react'
@@ -9,6 +9,7 @@ import { afterEach, describe, expect, it } from 'vitest'
 
 import { FeaturedProject } from '@/blocks/ProjectArchive/FeaturedProject'
 import { ProjectIndex } from '@/blocks/ProjectArchive/ProjectIndex'
+import { WorkCover } from '@/blocks/ProjectArchive/WorkCover'
 import { countCompanies, projectLink, projectYear, toIndexRows } from '@/blocks/ProjectArchive/rows'
 import { WorkIntro } from '@/blocks/ProjectArchive/WorkIntro'
 import { SelectedWorkBlock } from '@/blocks/SelectedWork/Component'
@@ -150,6 +151,28 @@ describe('ProjectCover', () => {
   })
 })
 
+describe('WorkCover', () => {
+  it('pairs a decorative detail crop with one accessible complete source screen', () => {
+    const { container } = render(
+      <WorkCover index="02" kinds={['Product']} pendingLabel="Pending" primary={false} resource={media()} slug="rp1-arena" />,
+    )
+    const images = container.querySelectorAll('img')
+    expect(images).toHaveLength(2)
+    expect(images[0].className).toContain('object-cover')
+    expect(images[0].closest('[aria-hidden="true"]')).not.toBeNull()
+    expect(images[1].className).toContain('object-contain')
+    expect(images[1].closest('[aria-hidden="true"]')).toBeNull()
+  })
+
+  it('keeps a shorter portrait screen complete without a duplicate image', () => {
+    const { container } = render(
+      <WorkCover index="06" kinds={['Product']} pendingLabel="Pending" primary={false} resource={media({ width: 561, height: 717 })} slug="nim-dang" />,
+    )
+    expect(container.querySelectorAll('img')).toHaveLength(1)
+    expect(container.querySelector('img')!.className).toContain('object-contain')
+  })
+})
+
 describe('ProjectIndex', () => {
   const rows = toIndexRows(
     [
@@ -179,6 +202,24 @@ describe('ProjectIndex', () => {
     const items = Array.from(container.querySelectorAll('li'))
     expect(items.filter((li) => !li.classList.contains('hidden'))).toHaveLength(2) // Digital Gold is product+growth
     expect(items[1].querySelector('.index-code')!.textContent).toBe('02')
+  })
+
+  it('moves a company heading to the first visible row of a filtered group', () => {
+    const groupRows = toIndexRows(
+      [
+        project({ id: 'a', kind: ['product'] }),
+        project({ id: 'b', kind: ['growth'] }),
+        project({ id: 'c', kind: ['growth'] }),
+      ],
+      'en',
+    )
+    const { container } = render(<ProjectIndex locale="en" rows={groupRows} />)
+    fireEvent.click(screen.getByRole('button', { name: /Growth/ }))
+    const items = Array.from(container.querySelectorAll('ol > li'))
+    expect(items[0].classList.contains('hidden')).toBe(true)
+    expect(items[1].textContent).toContain('Digikala')
+    expect(items[1].textContent).toContain('02')
+    expect(screen.getByText('2 projects')).toBeTruthy()
   })
 })
 

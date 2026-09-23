@@ -5,12 +5,12 @@ import React from 'react'
 import type { Project } from '@/payload-types'
 
 import { kindLabels } from '@/collections/Projects/kinds'
-import { ProjectCover } from '@/components/ProjectCover'
 import type { Locale } from '@/utilities/locale'
 import { uiCopy } from '@/utilities/uiCopy'
 import { cn } from '@/utilities/ui'
 
 import { projectLink, projectYear, type ProjectLink } from './rows'
+import { WorkCover } from './WorkCover'
 
 export type FeaturedVariant = 'primary' | 'split' | 'split-reverse'
 
@@ -55,19 +55,17 @@ export const FeaturedProject: React.FC<FeaturedProjectProps> = ({ className, ind
   const kinds = kindLabels(project.kind, locale)
   const link = projectLink(project, locale)
   const year = projectYear(project.period)
-  const meta = [project.company, year, project.role, ...kinds].filter(Boolean) as string[]
   const primary = variant === 'primary'
 
   const cover = (
-    <ProjectCover
-      aspect={primary ? 'wide' : 'tall'}
+    <WorkCover
       className={cn(!primary && 'lg:col-span-6', variant === 'split-reverse' && 'lg:col-start-7')}
-      figure={`Figure ${index}`}
+      index={index}
       kinds={kinds}
       pendingLabel={copy.workMediaPending}
-      priority={primary}
+      primary={primary}
       resource={project.cover}
-      size={primary ? '(min-width: 768px) 78vw, 100vw' : '(min-width: 768px) 39vw, 100vw'}
+      slug={project.slug}
     />
   )
 
@@ -92,16 +90,18 @@ export const FeaturedProject: React.FC<FeaturedProjectProps> = ({ className, ind
           {project.title}
         </h2>
       </div>
-      {meta.length ? (
-        <p className="eyebrow flex flex-wrap gap-x-3 gap-y-1 text-ink-3">
-          {meta.map((item, i) => (
-            <span key={i}>
-              {item}
-              {i < meta.length - 1 ? <span aria-hidden> ·</span> : null}
-            </span>
-          ))}
+      <div className="flex flex-col gap-1.5 text-ink-3">
+        <p className="eyebrow flex flex-wrap gap-x-3 gap-y-1">
+          <span>{project.company}</span>
+          {year ? <span>{year}</span> : null}
         </p>
-      ) : null}
+        {project.role || kinds.length ? (
+          <p className="eyebrow flex flex-wrap gap-x-3 gap-y-1">
+            {project.role ? <span>{project.role}</span> : null}
+            {kinds.length ? <span>{kinds.join(' / ')}</span> : null}
+          </p>
+        ) : null}
+      </div>
       <p className="max-w-measure text-body text-ink-2">{project.summary}</p>
       {link ? (
         <span className="eyebrow inline-flex items-center gap-2 text-foreground transition-colors duration-(--duration-fast) group-hover:text-brand">

@@ -33,6 +33,7 @@ export const WorkIntro: React.FC<WorkIntroProps> = ({
 
   return (
     <PageOpener
+      compact
       aside={
         projectCount > 0 ? (
           <p className="index-code flex flex-wrap items-baseline gap-x-3 gap-y-1 lg:flex-col lg:items-end lg:gap-y-2">
