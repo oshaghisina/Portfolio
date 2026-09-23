@@ -10,22 +10,19 @@ import React, { useCallback, useEffect, useId, useRef, useState } from 'react'
 import type { Header as HeaderType } from '@/payload-types'
 
 import { hrefFromLink } from '@/components/Link'
+import { Signature } from '@/components/Signature'
 import { Button } from '@/components/ui/button'
-import { isActivePath, localizeInternalHref, parseLocalePath } from '@/i18n/navigation'
+import { isActivePath, localePath, localizeInternalHref, parseLocalePath } from '@/i18n/navigation'
 import type { Locale } from '@/utilities/locale'
 import { uiCopy } from '@/utilities/uiCopy'
 
-/**
- * DS-32 mobile drawer: numbered oversized links, the active one in brand, a foot row for
- * contact / location / language. A native <dialog> gives the focus trap, ESC, top layer
- * and an inert page for free; it slides in from the inline-end side (so from the left in RTL).
- */
+/** Full-screen site navigation, retaining native dialog focus, Escape, and inert-page behavior. */
 export interface MobileNavProps {
   data: HeaderType
   locale: Locale
-  /** Bottom row: contact, location, language switch … */
+  /** Bottom region; the global header supplies its inline language list. */
   foot?: React.ReactNode
-  /** Show the trigger at every width (style guide); default is below `md`. */
+  /** Show the trigger at every width (style guide); default is below `xl`. */
   alwaysVisible?: boolean
   className?: string
 }
@@ -67,12 +64,24 @@ export const MobileNav: React.FC<MobileNavProps> = ({ alwaysVisible = false, cla
     if (el?.open && typeof el.close === 'function') el.close()
   }, [pathname])
 
+  useEffect(() => {
+    if (typeof window.matchMedia !== 'function') return
+    const fullNav = window.matchMedia('(min-width: 80rem)')
+    const closeAtDesktop = () => {
+      if (fullNav.matches) close()
+    }
+    fullNav.addEventListener('change', closeAtDesktop)
+    closeAtDesktop()
+    return () => fullNav.removeEventListener('change', closeAtDesktop)
+  }, [close])
+
   return (
-    <div className={cn(!alwaysVisible && 'md:hidden', className)}>
+    <div className={cn(!alwaysVisible && 'xl:hidden', className)}>
       <Button
         aria-controls={id}
         aria-expanded={open}
         aria-label={uiCopy[locale].openMenu}
+        className="hover:translate-y-0"
         onClick={() => setOpen(true)}
         size="icon-sm"
         variant="ghost"
@@ -83,34 +92,36 @@ export const MobileNav: React.FC<MobileNavProps> = ({ alwaysVisible = false, cla
       <dialog
         aria-label={uiCopy[locale].openMenu}
         className={cn(
-          // reset the UA dialog box, then pin to the inline-end edge
-          'fixed inset-y-0 end-0 start-auto m-0 h-dvh max-h-none w-full max-w-sm p-0',
-          'bg-background text-foreground border-s border-line',
-          'backdrop:bg-ink/40 backdrop:backdrop-blur-[2px]',
-          'open:flex flex-col',
-          'open:animate-in open:slide-in-from-right rtl:open:slide-in-from-left open:duration-(--duration-base) open:ease-standard',
+          'fixed inset-0 m-0 h-dvh max-h-none w-screen max-w-none border-0 bg-background p-0 text-foreground',
+          'open:flex open:flex-col',
+          'open:animate-in open:fade-in-0 open:duration-(--duration-fast) open:ease-standard motion-reduce:open:animate-none',
         )}
         id={id}
         onCancel={(e) => {
           e.preventDefault()
           close()
         }}
-        onClick={(e) => {
-          // backdrop click — the dialog itself is the event target
-          if (e.target === e.currentTarget) close()
-        }}
         onClose={close}
         ref={dialogRef}
       >
-        <div className="flex items-center justify-end px-4 pt-4">
-          <Button aria-label={uiCopy[locale].closeMenu} autoFocus onClick={close} size="icon-sm" variant="ghost">
-            <X />
-          </Button>
-        </div>
+        <div className="canvas flex h-full min-h-0 flex-col">
+          <div className="flex h-14 shrink-0 items-center justify-between border-b border-line">
+            <Link
+              aria-label="Sina Oshaghi"
+              className="text-foreground transition-opacity duration-(--duration-fast) hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
+              href={localePath(locale, '/')}
+              onClick={close}
+            >
+              <Signature className="h-9" />
+            </Link>
+            <Button aria-label={uiCopy[locale].closeMenu} autoFocus className="hover:translate-y-0" onClick={close} size="icon-sm" variant="ghost">
+              <X />
+            </Button>
+          </div>
 
-        <nav className="flex-1 overflow-y-auto px-6 pt-10">
-          <ol className="flex flex-col">
-            {navItems.map(({ link }, i) => {
+          <nav className="min-h-0 flex-1 overflow-y-auto pt-5" id={`${id}-navigation`}>
+            <ol className="flex flex-col">
+              {navItems.map(({ link }, i) => {
               // An untranslated locale leaves `label` empty — a numbered link with no name is
               // the same "visible but empty" failure `CMSLink` guards against, so skip it too
               // (this drawer builds its own `<Link>` rather than going through `CMSLink`).
@@ -119,28 +130,29 @@ export const MobileNav: React.FC<MobileNavProps> = ({ alwaysVisible = false, cla
               const logicalHref = hrefFromLink(link) ?? '#'
               const active = isActivePath(parseLocalePath(pathname).logicalPath, logicalHref)
               const href = localizeInternalHref(locale, logicalHref)
-              return (
-                <li className="border-b border-line" key={i}>
-                  <Link
-                    aria-current={active ? 'page' : undefined}
-                    className={cn(
-                      'flex items-baseline gap-4 py-5 text-h2 font-medium tracking-h2 transition-colors duration-(--duration-fast)',
-                      active ? 'text-brand' : 'text-foreground hover:text-brand',
-                    )}
-                    href={href}
-                    onClick={close}
-                    {...(link?.newTab ? { rel: 'noopener noreferrer', target: '_blank' } : {})}
-                  >
-                    <span className="index-code">{String(i + 1).padStart(2, '0')}</span>
-                    {link?.label}
-                  </Link>
-                </li>
-              )
-            })}
-          </ol>
-        </nav>
+                return (
+                  <li className="border-b border-line" key={i}>
+                    <Link
+                      aria-current={active ? 'page' : undefined}
+                      className={cn(
+                        'flex items-baseline gap-4 border-s-2 py-4 ps-3 text-track-title font-medium transition-[color,border-color] duration-(--duration-fast) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring',
+                        active ? 'border-brand text-foreground' : 'border-transparent text-ink-2 hover:border-line hover:text-foreground',
+                      )}
+                      href={href}
+                      onClick={close}
+                      {...(link?.newTab ? { rel: 'noopener noreferrer', target: '_blank' } : {})}
+                    >
+                      <span className="index-code">{String(i + 1).padStart(2, '0')}</span>
+                      {link?.label}
+                    </Link>
+                  </li>
+                )
+              })}
+            </ol>
+          </nav>
 
-        {foot ? <div className="mt-auto flex flex-wrap items-center justify-between gap-4 px-6 py-6 eyebrow">{foot}</div> : null}
+          {foot ? <div className="shrink-0 border-t border-line pb-6 pt-5">{foot}</div> : null}
+        </div>
       </dialog>
     </div>
   )

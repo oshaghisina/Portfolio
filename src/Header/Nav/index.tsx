@@ -7,7 +7,7 @@ import { cn } from '@/utilities/ui'
 import type { Header as HeaderType } from '@/payload-types'
 
 import { CMSLink, hrefFromLink } from '@/components/Link'
-import { LocaleSwitcher } from '@/components/LocaleSwitcher'
+import { InlineLocaleList } from '@/components/LocaleSwitcher'
 import { ThemeToggle } from '@/providers/Theme/ThemeToggle'
 import { isActivePath, localePath } from '@/i18n/navigation'
 import type { Locale } from '@/utilities/locale'
@@ -16,6 +16,7 @@ import Link from 'next/link'
 import { SearchIcon } from 'lucide-react'
 
 import { MobileNav } from './MobileNav'
+import { HeaderLocaleMenu } from './HeaderLocaleMenu'
 
 interface HeaderNavProps {
   data: HeaderType
@@ -24,29 +25,22 @@ interface HeaderNavProps {
   readiness: Partial<Record<Locale, boolean>>
 }
 
-/**
- * Restrained but complete nav/theme/locale/contact row: mono links, theme + language toggles
- * (in an always-visible controls cluster, not nested inside the desktop-only nav — so they
- * still work below `md`), the last CMS item as a contact affordance. On phones the language
- * switch moves out of the bar into the drawer's foot so the top bar is just theme + menu. The
- * current destination (and anything beneath it, e.g. `/work/<slug>` under Work) is marked with
- * `aria-current` and a hairline — ink, not a tab.
- */
+/** Identity is owned by HeaderClient; this is one end-aligned navigation and utility cluster. */
 export const HeaderNav: React.FC<HeaderNavProps> = ({ data, locale, logicalPath, readiness }) => {
   const navItems = data?.navItems || []
 
   return (
-    <div className="flex items-center gap-6">
-      <nav className="hidden items-center gap-4 md:flex">
+    <div className="flex min-w-0 items-center gap-6">
+      <nav className="hidden items-center gap-4 xl:flex">
         {navItems.map(({ link }, i) => {
           const active = isActivePath(logicalPath, hrefFromLink(link))
           return (
             <CMSLink
-              appearance="link"
+              appearance="inline"
               aria-current={active ? 'page' : undefined}
               className={cn(
-                'eyebrow border-b pb-0.5 transition-colors duration-(--duration-fast) hover:text-foreground',
-                active ? 'border-brand text-foreground' : 'border-transparent text-ink-2',
+                'eyebrow whitespace-nowrap border-b pb-1 transition-[color,border-color] duration-(--duration-fast) ease-standard focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring',
+                active ? 'border-brand text-foreground' : 'border-transparent text-ink-2 hover:border-line hover:text-foreground',
               )}
               key={i}
               locale={locale}
@@ -55,24 +49,21 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({ data, locale, logicalPath,
           )
         })}
       </nav>
-      <div className="flex items-center gap-2">
-        <ThemeToggle locale={locale} />
-        <LocaleSwitcher className="hidden md:block" locale={locale} logicalPath={logicalPath} readiness={readiness} />
+      <div className="flex shrink-0 items-center gap-1 xl:gap-2">
+        <ThemeToggle className="hover:translate-y-0" locale={locale} />
+        <HeaderLocaleMenu className="hidden md:block" locale={locale} logicalPath={logicalPath} readiness={readiness} />
         <Link
-          className="text-foreground hover:text-brand transition-colors duration-(--duration-fast)"
+          className="inline-flex size-(--size-control-height-sm) items-center justify-center rounded-control text-foreground transition-colors duration-(--duration-fast) ease-standard hover:bg-panel focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
           href={localePath(locale, '/search')}
+          title={uiCopy[locale].search}
         >
           <span className="sr-only">{uiCopy[locale].search}</span>
-          <SearchIcon className="size-5" />
+          <SearchIcon aria-hidden className="size-[1.0625rem]" />
         </Link>
-        {/* Below md the top bar is theme + menu only; the language switch lives in the drawer foot. */}
         <MobileNav
           data={data}
           foot={
-            <>
-              <span className="text-ink-3">{uiCopy[locale].language}</span>
-              <LocaleSwitcher locale={locale} logicalPath={logicalPath} placement="above" readiness={readiness} />
-            </>
+            <InlineLocaleList locale={locale} logicalPath={logicalPath} readiness={readiness} />
           }
           locale={locale}
         />

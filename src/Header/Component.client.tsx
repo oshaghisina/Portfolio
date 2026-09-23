@@ -43,15 +43,13 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data, locale, logica
       className={cn('canvas', 'sticky top-0 z-20 bg-background border-b border-line')}
       {...(theme ? { 'data-theme': theme } : {})}
     >
-      <div className="flex min-h-12 items-center justify-between gap-6 py-1 md:min-h-14 md:py-3">
-        {/* Signature wordmark: `currentColor`, so `text-foreground` carries it through light, dark
-            and a hero-forced `data-theme`. Negative margin lets the flourish overhang the bar
-            without growing the header. The name stays as text for screen readers. */}
+      <div className="flex h-14 items-center justify-between gap-4 xl:h-16 xl:gap-6">
+        {/* The cropped SVG is sized by its ink, so it sits optically with the technical controls. */}
         <Link
-          className="-my-1.5 shrink-0 text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
+          className="shrink-0 text-foreground transition-opacity duration-(--duration-fast) ease-standard hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
           href={localePath(locale, '/')}
         >
-          <Signature className="h-10 md:h-11" />
+          <Signature className="h-9 xl:h-10" />
           <span className="sr-only">Sina Oshaghi</span>
         </Link>
         <HeaderNav data={data} locale={locale} logicalPath={logicalPath} readiness={readiness} />

@@ -76,6 +76,18 @@ export interface UiCopy {
     /** Screen-reader summary — the marks themselves are `aria-hidden`. */
     description: string
   }
+  /**
+   * Homepage “How I work” panel chrome — Output / Seen in / Next labels. Stage narrative lives
+   * in the CMS; these are interface chrome that translators own beside other UI strings.
+   */
+  workbench: {
+    output: string
+    seenIn: string
+    /** Prefix before the next stage name, e.g. "Next:". */
+    next: string
+    /** Measure → Frame control label. */
+    backToFrame: string
+  }
   /** `/lab` archive index title and nav label. */
   labArchiveTitle: string
   language: string
@@ -92,6 +104,8 @@ export interface UiCopy {
   /** `{language}` is replaced with the target locale's native name — see `switchToLanguageLabel`. */
   switchToLanguage: string
   theme: string
+  switchToDarkMode: string
+  switchToLightMode: string
   /** `/work` archive chrome. */
   workArchiveTag: string
   workCaseStudy: string
@@ -141,6 +155,12 @@ export const uiCopy: Record<Locale, UiCopy> = {
       description:
         'Index: sixteen capabilities in four groups — core, systems, execution and specialized experience.',
     },
+    workbench: {
+      output: 'Output',
+      seenIn: 'Seen in',
+      next: 'Next:',
+      backToFrame: 'Back to Frame',
+    },
     labArchiveTitle: 'Lab',
     language: 'Language',
     next: 'Next',
@@ -152,6 +172,8 @@ export const uiCopy: Record<Locale, UiCopy> = {
     searchPlaceholder: 'Search',
     switchToLanguage: 'Switch to {language}',
     theme: 'Toggle theme',
+    switchToDarkMode: 'Switch to dark mode',
+    switchToLightMode: 'Switch to light mode',
     workArchiveTag: 'Archive',
     workCaseStudy: 'Case study',
     workCompanies: { one: '{n} company', other: '{n} companies' },
@@ -196,6 +218,12 @@ export const uiCopy: Record<Locale, UiCopy> = {
       total: '{n} توانمندی',
       description: 'فهرست: شانزده توانمندی در چهار گروه — هسته، سیستم‌ها، اجرا و تجربه‌ی تخصصی.',
     },
+    workbench: {
+      output: 'خروجی',
+      seenIn: 'دیده‌شده در',
+      next: 'بعدی:',
+      backToFrame: 'بازگشت به قاب‌بندی',
+    },
     labArchiveTitle: 'آزمایشگاه',
     language: 'زبان',
     next: 'بعدی',
@@ -207,6 +235,8 @@ export const uiCopy: Record<Locale, UiCopy> = {
     searchPlaceholder: 'جستجو',
     switchToLanguage: 'تغییر زبان به {language}',
     theme: 'تغییر پوسته',
+    switchToDarkMode: 'تغییر به حالت تیره',
+    switchToLightMode: 'تغییر به حالت روشن',
     workArchiveTag: 'آرشیو',
     workCaseStudy: 'مطالعهٴ موردی',
     workCompanies: { other: '{n} شرکت' },
@@ -251,6 +281,12 @@ export const uiCopy: Record<Locale, UiCopy> = {
       total: '{n} قدرة',
       description: 'فهرس: ست عشرة قدرة في أربع مجموعات — الأساس والأنظمة والتنفيذ والخبرة المتخصصة.',
     },
+    workbench: {
+      output: 'المخرج',
+      seenIn: 'ظَهر في',
+      next: 'التالي:',
+      backToFrame: 'العودة إلى التأطير',
+    },
     labArchiveTitle: 'المختبر',
     language: 'اللغة',
     next: 'التالي',
@@ -262,6 +298,8 @@ export const uiCopy: Record<Locale, UiCopy> = {
     searchPlaceholder: 'بحث',
     switchToLanguage: 'التبديل إلى {language}',
     theme: 'تبديل المظهر',
+    switchToDarkMode: 'التبديل إلى الوضع الداكن',
+    switchToLightMode: 'التبديل إلى الوضع الفاتح',
     workArchiveTag: 'الأرشيف',
     workCaseStudy: 'دراسة حالة',
     workCompanies: { one: 'شركة واحدة', two: 'شركتان', few: '{n} شركات', other: '{n} شركة' },
@@ -307,6 +345,12 @@ export const uiCopy: Record<Locale, UiCopy> = {
       description:
         'Índice: dieciséis capacidades en cuatro grupos — núcleo, sistemas, ejecución y experiencia especializada.',
     },
+    workbench: {
+      output: 'Salida',
+      seenIn: 'Visto en',
+      next: 'Siguiente:',
+      backToFrame: 'Volver a Enmarcar',
+    },
     labArchiveTitle: 'Laboratorio',
     language: 'Idioma',
     next: 'Siguiente',
@@ -318,6 +362,8 @@ export const uiCopy: Record<Locale, UiCopy> = {
     searchPlaceholder: 'Buscar',
     switchToLanguage: 'Cambiar a {language}',
     theme: 'Cambiar tema',
+    switchToDarkMode: 'Cambiar al modo oscuro',
+    switchToLightMode: 'Cambiar al modo claro',
     workArchiveTag: 'Archivo',
     workCaseStudy: 'Caso de estudio',
     workCompanies: { one: '{n} empresa', other: '{n} empresas' },
@@ -363,6 +409,12 @@ export const uiCopy: Record<Locale, UiCopy> = {
       description:
         'Index: sechzehn Fähigkeiten in vier Gruppen — Kern, Systeme, Umsetzung und spezialisierte Erfahrung.',
     },
+    workbench: {
+      output: 'Ergebnis',
+      seenIn: 'Zu sehen in',
+      next: 'Weiter:',
+      backToFrame: 'Zurück zu Rahmen',
+    },
     labArchiveTitle: 'Labor',
     language: 'Sprache',
     next: 'Weiter',
@@ -374,6 +426,8 @@ export const uiCopy: Record<Locale, UiCopy> = {
     searchPlaceholder: 'Suche',
     switchToLanguage: 'Zu {language} wechseln',
     theme: 'Design wechseln',
+    switchToDarkMode: 'Zum Dunkelmodus wechseln',
+    switchToLightMode: 'Zum Hellmodus wechseln',
     workArchiveTag: 'Archiv',
     workCaseStudy: 'Fallstudie',
     workCompanies: { other: '{n} Unternehmen' },
@@ -419,6 +473,12 @@ export const uiCopy: Record<Locale, UiCopy> = {
       description:
         'Index : seize compétences en quatre groupes — noyau, systèmes, exécution et expérience spécialisée.',
     },
+    workbench: {
+      output: 'Livrable',
+      seenIn: 'Vu dans',
+      next: 'Suivant :',
+      backToFrame: 'Retour à Cadrer',
+    },
     labArchiveTitle: 'Laboratoire',
     language: 'Langue',
     next: 'Suivant',
@@ -430,6 +490,8 @@ export const uiCopy: Record<Locale, UiCopy> = {
     searchPlaceholder: 'Rechercher',
     switchToLanguage: 'Passer en {language}',
     theme: 'Changer de thème',
+    switchToDarkMode: 'Passer au mode sombre',
+    switchToLightMode: 'Passer au mode clair',
     workArchiveTag: 'Archives',
     workCaseStudy: 'Étude de cas',
     workCompanies: { one: '{n} entreprise', other: '{n} entreprises' },
@@ -474,6 +536,12 @@ export const uiCopy: Record<Locale, UiCopy> = {
       total: '{n}の能力',
       description: '索引：16の能力を4つのグループに — コア、システム、実行、専門経験。',
     },
+    workbench: {
+      output: '成果物',
+      seenIn: '事例',
+      next: '次:',
+      backToFrame: 'フレーミングに戻る',
+    },
     labArchiveTitle: 'ラボ',
     language: '言語',
     next: '次へ',
@@ -485,6 +553,8 @@ export const uiCopy: Record<Locale, UiCopy> = {
     searchPlaceholder: '検索',
     switchToLanguage: '{language}に切り替え',
     theme: 'テーマを切り替え',
+    switchToDarkMode: 'ダークモードに切り替え',
+    switchToLightMode: 'ライトモードに切り替え',
     workArchiveTag: 'アーカイブ',
     workCaseStudy: 'ケーススタディ',
     workCompanies: { other: '{n}社' },

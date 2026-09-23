@@ -1,10 +1,11 @@
 import { Globe } from 'lucide-react'
 import React from 'react'
 
-import { localePath } from '@/i18n/navigation'
 import { cn } from '@/utilities/ui'
-import { LOCALE_LABELS, LOCALES, type Locale } from '@/utilities/locale'
-import { switchToLanguageLabel, uiCopy } from '@/utilities/uiCopy'
+import { type Locale } from '@/utilities/locale'
+import { uiCopy } from '@/utilities/uiCopy'
+
+import { localeDestinations } from './destinations'
 
 export interface LocaleSwitcherProps {
   locale: Locale
@@ -54,12 +55,9 @@ export const LocaleSwitcher: React.FC<LocaleSwitcherProps> = ({
           placement === 'above' ? 'bottom-full mb-2' : 'mt-2',
         )}
       >
-        {LOCALES.filter((l) => l !== locale).map((l) => {
-          const ready = l === 'en' || Boolean(readiness[l])
-          const href = localePath(l, ready ? logicalPath : '/')
-          const switchLabel = switchToLanguageLabel(locale, LOCALE_LABELS[l])
+        {localeDestinations(locale, logicalPath, readiness).filter((option) => !option.current).map((option) => {
           return (
-            <li key={l}>
+            <li key={option.locale}>
               {/* A plain `<a>`, deliberately — not `next/link`. `proxy.ts` rewrites `/fa/about`
                   onto the same physical route as `/about`, so a client-side navigation between
                   locales presents the router with an identical segment tree and it patches
@@ -71,13 +69,13 @@ export const LocaleSwitcher: React.FC<LocaleSwitcherProps> = ({
                   prefetch is a gain here: prefetching a rewrite target would warm the cache with
                   the wrong locale. */}
               <a
-                aria-label={switchLabel}
+                aria-label={option.switchLabel}
                 className="block rounded-control px-2 py-1.5 text-small text-foreground hover:bg-panel"
-                href={href}
-                hrefLang={l}
-                title={switchLabel}
+                href={option.href}
+                hrefLang={option.locale}
+                title={option.switchLabel}
               >
-                {LOCALE_LABELS[l]}
+                {option.label}
               </a>
             </li>
           )
@@ -86,3 +84,36 @@ export const LocaleSwitcher: React.FC<LocaleSwitcherProps> = ({
     </details>
   )
 }
+
+/** Full mobile-menu language list; plain anchors reload the locale-owned root layout. */
+export const InlineLocaleList: React.FC<Omit<LocaleSwitcherProps, 'className' | 'placement'>> = ({
+  locale,
+  logicalPath,
+  readiness,
+}) => (
+  <div className="w-full">
+    <h2 className="eyebrow mb-3 text-ink-3">{uiCopy[locale].language}</h2>
+    <ul className="grid grid-cols-2 gap-x-4 gap-y-1">
+      {localeDestinations(locale, logicalPath, readiness).map((option) => (
+        <li key={option.locale}>
+          {option.current ? (
+            <span aria-current="true" className="block border-s border-brand py-1.5 ps-2 text-small font-medium text-foreground" lang={option.locale}>
+              {option.label}
+            </span>
+          ) : (
+            <a
+              aria-label={option.switchLabel}
+              className="block border-s border-transparent py-1.5 ps-2 text-small text-ink-2 hover:border-line hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+              dir="auto"
+              href={option.href}
+              hrefLang={option.locale}
+              lang={option.locale}
+            >
+              {option.label}
+            </a>
+          )}
+        </li>
+      ))}
+    </ul>
+  </div>
+)
