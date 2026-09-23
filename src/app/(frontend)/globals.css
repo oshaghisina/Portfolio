@@ -457,3 +457,135 @@ html[data-theme='light'] {
     animation-delay: calc(var(--ix-cycle) * -0.92);
   }
 }
+
+/* Shared Home and Experience capability machines. The base drawing is the fully resolved state,
+   including without JavaScript or with reduced motion. The observer adds cap-motion-active only
+   while a grid is on screen; every loop begins and ends in that same resolved state. */
+.cap-illustration {
+  --cap-cycle: 7.2s;
+}
+
+.cap-illustration--discovery { --cap-lag: 0s; }
+.cap-illustration--service { --cap-lag: 0.75s; }
+.cap-illustration--systems { --cap-lag: 1.5s; }
+.cap-illustration--ai-execution { --cap-lag: 2.25s; }
+
+.cap-discovery-noise { opacity: 0.24; }
+.cap-discovery-scan { opacity: 0; }
+.cap-discovery-root,
+.cap-service-core,
+.cap-systems-core,
+.cap-ai-decision,
+.cap-ai-output { opacity: 1; }
+.cap-service-route,
+.cap-systems-response,
+.cap-ai-input,
+.cap-ai-branches,
+.cap-ai-return { opacity: 0; }
+.cap-service-signal circle { opacity: 0; }
+.cap-service-backstage,
+.cap-systems-links { stroke-dasharray: 1; stroke-dashoffset: 0; }
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes cap-discovery-noise {
+    0%, 12%, 80%, 100% { opacity: 0.24; }
+    24%, 42% { opacity: 0.75; }
+    60% { opacity: 0.12; }
+  }
+  @keyframes cap-discovery-scan {
+    0%, 18% { opacity: 0; transform: translateY(0); }
+    23% { opacity: 0.85; transform: translateY(0); }
+    54% { opacity: 0.85; transform: translateY(105px); }
+    62%, 100% { opacity: 0; transform: translateY(105px); }
+  }
+  @keyframes cap-discovery-field {
+    0%, 13%, 80%, 100% { transform: scale(1); }
+    28% { transform: scale(1.035); }
+    58% { transform: scale(0.985); }
+  }
+  @keyframes cap-discovery-root {
+    0%, 13%, 72%, 100% { opacity: 1; }
+    27%, 48% { opacity: 0.16; }
+  }
+  @keyframes cap-service-route {
+    0%, 17%, 85%, 100% { opacity: 0; stroke-dashoffset: 0; }
+    26% { opacity: 0.85; stroke-dashoffset: 1; }
+    59%, 69% { opacity: 0.85; stroke-dashoffset: 0; }
+  }
+  @keyframes cap-service-backstage {
+    0%, 19%, 80%, 100% { stroke-dashoffset: 0; opacity: 1; }
+    28% { stroke-dashoffset: 1; opacity: 0.35; }
+    64% { stroke-dashoffset: 0; opacity: 1; }
+  }
+  @keyframes cap-service-signal {
+    0%, 18%, 75%, 100% { opacity: 0; }
+    32%, 41% { opacity: 1; }
+    53% { opacity: 0; }
+  }
+  @keyframes cap-service-core {
+    0%, 20%, 76%, 100% { opacity: 1; }
+    31% { opacity: 0.25; }
+    50%, 65% { opacity: 1; }
+  }
+  @keyframes cap-systems-change {
+    0%, 17%, 75%, 100% { transform: translate(0); }
+    28%, 41% { transform: translate(7px, 4px); }
+    58% { transform: translate(0); }
+  }
+  @keyframes cap-systems-links {
+    0%, 17%, 78%, 100% { stroke-dashoffset: 0; opacity: 1; }
+    29% { stroke-dashoffset: 1; opacity: 0.4; }
+    60% { stroke-dashoffset: 0; opacity: 1; }
+  }
+  @keyframes cap-systems-response {
+    0%, 31%, 80%, 100% { opacity: 0; }
+    49%, 62% { opacity: 1; }
+  }
+  @keyframes cap-systems-core {
+    0%, 18%, 80%, 100% { opacity: 1; }
+    30% { opacity: 0.22; }
+    60%, 72% { opacity: 1; }
+  }
+  @keyframes cap-ai-input {
+    0%, 14%, 42%, 100% { opacity: 0; stroke-dashoffset: 1; }
+    23%, 31% { opacity: 1; stroke-dashoffset: 0; }
+  }
+  @keyframes cap-ai-branches {
+    0%, 27%, 66%, 100% { opacity: 0; stroke-dashoffset: 1; }
+    43%, 54% { opacity: 1; stroke-dashoffset: 0; }
+  }
+  @keyframes cap-ai-return {
+    0%, 52%, 83%, 100% { opacity: 0; stroke-dashoffset: 1; }
+    67%, 75% { opacity: 1; stroke-dashoffset: 0; }
+  }
+  @keyframes cap-ai-decision {
+    0%, 16%, 83%, 100% { opacity: 1; }
+    25%, 57% { opacity: 0.2; }
+    68%, 76% { opacity: 1; }
+  }
+  @keyframes cap-ai-output {
+    0%, 14%, 85%, 100% { opacity: 1; }
+    27%, 66% { opacity: 0.18; }
+    75% { opacity: 1; }
+  }
+
+  .cap-motion-active .cap-discovery-noise { animation: cap-discovery-noise var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite; }
+  .cap-motion-active .cap-discovery-scan { animation: cap-discovery-scan var(--cap-cycle) linear var(--cap-lag) infinite; }
+  .cap-motion-active .cap-discovery-field { animation: cap-discovery-field var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite; transform-box: fill-box; transform-origin: center; }
+  .cap-motion-active .cap-discovery-root { animation: cap-discovery-root var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite; }
+  .cap-motion-active .cap-service-route { animation: cap-service-route var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite; stroke-dasharray: 1; }
+  .cap-motion-active .cap-service-backstage { animation: cap-service-backstage var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite; }
+  .cap-motion-active .cap-service-signal circle { animation: cap-service-signal var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite; }
+  .cap-motion-active .cap-service-signal circle:nth-child(2) { animation-delay: calc(var(--cap-lag) + 0.7s); }
+  .cap-motion-active .cap-service-signal circle:nth-child(3) { animation-delay: calc(var(--cap-lag) + 1.4s); }
+  .cap-motion-active .cap-service-core { animation: cap-service-core var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite; }
+  .cap-motion-active .cap-systems-change { animation: cap-systems-change var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite; }
+  .cap-motion-active .cap-systems-links { animation: cap-systems-links var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite; }
+  .cap-motion-active .cap-systems-response { animation: cap-systems-response var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite; }
+  .cap-motion-active .cap-systems-core { animation: cap-systems-core var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite; }
+  .cap-motion-active .cap-ai-input { animation: cap-ai-input var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite; stroke-dasharray: 1; }
+  .cap-motion-active .cap-ai-branches { animation: cap-ai-branches var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite; stroke-dasharray: 1; }
+  .cap-motion-active .cap-ai-return { animation: cap-ai-return var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite; stroke-dasharray: 1; }
+  .cap-motion-active .cap-ai-decision { animation: cap-ai-decision var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite; }
+  .cap-motion-active .cap-ai-output { animation: cap-ai-output var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite; }
+}

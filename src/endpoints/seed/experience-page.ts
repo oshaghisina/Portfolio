@@ -15,7 +15,7 @@ import {
 
 /**
  * Create (or refresh) `/experience` in the current database without wiping anything, then point
- * the navigation at it and give the homepage its teaser:
+ * the navigation at it and bring the homepage's Experience section in step with it:
  *
  *   pnpm seed:experience
  *

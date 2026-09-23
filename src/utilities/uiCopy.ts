@@ -63,16 +63,17 @@ export interface UiCopy {
     description: string
   }
   /**
-   * The `/experience` opener's index figure. Decorative-but-textual, for the same reason
-   * `aboutIntersection` is: the marks beside these labels are code-owned geometry, so the words
-   * are interface chrome rather than page content an editor would ever retitle.
+   * The `/experience` opener's group navigation. Its marks are code-owned geometry and its
+   * translated group labels are interface chrome rather than page content an editor would retitle.
    */
   capabilityIndex: {
     /** Core, Systems, Execution, Specialized — in that order, matching the 01–04 ornaments. */
     groups: [string, string, string, string]
+    /** Makes the four anchor links' destination explicit. */
+    indexLabel: string
     /** Accent caption under the index; `{n}` is replaced with the capability count. */
     total: string
-    /** `sr-only` figcaption — the marks themselves are `aria-hidden`. */
+    /** Screen-reader summary — the marks themselves are `aria-hidden`. */
     description: string
   }
   /** `/lab` archive index title and nav label. */
@@ -135,6 +136,7 @@ export const uiCopy: Record<Locale, UiCopy> = {
     },
     capabilityIndex: {
       groups: ['Core', 'Systems', 'Execution', 'Specialized'],
+      indexLabel: 'On this page',
       total: '{n} capabilities',
       description:
         'Index: sixteen capabilities in four groups — core, systems, execution and specialized experience.',
@@ -190,6 +192,7 @@ export const uiCopy: Record<Locale, UiCopy> = {
     },
     capabilityIndex: {
       groups: ['هسته', 'سیستم‌ها', 'اجرا', 'تخصصی'],
+      indexLabel: 'در این صفحه',
       total: '{n} توانمندی',
       description: 'فهرست: شانزده توانمندی در چهار گروه — هسته، سیستم‌ها، اجرا و تجربه‌ی تخصصی.',
     },
@@ -244,6 +247,7 @@ export const uiCopy: Record<Locale, UiCopy> = {
     },
     capabilityIndex: {
       groups: ['الأساس', 'الأنظمة', 'التنفيذ', 'متخصصة'],
+      indexLabel: 'في هذه الصفحة',
       total: '{n} قدرة',
       description: 'فهرس: ست عشرة قدرة في أربع مجموعات — الأساس والأنظمة والتنفيذ والخبرة المتخصصة.',
     },
@@ -298,6 +302,7 @@ export const uiCopy: Record<Locale, UiCopy> = {
     },
     capabilityIndex: {
       groups: ['Núcleo', 'Sistemas', 'Ejecución', 'Especializada'],
+      indexLabel: 'En esta página',
       total: '{n} capacidades',
       description:
         'Índice: dieciséis capacidades en cuatro grupos — núcleo, sistemas, ejecución y experiencia especializada.',
@@ -353,6 +358,7 @@ export const uiCopy: Record<Locale, UiCopy> = {
     },
     capabilityIndex: {
       groups: ['Kern', 'Systeme', 'Umsetzung', 'Spezialisiert'],
+      indexLabel: 'Auf dieser Seite',
       total: '{n} Fähigkeiten',
       description:
         'Index: sechzehn Fähigkeiten in vier Gruppen — Kern, Systeme, Umsetzung und spezialisierte Erfahrung.',
@@ -408,6 +414,7 @@ export const uiCopy: Record<Locale, UiCopy> = {
     },
     capabilityIndex: {
       groups: ['Noyau', 'Systèmes', 'Exécution', 'Spécialisée'],
+      indexLabel: 'Sur cette page',
       total: '{n} compétences',
       description:
         'Index : seize compétences en quatre groupes — noyau, systèmes, exécution et expérience spécialisée.',
@@ -463,6 +470,7 @@ export const uiCopy: Record<Locale, UiCopy> = {
     },
     capabilityIndex: {
       groups: ['コア', 'システム', '実行', '専門'],
+      indexLabel: 'このページ内',
       total: '{n}の能力',
       description: '索引：16の能力を4つのグループに — コア、システム、実行、専門経験。',
     },

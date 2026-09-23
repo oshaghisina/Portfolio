@@ -7,8 +7,9 @@ import { SectionHeader } from '@/components/SectionHeader'
 import { DEFAULT_LOCALE, type Locale } from '@/utilities/locale'
 import { cn } from '@/utilities/ui'
 
-import { SpotlightMark } from '../CapabilityIcons'
 import { isSpotlightKey, type SpotlightKey } from '../CapabilityIcons/keys'
+import { CapabilityIllustration } from '../CapabilityIllustrations/Illustrations'
+import { MotionGrid } from '../CapabilityIllustrations/MotionGrid.client'
 
 export type ExperienceTeaserProps = Pick<
   ExperienceTeaserBlockProps,
@@ -55,19 +56,14 @@ export const ExperienceTeaserBlock: React.FC<ExperienceTeaserProps> = ({
         tagTone="mono"
       />
       {cells.length ? (
-        <ol className="grid grid-cols-1 gap-px border-t border-line bg-line sm:grid-cols-2">
+        <MotionGrid>
           {cells.map((item, i) => (
             <li className="flex min-w-0 flex-col bg-paper p-6 lg:p-8" key={item.id ?? item.key}>
-              {/* Index and mark share a baseline row: the cell stays short and the mark can never
-                  outweigh the title, which is the thing a visitor is here to read. */}
-              <div className="flex items-start justify-between gap-4">
-                <span className="index-code text-ink-3" dir="ltr">
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-                <SpotlightMark
-                  className="size-12 shrink-0"
-                  spotlightKey={item.key as SpotlightKey}
-                />
+              <span className="index-code text-ink-3" dir="ltr">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <div className="mt-4 flex h-[clamp(11.25rem,50vw,13.75rem)] w-full items-center justify-center sm:h-[clamp(12.5rem,19vw,15rem)]">
+                <CapabilityIllustration spotlightKey={item.key as SpotlightKey} />
               </div>
               <h3 className="mt-5 text-h3 tracking-h3 font-medium text-foreground text-balance">
                 {item.title}
@@ -75,7 +71,7 @@ export const ExperienceTeaserBlock: React.FC<ExperienceTeaserProps> = ({
               <p className="mt-2 text-small text-ink-3">{item.principle}</p>
             </li>
           ))}
-        </ol>
+        </MotionGrid>
       ) : null}
       {rows.length ? (
         <dl className="grid grid-cols-1 gap-px border-y border-line bg-line sm:grid-cols-3">

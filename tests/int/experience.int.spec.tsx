@@ -5,12 +5,16 @@
  * icon registries cover every key so a capability can never render blank; evidence becomes a link
  * only where there is a published case study to land on; and the locale overlay translates the
  * words without disturbing the structure underneath them.
+ *
+ * The homepage preview is covered here too, beside the page it previews: its job is to stay in
+ * step with this page, so the assertions that catch it drifting belong next to the source.
  */
 import { cleanup, render, screen } from '@testing-library/react'
 import React from 'react'
 import { afterEach, describe, expect, it } from 'vitest'
 
-import { SkillIcon, SpotlightIllustration } from '@/blocks/CapabilityIcons'
+import { SkillIcon } from '@/blocks/CapabilityIcons'
+import { CapabilityIllustration } from '@/blocks/CapabilityIllustrations/Illustrations'
 import {
   SKILL_GROUP_KEYS,
   SKILL_KEYS,
@@ -20,14 +24,22 @@ import {
 } from '@/blocks/CapabilityIcons/keys'
 import { CapabilityMatrixBlock } from '@/blocks/CapabilityMatrix/Component'
 import { CapabilityMatrix, SKILL_LABELS } from '@/blocks/CapabilityMatrix/config'
+import { CapabilitySpotlightBlock } from '@/blocks/CapabilitySpotlight/Component'
 import { CapabilitySpotlight } from '@/blocks/CapabilitySpotlight/config'
+import { ExperienceTeaserBlock } from '@/blocks/ExperienceTeaser/Component'
+import { ExperienceTeaser } from '@/blocks/ExperienceTeaser/config'
 import { EvidenceRef } from '@/components/EvidenceRef'
+import { CapabilityIndex } from '@/components/CapabilityIndex'
 import { experiencePageCopy } from '@/endpoints/seed/experience-page-copy'
 import {
   buildExperienceHero,
   buildExperienceLayout,
+  buildExperienceTeaserBlock,
+  localizeExperienceTeaserBlock,
   localizeExperienceLayout,
+  orderExperienceLayout,
 } from '@/endpoints/seed/experience-page-content'
+import { HOME_TEASER_METRICS } from '@/endpoints/seed/home-content'
 import type { Project } from '@/payload-types'
 import { LOCALES } from '@/utilities/locale'
 
@@ -49,7 +61,10 @@ const project = (overrides: Partial<Project> = {}): Project => ({
 })
 
 /** A validator as Payload will call it, without Payload's argument plumbing. */
-const validatorFor = (block: typeof CapabilityMatrix | typeof CapabilitySpotlight, name: string) => {
+const validatorFor = (
+  block: typeof CapabilityMatrix | typeof CapabilitySpotlight | typeof ExperienceTeaser,
+  name: string,
+) => {
   const field = block.fields.find((f) => 'name' in f && f.name === name)!
   return (field as { validate: (value: unknown) => string | true }).validate
 }
@@ -75,7 +90,7 @@ describe('capability vocabulary', () => {
 
   it('draws each primary capability and keeps art out of the accessibility tree', () => {
     for (const key of SPOTLIGHT_KEYS) {
-      const { container } = render(<SpotlightIllustration spotlightKey={key} />)
+      const { container } = render(<CapabilityIllustration spotlightKey={key} />)
       const svg = container.querySelector('svg')!
       expect(svg.getAttribute('aria-hidden'), `aria-hidden for ${key}`).toBe('true')
       // Art never mirrors: the labels beside it carry the reading order, the drawing does not.
@@ -221,11 +236,26 @@ describe('seeded page', () => {
   it('lays the page out in the order the argument needs', () => {
     expect(layout.map((b) => b.blockType)).toEqual([
       'capabilitySpotlight',
-      'capabilityMatrix',
       'capabilityEvidence',
+      'capabilityMatrix',
       'capabilityModel',
       'cta',
     ])
+  })
+
+  it('moves stored evidence ahead of the matrix without rebuilding rows', () => {
+    const older = [layout[0]!, layout[2]!, layout[1]!, layout[3]!, layout[4]!]
+    const ordered = orderExperienceLayout(older)!
+    expect(ordered.map((block) => block.blockType)).toEqual([
+      'capabilitySpotlight',
+      'capabilityEvidence',
+      'capabilityMatrix',
+      'capabilityModel',
+      'cta',
+    ])
+    expect(ordered[1]).toBe(older[2])
+    expect(ordered[2]).toBe(older[1])
+    expect(orderExperienceLayout(ordered)).toBe(ordered)
   })
 
   it('writes every capability description in every locale', () => {
@@ -300,6 +330,22 @@ describe('rendered matrix', () => {
     )
   })
 
+  it('connects all four hero index links to stable group anchors', () => {
+    const { container } = render(
+      <>
+        <CapabilityIndex locale="en" />
+        <CapabilityMatrixBlock
+          {...(matrix as Parameters<typeof CapabilityMatrixBlock>[0])}
+          locale="en"
+        />
+      </>,
+    )
+    const nav = screen.getByRole('navigation', { name: 'On this page' })
+    const hrefs = [...nav.querySelectorAll('a')].map((link) => link.getAttribute('href'))
+    expect(hrefs).toEqual(SKILL_GROUP_KEYS.map((key) => `#capability-group-${key}`))
+    for (const href of hrefs) expect(container.querySelector(href!)).toBeTruthy()
+  })
+
   it('shows no proficiency signal of any kind', () => {
     const { container } = render(
       <CapabilityMatrixBlock
@@ -309,5 +355,147 @@ describe('rendered matrix', () => {
     )
     expect(container.querySelector('progress, meter, [role="progressbar"]')).toBeNull()
     expect(container.textContent).not.toMatch(/\d+\s?%|Advanced|Intermediate|Beginner|Expert/i)
+  })
+})
+
+describe('experience spotlight', () => {
+  it('uses the same four substantial diagrams as the homepage', () => {
+    const spotlight = buildExperienceLayout(experiencePageCopy.en)!.find(
+      (block) => block.blockType === 'capabilitySpotlight',
+    )!
+    const { container } = render(
+      <CapabilitySpotlightBlock {...(spotlight as Parameters<typeof CapabilitySpotlightBlock>[0])} />,
+    )
+    const diagrams = [...container.querySelectorAll('svg.cap-illustration')]
+    expect(diagrams).toHaveLength(4)
+    for (const diagram of diagrams) {
+      expect(diagram.getAttribute('viewBox')).toBe('0 0 400 240')
+      expect(diagram.getAttribute('aria-hidden')).toBe('true')
+    }
+  })
+})
+
+describe('homepage preview', () => {
+  const teaser = buildExperienceTeaserBlock('en', HOME_TEASER_METRICS)
+  const spotlight = experiencePageCopy.en.spotlight
+
+  it('renders four substantial concept diagrams outside the accessibility tree', () => {
+    const { container } = render(<ExperienceTeaserBlock {...teaser} />)
+    const diagrams = [...container.querySelectorAll('.cap-illustration')]
+    expect(diagrams).toHaveLength(4)
+    for (const [i, svg] of diagrams.entries()) {
+      expect(svg.getAttribute('aria-hidden')).toBe('true')
+      expect(svg.getAttribute('viewBox')).toBe('0 0 400 240')
+      expect((svg as SVGElement).style.direction).toBe('ltr')
+      expect(svg.classList.contains(`cap-illustration--${SPOTLIGHT_KEYS[i]}`)).toBe(true)
+      expect(svg.querySelectorAll('rect, circle, line, path').length).toBeGreaterThan(12)
+      expect(svg.querySelector('[stroke="var(--track-accent)"], [fill="var(--track-accent)"]')).toBeTruthy()
+    }
+  })
+
+  it('takes its words from /experience rather than restating them', () => {
+    for (const locale of LOCALES) {
+      const block = buildExperienceTeaserBlock(locale, HOME_TEASER_METRICS)
+      const page = experiencePageCopy[locale].spotlight
+      expect(block.sectionHeader.tag, `tag in ${locale}`).toBe(page.header.tag)
+      expect(block.sectionHeader.lead, `lead in ${locale}`).toBe(page.header.lead)
+      expect(block.sectionHeader.tail, `tail in ${locale}`).toBe(page.header.tail)
+      for (const row of block.capabilities) {
+        expect(row.title, `${row.key} title in ${locale}`).toBe(page.items[row.key].title)
+        expect(row.principle, `${row.key} principle in ${locale}`).toBe(page.items[row.key].principle)
+      }
+    }
+  })
+
+  it('carries all four capabilities and passes its own schema validator', () => {
+    expect(teaser.capabilities.map((row) => row.key)).toEqual([...SPOTLIGHT_KEYS])
+    expect(validatorFor(ExperienceTeaser, 'capabilities')(teaser.capabilities)).toBe(true)
+  })
+
+  it('refuses a missing or duplicated primary capability', () => {
+    const validate = validatorFor(ExperienceTeaser, 'capabilities')
+    expect(validate(teaser.capabilities.slice(0, 3))).toMatch(/must be present/i)
+    expect(validate([...teaser.capabilities.slice(0, 3), teaser.capabilities[0]])).toMatch(/once/i)
+  })
+
+  it('previews without duplicating the page: no descriptions, no sixteen skills', () => {
+    render(<ExperienceTeaserBlock {...teaser} />)
+    for (const key of SPOTLIGHT_KEYS) {
+      expect(screen.getByText(spotlight.items[key].title)).toBeTruthy()
+      expect(screen.getByText(spotlight.items[key].principle)).toBeTruthy()
+      expect(screen.queryByText(spotlight.items[key].description)).toBeNull()
+    }
+    expect(screen.queryByText(experiencePageCopy.en.matrix.header.lead)).toBeNull()
+  })
+
+  it('demotes the metrics to a description list with no graphical bars', () => {
+    const { container } = render(<ExperienceTeaserBlock {...teaser} />)
+    const list = container.querySelector('dl')!
+    // `dt` before its `dd` in the DOM; `flex-col-reverse` puts the value on top visually.
+    expect([...list.querySelectorAll('dt, dd')].map((el) => el.tagName)).toEqual([
+      'DT', 'DD', 'DT', 'DD', 'DT', 'DD',
+    ])
+    expect([...list.querySelectorAll('dd')].map((el) => el.textContent)).toEqual(
+      HOME_TEASER_METRICS.map((metric) => metric.value),
+    )
+    // The old strip drew a decorative bar per metric at a hardcoded width. A number that needs a
+    // bar to be understood is a number that should not be in a proof strip.
+    expect(container.querySelectorAll('[style*="width"]')).toHaveLength(0)
+    // And nothing here is a self-rated score.
+    expect(container.textContent).not.toMatch(/%|advanced|intermediate/i)
+  })
+
+  it('links onward to /experience, locale-prefixed', () => {
+    render(<ExperienceTeaserBlock {...teaser} locale="fa" />)
+    expect(screen.getByRole('link', { name: /.+/ })).toHaveProperty(
+      'href',
+      expect.stringContaining('/fa/experience'),
+    )
+  })
+
+  it('leaves /experience unprefixed for English', () => {
+    render(<ExperienceTeaserBlock {...teaser} />)
+    const href = screen.getByRole('link', { name: /.+/ }).getAttribute('href')
+    expect(href).toBe('/experience')
+  })
+
+  it('keeps every row id through the locale overlay', () => {
+    const seeded = {
+      ...teaser,
+      id: 'row-1',
+      capabilities: teaser.capabilities.map((row, i) => ({ ...row, id: `c${i}` })),
+      metrics: teaser.metrics.map((row, i) => ({ ...row, id: `m${i}` })),
+      links: teaser.links.map((row, i) => ({ ...row, id: `l${i}` })),
+    }
+    // The overlay works on Payload's loosely-typed layout rows, so the ids it carries through are
+    // invisible to inference. Naming the shape here is the assertion: these keys must survive.
+    const fa = localizeExperienceTeaserBlock('fa', seeded, HOME_TEASER_METRICS) as unknown as {
+      capabilities: { id: string; key: string; title: string }[]
+      id: string
+      links: { id: string }[]
+      metrics: { id: string }[]
+      sectionHeader: { lead: string }
+    }
+
+    expect(fa.id).toBe('row-1')
+    expect(fa.capabilities.map((row) => row.id)).toEqual(['c0', 'c1', 'c2', 'c3'])
+    expect(fa.metrics.map((row) => row.id)).toEqual(['m0', 'm1', 'm2'])
+    expect(fa.links.map((row) => row.id)).toEqual(['l0'])
+    // Keys are identity, never translated.
+    expect(fa.capabilities.map((row) => row.key)).toEqual([...SPOTLIGHT_KEYS])
+    // The words, however, are.
+    expect(fa.capabilities[0].title).toBe(experiencePageCopy.fa.spotlight.items.discovery.title)
+    expect(fa.sectionHeader.lead).toBe(experiencePageCopy.fa.spotlight.header.lead)
+  })
+
+  it('is tagged apart from the employer grid it sits beside', () => {
+    // Both sections used to wear an "Experience" eyebrow. The preview borrows /experience's own
+    // section tag instead, which is also what makes the two pages read as one argument.
+    for (const locale of LOCALES) {
+      const block = buildExperienceTeaserBlock(locale, HOME_TEASER_METRICS)
+      expect(block.sectionHeader.tag, `tag in ${locale}`).not.toBe(
+        experiencePageCopy[locale].title,
+      )
+    }
   })
 })

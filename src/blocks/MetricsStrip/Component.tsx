@@ -11,8 +11,8 @@ export type MetricsStripProps = Pick<MetricsStripBlockProps, 'metrics' | 'sectio
 
 /**
  * Decorative bar weight per row — purely editorial rhythm, breaking up equal columns. Not a
- * proportional chart: "10 yrs", "9 companies" and "7 industries" are different units, so a
- * literal comparative bar length would misrepresent the data rather than illustrate it.
+ * proportional chart: a duration, a headcount and a percentage are different units, so a literal
+ * comparative bar length would misrepresent the data rather than illustrate it.
  */
 const BAR_WEIGHT = ['100%', '70%', '46%', '30%']
 
@@ -39,7 +39,13 @@ const PhoneBar: React.FC<{ index: number }> = ({ index }) => {
 /**
  * Metrics as a stacked editorial transition, not an equal-column stats row. On phones the ruled
  * rows become a centered vertical data composition (value, small graphic, tiny label) and the
- * block owns the first long silence of the page through its bottom padding.
+ * block owns a long silence after itself through its bottom padding.
+ *
+ * Home no longer uses this block: its three numbers became the proof strip inside the Experience
+ * section (`blocks/ExperienceTeaser`), where they support the capabilities rather than being the
+ * whole argument, and where half a viewport of deliberate silence would read as a dead section
+ * rather than a pause. Kept registered for pages that want a standalone stats row, and sampled
+ * on `/design`.
  */
 export const MetricsStripBlock: React.FC<MetricsStripProps> = ({ className, metrics, sectionHeader }) => {
   const rows = (metrics ?? []).slice(0, 4)

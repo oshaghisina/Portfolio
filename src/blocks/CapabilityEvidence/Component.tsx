@@ -19,12 +19,10 @@ export type CapabilityEvidenceProps = Pick<
 }
 
 /**
- * Evidence as sums. Each row names the work, then the capabilities that had to combine for it —
- * joined with a literal "+" so the page argues that the combination is the point, not any one
- * skill in it.
+ * Evidence as sums. Each row names the work, then places the capabilities that combined for it
+ * on one quiet rail. The project remains the visual lead, ahead of the complete skill inventory.
  *
- * The "+" is `aria-hidden` and the capabilities are a real list, so a screen reader hears three
- * items rather than a run-on sentence punctuated by plus signs.
+ * The "+" is `aria-hidden` inside its preceding item, so a screen reader hears only the real list.
  */
 export const CapabilityEvidenceBlock: React.FC<CapabilityEvidenceProps> = ({
   className,
@@ -45,7 +43,7 @@ export const CapabilityEvidenceBlock: React.FC<CapabilityEvidenceProps> = ({
           )
           return (
             <li
-              className="grid gap-x-8 gap-y-4 border-b border-line py-7 lg:grid-cols-12"
+              className="grid gap-x-8 gap-y-5 border-b border-line py-7 lg:grid-cols-12 lg:items-center"
               key={item.id ?? i}
             >
               <div className="flex min-w-0 items-baseline gap-3 lg:col-span-5">
@@ -56,22 +54,18 @@ export const CapabilityEvidenceBlock: React.FC<CapabilityEvidenceProps> = ({
                   <h3 className="text-h3 tracking-h3 font-medium text-foreground text-balance">
                     <EvidenceRef label={item.label!} locale={locale} project={item.project} />
                   </h3>
-                  {item.note ? <p className="mt-2 text-small text-ink-3">{item.note}</p> : null}
+                  {item.note ? <p className="mt-2 text-small text-ink-2">{item.note}</p> : null}
                 </div>
               </div>
-              <ul className="flex flex-wrap items-center gap-x-3 gap-y-2 lg:col-span-7">
+              <ul className="flex flex-wrap items-center gap-x-3 gap-y-3 border-s border-line ps-4 lg:col-span-7 lg:ms-4">
                 {capabilities.map((capability, c) => (
-                  <React.Fragment key={capability.id ?? c}>
-                    {c > 0 ? (
-                      <li aria-hidden className="text-small text-ink-3">
-                        +
-                      </li>
-                    ) : null}
-                    <li className="flex items-center gap-2">
+                    <li className="flex items-center gap-2" key={capability.id ?? c}>
                       <SkillIcon className="size-6 shrink-0" skillKey={capability.key as SkillKey} />
                       <span className="eyebrow text-ink-2">{capability.label}</span>
+                      {c < capabilities.length - 1 ? (
+                        <span aria-hidden className="ms-1 text-small text-ink-3">+</span>
+                      ) : null}
                     </li>
-                  </React.Fragment>
                 ))}
               </ul>
             </li>

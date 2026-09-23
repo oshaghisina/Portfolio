@@ -20,6 +20,19 @@ import {
 type PageLayout = RequiredDataFromCollectionSlug<'pages'>['layout']
 type PageBlock = NonNullable<PageLayout>[number]
 
+/** Reorder stored rows without rebuilding them, so CMS ids and localized leaves survive. */
+export const orderExperienceLayout = (layout: PageLayout): PageLayout => {
+  if (!layout) return layout
+  const evidenceIndex = layout.findIndex((block) => block.blockType === 'capabilityEvidence')
+  const matrixIndex = layout.findIndex((block) => block.blockType === 'capabilityMatrix')
+  if (evidenceIndex < 0 || matrixIndex < 0 || evidenceIndex < matrixIndex) return layout
+
+  const ordered = [...layout]
+  const [evidence] = ordered.splice(evidenceIndex, 1)
+  ordered.splice(ordered.findIndex((block) => block.blockType === 'capabilityMatrix'), 0, evidence!)
+  return ordered
+}
+
 export const EXPERIENCE_SLUG = 'experience'
 /** Logical (unprefixed) path of the capability page. */
 export const EXPERIENCE_PATH = `/${EXPERIENCE_SLUG}`
@@ -140,22 +153,6 @@ export const buildExperienceLayout = (copy: ExperiencePageCopy, projectIds?: Pro
       items: SPOTLIGHT_KEYS.map((key) => ({ key, ...copy.spotlight.items[key] })),
     },
     {
-      blockName: 'Capability matrix',
-      blockType: 'capabilityMatrix',
-      sectionHeader: copy.matrix.header,
-      evidenceLabel: copy.matrix.evidenceLabel,
-      groups: SKILL_GROUP_KEYS.map((groupKey: SkillGroupKey) => ({
-        key: groupKey,
-        title: copy.matrix.groups[groupKey],
-        skills: SKILLS_BY_GROUP[groupKey].map((skillKey) => ({
-          key: skillKey,
-          title: copy.matrix.skills[skillKey].title,
-          description: copy.matrix.skills[skillKey].description,
-          evidence: evidenceRefs(skillKey),
-        })),
-      })),
-    },
-    {
       blockName: 'Selected evidence',
       blockType: 'capabilityEvidence',
       sectionHeader: copy.evidence.header,
@@ -172,6 +169,22 @@ export const buildExperienceLayout = (copy: ExperiencePageCopy, projectIds?: Pro
           })),
         }
       }),
+    },
+    {
+      blockName: 'Capability matrix',
+      blockType: 'capabilityMatrix',
+      sectionHeader: copy.matrix.header,
+      evidenceLabel: copy.matrix.evidenceLabel,
+      groups: SKILL_GROUP_KEYS.map((groupKey: SkillGroupKey) => ({
+        key: groupKey,
+        title: copy.matrix.groups[groupKey],
+        skills: SKILLS_BY_GROUP[groupKey].map((skillKey) => ({
+          key: skillKey,
+          title: copy.matrix.skills[skillKey].title,
+          description: copy.matrix.skills[skillKey].description,
+          evidence: evidenceRefs(skillKey),
+        })),
+      })),
     },
     {
       blockName: 'Working across disciplines',

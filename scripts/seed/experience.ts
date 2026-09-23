@@ -2,8 +2,9 @@
  * Create or refresh `/experience` in the current database without wiping anything:
  *   pnpm seed:experience
  * Additive and idempotent — the page is matched by slug, the navigation rows are rewritten in
- * place, and the homepage teaser is inserted only if it is missing. Hard-refresh `/` (or restart
- * `pnpm dev`) afterwards; the script runs with no Next server, so revalidation is disabled.
+ * place, and the homepage's Experience section is inserted or rewritten in place, keeping its row
+ * ids. Hard-refresh `/` (or restart `pnpm dev`) afterwards; the script runs with no Next server,
+ * so revalidation is disabled.
  */
 import 'dotenv/config'
 
