@@ -1,7 +1,7 @@
 {
   "name": "sina-oshaghi-portfolio",
   "version": "1.0.0",
-  "description": "Website template for Payload",
+  "description": "Personal product-design portfolio for Sina Oshaghi — Payload CMS + Next.js",
   "license": "MIT",
   "type": "module",
   "scripts": {

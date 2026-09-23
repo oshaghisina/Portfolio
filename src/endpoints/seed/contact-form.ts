@@ -35,6 +35,7 @@ export const contactForm: RequiredDataFromCollectionSlug<'forms'> = {
   createdAt: '2023-01-12T21:47:41.374Z',
   emails: [
     {
+      // TODO: replace with Sina’s real transactional From address before production mail.
       emailFrom: '"Payload" \u003Cdemo@payloadcms.com\u003E',
       emailTo: '{{email}}',
       message: {

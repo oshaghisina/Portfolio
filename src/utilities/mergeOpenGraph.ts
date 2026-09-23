@@ -7,7 +7,7 @@ const defaultOpenGraph: Metadata['openGraph'] = {
   description: 'Product, design, growth and AI systems — built as one connected practice.',
   images: [
     {
-      url: `${getServerSideURL()}/website-template-OG.webp`,
+      url: `${getServerSideURL()}/sina-oshaghi-OG.webp`,
     },
   ],
   siteName: SITE_NAME,
