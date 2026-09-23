@@ -41,7 +41,7 @@ export const aboutHeroRichTextFa = richText(
 export const aboutMetaTitleEn = 'About — Sina Oshaghi'
 export const aboutMetaDescriptionEn =
   'How a product designer became someone who thinks across product, business, growth and systems — trajectory, principles and current direction.'
-export const aboutMetaTitleFa = 'درباره — سینا اوشاقی'
+export const aboutMetaTitleFa = 'درباره — سینا عشاقی'
 export const aboutMetaDescriptionFa =
   'مسیر من از طراحی محصول تا کار در پیوند محصول، کسب‌وکار، رشد و سیستم‌ها؛ همراه با اصول کار و مسیر امروز.'
 

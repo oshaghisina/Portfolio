@@ -122,7 +122,7 @@ export const contactCopy: Record<Locale, ContactCopy> = {
   fa: {
     title: 'تماس',
     meta: {
-      title: 'تماس — سینا اوشاقی',
+      title: 'تماس — سینا عشاقی',
       description:
         'اگر مسئله‌ای در محصول، سرویس، سیستم، رشد یا AI دارید که هنوز روشن نیست، از همین‌جا گفتگو را شروع کنید.',
     },

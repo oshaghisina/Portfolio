@@ -25,7 +25,7 @@ export const aboutGlobalEn = {
 }
 
 export const aboutGlobalFa = {
-  name: 'سینا اوشاقی',
+  name: 'سینا عشاقی',
   headline: 'طراح و مدیر محصول',
   tagline: 'محصول، طراحی و رشد، از ابتدا تا انتها.',
   bioShort:
