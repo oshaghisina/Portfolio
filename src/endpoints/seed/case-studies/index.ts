@@ -9,6 +9,14 @@ import {
   dgLocalizedFields,
 } from './digital-gold'
 import {
+  K45_ASSETS,
+  K45_LOCALES,
+  K45_MEDIA,
+  K45_SHARED_FIELDS,
+  K45_SLUG,
+  k45LocalizedFields,
+} from './khodro45-dealer-app'
+import {
   RP1_ASSETS,
   RP1_MEDIA,
   RP1_SHARED_FIELDS,
@@ -65,6 +73,21 @@ export const CASE_STUDIES: CaseStudySeedConfig<any, any>[] = [
     replaceCover: true,
     sharedFields: DG_SHARED_FIELDS,
     localizedFields: dgLocalizedFields,
+  },
+  {
+    label: 'Khodro45 Dealer App',
+    slug: K45_SLUG,
+    assetsDir: K45_ASSETS,
+    media: K45_MEDIA,
+    seedLocales: K45_LOCALES,
+    createFields: {
+      kind: ['product', 'systems'],
+      order: 4,
+      featured: true,
+      coverMediaKey: 'carListLive',
+    },
+    sharedFields: K45_SHARED_FIELDS,
+    localizedFields: k45LocalizedFields,
   },
 ]
 
