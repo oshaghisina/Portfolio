@@ -1346,14 +1346,38 @@ export interface WorkMosaicBlock {
  */
 export interface WorkspaceBlock {
   sectionHeader?: SectionHeaderField;
-  tracks?:
+  /**
+   * Ownership bracket label spanning the stage rail, e.g. "Own the problem — at every stage".
+   */
+  principle: string;
+  /**
+   * Return-edge caption under the rail, e.g. "Evidence reopens the model".
+   */
+  loopLabel: string;
+  stages?:
     | {
         /**
-         * e.g. "S1"
+         * Selects the bench visual state. Order on the page is fixed by key, not by this array.
          */
-        code: string;
+        key: 'frame' | 'map' | 'decide' | 'ship' | 'measure';
         label: string;
+        /**
+         * Short claim under the stage name in the rail (desktop) / panel h3 (mobile).
+         */
+        statement: string;
+        /**
+         * Core question shown as the desktop panel heading.
+         */
+        question: string;
         description: string;
+        /**
+         * What this stage produces, e.g. "Problem statement + success metric".
+         */
+        output: string;
+        /**
+         * Optional. Shown as “Seen in” only when the project has a published case study in the current locale.
+         */
+        evidence?: (string | null) | Project;
         id?: string | null;
       }[]
     | null;
@@ -2520,12 +2544,18 @@ export interface WorkMosaicBlockSelect<T extends boolean = true> {
  */
 export interface WorkspaceBlockSelect<T extends boolean = true> {
   sectionHeader?: T | SectionHeaderFieldSelect<T>;
-  tracks?:
+  principle?: T;
+  loopLabel?: T;
+  stages?:
     | T
     | {
-        code?: T;
+        key?: T;
         label?: T;
+        statement?: T;
+        question?: T;
         description?: T;
+        output?: T;
+        evidence?: T;
         id?: T;
       };
   id?: T;
