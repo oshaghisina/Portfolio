@@ -1,0 +1,383 @@
+/* Opaque, shaded objects share the site's paper, ink and single orange accent. */
+.cap-illustration {
+  --cap-cycle: 4.6s;
+  --cap-top: var(--panel);
+  --cap-left: color-mix(in oklab, var(--paper) 88%, var(--ink));
+  --cap-right: color-mix(in oklab, var(--paper) 76%, var(--ink));
+  --cap-muted: color-mix(in oklab, var(--paper) 57%, var(--ink));
+  --cap-edge: color-mix(in oklab, var(--paper) 63%, var(--ink));
+  --cap-dark: color-mix(in oklab, var(--ink) 86%, var(--paper));
+  --cap-dark-left: color-mix(in oklab, var(--ink) 72%, var(--paper));
+  --cap-dark-right: var(--ink);
+  --cap-accent-left: color-mix(in oklab, var(--track-accent) 79%, #67320d);
+  --cap-accent-right: color-mix(in oklab, var(--track-accent) 65%, #67320d);
+  --cap-highlight: #fff7ed;
+  --cap-lens-edge: color-mix(in oklab, var(--paper) 48%, var(--ink));
+  --cap-glass: color-mix(in oklab, var(--track-accent) 3%, transparent);
+  --cap-shadow: color-mix(in oklab, var(--ink) 4%, transparent);
+  overflow: visible;
+}
+
+.cap-illustration--service {
+  --cap-cycle: 3.8s;
+}
+.cap-illustration--systems {
+  --cap-cycle: 4.2s;
+}
+.cap-illustration--ai-execution {
+  --cap-cycle: 4.2s;
+}
+.cap-scene {
+  transform-origin: 200px 150px;
+}
+.cap-anim {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.cap-packet {
+  opacity: 0;
+  stroke-dasharray: 0.16 0.84;
+}
+
+/* No animation is attached until the observer is ready. Every static scene is complete.
+   Each cell pauses independently; scrolling never resets its timeline. */
+@media (prefers-reduced-motion: no-preference) {
+  .cap-motion-grid[data-cap-motion='true'] .cap-anim {
+    animation-name: var(--cap-animation);
+    animation-duration: var(--cap-cycle);
+    animation-timing-function: cubic-bezier(0.22, 0.75, 0.22, 1);
+    animation-delay: var(--cap-delay, 0s);
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+    animation-play-state: paused;
+  }
+
+  .cap-motion-grid[data-cap-motion='true'] > li[data-cap-visible='true'] .cap-anim {
+    animation-play-state: running;
+  }
+
+  .cap-scene {
+    transition: transform 320ms var(--ease-standard);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .cap-motion-grid > li:hover .cap-scene {
+      transform: translateY(-4px) scale(1.025);
+    }
+  }
+
+  @keyframes cap-evidence-back {
+    0%,
+    65%,
+    100% {
+      transform: translate(0, 0);
+    }
+    20%,
+    35% {
+      transform: translate(16px, 9px);
+    }
+  }
+  @keyframes cap-evidence-mid {
+    0%,
+    60%,
+    100% {
+      transform: translate(0, 0);
+    }
+    20%,
+    35% {
+      transform: translate(-12px, 3px);
+    }
+  }
+  @keyframes cap-lens {
+    0%,
+    58%,
+    82%,
+    100% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+    18% {
+      transform: translate(-32px, 17px) rotate(-8deg);
+    }
+    35% {
+      transform: translate(12px, -9px) rotate(4deg);
+    }
+    49% {
+      transform: translate(-2px, 1px) rotate(-1deg);
+    }
+  }
+  @keyframes cap-insight {
+    0%,
+    65%,
+    100% {
+      transform: translateY(0);
+    }
+    15%,
+    38% {
+      transform: translateY(12px);
+    }
+    54% {
+      transform: translateY(-4px);
+    }
+  }
+  @keyframes cap-focus {
+    0%,
+    58%,
+    84%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    15%,
+    38% {
+      opacity: 0.12;
+      transform: scale(1.24);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(0.94);
+    }
+  }
+  @keyframes cap-insight-mark {
+    0%,
+    10%,
+    90%,
+    100% {
+      opacity: 0.7;
+      transform: scale(1);
+    }
+    20%,
+    42% {
+      opacity: 0;
+      transform: scale(0.75);
+    }
+    58%,
+    76% {
+      opacity: 1;
+      transform: scale(1.12);
+    }
+  }
+
+  @keyframes cap-service-deck {
+    0%,
+    42%,
+    100% {
+      transform: translateY(0);
+    }
+    18% {
+      transform: translateY(-6px);
+    }
+  }
+  @keyframes cap-touchpoint {
+    0%,
+    12%,
+    48%,
+    100% {
+      transform: translateY(0);
+    }
+    28% {
+      transform: translateY(-7px);
+    }
+  }
+  @keyframes cap-journey {
+    0% {
+      opacity: 0;
+      stroke-dashoffset: 1;
+    }
+    6% {
+      opacity: 1;
+      stroke-dashoffset: 1;
+    }
+    62% {
+      opacity: 1;
+      stroke-dashoffset: 0;
+    }
+    68%,
+    100% {
+      opacity: 0;
+      stroke-dashoffset: 0;
+    }
+  }
+  @keyframes cap-service-drop {
+    0%,
+    27% {
+      opacity: 0;
+      stroke-dashoffset: 1;
+    }
+    32% {
+      opacity: 1;
+      stroke-dashoffset: 1;
+    }
+    59% {
+      opacity: 1;
+      stroke-dashoffset: 0;
+    }
+    65%,
+    100% {
+      opacity: 0;
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes cap-module {
+    0%,
+    58%,
+    100% {
+      transform: translate(0, 0);
+    }
+    20%,
+    32% {
+      transform: translate(var(--cap-dx), var(--cap-dy));
+    }
+    48% {
+      transform: translate(0, 2px);
+    }
+  }
+  @keyframes cap-system-core {
+    0%,
+    62%,
+    100% {
+      transform: translateY(0);
+    }
+    20%,
+    32% {
+      transform: translateY(-27px);
+    }
+    49% {
+      transform: translateY(3px);
+    }
+  }
+  @keyframes cap-system-lock {
+    0%,
+    10%,
+    90%,
+    100% {
+      opacity: 0.6;
+    }
+    20%,
+    40% {
+      opacity: 0;
+    }
+    55%,
+    76% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes cap-brief {
+    0%,
+    35%,
+    100% {
+      transform: translate(0, 0);
+    }
+    16% {
+      transform: translate(7px, -3px);
+    }
+  }
+  @keyframes cap-ai-feed {
+    0% {
+      opacity: 0;
+      stroke-dashoffset: 1;
+    }
+    5% {
+      opacity: 1;
+      stroke-dashoffset: 1;
+    }
+    28% {
+      opacity: 1;
+      stroke-dashoffset: 0;
+    }
+    34%,
+    100% {
+      opacity: 0;
+      stroke-dashoffset: 0;
+    }
+  }
+  @keyframes cap-processor {
+    0%,
+    17%,
+    76%,
+    100% {
+      transform: translateY(0);
+    }
+    32% {
+      transform: translateY(-9px);
+    }
+    45% {
+      transform: translateY(1px);
+    }
+    59% {
+      transform: translateY(-4px);
+    }
+  }
+  @keyframes cap-ai-build {
+    0%,
+    32% {
+      opacity: 0;
+      stroke-dashoffset: 1;
+    }
+    38% {
+      opacity: 1;
+      stroke-dashoffset: 1;
+    }
+    60% {
+      opacity: 1;
+      stroke-dashoffset: 0;
+    }
+    67%,
+    100% {
+      opacity: 0;
+      stroke-dashoffset: 0;
+    }
+  }
+  @keyframes cap-output {
+    0%,
+    78%,
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    17%,
+    48% {
+      transform: translateY(9px);
+      opacity: 0.85;
+    }
+    65% {
+      transform: translateY(-3px);
+      opacity: 1;
+    }
+  }
+  @keyframes cap-output-content {
+    0%,
+    78%,
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    15%,
+    50% {
+      opacity: 0.55;
+      transform: translateY(4px);
+    }
+    67% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes cap-approved {
+    0%,
+    88%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    15%,
+    58% {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    76% {
+      opacity: 1;
+      transform: scale(1.14);
+    }
+  }
+}

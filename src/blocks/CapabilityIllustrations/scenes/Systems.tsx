@@ -1,89 +1,107 @@
 import React from 'react'
 
-import {
-  ACCENT,
-  CapAnno,
-  CapBox,
-  CapDotField,
-  CapLink,
-  CapNode,
-  CapPlate,
-  CapRegistration,
-  CapSignal,
-  STROKE,
-  STROKE_INK,
-  STROKE_WIDTH,
-} from '../spatial'
+import { ACCENT, EDGE, Ground, INK, motion, PAPER, points, Solid } from '../objects'
 
-/**
- * Product Systems — modular architecture with a shared operating core.
- * Resolved: modules locked into one lattice, orange core on.
- * Motion: independent → rails extend → one shifts → neighbors react → settle.
- */
+const modules = [
+  [0, 0],
+  [1, 0],
+  [0, 1],
+  [2, 0],
+  [0, 2],
+  [1, 1],
+  [2, 1],
+  [1, 2],
+  [2, 2],
+] as const
+
+function ModuleMark({ kind, accent }: { kind: number; accent: boolean }) {
+  if (accent)
+    return (
+      <path
+        d="M14 23h18M23 14v18"
+        stroke="var(--cap-highlight)"
+        strokeLinecap="round"
+        strokeWidth="3"
+      />
+    )
+  if (kind % 3 === 0)
+    return (
+      <g fill="none" stroke={INK} strokeWidth="2">
+        <rect height="20" rx="2" width="25" x="10" y="12" />
+        <path d="M10 18h25M18 18v14" />
+      </g>
+    )
+  if (kind % 3 === 1)
+    return (
+      <g fill={INK}>
+        <rect height="5" rx="2.5" width="26" x="10" y="12" />
+        <rect height="4" rx="2" width="18" x="10" y="22" opacity=".55" />
+        <rect height="4" rx="2" width="22" x="10" y="30" opacity=".3" />
+      </g>
+    )
+  return (
+    <g fill="none" stroke={INK} strokeWidth="2">
+      <rect height="12" rx="6" width="27" x="10" y="17" />
+      <circle cx="29" cy="23" fill={INK} r="3" />
+    </g>
+  )
+}
+
+/** Individual components expand, then snap into one shared product language. */
 export const SystemsScene: React.FC = () => (
   <g>
-    <CapRegistration />
-    <CapPlate />
-    <CapDotField step={2} />
-
-    {/* Connector rails — retract mid-cycle, then lock */}
-    <g className="cap-systems-rails" fill="none" stroke={STROKE_INK} strokeWidth={STROKE_WIDTH}>
-      <CapLink className="cap-systems-rail-a" from={[0.6, 0.8, 36]} pathLength={1} to={[1.6, 1.6, 52]} />
-      <CapLink className="cap-systems-rail-b" from={[3.4, 0.8, 40]} pathLength={1} to={[2.4, 1.6, 52]} />
-      <CapLink className="cap-systems-rail-c" from={[0.6, 3.4, 32]} pathLength={1} to={[1.6, 2.4, 52]} />
-      <CapLink className="cap-systems-rail-d" from={[3.4, 3.4, 44]} pathLength={1} to={[2.4, 2.4, 52]} />
-    </g>
-
-    {/* Rules module — the one that shifts during the cycle */}
-    <g className="cap-systems-mod-rules">
-      <CapBox fill="var(--paper)" gx0={-1.6} gx1={0.6} gy0={-1.2} gy1={1} z1={36} />
-      <CapLink from={[-1.2, -0.6, 36]} stroke={STROKE} to={[0.2, -0.6, 36]} />
-      <CapLink from={[-1.2, 0, 36]} stroke={STROKE} to={[-0.2, 0, 36]} />
-      <CapLink from={[-1.2, 0.5, 36]} stroke={STROKE} to={[0, 0.5, 36]} />
-    </g>
-
-    {/* Product module */}
-    <g className="cap-systems-mod-product">
-      <CapBox fill="var(--panel)" gx0={3.4} gx1={5.6} gy0={-1.2} gy1={1} z1={40} />
-      <CapBox
-        fill="var(--paper)"
-        fillOpacity={0.7}
-        gx0={3.85}
-        gx1={5.15}
-        gy0={-0.75}
-        gy1={0.55}
-        z0={40}
-        z1={48}
+    <Ground />
+    <g className="cap-scene">
+      <polygon
+        fill="none"
+        points={points([
+          [-91, -91],
+          [91, -91],
+          [91, 91],
+          [-91, 91],
+        ])}
+        stroke={EDGE}
+        strokeDasharray="3 5"
       />
+      <Solid d={166} h={7} tone="ink" w={166} x={-83} y={-83} z={2}>
+        <path d="M55 0v166M111 0v166M0 55h166M0 111h166" stroke={PAPER} strokeOpacity=".2" />
+      </Solid>
+      {modules.map(([col, row], i) => {
+        const core = col === 1 && row === 1
+        return (
+          <g
+            className="cap-anim"
+            key={`${col}-${row}`}
+            style={motion(core ? 'cap-system-core' : 'cap-module', {
+              '--cap-dx': `${(col - row) * 12}px`,
+              '--cap-dy': `${(col + row - 2) * 6 - 13}px`,
+              '--cap-delay': `${-(col + row) * 0.045}s`,
+            })}
+          >
+            <Solid
+              d={46}
+              h={core ? 36 : 20}
+              tone={core ? 'accent' : 'paper'}
+              w={46}
+              x={-79 + col * 56}
+              y={-79 + row * 56}
+              z={10}
+            >
+              <ModuleMark accent={core} kind={i} />
+            </Solid>
+          </g>
+        )
+      })}
+      <g
+        className="cap-anim"
+        fill="none"
+        stroke={ACCENT}
+        strokeLinecap="round"
+        strokeWidth="2"
+        style={motion('cap-system-lock')}
+      >
+        <path d="m52 135 6 4 8-5M332 135l6 4 8-5M192 246l8 5 8-5" />
+      </g>
     </g>
-
-    {/* Operations module */}
-    <g className="cap-systems-mod-ops">
-      <CapBox fill="var(--panel)" gx0={-1.6} gx1={0.6} gy0={3.2} gy1={5.4} z1={32} />
-      <CapBox fill="var(--paper)" fillOpacity={0.65} gx0={-1.2} gx1={-0.5} gy0={3.6} gy1={5} z0={32} z1={44} />
-      <CapBox fill="var(--paper)" fillOpacity={0.65} gx0={-0.2} gx1={0.4} gy0={3.6} gy1={5} z0={32} z1={40} />
-    </g>
-
-    {/* Data module */}
-    <g className="cap-systems-mod-data">
-      <CapBox fill="var(--paper)" gx0={3.4} gx1={5.6} gy0={3.2} gy1={5.4} z1={44} />
-      <CapLink from={[3.7, 3.7, 44]} stroke={STROKE} to={[5.3, 3.7, 44]} />
-      <CapLink from={[3.7, 4.2, 44]} stroke={STROKE} to={[5.1, 4.2, 44]} />
-      <CapLink from={[3.7, 4.7, 44]} stroke={STROKE} to={[4.9, 4.7, 44]} />
-    </g>
-
-    {/* Central system core */}
-    <g className="cap-systems-core-wrap">
-      <CapBox fill="var(--paper)" gx0={1.3} gx1={2.7} gy0={1.3} gy1={2.7} z0={14} z1={52} />
-      <CapNode className="cap-systems-core" gx={2} gy={2} size={0.3} z={52} />
-    </g>
-
-    {/* Propagation markers */}
-    <g className="cap-systems-response">
-      <CapSignal fill={ACCENT} gx={2} gy={0.2} r={2.2} z={20} />
-      <CapSignal fill={ACCENT} gx={2} gy={3.8} r={2.2} z={20} />
-    </g>
-
-    <CapAnno className="cap-anno" gx={-1.8} gy={1.2} text="RULE" z={40} />
   </g>
 )

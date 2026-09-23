@@ -55,7 +55,10 @@ export const WrittenHeadline: React.FC<WrittenHeadlineProps> = ({
     const entrance = node.closest('[data-hero-entrance]') as HTMLElement | null
     if (!entrance) return
 
-    const reduce = window.matchMedia(REDUCED_MOTION_QUERY).matches
+    const reduce =
+      typeof window.matchMedia === 'function'
+        ? window.matchMedia(REDUCED_MOTION_QUERY).matches
+        : false
 
     if (reduce || units.length === 0) {
       entrance.removeAttribute('data-hero-writing')

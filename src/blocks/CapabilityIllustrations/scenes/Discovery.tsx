@@ -1,80 +1,97 @@
 import React from 'react'
 
-import {
-  ACCENT,
-  CapAnno,
-  CapBox,
-  CapDotField,
-  CapFrame,
-  CapNode,
-  CapPlate,
-  CapRegistration,
-  CapSignal,
-  STROKE,
-  STROKE_INK,
-  STROKE_WIDTH,
-  project,
-} from '../spatial'
+import { ACCENT, DocumentLines, EDGE, Ground, INK, motion, PAPER, Solid } from '../objects'
 
-/**
- * Product Discovery — layered diagnostic environment.
- * Resolved: frames aligned, peripheral signals dim, orange root raised.
- * Motion: signals → scan → recede → align → root activates.
- */
-export const DiscoveryScene: React.FC = () => {
-  return (
-    <g>
-      <CapRegistration />
-      <CapPlate />
-      <CapDotField step={2} />
-
-      {/* Scattered evidence — bright mid-cycle, dim when resolved */}
-      <g className="cap-discovery-signals">
-        <CapSignal gx={-1.8} gy={0.4} z={12} />
-        <CapSignal gx={5.2} gy={-1.2} z={18} />
-        <CapSignal gx={-0.6} gy={5.4} z={10} />
-        <CapSignal gx={6} gy={4.2} z={14} />
-        <CapSignal gx={1.2} gy={-2.2} z={8} />
-        <CapSignal gx={4.8} gy={6} z={16} />
+/** Evidence separates; the lens searches, locks on, and reveals the actual problem. */
+export const DiscoveryScene: React.FC = () => (
+  <g>
+    <Ground />
+    <g className="cap-scene">
+      <g className="cap-anim" style={motion('cap-evidence-back')}>
+        <Solid d={112} h={4} tone="muted" w={136} x={-74} y={-49} z={5} />
       </g>
-
-      {/* Nested problem frames — start offset, settle aligned */}
-      <g className="cap-discovery-frame-outer">
-        <CapFrame fillOpacity={0.14} gx0={-1.8} gx1={5.8} gy0={-1.8} gy1={5.8} stroke={STROKE} z={36} />
+      <g className="cap-anim" style={motion('cap-evidence-mid')}>
+        <Solid d={112} h={4} w={136} x={-78} y={-53} z={15} />
       </g>
-      <g className="cap-discovery-frame-mid">
-        <CapFrame fillOpacity={0.2} gx0={-0.6} gx1={4.6} gy0={-0.6} gy1={4.6} stroke={STROKE_INK} z={52} />
+      <Solid d={112} h={5} w={136} x={-82} y={-57} z={27}>
+        <DocumentLines width={44} />
+        <path d="M12 79H55M12 87H45" stroke={EDGE} strokeWidth="2.5" />
+        <rect fill="var(--cap-left)" height="26" rx="2" width="25" x="88" y="72" />
+        <path d="m94 90 5-6 5 3 4-8" fill="none" stroke={INK} strokeWidth="2" />
+        <circle cx="100" cy="26" fill="none" r="9" stroke={EDGE} strokeWidth="2" />
+        <path d="M94 26h12M100 20v12" stroke={EDGE} strokeWidth="1.5" />
+      </Solid>
+      <g className="cap-anim" style={motion('cap-insight')}>
+        <Solid d={31} h={17} tone="accent" w={31} x={-8} y={-30} z={36}>
+          <path
+            d="M10 16h11M15.5 10.5v11"
+            stroke="var(--cap-highlight)"
+            strokeLinecap="round"
+            strokeWidth="2.3"
+          />
+        </Solid>
       </g>
-      <g className="cap-discovery-frame-inner">
-        <CapFrame fillOpacity={0.28} gx0={0.6} gx1={3.4} gy0={0.6} gy1={3.4} stroke={STROKE_INK} z={68} />
-      </g>
-
-      {/* Scanning plane — invisible at rest */}
-      <g className="cap-discovery-scan">
-        <CapFrame fillOpacity={0.08} gx0={-1.8} gx1={5.8} gy0={-1.8} gy1={5.8} stroke={ACCENT} z={78} />
-        <line
-          stroke={ACCENT}
-          strokeWidth={1.6}
-          x1={project(-1.8, 2, 78)[0]}
-          x2={project(5.8, 2, 78)[0]}
-          y1={project(-1.8, 2, 78)[1]}
-          y2={project(5.8, 2, 78)[1]}
-        />
-      </g>
-
-      {/* Central raised target / root */}
-      <g className="cap-discovery-root">
-        <CapBox fill="var(--paper)" gx0={1.35} gx1={2.65} gy0={1.35} gy1={2.65} z0={68} z1={92} />
-        <CapNode gx={2} gy={2} size={0.32} z={92} />
-        <CapAnno align="middle" gx={2} gy={3.5} text="ROOT" z={92} />
-      </g>
-
-      {/* Construction guides */}
-      <g className="cap-anno" fill="none" stroke={STROKE} strokeDasharray="2 5" strokeWidth={STROKE_WIDTH}>
+      <g className="cap-anim" style={motion('cap-lens')}>
         <path
-          d={`M${project(2, 2, 92)[0]} ${project(2, 2, 92)[1]} L${project(2, 2, 36)[0]} ${project(2, 2, 36)[1]}`}
+          d="m174 147-44 44"
+          stroke="var(--cap-dark-right)"
+          strokeLinecap="round"
+          strokeWidth="19"
+        />
+        <path d="m174 140-44 44" stroke={INK} strokeLinecap="round" strokeWidth="16" />
+        <path d="m145 171-13 13" stroke={ACCENT} strokeLinecap="round" strokeWidth="16" />
+        <ellipse
+          cx="220"
+          cy="113"
+          fill="none"
+          rx="60"
+          ry="42"
+          stroke="var(--cap-dark-right)"
+          strokeWidth="12"
+        />
+        <ellipse
+          cx="220"
+          cy="106"
+          fill="var(--cap-glass)"
+          rx="60"
+          ry="42"
+          stroke={INK}
+          strokeWidth="10"
+        />
+        <ellipse
+          cx="220"
+          cy="104"
+          fill="none"
+          rx="59"
+          ry="41"
+          stroke="var(--cap-lens-edge)"
+          strokeWidth="1.2"
+        />
+        <path
+          d="M176 101c3-12 16-23 32-26"
+          fill="none"
+          stroke={PAPER}
+          strokeLinecap="round"
+          strokeWidth="3"
+        />
+        <g
+          className="cap-anim"
+          fill="none"
+          stroke={ACCENT}
+          strokeWidth="1.8"
+          style={motion('cap-focus')}
+        >
+          <path d="M202 93v-6h8M230 87h8v6M238 115v6h-8M210 121h-8v-6" />
+        </g>
+      </g>
+      <g className="cap-anim" style={motion('cap-insight-mark')}>
+        <path
+          d="M298 61v-9M312 70l7-5M303 87h10"
+          stroke={ACCENT}
+          strokeLinecap="round"
+          strokeWidth="2"
         />
       </g>
     </g>
-  )
-}
+  </g>
+)

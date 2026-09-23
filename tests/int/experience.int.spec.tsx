@@ -369,7 +369,7 @@ describe('experience spotlight', () => {
     const diagrams = [...container.querySelectorAll('svg.cap-illustration')]
     expect(diagrams).toHaveLength(4)
     for (const diagram of diagrams) {
-      expect(diagram.getAttribute('viewBox')).toBe('0 0 400 240')
+      expect(diagram.getAttribute('viewBox')).toBe('0 0 400 280')
       expect(diagram.getAttribute('aria-hidden')).toBe('true')
     }
   })
@@ -385,7 +385,7 @@ describe('homepage preview', () => {
     expect(diagrams).toHaveLength(4)
     for (const [i, svg] of diagrams.entries()) {
       expect(svg.getAttribute('aria-hidden')).toBe('true')
-      expect(svg.getAttribute('viewBox')).toBe('0 0 400 240')
+      expect(svg.getAttribute('viewBox')).toBe('0 0 400 280')
       expect((svg as SVGElement).style.direction).toBe('ltr')
       expect(svg.classList.contains(`cap-illustration--${SPOTLIGHT_KEYS[i]}`)).toBe(true)
       expect(svg.querySelectorAll('rect, circle, line, path').length).toBeGreaterThan(12)

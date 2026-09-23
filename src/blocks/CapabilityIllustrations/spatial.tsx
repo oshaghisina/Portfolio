@@ -8,7 +8,8 @@ import React from 'react'
 
 export const CELL_X = 16
 export const CELL_Y = 9
-export const ORIGIN = { x: 200, y: 168 }
+/** Screen anchor for grid (0,0,0). Kept high enough that CapPlate’s front corner stays inside viewBox 0 0 400 280. */
+export const ORIGIN = { x: 200, y: 140 }
 
 export const STROKE = 'var(--line)'
 export const STROKE_SOFT = 'var(--line-soft)'
@@ -171,8 +172,8 @@ export const CapDotField: React.FC<{
 /** Corner registration marks — drafting bounds, not a card chrome. */
 export const CapRegistration: React.FC = () => (
   <g className="cap-anno" fill="none" stroke={STROKE} strokeWidth={STROKE_WIDTH}>
-    <path d="M28 42V28h14M358 28h14v14M28 238v14h14M358 252h14v-14" />
-    <path d="M200 16v8M200 262v8M16 140h8M376 140h8" />
+    <path d="M28 36V22h14M358 22h14v14M28 252v14h14M358 266h14v-14" />
+    <path d="M200 10v8M200 268v8M16 148h8M376 148h8" />
   </g>
 )
 

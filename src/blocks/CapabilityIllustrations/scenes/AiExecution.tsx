@@ -1,111 +1,150 @@
 import React from 'react'
 
-import {
-  ACCENT,
-  CapAnno,
-  CapBox,
-  CapDotField,
-  CapFrame,
-  CapLink,
-  CapNode,
-  CapPlate,
-  CapRegistration,
-  CapSignal,
-  STROKE,
-  STROKE_INK,
-} from '../spatial'
+import { ACCENT, DocumentLines, EDGE, Ground, INK, motion, PAPER, Solid, Wire } from '../objects'
 
-/**
- * AI-assisted Execution — context → orchestrator → agents/tools → output.
- * Resolved: pipeline assembled, orange only on final output.
- * Motion: context enters → orchestrate → split → process → return → output rises.
- */
+/** A brief feeds a processor; deliberate orchestration produces a usable interface. */
 export const AiExecutionScene: React.FC = () => (
   <g>
-    <CapRegistration />
-    <CapPlate />
-    <CapDotField step={2} />
-
-    {/* Context stack — thin document planes */}
-    <g className="cap-ai-context">
-      <CapFrame fillOpacity={0.16} gx0={-2.6} gx1={0} gy0={0.2} gy1={3.8} stroke={STROKE} z={16} />
-      <CapFrame fillOpacity={0.22} gx0={-2.6} gx1={0} gy0={0.2} gy1={3.8} stroke={STROKE_INK} z={26} />
-      <CapFrame fillOpacity={0.3} gx0={-2.6} gx1={0} gy0={0.2} gy1={3.8} stroke={STROKE_INK} z={36} />
-      <CapBox fill="var(--paper)" gx0={-2.4} gx1={-0.2} gy0={0.4} gy1={3.6} z0={36} z1={46} />
-      <CapLink from={[-2, 1.1, 46]} stroke={STROKE} to={[-0.6, 1.1, 46]} />
-      <CapLink from={[-2, 1.8, 46]} stroke={STROKE} to={[-0.8, 1.8, 46]} />
-      <CapLink from={[-2, 2.5, 46]} stroke={STROKE} to={[-0.7, 2.5, 46]} />
-    </g>
-
-    {/* Structural ink links (always present) */}
-    <g fill="none" stroke={STROKE} strokeWidth={1.15}>
-      <CapLink from={[-0.2, 2, 42]} to={[1.2, 2, 58]} />
-      <CapLink from={[2, 2, 58]} to={[3.2, 0.2, 42]} />
-      <CapLink from={[2, 2, 58]} to={[3.2, 3.8, 38]} />
-      <CapLink from={[2, 2, 58]} to={[3.4, 2, 34]} />
-      <CapLink from={[3.8, 0.2, 42]} to={[5.1, 2, 30]} />
-      <CapLink from={[3.8, 3.8, 38]} to={[5.1, 2, 30]} />
-      <CapLink from={[4, 2, 34]} to={[5.1, 2, 30]} />
-    </g>
-
-    {/* Accent signal paths — animate during the cycle, quiet when resolved */}
-    <CapLink
-      className="cap-ai-input"
-      from={[-0.2, 2, 42]}
-      pathLength={1}
-      stroke={ACCENT}
-      strokeWidth={1.6}
-      to={[1.2, 2, 58]}
-    />
-    <g className="cap-ai-branches">
-      <CapLink from={[2, 2, 58]} pathLength={1} stroke={ACCENT} strokeWidth={1.6} to={[3.2, 0.2, 42]} />
-      <CapLink from={[2, 2, 58]} pathLength={1} stroke={ACCENT} strokeWidth={1.6} to={[3.2, 3.8, 38]} />
-      <CapLink from={[2, 2, 58]} pathLength={1} stroke={ACCENT} strokeWidth={1.6} to={[3.4, 2, 34]} />
-    </g>
-    <g className="cap-ai-return">
-      <CapLink from={[3.8, 0.2, 42]} pathLength={1} stroke={ACCENT} strokeWidth={1.6} to={[5.1, 2, 30]} />
-      <CapLink from={[3.8, 3.8, 38]} pathLength={1} stroke={ACCENT} strokeWidth={1.6} to={[5.1, 2, 30]} />
-      <CapLink from={[4, 2, 34]} pathLength={1} stroke={ACCENT} strokeWidth={1.6} to={[5.1, 2, 30]} />
-    </g>
-
-    {/* Orchestrator */}
-    <g className="cap-ai-orchestrator">
-      <CapBox fill="var(--paper)" gx0={1.1} gx1={2.9} gy0={1.1} gy1={2.9} z0={14} z1={58} />
-      <CapNode className="cap-ai-orch-node" fill="var(--panel)" gx={2} gy={2} size={0.3} z={58} />
-    </g>
-
-    {/* Agent / tool blocks */}
-    <g className="cap-ai-agent-a">
-      <CapBox fill="var(--panel)" gx0={2.9} gx1={4.7} gy0={-0.8} gy1={1.1} z1={42} />
-      <CapSignal className="cap-ai-packet-a" fill={ACCENT} gx={3.8} gy={0.15} r={2.3} z={44} />
-    </g>
-    <g className="cap-ai-agent-b">
-      <CapBox fill="var(--panel)" gx0={2.9} gx1={4.7} gy0={2.9} gy1={4.8} z1={38} />
-      <CapSignal className="cap-ai-packet-b" fill={ACCENT} gx={3.8} gy={3.85} r={2.3} z={40} />
-    </g>
-    <g className="cap-ai-tool">
-      <CapBox fill="var(--paper)" gx0={3.1} gx1={4.5} gy0={1.35} gy1={2.65} z1={34} />
-      <CapLink from={[3.3, 1.75, 34]} stroke={STROKE} to={[4.3, 1.75, 34]} />
-      <CapLink from={[3.3, 2.25, 34]} stroke={STROKE} to={[4.2, 2.25, 34]} />
-    </g>
-
-    {/* Output — orange only here when resolved */}
-    <g className="cap-ai-output">
-      <CapBox fill="var(--paper)" gx0={4.9} gx1={6.7} gy0={0.9} gy1={3.1} z0={8} z1={54} />
-      <CapBox
-        className="cap-ai-output-accent"
-        fill={ACCENT}
-        fillOpacity={0.95}
-        gx0={5.2}
-        gx1={6.4}
-        gy0={1.2}
-        gy1={2.8}
-        z0={54}
-        z1={60}
+    <Ground wide />
+    <g className="cap-scene">
+      <path
+        d="M104 155h36l33-19M229 135h24l30-26M223 156h36l23 13"
+        fill="none"
+        stroke={EDGE}
+        strokeLinejoin="round"
+        strokeWidth="1.5"
       />
-      <CapAnno align="middle" className="cap-anno" gx={5.8} gy={3.5} text="OUTPUT" z={54} />
+      <path
+        className="cap-anim cap-packet"
+        d="M104 155h36l33-19"
+        fill="none"
+        pathLength="1"
+        stroke={ACCENT}
+        strokeWidth="3"
+        style={motion('cap-ai-feed')}
+      />
+      <path
+        className="cap-anim cap-packet"
+        d="M229 135h24l30-26"
+        fill="none"
+        pathLength="1"
+        stroke={ACCENT}
+        strokeWidth="3"
+        style={motion('cap-ai-build')}
+      />
+      <path
+        className="cap-anim cap-packet"
+        d="M223 156h36l23 13"
+        fill="none"
+        pathLength="1"
+        stroke={ACCENT}
+        strokeWidth="3"
+        style={motion('cap-ai-build', { '--cap-delay': '-.2s' })}
+      />
+      <g transform="translate(54 87) skewY(14)">
+        <g className="cap-anim" style={motion('cap-brief')}>
+          <rect
+            fill="var(--cap-right)"
+            height="90"
+            rx="3"
+            stroke={EDGE}
+            width="66"
+            x="-10"
+            y="12"
+          />
+          <rect fill="var(--cap-left)" height="90" rx="3" stroke={EDGE} width="66" x="-5" y="6" />
+          <rect fill={PAPER} height="90" rx="3" stroke={EDGE} width="66" />
+          <DocumentLines width={42} />
+          <rect fill={ACCENT} height="5" rx="1" width="18" x="12" y="69" />
+        </g>
+      </g>
+      <g>
+        {[-21, -7, 7, 21].map((v) => (
+          <React.Fragment key={v}>
+            <Wire
+              vertices={[
+                [-41, v, 15],
+                [-29, v, 15],
+              ]}
+            />
+            <Wire
+              vertices={[
+                [29, v, 15],
+                [41, v, 15],
+              ]}
+            />
+            <Wire
+              vertices={[
+                [v, -41, 15],
+                [v, -29, 15],
+              ]}
+            />
+            <Wire
+              vertices={[
+                [v, 29, 15],
+                [v, 41, 15],
+              ]}
+            />
+          </React.Fragment>
+        ))}
+        <Solid d={62} h={12} tone="ink" w={62} x={-31} y={-31} z={12} />
+        <g className="cap-anim" style={motion('cap-processor')}>
+          <Solid d={43} h={8} tone="accent" w={43} x={-21.5} y={-21.5} z={25}>
+            <text
+              fill="var(--cap-highlight)"
+              fontFamily="var(--font-mono)"
+              fontSize="18"
+              fontWeight="600"
+              textAnchor="middle"
+              x="21.5"
+              y="28"
+            >
+              AI
+            </text>
+          </Solid>
+        </g>
+      </g>
+      <g transform="translate(275 69) skewY(-14)">
+        <g className="cap-anim" style={motion('cap-output')}>
+          <path
+            d="m0 0 7 5v126l-7-5zM0 126l7 5h83l-7-5z"
+            fill="var(--cap-right)"
+            stroke={EDGE}
+            strokeLinejoin="round"
+          />
+          <rect fill={PAPER} height="126" rx="3" stroke={INK} strokeWidth="1.2" width="83" />
+          <path d="M0 18h83" stroke={EDGE} />
+          {[9, 16, 23].map((x) => (
+            <circle cx={x} cy="9" fill={x === 9 ? ACCENT : EDGE} key={x} r="1.6" />
+          ))}
+          <rect fill={INK} height="5" rx="1" width="43" x="10" y="29" />
+          <rect fill="var(--cap-muted)" height="2.5" rx="1" width="57" x="10" y="40" />
+          <g className="cap-anim" style={motion('cap-output-content')}>
+            <rect fill="var(--cap-left)" height="41" rx="2" width="63" x="10" y="54" />
+            <path
+              d="M18 85l12-11 10 5 13-17 11 5"
+              fill="none"
+              stroke={ACCENT}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="3"
+            />
+            <rect fill={ACCENT} height="10" rx="2" width="27" x="10" y="104" />
+            <path d="M47 108h23M47 113h16" stroke={EDGE} strokeWidth="2" />
+          </g>
+        </g>
+        <g className="cap-anim" style={motion('cap-approved')}>
+          <circle cx="76" cy="-1" fill={ACCENT} r="12" stroke={PAPER} strokeWidth="3" />
+          <path
+            d="m71-1 3 3 6-7"
+            fill="none"
+            stroke="var(--cap-highlight)"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+          />
+        </g>
+      </g>
     </g>
-
-    <CapAnno className="cap-anno" gx={-2.5} gy={-0.3} text="CONTEXT" z={46} />
   </g>
 )

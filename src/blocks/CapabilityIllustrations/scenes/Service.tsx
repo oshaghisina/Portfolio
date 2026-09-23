@@ -1,102 +1,136 @@
 import React from 'react'
 
-import {
-  ACCENT,
-  CapAnno,
-  CapBox,
-  CapDotField,
-  CapLink,
-  CapNode,
-  CapPlate,
-  CapRegistration,
-  CapSignal,
-  STROKE,
-  STROKE_INK,
-  STROKE_WIDTH,
-} from '../spatial'
+import { ACCENT, EDGE, Ground, INK, motion, PAPER, project, Solid, Wire } from '../objects'
 
-/**
- * Service Design — frontstage / backstage modules on one operational platform.
- * Resolved: channels connected, router active, all touchpoints linked.
- * Motion: idle → emit → travel → router → sequential receive → connected.
- */
+const stops = [-69, -1, 67]
+
+/** One customer journey, visibly supported by the people and processes below it. */
 export const ServiceScene: React.FC = () => (
   <g>
-    <CapRegistration />
-    <CapPlate />
-    <CapDotField step={2} />
-
-    {/* Backstage shelf — lower operational layer */}
-    <CapBox
-      fill="var(--panel)"
-      fillOpacity={0.5}
-      gx0={-2}
-      gx1={6}
-      gy0={3.4}
-      gy1={6.6}
-      z0={0}
-      z1={7}
-    />
-
-    {/* Structural channels (always visible, ink) */}
-    <g fill="none" stroke={STROKE} strokeWidth={STROKE_WIDTH}>
-      <CapLink from={[-0.2, 1.2, 34]} to={[2, 2, 56]} via={[[2, 1.2, 12]]} />
-      <CapLink from={[4.2, 1.2, 34]} to={[2, 2, 56]} via={[[2, 1.2, 12]]} />
-      <CapLink from={[-0.2, 5, 26]} to={[2, 2, 56]} via={[[2, 5, 12]]} />
-      <CapLink from={[4.2, 5, 26]} to={[2, 2, 56]} via={[[2, 5, 12]]} />
+    <Ground wide />
+    <g className="cap-scene">
+      <g transform="translate(0 12)">
+        <Solid d={66} h={8} tone="muted" w={202} x={-102} y={-30} z={0} />
+        <Wire
+          vertices={[
+            [-83, 5, 10],
+            [82, 5, 10],
+          ]}
+        />
+        {stops.map((x, i) => (
+          <g key={x}>
+            <Solid d={34} h={23} tone="ink" w={38} x={x - 19} y={-12} z={8}>
+              <g fill="none" stroke={PAPER} strokeLinecap="round" strokeWidth="2">
+                {i === 0 ? <path d="M10 11h18M10 17h12M10 23h15" /> : null}
+                {i === 1 ? (
+                  <>
+                    <circle cx="19" cy="17" r="7" />
+                    <path d="m16 17 2 2 4-5" />
+                  </>
+                ) : null}
+                {i === 2 ? (
+                  <>
+                    <path d="M10 23v-7M19 23V9M28 23V13" />
+                    <path d="M8 26h22" />
+                  </>
+                ) : null}
+              </g>
+            </Solid>
+            <Wire
+              vertices={[
+                [x, 5, 32],
+                [x, 5, 90],
+              ]}
+            />
+            <Wire
+              accent
+              className="cap-anim cap-packet"
+              style={motion('cap-service-drop', { '--cap-delay': `${i * -0.45}s` })}
+              vertices={[
+                [x, 5, 90],
+                [x, 5, 32],
+              ]}
+            />
+          </g>
+        ))}
+        <g className="cap-anim" style={motion('cap-service-deck')}>
+          <Solid d={66} h={7} w={202} x={-102} y={-30} z={82}>
+            <path d="M26 35H175" fill="none" stroke={EDGE} strokeLinecap="round" strokeWidth="10" />
+            <path d="M26 35H175" fill="none" stroke={PAPER} strokeWidth="7" />
+            <path
+              d="M26 35H175"
+              fill="none"
+              pathLength="1"
+              stroke={ACCENT}
+              strokeLinecap="round"
+              strokeWidth="3"
+            />
+            <path
+              d="m166 29 8 6-8 6"
+              fill="none"
+              stroke={ACCENT}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="3"
+            />
+            {stops.map((x) => (
+              <circle
+                cx={x + 102}
+                cy="35"
+                fill={PAPER}
+                key={x}
+                r="10"
+                stroke={INK}
+                strokeWidth="1.5"
+              />
+            ))}
+          </Solid>
+          {stops.map((x, i) => {
+            const [sx, sy] = project(x, 5, 90)
+            return (
+              <g key={x} transform={`translate(${sx} ${sy})`}>
+                <g
+                  className="cap-anim"
+                  style={motion('cap-touchpoint', { '--cap-delay': `${i * -0.5}s` })}
+                >
+                  {i === 0 ? (
+                    <g stroke={INK} strokeWidth="1.7">
+                      <rect fill={PAPER} height="30" rx="3" width="18" x="-9" y="-31" />
+                      <path d="M-4-26h8M-3-6h6" />
+                      <path d="m-3-17 2 2 4-5" fill="none" stroke={ACCENT} />
+                    </g>
+                  ) : i === 1 ? (
+                    <g fill={ACCENT} stroke={ACCENT} strokeWidth="1.7">
+                      <path d="M-9-2v-6a9 9 0 0 1 18 0v6" />
+                      <circle cy="-24" r="6" />
+                    </g>
+                  ) : (
+                    <g stroke={INK} strokeLinejoin="round" strokeWidth="1.7">
+                      <path d="M-12-28h24v19H1l-7 6v-6h-6z" fill={PAPER} />
+                      <path d="M-6-21H6M-6-16h8" />
+                    </g>
+                  )}
+                </g>
+              </g>
+            )
+          })}
+          <Wire
+            accent
+            className="cap-anim cap-packet"
+            style={motion('cap-journey')}
+            vertices={[
+              [-69, 5, 91],
+              [67, 5, 91],
+            ]}
+          />
+        </g>
+        <path
+          d="M72 127v35l20 12M321 103v35l-12 7"
+          fill="none"
+          stroke={EDGE}
+          strokeDasharray="2 4"
+        />
+      </g>
     </g>
-
-    {/* Active route — draws during motion */}
-    <CapLink
-      className="cap-service-route"
-      from={[-0.2, 1.2, 34]}
-      pathLength={1}
-      stroke={ACCENT}
-      strokeWidth={1.7}
-      to={[2, 2, 56]}
-      via={[
-        [2, 1.2, 12],
-        [2, 2, 12],
-      ]}
-    />
-    <CapLink
-      className="cap-service-backstage"
-      from={[-0.2, 5, 26]}
-      pathLength={1}
-      stroke={STROKE_INK}
-      to={[4.2, 5, 26]}
-      via={[[2, 5, 12]]}
-    />
-
-    {/* Frontstage */}
-    <g className="cap-service-mod-a">
-      <CapBox fill="var(--paper)" gx0={-1.8} gx1={0.6} gy0={0} gy1={2} z1={34} />
-      <CapBox fill="var(--panel)" fillOpacity={0.7} gx0={-1.4} gx1={0.2} gy0={0.35} gy1={1.65} z0={34} z1={40} />
-      <CapSignal className="cap-service-emit" fill={ACCENT} gx={-0.6} gy={1} r={2.8} z={42} />
-    </g>
-    <g className="cap-service-mod-b">
-      <CapBox fill="var(--paper)" gx0={3.4} gx1={5.8} gy0={0} gy1={2} z1={34} />
-      <CapBox fill="var(--panel)" fillOpacity={0.7} gx0={3.8} gx1={5.4} gy0={0.35} gy1={1.65} z0={34} z1={40} />
-      <CapSignal className="cap-service-recv-b" fill={ACCENT} gx={4.6} gy={1} r={2.4} z={42} />
-    </g>
-
-    {/* Backstage */}
-    <g className="cap-service-mod-c">
-      <CapBox fill="var(--panel)" gx0={-1.8} gx1={0.6} gy0={4.2} gy1={5.8} z1={26} />
-      <CapSignal className="cap-service-recv-c" fill={ACCENT} gx={-0.6} gy={5} r={2.4} z={28} />
-    </g>
-    <g className="cap-service-mod-d">
-      <CapBox fill="var(--panel)" gx0={3.4} gx1={5.8} gy0={4.2} gy1={5.8} z1={26} />
-      <CapSignal className="cap-service-recv-d" fill={ACCENT} gx={4.6} gy={5} r={2.4} z={28} />
-    </g>
-
-    {/* Central service router — tallest volume */}
-    <g className="cap-service-router">
-      <CapBox fill="var(--paper)" gx0={1.05} gx1={2.95} gy0={1.05} gy1={2.95} z0={12} z1={56} />
-      <CapNode className="cap-service-core" gx={2} gy={2} size={0.32} z={56} />
-    </g>
-
-    <CapAnno className="cap-anno" gx={-1.7} gy={-0.4} text="FRONT" z={34} />
-    <CapAnno className="cap-anno" gx={-1.7} gy={6.8} text="BACK" z={7} />
   </g>
 )

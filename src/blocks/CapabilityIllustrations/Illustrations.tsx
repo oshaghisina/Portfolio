@@ -15,10 +15,12 @@ const scenes = {
 } satisfies Record<SpotlightKey, React.FC>
 
 /**
- * Shared capability machines for Home (ExperienceTeaser) and Experience (CapabilitySpotlight).
- * Markup is the fully resolved state so reduced-motion / no-JS still reads as complete systems.
+ * Four distinct capability sculptures, shared by Home and Experience.
+ * Server-rendered SVG stays complete with reduced motion or without JavaScript.
  */
-export const CapabilityIllustration: React.FC<{ spotlightKey: SpotlightKey }> = ({ spotlightKey }) => {
+export const CapabilityIllustration: React.FC<{ spotlightKey: SpotlightKey }> = ({
+  spotlightKey,
+}) => {
   const Scene = scenes[spotlightKey]
 
   return (
@@ -26,6 +28,7 @@ export const CapabilityIllustration: React.FC<{ spotlightKey: SpotlightKey }> = 
       aria-hidden="true"
       className={`cap-illustration cap-illustration--${spotlightKey} h-full w-full`}
       fill="none"
+      focusable="false"
       preserveAspectRatio="xMidYMid meet"
       style={{ direction: 'ltr' }}
       viewBox="0 0 400 280"
