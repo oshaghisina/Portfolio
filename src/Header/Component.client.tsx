@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 
 import type { Header } from '@/payload-types'
+import { Signature } from '@/components/Signature'
 import { localePath } from '@/i18n/navigation'
 import type { Locale } from '@/utilities/locale'
 
@@ -43,12 +44,15 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data, locale, logica
       {...(theme ? { 'data-theme': theme } : {})}
     >
       <div className="flex min-h-12 items-center justify-between gap-6 py-1 md:min-h-14 md:py-3">
-        {/* Wordmark until a real mark exists — text keeps it bilingual for free. */}
+        {/* Signature wordmark: `currentColor`, so `text-foreground` carries it through light, dark
+            and a hero-forced `data-theme`. Negative margin lets the flourish overhang the bar
+            without growing the header. The name stays as text for screen readers. */}
         <Link
-          className="text-small font-medium whitespace-nowrap text-foreground"
+          className="-my-1.5 shrink-0 text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
           href={localePath(locale, '/')}
         >
-          Sina Oshaghi
+          <Signature className="h-10 md:h-11" />
+          <span className="sr-only">Sina Oshaghi</span>
         </Link>
         <HeaderNav data={data} locale={locale} logicalPath={logicalPath} readiness={readiness} />
       </div>
