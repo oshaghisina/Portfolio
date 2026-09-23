@@ -10,7 +10,7 @@ import config from '@/payload.config'
 import { getPayload } from 'payload'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 
-import { isLogicalPathReady } from '@/i18n/contentReady'
+import { isLabArchiveHref, isLogicalPathReady } from '@/i18n/contentReady'
 import { docPath } from '@/i18n/routes'
 
 let payload: Payload
@@ -101,5 +101,12 @@ describe('contentReady — locale readiness gate', () => {
     expect(await isLogicalPathReady('/lab', 'fa')).toBe(true)
     // No seed or fixture in this repo publishes a post in German — a real empty-locale case.
     expect(await isLogicalPathReady('/lab', 'de')).toBe(false)
+  })
+
+  it('isLabArchiveHref matches only the Lab archive root used by header/footer nav', () => {
+    expect(isLabArchiveHref('/lab')).toBe(true)
+    expect(isLabArchiveHref('/lab/digital-horizons')).toBe(false)
+    expect(isLabArchiveHref('/work')).toBe(false)
+    expect(isLabArchiveHref(null)).toBe(false)
   })
 })

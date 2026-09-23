@@ -4,6 +4,11 @@ import { getPayload } from 'payload'
 import { COLLECTION_PATH_PREFIX, hasPublicCaseStudy } from '@/i18n/routes'
 import { DEFAULT_LOCALE, LOCALES, type Locale } from '@/utilities/locale'
 
+/** True when a nav href is the Lab archive root (`/lab`) — used to hide Lab when the locale has no posts. */
+export function isLabArchiveHref(href: string | null | undefined): boolean {
+  return href === COLLECTION_PATH_PREFIX.posts
+}
+
 /**
  * Centralized "is this locale's copy of a document publicly ready" check (D-009 follow-up).
  * Every public query already runs with `{ locale, fallbackLocale: false }`, so a document that

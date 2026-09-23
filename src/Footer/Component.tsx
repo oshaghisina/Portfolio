@@ -2,11 +2,13 @@ import { getCachedGlobal } from '@/utilities/getGlobals'
 import Link from 'next/link'
 import React from 'react'
 
-import { CMSLink } from '@/components/Link'
+import { CMSLink, hrefFromLink } from '@/components/Link'
 import { LocaleSwitcher } from '@/components/LocaleSwitcher'
 import { SystemLandscape } from '@/components/SystemLandscape'
 import { TechnicalFrameMarks } from '@/components/TechnicalFrameMarks'
+import { isLabArchiveHref, isLogicalPathReady } from '@/i18n/contentReady'
 import { localePath, localizeInternalHref } from '@/i18n/navigation'
+import { COLLECTION_PATH_PREFIX } from '@/i18n/routes'
 import type { Locale } from '@/utilities/locale'
 
 import { MetaStrip } from './MetaStrip'
@@ -20,8 +22,10 @@ interface FooterProps {
 
 export async function Footer({ locale, logicalPath, readiness }: FooterProps) {
   const footerData = await getCachedGlobal('footer', locale, 1)()
-
-  const navItems = footerData?.navItems || []
+  const labReady = await isLogicalPathReady(COLLECTION_PATH_PREFIX.posts, locale)
+  const navItems = (footerData?.navItems || []).filter(
+    (item) => labReady || !isLabArchiveHref(hrefFromLink(item.link)),
+  )
   const legalLinks = footerData?.legalLinks || []
   const about = footerData?.about
   const contact = footerData?.contact

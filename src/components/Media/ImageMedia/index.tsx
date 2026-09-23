@@ -68,7 +68,8 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
 
     width = fullWidth!
     height = fullHeight!
-    alt = altFromResource || ''
+    // Media.alt is required in the CMS; keep a string for next/image if a legacy row is empty.
+    alt = altFromProps ?? altFromResource ?? ''
 
     const cacheTag = resource.updatedAt
 

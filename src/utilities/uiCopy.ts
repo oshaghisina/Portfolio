@@ -21,8 +21,14 @@ export interface UiCopy {
   requiredField: string
   /** Post hero byline labels. */
   author: string
-  /** 404 page: the action back to this locale's homepage. */
+  /** 404 / error pages: the action back to this locale's homepage. */
   goHome: string
+  /** `error.tsx`: lede under the title. */
+  errorLede: string
+  /** `error.tsx`: display title. */
+  errorTitle: string
+  /** `loading.tsx`: screen-reader status while the route streams. */
+  loadingLabel: string
   /** Pagination: the ellipsis between page-number runs, screen-reader only. */
   morePages: string
   /** Pagination: `aria-label` on the `<nav>` wrapping the page numbers. */
@@ -31,6 +37,8 @@ export interface UiCopy {
   noImage: string
   /** 404 page: the line under the numeral. */
   notFoundLede: string
+  /** `error.tsx`: retry the failed segment. */
+  tryAgain: string
   published: string
   /** `<button type="submit">` label in the search form, screen-reader only. */
   submit: string
@@ -132,10 +140,14 @@ export const uiCopy: Record<Locale, UiCopy> = {
     requiredField: '(required)',
     author: 'Author',
     goHome: 'Go home',
+    errorLede: 'Something went wrong while loading this page.',
+    errorTitle: 'Something went wrong',
+    loadingLabel: 'Loading',
     morePages: 'More pages',
     pagination: 'Pagination',
     noImage: 'No image',
     notFoundLede: 'This page could not be found.',
+    tryAgain: 'Try again',
     published: 'Published',
     submit: 'Submit',
     untitledCategory: 'Untitled category',
@@ -196,10 +208,14 @@ export const uiCopy: Record<Locale, UiCopy> = {
     requiredField: '(الزامی)',
     author: 'نویسنده',
     goHome: 'رفتن به خانه',
+    errorLede: 'هنگام بارگذاری این صفحه مشکلی پیش آمد.',
+    errorTitle: 'مشکلی پیش آمد',
+    loadingLabel: 'در حال بارگذاری',
     morePages: 'صفحه‌های بیشتر',
     pagination: 'صفحه‌بندی',
     noImage: 'بدون تصویر',
     notFoundLede: 'این صفحه پیدا نشد.',
+    tryAgain: 'تلاش دوباره',
     published: 'منتشرشده',
     submit: 'ارسال',
     untitledCategory: 'دستهٔ بدون عنوان',
@@ -259,10 +275,14 @@ export const uiCopy: Record<Locale, UiCopy> = {
     requiredField: '(مطلوب)',
     author: 'الكاتب',
     goHome: 'إلى الرئيسية',
+    errorLede: 'حدث خطأ أثناء تحميل هذه الصفحة.',
+    errorTitle: 'حدث خطأ ما',
+    loadingLabel: 'جارٍ التحميل',
     morePages: 'صفحات أخرى',
     pagination: 'ترقيم الصفحات',
     noImage: 'بلا صورة',
     notFoundLede: 'تعذّر العثور على هذه الصفحة.',
+    tryAgain: 'إعادة المحاولة',
     published: 'تاريخ النشر',
     submit: 'إرسال',
     untitledCategory: 'تصنيف بلا عنوان',
@@ -322,10 +342,14 @@ export const uiCopy: Record<Locale, UiCopy> = {
     requiredField: '(obligatorio)',
     author: 'Autor',
     goHome: 'Ir al inicio',
+    errorLede: 'Algo ha salido mal al cargar esta página.',
+    errorTitle: 'Algo ha salido mal',
+    loadingLabel: 'Cargando',
     morePages: 'Más páginas',
     pagination: 'Paginación',
     noImage: 'Sin imagen',
     notFoundLede: 'No se ha encontrado esta página.',
+    tryAgain: 'Intentarlo de nuevo',
     published: 'Publicado',
     submit: 'Enviar',
     untitledCategory: 'Categoría sin título',
@@ -386,10 +410,14 @@ export const uiCopy: Record<Locale, UiCopy> = {
     requiredField: '(Pflichtfeld)',
     author: 'Autor',
     goHome: 'Zur Startseite',
+    errorLede: 'Beim Laden dieser Seite ist etwas schiefgelaufen.',
+    errorTitle: 'Etwas ist schiefgelaufen',
+    loadingLabel: 'Wird geladen',
     morePages: 'Weitere Seiten',
     pagination: 'Seitennummerierung',
     noImage: 'Kein Bild',
     notFoundLede: 'Diese Seite wurde nicht gefunden.',
+    tryAgain: 'Erneut versuchen',
     published: 'Veröffentlicht',
     submit: 'Senden',
     untitledCategory: 'Kategorie ohne Titel',
@@ -450,10 +478,14 @@ export const uiCopy: Record<Locale, UiCopy> = {
     requiredField: '(obligatoire)',
     author: 'Auteur',
     goHome: 'Aller à l’accueil',
+    errorLede: 'Une erreur est survenue lors du chargement de cette page.',
+    errorTitle: 'Une erreur est survenue',
+    loadingLabel: 'Chargement',
     morePages: 'Autres pages',
     pagination: 'Pagination',
     noImage: 'Pas d’image',
     notFoundLede: 'Cette page est introuvable.',
+    tryAgain: 'Réessayer',
     published: 'Publié',
     submit: 'Envoyer',
     untitledCategory: 'Catégorie sans titre',
@@ -514,10 +546,14 @@ export const uiCopy: Record<Locale, UiCopy> = {
     requiredField: '(必須)',
     author: '著者',
     goHome: 'ホームへ',
+    errorLede: 'このページの読み込み中に問題が発生しました。',
+    errorTitle: '問題が発生しました',
+    loadingLabel: '読み込み中',
     morePages: 'その他のページ',
     pagination: 'ページ送り',
     noImage: '画像なし',
     notFoundLede: 'ページが見つかりませんでした。',
+    tryAgain: '再試行',
     published: '公開日',
     submit: '送信',
     untitledCategory: 'タイトルのないカテゴリ',
