@@ -36,7 +36,7 @@ export async function Footer({ locale, logicalPath, readiness }: FooterProps) {
     <footer className="bg-background text-foreground">
       {/* The marks live inside this wrapper, not the <footer>, so they land on the same rails the
           footer's content already uses instead of introducing a second width system. */}
-      <div className="relative isolate canvas">
+      <div className="relative isolate canvas border-t border-line">
         <TechnicalFrameMarks
           corners={['bottom-start', 'bottom-end']}
           segments={[

@@ -48,7 +48,7 @@ export const HeaderLocaleMenu: React.FC<HeaderLocaleMenuProps> = ({ className, l
       ref={rootRef}
     >
       <button
-        aria-controls={id}
+        aria-controls={open ? id : undefined}
         aria-expanded={open}
         aria-label={label}
         className="inline-flex size-(--size-control-height-sm) items-center justify-center rounded-control text-foreground transition-colors duration-(--duration-fast) ease-standard hover:bg-panel focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
@@ -68,7 +68,6 @@ export const HeaderLocaleMenu: React.FC<HeaderLocaleMenuProps> = ({ className, l
                 <a
                   aria-label={option.switchLabel}
                   className="block px-2 py-1.5 text-small text-foreground hover:bg-panel focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-                  dir="auto"
                   href={option.href}
                   hrefLang={option.locale}
                   lang={option.locale}

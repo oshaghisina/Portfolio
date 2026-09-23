@@ -44,6 +44,14 @@ describe('PageFrame (DS-11)', () => {
     const classes = container.querySelector('main')!.className.split(' ')
     expect(classes.some((c) => /^p?t-/.test(c))).toBe(false)
   })
+
+  it('keeps bottom air inside the sheet so rails reach the footer', () => {
+    const { container } = render(<PageFrame>{null}</PageFrame>)
+    const main = container.querySelector('main')!
+    const canvas = main.firstElementChild!
+    expect(main.className.split(' ').some((c) => /^pb-/.test(c))).toBe(false)
+    expect(canvas.className.split(' ')).toEqual(expect.arrayContaining(['pb-16', 'md:pb-24']))
+  })
 })
 
 describe('PageOpener', () => {

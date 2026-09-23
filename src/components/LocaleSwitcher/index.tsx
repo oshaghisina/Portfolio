@@ -104,7 +104,6 @@ export const InlineLocaleList: React.FC<Omit<LocaleSwitcherProps, 'className' | 
             <a
               aria-label={option.switchLabel}
               className="block border-s border-transparent py-1.5 ps-2 text-small text-ink-2 hover:border-line hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-              dir="auto"
               href={option.href}
               hrefLang={option.locale}
               lang={option.locale}
