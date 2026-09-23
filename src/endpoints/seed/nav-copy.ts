@@ -10,9 +10,9 @@ import type { Locale } from '@/utilities/locale'
  * each locale by the overlay.
  *
  * Nav labels deliberately reuse wording already settled elsewhere so the site does not call the
- * same page two things: "Work" matches `workCopy[locale].title`, "About" matches
- * `workCopy[locale].cta.linkLabel`, "Lab" matches `uiCopy[locale].labArchiveTitle`, and
- * "Experience" matches the homepage's own experience section tag.
+ * same page two things: "Work" matches `workCopy[locale].title`, "Experience" matches
+ * `workCopy[locale].cta.linkLabel` and the footer approach link, "Lab" matches
+ * `uiCopy[locale].labArchiveTitle`, and "About" is the About page label.
  */
 
 export interface NavCopy {

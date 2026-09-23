@@ -23,8 +23,8 @@ export interface WorkPageCopy {
 
 export const WORK_SLUG = 'work'
 
-/** Where the closing transition points: the capability page, not the old homepage anchor. */
-const ABOUT_HREF = '/experience'
+/** Where the closing transition points: the Experience page (capability story), matching nav. */
+const EXPERIENCE_HREF = '/experience'
 
 export const workCopy: Record<Locale, WorkPageCopy> = {
   en: {
@@ -41,7 +41,7 @@ export const workCopy: Record<Locale, WorkPageCopy> = {
       lede:
         'Projects from ten years and ten roles, with different levels of ownership — some I led end to end, some I designed inside a larger team. Case studies are added as they are written.',
     },
-    cta: { heading: 'Want to understand how I think?', linkLabel: 'About' },
+    cta: { heading: 'Want to understand how I think?', linkLabel: 'Experience' },
   },
   fa: {
     title: 'کار',
@@ -57,7 +57,7 @@ export const workCopy: Record<Locale, WorkPageCopy> = {
       lede:
         'پروژه‌هایی از ده سال و ده نقش، با سطح‌های مختلفی از مالکیت — بعضی را از ابتدا تا انتها هدایت کرده‌ام، بعضی را درون تیمی بزرگ‌تر طراحی کرده‌ام. مطالعه‌های موردی به‌تدریج که نوشته می‌شوند اضافه خواهند شد.',
     },
-    cta: { heading: 'می‌خواهید بدانید چطور فکر می‌کنم؟', linkLabel: 'درباره' },
+    cta: { heading: 'می‌خواهید بدانید چطور فکر می‌کنم؟', linkLabel: 'تجربه' },
   },
   ar: {
     title: 'العمل',
@@ -73,7 +73,7 @@ export const workCopy: Record<Locale, WorkPageCopy> = {
       lede:
         'مشاريع من عشر سنوات وعشرة أدوار بمستويات مختلفة من الملكية — بعضها قدتُه من البداية إلى النهاية، وبعضها صممتُه داخل فريق أكبر. تُضاف دراسات الحالة تدريجيًا كلما كُتبت.',
     },
-    cta: { heading: 'تريد أن تفهم كيف أفكّر؟', linkLabel: 'نبذة' },
+    cta: { heading: 'تريد أن تفهم كيف أفكّر؟', linkLabel: 'الخبرة' },
   },
   es: {
     title: 'Trabajo',
@@ -89,7 +89,7 @@ export const workCopy: Record<Locale, WorkPageCopy> = {
       lede:
         'Proyectos de diez años y diez roles, con distintos niveles de responsabilidad: algunos los lideré de principio a fin, otros los diseñé dentro de un equipo mayor. Los casos de estudio se añaden a medida que se escriben.',
     },
-    cta: { heading: '¿Quieres entender cómo pienso?', linkLabel: 'Sobre mí' },
+    cta: { heading: '¿Quieres entender cómo pienso?', linkLabel: 'Experiencia' },
   },
   de: {
     title: 'Arbeit',
@@ -105,7 +105,7 @@ export const workCopy: Record<Locale, WorkPageCopy> = {
       lede:
         'Projekte aus zehn Jahren und zehn Rollen mit unterschiedlich viel Verantwortung – manche habe ich von Anfang bis Ende geführt, andere in einem größeren Team gestaltet. Fallstudien kommen hinzu, sobald sie geschrieben sind.',
     },
-    cta: { heading: 'Wollen Sie verstehen, wie ich denke?', linkLabel: 'Über mich' },
+    cta: { heading: 'Wollen Sie verstehen, wie ich denke?', linkLabel: 'Erfahrung' },
   },
   fr: {
     title: 'Travail',
@@ -121,7 +121,7 @@ export const workCopy: Record<Locale, WorkPageCopy> = {
       lede:
         'Des projets issus de dix ans et dix rôles, avec des niveaux de responsabilité variés : certains menés de bout en bout, d’autres conçus au sein d’une équipe plus large. Les études de cas s’ajoutent au fil de leur rédaction.',
     },
-    cta: { heading: 'Envie de comprendre ma façon de penser ?', linkLabel: 'À propos' },
+    cta: { heading: 'Envie de comprendre ma façon de penser ?', linkLabel: 'Expérience' },
   },
   ja: {
     title: '仕事',
@@ -137,7 +137,7 @@ export const workCopy: Record<Locale, WorkPageCopy> = {
       lede:
         '10年・10の役割にわたるプロジェクト。責任の範囲はさまざまで、最初から最後まで主導したものも、大きなチームの中でデザインしたものもあります。ケーススタディは執筆に合わせて追加していきます。',
     },
-    cta: { heading: '私の考え方を知りたいですか？', linkLabel: '自己紹介' },
+    cta: { heading: '私の考え方を知りたいですか？', linkLabel: '経歴' },
   },
 }
 
@@ -154,7 +154,7 @@ export const buildWorkLayout = (copy: WorkPageCopy, ids: { archive?: string; cta
   },
   {
     ...(ids.cta ? { id: ids.cta } : {}),
-    blockName: 'Next: About',
+    blockName: 'Next: Experience',
     blockType: 'cta',
     richText: richText(heading(copy.cta.heading, 'h3')),
     links: [
@@ -163,7 +163,7 @@ export const buildWorkLayout = (copy: WorkPageCopy, ids: { archive?: string; cta
           type: 'custom',
           appearance: 'default',
           label: copy.cta.linkLabel,
-          url: ABOUT_HREF,
+          url: EXPERIENCE_HREF,
         },
       },
     ],
