@@ -6,8 +6,8 @@ import { CATEGORY_OPTIONS, TOOL_LOGOS, TOOL_OPTIONS } from './toolLogos'
 
 /**
  * TOOLS / STACK — the working stack as categorised brand marks: research, design, build,
- * measurement and the infrastructure it runs on, read as one connected stack rather than six
- * separate toolkits.
+ * measurement, knowledge and the infrastructure it runs on, read as one connected stack rather
+ * than a shelf of separate toolkits.
  *
  * The slug stays `workflowStages` so the existing homepage layout records survive; only the
  * field list changed (it previously modelled stage → comma-separated tool names).
@@ -26,11 +26,11 @@ export const WorkflowStages: Block = {
       type: 'array',
       admin: {
         description:
-          'Rendered in the canonical order defined in toolLogos.ts (01 Design & Prototyping → 06 Infrastructure & Operations). The two-digit index follows that order, not the row order here.',
+          'Rendered in the canonical order defined in toolLogos.ts (01 Design & Creative Production → 07 Knowledge & Research). The two-digit index follows that order, not the row order here.',
         initCollapsed: true,
       },
       labels: { plural: 'Categories', singular: 'Category' },
-      maxRows: 6,
+      maxRows: 7,
       minRows: 2,
       // Payload has no cross-row uniqueness constraint, so the two rules that would otherwise
       // read as mistakes on the page are enforced here.
@@ -81,7 +81,7 @@ export const WorkflowStages: Block = {
               name: 'title',
               type: 'text',
               admin: {
-                description: 'Shown above the matrix, e.g. "Design & Prototyping"',
+                description: 'Shown above the matrix, e.g. "Design & Creative Production"',
                 width: '50%',
               },
               localized: true,
@@ -93,10 +93,10 @@ export const WorkflowStages: Block = {
           name: 'tools',
           type: 'array',
           labels: { plural: 'Tools', singular: 'Tool' },
-          // Eight is the cap the layout is built around: at `lg` a category is exactly one row of
-          // `tools.length` columns, so a ninth tool would wrap and orphan a cell. Eight is also
-          // where the cells stop being wide enough to hold a two-word product name on two lines.
-          maxRows: 8,
+          // A category is no longer capped at a single row: at `lg` the matrix balances itself
+          // into as many rows as it needs (see Component.tsx), so the cap is only about how much
+          // one category can reasonably claim of the section. Twelve is two full rows of six.
+          maxRows: 12,
           minRows: 1,
           fields: [
             {

@@ -12,8 +12,24 @@ export type WorkflowStagesProps = Pick<WorkflowStagesBlockProps, 'categories' | 
   className?: string
 }
 
+/** Widest a matrix may get before it wraps instead of shrinking its cells. */
+const MAX_TOOL_COLS = 7
+/** Narrowest a matrix may get, so a one-tool category is a cell rather than a banner. */
+const MIN_TOOL_COLS = 3
+
 /**
- * TOOLS / STACK — the working stack as one section-owned paper surface: six categories, each a
+ * A balanced block rather than a single line: as close to square as the count allows, bounded on
+ * both sides. Eleven tools become two rows of six, not seven and a stranded four. Because
+ * `cols = ceil(count / rows)`, the last row is ever short by at most `rows - 1` cells.
+ */
+const lgToolCols = (count: number) =>
+  Math.max(Math.ceil(count / Math.ceil(count / MAX_TOOL_COLS)), MIN_TOOL_COLS)
+
+/** Columns left over on the last row. 0 means the rows come out full and no filler is drawn. */
+const fillSpan = (count: number, cols: number) => (cols - (count % cols)) % cols
+
+/**
+ * TOOLS / STACK — the working stack as one section-owned paper surface: seven categories, each a
  * tiny index code, a label and a single continuous ruled matrix of real brand marks.
  *
  * Ruled-matrix idiom (see ExperienceGrid): the grid parent paints every separator via `gap-px`
@@ -24,35 +40,39 @@ export type WorkflowStagesProps = Pick<WorkflowStagesBlockProps, 'categories' | 
  *   · the section wrapper owns the outer top and bottom rules, and nothing else;
  *   · each category but the first owns the single rule above it;
  *   · the matrices carry no `border-y` at all, only internal `gap-px` hairlines.
- * That last point is what lets six stacked grids read as one surface: a `gap-px` grid of
+ * That last point is what lets the stacked grids read as one surface: a `gap-px` grid of
  * `bg-paper` cells has invisible outer edges, so a category's bottom edge can never double up
  * with the next one's top edge.
  *
  * At `lg` the category label is a cell in a leading gutter column rather than a band above the
- * matrix, so a category costs one row instead of two — that alone is most of the section's
- * height. The gutter is an inline-start column, so it mirrors under RTL along with reading flow;
- * only the marks themselves stay physical (see ToolLogo.tsx). Below `lg` there is no room for a
- * gutter, so the label falls back to a full-width cell in the same one-column grid.
+ * matrix, so a category costs one grid row instead of two — that alone is most of the section's
+ * height. Because the label is a single grid item sitting beside the matrix as a whole, a
+ * category that needs several rows of marks gets a label spanning all of them for free, and the
+ * label is never repeated. The gutter is an inline-start column, so it mirrors under RTL along
+ * with reading flow; only the marks themselves stay physical (see ToolLogo.tsx). Below `lg` there
+ * is no room for a gutter, so the label falls back to a full-width cell in the same grid.
  *
- * Columns are per-category at `lg`, passed as a CSS custom property so the Tailwind class stays a
- * static string the scanner can see — no dynamic `grid-cols-N` and so no safelist entry. The
- * category sizes (3, 8, 6, 7, 3, 5) share no common divisor, so any single fixed count would
- * leave a hole or a stretched cell; with one column per tool each category is exactly one row of
- * identical cells.
+ * Columns are per-category and balanced rather than one line per category — see `lgToolCols`.
+ * The count is passed as a CSS custom property so the Tailwind class stays a static string the
+ * scanner can see: no dynamic `grid-cols-N`, and so no safelist entry.
  *
- * Below `lg` the counts are fixed (4 / 3) and the `nth-child` guards absorb a trailing orphan —
- * load-bearing, not cosmetic, since `--line` is 16%-alpha ink and an unfilled grid area renders
- * as a solid tinted block. Those guards are bounded with `max-lg` on purpose: a min-width variant
- * keeps applying at every larger breakpoint, so an unbounded `sm:` guard would still fire at `lg`,
- * where columns already equal items. A five-tool category is the case that breaks — its last cell
- * is `nth-child(4n+1)`, so it would claim four of five columns, wrap, and open a grey band.
+ * A short last row is absorbed by the grid's own `::after`, never by stretching a cell, so every
+ * mark in a category keeps the same width and the markup keeps exactly one element per tool. A
+ * pseudo-element of a grid container is itself a grid item, so this costs no DOM and raises no
+ * question about list semantics. It is `bg-paper` for the reason every cell is: `--line` is
+ * 16%-alpha ink, so an *unfilled* grid area paints as a solid tinted block. `span 0` is invalid
+ * CSS — with a custom property it falls back to `auto`, which claims a whole cell and opens
+ * exactly the band the filler exists to close — so a breakpoint whose rows come out full hides
+ * the filler instead. Those hide classes are range-bounded (`max-sm:`, `sm:max-lg:`, `lg:`)
+ * because a min-width variant keeps applying at every larger breakpoint: an unbounded
+ * `after:hidden` would go on to hide a filler that `lg` still needs.
  */
 export const WorkflowStagesBlock: React.FC<WorkflowStagesProps> = ({
   categories,
   className,
   sectionHeader,
 }) => {
-  // Canonical order by key rather than admin row order, so the 01–06 index codes can never be
+  // Canonical order by key rather than admin row order, so the 01–07 index codes can never be
   // scrambled by a drag in the CMS. Categories with no resolvable tool are dropped so a matrix
   // is never empty.
   const rows = (categories ?? [])
@@ -75,6 +95,12 @@ export const WorkflowStagesBlock: React.FC<WorkflowStagesProps> = ({
         {rows.map((category, index) => {
           const tools = (category.tools ?? []).filter((tool) => isToolKey(tool.toolKey))
 
+          const count = tools.length
+          const cols = lgToolCols(count)
+          const fillBase = fillSpan(count, 3)
+          const fillSm = fillSpan(count, 4)
+          const fillLg = fillSpan(count, cols)
+
           return (
             <div
               className={cn(
@@ -93,12 +119,31 @@ export const WorkflowStagesBlock: React.FC<WorkflowStagesProps> = ({
               </div>
 
               <ul
-                className="grid grid-cols-3 gap-px bg-line sm:grid-cols-4 lg:grid-cols-[repeat(var(--tool-cols),minmax(0,1fr))]"
-                style={{ '--tool-cols': Math.min(tools.length, 8) } as React.CSSProperties}
+                className={cn(
+                  'grid grid-cols-3 gap-px bg-line sm:grid-cols-4 lg:grid-cols-[repeat(var(--tool-cols),minmax(0,1fr))]',
+                  (fillBase || fillSm || fillLg) && [
+                    'after:bg-paper',
+                    fillBase
+                      ? 'after:[grid-column:span_var(--fill-base)]'
+                      : 'max-sm:after:hidden',
+                    fillSm
+                      ? 'sm:after:[grid-column:span_var(--fill-sm)]'
+                      : 'sm:max-lg:after:hidden',
+                    fillLg ? 'lg:after:[grid-column:span_var(--fill-lg)]' : 'lg:after:hidden',
+                  ],
+                )}
+                style={
+                  {
+                    '--fill-base': fillBase,
+                    '--fill-lg': fillLg,
+                    '--fill-sm': fillSm,
+                    '--tool-cols': cols,
+                  } as React.CSSProperties
+                }
               >
                 {tools.map((tool) => (
                   <li
-                    className="flex min-w-0 flex-col items-center justify-start gap-2 bg-paper px-2 py-4 text-center sm:px-3 max-sm:[&:last-child:nth-child(3n+1)]:col-span-3 max-sm:[&:last-child:nth-child(3n+2)]:col-span-2 sm:max-lg:[&:last-child:nth-child(4n+1)]:col-span-4 sm:max-lg:[&:last-child:nth-child(4n+2)]:col-span-3 sm:max-lg:[&:last-child:nth-child(4n+3)]:col-span-2"
+                    className="flex min-w-0 flex-col items-center justify-start gap-2 bg-paper px-2 py-4 text-center sm:px-3"
                     key={tool.id ?? tool.toolKey}
                   >
                     <ToolLogo toolKey={tool.toolKey} />
