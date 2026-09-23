@@ -106,6 +106,7 @@ export const PageOpener: React.FC<PageOpenerProps> = ({
   return (
     <section
       className={cn('flex flex-col', className)}
+      data-reveal-skip=""
       {...(written ? { 'data-hero-entrance': '' } : {})}
     >
       <div

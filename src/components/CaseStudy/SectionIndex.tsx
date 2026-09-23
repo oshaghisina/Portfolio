@@ -58,7 +58,7 @@ export const SectionIndex: React.FC<SectionIndexProps> = ({ chapters, className,
   if (chapters.length < SECTION_INDEX_MIN_CHAPTERS) return null
 
   return (
-    <nav aria-label={label} className={cn('hidden xl:block', className)}>
+    <nav aria-label={label} className={cn('hidden xl:block', className)} data-reveal-skip="">
       <ol className="sticky top-32 flex flex-col gap-3">
         {chapters.map((chapter) => {
           const current = active === chapter.id

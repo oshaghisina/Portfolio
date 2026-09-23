@@ -3,6 +3,7 @@
 /* Generated from Docs/Design-System/tokens/sina.tokens.json by `pnpm tokens:build` (D-014). */
 @import './theme.css';
 @import '../../blocks/CapabilityIllustrations/motion.css';
+@import '../../providers/ScrollReveal/reveal.css';
 
 @plugin "@tailwindcss/typography";
 

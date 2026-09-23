@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { HeaderThemeProvider } from './HeaderTheme'
+import { ScrollReveal } from './ScrollReveal'
 import { SmoothScrollProvider } from './SmoothScroll'
 import { ThemeProvider } from './Theme'
 
@@ -10,7 +11,10 @@ export const Providers: React.FC<{
   return (
     <ThemeProvider>
       <HeaderThemeProvider>
-        <SmoothScrollProvider>{children}</SmoothScrollProvider>
+        <SmoothScrollProvider>
+          {children}
+          <ScrollReveal />
+        </SmoothScrollProvider>
       </HeaderThemeProvider>
     </ThemeProvider>
   )

@@ -91,7 +91,7 @@ export const WorkflowStagesBlock: React.FC<WorkflowStagesProps> = ({
       />
 
       {/* The one section-owned surface: the only outer rules in the whole block. */}
-      <div className="border-y border-line bg-paper">
+      <div className="border-y border-line bg-paper" data-reveal-group="">
         {rows.map((category, index) => {
           const tools = (category.tools ?? []).filter((tool) => isToolKey(tool.toolKey))
 
@@ -103,6 +103,7 @@ export const WorkflowStagesBlock: React.FC<WorkflowStagesProps> = ({
 
           return (
             <div
+              data-reveal-group=""
               className={cn(
                 'grid gap-px bg-line lg:grid-cols-[11rem_minmax(0,1fr)]',
                 index > 0 && 'border-t border-line',
@@ -119,6 +120,7 @@ export const WorkflowStagesBlock: React.FC<WorkflowStagesProps> = ({
               </div>
 
               <ul
+                data-reveal-group=""
                 className={cn(
                   'grid grid-cols-3 gap-px bg-line sm:grid-cols-4 lg:grid-cols-[repeat(var(--tool-cols),minmax(0,1fr))]',
                   (fillBase || fillSm || fillLg) && [

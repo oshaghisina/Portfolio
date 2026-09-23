@@ -36,7 +36,7 @@ export async function Footer({ locale, logicalPath, readiness }: FooterProps) {
     <footer className="bg-background text-foreground">
       {/* The marks live inside this wrapper, not the <footer>, so they land on the same rails the
           footer's content already uses instead of introducing a second width system. */}
-      <div className="relative isolate canvas border-t border-line">
+      <div className="relative isolate canvas border-t border-line" data-reveal-root="">
         <TechnicalFrameMarks
           corners={['bottom-start', 'bottom-end']}
           segments={[
@@ -46,7 +46,7 @@ export async function Footer({ locale, logicalPath, readiness }: FooterProps) {
         />
         <SystemLandscape labels={['Figma', 'Cursor', 'Claude']} />
 
-        <div className="grid grid-cols-2 gap-x-5 gap-y-10 py-10 md:gap-8 md:py-14 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-x-5 gap-y-10 py-10 md:gap-8 md:py-14 lg:grid-cols-4" data-reveal-group="">
           <div className="col-span-2 flex min-w-0 flex-col gap-3 lg:col-span-1">
             <Link className="text-small font-medium text-ink-2" href={localePath(locale, '/')}>
               Sina Oshaghi

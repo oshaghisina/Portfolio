@@ -1,0 +1,49 @@
+/* Server output, disabled JavaScript and unsupported browsers are fully visible.
+   Independent translate preserves the transforms used by cards and illustrations. */
+@keyframes section-arrive {
+  from {
+    opacity: 0;
+    translate: 0 var(--reveal-distance, 22px);
+  }
+  to {
+    opacity: 1;
+    translate: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal-state='pending'][data-reveal-mode='self'],
+  [data-reveal-state='pending'][data-reveal-mode='contents'] > * {
+    opacity: 0;
+    translate: 0 var(--reveal-distance, 22px);
+  }
+
+  [data-reveal-state='entering'][data-reveal-mode='self'],
+  [data-reveal-state='entering'][data-reveal-mode='contents'] > * {
+    animation: section-arrive var(--duration-reveal, 800ms) var(--ease-standard, ease-out)
+      var(--reveal-delay, 0ms) backwards;
+  }
+
+  @media (max-width: 639px) {
+    [data-reveal-root] {
+      --reveal-distance: 14px;
+    }
+  }
+}
+
+/* Focus, print and motion preferences must never wait for an entrance. */
+[data-reveal-state]:focus-within,
+[data-reveal-state]:focus-within > * {
+  animation: none !important;
+  opacity: 1 !important;
+  translate: none !important;
+}
+
+@media print {
+  [data-reveal-state],
+  [data-reveal-state] > * {
+    animation: none !important;
+    opacity: 1 !important;
+    translate: none !important;
+  }
+}

@@ -69,7 +69,7 @@ export const WorkMosaicBlock: React.FC<WorkMosaicProps> = ({
   return (
     <section className={cn('scroll-mt-28', className)} id="selected-work">
       <SectionHeader {...sectionHeader} className="mb-10 max-md:mb-8" tagTone="brand" />
-      <div className="grid grid-cols-1 border-b border-e border-line bg-paper min-[420px]:grid-cols-2 lg:grid-cols-12">
+      <div className="grid grid-cols-1 border-b border-e border-line bg-paper min-[420px]:grid-cols-2 lg:grid-cols-12" data-reveal-group="">
         {tiles.map((tile, i) => (
           <MosaicTile
             index={padIndex(i)}
