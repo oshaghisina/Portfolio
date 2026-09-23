@@ -341,8 +341,11 @@ html[data-theme='light'] {
    hero cannot shift while the loop runs. `--ix-dx`/`--ix-dy` are set per domain group in the
    component (each one's unit vector toward the centre), so one keyframe serves all three. */
 
-/* Primary page-opener title write. Without `data-hero-writing` (no-JS / reduced motion) every
-   marked region stays at its final opacity — progressive enhancement only. */
+/* Primary page-opener title write. Reduced motion keeps full opacity (no keyframes). */
+[data-hero-entrance] {
+  --hero-write-duration: 1100ms;
+}
+
 @keyframes hero-eyebrow-in {
   from {
     opacity: 0;
@@ -381,12 +384,21 @@ html[data-theme='light'] {
   }
 }
 
+@keyframes hero-write-caret-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
 .hero-write-caret {
   display: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  [data-hero-entrance][data-hero-writing] .hero-write-unit {
+  .hero-written-title .hero-write-unit {
     opacity: 0;
     animation: hero-write-unit-in 1ms linear forwards;
     animation-delay: calc(
@@ -394,7 +406,7 @@ html[data-theme='light'] {
     );
   }
 
-  [data-hero-entrance][data-hero-writing] .hero-write-caret {
+  .hero-written-title .hero-write-caret {
     display: inline-block;
     width: 1px;
     height: 0.85em;
@@ -402,44 +414,62 @@ html[data-theme='light'] {
     translate: 0 0.08em;
     background: var(--foreground);
     vertical-align: baseline;
-    animation: hero-write-caret-in var(--duration-fast) var(--ease-standard) both;
+    animation:
+      hero-write-caret-in var(--duration-fast) var(--ease-standard) both,
+      hero-write-caret-out var(--duration-fast) var(--ease-standard) forwards;
+    animation-delay:
+      100ms,
+      calc(100ms + var(--hero-write-duration, 1000ms));
   }
 
-  [data-hero-entrance][data-hero-write-complete] .hero-write-caret {
-    display: none;
-  }
-
-  [data-hero-entrance][data-hero-writing] [data-hero-eyebrow] {
+  [data-hero-entrance] [data-hero-eyebrow] {
     animation: hero-eyebrow-in var(--duration-fast) var(--ease-standard) both;
   }
 
-  [data-hero-entrance][data-hero-writing] [data-hero-supporting] {
+  [data-hero-entrance] [data-hero-supporting] {
     opacity: 0;
     transform: translateY(6px);
     animation: hero-supporting-in var(--duration-base) var(--ease-standard) forwards;
-    animation-delay: calc(var(--hero-write-duration, 1000ms) * 0.78);
+    animation-delay: calc(var(--hero-write-duration, 1100ms) * 0.78);
   }
 
-  [data-hero-entrance][data-hero-writing] [data-hero-actions] {
+  [data-hero-entrance] [data-hero-actions] {
     opacity: 0;
     transform: translateY(6px);
     animation: hero-supporting-in var(--duration-base) var(--ease-standard) forwards;
-    animation-delay: calc(var(--hero-write-duration, 1000ms) * 1.02);
+    animation-delay: calc(var(--hero-write-duration, 1100ms) * 1.02);
   }
 
-  [data-hero-entrance][data-hero-write-complete] [data-hero-supporting],
-  [data-hero-entrance][data-hero-write-complete] [data-hero-actions] {
-    opacity: 1;
-    transform: none;
+  /* About diagram: wait for the write window, then start the existing loops. */
+  [data-hero-entrance]:has(.hero-written-title) .ix-domain {
+    animation-delay: calc(100ms + var(--hero-write-duration, 1100ms));
   }
 
-  /* About intersection diagram waits until the headline is authored. */
-  [data-hero-entrance][data-hero-writing]:not([data-hero-write-complete]) .ix-domain,
-  [data-hero-entrance][data-hero-writing]:not([data-hero-write-complete]) .ix-link,
-  [data-hero-entrance][data-hero-writing]:not([data-hero-write-complete]) .ix-field,
-  [data-hero-entrance][data-hero-writing]:not([data-hero-write-complete]) .ix-mark,
-  [data-hero-entrance][data-hero-writing]:not([data-hero-write-complete]) .ix-core {
-    animation-play-state: paused;
+  [data-hero-entrance]:has(.hero-written-title) .ix-domain.ix-lag-1 {
+    animation-delay: calc(100ms + var(--hero-write-duration, 1100ms) + var(--ix-cycle) * -0.96);
+  }
+
+  [data-hero-entrance]:has(.hero-written-title) .ix-domain.ix-lag-2 {
+    animation-delay: calc(100ms + var(--hero-write-duration, 1100ms) + var(--ix-cycle) * -0.92);
+  }
+
+  [data-hero-entrance]:has(.hero-written-title) .ix-link,
+  [data-hero-entrance]:has(.hero-written-title) .ix-field,
+  [data-hero-entrance]:has(.hero-written-title) .ix-mark,
+  [data-hero-entrance]:has(.hero-written-title) .ix-core {
+    animation-delay: calc(100ms + var(--hero-write-duration, 1100ms));
+  }
+
+  [data-hero-entrance]:has(.hero-written-title) .ix-link.ix-lag-1,
+  [data-hero-entrance]:has(.hero-written-title) .ix-field.ix-lag-1,
+  [data-hero-entrance]:has(.hero-written-title) .ix-mark.ix-lag-1 {
+    animation-delay: calc(100ms + var(--hero-write-duration, 1100ms) + var(--ix-cycle) * -0.96);
+  }
+
+  [data-hero-entrance]:has(.hero-written-title) .ix-link.ix-lag-2,
+  [data-hero-entrance]:has(.hero-written-title) .ix-field.ix-lag-2,
+  [data-hero-entrance]:has(.hero-written-title) .ix-mark.ix-lag-2 {
+    animation-delay: calc(100ms + var(--hero-write-duration, 1100ms) + var(--ix-cycle) * -0.92);
   }
 }
 
@@ -561,134 +591,337 @@ html[data-theme='light'] {
   }
 }
 
-/* Shared Home and Experience capability machines. The base drawing is the fully resolved state,
+/* Shared Home and Experience capability machines. Markup is the fully resolved state,
    including without JavaScript or with reduced motion. The observer adds cap-motion-active only
    while a grid is on screen; every loop begins and ends in that same resolved state. */
 .cap-illustration {
-  --cap-cycle: 7.2s;
+  --cap-cycle: 8s;
 }
 
 .cap-illustration--discovery { --cap-lag: 0s; }
-.cap-illustration--service { --cap-lag: 0.75s; }
-.cap-illustration--systems { --cap-lag: 1.5s; }
-.cap-illustration--ai-execution { --cap-lag: 2.25s; }
+.cap-illustration--service { --cap-lag: 1.2s; }
+.cap-illustration--systems { --cap-lag: 2.4s; }
+.cap-illustration--ai-execution { --cap-lag: 3.6s; }
 
-.cap-discovery-noise { opacity: 0.24; }
+/* Resolved defaults — calm when motion is off or the grid is off-screen */
+.cap-discovery-signals { opacity: 0.2; }
 .cap-discovery-scan { opacity: 0; }
-.cap-discovery-root,
-.cap-service-core,
-.cap-systems-core,
-.cap-ai-decision,
-.cap-ai-output { opacity: 1; }
-.cap-service-route,
-.cap-systems-response,
+.cap-discovery-frame-outer,
+.cap-discovery-frame-mid,
+.cap-discovery-frame-inner,
+.cap-discovery-root { transform: none; opacity: 1; }
+.cap-service-emit,
+.cap-service-recv-b,
+.cap-service-recv-c,
+.cap-service-recv-d { opacity: 0; }
+.cap-service-core { opacity: 1; }
+.cap-service-route { opacity: 0; stroke-dasharray: 1; stroke-dashoffset: 0; }
+.cap-service-backstage { stroke-dasharray: 1; stroke-dashoffset: 0; opacity: 1; }
+.cap-service-mod-a,
+.cap-service-mod-b,
+.cap-service-mod-c,
+.cap-service-mod-d,
+.cap-service-router { opacity: 1; transform: none; }
+.cap-systems-rail-a,
+.cap-systems-rail-b,
+.cap-systems-rail-c,
+.cap-systems-rail-d { stroke-dasharray: 1; stroke-dashoffset: 0; opacity: 1; }
+.cap-systems-mod-rules,
+.cap-systems-mod-product,
+.cap-systems-mod-ops,
+.cap-systems-mod-data,
+.cap-systems-core-wrap { transform: none; }
+.cap-systems-core { opacity: 1; }
+.cap-systems-response { opacity: 0; }
 .cap-ai-input,
-.cap-ai-branches,
-.cap-ai-return { opacity: 0; }
-.cap-service-signal circle { opacity: 0; }
-.cap-service-backstage,
-.cap-systems-links { stroke-dasharray: 1; stroke-dashoffset: 0; }
+.cap-ai-branches path,
+.cap-ai-return path { stroke-dasharray: 1; stroke-dashoffset: 0; opacity: 0; }
+.cap-ai-context,
+.cap-ai-orchestrator,
+.cap-ai-agent-a,
+.cap-ai-agent-b,
+.cap-ai-tool,
+.cap-ai-output { transform: none; opacity: 1; }
+.cap-ai-packet-a,
+.cap-ai-packet-b { opacity: 0; }
+.cap-ai-output-accent { opacity: 1; }
+.cap-ai-orch-node { opacity: 0.7; }
+
+/* Hide drafting annotations on narrow viewports to keep the mechanism readable */
+@media (max-width: 639px) {
+  .cap-illustration .cap-anno {
+    display: none;
+  }
+}
 
 @media (prefers-reduced-motion: no-preference) {
-  @keyframes cap-discovery-noise {
-    0%, 12%, 80%, 100% { opacity: 0.24; }
-    24%, 42% { opacity: 0.75; }
-    60% { opacity: 0.12; }
+  /* —— Discovery: ambiguity → focus —— */
+  @keyframes cap-discovery-signals {
+    0%, 8% { opacity: 0.12; }
+    18%, 32% { opacity: 0.85; }
+    48% { opacity: 0.35; }
+    62%, 100% { opacity: 0.2; }
   }
   @keyframes cap-discovery-scan {
-    0%, 18% { opacity: 0; transform: translateY(0); }
-    23% { opacity: 0.85; transform: translateY(0); }
-    54% { opacity: 0.85; transform: translateY(105px); }
-    62%, 100% { opacity: 0; transform: translateY(105px); }
+    0%, 16% { opacity: 0; transform: translate(0, -28px); }
+    22% { opacity: 0.9; transform: translate(0, -28px); }
+    48% { opacity: 0.9; transform: translate(0, 56px); }
+    56%, 100% { opacity: 0; transform: translate(0, 56px); }
   }
-  @keyframes cap-discovery-field {
-    0%, 13%, 80%, 100% { transform: scale(1); }
-    28% { transform: scale(1.035); }
-    58% { transform: scale(0.985); }
+  @keyframes cap-discovery-frame-outer {
+    0%, 12%, 78%, 100% { transform: translate(0, 0); opacity: 1; }
+    28% { transform: translate(-10px, 6px); opacity: 0.55; }
+    55% { transform: translate(0, 0); opacity: 1; }
+  }
+  @keyframes cap-discovery-frame-mid {
+    0%, 12%, 78%, 100% { transform: translate(0, 0); opacity: 1; }
+    30% { transform: translate(8px, -5px); opacity: 0.6; }
+    55% { transform: translate(0, 0); opacity: 1; }
+  }
+  @keyframes cap-discovery-frame-inner {
+    0%, 12%, 78%, 100% { transform: translate(0, 0) scale(1); opacity: 1; }
+    32% { transform: translate(0, 4px) scale(0.94); opacity: 0.7; }
+    58% { transform: translate(0, 0) scale(1); opacity: 1; }
   }
   @keyframes cap-discovery-root {
-    0%, 13%, 72%, 100% { opacity: 1; }
-    27%, 48% { opacity: 0.16; }
-  }
-  @keyframes cap-service-route {
-    0%, 17%, 85%, 100% { opacity: 0; stroke-dashoffset: 0; }
-    26% { opacity: 0.85; stroke-dashoffset: 1; }
-    59%, 69% { opacity: 0.85; stroke-dashoffset: 0; }
-  }
-  @keyframes cap-service-backstage {
-    0%, 19%, 80%, 100% { stroke-dashoffset: 0; opacity: 1; }
-    28% { stroke-dashoffset: 1; opacity: 0.35; }
-    64% { stroke-dashoffset: 0; opacity: 1; }
-  }
-  @keyframes cap-service-signal {
-    0%, 18%, 75%, 100% { opacity: 0; }
-    32%, 41% { opacity: 1; }
-    53% { opacity: 0; }
-  }
-  @keyframes cap-service-core {
-    0%, 20%, 76%, 100% { opacity: 1; }
-    31% { opacity: 0.25; }
-    50%, 65% { opacity: 1; }
-  }
-  @keyframes cap-systems-change {
-    0%, 17%, 75%, 100% { transform: translate(0); }
-    28%, 41% { transform: translate(7px, 4px); }
-    58% { transform: translate(0); }
-  }
-  @keyframes cap-systems-links {
-    0%, 17%, 78%, 100% { stroke-dashoffset: 0; opacity: 1; }
-    29% { stroke-dashoffset: 1; opacity: 0.4; }
-    60% { stroke-dashoffset: 0; opacity: 1; }
-  }
-  @keyframes cap-systems-response {
-    0%, 31%, 80%, 100% { opacity: 0; }
-    49%, 62% { opacity: 1; }
-  }
-  @keyframes cap-systems-core {
-    0%, 18%, 80%, 100% { opacity: 1; }
-    30% { opacity: 0.22; }
-    60%, 72% { opacity: 1; }
-  }
-  @keyframes cap-ai-input {
-    0%, 14%, 42%, 100% { opacity: 0; stroke-dashoffset: 1; }
-    23%, 31% { opacity: 1; stroke-dashoffset: 0; }
-  }
-  @keyframes cap-ai-branches {
-    0%, 27%, 66%, 100% { opacity: 0; stroke-dashoffset: 1; }
-    43%, 54% { opacity: 1; stroke-dashoffset: 0; }
-  }
-  @keyframes cap-ai-return {
-    0%, 52%, 83%, 100% { opacity: 0; stroke-dashoffset: 1; }
-    67%, 75% { opacity: 1; stroke-dashoffset: 0; }
-  }
-  @keyframes cap-ai-decision {
-    0%, 16%, 83%, 100% { opacity: 1; }
-    25%, 57% { opacity: 0.2; }
-    68%, 76% { opacity: 1; }
-  }
-  @keyframes cap-ai-output {
-    0%, 14%, 85%, 100% { opacity: 1; }
-    27%, 66% { opacity: 0.18; }
-    75% { opacity: 1; }
+    0%, 14% { transform: translateY(10px); opacity: 0.35; }
+    40% { transform: translateY(10px); opacity: 0.35; }
+    58%, 72% { transform: translateY(0); opacity: 1; }
+    88%, 100% { transform: translateY(0); opacity: 1; }
   }
 
-  .cap-motion-active .cap-discovery-noise { animation: cap-discovery-noise var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite; }
-  .cap-motion-active .cap-discovery-scan { animation: cap-discovery-scan var(--cap-cycle) linear var(--cap-lag) infinite; }
-  .cap-motion-active .cap-discovery-field { animation: cap-discovery-field var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite; transform-box: fill-box; transform-origin: center; }
-  .cap-motion-active .cap-discovery-root { animation: cap-discovery-root var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite; }
-  .cap-motion-active .cap-service-route { animation: cap-service-route var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite; stroke-dasharray: 1; }
-  .cap-motion-active .cap-service-backstage { animation: cap-service-backstage var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite; }
-  .cap-motion-active .cap-service-signal circle { animation: cap-service-signal var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite; }
-  .cap-motion-active .cap-service-signal circle:nth-child(2) { animation-delay: calc(var(--cap-lag) + 0.7s); }
-  .cap-motion-active .cap-service-signal circle:nth-child(3) { animation-delay: calc(var(--cap-lag) + 1.4s); }
-  .cap-motion-active .cap-service-core { animation: cap-service-core var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite; }
-  .cap-motion-active .cap-systems-change { animation: cap-systems-change var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite; }
-  .cap-motion-active .cap-systems-links { animation: cap-systems-links var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite; }
-  .cap-motion-active .cap-systems-response { animation: cap-systems-response var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite; }
-  .cap-motion-active .cap-systems-core { animation: cap-systems-core var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite; }
-  .cap-motion-active .cap-ai-input { animation: cap-ai-input var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite; stroke-dasharray: 1; }
-  .cap-motion-active .cap-ai-branches { animation: cap-ai-branches var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite; stroke-dasharray: 1; }
-  .cap-motion-active .cap-ai-return { animation: cap-ai-return var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite; stroke-dasharray: 1; }
-  .cap-motion-active .cap-ai-decision { animation: cap-ai-decision var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite; }
-  .cap-motion-active .cap-ai-output { animation: cap-ai-output var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite; }
+  /* —— Service: separate actors → connected service —— */
+  @keyframes cap-service-route {
+    0%, 12% { opacity: 0; stroke-dashoffset: 1; }
+    22% { opacity: 0.9; stroke-dashoffset: 1; }
+    48%, 70% { opacity: 0.9; stroke-dashoffset: 0; }
+    82%, 100% { opacity: 0; stroke-dashoffset: 0; }
+  }
+  @keyframes cap-service-backstage {
+    0%, 28% { stroke-dashoffset: 1; opacity: 0.3; }
+    55%, 100% { stroke-dashoffset: 0; opacity: 1; }
+  }
+  @keyframes cap-service-emit {
+    0%, 10% { opacity: 0; }
+    18%, 55% { opacity: 1; }
+    70%, 100% { opacity: 0; }
+  }
+  @keyframes cap-service-recv {
+    0%, 40% { opacity: 0; }
+    52%, 72% { opacity: 1; }
+    85%, 100% { opacity: 0; }
+  }
+  @keyframes cap-service-core {
+    0%, 20% { opacity: 0.2; }
+    36%, 100% { opacity: 1; }
+  }
+  @keyframes cap-service-mod-idle {
+    0%, 14% { opacity: 0.45; }
+    36%, 100% { opacity: 1; }
+  }
+
+  /* —— Systems: independent modules → coherent lattice —— */
+  @keyframes cap-systems-rail {
+    0%, 14% { stroke-dashoffset: 1; opacity: 0.25; }
+    32%, 100% { stroke-dashoffset: 0; opacity: 1; }
+  }
+  @keyframes cap-systems-change {
+    0%, 18%, 78%, 100% { transform: translate(0, 0); }
+    32%, 48% { transform: translate(9px, 5px); }
+    62% { transform: translate(0, 0); }
+  }
+  @keyframes cap-systems-react-product {
+    0%, 34%, 78%, 100% { transform: translate(0, 0); }
+    48%, 58% { transform: translate(-4px, 3px); }
+  }
+  @keyframes cap-systems-react-ops {
+    0%, 36%, 78%, 100% { transform: translate(0, 0); }
+    50%, 60% { transform: translate(3px, -4px); }
+  }
+  @keyframes cap-systems-react-data {
+    0%, 38%, 78%, 100% { transform: translate(0, 0); }
+    52%, 62% { transform: translate(-3px, -3px); }
+  }
+  @keyframes cap-systems-response {
+    0%, 42%, 78%, 100% { opacity: 0; }
+    52%, 66% { opacity: 1; }
+  }
+  @keyframes cap-systems-core {
+    0%, 22% { opacity: 0.2; }
+    48%, 100% { opacity: 1; }
+  }
+
+  /* —— AI: context → orchestration → output —— */
+  @keyframes cap-ai-context {
+    0%, 8% { transform: translate(-14px, 8px); opacity: 0.35; }
+    22%, 100% { transform: translate(0, 0); opacity: 1; }
+  }
+  @keyframes cap-ai-input {
+    0%, 16% { opacity: 0; stroke-dashoffset: 1; }
+    26%, 38% { opacity: 1; stroke-dashoffset: 0; }
+    50%, 100% { opacity: 0; stroke-dashoffset: 0; }
+  }
+  @keyframes cap-ai-branches {
+    0%, 28% { opacity: 0; stroke-dashoffset: 1; }
+    40%, 55% { opacity: 1; stroke-dashoffset: 0; }
+    68%, 100% { opacity: 0; stroke-dashoffset: 0; }
+  }
+  @keyframes cap-ai-return {
+    0%, 48% { opacity: 0; stroke-dashoffset: 1; }
+    60%, 72% { opacity: 1; stroke-dashoffset: 0; }
+    82%, 100% { opacity: 0; stroke-dashoffset: 0; }
+  }
+  @keyframes cap-ai-packet {
+    0%, 32%, 72%, 100% { opacity: 0; }
+    42%, 58% { opacity: 1; }
+  }
+  @keyframes cap-ai-orch {
+    0%, 18% { opacity: 0.35; }
+    30%, 100% { opacity: 1; }
+  }
+  @keyframes cap-ai-output {
+    0%, 55% { transform: translateY(12px); opacity: 0.4; }
+    70%, 100% { transform: translateY(0); opacity: 1; }
+  }
+  @keyframes cap-ai-output-accent {
+    0%, 60% { opacity: 0.15; }
+    72%, 100% { opacity: 1; }
+  }
+
+  .cap-motion-active .cap-discovery-signals {
+    animation: cap-discovery-signals var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite;
+  }
+  .cap-motion-active .cap-discovery-scan {
+    animation: cap-discovery-scan var(--cap-cycle) linear var(--cap-lag) infinite;
+  }
+  .cap-motion-active .cap-discovery-frame-outer {
+    animation: cap-discovery-frame-outer var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  .cap-motion-active .cap-discovery-frame-mid {
+    animation: cap-discovery-frame-mid var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  .cap-motion-active .cap-discovery-frame-inner {
+    animation: cap-discovery-frame-inner var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  .cap-motion-active .cap-discovery-root {
+    animation: cap-discovery-root var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  .cap-motion-active .cap-service-route {
+    animation: cap-service-route var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite;
+    stroke-dasharray: 1;
+  }
+  .cap-motion-active .cap-service-backstage {
+    animation: cap-service-backstage var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite;
+  }
+  .cap-motion-active .cap-service-emit {
+    animation: cap-service-emit var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite;
+  }
+  .cap-motion-active .cap-service-recv-b {
+    animation: cap-service-recv var(--cap-cycle) var(--ease-standard) calc(var(--cap-lag) + 0.5s) infinite;
+  }
+  .cap-motion-active .cap-service-recv-c {
+    animation: cap-service-recv var(--cap-cycle) var(--ease-standard) calc(var(--cap-lag) + 0.9s) infinite;
+  }
+  .cap-motion-active .cap-service-recv-d {
+    animation: cap-service-recv var(--cap-cycle) var(--ease-standard) calc(var(--cap-lag) + 1.3s) infinite;
+  }
+  .cap-motion-active .cap-service-core {
+    animation: cap-service-core var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite;
+  }
+  .cap-motion-active .cap-service-mod-b,
+  .cap-motion-active .cap-service-mod-c,
+  .cap-motion-active .cap-service-mod-d {
+    animation: cap-service-mod-idle var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite;
+  }
+
+  .cap-motion-active .cap-systems-rail-a,
+  .cap-motion-active .cap-systems-rail-b,
+  .cap-motion-active .cap-systems-rail-c,
+  .cap-motion-active .cap-systems-rail-d {
+    animation: cap-systems-rail var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite;
+  }
+  .cap-motion-active .cap-systems-rail-b { animation-delay: calc(var(--cap-lag) + 0.15s); }
+  .cap-motion-active .cap-systems-rail-c { animation-delay: calc(var(--cap-lag) + 0.3s); }
+  .cap-motion-active .cap-systems-rail-d { animation-delay: calc(var(--cap-lag) + 0.45s); }
+  .cap-motion-active .cap-systems-mod-rules {
+    animation: cap-systems-change var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  .cap-motion-active .cap-systems-mod-product {
+    animation: cap-systems-react-product var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  .cap-motion-active .cap-systems-mod-ops {
+    animation: cap-systems-react-ops var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  .cap-motion-active .cap-systems-mod-data {
+    animation: cap-systems-react-data var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  .cap-motion-active .cap-systems-response {
+    animation: cap-systems-response var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite;
+  }
+  .cap-motion-active .cap-systems-core {
+    animation: cap-systems-core var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite;
+  }
+
+  .cap-motion-active .cap-ai-context {
+    animation: cap-ai-context var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  .cap-motion-active .cap-ai-input {
+    animation: cap-ai-input var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite;
+    stroke-dasharray: 1;
+  }
+  .cap-motion-active .cap-ai-branches path {
+    animation: cap-ai-branches var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite;
+    stroke-dasharray: 1;
+  }
+  .cap-motion-active .cap-ai-return path {
+    animation: cap-ai-return var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite;
+    stroke-dasharray: 1;
+  }
+  .cap-motion-active .cap-ai-packet-a,
+  .cap-motion-active .cap-ai-packet-b {
+    animation: cap-ai-packet var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite;
+  }
+  .cap-motion-active .cap-ai-packet-b {
+    animation-delay: calc(var(--cap-lag) + 0.25s);
+  }
+  .cap-motion-active .cap-ai-orchestrator {
+    animation: cap-ai-orch var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite;
+  }
+  .cap-motion-active .cap-ai-output {
+    animation: cap-ai-output var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite;
+    transform-box: fill-box;
+    transform-origin: center bottom;
+  }
+  .cap-motion-active .cap-ai-output-accent {
+    animation: cap-ai-output-accent var(--cap-cycle) var(--ease-standard) var(--cap-lag) infinite;
+  }
+
+  /* Optional hover: brief accent emphasis on the hovered cell's illustration */
+  @media (hover: hover) and (pointer: fine) {
+    .cap-motion-active > li:hover .cap-discovery-root,
+    .cap-motion-active > li:hover .cap-service-core,
+    .cap-motion-active > li:hover .cap-systems-core,
+    .cap-motion-active > li:hover .cap-ai-output-accent {
+      filter: brightness(1.08);
+    }
+  }
 }

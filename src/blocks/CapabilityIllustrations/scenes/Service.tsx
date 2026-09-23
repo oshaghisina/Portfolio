@@ -26,75 +26,77 @@ export const ServiceScene: React.FC = () => (
     <CapPlate />
     <CapDotField step={2} />
 
-    {/* Backstage shelf — slightly lower operational layer */}
+    {/* Backstage shelf — lower operational layer */}
     <CapBox
-      className="cap-service-backstage-plate"
       fill="var(--panel)"
-      fillOpacity={0.55}
-      gx0={-1.8}
-      gx1={5.8}
-      gy0={3.2}
-      gy1={6.4}
+      fillOpacity={0.5}
+      gx0={-2}
+      gx1={6}
+      gy0={3.4}
+      gy1={6.6}
       z0={0}
-      z1={8}
+      z1={7}
     />
 
-    {/* Infrastructure channels */}
+    {/* Structural channels (always visible, ink) */}
     <g fill="none" stroke={STROKE} strokeWidth={STROKE_WIDTH}>
-      <CapLink from={[0.2, 1.4, 28]} to={[2, 2, 48]} />
-      <CapLink from={[3.8, 1.4, 28]} to={[2, 2, 48]} />
-      <CapLink from={[0.2, 4.8, 22]} to={[2, 2, 48]} via={[[2, 4.8, 14]]} />
-      <CapLink from={[3.8, 4.8, 22]} to={[2, 2, 48]} via={[[2, 4.8, 14]]} />
+      <CapLink from={[-0.2, 1.2, 34]} to={[2, 2, 56]} via={[[2, 1.2, 12]]} />
+      <CapLink from={[4.2, 1.2, 34]} to={[2, 2, 56]} via={[[2, 1.2, 12]]} />
+      <CapLink from={[-0.2, 5, 26]} to={[2, 2, 56]} via={[[2, 5, 12]]} />
+      <CapLink from={[4.2, 5, 26]} to={[2, 2, 56]} via={[[2, 5, 12]]} />
     </g>
 
-    {/* Active route — draws during motion, visible when resolved */}
+    {/* Active route — draws during motion */}
     <CapLink
       className="cap-service-route"
-      from={[0.2, 1.4, 28]}
+      from={[-0.2, 1.2, 34]}
       pathLength={1}
       stroke={ACCENT}
-      strokeWidth={1.6}
-      to={[2, 2, 48]}
-      via={[[2, 1.4, 14], [2, 2, 14]]}
+      strokeWidth={1.7}
+      to={[2, 2, 56]}
+      via={[
+        [2, 1.2, 12],
+        [2, 2, 12],
+      ]}
     />
-
-    {/* Frontstage actors */}
-    <g className="cap-service-mod-a">
-      <CapBox fill="var(--paper)" gx0={-1.4} gx1={0.8} gy0={0.2} gy1={2} z1={28} />
-      <CapSignal className="cap-service-emit" fill={ACCENT} gx={-0.3} gy={1.1} r={2.8} z={30} />
-    </g>
-    <g className="cap-service-mod-b">
-      <CapBox fill="var(--paper)" gx0={3.2} gx1={5.4} gy0={0.2} gy1={2} z1={28} />
-      <CapSignal className="cap-service-recv-b" fill={ACCENT} gx={4.3} gy={1.1} r={2.4} z={30} />
-    </g>
-
-    {/* Backstage operations */}
-    <g className="cap-service-mod-c">
-      <CapBox fill="var(--panel)" gx0={-1.4} gx1={0.8} gy0={4} gy1={5.6} z1={22} />
-      <CapSignal className="cap-service-recv-c" fill={ACCENT} gx={-0.3} gy={4.8} r={2.4} z={24} />
-    </g>
-    <g className="cap-service-mod-d">
-      <CapBox fill="var(--panel)" gx0={3.2} gx1={5.4} gy0={4} gy1={5.6} z1={22} />
-      <CapSignal className="cap-service-recv-d" fill={ACCENT} gx={4.3} gy={4.8} r={2.4} z={24} />
-    </g>
-
-    {/* Central service router */}
-    <g className="cap-service-router">
-      <CapBox fill="var(--paper)" gx0={1.15} gx1={2.85} gy0={1.15} gy1={2.85} z0={14} z1={48} />
-      <CapNode className="cap-service-core" gx={2} gy={2} size={0.28} z={48} />
-    </g>
-
-    <CapAnno className="cap-anno" gx={-1.5} gy={-0.2} text="FRONT" z={28} />
-    <CapAnno className="cap-anno" gx={-1.5} gy={6.6} text="BACK" z={8} />
-
-    {/* Soft backstage link draw */}
     <CapLink
       className="cap-service-backstage"
-      from={[0.2, 4.8, 22]}
+      from={[-0.2, 5, 26]}
       pathLength={1}
       stroke={STROKE_INK}
-      to={[3.8, 4.8, 22]}
-      via={[[2, 4.8, 14]]}
+      to={[4.2, 5, 26]}
+      via={[[2, 5, 12]]}
     />
+
+    {/* Frontstage */}
+    <g className="cap-service-mod-a">
+      <CapBox fill="var(--paper)" gx0={-1.8} gx1={0.6} gy0={0} gy1={2} z1={34} />
+      <CapBox fill="var(--panel)" fillOpacity={0.7} gx0={-1.4} gx1={0.2} gy0={0.35} gy1={1.65} z0={34} z1={40} />
+      <CapSignal className="cap-service-emit" fill={ACCENT} gx={-0.6} gy={1} r={2.8} z={42} />
+    </g>
+    <g className="cap-service-mod-b">
+      <CapBox fill="var(--paper)" gx0={3.4} gx1={5.8} gy0={0} gy1={2} z1={34} />
+      <CapBox fill="var(--panel)" fillOpacity={0.7} gx0={3.8} gx1={5.4} gy0={0.35} gy1={1.65} z0={34} z1={40} />
+      <CapSignal className="cap-service-recv-b" fill={ACCENT} gx={4.6} gy={1} r={2.4} z={42} />
+    </g>
+
+    {/* Backstage */}
+    <g className="cap-service-mod-c">
+      <CapBox fill="var(--panel)" gx0={-1.8} gx1={0.6} gy0={4.2} gy1={5.8} z1={26} />
+      <CapSignal className="cap-service-recv-c" fill={ACCENT} gx={-0.6} gy={5} r={2.4} z={28} />
+    </g>
+    <g className="cap-service-mod-d">
+      <CapBox fill="var(--panel)" gx0={3.4} gx1={5.8} gy0={4.2} gy1={5.8} z1={26} />
+      <CapSignal className="cap-service-recv-d" fill={ACCENT} gx={4.6} gy={5} r={2.4} z={28} />
+    </g>
+
+    {/* Central service router — tallest volume */}
+    <g className="cap-service-router">
+      <CapBox fill="var(--paper)" gx0={1.05} gx1={2.95} gy0={1.05} gy1={2.95} z0={12} z1={56} />
+      <CapNode className="cap-service-core" gx={2} gy={2} size={0.32} z={56} />
+    </g>
+
+    <CapAnno className="cap-anno" gx={-1.7} gy={-0.4} text="FRONT" z={34} />
+    <CapAnno className="cap-anno" gx={-1.7} gy={6.8} text="BACK" z={7} />
   </g>
 )

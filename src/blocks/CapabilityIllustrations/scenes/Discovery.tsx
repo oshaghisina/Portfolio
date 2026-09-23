@@ -6,7 +6,6 @@ import {
   CapBox,
   CapDotField,
   CapFrame,
-  CapLink,
   CapNode,
   CapPlate,
   CapRegistration,
@@ -15,7 +14,6 @@ import {
   STROKE_INK,
   STROKE_WIDTH,
   project,
-  pts,
 } from '../spatial'
 
 /**
@@ -24,8 +22,6 @@ import {
  * Motion: signals → scan → recede → align → root activates.
  */
 export const DiscoveryScene: React.FC = () => {
-  const [scanA, scanB] = [project(-1.6, -1.6, 78), project(5.6, 5.6, 78)]
-
   return (
     <g>
       <CapRegistration />
@@ -55,20 +51,14 @@ export const DiscoveryScene: React.FC = () => {
 
       {/* Scanning plane — invisible at rest */}
       <g className="cap-discovery-scan">
-        <polygon
-          fill={ACCENT}
-          fillOpacity={0.12}
-          points={`${scanA[0]},${scanA[1]} ${scanB[0]},${scanA[1] + (scanB[1] - scanA[1]) * 0.15} ${scanB[0]},${scanB[1]} ${scanA[0]},${scanA[1] + (scanB[1] - scanA[1]) * 0.85}`}
-          stroke={ACCENT}
-          strokeWidth={1.4}
-        />
+        <CapFrame fillOpacity={0.08} gx0={-1.8} gx1={5.8} gy0={-1.8} gy1={5.8} stroke={ACCENT} z={78} />
         <line
           stroke={ACCENT}
-          strokeWidth={1.5}
-          x1={project(-1.6, 2, 78)[0]}
-          x2={project(5.6, 2, 78)[0]}
-          y1={project(-1.6, 2, 78)[1]}
-          y2={project(5.6, 2, 78)[1]}
+          strokeWidth={1.6}
+          x1={project(-1.8, 2, 78)[0]}
+          x2={project(5.8, 2, 78)[0]}
+          y1={project(-1.8, 2, 78)[1]}
+          y2={project(5.8, 2, 78)[1]}
         />
       </g>
 

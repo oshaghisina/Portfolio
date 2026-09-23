@@ -242,6 +242,7 @@ export const CapAnno: React.FC<{
   const [x, y] = project(gx, gy, z)
   return (
     <text
+      aria-hidden="true"
       className={className}
       fill={STROKE_INK}
       fontFamily="var(--font-mono)"

@@ -43,7 +43,7 @@ export const CapabilitySpotlightBlock: React.FC<CapabilitySpotlightProps> = ({
             <span className="index-code text-ink-3" dir="ltr">
               {String(i + 1).padStart(3, '0')}
             </span>
-            <div className="mt-4 flex h-[clamp(11.25rem,50vw,13.75rem)] w-full items-center justify-center md:h-[clamp(12.5rem,19vw,15rem)]">
+            <div className="mt-4 flex h-[clamp(14rem,58vw,17.5rem)] w-full items-center justify-center md:h-[clamp(15rem,24vw,18.5rem)]">
               <CapabilityIllustration spotlightKey={item.key as SpotlightKey} />
             </div>
             <h3 className="mt-5 text-h3 tracking-h3 font-medium text-foreground text-balance">
