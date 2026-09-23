@@ -2,10 +2,16 @@ import type { RequiredDataFromCollectionSlug } from 'payload'
 
 import type { Project } from '@/payload-types'
 
+import type { MosaicSize } from '@/blocks/WorkMosaic/sizes'
 import type { CategoryKey } from '@/blocks/WorkflowStages/toolLogos'
 import { DEFAULT_LOCALE, dirFor, type Locale } from '@/utilities/locale'
 
 import type { HomeCopy } from './home-copy'
+import {
+  buildExperienceTeaserBlock,
+  localizeExperienceTeaserBlock,
+  type TeaserMetric,
+} from './experience-page-content'
 import { homeCopy } from './home-copy'
 import { heading, paragraph, richText } from './lexical-helpers'
 
@@ -18,9 +24,12 @@ type PageHero = RequiredDataFromCollectionSlug<'pages'>['hero']
  * drifting between two hand-kept copies.
  *
  * V4: rebuilt into a long, sparse editorial composition — Hero → Workbench → Primary Focus →
- * Metrics → Tools / Stack → Experience matrix → Featured Project → Contact — with a dominant
- * workbench artifact, one calm focus, one featured project and real whitespace intervals, instead
- * of a sequence of roughly equal-weight catalogue blocks (see Docs/Benchmarks/Design/pleurat-com.md).
+ * Metrics → Tools / Stack → Experience matrix → Selected work → Contact — with a dominant
+ * workbench artifact, one calm focus and real whitespace intervals, instead of a sequence of
+ * roughly equal-weight catalogue blocks (see Docs/Benchmarks/Design/pleurat-com.md).
+ *
+ * V5 replaced the single Featured Project with the project mosaic: the same evidence layer,
+ * but showing the breadth of the work rather than one example of it.
  * Hero H1 revised to describe the work, not the name (Sina Oshaghi moves to a small kicker),
  * sourced from the already-drafted headline option in Docs/About-Me/Brand-Brief.md — no new
  * marketing copy invented.
@@ -67,9 +76,30 @@ export const homeMetaTitle = homeCopy.en.meta.title
 export const homeMetaDescription = homeCopy.en.meta.description
 
 /**
- * The homepage layout. `project` is the Featured Project record — a database id when seeding,
- * the full static document for the no-database fallback — so the block carries no project copy
- * of its own (D-021).
+ * The homepage mosaic: which projects appear, in what order and at what weight. This is the
+ * editorial composition, so it lives beside the layout rather than in `projects.ts` — the project
+ * records say what the work is, this says how much of Home each one is worth.
+ *
+ * The rhythm opens on the two projects that have real media and decays into the index, and the
+ * weights pack into exact rows: 6+6 · 12 · 6+3+3 · 3+3+3, with the closing index cell taking the
+ * last three columns. See `@/blocks/WorkMosaic/sizes` for the arithmetic.
+ */
+export const HOME_MOSAIC: { slug: string; size: MosaicSize }[] = [
+  { slug: 'vin-app', size: 'large' },
+  { slug: 'rp1-arena', size: 'large' },
+  { slug: 'digital-gold', size: 'wide' },
+  { slug: 'arvan-cloud-platform-redesign', size: 'medium' },
+  { slug: 'khodro45-dealer-app', size: 'small' },
+  { slug: 'oteacher-matchmaking-redesign', size: 'small' },
+  { slug: 'user-segmentation-model', size: 'small' },
+  { slug: 'marketing-automation-flows', size: 'small' },
+  { slug: 'fibona-website', size: 'small' },
+]
+
+/**
+ * The homepage layout. `projects` maps every `HOME_MOSAIC` slug to its record — database ids when
+ * seeding, full static documents for the no-database fallback — so the block carries no project
+ * copy of its own (D-021).
  */
 /**
  * TOOLS / STACK. Exported on its own so the additive `seed:home-tools` script and
@@ -88,18 +118,29 @@ export const buildToolsStackBlock = (copy: HomeCopy): NonNullable<PageLayout>[nu
     {
       key: 'designPrototyping',
       title: copy.tools.categories.designPrototyping,
-      tools: [{ toolKey: 'figma' }, { toolKey: 'higgsfield' }],
+      // Interface design first, then the motion and encoding pair, then generative video.
+      tools: [
+        { toolKey: 'figma' },
+        { toolKey: 'sketch' },
+        { toolKey: 'afterEffects' },
+        { toolKey: 'mediaEncoder' },
+        { toolKey: 'higgsfield' },
+      ],
     },
     {
       key: 'aiAgents',
       title: copy.tools.categories.aiAgents,
-      // Assistants, then the coding agents, then the plumbing they all run through.
+      // Assistants, then the agents, then the plumbing they all run through. At `lg` this lands
+      // as two rows of six, and the break falls exactly between the agents and the plumbing.
       tools: [
         { toolKey: 'chatgpt' },
         { toolKey: 'claude' },
+        { toolKey: 'gemini' },
         { toolKey: 'grok' },
         { toolKey: 'codex' },
-        { toolKey: 'githubCopilot' },
+        { toolKey: 'hermes' },
+        { toolKey: 'grokBot' },
+        { toolKey: 'openclaw' },
         { toolKey: 'openrouter' },
         { toolKey: 'langchain' },
         { toolKey: 'typesafeAi' },
@@ -142,13 +183,21 @@ export const buildToolsStackBlock = (copy: HomeCopy): NonNullable<PageLayout>[nu
     {
       key: 'infraOperations',
       title: copy.tools.categories.infraOperations,
+      // Data and hosting, then the three git platforms as one run, then what watches it all.
       tools: [
         { toolKey: 'supabase' },
         { toolKey: 'vercel' },
         { toolKey: 'coolify' },
+        { toolKey: 'github' },
+        { toolKey: 'gitlab' },
         { toolKey: 'gitea' },
         { toolKey: 'sentry' },
       ],
+    },
+    {
+      key: 'knowledgeResearch',
+      title: copy.tools.categories.knowledgeResearch,
+      tools: [{ toolKey: 'obsidian' }],
     },
   ],
 })
@@ -161,15 +210,47 @@ export const buildToolsStackBlock = (copy: HomeCopy): NonNullable<PageLayout>[nu
  */
 const WORKBENCH_CODES = ['S1', 'S2', 'S3', 'S4'] as const
 const TRACK_KEYS = ['productDesign', 'aiWorkflow', 'designSystems'] as const
-const EXPERIENCE_INDEXES = ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9'] as const
-const METRIC_SOURCES = ['Resume.md', 'Resume.md', 'Brand-Brief.md'] as const
+const EXPERIENCE_INDEXES = ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10'] as const
+// Only the first metric is still the résumé's own claim. The company and industry counts are
+// counted off Docs/Experience/ frontmatter, so they cite the folder that can be re-counted.
+const METRIC_SOURCES = ['Resume.md', 'Experience/', 'Experience/'] as const
+
+/**
+ * The proof metrics, as the Experience section wants them. They live in `homeCopy` rather than
+ * beside `/experience`'s copy because they are Home's own claim — `/experience` argues capability
+ * and never restates the counts, so there is nothing here for the two pages to disagree about.
+ */
+const teaserMetrics = (copy: HomeCopy): TeaserMetric[] =>
+  copy.proof.metrics.map((metric, i) => ({ ...metric, source: METRIC_SOURCES[i]! }))
+
+/** The English proof rows, for seeders that write the section outside `buildHomeLayout`. */
+export const HOME_TEASER_METRICS: TeaserMetric[] = teaserMetrics(homeCopy[DEFAULT_LOCALE])
+
+/**
+ * SELECTED WORK. Exported on its own so the additive `seed:home-mosaic` script and
+ * `buildHomeLayout` can never drift apart.
+ */
+export const buildWorkMosaicBlock = (
+  copy: HomeCopy,
+  projects: Record<string, string | Project>,
+): NonNullable<PageLayout>[number] => ({
+  blockName: 'Selected work',
+  blockType: 'workMosaic',
+  sectionHeader: copy.selectedWork.header,
+  // Throwing beats skipping: a missing project would silently reflow every row after it.
+  items: HOME_MOSAIC.map(({ size, slug }) => {
+    const project = projects[slug]
+    if (!project) throw new Error(`home mosaic: no project for slug "${slug}"`)
+    return { project, size }
+  }),
+})
 
 export const buildHomeLayout = ({
   locale,
-  project,
+  projects,
 }: {
   locale: Locale
-  project: string | Project
+  projects: Record<string, string | Project>
 }): PageLayout => {
   const copy = homeCopy[locale]
   const dir = dirFor(locale)
@@ -196,16 +277,6 @@ export const buildHomeLayout = ({
         description: item.description,
       })),
     },
-    {
-      blockName: 'Proof',
-      blockType: 'metricsStrip',
-      sectionHeader: copy.proof.header,
-      metrics: copy.proof.metrics.map((metric, i) => ({
-        value: metric.value,
-        caption: metric.caption,
-        source: METRIC_SOURCES[i]!,
-      })),
-    },
     buildToolsStackBlock(copy),
     {
       blockName: 'Experience',
@@ -218,12 +289,8 @@ export const buildHomeLayout = ({
         blurb: item.blurb,
       })),
     },
-    {
-      blockName: 'Featured Project',
-      blockType: 'selectedWork',
-      sectionHeader: copy.featured.header,
-      project,
-    },
+    buildExperienceTeaserBlock(locale, teaserMetrics(copy)),
+    buildWorkMosaicBlock(copy, projects),
     {
       blockName: 'Contact',
       blockType: 'cta',
@@ -257,7 +324,7 @@ export const buildHomeLayout = ({
 /**
  * Overlays one locale's copy onto the English hero and layout Payload just returned — which now
  * carry a generated `id` for every block and every nested array row. Spreading `...block` /
- * `...row` preserves those ids, the `selectedWork` relationship and every non-localized leaf;
+ * `...row` preserves those ids, the mosaic's project relationships and every non-localized leaf;
  * only known localized leaves are replaced, index-matched against `HomeCopy`'s arrays, which
  * have the same order and counts as `buildHomeLayout` produced.
  *
@@ -305,14 +372,6 @@ export const localizeHomeLayout = (
           sectionHeader: { ...header, ...copy.tracks.header },
           tracks: rows('tracks').map((row, i) => ({ ...row, ...copy.tracks.items[i] })),
         }
-      case 'metricsStrip':
-        // `source` is not in `HomeCopy`; `...row` carries the English filename into this locale,
-        // which is the point — it is a localized leaf with one value everywhere.
-        return {
-          ...block,
-          sectionHeader: { ...header, ...copy.proof.header },
-          metrics: rows('metrics').map((row, i) => ({ ...row, ...copy.proof.metrics[i] })),
-        }
       case 'workflowStages':
         // Keyed, not index-matched: category order is editable in the CMS, and `key` is the
         // stable identity the copy table is written against.
@@ -330,8 +389,20 @@ export const localizeHomeLayout = (
           sectionHeader: { ...header, ...copy.experience.header },
           items: rows('items').map((row, i) => ({ ...row, ...copy.experience.items[i] })),
         }
+      // Capability words live in `experience-page-copy.ts` beside the page they advertise, not in
+      // `homeCopy` — the preview and `/experience` must never drift into describing themselves
+      // differently — so the overlay for this one block belongs there too. Only the metrics are
+      // Home's, and they are passed in.
+      case 'experienceTeaser':
+        return localizeExperienceTeaserBlock(locale, block, teaserMetrics(copy))
+      // `...block` carries `items` through untouched: the project relationship, the size and the
+      // media override are structure, shared by every locale, and the tiles' words all come from
+      // the project records themselves.
+      case 'workMosaic':
+        return { ...block, sectionHeader: { ...header, ...copy.selectedWork.header } }
+      // Retained for pages still holding the superseded single-project block.
       case 'selectedWork':
-        return { ...block, sectionHeader: { ...header, ...copy.featured.header } }
+        return { ...block, sectionHeader: { ...header, ...copy.selectedWork.header } }
       case 'cta': {
         const labels = [copy.contact.primaryLabel, copy.contact.secondaryLabel]
         return {

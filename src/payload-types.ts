@@ -170,7 +170,7 @@ export interface Page {
   id: string;
   title: string;
   hero: {
-    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact' | 'homeImpact';
+    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact' | 'homeImpact' | 'aboutImpact' | 'experienceImpact';
     richText?: {
       root: {
         type: string;
@@ -224,10 +224,16 @@ export interface Page {
     | FormBlock
     | MetricsStripBlock
     | SelectedWorkBlock
+    | WorkMosaicBlock
     | WorkspaceBlock
     | TracksBlock
     | WorkflowStagesBlock
     | ExperienceCatalogueBlock
+    | ExperienceTeaserBlock
+    | CapabilitySpotlightBlock
+    | CapabilityMatrixBlock
+    | CapabilityEvidenceBlock
+    | CapabilityModelBlock
     | ProjectArchiveBlock
     | CareerJourneyBlock
     | ThinkingMapBlock
@@ -1308,6 +1314,34 @@ export interface SelectedWorkBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "WorkMosaicBlock".
+ */
+export interface WorkMosaicBlock {
+  sectionHeader?: SectionHeaderField;
+  /**
+   * One tile per project, in reading order — drag to reorder. Size is a weight on a row: Wide fills a row, two halves (Large or Medium) fill a row, four quarters (Small) fill a row. Mix sizes so each row adds up, or the row will end in empty paper.
+   */
+  items: {
+    /**
+     * Project facts come from the Projects collection. Publish the project in each language it should appear in — a project left unpublished in a language is skipped there.
+     */
+    project: string | Project;
+    /**
+     * How much of a row this project claims, and how much it says.
+     */
+    size: 'wide' | 'large' | 'medium' | 'small';
+    /**
+     * Optional. Overrides what this tile shows. Leave empty to use the project cover, then the first case-study hero visual, then the pending plate.
+     */
+    mediaOverride?: (string | null) | Media;
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'workMosaic';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "WorkspaceBlock".
  */
 export interface WorkspaceBlock {
@@ -1356,7 +1390,7 @@ export interface TracksBlock {
 export interface WorkflowStagesBlock {
   sectionHeader?: SectionHeaderField;
   /**
-   * Rendered in the canonical order defined in toolLogos.ts (01 Design & Prototyping → 06 Infrastructure & Operations). The two-digit index follows that order, not the row order here.
+   * Rendered in the canonical order defined in toolLogos.ts (01 Design & Creative Production → 07 Knowledge & Research). The two-digit index follows that order, not the row order here.
    */
   categories?:
     | {
@@ -1369,9 +1403,10 @@ export interface WorkflowStagesBlock {
           | 'buildDelivery'
           | 'dataIntelligence'
           | 'growthMeasurement'
-          | 'infraOperations';
+          | 'infraOperations'
+          | 'knowledgeResearch';
         /**
-         * Shown above the matrix, e.g. "Design & Prototyping"
+         * Shown above the matrix, e.g. "Design & Creative Production"
          */
         title: string;
         tools?:
@@ -1381,12 +1416,18 @@ export interface WorkflowStagesBlock {
                */
               toolKey:
                 | 'figma'
+                | 'sketch'
+                | 'afterEffects'
+                | 'mediaEncoder'
                 | 'higgsfield'
                 | 'chatgpt'
                 | 'claude'
+                | 'gemini'
                 | 'grok'
                 | 'codex'
-                | 'githubCopilot'
+                | 'hermes'
+                | 'grokBot'
+                | 'openclaw'
                 | 'openrouter'
                 | 'langchain'
                 | 'typesafeAi'
@@ -1409,8 +1450,11 @@ export interface WorkflowStagesBlock {
                 | 'supabase'
                 | 'vercel'
                 | 'coolify'
+                | 'github'
+                | 'gitlab'
                 | 'gitea'
-                | 'sentry';
+                | 'sentry'
+                | 'obsidian';
               id?: string | null;
             }[]
           | null;
@@ -1448,6 +1492,259 @@ export interface ExperienceCatalogueBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'experienceCatalogue';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ExperienceTeaserBlock".
+ */
+export interface ExperienceTeaserBlock {
+  sectionHeader?: SectionHeaderField;
+  /**
+   * The four primary capabilities, in reading order — drag to reorder. The index code (01, 02 …) follows this order. Each key selects a fixed mark that cannot be edited here. Keep these in step with the capability spotlight on /experience.
+   */
+  capabilities: {
+    /**
+     * Stable id — selects the mark
+     */
+    key: 'discovery' | 'service' | 'systems' | 'ai-execution';
+    title: string;
+    /**
+     * One short declarative sentence, e.g. "Understand before building."
+     */
+    principle: string;
+    id?: string | null;
+  }[];
+  /**
+   * The proof beneath the capabilities — three or four at most. These support the section; they are not its subject.
+   */
+  metrics?:
+    | {
+        /**
+         * Short — "10 yrs", "20+", "~$0.03"
+         */
+        value: string;
+        /**
+         * What the number measures
+         */
+        caption: string;
+        /**
+         * Where it comes from (report, dashboard, date) — every number is traceable. Stored for the editor, not rendered.
+         */
+        source?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  links?:
+    | {
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: string | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: string | Post;
+              } | null)
+            | ({
+                relationTo: 'projects';
+                value: string | Project;
+              } | null);
+          url?: string | null;
+          label: string;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'experienceTeaser';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CapabilitySpotlightBlock".
+ */
+export interface CapabilitySpotlightBlock {
+  sectionHeader?: SectionHeaderField;
+  /**
+   * The four primary capabilities, in reading order — drag to reorder. The index code (001, 002 …) follows this order. Each key selects a fixed illustration that cannot be edited here.
+   */
+  items: {
+    /**
+     * Stable id — selects the illustration
+     */
+    key: 'discovery' | 'service' | 'systems' | 'ai-execution';
+    title: string;
+    /**
+     * One short declarative sentence, e.g. "Understand before building."
+     */
+    principle: string;
+    /**
+     * Two lines at most — what the capability actually does
+     */
+    description: string;
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'capabilitySpotlight';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CapabilityMatrixBlock".
+ */
+export interface CapabilityMatrixBlock {
+  sectionHeader?: SectionHeaderField;
+  /**
+   * The small label above each capability’s evidence list, e.g. "Evidence". One string for the whole section rather than sixteen copies of the same word.
+   */
+  evidenceLabel: string;
+  /**
+   * The four capability groups, in reading order. Every one of the sixteen skills must appear exactly once, in its own group — the page is a complete inventory, so nothing may silently drop out of it.
+   */
+  groups: {
+    /**
+     * Stable id — fixes which skills may sit here
+     */
+    key: 'core' | 'systems' | 'execution' | 'specialized';
+    /**
+     * Group heading, e.g. "Core"
+     */
+    title: string;
+    skills: {
+      /**
+       * Stable id — selects the mini mark
+       */
+      key:
+        | 'ai-product-development'
+        | 'analytics-experimentation'
+        | 'business-modeling'
+        | 'documentation-spec'
+        | 'fintech-strategy'
+        | 'gamification'
+        | 'process-operations'
+        | 'product-discovery'
+        | 'product-function-setup'
+        | 'product-management'
+        | 'requirements'
+        | 'rtl-persian'
+        | 'service-design'
+        | 'stakeholder-management'
+        | 'technical-pm'
+        | 'ux-direction';
+      title: string;
+      /**
+       * One concise sentence. Not an essay.
+       */
+      description: string;
+      /**
+       * Where this capability was actually used. Attach the project when one exists — the label becomes a link on its own once that project has a published case study, and stays plain text until then.
+       */
+      evidence?:
+        | {
+            /**
+             * Company or project as it should read
+             */
+            label: string;
+            /**
+             * Optional — links once a case study publishes
+             */
+            project?: (string | null) | Project;
+            id?: string | null;
+          }[]
+        | null;
+      id?: string | null;
+    }[];
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'capabilityMatrix';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CapabilityEvidenceBlock".
+ */
+export interface CapabilityEvidenceBlock {
+  sectionHeader?: SectionHeaderField;
+  /**
+   * Three to five examples where several capabilities combined. Attach the project when one exists — the title becomes a link on its own once that project has a published case study.
+   */
+  items: {
+    /**
+     * Company or project, e.g. "Digikala — Digital Gold"
+     */
+    label: string;
+    /**
+     * Optional — links once a case study publishes
+     */
+    project?: (string | null) | Project;
+    /**
+     * One line on what the work was (optional)
+     */
+    note?: string | null;
+    /**
+     * The capabilities that combined here. Use the short display form — these read as a sum, not as full skill titles.
+     */
+    capabilities: {
+      /**
+       * Selects the mini mark
+       */
+      key:
+        | 'product-management'
+        | 'product-discovery'
+        | 'service-design'
+        | 'requirements'
+        | 'ai-product-development'
+        | 'process-operations'
+        | 'business-modeling'
+        | 'technical-pm'
+        | 'documentation-spec'
+        | 'analytics-experimentation'
+        | 'ux-direction'
+        | 'stakeholder-management'
+        | 'fintech-strategy'
+        | 'rtl-persian'
+        | 'gamification'
+        | 'product-function-setup';
+      /**
+       * Short display form, e.g. "Service Design"
+       */
+      label: string;
+      id?: string | null;
+    }[];
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'capabilityEvidence';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CapabilityModelBlock".
+ */
+export interface CapabilityModelBlock {
+  sectionHeader?: SectionHeaderField;
+  /**
+   * The fields the work draws on. Six reads best — the grid is two or three columns, so six fills it exactly.
+   */
+  disciplines: {
+    label: string;
+    id?: string | null;
+  }[];
+  /**
+   * Small label over the result, e.g. "Feeding"
+   */
+  outputLabel: string;
+  /**
+   * What they all feed, e.g. "System · Decision · Delivery"
+   */
+  output: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'capabilityModel';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -2045,10 +2342,16 @@ export interface PagesSelect<T extends boolean = true> {
         formBlock?: T | FormBlockSelect<T>;
         metricsStrip?: T | MetricsStripBlockSelect<T>;
         selectedWork?: T | SelectedWorkBlockSelect<T>;
+        workMosaic?: T | WorkMosaicBlockSelect<T>;
         workspace?: T | WorkspaceBlockSelect<T>;
         tracks?: T | TracksBlockSelect<T>;
         workflowStages?: T | WorkflowStagesBlockSelect<T>;
         experienceCatalogue?: T | ExperienceCatalogueBlockSelect<T>;
+        experienceTeaser?: T | ExperienceTeaserBlockSelect<T>;
+        capabilitySpotlight?: T | CapabilitySpotlightBlockSelect<T>;
+        capabilityMatrix?: T | CapabilityMatrixBlockSelect<T>;
+        capabilityEvidence?: T | CapabilityEvidenceBlockSelect<T>;
+        capabilityModel?: T | CapabilityModelBlockSelect<T>;
         projectArchive?: T | ProjectArchiveBlockSelect<T>;
         careerJourney?: T | CareerJourneyBlockSelect<T>;
         thinkingMap?: T | ThinkingMapBlockSelect<T>;
@@ -2196,6 +2499,23 @@ export interface SelectedWorkBlockSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "WorkMosaicBlock_select".
+ */
+export interface WorkMosaicBlockSelect<T extends boolean = true> {
+  sectionHeader?: T | SectionHeaderFieldSelect<T>;
+  items?:
+    | T
+    | {
+        project?: T;
+        size?: T;
+        mediaOverride?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "WorkspaceBlock_select".
  */
 export interface WorkspaceBlockSelect<T extends boolean = true> {
@@ -2266,6 +2586,136 @@ export interface ExperienceCatalogueBlockSelect<T extends boolean = true> {
         blurb?: T;
         id?: T;
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ExperienceTeaserBlock_select".
+ */
+export interface ExperienceTeaserBlockSelect<T extends boolean = true> {
+  sectionHeader?: T | SectionHeaderFieldSelect<T>;
+  capabilities?:
+    | T
+    | {
+        key?: T;
+        title?: T;
+        principle?: T;
+        id?: T;
+      };
+  metrics?:
+    | T
+    | {
+        value?: T;
+        caption?: T;
+        source?: T;
+        id?: T;
+      };
+  links?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+            };
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CapabilitySpotlightBlock_select".
+ */
+export interface CapabilitySpotlightBlockSelect<T extends boolean = true> {
+  sectionHeader?: T | SectionHeaderFieldSelect<T>;
+  items?:
+    | T
+    | {
+        key?: T;
+        title?: T;
+        principle?: T;
+        description?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CapabilityMatrixBlock_select".
+ */
+export interface CapabilityMatrixBlockSelect<T extends boolean = true> {
+  sectionHeader?: T | SectionHeaderFieldSelect<T>;
+  evidenceLabel?: T;
+  groups?:
+    | T
+    | {
+        key?: T;
+        title?: T;
+        skills?:
+          | T
+          | {
+              key?: T;
+              title?: T;
+              description?: T;
+              evidence?:
+                | T
+                | {
+                    label?: T;
+                    project?: T;
+                    id?: T;
+                  };
+              id?: T;
+            };
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CapabilityEvidenceBlock_select".
+ */
+export interface CapabilityEvidenceBlockSelect<T extends boolean = true> {
+  sectionHeader?: T | SectionHeaderFieldSelect<T>;
+  items?:
+    | T
+    | {
+        label?: T;
+        project?: T;
+        note?: T;
+        capabilities?:
+          | T
+          | {
+              key?: T;
+              label?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CapabilityModelBlock_select".
+ */
+export interface CapabilityModelBlockSelect<T extends boolean = true> {
+  sectionHeader?: T | SectionHeaderFieldSelect<T>;
+  disciplines?:
+    | T
+    | {
+        label?: T;
+        id?: T;
+      };
+  outputLabel?: T;
+  output?: T;
   id?: T;
   blockName?: T;
 }
@@ -3233,7 +3683,7 @@ export interface About {
    */
   basedIn?: string | null;
   /**
-   * Left empty — not yet confirmed.
+   * Seeded as Freelance, evidenced by the independent projects in Docs/Experience/Projects/. The other three are still unconfirmed (Brand-Brief Q3).
    */
   openTo?: ('full-time' | 'freelance' | 'consulting' | 'advisory')[] | null;
   /**

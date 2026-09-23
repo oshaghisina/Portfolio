@@ -1,7 +1,7 @@
 import type { Project } from '@/payload-types'
 
 import { paragraph, prose, type TextDirection } from './lexical'
-import type { MediaSpec, SeedLocale } from './media'
+import type { MediaSpec, SeedLocale } from '../media'
 
 /**
  * VIN — a connection-first networking app for Dubai's professional community. Every sentence

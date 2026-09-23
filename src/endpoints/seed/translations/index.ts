@@ -2,6 +2,7 @@ import type { Payload } from 'payload'
 
 import { seedAboutTranslations } from './about'
 import { seedContactTranslations } from './contact'
+import { seedExperiencePageTranslations } from './experience'
 import { seedExperienceTranslations } from './experiences'
 import { seedReviewFlags } from './flags'
 import { seedHomeTranslations } from './home'
@@ -27,6 +28,7 @@ export const TRANSLATION_SURFACES = {
   home: seedHomeTranslations,
   contact: seedContactTranslations,
   about: seedAboutTranslations,
+  experiencePage: seedExperiencePageTranslations,
   projects: seedProjectTranslations,
   experiences: seedExperienceTranslations,
   // Last: it states what is true about everything the surfaces above just wrote.

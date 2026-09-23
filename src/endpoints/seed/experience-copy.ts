@@ -8,7 +8,8 @@ import type { Locale } from '@/utilities/locale'
  * missing languages without being able to touch the two that are already right.
  *
  * Keyed by `order`, which is the stable identity `experiencesData` and the About page's career
- * journey both use — row position is not.
+ * journey both use — row position is not. `0` is Taha Gasht, which entered ahead of Digikala
+ * without renumbering the rest; see the note in `experiences.ts`.
  *
  * Only localized leaves. `employment`, `order` and `period.present` / `period.approx` are shared
  * and never re-sent (see `experienceFaData`, which set that precedent).
@@ -31,6 +32,14 @@ export interface ExperienceFields {
 
 export const experienceCopy: Record<ExperienceLocale, Record<number, ExperienceFields>> = {
   ar: {
+    0: {
+      title: 'طاها غشت',
+      company: 'طاها غشت',
+      role: 'مصمم منتج واستراتيجي',
+      domain: 'السفر / الحجز',
+      summary: 'تصميم واستراتيجية المنتج عبر موقع الحجز ونظام التصميم المشترك واللوحة الداخلية لشركة سفر.',
+      durationLabel: '',
+    },
     1: {
       title: 'ديجيكالا — الذهب الرقمي',
       company: 'ديجيكالا',
@@ -45,7 +54,7 @@ export const experienceCopy: Record<ExperienceLocale, Record<number, ExperienceF
       company: 'كارسبارنسي وخودرو45',
       role: 'مصمم منتج',
       domain: 'السيارات',
-      summary: 'صمّمتُ منصّة بيع وشراء سيارات كاملة لسوق الإمارات، ورفعتُ التحويل عبر اختبارات قابلية الاستخدام.',
+      summary: 'صمّمتُ منصّة بيع وشراء سيارات كاملة لسوق الإمارات — تطبيق التاجر، وكنسول المشغّل، وأداة الفحص، وويب البائع، على نظام تصميم واحد.',
       durationLabel: 'سنتان ونصف',
     },
     3: {
@@ -114,6 +123,14 @@ export const experienceCopy: Record<ExperienceLocale, Record<number, ExperienceF
   },
 
   es: {
+    0: {
+      title: 'Taha Gasht',
+      company: 'Taha Gasht',
+      role: 'Diseñador de producto y estratega',
+      domain: 'Viajes / reservas',
+      summary: 'Diseño y estrategia de producto para el sitio de reservas, el sistema de diseño compartido y el panel interno de una empresa de viajes.',
+      durationLabel: '',
+    },
     1: {
       title: 'Digikala — Digital Gold',
       company: 'Digikala',
@@ -128,7 +145,7 @@ export const experienceCopy: Record<ExperienceLocale, Record<number, ExperienceF
       company: 'Carsparency y Khodro45',
       role: 'Diseñador de producto',
       domain: 'Automoción',
-      summary: 'Diseñé una plataforma completa de compraventa de coches para el mercado de los Emiratos; subí la conversión con pruebas de usabilidad.',
+      summary: 'Diseñé una plataforma completa de compraventa de coches para el mercado de los Emiratos: app del concesionario, consola del operador, herramienta de inspección y web del vendedor, sobre un mismo sistema de diseño.',
       durationLabel: '2,5 años',
     },
     3: {
@@ -197,6 +214,14 @@ export const experienceCopy: Record<ExperienceLocale, Record<number, ExperienceF
   },
 
   de: {
+    0: {
+      title: 'Taha Gasht',
+      company: 'Taha Gasht',
+      role: 'Produktdesigner & Stratege',
+      domain: 'Reisen / Buchung',
+      summary: 'Produktdesign und -strategie für Buchungsseite, gemeinsames Designsystem und internes Panel eines Reiseunternehmens.',
+      durationLabel: '',
+    },
     1: {
       title: 'Digikala — Digital Gold',
       company: 'Digikala',
@@ -211,7 +236,7 @@ export const experienceCopy: Record<ExperienceLocale, Record<number, ExperienceF
       company: 'Carsparency & Khodro45',
       role: 'Produktdesigner',
       domain: 'Automotive',
-      summary: 'Eine vollständige Kauf- und Verkaufsplattform für Autos für den VAE-Markt gestaltet; die Conversion über Usability-Tests gesteigert.',
+      summary: 'Eine vollständige Kauf- und Verkaufsplattform für Autos für den VAE-Markt gestaltet – Händler-App, Operator-Konsole, Prüfwerkzeug und Verkäufer-Website, auf einem Designsystem.',
       durationLabel: '2,5 Jahre',
     },
     3: {
@@ -280,6 +305,14 @@ export const experienceCopy: Record<ExperienceLocale, Record<number, ExperienceF
   },
 
   fr: {
+    0: {
+      title: 'Taha Gasht',
+      company: 'Taha Gasht',
+      role: 'Designer produit & stratège',
+      domain: 'Voyage / réservation',
+      summary: "Design et stratégie produit pour le site de réservation, le design system partagé et le panneau interne d'une entreprise de voyage.",
+      durationLabel: '',
+    },
     1: {
       title: 'Digikala — Digital Gold',
       company: 'Digikala',
@@ -294,7 +327,7 @@ export const experienceCopy: Record<ExperienceLocale, Record<number, ExperienceF
       company: 'Carsparency et Khodro45',
       role: 'Designer produit',
       domain: 'Automobile',
-      summary: 'J’ai conçu une plateforme complète d’achat-vente de voitures pour le marché émirati ; la conversion a progressé grâce aux tests d’utilisabilité.',
+      summary: 'J’ai conçu une plateforme complète d’achat-vente de voitures pour le marché émirati — app concessionnaire, console opérateur, outil d’inspection et web vendeur, sur un même design system.',
       durationLabel: '2,5 ans',
     },
     3: {
@@ -363,6 +396,14 @@ export const experienceCopy: Record<ExperienceLocale, Record<number, ExperienceF
   },
 
   ja: {
+    0: {
+      title: 'Taha Gasht',
+      company: 'Taha Gasht',
+      role: 'プロダクトデザイナー兼ストラテジスト',
+      domain: '旅行 / 予約',
+      summary: '旅行事業の予約サイト、共通デザインシステム、社内管理画面にわたるプロダクトデザインと戦略。',
+      durationLabel: '',
+    },
     1: {
       title: 'Digikala — Digital Gold',
       company: 'Digikala',
@@ -377,7 +418,7 @@ export const experienceCopy: Record<ExperienceLocale, Record<number, ExperienceF
       company: 'Carsparency・Khodro45',
       role: 'プロダクトデザイナー',
       domain: '自動車',
-      summary: 'UAE市場向けの自動車売買プラットフォームを全体設計。ユーザビリティテストでコンバージョンを引き上げた。',
+      summary: 'UAE市場向けの自動車売買プラットフォームを全体設計。ディーラーアプリ、オペレーターコンソール、点検ツール、出品者ウェブを1つのデザインシステム上に。',
       durationLabel: '2.5年',
     },
     3: {

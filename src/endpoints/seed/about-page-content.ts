@@ -9,10 +9,16 @@ type PageHero = RequiredDataFromCollectionSlug<'pages'>['hero']
 /**
  * About page content, English first (D-009's source locale) then the Persian overlay applied
  * after creation (see `localizeAboutLayoutFa`). Sourced from Docs/About-Me/Brand-Brief.md (hero,
- * biography), Docs/Experience/<Company>/README.md (career journey), and
- * Docs/Experience/Projects/game-design/README.md's Learnings section (thinking map, principles,
- * team process — the richest real evidence in the repo). "Corporate Welfare" never appears —
- * it isn't a real project. Personal content stays to what the resume actually lists.
+ * biography), Docs/Experience/<Company>/README.md (career journey), and the Learnings sections
+ * across Docs/Experience/Projects/ (thinking map, principles, team process).
+ *
+ * The biography was rewritten 2026-09-23 against Brand-Brief.md's `### Long bio`, which now covers
+ * the independent practice as well as the salaried roles. Nothing here may assert a Tier 1 claim
+ * from Brand-Brief.md §3b — that rules out the Carsparency conversion lift, the OTeacher
+ * engagement increase and the Biomaze "first player" line, all removed on 2026-09-23. Tier 2
+ * claims (the unquantified Arvan NPS line) stay, attributed to the résumé and without a number.
+ * "Corporate Welfare" never appears — it isn't a real project. Personal content stays to what the
+ * resume actually lists.
  */
 
 export const aboutHeroRichTextEn = richText(
@@ -45,13 +51,16 @@ export const aboutMetaDescriptionFa =
 const biographyHeadingEn = heading('A hybrid, by accident and then by choice.', 'h2')
 const biographyBodyEn = [
   paragraph(
-    "I design and manage digital products, and then make sure they grow. Over ten years the work has spanned fintech (Digikala's Digital Gold), cloud infrastructure (Arvan Cloud), automotive marketplaces (Carsparency and Khodro45), education (OTeacher, Biomaze), media (Didestan) and telecom (A1Paradise).",
+    "I design and manage digital products, and then make sure they grow. Over ten years the work has spanned fintech (Digikala's Digital Gold), cloud infrastructure (Arvan Cloud), automotive marketplaces (Carsparency and Khodro45), education (OTeacher, Biomaze), media (Didestan), telecom (A1Paradise) and travel (Taha Gasht).",
   ),
   paragraph(
-    "The pattern across those roles is unusual: the same person does the research, designs the product, runs the go-to-market, and builds the dashboards that say whether it worked. At Digikala that meant defining the vision and features for Digital Gold, designing the zero-fee, installment and gift-card campaigns, building segmentation models on assets, demographics and behaviour, and replacing the team's spreadsheets with BI dashboards tracking NMV, CTR, CPC and conversion — while introducing concepts such as buy-now-pay-later and gold-backed credit.",
+    "The pattern across those roles is unusual: the same person does the research, designs the product, runs the go-to-market, and builds the dashboards that say whether it worked. At Digikala that meant defining the vision and features for Digital Gold, designing the zero-fee, installment and gift-card campaigns, building segmentation models on assets, demographics and behaviour, and replacing the team's spreadsheets with BI dashboards tracking NMV, CTR, CPC and conversion.",
   ),
   paragraph(
-    "Earlier, at Arvan Cloud, a redesign of the platform's information architecture around the metrics users actually needed produced measurable NPS growth. At Carsparency, a complete buy-and-sell platform for the UAE market was designed and tested until selling conversion rose.",
+    'Since 2022, working independently, the range has widened again — into the operation underneath the interface, and into the build itself. That has meant process architecture for an after-sales platform and a freight marketplace; an input-readiness audit that returned a documented no; and two products designed and shipped solo, both live and taking real traffic.',
+  ),
+  paragraph(
+    'A rule runs through all of it: a wrong number is worse than no number. Unknowns get marked rather than guessed, contradictions get recorded rather than resolved, and every project file ends with what didn’t work.',
   ),
   paragraph(
     'I trained in industrial design at Azad University and keep studying interaction design through the Interaction Design Foundation. Off-screen: motorcycles, mountains, and an enduring interest in psychoanalysis — which turns out to be useful for user research.',
@@ -64,13 +73,16 @@ const biographyHeadingFa = heading(
 )
 const biographyBodyFa = [
   paragraph(
-    'من محصولات دیجیتال را طراح و مدیریت می‌کنم، و بعد مطمئن می‌شوم که رشد می‌کنند. در طول ده سال، این کار حوزه‌های فین‌تک (طلای دیجیتال دیجی‌کالا)، زیرساخت ابری (آروان کلاود)، بازارهای خودرو (کارسپرنسی و خودرو۴۵)، آموزش (اوتیچر، بایومیز)، رسانه (دیدستان) و تلکام (A1Paradise) را در بر گرفته است.',
+    'من محصولات دیجیتال را طراحی و مدیریت می‌کنم، و بعد مطمئن می‌شوم که رشد می‌کنند. در طول ده سال، این کار حوزه‌های فین‌تک (طلای دیجیتال دیجی‌کالا)، زیرساخت ابری (آروان کلاد)، بازارگاه‌های خودرو (کارسپرنسی و خودرو۴۵)، آموزش (اوتیچر، بایومیز)، رسانه (دیدستان)، تلکام (A1Paradise) و سفر (طاهاگشت) را در بر گرفته است.',
   ),
   paragraph(
-    'الگویی که در این نقش‌ها تکرار شده غیرمعمول است: یک نفر پژوهش را انجام می‌دهد، محصول را طراحی می‌کند، ورود به بازار را پیش می‌برد، و داشبوردهایی می‌سازد که نشان می‌دهند نتیجه داده یا نه. در دیجی‌کالا این یعنی تعیین چشم‌انداز و ویژگی‌های طلای دیجیتال، طراحی کمپین‌های بدون‌کارمزد، اقساطی و کارت هدیه، ساخت مدل‌های بخش‌بندی کاربران، و جایگزینی اکسل‌های تیم با داشبوردهای هوش تجاری بود — همراه با معرفی مفاهیمی مثل خرید اقساطی بدون‌بهره و اعتبار طلاپشتوانه.',
+    'الگویی که در این نقش‌ها تکرار می‌شود غیرمعمول است: یک نفر پژوهش را انجام می‌دهد، محصول را طراحی می‌کند، ورود به بازار را پیش می‌برد، و داشبوردهایی می‌سازد که می‌گویند نتیجه داده یا نه. در دیجی‌کالا این یعنی تعیین چشم‌انداز و ویژگی‌های طلای دیجیتال، طراحی کمپین‌های بدون‌کارمزد، اقساطی و کارت هدیه، ساخت مدل‌های بخش‌بندی کاربران بر پایه‌ی دارایی، جمعیت‌شناسی و رفتار، و جایگزینی اکسل‌های تیم با داشبوردهای هوش تجاری.',
   ),
   paragraph(
-    'پیشتر، در آروان کلاود، بازطراحی معماری اطلاعات پلتفرم بر اساس معیارهایی که کاربران واقعاً به آن‌ها نیاز داشتند، رشدی محسوس در NPS ایجاد کرد. در کارسپرنسی، یک پلتفرم کامل خرید و فروش برای بازار امارات طراحی و آزموده شد تا نرخ فروش بالا رفت.',
+    'از ۲۰۲۲ و با کار مستقل، این دامنه بازهم گسترده‌تر شده — به سمت عملیاتی که زیر رابط کاربری جریان دارد، و به سمت خودِ ساخت. این یعنی معماری فرایند برای یک پلتفرم خدمات پس از فروش و یک بازارگاه حمل‌ونقل؛ یک ممیزی آمادگی ورودی که پاسخ مستندِ «نه» داد؛ و دو محصول که به‌تنهایی طراحی و منتشر شدند و هر دو الان زنده‌اند.',
+  ),
+  paragraph(
+    'یک قاعده در تمام این کارها جاری است: عددِ غلط بدتر از نبودِ عدد است. مجهول‌ها علامت‌گذاری می‌شوند نه حدس زده، تناقض‌ها ثبت می‌شوند نه حل‌وفصلِ خاموش، و هر پرونده‌ی پروژه با آنچه کار نکرد تمام می‌شود.',
   ),
   paragraph(
     'تحصیلاتم را در طراحی صنعتی در دانشگاه آزاد گذراندم و همچنان طراحی تعامل را از طریق Interaction Design Foundation دنبال می‌کنم. بیرون از صفحه‌نمایش: موتورسیکلت، کوهستان، و علاقه‌ای پایدار به روان‌کاوی — که برای پژوهش کاربر هم به‌کار می‌آید.',
@@ -86,16 +98,16 @@ export const careerStageOrder = [9, 6, 2, 1, 10]
 const careerNarrativesEn: Record<number, string> = {
   9: 'The first real brief: turn a rough idea for microgames and a calling app into interfaces people could actually use. The craft came first — screens, flows, the discipline of shipping something that worked, not just something that looked right.',
   6: 'A shift from screens to systems. Redesigning a cloud platform meant learning what the metrics on the screen actually meant to the engineers reading them — the interface stopped being the product, and the information architecture became the real design problem.',
-  2: 'Full platform ownership for the first time — not one screen or one flow, but a whole buy-and-sell marketplace. Usability testing stopped being a step at the end and became the way decisions got made throughout.',
+  2: 'Full platform ownership for the first time — not one screen or one flow, but a whole buy-and-sell marketplace. Four surfaces at once: the dealer app, the operator console, the inspector’s field tool and the seller’s web journey, all on one design system I authored.',
   1: 'The point where design, product and growth stopped being separate jobs. Vision, interface, the zero-fee and installment campaigns, the segmentation models, and the dashboards that replaced the team’s spreadsheets — all one connected practice, owned end to end.',
-  10: 'Now: independent, and using that range on my own terms — scoping a much larger vision down to what a small team can actually ship, keeping decisions documented as they’re made, and treating AI as a working layer for exploring more directions before committing to one.',
+  10: 'Now: independent, and using that range on my own terms — eleven engagements since 2022, across warranty operations, freight, proptech, commodities and retail. Some end in a shipped product I built myself; some end in a written verdict that the work isn’t ready to start. Decisions get documented as they’re made, and AI is a working layer for exploring more directions before committing to one.',
 }
 const careerNarrativesFa: Record<number, string> = {
   9: 'اولین بریف واقعی: تبدیل یک ایده‌ی خام برای بازی‌های کوچک و یک اپ‌ تماس به رابط‌هایی که واقعاً قابل‌استفاده باشند. مهارت طراحی اول شکل گرفت — صفحه‌ها، فلوها، و انضباط ساختن چیزی که کار می‌کند، نه فقط چیزی که درست به‌نظر می‌رسد.',
   6: 'گذار از صفحه به سیستم. بازطراحی یک پلتفرم ابری یعنی یادگرفتن اینکه اعداد روی صفحه واقعاً برای مهندسانی که آن‌ها را می‌خوانند چه معنایی دارد — رابط کاربری دیگر خودمحصول نبود، و معماری اطلاعات به مسئله‌ی اصلی طراحی تبدیل شد.',
-  2: 'برای اولین بار، مالکیت کامل یک پلتفرم — نه یک صفحه یا یک فلو، بلکه یک بازار کامل خرید و فروش. تست کاربردپذیری دیگر یک مرحله‌ی پایانی نبود، بلکه روش گرفتن تصمیم در تمام مسیر شد.',
+  2: 'برای اولین بار، مالکیت کامل یک پلتفرم — نه یک صفحه یا یک فلو، بلکه یک بازارگاه کامل خرید و فروش. چهار سطح هم‌زمان: اپ نمایشگاه‌دار، کنسول اپراتور، ابزار میدانی بازرس و مسیر وب فروشنده، همه روی یک دیزاین‌سیستم که خودم نوشتم.',
   1: 'نقطه‌ای که طراحی، محصول و رشد دیگر کارهای جدا از هم نبودند. چشم‌انداز، رابط کاربری، کمپین‌های بدون‌کارمزد و اقساطی، مدل‌های بخش‌بندی، و داشبوردهایی که جای اکسل تیم را گرفت — همه یک عمل بههم‌پیوسته، از ابتدا تا انتها.',
-  10: 'حالا: مستقل، و استفاده از این دامنه به شرط خودم — کوچک کردن یک چشم‌انداز بزرگ به چیزی که یک تیم کوچک واقعاً بتواند بسازد، مستندسازی تصمیم‌ها همزمان با گرفتنشان، و استفاده از هوش مصنوعی به‌عنوان یک لایه‌ی کاری برای کاوش مسیرهای بیشتر پیش از قطعی کردن یکی از آن‌ها.',
+  10: 'حالا: مستقل، و استفاده از این دامنه به شرط خودم — یازده همکاری از ۲۰۲۲، در خدمات پس از فروش، حمل‌ونقل، املاک، کالاهای پایه و خرده‌فروشی. بعضی به محصولی می‌رسند که خودم ساخته‌ام؛ بعضی به یک حکم مکتوب که کار هنوز آمادهی شروع نیست. تصمیم‌ها همزمان با گرفته‌شدن مستند می‌شوند، و هوش مصنوعی لایه‌ای کاری است برای کاوش مسیرهای بیشتر پیش از قطعی‌کردن یکی از آن‌ها.',
 }
 const relatedProjectByOrder: Partial<Record<number, string>> = {
   1: 'Selected work → Digital Gold',

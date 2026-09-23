@@ -6,31 +6,13 @@ import type { Locale } from '@/utilities/locale'
 
 import RichText from '@/components/RichText'
 import { SectionHeader } from '@/components/SectionHeader'
-import { ProcessDiagram, type ProcessDiagramNode } from '@/components/ProcessDiagram'
+import { FORK_FLOW_SHAPE, ProcessDiagram, toRows, type ProcessDiagramNode } from '@/components/ProcessDiagram'
 import { DEFAULT_LOCALE } from '@/utilities/locale'
 
 export type TeamProcessProps = Pick<TeamProcessBlockProps, 'intro' | 'nodes' | 'sectionHeader' | 'statements'> & {
   className?: string
   locale?: Locale
 }
-
-// Fixed order: Business Context → Product Decision → Design / Engineering → Validation → Learning.
-const POSITIONS: { x: number; y: number }[] = [
-  { x: 50, y: 6 },
-  { x: 50, y: 30 },
-  { x: 22, y: 56 },
-  { x: 78, y: 56 },
-  { x: 50, y: 80 },
-  { x: 50, y: 98 },
-]
-const CONNECTIONS: [number, number][] = [
-  [0, 1],
-  [1, 2],
-  [1, 3],
-  [2, 4],
-  [3, 4],
-  [4, 5],
-]
 
 export const TeamProcessBlock: React.FC<TeamProcessProps> = ({
   className,
@@ -44,11 +26,13 @@ export const TeamProcessBlock: React.FC<TeamProcessProps> = ({
   const statementRows = statements ?? []
   if (!nodeRows.length) return null
 
-  const diagramNodes: ProcessDiagramNode[] = nodeRows.slice(0, POSITIONS.length).map((node, i) => ({
-    ...POSITIONS[i],
-    label: node.label,
-    annotation: node.annotation ?? undefined,
+  // Fixed order (config.ts locks six rows): Business Context → Product Decision →
+  // {Design ∥ Engineering} → Validation → Learning.
+  const diagramNodes: ProcessDiagramNode[] = nodeRows.slice(0, 6).map((node, i) => ({
     active: i === 1,
+    annotation: node.annotation ?? undefined,
+    index: String(i + 1).padStart(2, '0'),
+    label: node.label,
   }))
 
   return (
@@ -63,7 +47,10 @@ export const TeamProcessBlock: React.FC<TeamProcessProps> = ({
           locale={locale}
         />
       ) : null}
-      <ProcessDiagram className="mx-auto max-w-2xl" connections={CONNECTIONS} nodes={diagramNodes} />
+      {/* The return rail is the point of this diagram: node 06 says learning feeds the next
+          Business Context, and until now nothing drew that edge. ThinkingMap makes no such claim
+          and stays open-ended, which also keeps the two diagrams from reading as one picture twice. */}
+      <ProcessDiagram className="mx-auto max-w-2xl" loopBack rows={toRows(diagramNodes, FORK_FLOW_SHAPE)} />
       {statementRows.length ? (
         <ul className="mt-12 grid gap-8 sm:grid-cols-2 lg:mt-16">
           {statementRows.map((s, i) => (

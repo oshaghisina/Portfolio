@@ -43,6 +43,7 @@ export const projectCompanyCopy: Record<ProjectLocale, Record<string, string>> =
     Biomaze: 'بایومیز',
     Didestan: 'دیدستان',
     A1Paradise: 'A1Paradise',
+    'Taha Gasht': 'طاهاگشت',
   },
   ar: {
     Digikala: 'ديجيكالا',
@@ -55,6 +56,7 @@ export const projectCompanyCopy: Record<ProjectLocale, Record<string, string>> =
     Biomaze: 'بايوميز',
     Didestan: 'ديدستان',
     A1Paradise: 'A1Paradise',
+    'Taha Gasht': 'طاها غشت',
   },
   es: {
     Digikala: 'Digikala',
@@ -67,6 +69,7 @@ export const projectCompanyCopy: Record<ProjectLocale, Record<string, string>> =
     Biomaze: 'Biomaze',
     Didestan: 'Didestan',
     A1Paradise: 'A1Paradise',
+    'Taha Gasht': 'Taha Gasht',
   },
   de: {
     Digikala: 'Digikala',
@@ -79,6 +82,7 @@ export const projectCompanyCopy: Record<ProjectLocale, Record<string, string>> =
     Biomaze: 'Biomaze',
     Didestan: 'Didestan',
     A1Paradise: 'A1Paradise',
+    'Taha Gasht': 'Taha Gasht',
   },
   fr: {
     Digikala: 'Digikala',
@@ -91,6 +95,7 @@ export const projectCompanyCopy: Record<ProjectLocale, Record<string, string>> =
     Biomaze: 'Biomaze',
     Didestan: 'Didestan',
     A1Paradise: 'A1Paradise',
+    'Taha Gasht': 'Taha Gasht',
   },
   ja: {
     Digikala: 'Digikala',
@@ -103,6 +108,7 @@ export const projectCompanyCopy: Record<ProjectLocale, Record<string, string>> =
     Biomaze: 'Biomaze',
     Didestan: 'Didestan',
     A1Paradise: 'A1Paradise',
+    'Taha Gasht': 'Taha Gasht',
   },
 }
 
@@ -119,6 +125,8 @@ export const projectRoleCopy: Record<ProjectLocale, Record<string, string>> = {
     'Product designer & developer': 'طراح و توسعه‌دهندهٔ محصول',
     'Design researcher & process architect': 'پژوهشگر طراحی و معمار فرایند',
     'UX researcher': 'پژوهشگر تجربهٔ کاربری',
+    'Product designer, PM & builder': 'طراح محصول، مدیر محصول و سازنده',
+    'Campaign strategist & marketer': 'استراتژیست کمپین و بازاریاب',
   },
   ar: {
     'Designer, Marketer, BI developer': 'مصمم ومسوّق ومطوّر ذكاء أعمال',
@@ -131,6 +139,8 @@ export const projectRoleCopy: Record<ProjectLocale, Record<string, string>> = {
     'Product designer & developer': 'مصمم ومطوّر منتج',
     'Design researcher & process architect': 'باحث تصميم ومهندس عمليات',
     'UX researcher': 'باحث تجربة مستخدم',
+    'Product designer, PM & builder': 'مصمم منتج ومدير منتج ومنفّذ',
+    'Campaign strategist & marketer': 'استراتيجي حملات ومسوّق',
   },
   es: {
     'Designer, Marketer, BI developer': 'Diseñador, marketer y desarrollador BI',
@@ -143,6 +153,8 @@ export const projectRoleCopy: Record<ProjectLocale, Record<string, string>> = {
     'Product designer & developer': 'Diseñador y desarrollador de producto',
     'Design researcher & process architect': 'Investigador de diseño y arquitecto de procesos',
     'UX researcher': 'Investigador UX',
+    'Product designer, PM & builder': 'Diseñador de producto, PM y desarrollador',
+    'Campaign strategist & marketer': 'Estratega de campañas y marketer',
   },
   de: {
     'Designer, Marketer, BI developer': 'Designer, Marketer, BI-Entwickler',
@@ -155,6 +167,8 @@ export const projectRoleCopy: Record<ProjectLocale, Record<string, string>> = {
     'Product designer & developer': 'Produktdesigner & Entwickler',
     'Design researcher & process architect': 'Design-Researcher & Prozessarchitekt',
     'UX researcher': 'UX-Researcher',
+    'Product designer, PM & builder': 'Produktdesigner, PM & Umsetzer',
+    'Campaign strategist & marketer': 'Kampagnenstratege & Marketer',
   },
   fr: {
     'Designer, Marketer, BI developer': 'Designer, marketeur, développeur BI',
@@ -167,6 +181,8 @@ export const projectRoleCopy: Record<ProjectLocale, Record<string, string>> = {
     'Product designer & developer': 'Designer et développeur produit',
     'Design researcher & process architect': 'Chercheur en design et architecte de processus',
     'UX researcher': 'Chercheur UX',
+    'Product designer, PM & builder': 'Designer produit, PM et développeur',
+    'Campaign strategist & marketer': 'Stratège de campagne et marketeur',
   },
   ja: {
     'Designer, Marketer, BI developer': 'デザイナー／マーケター／BI開発',
@@ -179,10 +195,305 @@ export const projectRoleCopy: Record<ProjectLocale, Record<string, string>> = {
     'Product designer & developer': 'プロダクトデザイナー／デベロッパー',
     'Design researcher & process architect': 'デザインリサーチャー／プロセスアーキテクト',
     'UX researcher': 'UXリサーチャー',
+    'Product designer, PM & builder': 'プロダクトデザイナー / PM / ビルダー',
+    'Campaign strategist & marketer': 'キャンペーンストラテジスト / マーケター',
   },
 }
 
 export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>> = {
+  // ── Carsparency & Khodro45 (six projects, from the 2026-09-22 Figma scan) ────────────────
+  'khodro45-dealer-app': {
+    fa: {
+      title: 'اپلیکیشن نمایشگاه‌داران خودرو۴۵ — بازار مزایدهٔ زمان‌دار برای دلالان خودرو',
+      summary:
+        'سمت B2B بازار خودرو۴۵: ۲۴۱ صفحه در سه حالت بازار موازی، سامانهٔ پیشنهاد قیمت مبتنی بر قیمت منصفانه، خط لولهٔ تسویهٔ شش‌مرحله‌ای، دو نسل درآمدزایی از نمایشگاه‌داران، و یک پروتوتایپ ۲۸ فریمی برای آزمودن ماشین حالت معامله.',
+    },
+    ar: {
+      title: 'تطبيق تجّار خودرو45 — سوق مزادات موقوتة لتجّار السيارات في إيران',
+      summary:
+        'الجانب B2B من سوق خودرو45: ‏241 شاشة عبر ثلاثة أنماط سوق متوازية، ونظام مزايدة يرتكز على السعر العادل، وخط تسوية من ست خطوات، وجيلان من نماذج تحقيق الدخل من التجّار، ونموذج تفاعلي من 28 إطارًا لاختبار آلة حالات الصفقة.',
+    },
+    es: {
+      title: 'App de concesionarios Khodro45 — un mercado de subastas con temporizador',
+      summary:
+        'El lado B2B del marketplace iraní Khodro45: 241 pantallas con tres modos de mercado en paralelo, un sistema de pujas guiado por precio justo, una liquidación con depósito en seis pasos, dos generaciones de monetización de concesionarios y un prototipo de 28 marcos para probar la máquina de estados de la transacción.',
+    },
+    de: {
+      title: 'Khodro45 Händler-App — ein Auktionsmarkt auf Zeit für iranische Autohändler',
+      summary:
+        'Die B2B-Seite des iranischen Marktplatzes Khodro45: 241 Screens über drei parallele Marktmodi, ein am Fair Price ausgerichtetes Bietsystem, eine sechsstufige Treuhand-Abwicklung, zwei Generationen Händler-Monetarisierung und ein 28-Frame-Prototyp, um die Zustandsmaschine der Transaktion zu testen.',
+    },
+    fr: {
+      title: 'Application concessionnaires Khodro45 — un marché aux enchères minuté',
+      summary:
+        'Le versant B2B de la place de marché iranienne Khodro45 : 241 écrans sur trois modes de marché parallèles, un système d’enchères guidé par un prix juste, un règlement sous séquestre en six étapes, deux générations de monétisation des concessionnaires et un prototype de 28 frames pour éprouver la machine à états de la transaction.',
+    },
+    ja: {
+      title: 'Khodro45 ディーラーアプリ — イラン自動車ディーラー向けの時限オークション市場',
+      summary:
+        'イランのマーケットプレイスKhodro45のB2B側。3つの並行マーケットモードにまたがる241画面、フェアプライスに基づく入札システム、6段階のエスクロー決済、2世代にわたるディーラー収益化、そして取引のステートマシンを検証するための28フレームのプロトタイプ。',
+    },
+  },
+  'carsparency-pro': {
+    fa: {
+      title: 'کارسپرنسی پرو — اپلیکیشن نمایشگاه‌داران، بازسازی‌شده برای بازار انگلیسی‌زبان',
+      summary:
+        'اپلیکیشن سمت خرید، بازسازی‌شده به انگلیسی روی سیستمی سبز تیره: مزایده‌های زنده و پیش‌رو، گزارش خسارت قطعه‌به‌قطعه در صفحهٔ جزئیاتی ۵۷۷۹ پیکسلی، وضعیت برد و باخت پیشنهاد، و «ارزش منصفانهٔ بازار» روی هر کارت — وارث مستقیم لنگرِ قیمت منصفانهٔ خودرو۴۵.',
+    },
+    ar: {
+      title: 'Carsparency Pro — تطبيق التجّار معادًا بناؤه لسوق ناطق بالإنجليزية',
+      summary:
+        'تطبيق جانب الشراء معادًا بناؤه بالإنجليزية على نظام أخضر داكن: مزادات جارية وقادمة، وتقرير أضرار قطعة بقطعة داخل صفحة تفاصيل بارتفاع 5779 بكسل، وحالات ربح وخسارة المزايدة، و«القيمة السوقية العادلة» على كل بطاقة — الوريث المباشر لمرتكز السعر العادل في خودرو45.',
+    },
+    es: {
+      title: 'Carsparency Pro — la app de concesionarios, rehecha para un mercado anglófono',
+      summary:
+        'La app del lado comprador rehecha en inglés sobre un sistema verde oscuro: subastas en curso y próximas, un informe de daños panel por panel dentro de una ficha de 5.779 px, estados de puja ganada y perdida, y un Fair Market Value en cada tarjeta, heredero directo del ancla de precio justo de Khodro45.',
+    },
+    de: {
+      title: 'Carsparency Pro — die Händler-App, neu gebaut für einen englischsprachigen Markt',
+      summary:
+        'Die Käuferseite, auf einem dunkelgrünen System in Englisch neu gebaut: laufende und kommende Auktionen, ein Schadensbericht Teil für Teil in einer 5.779 px hohen Detailseite, Gewinn- und Verlust-Zustände des Gebots und ein Fair Market Value auf jeder Karte — direkter Nachfahre von Khodro45s Fair-Price-Anker.',
+    },
+    fr: {
+      title: 'Carsparency Pro — l’app concessionnaires, refaite pour un marché anglophone',
+      summary:
+        'L’application côté acheteur refaite en anglais sur un système vert sombre : enchères en cours et à venir, rapport de dommages panneau par panneau dans une fiche de 5 779 px, états d’enchère gagnée et perdue, et une Fair Market Value sur chaque carte — héritière directe de l’ancrage au prix juste de Khodro45.',
+    },
+    ja: {
+      title: 'Carsparency Pro — 英語圏市場向けに作り直したディーラーアプリ',
+      summary:
+        'ダークグリーンのシステム上に英語で作り直した購入側アプリ。進行中および今後のオークション、高さ5,779pxの車両詳細に収めたパネル単位のダメージレポート、入札の勝敗ステート、そして全カードに表示されるFair Market Value — Khodro45のフェアプライス基準を直接受け継いだもの。',
+    },
+  },
+  'carsparency-back-office': {
+    fa: {
+      title: 'بک‌آفیس کارسپرنسی — کنسول اپراتوری پشت بازارگاه',
+      summary:
+        'کنسول داخلی که بازارگاه واقعاً روی آن می‌چرخد: ۶۸ صفحهٔ دسکتاپ در نواری کناری با هفت بخش، مدل قیمت چهارگانه — هدف، فروشنده، منصفانه، نمایشگاه‌دار — که چانه‌زنی قیمت را دیدنی می‌کند، و تاریخچهٔ گفتگوی داخلی و گفتگو با نمایشگاه‌دار.',
+    },
+    ar: {
+      title: 'Carsparency Back Office — لوحة المشغّل خلف السوق',
+      summary:
+        'اللوحة الداخلية التي يدور عليها السوق فعليًا: 68 شاشة سطح مكتب عبر شريط جانبي من سبعة أقسام، ونموذج سعر رباعي — المستهدف والبائع والعادل والتاجر — يجعل التفاوض على السعر مرئيًا، وسجلّا محادثات داخلي ومع التاجر.',
+    },
+    es: {
+      title: 'Carsparency Back Office — la consola de operaciones detrás del marketplace',
+      summary:
+        'La consola interna sobre la que funciona realmente el marketplace: 68 pantallas de escritorio en una barra lateral de siete secciones, un modelo de precio a cuatro bandas —objetivo, vendedor, justo, concesionario— que hace visible la negociación, e historiales de comentarios internos y con el concesionario.',
+    },
+    de: {
+      title: 'Carsparency Back Office — die Operator-Konsole hinter dem Marktplatz',
+      summary:
+        'Die interne Konsole, auf der der Marktplatz tatsächlich läuft: 68 Desktop-Screens in einer Sidebar mit sieben Bereichen, ein vierteiliges Preismodell — Ziel, Verkäufer, Fair, Händler —, das die Preisverhandlung sichtbar macht, und zwei Kommentarverläufe, intern und mit dem Händler.',
+    },
+    fr: {
+      title: 'Carsparency Back Office — la console opérateur derrière la place de marché',
+      summary:
+        'La console interne sur laquelle la place de marché tourne réellement : 68 écrans desktop dans une barre latérale de sept sections, un modèle de prix à quatre entrées — cible, vendeur, juste, concessionnaire — qui rend la négociation visible, et deux fils de commentaires, interne et avec le concessionnaire.',
+    },
+    ja: {
+      title: 'Carsparency Back Office — マーケットプレイスを支えるオペレーターコンソール',
+      summary:
+        'マーケットプレイスが実際に動く内部コンソール。7セクションのサイドバーにまたがる68のデスクトップ画面、価格交渉を可視化する4系統の価格モデル（ターゲット／売り手／フェア／ディーラー）、そして社内とディーラー双方のコメント履歴。',
+    },
+  },
+  'carsparency-inspection': {
+    fa: {
+      title: 'بازرسی کارسپرنسی — تبدیل معاینهٔ فیزیکی خودرو به یک سند ساختاریافته',
+      summary:
+        'ابزار میدانی که مدرکِ مورد معاملهٔ کل بازارگاه را تولید می‌کند: ۲۵ صفحهٔ موبایل و ۲۲ کامپوننت بازرسی قابل‌استفادهٔ مجدد برای معاینهٔ نُه‌بخشی خودرو، پرسش‌های مالکیت و سند، و گردش‌کاری که می‌توان آن را از سر گرفت — سرچشمهٔ داده‌های وضعیتی که اپلیکیشن نمایشگاه‌داران چاپ می‌کند.',
+    },
+    ar: {
+      title: 'Carsparency Inspection — تحويل الفحص المادي إلى سجل منظّم',
+      summary:
+        'الأداة الميدانية التي تنتج الدليل الذي يتداوله السوق كله: 25 شاشة للهاتف و22 مكوّن فحص قابلًا لإعادة الاستخدام تغطي فحصًا للسيارة من تسعة أقسام، وأسئلة الملكية وسند التسجيل، وسير عمل يمكن استئنافه — مصدر بيانات الحالة التي يعرضها تطبيق التجّار.',
+    },
+    es: {
+      title: 'Carsparency Inspection — convertir una revisión física en un registro estructurado',
+      summary:
+        'La herramienta de campo que produce la evidencia con la que comercia todo el marketplace: 25 pantallas móviles y 22 componentes de inspección reutilizables que cubren una revisión del vehículo en nueve áreas, las preguntas de propiedad y titularidad, y un flujo que se puede retomar: el origen de los datos de estado que imprime la app de concesionarios.',
+    },
+    de: {
+      title: 'Carsparency Inspection — eine physische Begutachtung in einen strukturierten Befund verwandeln',
+      summary:
+        'Das Feldwerkzeug, das den Nachweis erzeugt, mit dem der ganze Marktplatz handelt: 25 Mobile-Screens und 22 wiederverwendbare Inspektionsbausteine für eine Fahrzeugbegutachtung in neun Bereichen, die Fragen zu Eigentum und Fahrzeugbrief und ein wiederaufnehmbarer Ablauf — die Quelle der Zustandsdaten, die die Händler-App ausgibt.',
+    },
+    fr: {
+      title: 'Carsparency Inspection — transformer une expertise physique en dossier structuré',
+      summary:
+        'L’outil de terrain qui produit la preuve sur laquelle toute la place de marché échange : 25 écrans mobiles et 22 composants d’inspection réutilisables couvrant une expertise du véhicule en neuf zones, les questions de propriété et de carte grise, et un flux que l’on peut reprendre — la source des données d’état qu’imprime l’app concessionnaires.',
+    },
+    ja: {
+      title: 'Carsparency Inspection — 現車確認を構造化された記録に変える',
+      summary:
+        'マーケットプレイス全体が取引する「証拠」を生み出す現場ツール。9領域の車両点検、所有権と登録書類の設問、そして中断して再開できるワークフローを、25のモバイル画面と22の再利用可能な点検コンポーネントで構成 — ディーラーアプリが表示するコンディションデータの出どころ。',
+    },
+  },
+  'carsparency-web': {
+    fa: {
+      title: 'وب کارسپرنسی — سمت فروشنده، ساخته‌شده به‌صورت واکنش‌گرا از روی یک الگوی مرجع',
+      summary:
+        'مسیر فروشنده در وب، طراحی‌شده هم‌زمان برای دسکتاپ و موبایل — ۴۲ صفحه در ۱۴۴۰ و ۳۸ صفحه در ۳۷۵ پیکسل — آشکارا بر پایهٔ الگوی Motorway، با ورود از شمارهٔ پلاک، چهار وعدهٔ ارزش، توضیحی چهارمرحله‌ای، و سازندهٔ چندبخشی پروفایل خودرو.',
+    },
+    ar: {
+      title: 'Carsparency Web — جانب البائع، مبنيًّا بشكل متجاوب انطلاقًا من مرجع',
+      summary:
+        'رحلة البائع على الويب، مصمّمة لسطح المكتب والهاتف بالتوازي — 42 شاشة عند 1440 بكسل و38 عند 375 — مبنية صراحةً على نموذج Motorway، بمدخل تقييم يبدأ من لوحة الترخيص، وأربعة وعود قيمة، وشرح من أربع خطوات، ومُنشئ ملف للسيارة متعدّد الأقسام.',
+    },
+    es: {
+      title: 'Carsparency Web — el lado del vendedor, construido responsive a partir de un referente',
+      summary:
+        'El recorrido del vendedor diseñado en paralelo para escritorio y móvil —42 pantallas a 1440 px y 38 a 375— abiertamente modelado sobre Motorway, con una entrada de tasación que empieza por la matrícula, cuatro promesas de valor, un explicador en cuatro pasos y un constructor de ficha del coche en varias secciones.',
+    },
+    de: {
+      title: 'Carsparency Web — die Verkäuferseite, responsiv nach einem Vorbild gebaut',
+      summary:
+        'Die Verkäuferstrecke, parallel für Desktop und Mobile entworfen — 42 Screens bei 1440 px und 38 bei 375 —, offen am Modell von Motorway gebaut, mit einem Bewertungseinstieg über das Kennzeichen, vier Wertversprechen, einer Erklärung in vier Schritten und einem mehrteiligen Fahrzeugprofil-Builder.',
+    },
+    fr: {
+      title: 'Carsparency Web — le côté vendeur, construit en responsive à partir d’un modèle',
+      summary:
+        'Le parcours vendeur conçu en parallèle pour desktop et mobile — 42 écrans en 1440 px et 38 en 375 —, ouvertement bâti sur le modèle de Motorway, avec une entrée d’estimation par la plaque d’immatriculation, quatre promesses de valeur, une explication en quatre étapes et un constructeur de profil véhicule en plusieurs sections.',
+    },
+    ja: {
+      title: 'Carsparency Web — ベンチマークから起こした、売り手側のレスポンシブサイト',
+      summary:
+        'デスクトップとモバイルを並行して設計した売り手の導線 — 1440pxで42画面、375pxで38画面。Motorwayのモデルを明示的に下敷きにし、ナンバープレートから始まる査定入力、4つの価値の約束、4ステップの説明、そして複数セクションからなる車両プロフィールビルダーを備える。',
+    },
+  },
+  'carsparency-design-system': {
+    fa: {
+      title: 'دیزاین‌سیستم کارسپرنسی — دوازده طیف رنگ، پنج وزن قلم و واژگانی وام‌گرفته',
+      summary:
+        'شالودهٔ مشترک زیر پرو، بک‌آفیس، بازرسی و وب: ۱۲ طیف رنگ ده‌پله‌ای منتشرشده به‌صورت متغیرهای فیگما، مقیاس تایپی پنج‌وزنه، ماتریس کامل حالت‌های دکمه، یازده برد کامپوننت، و کتابخانهٔ آیکونی با ۱۱٬۳۲۶ نود.',
+    },
+    ar: {
+      title: 'نظام تصميم Carsparency — اثنا عشر تدرّجًا وخمسة أوزان ومفردات مستعارة',
+      summary:
+        'الأساس المشترك تحت Pro وBack Office وInspection وWeb: ‏12 تدرّجًا لونيًا من عشر درجات منشورة كمتغيّرات في فيغما، وسلّم طباعي بخمسة أوزان، ومصفوفة كاملة لحالات الأزرار، وأحد عشر لوحًا للمكوّنات، ومكتبة أيقونات من 11٬326 عقدة.',
+    },
+    es: {
+      title: 'Sistema de diseño Carsparency — doce rampas, cinco pesos y un vocabulario prestado',
+      summary:
+        'La base compartida bajo Pro, Back Office, Inspection y Web: 12 rampas de color de 10 pasos publicadas como variables de Figma, una escala tipográfica de cinco pesos, una matriz completa de estados de botón, once tableros de componentes y una librería de iconos de 11.326 nodos.',
+    },
+    de: {
+      title: 'Carsparency Design System — zwölf Farbrampen, fünf Schnitte und ein geliehenes Vokabular',
+      summary:
+        'Das gemeinsame Fundament unter Pro, Back Office, Inspection und Web: 12 zehnstufige Farbrampen als Figma-Variablen veröffentlicht, eine Typoskala mit fünf Schnitten, eine vollständige Matrix der Button-Zustände, elf Komponenten-Boards und eine Icon-Bibliothek aus 11.326 Knoten.',
+    },
+    fr: {
+      title: 'Design system Carsparency — douze rampes, cinq graisses et un vocabulaire emprunté',
+      summary:
+        'La fondation partagée sous Pro, Back Office, Inspection et Web : 12 rampes de couleur de 10 paliers publiées en variables Figma, une échelle typographique à cinq graisses, une matrice complète des états de bouton, onze planches de composants et une bibliothèque d’icônes de 11 326 nœuds.',
+    },
+    ja: {
+      title: 'Carsparency デザインシステム — 12のカラーランプ、5つのウェイト、借りてきた語彙',
+      summary:
+        'Pro、Back Office、Inspection、Webを支える共通基盤。Figma変数として公開した10段階×12本のカラーランプ、5ウェイトのタイプスケール、ボタン状態の完全なマトリクス、11枚のコンポーネントボード、そして11,326ノードのアイコンライブラリ。',
+    },
+  },
+
+  // ── Taha Gasht ──────────────────────────────────────────────────────────────────────────
+  'taha-gasht-platform': {
+    fa: {
+      title: 'طاهاگشت — سایت رزرو و پنل داخلی',
+      summary:
+        'کسب‌وکاری گردشگری که پرواز، هتل و تور می‌فروشد؛ طراحی‌شده در سه فایل: سایت عمومی رزرو، پنل داخلی که کارشناسان در آن کار می‌کنند، و دیزاین‌سیستم مشترک میان آن دو.',
+    },
+    ar: {
+      title: 'طاها غشت — موقع الحجز ولوحة الحجز الداخلية',
+      summary:
+        'شركة سفر تبيع الرحلات الجوية والفنادق والجولات، مصمَّمة عبر ثلاثة ملفات: موقع الحجز العام، ولوحة الحجز الداخلية التي يعمل عليها الموظفون، ونظام التصميم المشترك بينهما.',
+    },
+    es: {
+      title: 'Taha Gasht — sitio de reservas y panel interno',
+      summary:
+        'Un negocio de viajes que vende vuelos, hoteles y circuitos, diseñado en tres archivos: el sitio público de reservas, el panel interno en el que trabajan los agentes y el sistema de diseño compartido entre ambos.',
+    },
+    de: {
+      title: 'Taha Gasht — Buchungsseite und internes Buchungspanel',
+      summary:
+        'Ein Reiseunternehmen, das Flüge, Hotels und Touren verkauft, entworfen über drei Dateien: die öffentliche Buchungsseite, das interne Panel, in dem die Agenten arbeiten, und das gemeinsame Design System dazwischen.',
+    },
+    fr: {
+      title: 'Taha Gasht — site de réservation et panneau interne',
+      summary:
+        'Une agence de voyage qui vend des vols, des hôtels et des circuits, conçue à travers trois fichiers : le site public de réservation, le panneau interne où travaillent les agents, et le design system partagé entre les deux.',
+    },
+    ja: {
+      title: 'Taha Gasht — 予約サイトと社内予約パネル',
+      summary:
+        '航空券・ホテル・ツアーを販売する旅行事業を、3つのファイルで設計。一般向けの予約サイト、担当者が実際に使う社内パネル、そしてその二つで共有するデザインシステム。',
+    },
+  },
+
+  // ── Independent ─────────────────────────────────────────────────────────────────────────
+  'nim-dang': {
+    fa: {
+      title: 'نیم‌دانگ — بورسی برای مترمربع‌های تهران',
+      summary:
+        'پلتفرمی ایرانی که ملک تهران را متری می‌فروشد و بعد به مالکان اجازهٔ فروش مجدد می‌دهد: ۱۹۱ صفحه و دیزاین‌سیستمی ۴۳۰ کامپوننتی، که بهترین ایده‌اش نشانگر پایین/منصفانه/بالا است — سنجه‌ای که هر دو سوی معاملهٔ ثانویه را نمره می‌دهد.',
+    },
+    ar: {
+      title: 'نيم دانغ — بورصة لأمتار طهران المربّعة',
+      summary:
+        'منصّة إيرانية تبيع عقارات طهران بالمتر المربّع ثم تتيح لمالكيها إعادة بيعها: 191 شاشة ونظام تصميم من 430 مكوّنًا، وأحدّ أفكارها مؤشّر منخفض/عادل/مرتفع يقيّم طرفَي إعادة البيع معًا.',
+    },
+    es: {
+      title: 'Nim Dang — una bolsa para los metros cuadrados de Teherán',
+      summary:
+        'Una plataforma iraní que vende inmuebles de Teherán por metro cuadrado y luego deja que sus dueños los revendan: 191 pantallas y un sistema de diseño de 430 componentes, cuya idea más afilada es un medidor bajo/justo/alto que califica los dos lados de una reventa entre particulares.',
+    },
+    de: {
+      title: 'Nim Dang — eine Börse für Teherans Quadratmeter',
+      summary:
+        'Eine iranische Plattform, die Teheraner Immobilien nach Quadratmetern verkauft und ihre Eigentümer danach weiterverkaufen lässt: 191 Screens und ein Design System aus 430 Komponenten, dessen schärfste Idee eine Anzeige niedrig/fair/hoch ist, die beide Seiten eines Weiterverkaufs bewertet.',
+    },
+    fr: {
+      title: 'Nim Dang — une bourse pour les mètres carrés de Téhéran',
+      summary:
+        'Une plateforme iranienne qui vend l’immobilier de Téhéran au mètre carré, puis laisse ses propriétaires le revendre : 191 écrans et un design system de 430 composants, dont l’idée la plus fine est une jauge bas/juste/haut qui note les deux côtés d’une revente entre particuliers.',
+    },
+    ja: {
+      title: 'Nim Dang — テヘランの1平米を売買する取引所',
+      summary:
+        'テヘランの不動産を平米単位で販売し、その後は保有者どうしの転売も可能にするイランのプラットフォーム。191画面と430コンポーネントのデザインシステムからなり、最も鋭いアイデアは、個人間転売の売り手と買い手の双方を採点する「安い／妥当／高い」のゲージ。',
+    },
+  },
+  yaravan: {
+    fa: {
+      title: 'یاراوان — برند خدمات پس از فروشی که پرسش‌های بی‌پاسخش را منتشر می‌کند',
+      summary:
+        'یک برند مستقل گارانتی فارسی، ساخته‌شده به‌صورت پلتفرمی کامل روی عملیات پس از فروشی که هیچ‌کس هرگز مکتوبش نکرده بود — معماری فرایند، مدل نقش‌ها و مسئولیت‌ها، و محصولی که در آن هر ادعای تأییدنشده به‌جای یک جملهٔ مطمئن، به شکل یک پرسش بازِ دیدنی منتشر می‌شود.',
+    },
+    ar: {
+      title: 'ياراوان — علامة خدمات ما بعد البيع التي تنشر أسئلتها المفتوحة',
+      summary:
+        'علامة ضمان فارسية مستقلّة، بُنيت كمنصّة كاملة فوق عملية خدمات ما بعد بيع لم يوثّقها أحد من قبل — معمارية عمليات، ونموذج للأدوار والمسؤوليات، ومنتج يُنشَر فيه كل ادّعاء غير معتمَد كسؤال مفتوح ظاهر بدلًا من جملة واثقة.',
+    },
+    es: {
+      title: 'Yaravan — una marca de posventa que publica sus propias preguntas abiertas',
+      summary:
+        'Una marca persa independiente de garantías, construida como una plataforma completa sobre una operación de posventa que nadie había puesto por escrito: una arquitectura de procesos, un modelo de roles y responsabilidades, y un producto en el que toda afirmación no aprobada se publica como una pregunta abierta visible en lugar de una frase segura.',
+    },
+    de: {
+      title: 'Yaravan — eine After-Sales-Marke, die ihre eigenen offenen Fragen veröffentlicht',
+      summary:
+        'Eine unabhängige persische Garantiemarke, als vollständige Plattform auf einem After-Sales-Betrieb gebaut, den nie jemand aufgeschrieben hatte — eine Prozessarchitektur, ein Rollen- und Verantwortungsmodell und ein Produkt, in dem jede ungeprüfte Behauptung als sichtbare offene Frage erscheint statt als selbstsicherer Satz.',
+    },
+    fr: {
+      title: 'Yaravan — une marque d’après-vente qui publie ses propres questions ouvertes',
+      summary:
+        'Une marque de garantie persane indépendante, construite comme une plateforme complète par-dessus une activité d’après-vente que personne n’avait jamais mise par écrit — une architecture de processus, un modèle de rôles et de responsabilités, et un produit où toute affirmation non validée est publiée comme une question ouverte visible plutôt que comme une phrase assurée.',
+    },
+    ja: {
+      title: 'Yaravan — 自らの未解決の問いを公開するアフターサービスブランド',
+      summary:
+        '誰も文書化してこなかったアフターサービス業務の上に、完全なプラットフォームとして構築した独立系のペルシャ語保証ブランド。プロセスアーキテクチャ、役割と責任のモデル、そして未承認の主張を自信ありげな一文ではなく「見える未解決の問い」として出す製品。',
+    },
+  },
   'digital-gold': {
     fa: {
       title: 'طلای دیجیتال — چشم‌انداز محصول و رشد',
@@ -550,64 +861,6 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
     ja: {
       title: 'PRとブランド認知プログラム',
       summary: '戦略的なPR露出とパフォーマンスマーケティングを連携させ、Digital Goldのブランド認知を広げた。',
-    },
-  },
-  'uae-car-marketplace': {
-    fa: {
-      title: 'پلتفرم خرید و فروش خودرو در امارات',
-      summary: 'کل پلتفرم خرید و فروش خودرو را برای فروشندگان و خریداران در امارات طراحی کردم.',
-    },
-    ar: {
-      title: 'منصّة بيع وشراء السيارات في الإمارات',
-      summary: 'صمّمتُ منصّة بيع وشراء السيارات بالكامل للبائعين والمشترين في الإمارات.',
-    },
-    es: {
-      title: 'Plataforma de compraventa de coches en EAU',
-      summary: 'Diseñé toda la plataforma de compraventa de coches para vendedores y compradores en los Emiratos.',
-    },
-    de: {
-      title: 'Auto-Kauf- und Verkaufsplattform für die VAE',
-      summary: 'Die gesamte Kauf- und Verkaufsplattform für Autos für Verkäufer und Käufer in den VAE gestaltet.',
-    },
-    fr: {
-      title: 'Plateforme d’achat-vente automobile aux Émirats',
-      summary: 'J’ai conçu l’ensemble de la plateforme d’achat-vente de voitures pour les vendeurs et les acheteurs aux Émirats.',
-    },
-    ja: {
-      title: 'UAE向け自動車売買プラットフォーム',
-      summary: 'UAEの売り手と買い手に向けた自動車売買プラットフォームを全体設計した。',
-    },
-  },
-  'selling-conversion-programme': {
-    fa: {
-      title: 'برنامهٔ نرخ تبدیل فروش',
-      summary:
-        'دربارهٔ نقاط درد فروشندگان داده جمع کردم، راه‌حل‌ها را پروتوتایپ کردم و تست کاربردپذیری اجرا کردم تا فلوی فروش کارآمدتر شود و نرخ تبدیل بالا برود.',
-    },
-    ar: {
-      title: 'برنامج رفع معدّل البيع',
-      summary:
-        'جمعتُ بيانات عن نقاط ألم البائعين، وصمّمتُ نماذج أوّلية للحلول، وأجريتُ اختبارات قابلية استخدام لجعل مسار البيع أكفأ ورفع التحويل.',
-    },
-    es: {
-      title: 'Programa de conversión de venta',
-      summary:
-        'Reuní datos sobre los puntos de fricción de los vendedores, prototipé soluciones y realicé pruebas de usabilidad para hacer más eficiente el flujo de venta y subir la conversión.',
-    },
-    de: {
-      title: 'Programm zur Verkaufsconversion',
-      summary:
-        'Daten zu den Pain Points der Verkäufer gesammelt, Lösungen prototypisiert und Usability-Tests durchgeführt, um den Verkaufsflow effizienter zu machen und die Conversion zu heben.',
-    },
-    fr: {
-      title: 'Programme de conversion à la vente',
-      summary:
-        'J’ai collecté des données sur les points de friction des vendeurs, prototypé des correctifs et mené des tests d’utilisabilité pour rendre le parcours de vente plus efficace et augmenter la conversion.',
-    },
-    ja: {
-      title: '販売コンバージョン改善プログラム',
-      summary:
-        '出品者の課題についてデータを集め、改善案をプロトタイプ化し、ユーザビリティテストを実施。販売フローを効率化し、コンバージョンを引き上げた。',
     },
   },
   'mall-traffic-campaigns': {
@@ -1220,6 +1473,38 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
       title: 'GreenRest — ECのUX監査',
       summary:
         '稼働中のイランのマットレス店舗に対する、スコア付きのバイリンガルUX監査。再利用可能なEC分析ツールキットに基づく、優先度付きのリデザイン・ロードマップを添えて。',
+    },
+  },
+  'narian-summer-passport': {
+    fa: {
+      title: 'پاسپورت تابستانه‌ی ناریان — کمپین خرده‌فروشی',
+      summary:
+        'کمپین تابستانه‌ای که هر فروشگاه را به یک فرودگاه و هر خرید را به یک بلیت تبدیل می‌کرد — اقتصادِ کلاس‌های پروازی، مجموعه‌ی نُه مهر و کنونِ دوزبانه‌ی کپی، برای رشد سبد خرید بدون هیچ تخفیفی. هرگز اجرا نشد.',
+    },
+    ar: {
+      title: 'جواز صيف ناريان — حملة تجزئة',
+      summary:
+        'حملة صيفية للتجزئة حوّلت كل متجر إلى مطار وكل عملية شراء إلى تذكرة — اقتصاد الدرجات، ومجموعة من تسعة أختام، وكنون تحريري ثنائي اللغة، لرفع قيمة السلة دون أي خصم. لم تُطلَق قط.',
+    },
+    es: {
+      title: 'Narian Summer Passport — campaña de retail',
+      summary:
+        'Una campaña de verano que convirtió cada tienda en un aeropuerto y cada compra en un billete: economía de clases, una colección de nueve sellos y un canon de copy bilingüe, para subir el ticket medio sin descuentos. Nunca se lanzó.',
+    },
+    de: {
+      title: 'Narian Summer Passport — Retail-Kampagne',
+      summary:
+        'Eine Sommerkampagne, die jeden Store zum Flughafen und jeden Kauf zum Ticket machte – Klassen-Ökonomie, eine Sammlung aus neun Stempeln und ein verbindlicher zweisprachiger Copy-Kanon, um den Warenkorb ganz ohne Rabatte zu steigern. Nie gelauncht.',
+    },
+    fr: {
+      title: 'Narian Summer Passport — campagne retail',
+      summary:
+        'Une campagne d’été qui transformait chaque boutique en aéroport et chaque achat en billet — économie des classes, une collection de neuf tampons et un canon éditorial bilingue, pour augmenter le panier sans la moindre remise. Jamais lancée.',
+    },
+    ja: {
+      title: 'ナリアン サマーパスポート — 小売キャンペーン',
+      summary:
+        'すべての店舗を空港に、すべての購入をチケットに変えた夏の小売キャンペーン。搭乗クラスの経済設計、9種のスタンプ収集、統制された二言語コピー規範で、値引きなしに客単価を伸ばす設計。実施には至らず。',
     },
   },
 }

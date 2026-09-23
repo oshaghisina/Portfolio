@@ -3,12 +3,16 @@ import React from 'react'
 import type { Page } from '@/payload-types'
 import type { Locale } from '@/utilities/locale'
 
+import { AboutImpactHero } from '@/heros/AboutImpact'
+import { ExperienceImpactHero } from '@/heros/ExperienceImpact'
 import { HighImpactHero } from '@/heros/HighImpact'
 import { HomeImpactHero } from '@/heros/HomeImpact'
 import { LowImpactHero } from '@/heros/LowImpact'
 import { MediumImpactHero } from '@/heros/MediumImpact'
 
 const heroes = {
+  aboutImpact: AboutImpactHero,
+  experienceImpact: ExperienceImpactHero,
   highImpact: HighImpactHero,
   homeImpact: HomeImpactHero,
   lowImpact: LowImpactHero,

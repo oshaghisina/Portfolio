@@ -46,6 +46,35 @@ export interface UiCopy {
    * `.eyebrow` uppercases Latin scripts and exempts fa/ar.
    */
   heroDisciplines: [string, string, string, string]
+  /**
+   * About hero intersection diagram: the three domain labels, the convergence node and its
+   * annotation. Decorative chrome that mirrors the hero sentence rather than adding data, so it
+   * lives here and not in the CMS — same reasoning as `heroDisciplines`. Stored Title Case;
+   * `.eyebrow` uppercases Latin scripts and exempts fa/ar.
+   */
+  aboutIntersection: {
+    /** Product, Business, Technology — in that order, matching the 01/02/03 ornaments. */
+    domains: [string, string, string]
+    /** The convergence node at the centre of the diagram. */
+    centre: string
+    /** Small annotation under the centre, in the accent colour. */
+    caption: string
+    /** `sr-only` figcaption — the SVG itself is `aria-hidden`. */
+    description: string
+  }
+  /**
+   * The `/experience` opener's index figure. Decorative-but-textual, for the same reason
+   * `aboutIntersection` is: the marks beside these labels are code-owned geometry, so the words
+   * are interface chrome rather than page content an editor would ever retitle.
+   */
+  capabilityIndex: {
+    /** Core, Systems, Execution, Specialized — in that order, matching the 01–04 ornaments. */
+    groups: [string, string, string, string]
+    /** Accent caption under the index; `{n}` is replaced with the capability count. */
+    total: string
+    /** `sr-only` figcaption — the marks themselves are `aria-hidden`. */
+    description: string
+  }
   /** `/lab` archive index title and nav label. */
   labArchiveTitle: string
   language: string
@@ -98,6 +127,18 @@ export const uiCopy: Record<Locale, UiCopy> = {
     heroConsoleStatus: 'Active',
     heroConsoleTitle: 'sina — workspace',
     heroDisciplines: ['Product', 'Design', 'Research', 'Growth'],
+    aboutIntersection: {
+      domains: ['Product', 'Business', 'Technology'],
+      centre: 'Where I Work',
+      caption: 'Intersection',
+      description: 'Diagram: product, business and technology converging on one shared working point.',
+    },
+    capabilityIndex: {
+      groups: ['Core', 'Systems', 'Execution', 'Specialized'],
+      total: '{n} capabilities',
+      description:
+        'Index: sixteen capabilities in four groups — core, systems, execution and specialized experience.',
+    },
     labArchiveTitle: 'Lab',
     language: 'Language',
     next: 'Next',
@@ -141,6 +182,17 @@ export const uiCopy: Record<Locale, UiCopy> = {
     heroConsoleStatus: 'فعال',
     heroConsoleTitle: 'سینا — میز کار',
     heroDisciplines: ['محصول', 'طراحی', 'پژوهش', 'رشد'],
+    aboutIntersection: {
+      domains: ['محصول', 'کسب‌وکار', 'فناوری'],
+      centre: 'جایی که کار می‌کنم',
+      caption: 'تقاطع',
+      description: 'نمودار: محصول، کسب‌وکار و فناوری که روی یک نقطه‌ی کاری مشترک هم‌گرا می‌شوند.',
+    },
+    capabilityIndex: {
+      groups: ['هسته', 'سیستم‌ها', 'اجرا', 'تخصصی'],
+      total: '{n} توانمندی',
+      description: 'فهرست: شانزده توانمندی در چهار گروه — هسته، سیستم‌ها، اجرا و تجربه‌ی تخصصی.',
+    },
     labArchiveTitle: 'آزمایشگاه',
     language: 'زبان',
     next: 'بعدی',
@@ -184,6 +236,17 @@ export const uiCopy: Record<Locale, UiCopy> = {
     heroConsoleStatus: 'نشط',
     heroConsoleTitle: 'سينا — مساحة العمل',
     heroDisciplines: ['منتج', 'تصميم', 'بحث', 'نمو'],
+    aboutIntersection: {
+      domains: ['منتج', 'أعمال', 'تقنية'],
+      centre: 'حيث أعمل',
+      caption: 'التقاطع',
+      description: 'رسم تخطيطي: المنتج والأعمال والتقنية تتلاقى عند نقطة عمل مشتركة واحدة.',
+    },
+    capabilityIndex: {
+      groups: ['الأساس', 'الأنظمة', 'التنفيذ', 'متخصصة'],
+      total: '{n} قدرة',
+      description: 'فهرس: ست عشرة قدرة في أربع مجموعات — الأساس والأنظمة والتنفيذ والخبرة المتخصصة.',
+    },
     labArchiveTitle: 'المختبر',
     language: 'اللغة',
     next: 'التالي',
@@ -227,6 +290,18 @@ export const uiCopy: Record<Locale, UiCopy> = {
     heroConsoleStatus: 'Activo',
     heroConsoleTitle: 'sina — espacio de trabajo',
     heroDisciplines: ['Producto', 'Diseño', 'Investigación', 'Crecimiento'],
+    aboutIntersection: {
+      domains: ['Producto', 'Negocio', 'Tecnología'],
+      centre: 'Donde Trabajo',
+      caption: 'Intersección',
+      description: 'Diagrama: producto, negocio y tecnología convergiendo en un mismo punto de trabajo.',
+    },
+    capabilityIndex: {
+      groups: ['Núcleo', 'Sistemas', 'Ejecución', 'Especializada'],
+      total: '{n} capacidades',
+      description:
+        'Índice: dieciséis capacidades en cuatro grupos — núcleo, sistemas, ejecución y experiencia especializada.',
+    },
     labArchiveTitle: 'Laboratorio',
     language: 'Idioma',
     next: 'Siguiente',
@@ -270,6 +345,18 @@ export const uiCopy: Record<Locale, UiCopy> = {
     heroConsoleStatus: 'Aktiv',
     heroConsoleTitle: 'sina — Werkbank',
     heroDisciplines: ['Produkt', 'Design', 'Research', 'Wachstum'],
+    aboutIntersection: {
+      domains: ['Produkt', 'Business', 'Technologie'],
+      centre: 'Wo Ich Arbeite',
+      caption: 'Schnittmenge',
+      description: 'Diagramm: Produkt, Business und Technologie, die in einem gemeinsamen Arbeitspunkt zusammenlaufen.',
+    },
+    capabilityIndex: {
+      groups: ['Kern', 'Systeme', 'Umsetzung', 'Spezialisiert'],
+      total: '{n} Fähigkeiten',
+      description:
+        'Index: sechzehn Fähigkeiten in vier Gruppen — Kern, Systeme, Umsetzung und spezialisierte Erfahrung.',
+    },
     labArchiveTitle: 'Labor',
     language: 'Sprache',
     next: 'Weiter',
@@ -313,6 +400,18 @@ export const uiCopy: Record<Locale, UiCopy> = {
     heroConsoleStatus: 'Actif',
     heroConsoleTitle: 'sina — établi',
     heroDisciplines: ['Produit', 'Design', 'Recherche', 'Croissance'],
+    aboutIntersection: {
+      domains: ['Produit', 'Business', 'Technologie'],
+      centre: 'Là Où Je Travaille',
+      caption: 'Intersection',
+      description: 'Schéma : produit, business et technologie convergeant vers un même point de travail.',
+    },
+    capabilityIndex: {
+      groups: ['Noyau', 'Systèmes', 'Exécution', 'Spécialisée'],
+      total: '{n} compétences',
+      description:
+        'Index : seize compétences en quatre groupes — noyau, systèmes, exécution et expérience spécialisée.',
+    },
     labArchiveTitle: 'Laboratoire',
     language: 'Langue',
     next: 'Suivant',
@@ -356,6 +455,17 @@ export const uiCopy: Record<Locale, UiCopy> = {
     heroConsoleStatus: '稼働中',
     heroConsoleTitle: 'sina — ワークスペース',
     heroDisciplines: ['プロダクト', 'デザイン', 'リサーチ', 'グロース'],
+    aboutIntersection: {
+      domains: ['プロダクト', 'ビジネス', 'テクノロジー'],
+      centre: '私の仕事の場',
+      caption: '交点',
+      description: '図：プロダクト、ビジネス、テクノロジーが一つの共通する仕事の地点へ収束する様子。',
+    },
+    capabilityIndex: {
+      groups: ['コア', 'システム', '実行', '専門'],
+      total: '{n}の能力',
+      description: '索引：16の能力を4つのグループに — コア、システム、実行、専門経験。',
+    },
     labArchiveTitle: 'ラボ',
     language: '言語',
     next: '次へ',

@@ -4,6 +4,8 @@ import type { Project } from '@/payload-types'
 
 import type { ProjectKind } from '@/collections/Projects/kinds'
 
+import { HOME_MOSAIC } from './home-content'
+
 /**
  * The single static source of project facts (D-021): the database seed, the homepage static
  * fallback and the `/work` static fallback all read this list — nothing about a project is typed
@@ -23,17 +25,32 @@ export interface ProjectSeedRow {
   /** `draft` keeps a row in the CMS without exposing it — used where the Docs still flag the facts. */
   status: 'published' | 'draft'
   period?: { start: string }
-  /** Repo-relative path of a real cover, read at seed time (dev only — `Docs/` is not deployed). */
-  cover?: { path: string; alt: string }
+  /**
+   * A real cover, read at seed time (dev only — `Docs/` is not deployed). `path` is repo-relative;
+   * `name` is the stored filename and the media collection's idempotency key, so it must be unique
+   * across every row — basenames collide (`home-desktop.png`, `detail-desktop.png`, `buttons.png`
+   * all recur), and two rows sharing one would silently share a single media document.
+   */
+  cover?: { path: string; name: string; alt: string }
   liveUrl?: string
 }
 
 const DIGIKALA = 'Digikala'
 const DIGIKALA_ROLE = 'Designer, Marketer, BI developer'
 const OTEACHER = 'OTeacher'
+const CARSPARENCY = 'Carsparency & Khodro45'
+const CARSPARENCY_ROLE = 'Product designer'
+const TAHA_GASHT = 'Taha Gasht'
+const INDEPENDENT = 'Independent'
+const YARAVAN_ROLE = 'Product designer, PM & builder'
 
 export const PROJECT_SEED: ProjectSeedRow[] = [
-  // ── Featured (order 1–3) ──────────────────────────────────────────────────────────────────
+  // ── Featured (order 1–6) ──────────────────────────────────────────────────────────────
+  // `order` is the archive position and must be unique across every row: `/work` sorts
+  // `['order', 'title']` and `title` is localized, so a tie numbers the same project differently
+  // in English and Persian. 1–6 are the featured chapters; the rest sit in per-company bands.
+  // `vin-app` (1), `khodro45-dealer-app` (4), `faymen` (5) and `nim-dang` (6) are featured from
+  // inside their company groups below.
   {
     slug: 'digital-gold',
     title: 'Digital Gold — product vision & growth',
@@ -42,40 +59,35 @@ export const PROJECT_SEED: ProjectSeedRow[] = [
     company: DIGIKALA,
     role: DIGIKALA_ROLE,
     kind: ['product', 'growth', 'data'],
-    order: 2,
+    order: 3,
     featured: true,
     status: 'published',
+    cover: {
+      path: 'Docs/Experience/Digikala/digital-gold/assets/order/digital-gold--gold-silver-hero-desktop.png',
+      name: 'digital-gold--gold-silver-hero-desktop.png',
+      alt: 'Digikala Digital Gold — the gold and silver buying screen on desktop, with the live gram price and the amount entry',
+    },
   },
   {
     slug: 'rp1-arena',
     title: 'RP1 — Multi-Game Play-to-Earn Arena',
     summary:
       'Product design and strategy for a mobile play-to-earn arena that gathers HTML5 games under one competitive and economic layer — competitive-platform research, MVP scoping and a full wireframe spec across 16 sections.',
-    company: 'Independent',
+    company: INDEPENDENT,
     role: 'Product designer & strategist',
     kind: ['product'],
-    order: 3,
+    order: 2, // must match `case-studies/index.ts` — that seed owns composition on re-runs
     featured: true,
     status: 'published',
     period: { start: '2026-02-01T00:00:00.000Z' },
     cover: {
       path: 'Docs/Experience/Projects/rp1-arena/assets/duel/duel-main.png',
+      // The exact name `case-studies/rp1-arena.ts` stores it under, so the two seeders reuse one
+      // media document instead of each orphaning the other's copy of identical bytes.
+      name: 'rp1-arena--duel-main.png',
       alt: 'RP1 arena — the Duel sheet: choosing a friend or a random, skill-matched opponent for a Flappy Bird duel',
     },
   },
-  {
-    slug: 'arvan-cloud-platform-redesign',
-    title: 'Cloud platform redesign & information architecture',
-    summary:
-      "Led the UI/UX and information-architecture redesign of Arvan's cloud platform, using behaviour data to decide which server metrics users actually needed to see.",
-    company: 'Arvan Cloud',
-    role: 'Product designer',
-    kind: ['product'],
-    order: 4,
-    featured: true,
-    status: 'published',
-  },
-
   // ── Digikala — Digital Gold ─────────────────────────────────────────────────────────────
   {
     slug: 'zero-fee-campaign',
@@ -174,25 +186,120 @@ export const PROJECT_SEED: ProjectSeedRow[] = [
   },
 
   // ── Carsparency & Khodro45 ──────────────────────────────────────────────────────────────
+  // Six real projects, from the six Figma files scanned into `Docs/Experience/Carsparency-Khodro45/`
+  // on 2026-09-22. They replace the two Inventory placeholders (`uae-car-marketplace`,
+  // `selling-conversion-programme`) whose CAR-01/CAR-02 ids the Docs reassigned to these — see
+  // `RETIRED_PROJECT_SLUGS` at the bottom of this file.
   {
-    slug: 'uae-car-marketplace',
-    title: 'UAE car buy & sell platform',
-    summary: 'Designed the whole car buy-and-sell platform for sellers and buyers in the UAE.',
-    company: 'Carsparency & Khodro45',
-    role: 'Product designer',
+    slug: 'khodro45-dealer-app',
+    title: 'Khodro45 dealer app — a timed auction market for Iranian car dealers',
+    summary:
+      'The B2B side of Iran\u2019s Khodro45 marketplace: 241 screens across three parallel market modes, a fair-price-guided bidding system, a six-step escrowed settlement pipeline, two generations of dealer monetisation, and a 28-frame prototype built to test the transaction state machine.',
+    company: CARSPARENCY,
+    role: CARSPARENCY_ROLE,
+    kind: ['product', 'systems'],
+    order: 4,
+    featured: true,
+    status: 'published',
+    cover: {
+      path: 'Docs/Experience/Carsparency-Khodro45/khodro45-dealer-app/assets/car-list/car-list-live.png',
+      name: 'khodro45-dealer-app--car-list-live.png',
+      alt: 'Khodro45 dealer app — the live auction list in Persian, each car card carrying its countdown, current bid and fair-price guide',
+    },
+  },
+  {
+    slug: 'carsparency-pro',
+    title: 'Carsparency Pro — the dealer app rebuilt for an English-speaking market',
+    summary:
+      'The buy-side app rebuilt in English on a dark green system: live and upcoming auctions, a panel-by-panel damage report inside a 5,779px car detail, win and lose bid states, and a Fair Market Value on every card — the direct descendant of Khodro45\u2019s fair-price anchor.',
+    company: CARSPARENCY,
+    role: CARSPARENCY_ROLE,
     kind: ['product'],
     order: 20,
     status: 'published',
+    cover: {
+      path: 'Docs/Experience/Carsparency-Khodro45/carsparency-pro/assets/auction-list.png',
+      name: 'carsparency-pro--auction-list.png',
+      alt: 'Carsparency Pro — the auction list on the dark green system, each card showing the current bid against its Fair Market Value',
+    },
   },
   {
-    slug: 'selling-conversion-programme',
-    title: 'Selling-conversion programme',
+    slug: 'carsparency-back-office',
+    title: 'Carsparency Back Office — the operator console behind the marketplace',
     summary:
-      'Gathered data on seller pain points, prototyped fixes and ran usability tests to make the selling flow more efficient and lift conversion.',
-    company: 'Carsparency & Khodro45',
-    role: 'Product designer',
-    kind: ['research', 'product'],
+      'The internal console the marketplace actually runs on: 68 desktop screens across a seven-section sidebar, a four-way price model — target, seller, fair, dealer — that makes the pricing negotiation visible, and threaded internal and dealer comment histories.',
+    company: CARSPARENCY,
+    role: CARSPARENCY_ROLE,
+    kind: ['product', 'data'],
     order: 21,
+    status: 'published',
+    cover: {
+      path: 'Docs/Experience/Carsparency-Khodro45/carsparency-back-office/assets/back-office-list.png',
+      name: 'carsparency-back-office--list.png',
+      alt: 'Carsparency Back Office — the operator list view: a dense table of cars in negotiation beside the seven-section sidebar',
+    },
+  },
+  {
+    slug: 'carsparency-inspection',
+    title: 'Carsparency Inspection — turning a physical survey into a structured record',
+    summary:
+      'The field tool that produces the evidence the whole marketplace trades on: 25 mobile screens and 22 reusable inspection components covering a nine-area vehicle survey, ownership and title questions, and a resumable workflow — the source of the condition data the dealer app prints.',
+    company: CARSPARENCY,
+    role: CARSPARENCY_ROLE,
+    kind: ['product'],
+    order: 22,
+    status: 'published',
+    cover: {
+      path: 'Docs/Experience/Carsparency-Khodro45/carsparency-inspection/assets/inspection-sections.png',
+      name: 'carsparency-inspection--sections.png',
+      alt: 'Carsparency Inspection — the nine-area vehicle survey on mobile, each area showing its completion state',
+    },
+  },
+  {
+    slug: 'carsparency-web',
+    title: 'Carsparency Web — the seller\u2019s side, built responsively from a benchmark',
+    summary:
+      'The consumer-facing seller journey designed desktop and mobile in parallel — 42 screens at 1440px and 38 at 375px — openly modelled on Motorway, with a licence-plate-first valuation entry, a four-promise value proposition, a four-step explainer and a multi-section car profile builder.',
+    company: CARSPARENCY,
+    role: CARSPARENCY_ROLE,
+    kind: ['product', 'growth'],
+    order: 23,
+    status: 'published',
+    cover: {
+      path: 'Docs/Experience/Carsparency-Khodro45/carsparency-web/assets/home-desktop.png',
+      name: 'carsparency-web--home-desktop.png',
+      alt: 'Carsparency Web — the seller home page on desktop, opening on the licence-plate valuation entry',
+    },
+  },
+  {
+    slug: 'carsparency-design-system',
+    title: 'Carsparency design system — twelve ramps, five weights and a borrowed vocabulary',
+    summary:
+      'The shared foundation under Pro, Back Office, Inspection and Web: 12 colour ramps of 10 steps published as Figma variables, a five-weight type scale, a full button state matrix, eleven component boards and an icon library of 11,326 nodes.',
+    company: CARSPARENCY,
+    role: CARSPARENCY_ROLE,
+    kind: ['systems'],
+    order: 24,
+    status: 'published',
+    cover: {
+      path: 'Docs/Experience/Carsparency-Khodro45/carsparency-design-system/assets/color-ramps.png',
+      name: 'carsparency-design-system--color-ramps.png',
+      alt: 'Carsparency design system — the twelve colour ramps, ten steps each, published as Figma variables',
+    },
+  },
+
+  // ── Taha Gasht ──────────────────────────────────────────────────────────────────────────
+  {
+    // Thin by design: `Docs/Experience/Taha-Gasht/` was opened from three Figma files and its
+    // dates, team and launch status are still open questions. Nothing here goes beyond the README.
+    slug: 'taha-gasht-platform',
+    title: 'Taha Gasht — booking site and internal booking panel',
+    summary:
+      'A travel business selling flights, hotels and tours, designed across three files: the public booking site, the internal booking panel the agents work in, and the design system shared between them.',
+    company: TAHA_GASHT,
+    role: 'Product designer & strategist',
+    kind: ['product'],
+    order: 8,
     status: 'published',
   },
 
@@ -300,6 +407,17 @@ export const PROJECT_SEED: ProjectSeedRow[] = [
 
   // ── Arvan Cloud ─────────────────────────────────────────────────────────────────────────
   {
+    slug: 'arvan-cloud-platform-redesign',
+    title: 'Cloud platform redesign & information architecture',
+    summary:
+      "Led the UI/UX and information-architecture redesign of Arvan's cloud platform, using behaviour data to decide which server metrics users actually needed to see.",
+    company: 'Arvan Cloud',
+    role: 'Product designer',
+    kind: ['product'],
+    order: 59,
+    status: 'published',
+  },
+  {
     slug: 'arvan-server-metrics-research',
     title: 'Server-metrics dashboard research',
     summary:
@@ -363,7 +481,7 @@ export const PROJECT_SEED: ProjectSeedRow[] = [
     title: 'Arash Rezvani — personal brand & blog',
     summary:
       'A Persian-default bilingual site and blog for a writer, teacher and photographer — a written design language, a Shamsi booking system, and a stack kept entirely inside Iran.',
-    company: 'Independent',
+    company: INDEPENDENT,
     role: 'Product designer & developer',
     kind: ['product'],
     order: 100,
@@ -376,7 +494,7 @@ export const PROJECT_SEED: ProjectSeedRow[] = [
     title: 'Marqevon — corporate site for a petroleum trading principal',
     summary:
       'A seven-locale corporate site for a physical petroleum trading principal, designed around the question a counterparty is silently asking: is this entity real and checkable?',
-    company: 'Independent',
+    company: INDEPENDENT,
     role: 'Product designer & developer',
     kind: ['product'],
     order: 101,
@@ -388,20 +506,26 @@ export const PROJECT_SEED: ProjectSeedRow[] = [
     title: 'Fayman — Persian RTL menswear storefront',
     summary:
       'A live Persian RTL menswear storefront — an international commerce template rebuilt around Iranian payments, phone-only identity and an in-country stack.',
-    company: 'Independent',
+    company: INDEPENDENT,
     role: 'Product designer & developer',
     kind: ['product'],
-    order: 102,
+    order: 5,
+    featured: true,
     status: 'published',
     period: { start: '2026-06-01T00:00:00.000Z' },
     liveUrl: 'https://faymen.ir',
+    cover: {
+      path: 'Docs/Experience/Projects/faymen/assets/home/home.png',
+      name: 'faymen--home.png',
+      alt: 'Fayman — the Persian RTL storefront home page, opening on the seasonal menswear edit',
+    },
   },
   {
     slug: 'renova-plus',
     title: 'Renova+ — managed-renovation platform & portfolio OS',
     summary:
       'Two surfaces for one Dubai product: a full design phase for a managed-renovation platform, and a working prototype of the institutional portfolio layer that sells it.',
-    company: 'Independent',
+    company: INDEPENDENT,
     role: 'Product designer & strategist',
     kind: ['product'],
     order: 103,
@@ -413,7 +537,7 @@ export const PROJECT_SEED: ProjectSeedRow[] = [
     title: 'VIN — connection-first networking for Dubai',
     summary:
       "A connection-first networking app for Dubai's professional community — a product brief, a 57-problem inventory with its own KPI dictionary, a brand architecture and a B2B venue-revenue layer, audited against the promises the product makes to its own users.",
-    company: 'Independent',
+    company: INDEPENDENT,
     role: 'Product designer & strategist',
     kind: ['product'],
     order: 1,
@@ -426,7 +550,7 @@ export const PROJECT_SEED: ProjectSeedRow[] = [
     title: 'Razhmana — freight marketplace process audit',
     summary:
       "A forensic audit of an Iranian freight marketplace's design file, turned into a 42-process architecture and an input-readiness gate.",
-    company: 'Independent',
+    company: INDEPENDENT,
     role: 'Design researcher & process architect',
     kind: ['research'],
     order: 105,
@@ -434,17 +558,67 @@ export const PROJECT_SEED: ProjectSeedRow[] = [
     period: { start: '2026-08-01T00:00:00.000Z' },
   },
   {
+    slug: 'nim-dang',
+    title: 'Nim Dang — a stock exchange for square metres of Tehran',
+    summary:
+      'An Iranian platform that sells Tehran property by the square metre and then lets owners resell it: 191 screens and a 430-component design system, whose sharpest idea is a low/fair/high gauge that grades both sides of a peer resale.',
+    company: INDEPENDENT,
+    role: 'Product designer & strategist',
+    kind: ['product', 'systems'],
+    order: 6,
+    featured: true,
+    status: 'published',
+    period: { start: '2022-06-01T00:00:00.000Z' },
+    cover: {
+      path: 'Docs/Experience/Projects/nim-dang/assets/property-detail/detail-desktop.png',
+      name: 'nim-dang--detail-desktop.png',
+      alt: 'Nim Dang — a Tehran property detail page on desktop, priced by the square metre beside its ownership breakdown',
+    },
+  },
+  {
+    slug: 'yaravan',
+    title: 'Yaravan — an after-sales brand that publishes its own open questions',
+    summary:
+      'An independent Persian warranty brand built as a full platform on top of an after-sales operation nobody had ever written down — a process architecture, a role and responsibility model, and a product where every unapproved claim ships as a visible open question instead of a confident sentence.',
+    company: INDEPENDENT,
+    role: YARAVAN_ROLE,
+    kind: ['product', 'systems', 'research'],
+    order: 104,
+    status: 'published',
+    period: { start: '2026-07-01T00:00:00.000Z' },
+    cover: {
+      path: 'Docs/Experience/Projects/yaravan/assets/userpanel/desktop/01-desk.png',
+      name: 'yaravan--userpanel-desk.png',
+      alt: 'Yaravan — the customer panel desk on desktop in Persian, listing registered products and their warranty state',
+    },
+  },
+  {
     slug: 'greenrest',
     title: 'GreenRest — e-commerce UX audit',
     summary:
       'A scored, bilingual UX audit of a live Iranian mattress storefront, with a prioritised redesign roadmap built on a reusable e-commerce analysis toolkit.',
-    company: 'Independent',
+    company: INDEPENDENT,
     role: 'UX researcher',
     kind: ['research'],
     order: 106,
     status: 'published',
     period: { start: '2026-02-01T00:00:00.000Z' },
     liveUrl: 'https://greenrest.ir',
+  },
+  {
+    // PRJ-11. Designed in full and never run, and the doc still carries five open questions
+    // (including whether it should be featured at all), so it stays `draft` — present in the CMS,
+    // not exposed on /work. See Docs/Experience/Projects/narian-summer-passport/README.md.
+    slug: 'narian-summer-passport',
+    title: 'Narian Summer Passport — retail campaign',
+    summary:
+      'A summer retail campaign that turned every store into an airport and every purchase into a ticket — tier economics, a nine-stamp collection and a governed bilingual copy canon, built to grow basket size without ever discounting. Never launched.',
+    company: INDEPENDENT,
+    role: 'Campaign strategist & marketer',
+    kind: ['growth', 'concept'],
+    order: 107,
+    status: 'draft',
+    period: { start: '2026-06-01T00:00:00.000Z' },
   },
 ]
 
@@ -489,10 +663,62 @@ export const toStaticProject = (row: ProjectSeedRow): Project => ({
   updatedAt: STATIC_TIMESTAMP,
 })
 
-export const FEATURED_HOME_SLUG = 'vin-app'
+/**
+ * The homepage mosaic's projects as static documents (for `homeStatic`), keyed by slug. Throws at
+ * import time if the editorial composition names a project this seed does not define, so a typo
+ * can never reach the page as a missing tile.
+ *
+ * These carry no `cover` and no `hero` — `toStaticProject` has neither — so the no-database
+ * fallback renders every tile on the pending plate. That is honest rather than ideal; the plate
+ * is a deliberate drafting state, not a broken image.
+ */
+export const homeMosaicProjectsStatic: Record<string, Project> = Object.fromEntries(
+  HOME_MOSAIC.map(({ slug }) => {
+    const row = PROJECT_SEED.find((r) => r.slug === slug)
+    if (!row) throw new Error(`projects seed: no row with slug "${slug}"`)
+    return [slug, toStaticProject(row)]
+  }),
+)
 
-const homeRow = PROJECT_SEED.find((row) => row.slug === FEATURED_HOME_SLUG)
-if (!homeRow) throw new Error(`projects seed: no row with slug "${FEATURED_HOME_SLUG}"`)
+/**
+ * Slugs that once had a row here and must now be **deleted** from any database that still holds
+ * them. `pnpm seed:projects` removes them; the destructive full seed never creates them again.
+ *
+ * `uae-car-marketplace` and `selling-conversion-programme` were the two Inventory placeholders for
+ * Carsparency. The six Figma files scanned on 2026-09-22 reassigned CAR-01/CAR-02 to real projects
+ * (`khodro45-dealer-app`, `carsparency-pro`), so the placeholders are superseded, not renamed —
+ * nothing on the site should keep pointing at them.
+ */
+export const RETIRED_PROJECT_SLUGS = [
+  'uae-car-marketplace',
+  'selling-conversion-programme',
+] as const
 
-/** The homepage's featured project as a static document (for `homeStatic`). */
-export const featuredHomeProjectStatic: Project = toStaticProject(homeRow)
+/**
+ * Retiring a slug and repointing everything that named it is one atomic change. This turns half of
+ * it into an import-time failure rather than a silently dropped mosaic tile — the same contract as
+ * `homeMosaicProjectsStatic` above.
+ *
+ * `EVIDENCE_PROJECT_SLUG` on `/experience` is checked in `syncProjects` instead: importing
+ * `PROJECT_SEED` from `experience-page-content.ts` would close the cycle
+ * `projects → home-content → experience-page-content → projects` around a top-level throw.
+ */
+for (const slug of RETIRED_PROJECT_SLUGS) {
+  if (PROJECT_SEED.some((row) => row.slug === slug)) {
+    throw new Error(`projects seed: "${slug}" is retired but still in PROJECT_SEED`)
+  }
+  if (HOME_MOSAIC.some((tile) => tile.slug === slug)) {
+    throw new Error(`projects seed: HOME_MOSAIC still points at retired "${slug}"`)
+  }
+}
+
+/** `order` is the archive sort key and ties break on a localized field — it must be unique. */
+{
+  const seen = new Set<number>()
+  for (const row of PROJECT_SEED) {
+    if (seen.has(row.order)) {
+      throw new Error(`projects seed: duplicate order ${row.order} ("${row.slug}")`)
+    }
+    seen.add(row.order)
+  }
+}

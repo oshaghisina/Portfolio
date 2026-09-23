@@ -39,6 +39,14 @@ export const hero: Field = {
           label: 'Home Impact',
           value: 'homeImpact',
         },
+        {
+          label: 'About Impact',
+          value: 'aboutImpact',
+        },
+        {
+          label: 'Experience Impact',
+          value: 'experienceImpact',
+        },
       ],
       required: true,
     },

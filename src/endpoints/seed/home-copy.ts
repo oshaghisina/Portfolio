@@ -25,7 +25,7 @@ export interface SectionHeaderCopy {
   tag: string
   lead: string
   tail: string
-  /** Omitted by the metrics strip, which has no lede. */
+  /** Optional — some openers are a tag and a heading only. */
   lede?: string
 }
 
@@ -39,15 +39,18 @@ export interface HomeCopy {
   /** Three tracks; `key` is shared. Only Product Design carries an `experience` value. */
   tracks: { header: SectionHeaderCopy; items: { title: string; experience?: string; description: string }[] }
   /**
-   * Three metrics. `value` is localized because it is not a bare numeral — "10 yrs" carries a
-   * unit word. `source` is a document filename and stays verbatim, carried into every locale by
-   * the overlay rather than retyped here.
+   * Three metrics, rendered as the proof strip beneath the Experience section's capabilities.
+   * `value` is localized because it is not a bare numeral — "10 yrs" carries a unit word.
+   * `source` is a document filename and stays verbatim, carried into every locale by the overlay
+   * rather than retyped here. There is no header: the section is opened by `/experience`'s own
+   * spotlight heading, so that the two can never name it differently.
    */
-  proof: { header: SectionHeaderCopy; metrics: { value: string; caption: string }[] }
+  proof: { metrics: { value: string; caption: string }[] }
   tools: { header: SectionHeaderCopy; categories: Record<CategoryKey, string> }
-  /** Nine employers. `index` (A1–A9) is ornament and stays Latin; `name` takes each script's form. */
+  /** Ten employers. `index` (A1–A10) is ornament and stays Latin; `name` takes each script's form. */
   experience: { header: SectionHeaderCopy; items: { name: string; role: string; blurb: string }[] }
-  featured: { header: SectionHeaderCopy }
+  /** The project mosaic's opener. Tile order and sizes are structure, not copy — see `HOME_MOSAIC`. */
+  selectedWork: { header: SectionHeaderCopy }
   contact: { heading: string; body: string; primaryLabel: string; secondaryLabel: string }
 }
 
@@ -104,16 +107,15 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         {
           title: 'Design Systems',
           description:
-            'Built a design system at Biomaze that let developers ship fast — the product became the first mover in its category.',
+            'Authored the design system under Carsparency’s four product surfaces — twelve colour ramps, a five-weight type scale and a full button state matrix.',
         },
       ],
     },
     proof: {
-      header: { tag: 'Proof', lead: 'Ten years,', tail: 'by the numbers.' },
       metrics: [
         { value: '10 yrs', caption: 'Experience across product design and growth' },
-        { value: '9', caption: 'Companies and products' },
-        { value: '7', caption: 'Industries spanned' },
+        { value: '10', caption: 'Companies and products' },
+        { value: '16', caption: 'Industries spanned' },
       ],
     },
     tools: {
@@ -121,15 +123,16 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         tag: 'Tools / Stack',
         lead: 'The systems behind how I',
         tail: 'think, design & ship.',
-        lede: 'Research, design, build, measurement and the infrastructure it runs on — one connected stack, not six separate toolkits.',
+        lede: 'Research, design, build, measurement, knowledge and the infrastructure it runs on — one connected stack, not a shelf of separate toolkits.',
       },
       categories: {
-        designPrototyping: 'Design & Prototyping',
+        designPrototyping: 'Design & Creative Production',
         aiAgents: 'AI & Agents',
         buildDelivery: 'Build & Delivery',
         dataIntelligence: 'Data & Product Intelligence',
         growthMeasurement: 'Growth & Measurement',
         infraOperations: 'Infrastructure & Operations',
+        knowledgeResearch: 'Knowledge & Research',
       },
     },
     experience: {
@@ -141,6 +144,12 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       },
       items: [
         {
+          name: 'Taha Gasht',
+          role: 'Product designer & strategist · Part time',
+          blurb:
+            'Product design and strategy across a travel business’s booking site, design system and internal panel.',
+        },
+        {
           name: 'Digikala (Digital Gold)',
           role: 'Designer / Marketer / BI developer · 2.5 yr',
           blurb:
@@ -149,7 +158,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         {
           name: 'Carsparency & Khodro45',
           role: 'Product designer · 2.5 yr',
-          blurb: 'Raised sell-through with usability testing and validated prototypes across the full car marketplace.',
+          blurb: 'Designed the whole car marketplace — dealer app, operator console, inspection tool and seller web, on one design system.',
         },
         {
           name: 'Hadish Mall',
@@ -189,12 +198,12 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         },
       ],
     },
-    featured: {
+    selectedWork: {
       header: {
         tag: 'Work',
-        lead: 'Featured',
-        tail: 'project',
-        lede: 'One project from the range — product, growth and research across nine companies.',
+        lead: 'Selected',
+        tail: 'work',
+        lede: 'Nine projects from the range — product, growth and research across ten companies.',
       },
     },
     contact: {
@@ -257,16 +266,15 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         {
           title: 'سیستم‌های طراحی',
           description:
-            'در بایومیز سیستم طراحی‌ای ساختم که به توسعه‌دهنده‌ها اجازه داد سریع منتشر کنند — محصول اولین بازیگر دستهٔ خودش شد.',
+            'دیزاین‌سیستمِ زیر چهار محصول کارسپرنسی را نوشتم — دوازده طیف رنگ، مقیاس تایپی پنج‌وزنه و ماتریس کامل حالت‌های دکمه.',
         },
       ],
     },
     proof: {
-      header: { tag: 'سند', lead: 'ده سال،', tail: 'به زبان عدد.' },
       metrics: [
         { value: '۱۰ سال', caption: 'تجربه در طراحی محصول و رشد' },
-        { value: '۹', caption: 'شرکت و محصول' },
-        { value: '۷', caption: 'صنعتی که در آن کار کرده‌ام' },
+        { value: '۱۰', caption: 'شرکت و محصول' },
+        { value: '۱۶', caption: 'صنعتی که در آن کار کرده‌ام' },
       ],
     },
     tools: {
@@ -274,15 +282,16 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         tag: 'ابزارها / پشته',
         lead: 'سیستم‌هایی که پشت',
         tail: 'فکر، طراحی و انتشار من هستند.',
-        lede: 'پژوهش، طراحی، ساخت، سنجش و زیرساختی که روی آن اجرا می‌شود — یک پشتهٔ به‌هم‌پیوسته، نه شش جعبه‌ابزار جدا.',
+        lede: 'پژوهش، طراحی، ساخت، سنجش، دانش و زیرساختی که روی آن اجرا می‌شود — یک پشتهٔ به‌هم‌پیوسته، نه قفسه‌ای از جعبه‌ابزارهای جدا.',
       },
       categories: {
-        designPrototyping: 'طراحی و پروتوتایپ',
+        designPrototyping: 'طراحی و تولید خلاق',
         aiAgents: 'هوش مصنوعی و ایجنت‌ها',
         buildDelivery: 'ساخت و تحویل',
         dataIntelligence: 'داده و هوشمندی محصول',
         growthMeasurement: 'رشد و سنجش',
         infraOperations: 'زیرساخت و عملیات',
+        knowledgeResearch: 'دانش و پژوهش',
       },
     },
     experience: {
@@ -294,6 +303,12 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       },
       items: [
         {
+          name: 'طاهاگشت',
+          role: 'طراح و استراتژیست محصول · پاره‌وقت',
+          blurb:
+            'طراحی و استراتژی محصول برای سایت رزرو، دیزاین‌سیستم و پنل داخلی یک کسب‌وکار سفر.',
+        },
+        {
           name: 'دیجی‌کالا (طلای دیجیتال)',
           role: 'طراح / بازاریاب / توسعه‌دهندهٔ BI · ۲.۵ سال',
           blurb: 'جای صفحه‌گسترده‌ها را با داشبوردهای BI گرفتم و کمپین‌هایی را اجرا کردم که جذب و تعامل را بالا برد.',
@@ -301,7 +316,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         {
           name: 'کارسپرنسی و خودرو۴۵',
           role: 'طراح محصول · ۲.۵ سال',
-          blurb: 'با تست کاربردپذیری و پروتوتایپ‌های اعتبارسنجی‌شده در کل مارکت‌پلیس خودرو، نرخ فروش را بالا بردم.',
+          blurb: 'کل مارکت‌پلیس خودرو را طراحی کردم — اپ نمایشگاه‌دار، کنسول اپراتور، ابزار بازرسی و وب فروشنده، روی یک دیزاین‌سیستم.',
         },
         {
           name: 'مجتمع هدیش',
@@ -341,12 +356,12 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         },
       ],
     },
-    featured: {
+    selectedWork: {
       header: {
         tag: 'کار',
-        lead: 'پروژهٔ',
+        lead: 'کارهای',
         tail: 'منتخب',
-        lede: 'یک پروژه از میان دامنه‌ای از کارها — محصول، رشد و پژوهش در نُه شرکت.',
+        lede: 'نُه پروژه از میان دامنه‌ای از کارها — محصول، رشد و پژوهش در ده شرکت.',
       },
     },
     contact: {
@@ -409,16 +424,15 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         {
           title: 'أنظمة التصميم',
           description:
-            'بنيتُ في Biomaze نظام تصميم سمح للمطوّرين بالشحن بسرعة — وأصبح المنتج أول المتحرّكين في فئته.',
+            'كتبتُ نظام التصميم تحت أربعة أسطح منتج في كارسبارنسي — اثنا عشر تدرّجًا لونيًا، ومقياس طباعي بخمسة أوزان، ومصفوفة كاملة لحالات الأزرار.',
         },
       ],
     },
     proof: {
-      header: { tag: 'الدليل', lead: 'عشر سنوات،', tail: 'بالأرقام.' },
       metrics: [
         { value: '10 سنوات', caption: 'خبرة في تصميم المنتج والنمو' },
-        { value: '9', caption: 'شركة ومنتج' },
-        { value: '7', caption: 'قطاعًا عملتُ فيه' },
+        { value: '10', caption: 'شركة ومنتج' },
+        { value: '16', caption: 'قطاعًا عملتُ فيه' },
       ],
     },
     tools: {
@@ -426,15 +440,16 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         tag: 'الأدوات / الحزمة',
         lead: 'الأنظمة التي تقف خلف',
         tail: 'تفكيري وتصميمي وشحني.',
-        lede: 'البحث والتصميم والبناء والقياس والبنية التحتية التي تعمل عليها — حزمة واحدة مترابطة، لا ستّ صناديق أدوات منفصلة.',
+        lede: 'البحث والتصميم والبناء والقياس والمعرفة والبنية التحتية التي تعمل عليها — حزمة واحدة مترابطة، لا رفّاً من صناديق أدوات منفصلة.',
       },
       categories: {
-        designPrototyping: 'التصميم والنمذجة',
+        designPrototyping: 'التصميم والإنتاج الإبداعي',
         aiAgents: 'الذكاء الاصطناعي والوكلاء',
         buildDelivery: 'البناء والتسليم',
         dataIntelligence: 'البيانات وذكاء المنتج',
         growthMeasurement: 'النمو والقياس',
         infraOperations: 'البنية التحتية والتشغيل',
+        knowledgeResearch: 'المعرفة والبحث',
       },
     },
     experience: {
@@ -446,6 +461,12 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       },
       items: [
         {
+          name: 'طاها غشت',
+          role: 'مصمم منتج واستراتيجي · بدوام جزئي',
+          blurb:
+            'تصميم واستراتيجية المنتج عبر موقع الحجز ونظام التصميم واللوحة الداخلية لشركة سفر.',
+        },
+        {
           name: 'ديجيكالا (الذهب الرقمي)',
           role: 'مصمم / مسوّق / مطوّر ذكاء أعمال · سنتان ونصف',
           blurb: 'استبدلتُ الجداول بلوحات معلومات ذكاء الأعمال، وأدرتُ الحملات التي رفعت الاكتساب والتفاعل.',
@@ -453,7 +474,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         {
           name: 'كارسبارنسي وخودرو45',
           role: 'مصمم منتج · سنتان ونصف',
-          blurb: 'رفعتُ معدّل البيع باختبارات قابلية الاستخدام ونماذج أوّلية مُتحقَّق منها عبر سوق السيارات بالكامل.',
+          blurb: 'صمّمتُ سوق السيارات بالكامل — تطبيق التاجر، وكنسول المشغّل، وأداة الفحص، وويب البائع، على نظام تصميم واحد.',
         },
         {
           name: 'هديش مول',
@@ -492,12 +513,12 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         },
       ],
     },
-    featured: {
+    selectedWork: {
       header: {
         tag: 'العمل',
-        lead: 'مشروع',
-        tail: 'مختار',
-        lede: 'مشروع واحد من المدى — منتج ونمو وبحث عبر تسع شركات.',
+        lead: 'أعمال',
+        tail: 'مختارة',
+        lede: 'تسعة مشاريع من المدى — منتج ونمو وبحث عبر عشر شركات.',
       },
     },
     contact: {
@@ -560,16 +581,15 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         {
           title: 'Sistemas de diseño',
           description:
-            'Construí en Biomaze un sistema de diseño que permitió a los desarrolladores lanzar rápido: el producto se convirtió en el primero de su categoría.',
+            'Escribí el sistema de diseño bajo las cuatro superficies de producto de Carsparency: doce rampas de color, una escala tipográfica de cinco pesos y una matriz completa de estados de botón.',
         },
       ],
     },
     proof: {
-      header: { tag: 'Pruebas', lead: 'Diez años,', tail: 'en cifras.' },
       metrics: [
         { value: '10 años', caption: 'Experiencia entre diseño de producto y crecimiento' },
-        { value: '9', caption: 'Empresas y productos' },
-        { value: '7', caption: 'Sectores recorridos' },
+        { value: '10', caption: 'Empresas y productos' },
+        { value: '16', caption: 'Sectores recorridos' },
       ],
     },
     tools: {
@@ -577,15 +597,16 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         tag: 'Herramientas / Stack',
         lead: 'Los sistemas detrás de cómo',
         tail: 'pienso, diseño y lanzo.',
-        lede: 'Investigación, diseño, construcción, medición y la infraestructura sobre la que corre: un único stack conectado, no seis cajas de herramientas sueltas.',
+        lede: 'Investigación, diseño, construcción, medición, conocimiento y la infraestructura sobre la que corre: un único stack conectado, no un estante de cajas de herramientas sueltas.',
       },
       categories: {
-        designPrototyping: 'Diseño y prototipado',
+        designPrototyping: 'Diseño y producción creativa',
         aiAgents: 'IA y agentes',
         buildDelivery: 'Construcción y entrega',
         dataIntelligence: 'Datos e inteligencia de producto',
         growthMeasurement: 'Crecimiento y medición',
         infraOperations: 'Infraestructura y operaciones',
+        knowledgeResearch: 'Conocimiento e investigación',
       },
     },
     experience: {
@@ -597,6 +618,12 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       },
       items: [
         {
+          name: 'Taha Gasht',
+          role: 'Diseñador de producto y estratega · Media jornada',
+          blurb:
+            'Diseño y estrategia de producto para el sitio de reservas, el sistema de diseño y el panel interno de una empresa de viajes.',
+        },
+        {
           name: 'Digikala (Digital Gold)',
           role: 'Diseñador / Marketer / Desarrollador BI · 2,5 años',
           blurb:
@@ -606,7 +633,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
           name: 'Carsparency & Khodro45',
           role: 'Diseñador de producto · 2,5 años',
           blurb:
-            'Elevé la tasa de venta con pruebas de usabilidad y prototipos validados en todo el marketplace de coches.',
+            'Diseñé todo el marketplace de coches: app del concesionario, consola del operador, herramienta de inspección y web del vendedor, sobre un mismo sistema de diseño.',
         },
         {
           name: 'Hadish Mall',
@@ -649,12 +676,12 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         },
       ],
     },
-    featured: {
+    selectedWork: {
       header: {
         tag: 'Trabajo',
-        lead: 'Proyecto',
-        tail: 'destacado',
-        lede: 'Un proyecto del conjunto: producto, crecimiento e investigación en nueve empresas.',
+        lead: 'Trabajo',
+        tail: 'seleccionado',
+        lede: 'Nueve proyectos del conjunto: producto, crecimiento e investigación en diez empresas.',
       },
     },
     contact: {
@@ -717,16 +744,15 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         {
           title: 'Design-Systeme',
           description:
-            'Bei Biomaze ein Design-System gebaut, mit dem Entwickler schnell ausliefern konnten – das Produkt wurde First Mover seiner Kategorie.',
+            'Das Designsystem unter Carsparencys vier Produktoberflächen verfasst – zwölf Farbrampen, eine Typo-Skala mit fünf Schnitten und eine vollständige Button-Zustandsmatrix.',
         },
       ],
     },
     proof: {
-      header: { tag: 'Belege', lead: 'Zehn Jahre,', tail: 'in Zahlen.' },
       metrics: [
         { value: '10 Jahre', caption: 'Erfahrung in Produktdesign und Growth' },
-        { value: '9', caption: 'Unternehmen und Produkte' },
-        { value: '7', caption: 'Branchen abgedeckt' },
+        { value: '10', caption: 'Unternehmen und Produkte' },
+        { value: '16', caption: 'Branchen abgedeckt' },
       ],
     },
     tools: {
@@ -734,15 +760,16 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         tag: 'Werkzeuge / Stack',
         lead: 'Die Systeme hinter meinem',
         tail: 'Denken, Gestalten und Ausliefern.',
-        lede: 'Recherche, Design, Build, Messung und die Infrastruktur darunter – ein zusammenhängender Stack, nicht sechs getrennte Werkzeugkästen.',
+        lede: 'Recherche, Design, Build, Messung, Wissen und die Infrastruktur darunter – ein zusammenhängender Stack, kein Regal voller getrennter Werkzeugkästen.',
       },
       categories: {
-        designPrototyping: 'Design & Prototyping',
+        designPrototyping: 'Design & Kreativproduktion',
         aiAgents: 'KI & Agenten',
         buildDelivery: 'Build & Delivery',
         dataIntelligence: 'Daten & Produktintelligenz',
         growthMeasurement: 'Growth & Messung',
         infraOperations: 'Infrastruktur & Betrieb',
+        knowledgeResearch: 'Wissen & Recherche',
       },
     },
     experience: {
@@ -754,6 +781,12 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       },
       items: [
         {
+          name: 'Taha Gasht',
+          role: 'Produktdesigner & Stratege · Teilzeit',
+          blurb:
+            'Produktdesign und -strategie für Buchungsseite, Designsystem und internes Panel eines Reiseunternehmens.',
+        },
+        {
           name: 'Digikala (Digital Gold)',
           role: 'Designer / Marketer / BI-Entwickler · 2,5 Jahre',
           blurb:
@@ -763,7 +796,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
           name: 'Carsparency & Khodro45',
           role: 'Produktdesigner · 2,5 Jahre',
           blurb:
-            'Die Verkaufsquote mit Usability-Tests und validierten Prototypen über den gesamten Automarktplatz hinweg erhöht.',
+            'Den gesamten Automarktplatz gestaltet – Händler-App, Operator-Konsole, Prüfwerkzeug und Verkäufer-Website, auf einem Designsystem.',
         },
         {
           name: 'Hadish Mall',
@@ -806,12 +839,12 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         },
       ],
     },
-    featured: {
+    selectedWork: {
       header: {
         tag: 'Arbeit',
-        lead: 'Ausgewähltes',
-        tail: 'Projekt',
-        lede: 'Ein Projekt aus der Bandbreite – Produkt, Growth und Research über neun Unternehmen.',
+        lead: 'Ausgewählte',
+        tail: 'Arbeiten',
+        lede: 'Neun Projekte aus der Bandbreite – Produkt, Growth und Research über zehn Unternehmen.',
       },
     },
     contact: {
@@ -874,16 +907,15 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         {
           title: 'Design systems',
           description:
-            'Chez Biomaze, j’ai construit un design system qui a permis aux développeurs de livrer vite — le produit est devenu le premier de sa catégorie.',
+            'J’ai écrit le design system sous les quatre surfaces produit de Carsparency — douze rampes de couleur, une échelle typographique à cinq graisses et une matrice complète d’états de bouton.',
         },
       ],
     },
     proof: {
-      header: { tag: 'Preuves', lead: 'Dix ans,', tail: 'en chiffres.' },
       metrics: [
         { value: '10 ans', caption: 'Expérience entre design produit et croissance' },
-        { value: '9', caption: 'Entreprises et produits' },
-        { value: '7', caption: 'Secteurs parcourus' },
+        { value: '10', caption: 'Entreprises et produits' },
+        { value: '16', caption: 'Secteurs parcourus' },
       ],
     },
     tools: {
@@ -891,15 +923,16 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         tag: 'Outils / Stack',
         lead: 'Les systèmes derrière ma façon de',
         tail: 'penser, concevoir et livrer.',
-        lede: 'Recherche, design, build, mesure et l’infrastructure qui les fait tourner — une seule stack connectée, pas six boîtes à outils séparées.',
+        lede: 'Recherche, design, build, mesure, connaissance et l’infrastructure qui les fait tourner — une seule stack connectée, pas une étagère de boîtes à outils séparées.',
       },
       categories: {
-        designPrototyping: 'Design et prototypage',
+        designPrototyping: 'Design et production créative',
         aiAgents: 'IA et agents',
         buildDelivery: 'Build et livraison',
         dataIntelligence: 'Données et intelligence produit',
         growthMeasurement: 'Croissance et mesure',
         infraOperations: 'Infrastructure et exploitation',
+        knowledgeResearch: 'Connaissance et recherche',
       },
     },
     experience: {
@@ -911,6 +944,12 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       },
       items: [
         {
+          name: 'Taha Gasht',
+          role: 'Designer produit & stratège · Temps partiel',
+          blurb:
+            'Design et stratégie produit pour le site de réservation, le design system et le panneau interne d’une entreprise de voyage.',
+        },
+        {
           name: 'Digikala (Digital Gold)',
           role: 'Designer / Marketeur / Développeur BI · 2,5 ans',
           blurb:
@@ -920,7 +959,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
           name: 'Carsparency & Khodro45',
           role: 'Designer produit · 2,5 ans',
           blurb:
-            'J’ai augmenté le taux de vente grâce aux tests d’utilisabilité et à des prototypes validés sur l’ensemble de la marketplace auto.',
+            'J’ai conçu toute la marketplace auto — app concessionnaire, console opérateur, outil d’inspection et web vendeur, sur un même design system.',
         },
         {
           name: 'Hadish Mall',
@@ -963,12 +1002,12 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         },
       ],
     },
-    featured: {
+    selectedWork: {
       header: {
         tag: 'Travail',
-        lead: 'Projet',
-        tail: 'à la une',
-        lede: 'Un projet parmi l’ensemble — produit, croissance et recherche dans neuf entreprises.',
+        lead: 'Travaux',
+        tail: 'sélectionnés',
+        lede: 'Neuf projets parmi l’ensemble — produit, croissance et recherche dans dix entreprises.',
       },
     },
     contact: {
@@ -1031,16 +1070,15 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         {
           title: 'デザインシステム',
           description:
-            'Biomazeで開発者が速くリリースできるデザインシステムを構築。プロダクトはそのカテゴリの先行者になった。',
+            'Carsparencyの4つのプロダクト面を支えるデザインシステムを設計。12のカラーランプ、5ウェイトのタイプスケール、ボタン状態の完全なマトリクス。',
         },
       ],
     },
     proof: {
-      header: { tag: '実績', lead: '10年を、', tail: '数字で。' },
       metrics: [
         { value: '10年', caption: 'プロダクトデザインとグロースの経験' },
-        { value: '9', caption: '企業とプロダクト' },
-        { value: '7', caption: '関わった業界' },
+        { value: '10', caption: '企業とプロダクト' },
+        { value: '16', caption: '関わった業界' },
       ],
     },
     tools: {
@@ -1048,15 +1086,16 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         tag: 'ツール / スタック',
         lead: '考え、デザインし、',
         tail: 'リリースするための仕組み。',
-        lede: 'リサーチ、デザイン、ビルド、計測、そしてそれを動かすインフラ。6つの別々の道具箱ではなく、ひとつにつながったスタック。',
+        lede: 'リサーチ、デザイン、ビルド、計測、ナレッジ、そしてそれを動かすインフラ。別々の道具箱の寄せ集めではなく、ひとつにつながったスタック。',
       },
       categories: {
-        designPrototyping: 'デザインとプロトタイピング',
+        designPrototyping: 'デザインとクリエイティブ制作',
         aiAgents: 'AIとエージェント',
         buildDelivery: 'ビルドとデリバリー',
         dataIntelligence: 'データとプロダクトインテリジェンス',
         growthMeasurement: 'グロースと計測',
         infraOperations: 'インフラと運用',
+        knowledgeResearch: 'ナレッジとリサーチ',
       },
     },
     experience: {
@@ -1068,6 +1107,12 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       },
       items: [
         {
+          name: 'Taha Gasht',
+          role: 'プロダクトデザイナー兼ストラテジスト · パートタイム',
+          blurb:
+            '旅行事業の予約サイト、デザインシステム、社内管理画面にわたるプロダクトデザインと戦略。',
+        },
+        {
           name: 'Digikala（Digital Gold）',
           role: 'デザイナー／マーケター／BI開発 · 2.5年',
           blurb: 'スプレッドシートをBIダッシュボードに置き換え、獲得とエンゲージメントを伸ばしたキャンペーンを運用。',
@@ -1075,7 +1120,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         {
           name: 'Carsparency・Khodro45',
           role: 'プロダクトデザイナー · 2.5年',
-          blurb: 'ユーザビリティテストと検証済みプロトタイプで、自動車マーケットプレイス全体の成約率を引き上げた。',
+          blurb: '自動車マーケットプレイス全体を設計。ディーラーアプリ、オペレーターコンソール、点検ツール、出品者ウェブを1つのデザインシステム上に。',
         },
         {
           name: 'Hadish Mall',
@@ -1114,12 +1159,12 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         },
       ],
     },
-    featured: {
+    selectedWork: {
       header: {
         tag: '仕事',
-        lead: '注目の',
-        tail: 'プロジェクト',
-        lede: '幅広い仕事のなかから1つ。9社にわたるプロダクト、グロース、リサーチ。',
+        lead: '主な',
+        tail: '仕事',
+        lede: '幅広い仕事のなかから9つ。10社にわたるプロダクト、グロース、リサーチ。',
       },
     },
     contact: {

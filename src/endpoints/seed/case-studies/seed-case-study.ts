@@ -5,8 +5,8 @@ import path from 'path'
 import type { ProjectKind } from '@/collections/Projects/kinds'
 import type { Project } from '@/payload-types'
 
-import { upsertMedia } from './media'
-import type { MediaSpec, SeedLocale } from './media'
+import { upsertMedia } from '../media'
+import type { MediaSpec, SeedLocale } from '../media'
 
 /** One locale's case-study fields — everything a `fallback: false` site needs filled per locale.
  *  Omit `hero` entirely (don't pass `hero: undefined`) for a project with no real screenshots yet. */

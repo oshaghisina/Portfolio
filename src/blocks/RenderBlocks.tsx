@@ -5,9 +5,14 @@ import type { Locale } from '@/utilities/locale'
 
 import { ArchiveBlock } from '@/blocks/ArchiveBlock/Component'
 import { CallToActionBlock } from '@/blocks/CallToAction/Component'
+import { CapabilityEvidenceBlock } from '@/blocks/CapabilityEvidence/Component'
+import { CapabilityMatrixBlock } from '@/blocks/CapabilityMatrix/Component'
+import { CapabilityModelBlock } from '@/blocks/CapabilityModel/Component'
+import { CapabilitySpotlightBlock } from '@/blocks/CapabilitySpotlight/Component'
 import { CareerJourneyBlock } from '@/blocks/CareerJourney/Component'
 import { ContentBlock } from '@/blocks/Content/Component'
 import { ExperienceCatalogueBlock } from '@/blocks/ExperienceCatalogue/Component'
+import { ExperienceTeaserBlock } from '@/blocks/ExperienceTeaser/Component'
 import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { MetricsStripBlock } from '@/blocks/MetricsStrip/Component'
@@ -20,13 +25,19 @@ import { TeamProcessBlock } from '@/blocks/TeamProcess/Component'
 import { ThinkingMapBlock } from '@/blocks/ThinkingMap/Component'
 import { TracksBlock } from '@/blocks/Tracks/Component.client'
 import { WorkflowStagesBlock } from '@/blocks/WorkflowStages/Component'
+import { WorkMosaicBlock } from '@/blocks/WorkMosaic/Component'
 import { WorkspaceBlock } from '@/blocks/Workspace/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
+  capabilityEvidence: CapabilityEvidenceBlock,
+  capabilityMatrix: CapabilityMatrixBlock,
+  capabilityModel: CapabilityModelBlock,
+  capabilitySpotlight: CapabilitySpotlightBlock,
   careerJourney: CareerJourneyBlock,
   content: ContentBlock,
   experienceCatalogue: ExperienceCatalogueBlock,
+  experienceTeaser: ExperienceTeaserBlock,
   cta: CallToActionBlock,
   formBlock: FormBlock,
   mediaBlock: MediaBlock,
@@ -40,6 +51,7 @@ const blockComponents = {
   thinkingMap: ThinkingMapBlock,
   tracks: TracksBlock,
   workflowStages: WorkflowStagesBlock,
+  workMosaic: WorkMosaicBlock,
   workspace: WorkspaceBlock,
 }
 

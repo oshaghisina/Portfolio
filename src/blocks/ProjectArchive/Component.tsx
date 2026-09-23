@@ -14,8 +14,23 @@ import { ProjectIndex } from './ProjectIndex'
 import { countCompanies, padIndex, toIndexRows } from './rows'
 import { WorkIntro } from './WorkIntro'
 
-const FEATURED_LIMIT = 3
-const FEATURED_VARIANTS: FeaturedVariant[] = ['primary', 'split', 'split-reverse']
+/**
+ * How many featured chapters open the archive, and the canvas each one gets. The list is sliced to
+ * this length, so a row flagged `featured` beyond it renders only in the index — keep the count of
+ * `featured: true` rows in `PROJECT_SEED` equal to this (D-010 asks for six to eight).
+ *
+ * One `primary` full-width opening, then alternating splits. `FeaturedProject` falls back to
+ * `'split'` for an index past the end, so the array only has to cover the common case.
+ */
+const FEATURED_LIMIT = 6
+const FEATURED_VARIANTS: FeaturedVariant[] = [
+  'primary',
+  'split',
+  'split-reverse',
+  'split',
+  'split-reverse',
+  'split',
+]
 
 export type ProjectArchiveProps = ProjectArchiveBlockProps & {
   className?: string

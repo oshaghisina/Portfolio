@@ -27,7 +27,7 @@ import { seedHomeTranslations } from './translations/home'
 export async function seedHomeTools({ payload }: { payload: Payload }) {
   const { docs } = await payload.find({
     collection: 'pages',
-    // depth 0 keeps the selectedWork block's `project` as an id; a populated document would be
+    // depth 0 keeps the work mosaic's `items[].project` as ids; a populated document would be
     // written back as a reshaped relationship.
     depth: 0,
     draft: true,

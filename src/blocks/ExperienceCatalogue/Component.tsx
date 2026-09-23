@@ -20,7 +20,7 @@ export const ExperienceCatalogueBlock: React.FC<ExperienceCatalogueProps> = ({
   if (!rows.length) return null
 
   return (
-    <section className={cn(className)} id="experience">
+    <section className={cn(className)}>
       <SectionHeader {...sectionHeader} className="mb-6 max-md:mb-6 max-md:border-t-0 max-md:pt-0" tagTone="mono" />
       <ExperienceGrid
         items={rows.map((item) => ({

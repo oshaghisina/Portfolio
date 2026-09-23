@@ -2,11 +2,12 @@ import { ArrowLeft, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 
-import type { Media, Project } from '@/payload-types'
+import type { Project } from '@/payload-types'
 
 import { kindLabels } from '@/collections/Projects/kinds'
 import type { CaseStudyCopy } from '@/components/CaseStudy/copy'
 import { ProjectCover } from '@/components/ProjectCover'
+import { projectMedia } from '@/components/ProjectCover/media'
 import { localePath } from '@/i18n/navigation'
 import { projectUrl, WORK_PATH } from '@/i18n/routes'
 import type { Locale } from '@/utilities/locale'
@@ -23,15 +24,6 @@ export interface NextProjectProps {
   /** Localised "Project media pending" for the cover plate (from `uiCopy`). */
   pendingLabel: string
   className?: string
-}
-
-/** The visual a project leads with: its archive cover, else the first hero screen. */
-export const nextProjectMedia = (
-  project: NextProjectDoc,
-): Media | string | number | null | undefined => {
-  if (project.cover && typeof project.cover === 'object') return project.cover
-  const first = project.hero?.items?.[0]?.media
-  return first && typeof first === 'object' ? first : project.cover
 }
 
 /**
@@ -70,7 +62,7 @@ export const NextProject: React.FC<NextProjectProps> = ({
           className="md:col-span-5"
           kinds={kindLabels(project.kind, locale)}
           pendingLabel={pendingLabel}
-          resource={nextProjectMedia(project)}
+          resource={projectMedia(project)}
           size="(min-width: 768px) 39vw, 100vw"
         />
       </Link>

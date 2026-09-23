@@ -43,7 +43,7 @@ export const about: (args: AboutArgs) => RequiredDataFromCollectionSlug<'pages'>
     slug: 'about',
     _status: 'published',
     hero: {
-      type: 'lowImpact',
+      type: 'aboutImpact',
       richText: aboutHeroRichTextEn,
     },
     layout: buildAboutLayoutEn(experienceDocs),

@@ -12,7 +12,8 @@ export interface MediaSpec {
   file: string
   /** Stored filename — the idempotency key; reuse an existing upload with this name. */
   name: string
-  alt: Record<SeedLocale, string>
+  /** English is the only alt a project cover has; case-study media supply all four. */
+  alt: Partial<Record<SeedLocale, string>>
 }
 
 const MIME: Record<string, string> = {
@@ -80,7 +81,7 @@ export async function upsertMedia(
     const created = await payload.create({
       collection: 'media',
       depth: 0,
-      data: { alt: spec.alt.en },
+      data: { alt: spec.alt.en ?? '' },
       file,
     })
     id = created.id
@@ -99,13 +100,14 @@ export async function upsertMedia(
     }
   }
 
-  for (const locale of Object.keys(spec.alt) as SeedLocale[]) {
+  for (const [locale, alt] of Object.entries(spec.alt) as [SeedLocale, string | undefined][]) {
+    if (alt === undefined) continue
     await payload.update({
       collection: 'media',
       id,
       depth: 0,
       locale,
-      data: { alt: spec.alt[locale] },
+      data: { alt },
     })
   }
 

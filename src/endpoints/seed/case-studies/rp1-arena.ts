@@ -1,7 +1,7 @@
 import type { Project } from '@/payload-types'
 
 import { bullets, paragraph, prose, type TextDirection } from './lexical'
-import type { MediaSpec, SeedLocale } from './media'
+import type { MediaSpec, SeedLocale } from '../media'
 
 /**
  * RP1 — the validation case study (D-022). Every sentence traces to
@@ -23,8 +23,12 @@ type L<T = string> = Record<SeedLocale, T>
 const L = <T = string>(en: T, fa: T, ar: T, de: T): L<T> => ({ en, fa, ar, de })
 
 // ── Media ──────────────────────────────────────────────────────────────────────────────────
-// Filenames double as idempotency keys; `duel-main.png` deliberately matches the archive cover
-// D-021 seeds, so the same upload serves both.
+// Filenames double as idempotency keys, so every name here is prefixed with the project slug —
+// including `duelMain`, which the archive cover (D-021) also points at, so the same upload
+// serves both. An earlier bare `duel-main.png` looked like it matched that cover but never
+// did: no media *document* carried that filename, while the name itself was occupied on disk
+// by an untracked leftover — so the lookup missed on every run and Payload suffixed each
+// fresh upload. Eleven identical orphans accumulated before the name was corrected.
 
 export const RP1_MEDIA = {
   heroDuel: {
@@ -59,7 +63,7 @@ export const RP1_MEDIA = {
   },
   duelMain: {
     file: 'duel/duel-main.png',
-    name: 'duel-main.png',
+    name: 'rp1-arena--duel-main.png',
     alt: L(
       'Duel entry sheet: challenge a friend, or face a random opponent matched by skill',
       'برگهٔ ورود به دوئل: دعوت یک دوست، یا رویارویی با حریفی تصادفی هم‌سطح',

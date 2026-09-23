@@ -29,7 +29,7 @@ import { homeCopy } from '../home-copy'
 export async function seedHomeTranslations({ payload }: { payload: Payload }) {
   const { docs } = await payload.find({
     collection: 'pages',
-    // depth 0 keeps `selectedWork.project` and `meta.image` as ids; a populated document written
+    // depth 0 keeps the mosaic's `items[].project` and `meta.image` as ids; a populated document written
     // back would be reshaped into an object Payload then rejects.
     depth: 0,
     draft: true,

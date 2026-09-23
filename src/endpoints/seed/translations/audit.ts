@@ -27,7 +27,7 @@ export interface Finding {
   locale: Locale
 }
 
-const PAGE_SLUGS = ['home', 'about', 'work', 'contact'] as const
+const PAGE_SLUGS = ['home', 'about', 'work', 'contact', 'experience'] as const
 
 /** Collects every `id` in a blocks/array tree, in document order. */
 const collectIds = (value: unknown, out: string[] = []): string[] => {

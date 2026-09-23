@@ -74,7 +74,7 @@ export const aboutCopy: Record<AboutLocale, AboutCopy> = {
       narratives: [
         'أول موجز حقيقي: تحويل فكرة خام لألعاب مصغّرة وتطبيق اتصال إلى واجهات يمكن للناس استخدامها فعلًا. جاءت الحرفة أولًا — الشاشات والمسارات، وانضباط شحن شيء يعمل، لا شيء يبدو صحيحًا فقط.',
         'انتقال من الشاشات إلى الأنظمة. إعادة تصميم منصّة سحابية عنت تعلّم ما تعنيه المؤشّرات على الشاشة فعلًا للمهندسين الذين يقرؤونها — لم تعد الواجهة هي المنتج، وصارت معمارية المعلومات مشكلة التصميم الحقيقية.',
-        'ملكية منصّة كاملة لأول مرة — لا شاشة واحدة ولا مسارًا واحدًا، بل سوق بيع وشراء بأكمله. توقّف اختبار قابلية الاستخدام عن كونه خطوة في النهاية وصار الطريقة التي تُتّخذ بها القرارات طوال الوقت.',
+        'ملكية منصّة كاملة لأول مرة — لا شاشة واحدة ولا مسارًا واحدًا، بل سوق بيع وشراء بأكمله. أربعة أسطح في وقت واحد: تطبيق التاجر، وكنسول المشغّل، وأداة الفاحص الميدانية، ورحلة البائع على الويب، جميعها على نظام تصميم واحد كتبتُه بنفسي.',
         'النقطة التي توقّف عندها التصميم والمنتج والنمو عن كونها وظائف منفصلة. الرؤية والواجهة وحملات بلا رسوم والتقسيط ونماذج التقسيم ولوحات المعلومات التي حلّت محلّ جداول الفريق — كلّها ممارسة واحدة مترابطة، مملوكة من البداية إلى النهاية.',
         'الآن: مستقلّ، وأستخدم هذا المدى بشروطي — تقليص رؤية أكبر بكثير إلى ما يستطيع فريق صغير شحنه فعلًا، وتوثيق القرارات وقت اتّخاذها، والتعامل مع الذكاء الاصطناعي كطبقة عمل لاستكشاف اتجاهات أكثر قبل الالتزام بواحد.',
       ],
@@ -207,7 +207,7 @@ export const aboutCopy: Record<AboutLocale, AboutCopy> = {
       narratives: [
         'El primer encargo real: convertir una idea en bruto de microjuegos y una app de llamadas en interfaces que la gente pudiera usar de verdad. El oficio vino primero: pantallas, flujos y la disciplina de lanzar algo que funcionara, no solo algo que pareciera correcto.',
         'Un paso de las pantallas a los sistemas. Rediseñar una plataforma cloud supuso entender qué significaban realmente las métricas en pantalla para los ingenieros que las leían: la interfaz dejó de ser el producto y la arquitectura de información pasó a ser el verdadero problema de diseño.',
-        'Responsabilidad completa sobre una plataforma por primera vez: no una pantalla ni un flujo, sino todo un marketplace de compraventa. Las pruebas de usabilidad dejaron de ser un paso final y se convirtieron en la forma de tomar decisiones a lo largo de todo el proceso.',
+        'Responsabilidad completa sobre una plataforma por primera vez: no una pantalla ni un flujo, sino todo un marketplace de compraventa. Cuatro superficies a la vez: la app del concesionario, la consola del operador, la herramienta de campo del inspector y el recorrido web del vendedor, todas sobre un sistema de diseño que escribí yo.',
         'El punto en el que diseño, producto y crecimiento dejaron de ser trabajos separados. Visión, interfaz, las campañas sin comisiones y a plazos, los modelos de segmentación y los paneles que sustituyeron a las hojas de cálculo del equipo: una sola práctica conectada, asumida de principio a fin.',
         'Ahora: independiente, usando ese rango en mis propios términos — reduciendo una visión mucho mayor a lo que un equipo pequeño puede lanzar de verdad, dejando las decisiones documentadas según se toman, y tratando la IA como una capa de trabajo para explorar más direcciones antes de comprometerse con una.',
       ],
@@ -340,7 +340,7 @@ export const aboutCopy: Record<AboutLocale, AboutCopy> = {
       narratives: [
         'Der erste echte Auftrag: eine rohe Idee für Microgames und eine Calling-App in Interfaces verwandeln, die Menschen wirklich benutzen konnten. Das Handwerk kam zuerst – Screens, Flows und die Disziplin, etwas auszuliefern, das funktioniert, nicht nur etwas, das richtig aussieht.',
         'Ein Wechsel von Screens zu Systemen. Eine Cloud-Plattform neu zu gestalten hieß zu lernen, was die Metriken auf dem Bildschirm den Ingenieuren, die sie lasen, tatsächlich bedeuteten – das Interface war nicht länger das Produkt, und die Informationsarchitektur wurde zum eigentlichen Designproblem.',
-        'Zum ersten Mal volle Plattformverantwortung – kein einzelner Screen und kein einzelner Flow, sondern ein ganzer Kauf- und Verkaufsmarktplatz. Usability-Tests waren kein Schritt mehr am Ende, sondern die Art, wie Entscheidungen durchgehend getroffen wurden.',
+        'Zum ersten Mal volle Plattformverantwortung – kein einzelner Screen und kein einzelner Flow, sondern ein ganzer Kauf- und Verkaufsmarktplatz. Vier Oberflächen gleichzeitig: die Händler-App, die Operator-Konsole, das Feldwerkzeug der Prüfer und die Verkäufer-Website, alle auf einem Designsystem, das ich verfasst habe.',
         'Der Punkt, an dem Design, Produkt und Growth aufhörten, getrennte Aufgaben zu sein. Vision, Interface, die gebührenfreien und Ratenkampagnen, die Segmentierungsmodelle und die Dashboards, die die Tabellen des Teams ersetzten – eine zusammenhängende Praxis, Ende zu Ende verantwortet.',
         'Jetzt: unabhängig, und diese Bandbreite zu meinen eigenen Bedingungen genutzt – eine sehr viel größere Vision auf das herunterschneiden, was ein kleines Team wirklich ausliefern kann, Entscheidungen dokumentieren, während sie fallen, und KI als Arbeitsschicht behandeln, um mehr Richtungen zu erkunden, bevor man sich auf eine festlegt.',
       ],
@@ -473,7 +473,7 @@ export const aboutCopy: Record<AboutLocale, AboutCopy> = {
       narratives: [
         'Le premier vrai brief : transformer une idée brute de micro-jeux et d’une app d’appels en interfaces réellement utilisables. Le métier d’abord — les écrans, les parcours, et la discipline de livrer quelque chose qui fonctionne, pas seulement quelque chose qui a l’air juste.',
         'Un passage des écrans aux systèmes. Repenser une plateforme cloud a voulu dire comprendre ce que les métriques à l’écran signifiaient vraiment pour les ingénieurs qui les lisaient — l’interface a cessé d’être le produit, et l’architecture de l’information est devenue le vrai problème de design.',
-        'Pour la première fois, la responsabilité d’une plateforme entière — pas un écran ni un parcours, mais toute une marketplace d’achat-vente. Les tests d’utilisabilité ont cessé d’être une étape finale pour devenir la façon dont les décisions se prenaient tout du long.',
+        'Pour la première fois, la responsabilité d’une plateforme entière — pas un écran ni un parcours, mais toute une marketplace d’achat-vente. Quatre surfaces à la fois : l’app du concessionnaire, la console de l’opérateur, l’outil de terrain de l’inspecteur et le parcours web du vendeur, toutes sur un design system que j’ai écrit.',
         'Le moment où design, produit et croissance ont cessé d’être des métiers séparés. La vision, l’interface, les campagnes sans frais et en plusieurs fois, les modèles de segmentation, et les tableaux de bord qui ont remplacé les tableurs de l’équipe — une seule pratique connectée, portée de bout en bout.',
         'Aujourd’hui : indépendant, et cette polyvalence utilisée à mes conditions — ramener une vision bien plus vaste à ce qu’une petite équipe peut réellement livrer, documenter les décisions au moment où elles se prennent, et traiter l’IA comme une couche de travail pour explorer plus de directions avant d’en choisir une.',
       ],
@@ -606,7 +606,7 @@ export const aboutCopy: Record<AboutLocale, AboutCopy> = {
       narratives: [
         '最初の本物の依頼。ミニゲームと通話アプリの粗いアイデアを、人が実際に使えるインターフェースにすること。まず手を動かす技術が先でした。画面、フロー、そして見た目が正しいだけのものではなく、動くものを出す規律。',
         '画面からシステムへの移行。クラウドプラットフォームの再設計とは、画面上の指標がそれを読むエンジニアにとって本当は何を意味するのかを学ぶことでした。インターフェースはもはやプロダクトではなくなり、情報設計こそが本当のデザイン課題になりました。',
-        '初めてプラットフォーム全体を任されました。1画面でも1フローでもなく、売買マーケットプレイスの全体。ユーザビリティテストは最後の工程ではなくなり、意思決定そのものの進め方になりました。',
+        '初めてプラットフォーム全体を任されました。1画面でも1フローでもなく、売買マーケットプレイスの全体。4つの面を同時に——ディーラー向けアプリ、オペレーターコンソール、検査員の現場ツール、出品者のウェブ導線。すべて私が書いた1つのデザインシステムの上に。',
         'デザインとプロダクトとグロースが、別々の仕事であることをやめた地点。ビジョン、インターフェース、手数料ゼロと分割のキャンペーン、セグメンテーションモデル、そしてチームのスプレッドシートを置き換えたダッシュボード。すべてがひとつにつながった実践として、最初から最後まで自分の責任でした。',
         '現在は独立し、この幅を自分の条件で使っています。はるかに大きなビジョンを、小さなチームが実際に出せる大きさまで削ること。決定をその場で記録に残すこと。そしてAIを、ひとつに絞る前により多くの方向を探るための作業レイヤーとして扱うこと。',
       ],

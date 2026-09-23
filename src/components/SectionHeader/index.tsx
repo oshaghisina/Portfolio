@@ -13,6 +13,13 @@ import { TwoTone } from '@/components/TwoTone'
  * repeating it down every section on a page.
  */
 export interface SectionHeaderProps {
+  /**
+   * Optional trailing element — a link, usually — placed under the lede in the same column, so a
+   * section can offer a way onward without inventing its own header layout. Rendered as a sibling
+   * of the lede rather than a wrapper around it: with `action` undefined the markup is unchanged
+   * for every other caller.
+   */
+  action?: React.ReactNode
   tag?: string | null
   lead?: string | null
   tail?: string | null
@@ -26,6 +33,7 @@ export interface SectionHeaderProps {
 }
 
 export const SectionHeader: React.FC<SectionHeaderProps> = ({
+  action,
   as = 'h2',
   className,
   id,
@@ -36,7 +44,7 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
   tagTone = 'brand',
   tail,
 }) => {
-  if (!lead && !tag && !lede) return null
+  if (!lead && !tag && !lede && !action) return null
 
   return (
     <header className={cn('relative pt-section-sm', className)}>
@@ -56,6 +64,9 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
         {lead ? <TwoTone as={as} className="lg:col-span-7" id={id} lead={lead} tail={tail} /> : null}
         {lede ? (
           <p className={cn('text-lede text-ink-2 max-w-measure', lead ? 'lg:col-span-5' : 'lg:col-span-7')}>{lede}</p>
+        ) : null}
+        {action ? (
+          <div className={cn('lg:col-span-5 lg:col-start-8', lede && 'max-lg:-mt-2 lg:-mt-3')}>{action}</div>
         ) : null}
       </div>
     </header>

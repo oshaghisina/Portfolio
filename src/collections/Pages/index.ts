@@ -4,10 +4,15 @@ import { authenticated } from '../../access/authenticated'
 import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
 import { Archive } from '../../blocks/ArchiveBlock/config'
 import { CallToAction } from '../../blocks/CallToAction/config'
+import { CapabilityEvidence } from '../../blocks/CapabilityEvidence/config'
+import { CapabilityMatrix } from '../../blocks/CapabilityMatrix/config'
+import { CapabilityModel } from '../../blocks/CapabilityModel/config'
+import { CapabilitySpotlight } from '../../blocks/CapabilitySpotlight/config'
 import { CareerJourney } from '../../blocks/CareerJourney/config'
 import { Tracks } from '../../blocks/Tracks/config'
 import { Content } from '../../blocks/Content/config'
 import { ExperienceCatalogue } from '../../blocks/ExperienceCatalogue/config'
+import { ExperienceTeaser } from '../../blocks/ExperienceTeaser/config'
 import { FormBlock } from '../../blocks/Form/config'
 import { MediaBlock } from '../../blocks/MediaBlock/config'
 import { MetricsStrip } from '../../blocks/MetricsStrip/config'
@@ -18,6 +23,7 @@ import { ProjectArchive } from '../../blocks/ProjectArchive/config'
 import { SelectedWork } from '../../blocks/SelectedWork/config'
 import { TeamProcess } from '../../blocks/TeamProcess/config'
 import { ThinkingMap } from '../../blocks/ThinkingMap/config'
+import { WorkMosaic } from '../../blocks/WorkMosaic/config'
 import { Workspace } from '../../blocks/Workspace/config'
 import { WorkflowStages } from '../../blocks/WorkflowStages/config'
 import { hero } from '@/heros/config'
@@ -95,10 +101,16 @@ export const Pages: CollectionConfig<'pages'> = {
                 FormBlock,
                 MetricsStrip,
                 SelectedWork,
+                WorkMosaic,
                 Workspace,
                 Tracks,
                 WorkflowStages,
                 ExperienceCatalogue,
+                ExperienceTeaser,
+                CapabilitySpotlight,
+                CapabilityMatrix,
+                CapabilityEvidence,
+                CapabilityModel,
                 ProjectArchive,
                 CareerJourney,
                 ThinkingMap,

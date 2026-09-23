@@ -2,9 +2,16 @@ import type { RequiredDataFromCollectionSlug } from 'payload'
 
 /**
  * Company/role/period reference data, sourced from Docs/Experience/Timeline.md and each
- * company's README.md. No confirmed calendar dates exist anywhere in those docs (the Timeline
- * table is entirely blank) — only durations, so `period.start`/`period.end` stay empty and
- * `durationLabel` carries the only date-shaped fact. Resume order preserved as `order`.
+ * company's README.md. Timeline's company rows still carry no calendar dates — only durations, so
+ * `period.start`/`period.end` stay empty and `durationLabel` carries the only date-shaped fact.
+ * (The independent projects under Docs/Experience/Projects/ *do* have real months, but they are
+ * one `Independent` row here, not eleven.)
+ *
+ * `order` is a stable identity, not a row position — `experience-copy.ts` keys its five extra
+ * locales off it and the About page's `careerStageOrder` points at it. So Taha Gasht, which the
+ * docs added in 2026-09 as the most recent role (`resume_order: 1`, ahead of Digikala), enters at
+ * `order: 0` rather than renumbering all ten existing keys. It sorts first, which is what the
+ * resume order means, and nothing downstream has to move.
  */
 type ExperienceLocaleFields = {
   title: string
@@ -25,6 +32,29 @@ export interface ExperienceSeedEntry {
 }
 
 export const experiencesData: ExperienceSeedEntry[] = [
+  {
+    // Docs/Experience/Taha-Gasht/README.md — not on Resume.pdf; tenure months are still open
+    // (that file's Q1), so `durationLabel` stays empty and CareerJourney simply omits it.
+    order: 0,
+    employment: 'part-time',
+    en: {
+      title: 'Taha Gasht',
+      company: 'Taha Gasht',
+      role: 'Product designer & strategist',
+      summary:
+        "Product design and strategy across a travel business's booking site, shared design system and internal panel.",
+      domain: 'Travel / booking',
+      durationLabel: '',
+    },
+    fa: {
+      title: 'طاهاگشت',
+      company: 'طاهاگشت',
+      role: 'طراح و استراتژیست محصول',
+      summary: 'طراحی و استراتژی محصول برای سایت رزرو، دیزاین‌سیستم مشترک و پنل داخلی یک کسب‌وکار سفر.',
+      domain: 'سفر و رزرو',
+      durationLabel: '',
+    },
+  },
   {
     order: 1,
     employment: 'full-time',
@@ -56,7 +86,7 @@ export const experiencesData: ExperienceSeedEntry[] = [
       title: 'Carsparency & Khodro45',
       company: 'Carsparency & Khodro45',
       role: 'Product designer',
-      summary: 'Designed a full car buy-and-sell platform for the UAE market; raised conversion through usability testing.',
+      summary: 'Designed a full car buy-and-sell platform for the UAE market — dealer app, operator console, inspection tool and seller web, on one design system.',
       domain: 'Automotive',
       durationLabel: '2.5 yrs',
     },
@@ -64,7 +94,7 @@ export const experiencesData: ExperienceSeedEntry[] = [
       title: 'کارسپرنسی و خودرو۴۵',
       company: 'کارسپرنسی و خودرو۴۵',
       role: 'طراح محصول',
-      summary: 'یک پلتفرم کامل خرید و فروش خودرو برای بازار امارات طراحی شد؛ با تست‌های کاربردپذیری نرخ تبدیل را بالا برد.',
+      summary: 'یک پلتفرم کامل خرید و فروش خودرو برای بازار امارات طراحی شد — اپ نمایشگاه‌دار، کنسول اپراتور، ابزار بازرسی و وب فروشنده، روی یک دیزاین‌سیستم.',
       domain: 'خودرو',
       durationLabel: '۲.۵ سال',
     },

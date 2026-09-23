@@ -17,14 +17,22 @@ import { seedCaseStudies } from './case-studies'
 import { contactForm as contactFormData } from './contact-form'
 import { contact as contactPageData } from './contact-page'
 import { experienceEnData, experienceFaData, experiencesData } from './experiences'
+import { experiencePageCopy } from './experience-page-copy'
+import {
+  buildExperienceHero,
+  buildExperiencePage,
+  EXPERIENCE_SLUG,
+  localizeExperienceLayout,
+} from './experience-page-content'
 import { home } from './home'
+import { HOME_MOSAIC } from './home-content'
 import { image1 } from './image-1'
 import { image2 } from './image-2'
 import { imageHero1 } from './image-hero-1'
 import { post1 } from './post-1'
 import { post2 } from './post-2'
 import { post3 } from './post-3'
-import { FEATURED_HOME_SLUG, PROJECT_SEED, toProjectData } from './projects'
+import { PROJECT_SEED, toProjectData } from './projects'
 import { buildWorkLayout, buildWorkPage, WORK_SLUG, workCopy } from './work-content'
 
 const collections: CollectionSlug[] = [
@@ -252,8 +260,14 @@ export const seed = async ({
     projectIds.set(row.slug, project.id)
   }
 
-  const featuredProject = projectIds.get(FEATURED_HOME_SLUG)
-  if (!featuredProject) throw new Error(`Seed: featured project "${FEATURED_HOME_SLUG}" was not created`)
+  // Fail loudly here rather than let `buildHomeLayout` render a mosaic with a row missing.
+  const mosaicProjects = Object.fromEntries(
+    HOME_MOSAIC.map(({ slug }) => {
+      const id = projectIds.get(slug)
+      if (!id) throw new Error(`Seed: mosaic project "${slug}" was not created`)
+      return [slug, id]
+    }),
+  )
 
   payload.logger.info(`— Seeding experiences...`)
 
@@ -305,7 +319,7 @@ export const seed = async ({
     payload.create({
       collection: 'pages',
       depth: 0,
-      data: home({ heroImage: imageHomeDoc, metaImage: image2Doc, featuredProject }),
+      data: home({ heroImage: imageHomeDoc, metaImage: image2Doc, mosaicProjects }),
       context: { disableRevalidate: true },
     }),
     payload.create({
@@ -331,6 +345,15 @@ export const seed = async ({
     context: { disableRevalidate: true },
   })
 
+  payload.logger.info(`— Seeding the experience page...`)
+
+  const experiencePage = await payload.create({
+    collection: 'pages',
+    depth: 0,
+    data: buildExperiencePage(experiencePageCopy.en, projectIds, image2Doc.id),
+    context: { disableRevalidate: true },
+  })
+
   payload.logger.info(`— Localising the about page...`)
 
   // Only en/fa have real content today (D-009) — other locales stay unseeded rather than
@@ -343,7 +366,7 @@ export const seed = async ({
     data: {
       _status: 'published',
       title: 'درباره',
-      hero: { type: 'lowImpact', richText: aboutHeroRichTextFa },
+      hero: { type: 'aboutImpact', richText: aboutHeroRichTextFa },
       layout: localizeAboutLayoutFa(aboutPage.layout),
       meta: {
         description: aboutMetaDescriptionFa,
@@ -381,6 +404,42 @@ export const seed = async ({
   const workCheck = await payload.findByID({ collection: 'pages', id: workPage.id, depth: 0, locale: DEFAULT_LOCALE })
   if (workCheck.slug !== WORK_SLUG || workCheck._status !== 'published') {
     throw new Error(`Seed: the work page lost its English slug/status (${workCheck.slug}, ${workCheck._status})`)
+  }
+
+  payload.logger.info(`— Localising the experience page...`)
+
+  // Overlay, never rebuild: `localizeExperienceLayout` spreads the stored rows so every row id —
+  // and every project relationship — survives. Leaves and `_status` go in the same call, or a
+  // locale publishes before its text lands and `contentReady` advertises a blank page in hreflang.
+  for (const locale of LOCALES) {
+    if (locale === DEFAULT_LOCALE) continue
+    const copy = experiencePageCopy[locale]
+    await payload.update({
+      collection: 'pages',
+      id: experiencePage.id,
+      locale,
+      depth: 0,
+      data: {
+        _status: 'published',
+        title: copy.title,
+        hero: buildExperienceHero(copy, locale),
+        layout: localizeExperienceLayout(locale, experiencePage.layout),
+        meta: { ...copy.meta, image: image2Doc.id },
+      },
+      context: { disableRevalidate: true },
+    })
+  }
+
+  const experienceCheck = await payload.findByID({
+    collection: 'pages',
+    id: experiencePage.id,
+    depth: 0,
+    locale: DEFAULT_LOCALE,
+  })
+  if (experienceCheck.slug !== EXPERIENCE_SLUG || experienceCheck._status !== 'published') {
+    throw new Error(
+      `Seed: the experience page lost its English slug/status (${experienceCheck.slug}, ${experienceCheck._status})`,
+    )
   }
 
   payload.logger.info(`— Seeding the about global...`)
@@ -436,9 +495,12 @@ export const seed = async ({
           },
           {
             link: {
-              type: 'custom',
+              type: 'reference',
               label: 'Experience',
-              url: '/#experience',
+              reference: {
+                relationTo: 'pages',
+                value: experiencePage.id,
+              },
             },
           },
           {
@@ -491,9 +553,12 @@ export const seed = async ({
           },
           {
             link: {
-              type: 'custom',
+              type: 'reference',
               label: 'Experience',
-              url: '/#experience',
+              reference: {
+                relationTo: 'pages',
+                value: experiencePage.id,
+              },
             },
           },
         ],
@@ -526,7 +591,7 @@ export const seed = async ({
           title: 'Approach',
           text: 'Turning ambiguous product and business problems into structured systems and shipped outcomes.',
           linkLabel: 'Experience',
-          linkHref: '/#experience',
+          linkHref: `/${EXPERIENCE_SLUG}`,
         },
         contact: {
           title: 'Get in touch',

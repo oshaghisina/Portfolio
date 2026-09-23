@@ -54,7 +54,7 @@ export const About: GlobalConfig = {
         { label: 'Consulting', value: 'consulting' },
         { label: 'Advisory', value: 'advisory' },
       ],
-      admin: { description: 'Left empty — not yet confirmed.' },
+      admin: { description: 'Seeded as Freelance, evidenced by the independent projects in Docs/Experience/Projects/. The other three are still unconfirmed (Brand-Brief Q3).' },
     },
     {
       name: 'portrait',
