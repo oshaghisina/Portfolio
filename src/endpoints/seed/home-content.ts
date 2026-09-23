@@ -4,6 +4,7 @@ import type { Project } from '@/payload-types'
 
 import type { MosaicSize } from '@/blocks/WorkMosaic/sizes'
 import type { CategoryKey } from '@/blocks/WorkflowStages/toolLogos'
+import { STAGE_EVIDENCE_SLUGS, STAGE_KEYS, type StageKey } from '@/blocks/Workspace/stages'
 import { DEFAULT_LOCALE, dirFor, type Locale } from '@/utilities/locale'
 
 import type { HomeCopy } from './home-copy'
@@ -204,11 +205,11 @@ export const buildToolsStackBlock = (copy: HomeCopy): NonNullable<PageLayout>[nu
 
 /**
  * Ornament and shared facts, Latin in every locale (DS-10) and therefore deliberately absent
- * from `HomeCopy`: a translator must not be offered "A1" or "S3" to translate. `METRIC_SOURCES`
- * is a document filename — a localized leaf whose value happens to be identical everywhere, so
- * it is written once here and carried into each locale by the overlay rather than retyped.
+ * from `HomeCopy`: a translator must not be offered "A1" to translate. Stage keys and track keys
+ * are code-owned; `METRIC_SOURCES` is a document filename — a localized leaf whose value happens
+ * to be identical everywhere, so it is written once here and carried into each locale by the
+ * overlay rather than retyped.
  */
-const WORKBENCH_CODES = ['S1', 'S2', 'S3', 'S4'] as const
 const TRACK_KEYS = ['productDesign', 'aiWorkflow', 'designSystems'] as const
 const EXPERIENCE_INDEXES = ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10'] as const
 // Only the first metric is still the résumé's own claim. The company and industry counts are
@@ -260,11 +261,22 @@ export const buildHomeLayout = ({
       blockName: 'Workbench',
       blockType: 'workspace',
       sectionHeader: copy.workbench.header,
-      tracks: copy.workbench.stages.map((stage, i) => ({
-        code: WORKBENCH_CODES[i]!,
-        label: stage.label,
-        description: stage.description,
-      })),
+      principle: copy.workbench.principle,
+      loopLabel: copy.workbench.loopLabel,
+      stages: STAGE_KEYS.map((key, i) => {
+        const stage = copy.workbench.stages[i]!
+        const evidenceSlug = STAGE_EVIDENCE_SLUGS[key]
+        const evidence = evidenceSlug ? projects[evidenceSlug] : undefined
+        return {
+          key,
+          label: stage.label,
+          statement: stage.statement,
+          question: stage.question,
+          description: stage.description,
+          output: stage.output,
+          ...(evidence ? { evidence } : {}),
+        }
+      }),
     },
     {
       blockName: 'Tracks',
@@ -360,12 +372,24 @@ export const localizeHomeLayout = (
     const rows = (key: string) => (block[key] ?? []) as Record<string, unknown>[]
 
     switch (block.blockType) {
-      case 'workspace':
+      case 'workspace': {
+        // Keyed overlay: stage order is editable in the CMS, and `key` is the stable identity
+        // the copy table and the bench visuals are written against.
+        const stageByKey = Object.fromEntries(
+          STAGE_KEYS.map((key, i) => [key, copy.workbench.stages[i]!]),
+        ) as Record<StageKey, (typeof copy.workbench.stages)[number]>
         return {
           ...block,
           sectionHeader: { ...header, ...copy.workbench.header },
-          tracks: rows('tracks').map((row, i) => ({ ...row, ...copy.workbench.stages[i] })),
+          principle: copy.workbench.principle,
+          loopLabel: copy.workbench.loopLabel,
+          stages: rows('stages').map((row) => {
+            const key = row.key as StageKey
+            const overlay = stageByKey[key]
+            return overlay ? { ...row, ...overlay } : row
+          }),
         }
+      }
       case 'tracks':
         return {
           ...block,

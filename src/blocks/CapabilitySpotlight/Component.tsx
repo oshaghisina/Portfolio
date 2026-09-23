@@ -35,7 +35,7 @@ export const CapabilitySpotlightBlock: React.FC<CapabilitySpotlightProps> = ({
   if (!rows.length) return null
 
   return (
-    <section className={cn(className)} id="capabilities">
+    <section className={cn('scroll-mt-28', className)} id="capabilities">
       <SectionHeader {...sectionHeader} className="mb-10 max-md:mb-8" tagTone="brand" />
       <MotionGrid className="grid grid-cols-1 gap-px border-y border-line bg-line md:grid-cols-2">
         {rows.map((item, i) => (

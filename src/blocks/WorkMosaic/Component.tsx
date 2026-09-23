@@ -67,7 +67,7 @@ export const WorkMosaicBlock: React.FC<WorkMosaicProps> = ({
   const sizes: MosaicSize[] = tiles.map((tile) => tile.size)
 
   return (
-    <section className={className} id="selected-work">
+    <section className={cn('scroll-mt-28', className)} id="selected-work">
       <SectionHeader {...sectionHeader} className="mb-10 max-md:mb-8" tagTone="brand" />
       <div className="grid grid-cols-1 border-b border-e border-line bg-paper min-[420px]:grid-cols-2 lg:grid-cols-12">
         {tiles.map((tile, i) => (

@@ -29,6 +29,8 @@ export interface PageOpenerProps {
   /** The closing hairline strip. `false` for a page that opens straight into its content. */
   rail?: boolean
   railLabels?: string[]
+  /** A shorter opening rhythm for pages that need evidence in the first viewport. */
+  compact?: boolean
   className?: string
 }
 
@@ -44,6 +46,7 @@ export const PageOpener: React.FC<PageOpenerProps> = ({
   asideAlign = 'center',
   before,
   className,
+  compact = false,
   eyebrow,
   index,
   lede,
@@ -58,7 +61,10 @@ export const PageOpener: React.FC<PageOpenerProps> = ({
     <section className={cn('flex flex-col', className)}>
       <div
         className={cn(
-          'flex flex-col gap-10 pt-6 pb-12 md:gap-12 md:pt-16 md:pb-16 lg:flex-row lg:justify-between lg:gap-16 lg:pt-24 lg:pb-20',
+          'flex flex-col lg:flex-row lg:justify-between',
+          compact
+            ? 'gap-8 pt-6 pb-8 md:gap-10 md:pt-12 md:pb-10 lg:gap-12 lg:pt-12 lg:pb-8'
+            : 'gap-10 pt-6 pb-12 md:gap-12 md:pt-16 md:pb-16 lg:gap-16 lg:pt-24 lg:pb-20',
           ASIDE_ALIGN[asideAlign],
         )}
       >
@@ -94,7 +100,7 @@ export const PageOpener: React.FC<PageOpenerProps> = ({
         </div>
         {aside}
       </div>
-      {rail ? <SystemLandscape labels={railLabels} /> : null}
+      {rail ? <SystemLandscape className={compact ? 'sm:h-16' : undefined} labels={railLabels} /> : null}
     </section>
   )
 }

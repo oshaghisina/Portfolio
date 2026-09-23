@@ -34,8 +34,22 @@ export interface HomeCopy {
   title: string
   meta: { title: string; description: string }
   hero: { heading: string; lede: string; primaryLabel: string; secondaryLabel: string }
-  /** Four stages; `code` (S1–S4) is shared, not translated. */
-  workbench: { header: SectionHeaderCopy; stages: { label: string; description: string }[] }
+  /**
+   * Five operating-loop stages; `key` (frame|map|decide|ship|measure) is shared, not translated.
+   * `principle` is the ownership bracket; `loopLabel` is the return-edge caption.
+   */
+  workbench: {
+    header: SectionHeaderCopy
+    principle: string
+    loopLabel: string
+    stages: {
+      label: string
+      statement: string
+      question: string
+      description: string
+      output: string
+    }[]
+  }
   /** Three tracks; `key` is shared. Only Product Design carries an `experience` value. */
   tracks: { header: SectionHeaderCopy; items: { title: string; experience?: string; description: string }[] }
   /**
@@ -70,19 +84,54 @@ export const homeCopy: Record<Locale, HomeCopy> = {
     },
     workbench: {
       header: {
-        tag: 'Workspace',
+        tag: 'How I work',
         lead: 'How I',
         tail: 'work',
-        lede: 'Own the problem, ship something real, measure what happened, and learn from it.',
+        lede: 'I own the problem, not the brief — from the first vague ask to the numbers after launch.',
       },
+      principle: 'Own the problem — at every stage',
+      loopLabel: 'Evidence reopens the model',
       stages: [
-        { label: 'Own', description: 'Take a vague business problem and turn it into a clear vision and roadmap.' },
-        { label: 'Ship', description: 'Design and build the product, campaign or system, end to end.' },
+        {
+          label: 'Frame',
+          statement: "The brief isn't the problem.",
+          question: 'What is actually wrong, and for whom?',
+          description:
+            "I map who's affected, what it costs and what's constrained, then restate the problem in terms the business can measure.",
+          output: 'Problem statement + success metric',
+        },
+        {
+          label: 'Map',
+          statement: 'See the whole system first.',
+          question: 'What system is this problem part of?',
+          description:
+            'Actors, operations, money and data on one model — so the interface is the last thing drawn, not the first.',
+          output: 'System & service map',
+        },
+        {
+          label: 'Decide',
+          statement: 'Choose, cut, and write it down.',
+          question: 'What do we build, what do we cut, and how will we know it worked?',
+          description:
+            'Priorities, scope and requirements precise enough that design, engineering and operations can build without guessing.',
+          output: 'Scoped requirements with metrics',
+        },
+        {
+          label: 'Ship',
+          statement: 'Make it real, then run it.',
+          question: 'Does it work in the real world, including the operations behind it?',
+          description:
+            'Design and deliver the product, service or campaign end to end — including the operations that keep it working after launch.',
+          output: 'Live product, service or campaign',
+        },
         {
           label: 'Measure',
-          description: 'Instrument it so the dashboards say what actually happened, not what we hoped.',
+          statement: 'Let the numbers argue back.',
+          question: 'What actually happened, and what does it change?',
+          description:
+            'Instrumented from the spec, not bolted on. What the data shows updates the model — and the next decision.',
+          output: 'Evidence → the next decision',
         },
-        { label: 'Learn', description: 'Feed the data back into the next iteration.' },
       ],
     },
     tracks: {
@@ -229,19 +278,54 @@ export const homeCopy: Record<Locale, HomeCopy> = {
     },
     workbench: {
       header: {
-        tag: 'میز کار',
+        tag: 'چطور کار می‌کنم',
         lead: 'چطور',
         tail: 'کار می‌کنم',
-        lede: 'مسئله را برعهده بگیر، چیزی واقعی بساز و منتشر کن، اندازه بگیر چه اتفاقی افتاد، و از آن یاد بگیر.',
+        lede: 'مالک مسئله‌ام، نه بریف — از اولین درخواست مبهم تا اعداد بعد از انتشار.',
       },
+      principle: 'مالک مسئله — در هر مرحله',
+      loopLabel: 'شواهد مدل را دوباره باز می‌کند',
       stages: [
-        { label: 'مالکیت', description: 'یک مسئلهٔ مبهم کسب‌وکار را به چشم‌انداز و نقشهٔ راهی روشن تبدیل می‌کنم.' },
-        { label: 'ساخت', description: 'محصول، کمپین یا سیستم را از ابتدا تا انتها طراحی و اجرا می‌کنم.' },
+        {
+          label: 'قاب‌بندی',
+          statement: 'بریف مسئله نیست.',
+          question: 'واقعاً چه چیزی غلط است، و برای چه کسی؟',
+          description:
+            'نقشه می‌کشم چه کسی متأثر است، چه هزینه‌ای دارد و چه محدودیتی هست، بعد مسئله را طوری بازمی‌گویم که کسب‌وکار بتواند بسنجد.',
+          output: 'بیان مسئله + متریک موفقیت',
+        },
+        {
+          label: 'نقشه',
+          statement: 'اول کل سیستم را ببین.',
+          question: 'این مسئله بخشی از چه سیستمی است؟',
+          description:
+            'بازیگران، عملیات، پول و داده روی یک مدل — تا رابط آخرین چیزی باشد که کشیده می‌شود، نه اولین.',
+          output: 'نقشهٔ سیستم و سرویس',
+        },
+        {
+          label: 'تصمیم',
+          statement: 'انتخاب کن، حذف کن، و بنویس.',
+          question: 'چه می‌سازیم، چه را کنار می‌گذاریم، و از کجا می‌فهمیم کار کرده؟',
+          description:
+            'اولویت‌ها، دامنه و نیازمندی‌هایی آن‌قدر دقیق که طراحی، مهندسی و عملیات بدون حدس بسازند.',
+          output: 'نیازمندی‌های محدود با متریک',
+        },
+        {
+          label: 'ساخت',
+          statement: 'واقعی‌اش کن، بعد اجرا کن.',
+          question: 'در دنیای واقعی کار می‌کند، از جمله عملیات پشتش؟',
+          description:
+            'محصول، سرویس یا کمپین را از ابتدا تا انتها طراحی و تحویل می‌دهم — از جمله عملیاتی که بعد از انتشار نگهش می‌دارد.',
+          output: 'محصول، سرویس یا کمپین زنده',
+        },
         {
           label: 'سنجش',
-          description: 'آن را ابزارگذاری می‌کنم تا داشبوردها بگویند واقعاً چه شد، نه آنچه امیدش را داشتیم.',
+          statement: 'بگذار اعداد جواب بدهند.',
+          question: 'واقعاً چه شد، و چه چیزی را عوض می‌کند؟',
+          description:
+            'از روی مشخصات ابزارگذاری شده، نه بعداً چسبانده‌شده. آنچه داده نشان می‌دهد مدل را — و تصمیم بعدی را — به‌روز می‌کند.',
+          output: 'شواهد → تصمیم بعدی',
         },
-        { label: 'یادگیری', description: 'داده را به تکرار بعدی برمی‌گردانم.' },
       ],
     },
     tracks: {
@@ -387,19 +471,54 @@ export const homeCopy: Record<Locale, HomeCopy> = {
     },
     workbench: {
       header: {
-        tag: 'مساحة العمل',
+        tag: 'كيف أعمل',
         lead: 'كيف',
         tail: 'أعمل',
-        lede: 'تملّك المشكلة، اشحن شيئًا حقيقيًا، قِس ما حدث فعلًا، ثم تعلّم منه.',
+        lede: 'أملك المشكلة، لا الموجز — من أول طلب غامض إلى الأرقام بعد الإطلاق.',
       },
+      principle: 'ملك المشكلة — في كل مرحلة',
+      loopLabel: 'الأدلة تعيد فتح النموذج',
       stages: [
-        { label: 'التملّك', description: 'آخذ مشكلة عمل غامضة وأحوّلها إلى رؤية وخارطة طريق واضحتين.' },
-        { label: 'الشحن', description: 'أصمّم وأبني المنتج أو الحملة أو النظام من البداية إلى النهاية.' },
+        {
+          label: 'التأطير',
+          statement: 'الموجز ليس المشكلة.',
+          question: 'ما الخطأ فعليًا، ولمن؟',
+          description:
+            'أرسم من يتأثر، وما التكلفة، وما القيود، ثم أعيد صياغة المشكلة بمصطلحات يمكن للعمل قياسها.',
+          output: 'بيان المشكلة + مقياس النجاح',
+        },
+        {
+          label: 'الخريطة',
+          statement: 'انظر إلى النظام كله أولًا.',
+          question: 'أي نظام هذه المشكلة جزء منه؟',
+          description:
+            'الفاعلون والعمليات والمال والبيانات على نموذج واحد — حتى تكون الواجهة آخر ما يُرسم، لا أوله.',
+          output: 'خريطة النظام والخدمة',
+        },
+        {
+          label: 'القرار',
+          statement: 'اختر، احذف، واكتب.',
+          question: 'ماذا نبني، وماذا نقطع، وكيف نعرف أنه نجح؟',
+          description:
+            'أولويات ونطاق ومتطلبات دقيقة بما يكفي ليبني التصميم والهندسة والعمليات بلا تخمين.',
+          output: 'متطلبات محددة بمقاييس',
+        },
+        {
+          label: 'الشحن',
+          statement: 'اجعله حقيقيًا، ثم شغّله.',
+          question: 'هل يعمل في العالم الحقيقي، بما في ذلك العمليات خلفه؟',
+          description:
+            'أصمّم وأسلّم المنتج أو الخدمة أو الحملة من البداية إلى النهاية — بما في ذلك العمليات التي تبقيه يعمل بعد الإطلاق.',
+          output: 'منتج أو خدمة أو حملة حية',
+        },
         {
           label: 'القياس',
-          description: 'أجهّزه بالقياس حتى تقول لوحات المعلومات ما حدث فعلًا، لا ما كنّا نأمله.',
+          statement: 'دع الأرقام تجادل.',
+          question: 'ماذا حدث فعليًا، وماذا يغيّر؟',
+          description:
+            'مجهّز بالقياس من المواصفات، لا ملصوقًا لاحقًا. ما تظهره البيانات يحدّث النموذج — والقرار التالي.',
+          output: 'الأدلة → القرار التالي',
         },
-        { label: 'التعلّم', description: 'أُعيد البيانات إلى الدورة التالية.' },
       ],
     },
     tracks: {
@@ -544,19 +663,54 @@ export const homeCopy: Record<Locale, HomeCopy> = {
     },
     workbench: {
       header: {
-        tag: 'Espacio de trabajo',
+        tag: 'Cómo trabajo',
         lead: 'Cómo',
         tail: 'trabajo',
-        lede: 'Hacerme cargo del problema, lanzar algo real, medir qué pasó y aprender de ello.',
+        lede: 'Me hago cargo del problema, no del brief — desde la primera petición vaga hasta los números tras el lanzamiento.',
       },
+      principle: 'Dueño del problema — en cada etapa',
+      loopLabel: 'La evidencia reabre el modelo',
       stages: [
-        { label: 'Apropiar', description: 'Tomar un problema de negocio difuso y convertirlo en una visión y una hoja de ruta claras.' },
-        { label: 'Lanzar', description: 'Diseñar y construir el producto, la campaña o el sistema, de principio a fin.' },
+        {
+          label: 'Enmarcar',
+          statement: 'El brief no es el problema.',
+          question: '¿Qué está mal de verdad, y para quién?',
+          description:
+            'Mapeo a quién afecta, cuánto cuesta y qué lo limita, y reformulo el problema en términos que el negocio pueda medir.',
+          output: 'Enunciado del problema + métrica de éxito',
+        },
+        {
+          label: 'Mapear',
+          statement: 'Primero el sistema entero.',
+          question: '¿De qué sistema forma parte este problema?',
+          description:
+            'Actores, operaciones, dinero y datos en un solo modelo — para que la interfaz sea lo último que se dibuja, no lo primero.',
+          output: 'Mapa de sistema y servicio',
+        },
+        {
+          label: 'Decidir',
+          statement: 'Elegir, cortar y escribirlo.',
+          question: '¿Qué construimos, qué cortamos y cómo sabremos que funcionó?',
+          description:
+            'Prioridades, alcance y requisitos lo bastante precisos para que diseño, ingeniería y operaciones construyan sin adivinar.',
+          output: 'Requisitos acotados con métricas',
+        },
+        {
+          label: 'Lanzar',
+          statement: 'Hazlo real, luego opéralo.',
+          question: '¿Funciona en el mundo real, incluidas las operaciones detrás?',
+          description:
+            'Diseño y entrego el producto, servicio o campaña de extremo a extremo — incluidas las operaciones que lo mantienen tras el lanzamiento.',
+          output: 'Producto, servicio o campaña en vivo',
+        },
         {
           label: 'Medir',
-          description: 'Instrumentarlo para que los paneles digan lo que pasó de verdad, no lo que esperábamos.',
+          statement: 'Que los números respondan.',
+          question: '¿Qué pasó de verdad, y qué cambia?',
+          description:
+            'Instrumentado desde la especificación, no añadido después. Lo que muestran los datos actualiza el modelo — y la siguiente decisión.',
+          output: 'Evidencia → la siguiente decisión',
         },
-        { label: 'Aprender', description: 'Devolver los datos a la siguiente iteración.' },
       ],
     },
     tracks: {
@@ -707,19 +861,54 @@ export const homeCopy: Record<Locale, HomeCopy> = {
     },
     workbench: {
       header: {
-        tag: 'Werkbank',
+        tag: 'Wie ich arbeite',
         lead: 'Wie ich',
         tail: 'arbeite',
-        lede: 'Das Problem übernehmen, etwas Echtes ausliefern, messen was passiert ist, und daraus lernen.',
+        lede: 'Ich übernehme das Problem, nicht das Briefing — vom ersten vagen Auftrag bis zu den Zahlen nach dem Launch.',
       },
+      principle: 'Das Problem übernehmen — in jeder Phase',
+      loopLabel: 'Evidenz öffnet das Modell erneut',
       stages: [
-        { label: 'Übernehmen', description: 'Ein vages Geschäftsproblem in eine klare Vision und Roadmap überführen.' },
-        { label: 'Ausliefern', description: 'Das Produkt, die Kampagne oder das System gestalten und bauen, Ende zu Ende.' },
+        {
+          label: 'Rahmen',
+          statement: 'Das Briefing ist nicht das Problem.',
+          question: 'Was ist wirklich falsch, und für wen?',
+          description:
+            'Ich kartiere, wer betroffen ist, was es kostet und was begrenzt, und formuliere das Problem so um, dass das Business es messen kann.',
+          output: 'Problemstellung + Erfolgsmetrik',
+        },
+        {
+          label: 'Kartieren',
+          statement: 'Zuerst das ganze System sehen.',
+          question: 'Zu welchem System gehört dieses Problem?',
+          description:
+            'Akteure, Betrieb, Geld und Daten auf einem Modell — damit die Oberfläche zuletzt gezeichnet wird, nicht zuerst.',
+          output: 'System- und Servicekarte',
+        },
+        {
+          label: 'Entscheiden',
+          statement: 'Wählen, streichen, aufschreiben.',
+          question: 'Was bauen wir, was streichen wir, und woran merken wir, dass es wirkt?',
+          description:
+            'Prioritäten, Scope und Anforderungen so präzise, dass Design, Engineering und Betrieb ohne Raten bauen können.',
+          output: 'Abgegrenzte Anforderungen mit Metriken',
+        },
+        {
+          label: 'Ausliefern',
+          statement: 'Real machen, dann betreiben.',
+          question: 'Funktioniert es in der Realität — inklusive dem Betrieb dahinter?',
+          description:
+            'Produkt, Service oder Kampagne Ende zu Ende gestalten und liefern — inklusive dem Betrieb, der es nach dem Launch am Laufen hält.',
+          output: 'Live-Produkt, -Service oder -Kampagne',
+        },
         {
           label: 'Messen',
-          description: 'So instrumentieren, dass die Dashboards sagen, was wirklich passiert ist – nicht, was wir gehofft hatten.',
+          statement: 'Die Zahlen sollen antworten.',
+          question: 'Was ist wirklich passiert, und was ändert es?',
+          description:
+            'Aus der Spezifikation instrumentiert, nicht nachträglich angehängt. Was die Daten zeigen, aktualisiert das Modell — und die nächste Entscheidung.',
+          output: 'Evidenz → die nächste Entscheidung',
         },
-        { label: 'Lernen', description: 'Die Daten zurück in die nächste Iteration geben.' },
       ],
     },
     tracks: {
@@ -870,19 +1059,54 @@ export const homeCopy: Record<Locale, HomeCopy> = {
     },
     workbench: {
       header: {
-        tag: 'Établi',
+        tag: 'Comment je travaille',
         lead: 'Comment je',
         tail: 'travaille',
-        lede: 'Prendre le problème en charge, livrer quelque chose de réel, mesurer ce qui s’est passé, et en tirer les leçons.',
+        lede: 'Je m’approprie le problème, pas le brief — de la première demande floue aux chiffres après le lancement.',
       },
+      principle: 'Propriétaire du problème — à chaque étape',
+      loopLabel: 'Les preuves rouvrent le modèle',
       stages: [
-        { label: 'Prendre en charge', description: 'Transformer un problème métier flou en une vision et une feuille de route claires.' },
-        { label: 'Livrer', description: 'Concevoir et construire le produit, la campagne ou le système, de bout en bout.' },
+        {
+          label: 'Cadrer',
+          statement: 'Le brief n’est pas le problème.',
+          question: 'Qu’est-ce qui ne va vraiment pas, et pour qui ?',
+          description:
+            'Je cartographie qui est touché, ce que ça coûte et ce qui contraint, puis je reformule le problème en termes mesurables pour le métier.',
+          output: 'Énoncé du problème + métrique de succès',
+        },
+        {
+          label: 'Cartographier',
+          statement: 'Voir d’abord tout le système.',
+          question: 'De quel système ce problème fait-il partie ?',
+          description:
+            'Acteurs, opérations, argent et données sur un seul modèle — pour que l’interface soit la dernière chose dessinée, pas la première.',
+          output: 'Carte système et service',
+        },
+        {
+          label: 'Décider',
+          statement: 'Choisir, couper, écrire.',
+          question: 'Que construisons-nous, que coupons-nous, et comment saurons-nous que ça a marché ?',
+          description:
+            'Priorités, périmètre et exigences assez précises pour que design, ingénierie et opérations construisent sans deviner.',
+          output: 'Exigences cadrées avec métriques',
+        },
+        {
+          label: 'Livrer',
+          statement: 'Le rendre réel, puis l’opérer.',
+          question: 'Est-ce que ça marche dans le monde réel, y compris les opérations derrière ?',
+          description:
+            'Je conçois et livre le produit, le service ou la campagne de bout en bout — y compris les opérations qui le maintiennent après le lancement.',
+          output: 'Produit, service ou campagne en live',
+        },
         {
           label: 'Mesurer',
-          description: 'L’instrumenter pour que les tableaux de bord disent ce qui s’est réellement passé, pas ce qu’on espérait.',
+          statement: 'Que les chiffres répondent.',
+          question: 'Qu’est-il vraiment arrivé, et qu’est-ce que ça change ?',
+          description:
+            'Instrumenté dès la spécification, pas rajouté après. Ce que montrent les données met à jour le modèle — et la décision suivante.',
+          output: 'Preuves → la décision suivante',
         },
-        { label: 'Apprendre', description: 'Réinjecter les données dans l’itération suivante.' },
       ],
     },
     tracks: {
@@ -1033,19 +1257,54 @@ export const homeCopy: Record<Locale, HomeCopy> = {
     },
     workbench: {
       header: {
-        tag: 'ワークスペース',
+        tag: '仕事の進め方',
         lead: '仕事の',
         tail: '進め方',
-        lede: '問題を引き受け、実際に動くものを出し、何が起きたかを測り、そこから学ぶ。',
+        lede: 'ブリーフではなく問題を引き受ける — 最初の曖昧な依頼から、ローンチ後の数字まで。',
       },
+      principle: '問題を引き受ける — すべての段階で',
+      loopLabel: '証拠がモデルを再び開く',
       stages: [
-        { label: '引き受ける', description: '曖昧なビジネス課題を、明確なビジョンとロードマップに変える。' },
-        { label: '出す', description: 'プロダクト、キャンペーン、システムを最初から最後まで設計し、つくる。' },
         {
-          label: '測る',
-          description: '計測を仕込み、ダッシュボードが期待ではなく実際に起きたことを語るようにする。',
+          label: 'フレーミング',
+          statement: 'ブリーフは問題ではない。',
+          question: '本当に何がおかしく、誰のためか？',
+          description:
+            '誰が影響を受け、何がコストで、何が制約かを地図にし、ビジネスが測れる言葉で問題を言い直す。',
+          output: '問題定義 + 成功指標',
         },
-        { label: '学ぶ', description: 'そのデータを次のイテレーションに戻す。' },
+        {
+          label: 'マップ',
+          statement: 'まずシステム全体を見る。',
+          question: 'この問題はどのシステムの一部か？',
+          description:
+            'アクター、運用、お金、データを一つのモデルに — インターフェースは最初ではなく最後に描く。',
+          output: 'システム＆サービスマップ',
+        },
+        {
+          label: '決定',
+          statement: '選び、切り、書き留める。',
+          question: '何を作り、何を切り、どうやって効いたと知るか？',
+          description:
+            'デザイン・エンジニアリング・運用が推測なしで作れる精度の優先順位、スコープ、要件。',
+          output: '指標付きのスコープ済み要件',
+        },
+        {
+          label: '出荷',
+          statement: '現実にして、動かす。',
+          question: '裏側の運用も含め、現実世界で動くか？',
+          description:
+            'プロダクト、サービス、キャンペーンを端から端まで設計・納品する — ローンチ後も動かし続ける運用を含めて。',
+          output: 'ライブのプロダクト / サービス / キャンペーン',
+        },
+        {
+          label: '測定',
+          statement: '数字に反論させる。',
+          question: '実際に何が起き、何が変わるか？',
+          description:
+            '仕様から計測を仕込む。後付けではない。データが示すものがモデルを — そして次の決定を — 更新する。',
+          output: '証拠 → 次の決定',
+        },
       ],
     },
     tracks: {

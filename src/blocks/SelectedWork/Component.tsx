@@ -43,7 +43,7 @@ export const SelectedWorkBlock: React.FC<SelectedWorkProps> = ({
 
   return (
     <section
-      className={cn('pb-[110svh] md:pb-[64vh] lg:pb-[76vh]', className)}
+      className={cn('scroll-mt-28 pb-[110svh] md:pb-[64vh] lg:pb-[76vh]', className)}
       id="selected-work"
     >
       <SectionHeader {...sectionHeader} className="mb-10" tagTone="brand" />

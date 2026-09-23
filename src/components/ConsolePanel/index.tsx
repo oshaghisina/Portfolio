@@ -2,7 +2,8 @@ import { cn } from '@/utilities/ui'
 import React from 'react'
 
 /**
- * Decorative "operating system" chrome shared by the hero's workspace preview, `Workspace` and
+ * Decorative "operating system" chrome used by the hero's workspace preview. The homepage
+ * Workspace block no longer shares this IDE chrome (D-031).
  * `WorkflowStages` — the same console shell reused three times is the intended visual identity,
  * not incidental duplication. Purely presentational: no data, no interaction.
  */

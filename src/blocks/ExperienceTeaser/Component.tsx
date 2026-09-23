@@ -46,7 +46,7 @@ export const ExperienceTeaserBlock: React.FC<ExperienceTeaserProps> = ({
   const action = (Array.isArray(links) ? links : [])[0]?.link
 
   return (
-    <section className={cn(className)} id="experience">
+    <section className={cn('scroll-mt-28', className)} id="experience">
       <SectionHeader
         {...sectionHeader}
         action={

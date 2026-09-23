@@ -83,7 +83,7 @@ export const WorkflowStagesBlock: React.FC<WorkflowStagesProps> = ({
   if (!rows.length) return null
 
   return (
-    <section className={cn(className)} id="tools">
+    <section className={cn('scroll-mt-28', className)} id="tools">
       <SectionHeader
         {...sectionHeader}
         className="mb-6 max-md:mb-5 max-md:border-t-0 max-md:pt-0"
