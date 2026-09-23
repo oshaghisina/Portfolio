@@ -24,7 +24,7 @@ import { Header } from './Header/config'
 import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { LOCALES } from './utilities/locale'
-import { getServerSideURL } from './utilities/getURL'
+import { getAllowedOrigins } from './utilities/getURL'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -72,7 +72,7 @@ export default buildConfig({
     url: process.env.DATABASE_URL || '',
   }),
   collections: [Pages, Posts, Projects, Media, Categories, Experiences, Users],
-  cors: [getServerSideURL()].filter(Boolean),
+  cors: getAllowedOrigins(),
   globals: [Header, Footer, About],
   // Visitor-facing content locales (D-009). English is the default and the only one with
   // content today; every other locale is dormant until translated in the admin UI — public

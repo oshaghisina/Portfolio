@@ -9,6 +9,21 @@ export const getServerSideURL = () => {
   )
 }
 
+/** Origins allowed for CORS (canonical + alternate production hosts). */
+export const getAllowedOrigins = (): string[] => {
+  const origins = new Set<string>()
+  const primary = getServerSideURL()
+  if (primary) origins.add(primary.replace(/\/$/, ''))
+  for (const extra of [
+    process.env.NEXT_PUBLIC_ALT_SERVER_URL,
+    'https://sinaoshaghi.com',
+    'https://sinaoshaghi.ir',
+  ]) {
+    if (extra) origins.add(extra.replace(/\/$/, ''))
+  }
+  return [...origins]
+}
+
 export const getClientSideURL = () => {
   if (canUseDOM) {
     const protocol = window.location.protocol
