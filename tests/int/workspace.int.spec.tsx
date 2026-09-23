@@ -193,8 +193,6 @@ describe('locale overlay', () => {
     'arvan-cloud-platform-redesign': 'p-arvan',
     'khodro45-dealer-app': 'p-k45',
     'oteacher-matchmaking-redesign': 'p-ot',
-    'user-segmentation-model': 'p-seg',
-    'marketing-automation-flows': 'p-mkt',
     'fibona-website': 'p-fib',
   }
 

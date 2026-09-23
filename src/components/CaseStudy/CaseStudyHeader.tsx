@@ -5,6 +5,7 @@ import React from 'react'
 import type { Project } from '@/payload-types'
 
 import { projectYear } from '@/blocks/ProjectArchive/rows'
+import { BidiText } from '@/components/BidiText'
 import { kindLabels } from '@/collections/Projects/kinds'
 import { PageOpener } from '@/components/PageOpener'
 import { ProjectMeta, type ProjectMetaKey, type ProjectMetaValue } from '@/components/ProjectMeta'
@@ -42,7 +43,7 @@ export function headerMeta(
   return {
     company: project.company,
     role: project.role,
-    period: projectYear(project.period),
+    period: projectYear(project.period, locale),
     type: kinds.length ? kinds.join(' · ') : null,
     industry: project.industry,
     team: project.team,
@@ -84,6 +85,6 @@ export const CaseStudyHeader: React.FC<CaseStudyHeaderProps> = ({
     }
     className={className}
     lede={project.statement || project.summary}
-    title={project.title}
+    title={<BidiText locale={locale} text={project.title} />}
   />
 )

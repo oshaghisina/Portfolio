@@ -50,9 +50,9 @@ export const PROJECT_META_LABELS: Record<Locale, Record<ProjectMetaKey, string>>
     industry: 'صنعت',
     team: 'تیم',
     status: 'وضعیت',
-    tools: 'ابزارها',
+    tools: 'ابزارها و فناوری‌ها',
     client: 'کارفرما',
-    link: 'نسخهٴ زنده',
+    link: 'نسخهٔ زنده',
   },
   ar: {
     company: 'الشركة',

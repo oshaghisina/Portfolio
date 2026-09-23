@@ -22,8 +22,10 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
   const payload = await getPayload({ config: configPromise })
   const locale = await getLocale()
 
+  // The search index is shared across locales. Query the source collection for Persian so an
+  // English-only indexed post cannot appear as a Persian result with English title/excerpt.
   const posts = await payload.find({
-    collection: 'search',
+    collection: locale === 'fa' ? 'posts' : 'search',
     depth: 1,
     fallbackLocale: false,
     limit: 12,

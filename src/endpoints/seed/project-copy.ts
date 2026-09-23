@@ -209,9 +209,9 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
   // ── Khodro45 + Carsparency (six projects, from the 2026-09-22 Figma scan) ───────────────
   'khodro45-dealer-app': {
     fa: {
-      title: 'اپلیکیشن نمایشگاه‌داران خودرو۴۵ — بازار مزایدهٔ زمان‌دار برای دلالان خودرو',
+      title: 'اپلیکیشن نمایشگاه‌داران Khodro45 — مزایدهٔ زمان‌دار خودرو',
       summary:
-        'سمت B2B بازار خودرو۴۵: ۲۴۱ صفحه در سه حالت بازار موازی، سامانهٔ پیشنهاد قیمت مبتنی بر قیمت منصفانه، خط لولهٔ تسویهٔ شش‌مرحله‌ای، دو نسل درآمدزایی از نمایشگاه‌داران، و یک پروتوتایپ ۲۸ فریمی برای آزمودن ماشین حالت معامله.',
+        'بخش B2B بازار Khodro45 را در ۲۴۱ صفحه و سه حالت بازار موازی طراحی کردم؛ از پیشنهاد قیمت بر پایهٔ ارزش منصفانه و تسویهٔ شش‌مرحله‌ای تا دو مدل درآمد از نمایشگاه‌داران. یک نمونهٔ تعاملی ۲۸ فریمی هم برای آزمودن وضعیت‌های معامله ساخته شد.',
     },
     ar: {
       title: 'تطبيق تجّار خودرو45 — سوق مزادات موقوتة لتجّار السيارات في إيران',
@@ -241,9 +241,9 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
   },
   'carsparency-pro': {
     fa: {
-      title: 'کارسپرنسی پرو — اپلیکیشن نمایشگاه‌داران، بازسازی‌شده برای بازار انگلیسی‌زبان',
+      title: 'Carsparency Pro — اپلیکیشن نمایشگاه‌داران برای بازار انگلیسی‌زبان',
       summary:
-        'اپلیکیشن سمت خرید، بازسازی‌شده به انگلیسی روی سیستمی سبز تیره: مزایده‌های زنده و پیش‌رو، گزارش خسارت قطعه‌به‌قطعه در صفحهٔ جزئیاتی ۵۷۷۹ پیکسلی، وضعیت برد و باخت پیشنهاد، و «ارزش منصفانهٔ بازار» روی هر کارت — وارث مستقیم لنگرِ قیمت منصفانهٔ خودرو۴۵.',
+        'اپلیکیشن سمت خریدار را با هویت بصری سبز تیره برای بازار انگلیسی‌زبان بازسازی کردم. مزایده‌های جاری و آینده، گزارش خسارت هر قطعه در صفحه‌ای ۵۷۷۹ پیکسلی، وضعیت برد و باخت پیشنهاد و ارزش منصفانهٔ بازار روی هر کارت، بخش‌های اصلی آن‌اند. معیار قیمت منصفانه از Khodro45 به این محصول منتقل شد.',
     },
     ar: {
       title: 'Carsparency Pro — تطبيق التجّار معادًا بناؤه لسوق ناطق بالإنجليزية',
@@ -273,9 +273,9 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
   },
   'carsparency-back-office': {
     fa: {
-      title: 'بک‌آفیس کارسپرنسی — کنسول اپراتوری پشت بازارگاه',
+      title: 'پنل عملیاتی Carsparency — کنسول پشت بازارگاه',
       summary:
-        'کنسول داخلی که بازارگاه واقعاً روی آن می‌چرخد: ۶۸ صفحهٔ دسکتاپ در نواری کناری با هفت بخش، مدل قیمت چهارگانه — هدف، فروشنده، منصفانه، نمایشگاه‌دار — که چانه‌زنی قیمت را دیدنی می‌کند، و تاریخچهٔ گفتگوی داخلی و گفتگو با نمایشگاه‌دار.',
+        'کنسول داخلی بازارگاه با ۶۸ صفحهٔ دسکتاپ و هفت بخش اصلی. چهار قیمتِ هدف، فروشنده، منصفانه و نمایشگاه‌دار را کنار هم نشان می‌دهد تا مذاکرهٔ قیمت روشن باشد؛ سابقهٔ گفت‌وگوهای داخلی و گفت‌وگو با نمایشگاه‌دار هم در آن ثبت می‌شود.',
     },
     ar: {
       title: 'Carsparency Back Office — لوحة المشغّل خلف السوق',
@@ -305,9 +305,9 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
   },
   'carsparency-inspection': {
     fa: {
-      title: 'بازرسی کارسپرنسی — تبدیل معاینهٔ فیزیکی خودرو به یک سند ساختاریافته',
+      title: 'بازرسی Carsparency — ثبت ساختاریافتهٔ وضعیت خودرو',
       summary:
-        'ابزار میدانی که مدرکِ مورد معاملهٔ کل بازارگاه را تولید می‌کند: ۲۵ صفحهٔ موبایل و ۲۲ کامپوننت بازرسی قابل‌استفادهٔ مجدد برای معاینهٔ نُه‌بخشی خودرو، پرسش‌های مالکیت و سند، و گردش‌کاری که می‌توان آن را از سر گرفت — سرچشمهٔ داده‌های وضعیتی که اپلیکیشن نمایشگاه‌داران چاپ می‌کند.',
+        'ابزار بازرسی میدانی با ۲۵ صفحهٔ موبایل و ۲۲ جزء قابل استفادهٔ دوباره. معاینهٔ نُه‌بخشی خودرو، پرسش‌های مالکیت و مدارک، و امکان ادامه‌دادن کار نیمه‌تمام را پوشش می‌دهد. دادهٔ وضعیت خودرو از اینجا به اپلیکیشن نمایشگاه‌داران می‌رسد.',
     },
     ar: {
       title: 'Carsparency Inspection — تحويل الفحص المادي إلى سجل منظّم',
@@ -337,9 +337,9 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
   },
   'carsparency-web': {
     fa: {
-      title: 'وب کارسپرنسی — سمت فروشنده، ساخته‌شده به‌صورت واکنش‌گرا از روی یک الگوی مرجع',
+      title: 'وب‌سایت Carsparency — مسیر فروشنده در دسکتاپ و موبایل',
       summary:
-        'مسیر فروشنده در وب، طراحی‌شده هم‌زمان برای دسکتاپ و موبایل — ۴۲ صفحه در ۱۴۴۰ و ۳۸ صفحه در ۳۷۵ پیکسل — آشکارا بر پایهٔ الگوی Motorway، با ورود از شمارهٔ پلاک، چهار وعدهٔ ارزش، توضیحی چهارمرحله‌ای، و سازندهٔ چندبخشی پروفایل خودرو.',
+        'مسیر فروشنده را برای دسکتاپ و موبایل، بر پایهٔ الگوی Motorway، طراحی کردم: ۴۲ صفحه در عرض ۱۴۴۰ و ۳۸ صفحه در عرض ۳۷۵ پیکسل. ورود با پلاک، چهار مزیت اصلی، توضیح فرایند در چهار گام و ساخت پروفایل خودرو در چند بخش را شامل می‌شود.',
     },
     ar: {
       title: 'Carsparency Web — جانب البائع، مبنيًّا بشكل متجاوب انطلاقًا من مرجع',
@@ -369,9 +369,9 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
   },
   'carsparency-design-system': {
     fa: {
-      title: 'دیزاین‌سیستم کارسپرنسی — دوازده طیف رنگ، پنج وزن قلم و واژگانی وام‌گرفته',
+      title: 'سیستم طراحی Carsparency — پایهٔ مشترک چهار محصول',
       summary:
-        'شالودهٔ مشترک زیر پرو، بک‌آفیس، بازرسی و وب: ۱۲ طیف رنگ ده‌پله‌ای منتشرشده به‌صورت متغیرهای فیگما، مقیاس تایپی پنج‌وزنه، ماتریس کامل حالت‌های دکمه، یازده برد کامپوننت، و کتابخانهٔ آیکونی با ۱۱٬۳۲۶ نود.',
+        'پایهٔ مشترک اپلیکیشن نمایشگاه‌داران، پنل عملیاتی، ابزار بازرسی و وب‌سایت: ۱۲ طیف رنگ ده‌پله‌ای در متغیرهای Figma، پنج وزن تایپ، حالت‌های کامل دکمه، ۱۱ صفحهٔ اجزا و کتابخانهٔ آیکون با ۱۱٬۳۲۶ گره.',
     },
     ar: {
       title: 'نظام تصميم Carsparency — اثنا عشر تدرّجًا وخمسة أوزان ومفردات مستعارة',
@@ -405,7 +405,7 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
     fa: {
       title: 'طاهاگشت — سایت رزرو و پنل داخلی',
       summary:
-        'کسب‌وکاری گردشگری که پرواز، هتل و تور می‌فروشد؛ طراحی‌شده در سه فایل: سایت عمومی رزرو، پنل داخلی که کارشناسان در آن کار می‌کنند، و دیزاین‌سیستم مشترک میان آن دو.',
+        'برای کسب‌وکار فروش پرواز، هتل و تور، سایت رزرو و پنل کاری کارشناسان را طراحی کردم. یک سیستم طراحی مشترک هم میان این دو محصول قرار گرفت.',
     },
     ar: {
       title: 'طاها غشت — موقع الحجز ولوحة الحجز الداخلية',
@@ -437,9 +437,9 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
   // ── Independent ─────────────────────────────────────────────────────────────────────────
   'nim-dang': {
     fa: {
-      title: 'نیم‌دانگ — بورسی برای مترمربع‌های تهران',
+      title: 'نیم‌دانگ — بازار خرید و فروش متری ملک در تهران',
       summary:
-        'پلتفرمی ایرانی که ملک تهران را متری می‌فروشد و بعد به مالکان اجازهٔ فروش مجدد می‌دهد: ۱۹۱ صفحه و دیزاین‌سیستمی ۴۳۰ کامپوننتی، که بهترین ایده‌اش نشانگر پایین/منصفانه/بالا است — سنجه‌ای که هر دو سوی معاملهٔ ثانویه را نمره می‌دهد.',
+        'پلتفرم خرید متری ملک در تهران با امکان فروش دوبارهٔ سهم: ۱۹۱ صفحه و سیستم طراحی با ۴۳۰ جزء. نشانگر «پایین / منصفانه / بالا» به خریدار و فروشندهٔ بازار ثانویه در ارزیابی قیمت کمک می‌کند.',
     },
     ar: {
       title: 'نيم دانغ — بورصة لأمتار طهران المربّعة',
@@ -469,9 +469,9 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
   },
   yaravan: {
     fa: {
-      title: 'یاراوان — برند خدمات پس از فروشی که پرسش‌های بی‌پاسخش را منتشر می‌کند',
+      title: 'یاراوان — پلتفرم خدمات پس از فروش و گارانتی',
       summary:
-        'یک برند مستقل گارانتی فارسی، ساخته‌شده به‌صورت پلتفرمی کامل روی عملیات پس از فروشی که هیچ‌کس هرگز مکتوبش نکرده بود — معماری فرایند، مدل نقش‌ها و مسئولیت‌ها، و محصولی که در آن هر ادعای تأییدنشده به‌جای یک جملهٔ مطمئن، به شکل یک پرسش بازِ دیدنی منتشر می‌شود.',
+        'برای یک برند مستقل گارانتی، فرایندهای مستندنشدهٔ خدمات پس از فروش و نقش‌ها و مسئولیت‌ها را صورت‌بندی کردم و بر پایهٔ آن‌ها پلتفرم را طراحی کردم. پرسش‌های بی‌پاسخ را هم به‌جای تبدیل‌کردن به ادعاهای قطعی، آشکار نگه داشتم.',
     },
     ar: {
       title: 'ياراوان — علامة خدمات ما بعد البيع التي تنشر أسئلتها المفتوحة',
@@ -503,7 +503,7 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
     fa: {
       title: 'طلای دیجیتال — چشم‌انداز محصول و رشد',
       summary:
-        'چشم‌انداز، ویژگی‌ها و استراتژی رشد محصول معاملهٔ طلای دیجی‌کالا را تعریف کردم — از کمپین‌ها و بخش‌بندی تا داشبوردهای BI که آن‌ها را رصد می‌کرد.',
+        'چشم‌انداز، ویژگی‌ها و راهبرد رشد محصول معاملهٔ طلای دیجی‌کالا را تعریف کردم؛ از کمپین‌ها و بخش‌بندی کاربران تا داشبوردهای BI برای سنجش نتیجه.',
     },
     ar: {
       title: 'الذهب الرقمي — رؤية المنتج والنمو',
@@ -533,9 +533,9 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
   },
   'rp1-arena': {
     fa: {
-      title: 'RP1 — آرنای چندبازیِ Play-to-Earn',
+      title: 'RP1 Arena — مجموعهٔ بازی‌های Play-to-Earn',
       summary:
-        'طراحی محصول و استراتژی برای یک آرنای موبایلی Play-to-Earn که بازی‌های HTML5 را زیر یک لایهٔ رقابتی و اقتصادی واحد گرد می‌آورد — پژوهش پلتفرم‌های رقابتی، تعیین دامنهٔ MVP و یک مشخصات وایرفریم کامل در ۱۶ بخش.',
+        'راهبرد و طراحی محصول برای مجموعه‌ای موبایلی از بازی‌های HTML5 با یک سازوکار مشترک رقابت و درآمدزایی. پژوهش نمونه‌های رقابتی، تعیین دامنهٔ MVP و مشخصات کامل وایرفریم در ۱۶ بخش را انجام دادم.',
     },
     ar: {
       title: 'RP1 — ساحة Play-to-Earn متعدّدة الألعاب',
@@ -567,7 +567,7 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
     fa: {
       title: 'بازطراحی پلتفرم ابری و معماری اطلاعات',
       summary:
-        'بازطراحی UI/UX و معماری اطلاعات پلتفرم ابری آروان را هدایت کردم و با داده‌های رفتاری تصمیم گرفتم کاربران واقعاً به دیدن کدام شاخص‌های سرور نیاز دارند.',
+        'بازطراحی تجربهٔ کاربری و معماری اطلاعات پلتفرم ابری آروان را هدایت کردم. داده‌های رفتاری نشان داد کدام شاخص‌های سرور برای کاربران اهمیت دارند.',
     },
     ar: {
       title: 'إعادة تصميم المنصّة السحابية ومعمارية المعلومات',
@@ -595,196 +595,10 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
         'Arvanのクラウドプラットフォームについて、UI/UXと情報設計の刷新を主導。行動データをもとに、ユーザーが実際に見る必要のあるサーバー指標を判断した。',
     },
   },
-  'zero-fee-campaign': {
-    fa: {
-      title: 'کمپین بدون کارمزد',
-      summary:
-        'کمپین معاملهٔ بدون کارمزد برای جذب کاربر طلای دیجیتال دیجی‌کالا — ایده، خلاقیت و اجرا در محصول و بازاریابی.',
-    },
-    ar: {
-      title: 'حملة بلا رسوم',
-      summary:
-        'حملة تداول بلا رسوم لدفع الاكتساب للذهب الرقمي في ديجيكالا — الفكرة والعمل الإبداعي والتنفيذ عبر المنتج والتسويق.',
-    },
-    es: {
-      title: 'Campaña sin comisiones',
-      summary:
-        'Una campaña de operaciones sin comisiones para impulsar la captación de Digital Gold de Digikala: concepto, creatividad y ejecución en producto y marketing.',
-    },
-    de: {
-      title: 'Gebührenfreie Kampagne',
-      summary:
-        'Eine gebührenfreie Handelskampagne zur Neukundengewinnung für Digikalas Digital Gold – Konzept, Kreation und Umsetzung über Produkt und Marketing hinweg.',
-    },
-    fr: {
-      title: 'Campagne sans frais',
-      summary:
-        'Une campagne de transactions sans frais pour stimuler l’acquisition de Digital Gold chez Digikala — concept, création et exécution côté produit et marketing.',
-    },
-    ja: {
-      title: '手数料ゼロキャンペーン',
-      summary:
-        'DigikalaのDigital Goldの新規獲得を狙った手数料ゼロの取引キャンペーン。コンセプト、クリエイティブ、プロダクトとマーケティング両面での実行。',
-    },
-  },
-  'installment-campaign': {
-    fa: {
-      title: 'کمپین اقساطی',
-      summary: 'خرید اقساطی طلا — طراحی و اجرای کمپین در سطح محصول و کانال‌های بازاریابی پشت آن.',
-    },
-    ar: {
-      title: 'حملة التقسيط',
-      summary: 'شراء الذهب بالتقسيط — تصميم الحملة وتنفيذها عبر سطح المنتج وقنوات التسويق خلفه.',
-    },
-    es: {
-      title: 'Campaña de pago a plazos',
-      summary:
-        'Comprar oro a plazos: diseño y ejecución de la campaña en la superficie del producto y en los canales de marketing que la sostenían.',
-    },
-    de: {
-      title: 'Ratenkampagne',
-      summary:
-        'Gold in Raten kaufen – Kampagnendesign und Umsetzung auf der Produktoberfläche und in den Marketingkanälen dahinter.',
-    },
-    fr: {
-      title: 'Campagne de paiement en plusieurs fois',
-      summary:
-        'Acheter de l’or en plusieurs fois — conception et exécution de la campagne sur la surface produit et dans les canaux marketing associés.',
-    },
-    ja: {
-      title: '分割払いキャンペーン',
-      summary: '金を分割で購入できるキャンペーンの設計と実行。プロダクト面と、その背後のマーケティングチャネルの両方で。',
-    },
-  },
-  'gift-card-campaign': {
-    fa: {
-      title: 'کمپین کارت هدیه',
-      summary: 'کارت هدیهٔ طلا برای طلای دیجیتال — طراحی و اجرای کمپین، از سطح محصول تا فشار بازاریابی.',
-    },
-    ar: {
-      title: 'حملة بطاقات الهدايا',
-      summary: 'بطاقات هدايا ذهبية للذهب الرقمي — تصميم الحملة وتنفيذها، من سطح المنتج إلى الدفع التسويقي.',
-    },
-    es: {
-      title: 'Campaña de tarjetas regalo',
-      summary:
-        'Tarjetas regalo de oro para Digital Gold: diseño y ejecución de la campaña, desde la superficie del producto hasta el empuje de marketing.',
-    },
-    de: {
-      title: 'Geschenkkarten-Kampagne',
-      summary:
-        'Gold-Geschenkkarten für Digital Gold – Kampagnendesign und Umsetzung, von der Produktoberfläche bis zum Marketing-Push.',
-    },
-    fr: {
-      title: 'Campagne de cartes cadeaux',
-      summary:
-        'Des cartes cadeaux en or pour Digital Gold — conception et exécution de la campagne, de la surface produit jusqu’à la poussée marketing.',
-    },
-    ja: {
-      title: 'ギフトカードキャンペーン',
-      summary: 'Digital Gold向けの金のギフトカード。プロダクト面からマーケティング施策まで、キャンペーンの設計と実行。',
-    },
-  },
-  'user-segmentation-model': {
-    fa: {
-      title: 'مدل بخش‌بندی کاربران',
-      summary:
-        'مدل بخش‌بندی کاربران طلای دیجیتال را بر پایهٔ دارایی، جمعیت‌شناسی و رفتار ساختم — مبنای هدف‌گذاری کمپین و اتوماسیون بازاریابی.',
-    },
-    ar: {
-      title: 'نموذج تقسيم المستخدمين',
-      summary:
-        'بنيتُ نموذج تقسيم مستخدمي الذهب الرقمي بحسب الأصول والخصائص السكانية والسلوك — أساس استهداف الحملات وأتمتة التسويق.',
-    },
-    es: {
-      title: 'Modelo de segmentación de usuarios',
-      summary:
-        'Construí el modelo de segmentación de los usuarios de Digital Gold por activos, demografía y comportamiento: la base de la segmentación de campañas y de la automatización de marketing.',
-    },
-    de: {
-      title: 'Nutzersegmentierungsmodell',
-      summary:
-        'Das Segmentierungsmodell für Digital-Gold-Nutzer nach Vermögen, Demografie und Verhalten gebaut – die Grundlage für Kampagnen-Targeting und Marketing-Automation.',
-    },
-    fr: {
-      title: 'Modèle de segmentation des utilisateurs',
-      summary:
-        'J’ai construit le modèle de segmentation des utilisateurs de Digital Gold selon les actifs, la démographie et le comportement — la base du ciblage des campagnes et de l’automatisation marketing.',
-    },
-    ja: {
-      title: 'ユーザーセグメンテーションモデル',
-      summary:
-        'Digital Goldのユーザーを資産・属性・行動でセグメント化するモデルを構築。キャンペーンのターゲティングとマーケティングオートメーションの土台になった。',
-    },
-  },
-  'marketing-automation-flows': {
-    fa: {
-      title: 'اتوماسیون بازاریابی و فلوهای رویدادمحور',
-      summary:
-        'فلوهای تعامل خودکار که با رویدادهای کاربر فعال می‌شدند، روی مدل بخش‌بندی ساخته شد تا پیام‌ها دنبال کاری باشند که آدم‌ها واقعاً انجام داده‌اند.',
-    },
-    ar: {
-      title: 'أتمتة التسويق والتدفّقات المدفوعة بالأحداث',
-      summary:
-        'تدفّقات تفاعل مؤتمتة تنطلق بأحداث المستخدم، مبنية على نموذج التقسيم كي تتبع الرسائل ما فعله الناس فعلًا.',
-    },
-    es: {
-      title: 'Automatización de marketing y flujos por eventos',
-      summary:
-        'Flujos de interacción automatizados disparados por eventos de usuario, construidos sobre el modelo de segmentación para que los mensajes siguieran lo que la gente hacía de verdad.',
-    },
-    de: {
-      title: 'Marketing-Automation & ereignisgesteuerte Flows',
-      summary:
-        'Automatisierte Engagement-Flows, ausgelöst durch Nutzerereignisse und auf dem Segmentierungsmodell aufgebaut, damit Nachrichten dem folgten, was Menschen tatsächlich taten.',
-    },
-    fr: {
-      title: 'Automatisation marketing et flux événementiels',
-      summary:
-        'Des flux d’engagement automatisés déclenchés par les événements utilisateurs, bâtis sur le modèle de segmentation pour que les messages suivent ce que les gens faisaient réellement.',
-    },
-    ja: {
-      title: 'マーケティングオートメーションとイベント駆動フロー',
-      summary:
-        'ユーザーの行動イベントをきっかけに走る自動エンゲージメントフロー。セグメンテーションモデルの上に構築し、実際の行動にメッセージが追随するようにした。',
-    },
-  },
-  'gold-bi-dashboards': {
-    fa: {
-      title: 'داشبوردهای BI — NMV، CTR، CPC، نرخ تبدیل',
-      summary:
-        'صفحه‌گسترده‌های کمپین را با داشبوردهای ساخت‌یافتهٔ BI برای NMV، CTR، CPC و نرخ تبدیل جایگزین کردم تا محصول، بازاریابی و روابط‌عمومی از یک مجموعه عدد کار کنند.',
-    },
-    ar: {
-      title: 'لوحات ذكاء الأعمال — NMV وCTR وCPC والتحويل',
-      summary:
-        'استبدلتُ جداول الحملات بلوحات ذكاء أعمال منظَّمة لـ NMV وCTR وCPC ومعدّل التحويل، ليعمل المنتج والتسويق والعلاقات العامة من مجموعة أرقام واحدة.',
-    },
-    es: {
-      title: 'Paneles de BI: NMV, CTR, CPC y conversión',
-      summary:
-        'Sustituí las hojas de cálculo de campañas por paneles de BI estructurados de NMV, CTR, CPC y tasa de conversión, para que producto, marketing y PR trabajaran con las mismas cifras.',
-    },
-    de: {
-      title: 'BI-Dashboards — NMV, CTR, CPC, Conversion',
-      summary:
-        'Die Kampagnentabellen durch strukturierte BI-Dashboards für NMV, CTR, CPC und Conversion Rate ersetzt, damit Produkt, Marketing und PR mit denselben Zahlen arbeiteten.',
-    },
-    fr: {
-      title: 'Tableaux de bord BI — NMV, CTR, CPC, conversion',
-      summary:
-        'J’ai remplacé les tableurs de campagne par des tableaux de bord BI structurés pour le NMV, le CTR, le CPC et le taux de conversion, afin que produit, marketing et RP travaillent sur les mêmes chiffres.',
-    },
-    ja: {
-      title: 'BIダッシュボード — NMV・CTR・CPC・CVR',
-      summary:
-        'キャンペーンのスプレッドシートを、NMV・CTR・CPC・コンバージョン率を扱う構造化されたBIダッシュボードに置き換え、プロダクト・マーケティング・PRが同じ数字で動けるようにした。',
-    },
-  },
   'bnpl-concept': {
     fa: {
-      title: 'خرید اقساطی طلا — کانسپت',
-      summary: 'کانسپت «الان بخر، بعداً بپرداز» برای خرید طلا — ایدهٔ یک خدمت مالی تازه که درون طلای دیجیتال پیشنهاد شد.',
+      title: 'خرید اقساطی طلا — طرح مفهومی',
+      summary: 'ایدهٔ خرید اقساطی طلا با مدل «الان بخر، بعداً بپرداز» را به‌عنوان خدمتی تازه در طلای دیجیتال پیشنهاد کردم.',
     },
     ar: {
       title: 'الشراء الآن والدفع لاحقًا للذهب — مفهوم',
@@ -812,8 +626,8 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
   },
   'gold-backed-credit-concept': {
     fa: {
-      title: 'اعتبار با پشتوانهٔ طلا — کانسپت',
-      summary: 'اعتباری که با موجودی طلای کاربر تضمین می‌شود — دومین کانسپت خدمت مالی، در کنار BNPL.',
+      title: 'اعتبار با پشتوانهٔ طلا — طرح مفهومی',
+      summary: 'در کنار ایدهٔ خرید اقساطی، طرح اعتباری با پشتوانهٔ موجودی طلای کاربر را پیشنهاد کردم.',
     },
     ar: {
       title: 'ائتمان مضمون بالذهب — مفهوم',
@@ -842,7 +656,7 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
   'pr-brand-awareness': {
     fa: {
       title: 'برنامهٔ روابط‌عمومی و آگاهی از برند',
-      summary: 'پوشش راهبردی روابط‌عمومی را با بازاریابی عملکردی هماهنگ کردم تا آگاهی از برند طلای دیجیتال گسترده‌تر شود.',
+      summary: 'برای افزایش آگاهی از برند طلای دیجیتال، برنامهٔ روابط‌عمومی را با بازاریابی عملکردی هماهنگ کردم.',
     },
     ar: {
       title: 'برنامج العلاقات العامة والوعي بالعلامة',
@@ -872,7 +686,7 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
     fa: {
       title: 'کمپین‌های جذب بازدیدکننده و برنامهٔ اینفلوئنسری',
       summary:
-        'رویداد، کمپین شبکه‌های اجتماعی و همکاری با اینفلوئنسرها برای بالا بردن حضور در مجتمع هدیش — آگاهی آنلاین و آفلاین برای یک مکان فیزیکی.',
+        'برای افزایش مراجعه به مجتمع هدیش، رویداد، کمپین شبکه‌های اجتماعی و همکاری با اینفلوئنسرها را به کار گرفتم؛ فعالیت آنلاین در خدمت یک مقصد فیزیکی بود.',
     },
     ar: {
       title: 'حملات جذب الزوّار وبرنامج المؤثّرين',
@@ -902,8 +716,8 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
   },
   'mall-management-app-concept': {
     fa: {
-      title: 'اپ مدیریت مجتمع — کانسپت',
-      summary: 'کانسپت یک اپ مدیریت مرکز خرید را برای بهبود تعامل میان واحدها و مشتریان پیشنهاد و طراحی کردم.',
+      title: 'اپ مدیریت مجتمع — طرح مفهومی',
+      summary: 'ایدهٔ اپ مدیریت مجتمع را برای بهترشدن ارتباط میان واحدهای تجاری و مشتریان پیشنهاد و طراحی کردم.',
     },
     ar: {
       title: 'تطبيق إدارة المركز التجاري — مفهوم',
@@ -933,7 +747,7 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
     fa: {
       title: 'جایگاه‌یابی برند و شعار',
       summary:
-        'مصاحبه با ذی‌نفعان برای خواندن کسب‌وکار، و بعد یک جایگاه‌یابی و شعاری هم‌راستا با هویت که تیم می‌توانست حولش هم‌نظر شود.',
+        'با ذی‌نفعان مصاحبه کردم تا کسب‌وکار را بشناسم؛ سپس جایگاه برند و شعاری متناسب با هویت آن تدوین کردم که تیم بر سرش توافق داشت.',
     },
     ar: {
       title: 'تموضع العلامة والشعار',
@@ -964,7 +778,7 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
   'fibona-website': {
     fa: {
       title: 'وب‌سایت فیبونا',
-      summary: 'وب‌سایتی که از دل تحلیل فرایندهای سنتی کسب‌وکار شرکت ساخته شد، به‌عنوان بخشی از همان کار جایگاه‌یابی.',
+      summary: 'وب‌سایت فیبونا را بر پایهٔ بررسی فرایندهای سنتی کسب‌وکار و در ادامهٔ کار جایگاه‌یابی برند طراحی کردم.',
     },
     ar: {
       title: 'موقع فيبونا',
@@ -994,7 +808,7 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
     fa: {
       title: 'بازطراحی تطبیق — پژوهش دوطرفه',
       summary:
-        'پژوهش با معلم‌ها و دانش‌آموزها که کیفیت تطبیق را به‌عنوان تیزترین نقطهٔ درد آشکار کرد و به یک آیتم نقشهٔ راه تبدیل شد — پژوهش و جهت‌گیری، نه بازطراحی منتشرشده.',
+        'پژوهش با معلمان و دانش‌آموزان نشان داد کیفیت تطبیق مهم‌ترین مسئله است. نتیجه به نقشهٔ راه محصول راه یافت؛ این کار پژوهش و تعیین مسیر بود، نه بازطراحی منتشرشده.',
     },
     ar: {
       title: 'إعادة تصميم المطابقة — بحث ثنائي الجانب',
@@ -1026,7 +840,7 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
     fa: {
       title: 'استراتژی محصول و نقشهٔ راه',
       summary:
-        'تحلیل جایگاه‌یابی برند را به یک نقشهٔ راه محصول مرحله‌بندی‌شده برای اوتیچر ترجمه کردم، در قاب تاریخچهٔ سرمایه‌گذاری و عرضهٔ شرکت.',
+        'بر اساس جایگاه برند و سابقهٔ سرمایه‌گذاری و عرضهٔ اوتیچر، نقشهٔ راهی مرحله‌بندی‌شده برای محصول تدوین کردم.',
     },
     ar: {
       title: 'استراتيجية المنتج وخارطة الطريق',
@@ -1057,7 +871,7 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
   'oteacher-panel-redesign': {
     fa: {
       title: 'بازطراحی پنل — بسته‌ها، کیف پول، گزارش‌ها، پروفایل، تقویم و پیام‌رسان',
-      summary: 'بازطراحی پنل کاربری اوتیچر در هفت حوزه، با یک دور تکرار دوم روی بیشترشان.',
+      summary: 'پنل کاربری اوتیچر را در هفت حوزه بازطراحی کردم و بیشتر بخش‌ها را یک بار دیگر بازبینی و اصلاح کردم.',
     },
     ar: {
       title: 'إعادة تصميم اللوحة — الباقات والمحفظة والتقارير والملف والتقويم والمراسلة',
@@ -1083,7 +897,7 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
   'oteacher-website-redesign': {
     fa: {
       title: 'بازطراحی وب‌سایت',
-      summary: 'در سند استراتژی اوتیچر به‌عنوان ابتکار «وب‌سایت جدید» نام برده شده؛ منبع طراحی هنوز تأیید نشده است.',
+      summary: '«وب‌سایت جدید» در سند راهبرد اوتیچر آمده است، اما مستند طراحی آن هنوز تأیید نشده است.',
     },
     ar: {
       title: 'إعادة تصميم الموقع',
@@ -1110,7 +924,7 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
     fa: {
       title: 'برنامهٔ واحد آموزش — ارزیابی معلم، استانداردها و ارتقای مهارت',
       summary:
-        'یک واحد آموزش رسمی در اوتیچر راه انداختم: تیم نظارت بر معلم‌ها، فرایند مصاحبه و استاندارد برای هر معلم، و کلاس‌های تخصصی ارتقای مهارت.',
+        'واحد آموزش اوتیچر را راه‌اندازی کردم: تیم نظارت بر معلمان، فرایند مصاحبه و ارزیابی هر معلم و کلاس‌های تخصصی ارتقای مهارت.',
     },
     ar: {
       title: 'برنامج وحدة التعليم — تقييم المعلّمين والمعايير ورفع المهارات',
@@ -1142,7 +956,7 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
     fa: {
       title: 'پژوهش داشبورد شاخص‌های سرور',
       summary:
-        'پژوهش مبتنی بر دادهٔ رفتاری دربارهٔ اینکه کاربران ابری واقعاً به کدام شاخص‌های سرور نیاز دارند — شواهد پشت بازطراحی داشبورد پلتفرم.',
+        'با بررسی داده‌های رفتاری، مشخص کردم کاربران سرویس ابری به کدام شاخص‌های سرور نیاز دارند. یافته‌ها مبنای بازطراحی داشبورد پلتفرم شد.',
     },
     ar: {
       title: 'بحث لوحة مؤشّرات الخوادم',
@@ -1181,7 +995,7 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
   'biomaze-design-system': {
     fa: {
       title: 'سیستم طراحی',
-      summary: 'یک سیستم کامپوننت که به توسعه‌دهنده‌های بایومیز اجازه داد سریع منتشر کنند — کنار وب‌سایت و پنل آموزش ساخته شد.',
+      summary: 'در کنار وب‌سایت و پنل آموزش بایومیز، سیستم اجزایی ساختم که به تیم توسعه کمک می‌کرد سریع‌تر محصول را منتشر کند.',
     },
     ar: {
       title: 'نظام التصميم',
@@ -1207,7 +1021,7 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
   'didestan-video-platform': {
     fa: {
       title: 'پلتفرم ویدئو',
-      summary: 'یک پلتفرم ویدئوی داده‌محور: پروتوتایپ‌های میان‌وفاداری روی Google Material، با پژوهشی که بر پایهٔ Lean UX اجرا شد.',
+      summary: 'برای پلتفرم ویدئویی داده‌محور، پژوهش را با رویکرد Lean UX پیش بردم و نمونه‌های تعاملی با جزئیات متوسط بر پایهٔ Google Material ساختم.',
     },
     ar: {
       title: 'منصّة فيديو',
@@ -1233,7 +1047,7 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
   'a1paradise-call-apps': {
     fa: {
       title: 'اپ تماس دسکتاپ و اپ B2C وای‌فون',
-      summary: 'یک اپ تماس دسکتاپ و WiFon، یک اپ تماس مصرف‌کننده — کارهای اولیهٔ UI/UX.',
+      summary: 'طراحی اولیهٔ تجربه و رابط کاربری یک اپ تماس دسکتاپ و WiFon، اپ تماس برای کاربران عادی.',
     },
     ar: {
       title: 'تطبيق اتصال لسطح المكتب وتطبيق WiFon للمستهلك',
@@ -1260,7 +1074,7 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
     fa: {
       title: 'آرش رضوانی — برند شخصی و وبلاگ',
       summary:
-        'سایت و وبلاگی دوزبانه با پیش‌فرض فارسی برای یک نویسنده، مدرس و عکاس — یک زبان طراحی مکتوب، سیستم رزرو شمسی، و پشته‌ای که تماماً داخل ایران می‌ماند.',
+        'برای یک نویسنده، مدرس و عکاس، سایت و وبلاگی دوزبانه با زبان پیش‌فرض فارسی ساختم؛ همراه با راهنمای طراحی مکتوب، سیستم رزرو با تقویم شمسی و زیرساختی که در ایران میزبانی می‌شود.',
     },
     ar: {
       title: 'آرش رضواني — علامة شخصية ومدوّنة',
@@ -1292,7 +1106,7 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
     fa: {
       title: 'مارکوون — سایت شرکتی برای یک تاجر فیزیکی نفت',
       summary:
-        'یک سایت شرکتی هفت‌زبانه برای یک اصیلِ تجارت فیزیکی فرآورده‌های نفتی، طراحی‌شده حول پرسشی که طرف مقابل بی‌صدا می‌پرسد: آیا این نهاد واقعی و قابل‌راستی‌آزمایی است؟',
+        'سایتی شرکتی به هفت زبان برای فعال تجارت فیزیکی فرآورده‌های نفتی طراحی کردم. ساختار آن به پرسش اصلی طرف معامله پاسخ می‌دهد: آیا این شرکت واقعی است و می‌شود اعتبارش را بررسی کرد؟',
     },
     ar: {
       title: 'مارقفون — موقع مؤسسي لأصيل تجارة نفطية فعلية',
@@ -1322,9 +1136,9 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
   },
   faymen: {
     fa: {
-      title: 'فایمن — فروشگاه پوشاک مردانهٔ فارسی RTL',
+      title: 'فایمن — فروشگاه فارسی پوشاک مردانه',
       summary:
-        'یک فروشگاه زندهٔ پوشاک مردانهٔ فارسی و راست‌به‌چپ — قالبی تجاری بین‌المللی که حول پرداخت‌های ایرانی، هویت فقط با شمارهٔ تلفن و پشته‌ای داخلی بازسازی شد.',
+        'فروشگاه آنلاین پوشاک مردانه را با رابط فارسی و راست‌به‌چپ راه‌اندازی کردم. قالب بین‌المللی آن برای پرداخت ایرانی، ورود با شمارهٔ تلفن و زیرساخت داخلی بازسازی شد.',
     },
     ar: {
       title: 'فايمن — متجر ملابس رجالية فارسي من اليمين إلى اليسار',
@@ -1354,9 +1168,9 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
   },
   'renova-plus': {
     fa: {
-      title: 'رنووا+ — پلتفرم بازسازی مدیریت‌شده و OS پرتفوی',
+      title: 'رنووا+ — پلتفرم بازسازی و مدیریت پرتفوی',
       summary:
-        'دو سطح برای یک محصول دبی: یک فاز طراحی کامل برای پلتفرم بازسازی مدیریت‌شده، و یک پروتوتایپ کارا از لایهٔ پرتفوی نهادی که آن را می‌فروشد.',
+        'برای محصولی در دبی، پلتفرم بازسازی مدیریت‌شده را طراحی کردم و نمونهٔ تعاملیِ بخش مدیریت پرتفوی نهادی آن را ساختم.',
     },
     ar: {
       title: 'رينوفا+ — منصّة تجديد مُدارة ونظام محفظة',
@@ -1388,7 +1202,7 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
     fa: {
       title: 'وین — شبکه‌سازی ارتباط‌محور برای دبی',
       summary:
-        'اپی شبکه‌سازی ارتباط‌محور برای جامعهٔ حرفه‌ای دبی — سند محصول، فهرست ۵۷ مسئله با دیکشنری شاخص خودش، معماری برند و لایهٔ درآمد B2B، سنجیده‌شده در برابر وعده‌هایی که محصول به کاربرانش می‌دهد.',
+        'برای جامعهٔ حرفه‌ای دبی، اپ شبکه‌سازی مبتنی بر روابط طراحی کردم؛ با سند محصول، فهرست ۵۷ مسئله و تعریف شاخص‌هایشان، معماری برند و مدل درآمد B2B. تصمیم‌ها را با وعدهٔ محصول به کاربران سنجیدم.',
     },
     ar: {
       title: 'وين — شبكة تواصل تضع الارتباط أولًا في دبي',
@@ -1420,7 +1234,7 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
     fa: {
       title: 'راژمانا — ممیزی فرایند مارکت‌پلیس حمل بار',
       summary:
-        'ممیزی دقیق فایل طراحی یک مارکت‌پلیس ایرانی حمل بار، که به معماری ۴۲ فرایند و یک دروازهٔ آمادگی ورودی تبدیل شد.',
+        'فایل طراحی بازارگاه حمل بار را ممیزی کردم و بر اساس آن معماری ۴۲ فرایند و معیار آمادگی برای آغاز اجرا را تدوین کردم.',
     },
     ar: {
       title: 'راژمانا — تدقيق عمليات لسوق شحن',
@@ -1450,9 +1264,9 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
   },
   greenrest: {
     fa: {
-      title: 'گرین‌رست — ممیزی UX تجارت الکترونیک',
+      title: 'گرین‌رست — بررسی تجربهٔ کاربری فروشگاه آنلاین',
       summary:
-        'ممیزی UX امتیازدهی‌شده و دوزبانه از یک فروشگاه زندهٔ تشک ایرانی، همراه با نقشهٔ راه بازطراحی اولویت‌بندی‌شده بر پایهٔ یک جعبه‌ابزار تحلیل تجارت الکترونیک قابل‌استفادهٔ مجدد.',
+        'تجربهٔ کاربری فروشگاه آنلاین تشک را به دو زبان و با معیارهای امتیازدهی بررسی کردم. نتیجه، نقشهٔ راه اولویت‌بندی‌شدهٔ بازطراحی و مجموعه‌ابزاری قابل استفادهٔ دوباره برای تحلیل فروشگاه‌ها بود.',
     },
     ar: {
       title: 'غرين‌رست — تدقيق تجربة مستخدم لمتجر إلكتروني',
@@ -1482,9 +1296,9 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
   },
   'narian-summer-passport': {
     fa: {
-      title: 'پاسپورت تابستانه‌ی ناریان — کمپین خرده‌فروشی',
+      title: 'پاسپورت تابستانی ناریان — کمپین خرده‌فروشی',
       summary:
-        'کمپین تابستانه‌ای که هر فروشگاه را به یک فرودگاه و هر خرید را به یک بلیت تبدیل می‌کرد — اقتصادِ کلاس‌های پروازی، مجموعه‌ی نُه مهر و کنونِ دوزبانه‌ی کپی، برای رشد سبد خرید بدون هیچ تخفیفی. هرگز اجرا نشد.',
+        'برای کمپین تابستانی ناریان، هر فروشگاه را مانند یک فرودگاه و هر خرید را مانند یک بلیت تصور کردم. مدل سطح‌بندی خرید، مجموعهٔ نُه مهر و متن‌های دوزبانه برای افزایش ارزش سبد بدون تخفیف طراحی شد. کمپین اجرا نشد.',
     },
     ar: {
       title: 'جواز صيف ناريان — حملة تجزئة',

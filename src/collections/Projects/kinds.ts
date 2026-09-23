@@ -15,7 +15,7 @@ export const PROJECT_KIND_LABELS: Record<ProjectKind, Record<Locale, string>> = 
   data: { en: 'Data', fa: 'داده', ar: 'بيانات', es: 'Datos', de: 'Daten', fr: 'Données', ja: 'データ' },
   research: { en: 'Research', fa: 'پژوهش', ar: 'بحث', es: 'Investigación', de: 'Research', fr: 'Recherche', ja: 'リサーチ' },
   systems: { en: 'Systems', fa: 'سیستم‌ها', ar: 'أنظمة', es: 'Sistemas', de: 'Systeme', fr: 'Systèmes', ja: 'システム' },
-  concept: { en: 'Concept', fa: 'کانسپت', ar: 'مفهوم', es: 'Concepto', de: 'Konzept', fr: 'Concept', ja: 'コンセプト' },
+  concept: { en: 'Concept', fa: 'طرح مفهومی', ar: 'مفهوم', es: 'Concepto', de: 'Konzept', fr: 'Concept', ja: 'コンセプト' },
 }
 
 export const isProjectKind = (v: unknown): v is ProjectKind =>

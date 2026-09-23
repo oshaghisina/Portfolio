@@ -38,7 +38,7 @@ export const Search: React.FC<{ locale?: Locale }> = ({ locale = DEFAULT_LOCALE 
           placeholder={copy.searchPlaceholder}
         />
         <button type="submit" className="sr-only">
-          {uiCopy[locale].submit}
+          {locale === 'fa' ? copy.search : copy.submit}
         </button>
       </form>
     </div>

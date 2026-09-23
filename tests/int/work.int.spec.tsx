@@ -102,7 +102,7 @@ describe('kinds', () => {
   it('pluralises counts through CLDR rules with Latin digits', () => {
     expect(pluralCopy('en', uiCopy.en.workProjects, 1)).toBe('1 project')
     expect(pluralCopy('en', uiCopy.en.workProjects, 28)).toBe('28 projects')
-    expect(pluralCopy('fa', uiCopy.fa.workProjects, 28)).toBe('28 پروژه')
+    expect(pluralCopy('fa', uiCopy.fa.workProjects, 28)).toBe('۲۸ پروژه')
     expect(pluralCopy('ar', uiCopy.ar.workCompanies, 10)).toBe('10 شركات')
   })
 })
@@ -122,6 +122,7 @@ describe('rows', () => {
     expect(projectYear({ start: '2026-02-01T00:00:00.000Z' })).toBe('2026')
     expect(projectYear({ start: '2023-01-01T00:00:00.000Z', end: '2025-06-01T00:00:00.000Z' })).toBe('2023–2025')
     expect(projectYear({ start: '2023-01-01T00:00:00.000Z', present: true })).toBe('2023–')
+    expect(projectYear({ start: '2023-01-01T00:00:00.000Z', end: '2025-06-01T00:00:00.000Z' }, 'fa')).toBe('۲۰۲۳–۲۰۲۵')
   })
 
   it('numbers rows by archive position and counts organisations loosely', () => {
@@ -135,7 +136,7 @@ describe('rows', () => {
 describe('ProjectCover', () => {
   it('renders the localised pending plate without media', () => {
     const { container } = render(<ProjectCover kinds={['محصول']} pendingLabel={uiCopy.fa.workMediaPending} />)
-    expect(container.textContent).toContain('تصویر پروژه در انتظار')
+    expect(container.textContent).toContain(uiCopy.fa.workMediaPending)
     expect(container.textContent).toContain('محصول')
     expect(container.querySelector('img')).toBeNull()
   })

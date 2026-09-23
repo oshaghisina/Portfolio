@@ -188,7 +188,7 @@ export const localizeAboutLayoutFa = (enLayout: NonNullable<PageLayout>): PageLa
             tag: 'مسیر',
             lead: 'چطور',
             tail: 'به اینجا رسیدم',
-            lede: 'پنج مرحله که مسئولیتم را تغییر داد، نه فقط چیزی که ساختم.',
+            lede: 'پنج مرحله که دامنهٔ مسئولیتم را گسترش دادند.',
           },
           stages: (block.stages as Record<string, unknown>[]).map((stage, i) => {
             const order = careerStageOrder[i]!
@@ -205,9 +205,9 @@ export const localizeAboutLayoutFa = (enLayout: NonNullable<PageLayout>): PageLa
           sectionHeader: {
             ...sectionHeader,
             tag: 'چطور فکر می‌کنم',
-            lead: 'نقشه‌برداری',
-            tail: 'سیستم، نه صفحه',
-            lede: 'نقشه‌ای تقریبی از اینکه یک مسئله چطور از محدودیت به تصمیم و نتیجه می‌رسد.',
+            lead: 'اول سیستم را',
+            tail: 'نقشه‌برداری می‌کنم',
+            lede: 'مسیر یک مسئله را از محدودیت‌های اولیه تا تصمیم و نتیجه دنبال می‌کنم.',
           },
           nodes: (block.nodes as Record<string, unknown>[]).map((node, i) => ({ ...node, ...thinkingMapNodesFa[i] })),
         }
@@ -217,9 +217,9 @@ export const localizeAboutLayoutFa = (enLayout: NonNullable<PageLayout>): PageLa
           sectionHeader: {
             ...sectionHeader,
             tag: 'اصول',
-            lead: 'چه‌چیزی واقعاً',
+            lead: 'چه چیزی',
             tail: 'تصمیم‌ها را هدایت می‌کند',
-            lede: 'آن‌قدر مشخص که برای هر کسی که بعداً با من کار می‌کند، مفید باشد.',
+            lede: 'اصولی روشن که در همکاری و تصمیم‌گیری به کار می‌آیند.',
           },
           items: (block.items as Record<string, unknown>[]).map((item, i) => ({ ...item, ...principlesFa[i] })),
         }
@@ -231,7 +231,7 @@ export const localizeAboutLayoutFa = (enLayout: NonNullable<PageLayout>): PageLa
             tag: 'کار با تیم‌ها',
             lead: 'چطور تصمیم‌ها',
             tail: 'واقعاً پیش می‌روند',
-            lede: 'یک فرایند، نه ادعای همکاری‌کردن.',
+            lede: 'نقش‌ها و مسیر تصمیم‌گیری در کار تیمی باید روشن باشند.',
           },
           nodes: (block.nodes as Record<string, unknown>[]).map((node, i) => ({ ...node, ...teamProcessNodesFa[i] })),
           statements: (block.statements as Record<string, unknown>[]).map((s, i) => ({ ...s, ...teamProcessStatementsFa[i] })),
@@ -242,8 +242,8 @@ export const localizeAboutLayoutFa = (enLayout: NonNullable<PageLayout>): PageLa
           sectionHeader: {
             ...sectionHeader,
             tag: 'بیرون از کار',
-            lead: 'چه‌چیزهای دیگری',
-            tail: 'روی کار اثر می‌گذارند',
+            lead: 'بیرون از کار هم',
+            tail: 'چیزهایی یاد می‌گیرم',
           },
           items: (block.items as Record<string, unknown>[]).map((item, i) => ({ ...item, ...personalSideItemsFa[i] })),
         }
@@ -259,7 +259,17 @@ export const localizeAboutLayoutFa = (enLayout: NonNullable<PageLayout>): PageLa
           statement: nowStatementFa,
         }
       case 'cta':
-        return { ...block, richText: contactRichTextFa }
+        return {
+          ...block,
+          richText: contactRichTextFa,
+          links: (block.links as Record<string, unknown>[]).map((row, i) => ({
+            ...row,
+            link: {
+              ...(row.link as Record<string, unknown>),
+              label: i === 0 ? 'ایمیل به من' : 'لینکدین',
+            },
+          })),
+        }
       default:
         return block
     }

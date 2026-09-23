@@ -94,8 +94,8 @@ describe('mosaic geometry', () => {
 
   it('packs the seeded composition into closed rectangles at both widths', () => {
     const seeded = HOME_MOSAIC.map(({ size }) => size)
-    expect(seeded).toHaveLength(9)
-    expect(tailSpan(seeded, 'lg')).toBe(3)
+    expect(seeded).toHaveLength(7)
+    expect(tailSpan(seeded, 'lg')).toBe(9)
     expect(tailSpan(seeded, 'pair')).toBe(1)
     expect(unfilledCells(seeded, 'lg')).toBe(0)
     expect(unfilledCells(seeded, 'pair')).toBe(0)

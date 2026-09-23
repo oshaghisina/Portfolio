@@ -105,7 +105,9 @@ export async function Footer({ locale, logicalPath, readiness }: FooterProps) {
         </div>
 
         <div className="flex flex-col items-start gap-3 border-t border-line-soft py-5 md:flex-row md:flex-wrap md:items-center md:justify-between md:gap-4 md:py-6">
-          <p className="text-small text-ink-3">{footerData?.copyright}</p>
+          <p className="text-small text-ink-3">
+            {locale === 'fa' ? footerData?.copyright?.replace(/[0-9]/g, (digit) => new Intl.NumberFormat('fa-IR', { useGrouping: false }).format(Number(digit))) : footerData?.copyright}
+          </p>
           <div className="flex w-full flex-wrap items-center gap-4 md:w-auto md:gap-6">
             {legalLinks.length ? (
               <ul className="flex flex-wrap gap-6">

@@ -38,6 +38,10 @@ export const OutcomesBlock: React.FC<OutcomesBlockProps> = ({
         <dl className="mt-12 grid gap-x-12 gap-y-12 border-t border-line pt-10 sm:grid-cols-2">
           {rows.map((item, i) => {
             const value = item.value?.trim()
+            const localizedValue =
+              locale === 'fa'
+                ? value?.replace(/\d/g, (digit) => '۰۱۲۳۴۵۶۷۸۹'[Number(digit)]).replace(' of ', ' از ')
+                : value
             const provenance = [copy.outcomeKind[item.kind ?? 'delivered'], item.source?.trim()]
               .filter(Boolean)
               .join(' · ')
@@ -57,7 +61,7 @@ export const OutcomesBlock: React.FC<OutcomesBlockProps> = ({
                     className="order-first text-num tracking-num font-medium tabular-nums text-brand"
                     dir="ltr"
                   >
-                    {value}
+                    {localizedValue}
                   </dd>
                 ) : null}
                 {item.context ? (

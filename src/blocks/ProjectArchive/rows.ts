@@ -22,13 +22,14 @@ export function projectLink(
   return null
 }
 
-/** `2025`, `2023–2025` or `2023–` (ongoing); null while no dates are confirmed. Latin digits (DS-10). */
-export function projectYear(period: Project['period'] | null | undefined): string | null {
+/** `2025`, `2023–2025` or `2023–` (ongoing); null while no dates are confirmed. */
+export function projectYear(period: Project['period'] | null | undefined, locale: Locale = 'en'): string | null {
   const start = period?.start ? new Date(period.start).getUTCFullYear() : null
   if (!start || Number.isNaN(start)) return null
-  if (period?.present) return `${start}–`
   const end = period?.end ? new Date(period.end).getUTCFullYear() : null
-  return end && end !== start ? `${start}–${end}` : String(start)
+  const number = (value: number) => locale === 'fa' ? new Intl.NumberFormat('fa-IR', { useGrouping: false }).format(value) : String(value)
+  if (period?.present) return `${number(start)}–`
+  return end && end !== start ? `${number(start)}–${number(end)}` : number(start)
 }
 
 export interface IndexRow {
@@ -57,7 +58,7 @@ export function toIndexRows(docs: Project[], locale: Locale): IndexRow[] {
       kinds: (project.kind ?? []).filter(isProjectKind).map((value) => ({ value, label: kindLabel(value, locale) })),
       role: project.role ?? null,
       company: project.company,
-      year: projectYear(project.period),
+      year: projectYear(project.period, locale),
       href: link?.href ?? null,
       external: link?.external ?? false,
     }

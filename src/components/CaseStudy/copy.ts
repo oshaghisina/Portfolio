@@ -121,7 +121,7 @@ export const caseStudyCopy: Record<Locale, CaseStudyCopy> = {
     },
     nextProject: 'پروژهٔ بعدی',
     explore: 'خواندن مطالعهٔ موردی',
-    allWork: 'همهٔ نمونه‌کارها',
+    allWork: 'همهٔ پروژه‌ها',
   },
   ar: {
     contents: 'المحتويات',

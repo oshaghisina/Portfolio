@@ -91,72 +91,7 @@ export const PROJECT_SEED: ProjectSeedRow[] = [
       alt: 'RP1 arena — the Duel sheet: choosing a friend or a random, skill-matched opponent for a Flappy Bird duel',
     },
   },
-  // ── Digikala — Digital Gold ─────────────────────────────────────────────────────────────
-  {
-    slug: 'zero-fee-campaign',
-    title: 'Zero-fee campaign',
-    summary:
-      "A fee-free trading campaign to drive acquisition for Digikala's Digital Gold — concept, creative and execution across product and marketing.",
-    company: DIGIKALA,
-    role: DIGIKALA_ROLE,
-    kind: ['growth'],
-    order: 10,
-    status: 'published',
-  },
-  {
-    slug: 'installment-campaign',
-    title: 'Installment campaign',
-    summary:
-      'Buy gold in installments — campaign design and execution across the product surface and the marketing channels behind it.',
-    company: DIGIKALA,
-    role: DIGIKALA_ROLE,
-    kind: ['growth'],
-    order: 11,
-    status: 'published',
-  },
-  {
-    slug: 'gift-card-campaign',
-    title: 'Gift-card campaign',
-    summary: 'Gold gift cards for Digital Gold — campaign design and execution, from the product surface to the marketing push.',
-    company: DIGIKALA,
-    role: DIGIKALA_ROLE,
-    kind: ['growth'],
-    order: 12,
-    status: 'published',
-  },
-  {
-    slug: 'user-segmentation-model',
-    title: 'User segmentation model',
-    summary:
-      'Built the segmentation model for Digital Gold users on assets, demographics and behaviour — the basis for campaign targeting and marketing automation.',
-    company: DIGIKALA,
-    role: DIGIKALA_ROLE,
-    kind: ['data', 'research'],
-    order: 13,
-    status: 'published',
-  },
-  {
-    slug: 'marketing-automation-flows',
-    title: 'Marketing automation & event-driven flows',
-    summary:
-      'Automated engagement flows triggered by user events, built on the segmentation model so messages followed what people actually did.',
-    company: DIGIKALA,
-    role: DIGIKALA_ROLE,
-    kind: ['growth', 'product'],
-    order: 14,
-    status: 'published',
-  },
-  {
-    slug: 'gold-bi-dashboards',
-    title: 'BI dashboards — NMV, CTR, CPC, conversion',
-    summary:
-      'Replaced the campaign spreadsheets with structured BI dashboards for NMV, CTR, CPC and conversion rate, so product, marketing and PR worked from one set of numbers.',
-    company: DIGIKALA,
-    role: DIGIKALA_ROLE,
-    kind: ['data'],
-    order: 15,
-    status: 'published',
-  },
+  // ── Digikala — Digital Gold siblings (chapters DGK-02…07 are retired into `digital-gold`) ──
   {
     slug: 'bnpl-concept',
     title: 'BNPL for gold — concept',
@@ -689,10 +624,19 @@ export const homeMosaicProjectsStatic: Record<string, Project> = Object.fromEntr
  * Carsparency. The six Figma files scanned on 2026-09-22 reassigned CAR-01/CAR-02 to real projects
  * (`khodro45-dealer-app`, `carsparency-pro`), so the placeholders are superseded, not renamed —
  * nothing on the site should keep pointing at them.
+ *
+ * The six Digikala Digital Gold chapter rows (DGK-02…07) were folded into the `digital-gold`
+ * umbrella case study — they stay in Inventory as chapters, not as `/work` archive rows.
  */
 export const RETIRED_PROJECT_SLUGS = [
   'uae-car-marketplace',
   'selling-conversion-programme',
+  'zero-fee-campaign',
+  'installment-campaign',
+  'gift-card-campaign',
+  'user-segmentation-model',
+  'marketing-automation-flows',
+  'gold-bi-dashboards',
 ] as const
 
 /**

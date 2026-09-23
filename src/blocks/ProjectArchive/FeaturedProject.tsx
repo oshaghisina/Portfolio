@@ -4,6 +4,7 @@ import React from 'react'
 
 import type { Project } from '@/payload-types'
 
+import { BidiText } from '@/components/BidiText'
 import { kindLabels } from '@/collections/Projects/kinds'
 import type { Locale } from '@/utilities/locale'
 import { uiCopy } from '@/utilities/uiCopy'
@@ -54,7 +55,7 @@ export const FeaturedProject: React.FC<FeaturedProjectProps> = ({ className, ind
   const copy = uiCopy[locale]
   const kinds = kindLabels(project.kind, locale)
   const link = projectLink(project, locale)
-  const year = projectYear(project.period)
+  const year = projectYear(project.period, locale)
   const primary = variant === 'primary'
 
   const cover = (
@@ -87,7 +88,7 @@ export const FeaturedProject: React.FC<FeaturedProjectProps> = ({ className, ind
             link && 'group-hover:text-brand',
           )}
         >
-          {project.title}
+          <BidiText locale={locale} text={project.title} />
         </h2>
       </div>
       <div className="flex flex-col gap-1.5 text-ink-3">

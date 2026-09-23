@@ -61,7 +61,7 @@ export const VIN_MEDIA = {
     name: 'vin-app--create-meetup-goal-chips.png',
     alt: L({
       en: "VIN's meetup-creation opener: a chat bubble asking the goal of the meetup, with four intent chips including an honest 'just want to do an activity' escape hatch",
-      fa: 'صفحهٔ آغازین ساخت میت‌آپ در وین: حباب گفت‌وگویی که هدف میت‌آپ را می‌پرسد، با چهار چیپ قصد از جمله گزینهٔ صادقانهٔ «فقط می‌خواهم فعالیتی انجام دهم»',
+      fa: 'صفحهٔ آغاز ساخت دورهمی در VIN: پرسش دربارهٔ هدف دیدار و چهار گزینهٔ پاسخ، از جمله «فقط می‌خواهم فعالیتی انجام دهم»',
       ar: 'شاشة بدء إنشاء اللقاء في VIN: فقاعة محادثة تسأل عن هدف اللقاء، مع أربع رقائق نوايا من بينها خيار صريح «أريد فقط ممارسة نشاط»',
       de: 'VIN-Einstieg zum Erstellen eines Meetups: eine Chat-Blase, die nach dem Ziel des Meetups fragt, mit vier Intent-Chips, darunter das ehrliche Fluchttor „Ich möchte nur eine Aktivität machen“',
       es: 'Inicio de la creación de un meetup en VIN: una burbuja de chat que pregunta el objetivo del meetup, con cuatro chips de intención, entre ellos una honesta vía de escape: «just want to do an activity»',
@@ -74,7 +74,7 @@ export const VIN_MEDIA = {
     name: 'vin-app--sponsor-venue-landing.png',
     alt: L({
       en: "VIN Business landing page: 'Real Footfall, Real Revenue' headline over the four-step partner funnel — List Your Venue, Get Matched, Host & Activate, Measure & Grow",
-      fa: 'صفحهٔ فرود VIN Business: تیتر «ترافیک واقعی، درآمد واقعی» روی قیف چهارمرحله‌ای شریک — ثبت مکان، تطبیق، میزبانی و فعال‌سازی، اندازه‌گیری و رشد',
+      fa: 'صفحهٔ فرود VIN Business با عنوان «مراجعهٔ واقعی، درآمد واقعی» و چهار مرحله برای مکان‌های همکار: ثبت مکان، یافتن گروه مناسب، میزبانی و سنجش نتیجه',
       ar: 'صفحة هبوط VIN Business: عنوان «إقبال حقيقي، إيرادات حقيقية» فوق قمع الشريك المكوَّن من أربع خطوات — أدرج مكانك، طابِق، استضف وفعِّل، قِس ونمِّ',
       de: 'VIN-Business-Landingpage: Überschrift „Echter Fußverkehr, echter Umsatz“ über dem vierstufigen Partner-Funnel — Venue listen, Match erhalten, Hosten & Aktivieren, Messen & Wachsen',
       es: 'Página de aterrizaje de VIN Business: el titular «Real Footfall, Real Revenue» sobre el embudo de socios en cuatro pasos — List Your Venue, Get Matched, Host & Activate, Measure & Grow',
@@ -139,7 +139,7 @@ export const VIN_MEDIA = {
     name: 'vin-app--home-default.png',
     alt: L({
       en: "VIN's home feed: a greeting header, recommended meetups as two-up cards with the start time set in large phosphorescent type, category chips, people you may know, and a map section",
-      fa: 'فید خانهٔ وین: سربرگ خوش‌آمد، میت‌آپ‌های پیشنهادی در کارت‌های دوتایی با زمان شروع در تایپ درشت فسفری، چیپ‌های دسته‌بندی، افرادی که شاید بشناسید، و بخش نقشه',
+      fa: 'صفحهٔ اصلی VIN: پیام خوش‌آمد، دورهمی‌های پیشنهادی در دو ستون، زمان شروع با نوشتهٔ درشت فسفری، دسته‌بندی‌ها، افراد پیشنهادی و نقشه',
       ar: 'الصفحة الرئيسية في VIN: ترويسة ترحيب، ولقاءات مقترحة في بطاقات مزدوجة مع وقت البدء بخط فسفوري كبير، ورقائق التصنيفات، وأشخاص قد تعرفهم، وقسم الخريطة',
       de: 'VIN-Home-Feed: Begrüßungsheader, empfohlene Meetups als zweispaltige Karten mit der Startzeit in großer phosphoreszierender Schrift, Kategorie-Chips, Personen, die du kennen könntest, und ein Kartenbereich',
       es: 'El feed de inicio de VIN: un encabezado de saludo, meetups recomendados en tarjetas de dos en dos con la hora de inicio en tipografía grande y fosforescente, chips de categoría, personas que quizá conozcas y una sección de mapa',
@@ -165,7 +165,7 @@ export const VIN_MEDIA = {
     name: 'vin-app--chat-single-chat.png',
     alt: L({
       en: 'A single chat thread inside VIN — the conversation layer that carries a meetup before and after it happens',
-      fa: 'یک گفت‌وگوی تکی در وین — لایهٔ گفت‌وگویی که میت‌آپ را پیش و پس از برگزاری همراهی می‌کند',
+      fa: 'صفحهٔ گفت‌وگوی خصوصی در VIN برای هماهنگی و ادامهٔ ارتباط پیش و پس از دورهمی',
       ar: 'محادثة مفردة داخل VIN — طبقة المحادثة التي تحمل اللقاء قبل انعقاده وبعده',
       de: 'Ein einzelner Chat-Thread in VIN — die Konversationsebene, die ein Meetup davor und danach trägt',
       es: 'Un hilo de chat dentro de VIN — la capa de conversación que sostiene un meetup antes y después de que suceda',
@@ -217,7 +217,7 @@ export const VIN_MEDIA = {
     name: 'vin-app--meetup-cancel-paid-last-minute.png',
     alt: L({
       en: "One of four cancellation variants: cancelling a paid meetup inside 24 hours, stated plainly — 'This is within 24 hours — no refund available' — with the destructive action still offered",
-      fa: 'یکی از چهار گونهٔ لغو: لغو میت‌آپ پولی در کمتر از ۲۴ ساعت، با بیان صریح «این در بازهٔ ۲۴ ساعت است — بازگشت وجه ندارد» و کنشِ ویرانگر همچنان در دسترس',
+      fa: 'یکی از چهار حالت لغو دورهمی پولی: وقتی کمتر از ۲۴ ساعت مانده، پیام صریحِ بازنگشتن وجه نمایش داده می‌شود و گزینهٔ لغو همچنان در دسترس است',
       ar: 'واحدة من أربع حالات إلغاء: إلغاء لقاء مدفوع خلال 24 ساعة، مذكورة بوضوح «هذا خلال 24 ساعة — لا يوجد استرداد»، مع إبقاء الإجراء المدمّر متاحًا',
       de: 'Eine von vier Storno-Varianten: die Absage eines bezahlten Meetups innerhalb von 24 Stunden, klar benannt — „innerhalb von 24 Stunden, keine Rückerstattung“ — die destruktive Aktion bleibt verfügbar',
       es: 'Una de las cuatro variantes de cancelación: cancelar un meetup de pago con menos de 24 horas de antelación, dicho sin rodeos — «This is within 24 hours — no refund available» — con la acción destructiva todavía disponible',
@@ -329,7 +329,7 @@ const ROLE = L({
 
 const SUMMARY = L({
   en: "A connection-first networking app for Dubai's professional community — a product brief, a 57-problem inventory with its own KPI dictionary, a brand architecture and a B2B venue-revenue layer, audited against the promises the product makes to its own users.",
-  fa: 'یک اپلیکیشن شبکه‌سازیِ ارتباط‌محور برای جامعهٔ حرفه‌ای دبی — سند محصول، فهرست ۵۷ مسئله با واژه‌نامهٔ شاخص خودش، معماری برند و یک لایهٔ درآمدیِ B2B، که در برابر وعده‌های خودِ محصول به کاربرانش سنجیده شده است.',
+    fa: 'برای جامعهٔ حرفه‌ای دبی، اپی طراحی کردم که هدفش شکل‌دادن به ارتباط است. سند محصول، فهرست ۵۷ مسئله و شاخص‌هایشان، معماری برند و مدل درآمد B2B را تدوین کردم و سپس طراحی را با وعده‌هایی که به کاربر می‌داد سنجیدم.',
   ar: 'تطبيق شبكة اجتماعية يضع التواصل أولًا لمجتمع دبي المهني — موجز منتج، وفهرس 57 مشكلة له قاموس مؤشرات أداء خاص، وهندسة علامة تجارية، وطبقة إيرادات B2B للأماكن، مُدقَّق في ضوء الوعود التي يقطعها المنتج لمستخدميه.',
   de: 'Eine Connection-first-Networking-App für Dubais Berufscommunity — ein Produktbrief, ein Problem-Inventar mit 57 Einträgen samt eigenem KPI-Wörterbuch, eine Markenarchitektur und eine B2B-Venue-Umsatzebene, geprüft an den Versprechen, die das Produkt seinen eigenen Nutzern macht.',
   es: archiveText('es').summary,
@@ -339,7 +339,7 @@ const SUMMARY = L({
 
 const STATEMENT = L({
   en: "A connection-first networking app for Dubai, spec'd end-to-end — then audited against the promises its own onboarding makes.",
-  fa: 'یک اپلیکیشن شبکه‌سازیِ ارتباط‌محور برای دبی که سرتاسر آن مشخص شده — و سپس در برابر وعده‌های خوش‌آمدگویی خودش سنجیده شده است.',
+    fa: 'طرح کامل یک اپ شبکه‌سازی برای دبی؛ سپس بررسی اینکه صفحه‌های طراحی‌شده تا چه حد وعده‌های آغاز کار را برآورده می‌کنند.',
   ar: 'تطبيق شبكة اجتماعية يضع التواصل أولًا لدبي، مُحدَّد من البداية إلى النهاية — ثم مُدقَّق في ضوء الوعود التي يقطعها شريط الترحيب فيه نفسه.',
   de: 'Eine Connection-first-Networking-App für Dubai, durchgängig spezifiziert — und dann an den Versprechen ihres eigenen Onboardings geprüft.',
   es: 'Una app de networking para Dubái centrada en las conexiones, especificada de principio a fin — y luego auditada frente a las promesas de su propio onboarding.',
@@ -359,7 +359,7 @@ const INDUSTRY = L({
 
 const TEAM = L({
   en: 'A separate development team built and shipped the running app and admin panel; Sina led product design and strategy.',
-  fa: 'یک تیم توسعهٔ مستقل، اپ در حال اجرا و پنل مدیریت را ساخت و منتشر کرد؛ سینا لیدِ طراحی محصول و استراتژی بود.',
+    fa: 'تیم توسعه‌ای مستقل، اپ و پنل مدیریت را ساخت و منتشر کرد. راهبری طراحی و راهبرد محصول با سینا بود.',
   ar: 'قام فريق تطوير مستقل ببناء وإطلاق التطبيق العامل ولوحة الإدارة؛ وقاد سينا تصميم المنتج والاستراتيجية.',
   de: 'Ein separates Entwicklungsteam baute und veröffentlichte die laufende App und das Admin-Panel; Sina leitete Produktdesign und Strategie.',
   es: 'Un equipo de desarrollo independiente construyó y lanzó la app en funcionamiento y el panel de administración; Sina dirigió el diseño de producto y la estrategia.',
@@ -390,7 +390,7 @@ const HERO_CAPTION = L({
 const SNAPSHOT = {
   problem: L({
     en: 'Event-discovery apps optimise for ticket sales; social apps optimise for time spent. Neither is the right shape for someone who needs five useful conversations, not another feed.',
-    fa: 'اپ‌های کشف رویداد برای فروش بلیت بهینه‌سازی می‌شوند؛ اپ‌های اجتماعی برای زمان صرف‌شده. هیچ‌کدام برای کسی که به پنج گفت‌وگوی مفید نیاز دارد نه یک فید دیگر، فرم درستی نیستند.',
+    fa: 'اپ‌های رویداد بر فروش بلیت تمرکز دارند و شبکه‌های اجتماعی بر زمان حضور کاربر. برای کسی که پنج گفت‌وگوی مفید می‌خواهد، هیچ‌کدام پاسخ مناسبی نیست.',
     ar: 'تُحسَّن تطبيقات اكتشاف الفعاليات لبيع التذاكر؛ وتُحسَّن التطبيقات الاجتماعية للوقت المُستغرَق. لا يناسب أيّ منهما شخصًا يحتاج خمس محادثات مفيدة، لا موجزًا إضافيًا.',
     de: 'Event-Discovery-Apps optimieren auf Ticketverkäufe; soziale Apps auf verbrachte Zeit. Keines von beidem ist die richtige Form für jemanden, der fünf nützliche Gespräche braucht, nicht einen weiteren Feed.',
     es: 'Las apps de descubrimiento de eventos optimizan la venta de entradas; las apps sociales, el tiempo de uso. Ninguna tiene la forma adecuada para alguien que necesita cinco conversaciones útiles, no otro feed.',
@@ -399,7 +399,7 @@ const SNAPSHOT = {
   }),
   role: L({
     en: 'Product design and strategy lead: the brief, the problem inventory and KPI model, the mobile UI and design system, the brand architecture and the B2B venue layer — alongside a separate development team.',
-    fa: 'لیدِ طراحی محصول و استراتژی: سند محصول، فهرست مسئله‌ها و مدل شاخص، رابط موبایل و سیستم طراحی، معماری برند و لایهٔ B2B — در کنار یک تیم توسعهٔ مستقل.',
+    fa: 'راهبری طراحی و راهبرد محصول، از سند محصول و فهرست مسئله‌ها تا رابط موبایل، سیستم طراحی، معماری برند و بخش B2B؛ در کنار یک تیم توسعهٔ مستقل.',
     ar: 'قيادة تصميم المنتج والاستراتيجية: الموجز، وفهرس المشكلات ونموذج المؤشرات، وواجهة الهاتف ونظام التصميم، وهندسة العلامة التجارية وطبقة B2B — إلى جانب فريق تطوير مستقل.',
     de: 'Lead für Produktdesign und Strategie: der Brief, das Problem-Inventar und KPI-Modell, das Mobile-UI und Design-System, die Markenarchitektur und die B2B-Venue-Ebene — neben einem separaten Entwicklungsteam.',
     es: 'Responsable de diseño de producto y estrategia: el brief, el inventario de problemas y el modelo de KPI, la UI móvil y el sistema de diseño, la arquitectura de marca y la capa B2B de locales — junto a un equipo de desarrollo independiente.',
@@ -408,7 +408,7 @@ const SNAPSHOT = {
   }),
   result: L({
     en: '120 screens on a documented system, a 57-problem inventory and a locked cultural-rules instrument — audited against itself: two of four onboarding promises still have no screen.',
-    fa: '۱۲۰ صفحه روی یک سیستم مستند، فهرست ۵۷ مسئله و ابزاری از قواعد فرهنگیِ قفل‌شده — در برابر خودش سنجیده شده: دو از چهار وعدهٔ خوش‌آمدگویی هنوز صفحه‌ای ندارند.',
+    fa: '۱۲۰ صفحه با سیستم طراحی مستند، فهرست ۵۷ مسئله و قواعد فرهنگیِ ثبت‌شده تهیه شد. بررسی طراحی نشان داد برای دو مورد از چهار وعدهٔ آغاز کار، هنوز صفحه‌ای وجود ندارد.',
     ar: '120 شاشة على نظام موثّق، وفهرس 57 مشكلة، وأداة قواعد ثقافية مُقفَلة — مُدقَّقة في ضوء نفسها: اثنان من أربعة وعود ترحيبية ما زالا بلا شاشة.',
     de: '120 Screens auf einem dokumentierten System, ein 57-Probleme-Inventar und ein verriegeltes Instrument kultureller Regeln — an sich selbst geprüft: Zwei von vier Onboarding-Versprechen haben noch keinen Screen.',
     es: '120 pantallas sobre un sistema documentado, un inventario de 57 problemas y un instrumento de reglas culturales cerrado — auditados contra sí mismos: dos de las cuatro promesas del onboarding siguen sin pantalla.',
@@ -452,7 +452,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
         p(
           L({
             en: "VIN — operated by Viwin L.L.C-FZ out of Meydan Free Zone, Dubai — is a connection-first networking platform for the city's professional community. A traditional event app reads browse events, then maybe connect, with success measured in tickets sold. VIN reads set a connection goal, get an AI-suggested event path, attend, then log the connection.",
-            fa: 'وین — که زیر نظر Viwin L.L.C-FZ در Meydan Free Zone دبی اداره می‌شود — پلتفرمی شبکه‌سازیِ ارتباط‌محور برای جامعهٔ حرفه‌ای این شهر است. یک اپ رویدادِ سنتی این‌طور خوانده می‌شود: مرور رویدادها، شاید ارتباط — و موفقیت با بلیت فروخته‌شده سنجیده می‌شود. وین این‌طور خوانده می‌شود: تعیین هدف ارتباطی، دریافت مسیر رویداد پیشنهادیِ هوش مصنوعی، حضور، سپس ثبت ارتباط.',
+              fa: 'وین را شرکت Viwin L.L.C-FZ در منطقهٔ آزاد Meydan دبی اداره می‌کند. این پلتفرم برای شبکه‌سازی میان حرفه‌ای‌های شهر طراحی شده است. در اپ‌های معمول رویداد، کاربر رویدادی پیدا می‌کند و شاید با کسی آشنا شود؛ معیار موفقیت هم اغلب فروش بلیت است. در طرح وین، کاربر هدف ارتباطی تعیین می‌کند، مسیر پیشنهادی هوش مصنوعی را می‌بیند، در رویداد شرکت می‌کند و ارتباط حاصل را ثبت می‌کند.',
             ar: 'وين — التي تديرها Viwin L.L.C-FZ من منطقة ميدان الحرة في دبي — منصّة شبكة اجتماعية تضع التواصل أولًا لمجتمع المدينة المهني. يُقرأ تطبيق فعاليات تقليدي كالتالي: تصفّح الفعاليات، ثم ربما التواصل، والنجاح يُقاس بالتذاكر المباعة. أما وين فتُقرأ كالتالي: حدِّد هدف تواصل، احصل على مسار فعالية يقترحه الذكاء الاصطناعي، احضر، ثم سجِّل التواصل.',
             de: 'VIN — betrieben von Viwin L.L.C-FZ aus der Meydan Free Zone, Dubai — ist eine Connection-first-Networking-Plattform für die Berufscommunity der Stadt. Eine klassische Event-App liest sich als Events durchsuchen, dann vielleicht verbinden, mit Erfolg gemessen in verkauften Tickets. VIN liest sich als Verbindungsziel setzen, einen KI-vorgeschlagenen Event-Pfad erhalten, teilnehmen, dann die Verbindung protokollieren.',
             es: 'VIN — operada por Viwin L.L.C-FZ desde la Meydan Free Zone, Dubái — es una plataforma de networking centrada en las conexiones para la comunidad profesional de la ciudad. Una app de eventos tradicional sigue la secuencia explorar eventos y quizá conectar, y el éxito se mide en entradas vendidas. VIN sigue la secuencia fijar un objetivo de conexión, recibir una ruta de eventos sugerida por IA, asistir y registrar la conexión.',
@@ -463,7 +463,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
         p(
           L({
             en: "The brief's north star is the Connection Logging Rate, targeted at 40%+ — explicitly not attendance, not app opens, not profile views. Dubai is the reason it works this way: high expat turnover, and networking that happens through activity — running clubs, padel, cycling — rather than conference halls.",
-            fa: 'شاخص شمال‌نمای سند محصول نرخ ثبت ارتباط است، با هدف ۴۰٪ به بالا — به‌صراحت نه حضور، نه بازکردن اپ، نه بازدید پروفایل. دلیل این شکل، دبی است: جابه‌جاییِ بالای مهاجران، و شبکه‌سازی‌ای که از دل فعالیت می‌گذرد — باشگاه دو، پدل، دوچرخه‌سواری — نه سالن‌های کنفرانس.',
+              fa: 'شاخص اصلی سند محصول «نرخ ثبت ارتباط» با هدف بیش از ۴۰٪ است؛ حضور در رویداد، بازکردن اپ یا دیدن پروفایل جای آن را نمی‌گیرد. این انتخاب با شرایط دبی پیوند دارد: جابه‌جایی زیاد مهاجران و آشنایی‌هایی که بیشتر در فعالیت‌هایی مثل دویدن، پدل و دوچرخه‌سواری شکل می‌گیرند.',
             ar: 'المقياس الشمالي في الموجز هو معدّل تسجيل التواصل، بهدف 40٪ فأعلى — وليس صراحةً الحضور، ولا فتح التطبيق، ولا مشاهدات الملف الشخصي. سبب هذا الشكل هو دبي: معدّل دوران مرتفع للمغتربين، وتواصل يحدث عبر النشاط — نوادي الجري، البادل، ركوب الدراجات — لا في قاعات المؤتمرات.',
             de: 'Der Nordstern des Briefs ist die Connection Logging Rate, mit einem Ziel von 40%+ — ausdrücklich nicht Teilnahme, nicht App-Öffnungen, nicht Profilaufrufe. Dubai ist der Grund für diese Form: hohe Expat-Fluktuation und Networking, das über Aktivität stattfindet — Lauf­clubs, Padel, Radfahren — statt in Konferenzsälen.',
             es: 'La estrella polar del brief es la Connection Logging Rate, con un objetivo del 40 % o más — explícitamente no la asistencia, ni las aperturas de la app, ni las visitas al perfil. Dubái es la razón de que funcione así: una alta rotación de expatriados y un networking que ocurre a través de la actividad — clubes de running, pádel, ciclismo — y no en salas de conferencias.',
@@ -475,7 +475,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
       insight: l(
         L({
           en: 'Events are not the product. Connections are the product. Events are the medium.',
-          fa: 'رویداد محصول نیست. ارتباط محصول است. رویداد رسانه است.',
+      fa: 'محصول اصلی، ارتباط میان آدم‌هاست؛ رویداد فرصتی برای شکل‌گرفتن آن است.',
           ar: 'الفعالية ليست المنتج. التواصل هو المنتج. الفعالية هي الوسيلة.',
           de: 'Events sind nicht das Produkt. Verbindungen sind das Produkt. Events sind das Medium.',
           es: 'Los eventos no son el producto. Las conexiones son el producto. Los eventos son el medio.',
@@ -491,7 +491,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
       text: l(
         L({
           en: 'Events are not the product. Connections are the product. Events are the medium.',
-          fa: 'رویداد محصول نیست. ارتباط محصول است. رویداد رسانه است.',
+      fa: 'محصول اصلی، ارتباط میان آدم‌هاست؛ رویداد فرصتی برای شکل‌گرفتن آن است.',
           ar: 'الفعالية ليست المنتج. التواصل هو المنتج. الفعالية هي الوسيلة.',
           de: 'Events sind nicht das Produkt. Verbindungen sind das Produkt. Events sind das Medium.',
           es: 'Los eventos no son el producto. Las conexiones son el producto. Los eventos son el medio.',
@@ -518,7 +518,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
       heading: l(
         L({
           en: 'Not another event app, and not a casino playbook.',
-          fa: 'نه یک اپ رویداد دیگر، نه راهبرد کازینو.',
+      fa: 'فراتر از کشف رویداد، بدون سازوکارهای اعتیادآور.',
           ar: 'ليس تطبيق فعاليات آخر، ولا كتيّب لعب كازينو.',
           de: 'Keine weitere Event-App, kein Casino-Playbook.',
           es: 'Ni otra app de eventos, ni un manual de casino.',
@@ -531,7 +531,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
         p(
           L({
             en: 'Event-discovery apps optimise for ticket sales, so they succeed whether or not anything came of the event. Social platforms optimise for time spent, importing infinite scroll and vanity metrics. Both are the wrong shape for someone who moved to Dubai three months ago and needs five useful conversations.',
-            fa: 'اپ‌های کشف رویداد برای فروش بلیت بهینه می‌شوند، پس موفق‌اند چه از رویداد چیزی حاصل شود چه نشود. پلتفرم‌های اجتماعی برای زمان صرف‌شده بهینه می‌شوند و اسکرول بی‌پایان و شاخص‌های نمایشی را با خود می‌آورند. هیچ‌کدام برای کسی که سه ماه پیش به دبی آمده و به پنج گفت‌وگوی مفید نیاز دارد فرم درستی نیستند.',
+              fa: 'اپ‌های کشف رویداد فروش بلیت را می‌سنجند، حتی اگر شرکت‌کننده با کسی آشنا نشود. شبکه‌های اجتماعی زمان حضور را با پیمایش بی‌پایان و شاخص‌های ظاهری بالا می‌برند. کسی که سه ماه پیش به دبی آمده و دنبال پنج گفت‌وگوی مفید است، به مسیر دیگری نیاز دارد.',
             ar: 'تُحسَّن تطبيقات اكتشاف الفعاليات لبيع التذاكر، فتنجح سواء نتج عن الفعالية شيء أم لا. أما المنصّات الاجتماعية فتُحسَّن للوقت المُستغرَق، فتستورد التمرير اللانهائي ومقاييس الاستعراض. كلاهما شكل خاطئ لشخص انتقل إلى دبي قبل ثلاثة أشهر ويحتاج خمس محادثات مفيدة.',
             de: 'Event-Discovery-Apps optimieren auf Ticketverkäufe, sie sind also erfolgreich, egal ob aus dem Event etwas wurde. Soziale Plattformen optimieren auf verbrachte Zeit und importieren Endlos-Scroll und Vanity-Metriken. Beides ist die falsche Form für jemanden, der vor drei Monaten nach Dubai gezogen ist und fünf nützliche Gespräche braucht.',
             es: 'Las apps de descubrimiento de eventos optimizan la venta de entradas, así que tienen éxito tanto si el evento dio fruto como si no. Las plataformas sociales optimizan el tiempo de uso e importan el scroll infinito y las métricas de vanidad. Ambas tienen la forma equivocada para alguien que se mudó a Dubái hace tres meses y necesita cinco conversaciones útiles.',
@@ -542,7 +542,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
         p(
           L({
             en: "The product's own anti-definition is blunt about it: not another event-discovery app, not a social platform, not a dating app, not a matchmaking service, not a ticketing system.",
-            fa: 'ضدتعریف خودِ محصول در این باره صریح است: نه یک اپ کشف رویداد دیگر، نه پلتفرم اجتماعی، نه اپ دوستیابی، نه سرویس همتایابی، نه سیستم فروش بلیت.',
+              fa: 'سند محصول مرزهای VIN را روشن کرده است: این محصول اپ کشف رویداد، شبکهٔ اجتماعی، اپ دوستیابی، سرویس همتایابی یا سامانهٔ فروش بلیت نیست.',
             ar: 'التعريف المضاد الخاص بالمنتج صريح في هذا: ليس تطبيق اكتشاف فعاليات آخر، ولا منصّة اجتماعية، ولا تطبيق مواعدة، ولا خدمة مطابقة، ولا نظام تذاكر.',
             de: 'Die eigene Anti-Definition des Produkts ist unverblümt: keine weitere Event-Discovery-App, keine soziale Plattform, keine Dating-App, kein Matchmaking-Dienst, kein Ticketing-System.',
             es: 'La propia antidefinición del producto lo dice sin rodeos: no es otra app de descubrimiento de eventos, ni una plataforma social, ni una app de citas, ni un servicio de emparejamiento, ni un sistema de venta de entradas.',
@@ -572,7 +572,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
         p(
           L({
             en: 'Several engagement patterns that work elsewhere are culturally wrong here — public leaderboards and competitive framing among them. The brief carries a long section on cultural considerations for Dubai: Ramadan scheduling, gender dynamics, alcohol, Arabic RTL support, and a three-phase cultural launch moving from expat professional to broader expat to Emirati integration.',
-            fa: 'چند الگوی تعامل که جاهای دیگر کار می‌کند، اینجا از نظر فرهنگی نادرست است — از جمله جدول رده‌بندی عمومی و قاب‌بندی رقابتی. سند محصول بخشی طولانی دربارهٔ ملاحظات فرهنگیِ دبی دارد: زمان‌بندی رمضان، پویایی جنسیتی، الکل، پشتیبانی راست‌به‌چپِ عربی، و راه‌اندازیِ سه‌مرحله‌ایِ فرهنگی از حرفه‌ای مهاجر تا مهاجران گسترده‌تر تا ادغام اماراتی.',
+              fa: 'بعضی الگوهای رایج تعامل، مانند جدول رتبه‌بندی عمومی و رقابت آشکار، با زمینهٔ فرهنگی این محصول سازگار نیستند. سند محصول به زمان‌بندی رمضان، روابط میان جنسیت‌ها، الکل و پشتیبانی از عربیِ راست‌به‌چپ می‌پردازد و عرضه را در سه مرحله پیش‌بینی می‌کند: حرفه‌ای‌های مهاجر، جامعهٔ گسترده‌تر مهاجران و سپس کاربران اماراتی.',
             ar: 'بعض أنماط التفاعل التي تنجح في أماكن أخرى خاطئة ثقافيًا هنا — من بينها لوحات الصدارة العامة والصياغة التنافسية. يحمل الموجز قسمًا طويلًا عن الاعتبارات الثقافية لدبي: توقيت رمضان، وديناميكيات الجندر، والكحول، ودعم العربية من اليمين إلى اليسار، وإطلاق ثقافي من ثلاث مراحل ينتقل من المغترب المهني إلى المغتربين عمومًا إلى الاندماج الإماراتي.',
             de: 'Mehrere Engagement-Muster, die anderswo funktionieren, sind hier kulturell falsch — öffentliche Ranglisten und Wettbewerbs-Framing darunter. Der Brief enthält einen langen Abschnitt zu kulturellen Erwägungen für Dubai: Ramadan-Terminierung, Geschlechterdynamik, Alkohol, arabische RTL-Unterstützung, und ein dreiphasiger kultureller Launch vom Expat-Professional über breitere Expats bis zur emiratischen Integration.',
             es: 'Varios patrones de engagement que funcionan en otros lugares son culturalmente inadecuados aquí — entre ellos, las clasificaciones públicas y el enfoque competitivo. El brief incluye una larga sección sobre consideraciones culturales para Dubái: la programación durante el Ramadán, las dinámicas de género, el alcohol, el soporte de árabe RTL y un lanzamiento cultural en tres fases que avanza del profesional expatriado al expatriado en general y a la integración emiratí.',
@@ -583,7 +583,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
         p(
           L({
             en: 'The process that produced VIN was later codified into a reusable design-and-audit protocol, with nine non-negotiable Dubai cultural rules and a locked table of intentional design decisions, each carrying its own reason.',
-            fa: 'فرایندی که وین را تولید کرد، بعدتر به یک پروتکل طراحی-و-ممیزیِ قابل‌استفادهٔ مجدد تبدیل شد، با نه قاعدهٔ فرهنگیِ دبی و جدولی قفل‌شده از تصمیم‌های طراحیِ عامدانه، هرکدام با دلیل خودش.',
+              fa: 'روش طراحی و بررسی VIN بعداً به پروتکلی قابل استفادهٔ دوباره تبدیل شد؛ شامل نُه قاعدهٔ فرهنگی برای دبی و جدول تصمیم‌های طراحی که دلیل هر تصمیم در آن ثبت شده است.',
             ar: 'تحوّلت العملية التي أنتجت وين لاحقًا إلى بروتوكول تصميم وتدقيق قابل لإعادة الاستخدام، يضم تسع قواعد ثقافية غير قابلة للتفاوض لدبي وجدولًا مُقفَلًا من قرارات التصميم المتعمَّدة، لكل منها سببها الخاص.',
             de: 'Der Prozess, der VIN hervorbrachte, wurde später zu einem wiederverwendbaren Design-und-Audit-Protokoll kodifiziert, mit neun nicht verhandelbaren Dubai-Kulturregeln und einer verriegelten Tabelle bewusster Designentscheidungen, jede mit eigener Begründung.',
             es: 'El proceso que dio lugar a VIN se codificó después en un protocolo reutilizable de diseño y auditoría, con nueve reglas culturales innegociables para Dubái y una tabla cerrada de decisiones de diseño intencionadas, cada una con su propia razón.',
@@ -686,7 +686,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
       note: l(
         L({
           en: "The brief documents the design and strategy work in detail; it doesn't specify the exact split of implementation decisions with the development team, so ownership here is limited to what's documented.",
-          fa: 'سند محصول کار طراحی و استراتژی را با جزئیات مستند می‌کند؛ تفکیک دقیق تصمیم‌های پیاده‌سازی با تیم توسعه را مشخص نمی‌کند، پس مالکیت در اینجا به آنچه مستند شده محدود است.',
+              fa: 'سند محصول، کار طراحی و راهبرد را با جزئیات ثبت کرده، اما سهم دقیق من و تیم توسعه را در تصمیم‌های پیاده‌سازی مشخص نمی‌کند. بنابراین فقط کارهایی را به خود نسبت می‌دهم که مستند شده‌اند.',
           ar: 'يوثّق الموجز عمل التصميم والاستراتيجية بالتفصيل؛ لكنه لا يحدّد التقسيم الدقيق لقرارات التنفيذ مع فريق التطوير، لذا تقتصر الملكية هنا على ما هو موثّق.',
           de: 'Der Brief dokumentiert die Design- und Strategiearbeit im Detail; er spezifiziert nicht die genaue Aufteilung der Implementierungsentscheidungen mit dem Entwicklungsteam, daher beschränkt sich die Zuordnung hier auf das Dokumentierte.',
           es: 'El brief documenta en detalle el trabajo de diseño y estrategia; no especifica el reparto exacto de las decisiones de implementación con el equipo de desarrollo, así que la autoría aquí se limita a lo documentado.',
@@ -702,7 +702,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
       heading: l(
         L({
           en: 'Six layers, each producing an artifact the next one used.',
-          fa: 'شش لایه، هرکدام محصولی می‌سازد که لایهٔ بعدی از آن استفاده می‌کند.',
+    fa: 'شش مرحله که خروجی هرکدام، ورودی مرحلهٔ بعد است.',
           ar: 'ست طبقات، تُنتج كل منها ناتجًا تستخدمه الطبقة التالية.',
           de: 'Sechs Ebenen, jede erzeugt ein Artefakt, das die nächste nutzt.',
           es: 'Seis capas, cada una produciendo un artefacto que usó la siguiente.',
@@ -754,7 +754,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           note: l(
             L({
               en: '57 problems across five difficulty tiers, an 8-sheet workbook',
-              fa: '۵۷ مسئله در پنج ردهٔ دشواری، یک کارپوشهٔ ۸برگه',
+      fa: '۵۷ مسئله در پنج سطح دشواری، ثبت‌شده در فایلی با ۸ برگه',
               ar: '57 مشكلة عبر خمس مستويات صعوبة، وكتاب عمل من 8 أوراق',
               de: '57 Probleme über fünf Schwierigkeitsstufen, ein 8-Blatt-Arbeitsheft',
               es: '57 problemas en cinco niveles de dificultad, un libro de cálculo de 8 hojas',
@@ -780,7 +780,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           note: l(
             L({
               en: "20 KPIs across nine domains — seven of them guardrails against growth's own damage",
-              fa: '۲۰ شاخص در نه حوزه — هفت‌تای آن‌ها نرده‌محافظ در برابر آسیب خودِ رشدند',
+      fa: '۲۰ شاخص در نُه حوزه؛ هفت شاخص برای پیشگیری از پیامدهای منفی رشد',
               ar: '20 مؤشرًا عبر تسعة مجالات — سبعة منها حواجز أمان ضد الضرر الذي قد يُحدثه النمو نفسه',
               de: '20 KPIs über neun Domänen — sieben davon Leitplanken gegen den Schaden des Wachstums selbst',
               es: '20 KPI en nueve ámbitos — siete de ellos, salvaguardas contra el daño que causa el propio crecimiento',
@@ -832,7 +832,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           note: l(
             L({
               en: "A naming architecture that retires 'Meetup' and 'Event' as vocabulary",
-              fa: 'معماری نام‌گذاری‌ای که واژه‌های «میت‌آپ» و «رویداد» را بازنشسته می‌کند',
+      fa: 'معماری نام‌گذاری برای کنارگذاشتن واژه‌های «میت‌آپ» و «رویداد»',
               ar: 'هندسة تسمية تُقاعد مصطلحي "Meetup" و"Event"',
               de: 'Eine Namensarchitektur, die „Meetup“ und „Event“ als Vokabular ausmustert',
               es: 'Una arquitectura de nombres que retira «Meetup» y «Event» del vocabulario',
@@ -1161,7 +1161,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           tradeoff: l(
             L({
               en: "The lock gives the architecture teeth — but the file itself still uses 'Meetup' and 'Event' everywhere, including its own section names; a locked decision still needs a migration pass to become real.",
-              fa: 'قفل‌شدن به معماری دندان می‌دهد — اما خودِ فایل هنوز همه‌جا از «میت‌آپ» و «رویداد» استفاده می‌کند، حتی در نام بخش‌های خودش؛ یک تصمیم قفل‌شده هنوز به یک گذرِ مهاجرت نیاز دارد تا واقعی شود.',
+              fa: 'این قاعده، نام‌گذاری را یکدست می‌کند. بااین‌حال، در فایل طراحی هنوز واژه‌های «میت‌آپ» و «رویداد» دیده می‌شوند، حتی در نام بخش‌ها. برای اجرای کامل تصمیم، متن‌های موجود هم باید بازنویسی شوند.',
               ar: 'القفل يمنح الهندسة قوة تنفيذية — لكن الملف نفسه ما زال يستخدم "Meetup" و"Event" في كل مكان، حتى في أسماء أقسامه؛ فالقرار المُقفَل ما زال يحتاج تمريرة ترحيل ليصبح واقعًا.',
               de: 'Die Verriegelung verleiht der Architektur Biss — aber die Datei selbst verwendet weiterhin überall „Meetup“ und „Event“, auch in ihren eigenen Abschnittsnamen; eine verriegelte Entscheidung braucht noch einen Migrationsdurchgang, um real zu werden.',
               es: 'El bloqueo le da dientes a la arquitectura, pero el propio archivo sigue usando «Meetup» y «Event» en todas partes, incluso en los nombres de sus secciones; una decisión bloqueada aún necesita una pasada de migración para hacerse realidad.',
@@ -1197,7 +1197,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           why: l(
             L({
               en: 'Public leaderboards and competitive display read as culturally wrong for this market.',
-              fa: 'جدول رده‌بندی عمومی و نمایش رقابتی از نظر فرهنگی برای این بازار نادرست خوانده می‌شوند.',
+              fa: 'جدول رده‌بندی عمومی و نمایش رقابتی با زمینهٔ فرهنگی این بازار سازگار نیستند.',
               ar: 'تُقرأ لوحات الصدارة العامة والعرض التنافسي على أنها خاطئة ثقافيًا لهذا السوق.',
               de: 'Öffentliche Ranglisten und Wettbewerbsdarstellung gelten für diesen Markt als kulturell falsch.',
               es: 'Los rankings públicos y la exhibición competitiva se perciben como culturalmente inadecuados para este mercado.',
@@ -1219,7 +1219,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           tradeoff: l(
             L({
               en: 'Removes a proven engagement lever; replaced with curated matching and connection goals instead.',
-              fa: 'اهرمی اثبات‌شده در تعامل را حذف می‌کند؛ به‌جایش تطبیق کیوریت‌شده و هدف‌های ارتباطی می‌آید.',
+              fa: 'یک روش شناخته‌شده برای افزایش تعامل کنار می‌رود؛ به‌جای آن، تطبیق سنجیده و هدف‌های ارتباطی قرار می‌گیرند.',
               ar: 'يزيل رافعة تفاعل مُثبَتة؛ ويستبدلها بمطابقة منسَّقة وأهداف تواصل.',
               de: 'Entfernt einen bewährten Engagement-Hebel; ersetzt durch kuratiertes Matching und Verbindungsziele.',
               es: 'Elimina una palanca de engagement probada; en su lugar, emparejamiento curado y objetivos de conexión.',
@@ -1277,7 +1277,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           tradeoff: l(
             L({
               en: 'Costs a small amount of friction for someone who just wants to book a padel session; the fourth chip pays that back honestly instead of forcing the strategy layer on everyone.',
-              fa: 'مقداری اصطکاک برای کسی که فقط می‌خواهد یک جلسهٔ پدل رزرو کند هزینه دارد؛ چیپ چهارم این هزینه را صادقانه پس می‌دهد، به‌جای تحمیل لایهٔ استراتژی به همه.',
+              fa: 'برای کسی که فقط می‌خواهد یک جلسهٔ پدل رزرو کند، این مرحله کار را طولانی‌تر می‌کند. گزینهٔ چهارم راه ساده‌تری پیش پای او می‌گذارد تا مجبور نباشد مسیر راهبردی را طی کند.',
               ar: 'يكلّف قدرًا يسيرًا من الاحتكاك لمن يريد فقط حجز جلسة بادل؛ وتعوّض الرقاقة الرابعة ذلك بصدق بدل فرض طبقة الاستراتيجية على الجميع.',
               de: 'Kostet etwas Reibung für jemanden, der nur eine Padel-Session buchen will; der vierte Chip zahlt das ehrlich zurück, statt allen die Strategieebene aufzuzwingen.',
               es: 'Supone algo de fricción para quien solo quiere reservar una sesión de pádel; el cuarto chip lo compensa con honestidad en vez de imponer a todos la capa de estrategia.',
@@ -1367,7 +1367,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
         p(
           L({
             en: "The Sponser section runs a four-step partner funnel — list your venue, get matched, host and activate, measure and grow — and it's genuinely two-sided: hosts can bid for a venue through a 'Be my sponsor' flow with a suggested bid and a fair-price indicator, while venues review qualified requests instead of random traffic.",
-            fa: 'بخش Sponser یک قیف چهارمرحله‌ایِ شریک را اجرا می‌کند — مکانت را ثبت کن، تطبیق بگیر، میزبانی و فعال‌سازی، اندازه‌گیری و رشد — و واقعاً دوسویه است: میزبانان می‌توانند از طریق جریان «حامی من باش» با پیشنهادِ مزایده و نشانگر قیمتِ منصفانه برای یک مکان مزایده بدهند، درحالی‌که مکان‌ها درخواست‌های واجدشرایط را بررسی می‌کنند نه ترافیک تصادفی را.',
+            fa: 'همکاری با مکان‌ها در بخش Sponser چهار مرحله دارد: ثبت مکان، پیدا کردن گروه مناسب، میزبانی و سنجش نتیجه. این رابطه دوسویه است. میزبان می‌تواند در مسیر «حامی من باش» با مبلغ پیشنهادی و راهنمای قیمت منصفانه برای استفاده از یک مکان پیشنهاد بدهد؛ مکان هم درخواست‌های مرتبط را بررسی می‌کند، نه بازدیدهای اتفاقی را.',
             ar: 'يُشغّل قسم Sponser قمع شريك من أربع خطوات — أدرج مكانك، احصل على مطابقة، استضف وفعِّل، قِس ونمِّ — وهو ثنائي الجانب فعلًا: يمكن للمضيفين المزايدة على مكان عبر تدفّق «كن راعيّ» بعرض مقترح ومؤشر سعر عادل، بينما تراجع الأماكن طلبات مؤهَّلة لا حركة مرور عشوائية.',
             de: 'Der Sponser-Bereich fährt einen vierstufigen Partner-Funnel — Venue listen, Match erhalten, Hosten und Aktivieren, Messen und Wachsen — und ist wirklich zweiseitig: Hosts können über einen „Be my sponsor“-Flow mit einem vorgeschlagenen Gebot und einem Fair-Price-Indikator um eine Venue bieten, während Venues qualifizierte Anfragen statt Zufallsverkehr prüfen.',
             es: 'La sección Sponser plantea un embudo de socios en cuatro pasos —registra tu local, recibe coincidencias, acoge y activa, mide y crece— y es de verdad de dos lados: los anfitriones pueden pujar por un local mediante un flujo «Be my sponsor» con una puja sugerida y un indicador de precio justo, mientras los locales revisan solicitudes cualificadas en lugar de tráfico aleatorio.',
@@ -1378,7 +1378,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
         p(
           L({
             en: "The pitch to venues is blunt: 'Empty seats aren't a marketing problem — they're a predictable demand problem.' The page even carries a legal disclaimer marking performance figures as indicative, not guaranteed, based on pilot data.",
-            fa: 'پیشنهاد به مکان‌ها صریح است: «صندلی‌های خالی مسئلهٔ بازاریابی نیستند — مسئلهٔ تقاضای قابل‌پیش‌بینی‌اند.» صفحه حتی یک سلب مسئولیت حقوقی دارد که ارقام عملکرد را نشان‌دهنده می‌داند، نه تضمین‌شده، و بر پایهٔ داده‌های آزمایشی.',
+            fa: 'پیام به مکان‌ها روشن است: «صندلی‌های خالی مشکل تبلیغات نیستند؛ مسئله، پیش‌بینی تقاضاست.» در صفحه توضیح حقوقی هم آمده است که ارقام عملکرد، برآوردی بر پایهٔ داده‌های آزمایشی‌اند و نتیجه‌ای را تضمین نمی‌کنند.',
             ar: 'العرض للأماكن صريح: «المقاعد الفارغة ليست مشكلة تسويقية — إنها مشكلة طلب يمكن التنبؤ بها.» بل تحمل الصفحة إخلاء مسؤولية قانوني يصف أرقام الأداء بأنها إرشادية لا مضمونة، مستندة إلى بيانات تجريبية.',
             de: 'Das Angebot an Venues ist unverblümt: „Leere Plätze sind kein Marketingproblem — sie sind ein vorhersehbares Nachfrageproblem.“ Die Seite trägt sogar einen rechtlichen Disclaimer, der Leistungszahlen als indikativ, nicht garantiert, basierend auf Pilotdaten kennzeichnet.',
             es: 'El mensaje a los locales es directo: «Los asientos vacíos no son un problema de marketing: son un problema de demanda predecible». La página incluso lleva un aviso legal que presenta las cifras de rendimiento como orientativas, no garantizadas, basadas en datos piloto.',
@@ -1726,7 +1726,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
       text: l(
         L({
           en: "Problem #52 assigns the still-unbuilt AI path a 60% target before it has a frame; problem #44 reasons about users who 'log connections but don't follow up.' The KPI has a target before the feature has a screen.",
-          fa: 'مسئلهٔ #۵۲ به مسیرِ هوش مصنوعیِ هنوز ساخته‌نشده، هدف ۶۰٪ می‌دهد پیش از آنکه فریمی داشته باشد؛ مسئلهٔ #۴۴ دربارهٔ کاربرانی استدلال می‌کند که «ارتباط را ثبت می‌کنند اما پیگیری نمی‌کنند». شاخص، پیش از آنکه ویژگی صفحه‌ای داشته باشد، هدف دارد.',
+          fa: 'برای مسیر هوش مصنوعی در مسئلهٔ #۵۲، پیش از طراحی حتی یک صفحه، هدف ۶۰٪ تعیین شده بود. مسئلهٔ #۴۴ هم به کاربرانی می‌پردازد که «ارتباط را ثبت می‌کنند اما پیگیری نمی‌کنند». به این ترتیب، شاخص‌ها پیش از وجود رابطی برای این رفتارها تعریف شده بودند.',
           ar: 'تحدِّد المشكلة #52 هدفًا بنسبة 60٪ لمسار الذكاء الاصطناعي غير المبني بعد قبل أن يكون له إطار؛ وتُحلِّل المشكلة #44 مستخدمين «يسجّلون التواصلات لكن لا يتابعون». المؤشر له هدف قبل أن تكون للميزة شاشة.',
           de: 'Problem #52 weist dem noch nicht gebauten KI-Pfad ein 60%-Ziel zu, bevor er einen Frame hat; Problem #44 argumentiert über Nutzer, die „Verbindungen protokollieren, aber nicht nachfassen“. Der KPI hat ein Ziel, bevor das Feature einen Screen hat.',
           es: 'El problema #52 asigna a la ruta de IA, aún sin construir, un objetivo del 60 % antes de que tenga un frame; el problema #44 razona sobre usuarios que «registran conexiones pero no hacen seguimiento». El KPI tiene objetivo antes de que la funcionalidad tenga pantalla.',
@@ -2002,7 +2002,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           title: l(
             L({
               en: 'A hard-to-move north star is a design constraint, not a metric choice',
-              fa: 'شاخصِ شمال‌نمای سخت‌جابه‌جا یک محدودیت طراحی است، نه انتخاب یک متریک',
+    fa: 'شاخص اصلی محصول، مسیر طراحی را محدود و روشن می‌کند',
               ar: 'مقياس شمالي يصعب تحريكه هو قيد تصميم، لا اختيار مقياس',
               de: 'Ein schwer bewegbarer Nordstern ist eine Designbeschränkung, keine Metrikwahl',
               es: 'Una estrella polar difícil de mover es una restricción de diseño, no una elección de métrica',
@@ -2013,7 +2013,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           body: l(
             L({
               en: "Connection Logging Rate can't be inflated by a notification or a better feed — it only moves if the product genuinely produced a connection worth logging. That one choice ruled out most of the standard engagement toolkit, which is what made the rest of the design coherent.",
-              fa: 'نرخ ثبت ارتباط را نمی‌توان با یک اعلان یا فیدِ بهتر متورم کرد — فقط زمانی حرکت می‌کند که محصول واقعاً ارتباطی ارزش‌ثبت‌کردن تولید کرده باشد. همین یک انتخاب بیشتر جعبه‌ابزار استاندارد تعامل را کنار گذاشت، و همین بود که بقیهٔ طراحی را منسجم کرد.',
+              fa: 'نرخ ثبت ارتباط با اعلان بیشتر یا فید جذاب‌تر بالا نمی‌رود؛ باید ارتباطی شکل بگیرد که کاربر بخواهد آن را ثبت کند. انتخاب این شاخص، بسیاری از الگوهای معمول افزایش تعامل را کنار گذاشت و به طراحی جهت داد.',
               ar: 'لا يمكن تضخيم معدّل تسجيل التواصل بإشعار أو موجز أفضل — لا يتحرّك إلا إذا أنتج المنتج فعلًا تواصلًا يستحق التسجيل. هذا الاختيار الواحد استبعد معظم عدة أدوات التفاعل القياسية، وهو ما جعل بقية التصميم متماسكًا.',
               de: 'Die Connection Logging Rate lässt sich nicht durch eine Benachrichtigung oder einen besseren Feed aufblähen — sie bewegt sich nur, wenn das Produkt tatsächlich eine loggenswerte Verbindung erzeugt hat. Diese eine Entscheidung schloss den größten Teil des Standard-Engagement-Werkzeugkastens aus, was den Rest des Designs kohärent machte.',
               es: 'La Connection Logging Rate no se puede inflar con una notificación o un feed mejor: solo se mueve si el producto generó de verdad una conexión que valga la pena registrar. Esa única decisión descartó la mayor parte del kit estándar de engagement, y eso es lo que dio coherencia al resto del diseño.',
@@ -2027,7 +2027,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           title: l(
             L({
               en: 'Upstream work can feel like progress that screens would have tested',
-              fa: 'کار بالادستی می‌تواند حسِ پیشرفتی را بدهد که صفحات باید آن را می‌آزمودند',
+    fa: 'مستندسازی پیشرفت است، اما جای آزمودن محصول را نمی‌گیرد',
               ar: 'قد يبدو العمل التمهيدي تقدمًا كانت الشاشات لتختبره',
               de: 'Upstream-Arbeit kann sich wie Fortschritt anfühlen, den Screens getestet hätten',
               es: 'El trabajo previo puede parecer un avance que las pantallas habrían puesto a prueba',
@@ -2038,7 +2038,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           body: l(
             L({
               en: 'The brief was written, 57 problems inventoried, 20 KPIs defined, 120 screens drawn — and the two features the whole thesis depends on still have no frame, while one already has a 60% target. A thin, ugly frame of the goal-to-log loop in week one would have surfaced the hard question earlier.',
-              fa: 'سند محصول نوشته شد، ۵۷ مسئله فهرست شد، ۲۰ شاخص تعریف شد، ۱۲۰ صفحه کشیده شد — و دو ویژگی‌ای که کل فرضیه به آن‌ها وابسته است هنوز فریمی ندارند، درحالی‌که یکی از آن‌ها هدفِ ۶۰٪ دارد. یک فریم نازک و ناپخته از حلقهٔ هدف‌تا‌ثبت در هفتهٔ اول، سؤال سخت را زودتر روی میز می‌آورد.',
+              fa: 'سند محصول، ۵۷ مسئله، ۲۰ شاخص و ۱۲۰ صفحه آماده شد؛ اما دو ویژگی اصلیِ فرضیه هنوز صفحه‌ای نداشتند و برای یکی از آن‌ها هدف ۶۰٪ تعیین شده بود. یک نمونهٔ ساده از مسیر تعیین هدف تا ثبت ارتباط در هفتهٔ اول، این شکاف را زودتر آشکار می‌کرد.',
               ar: 'كُتب الموجز، وفُهرست 57 مشكلة، وحُدِّد 20 مؤشرًا، ورُسمت 120 شاشة — والميزتان اللتان تعتمد عليهما الفرضية كلها ما زالتا بلا إطار، فيما إحداهما تحمل بالفعل هدف 60٪. إطار رقيق وغير أنيق لحلقة الهدف-إلى-التسجيل في الأسبوع الأول كان سيكشف السؤال الصعب أبكر.',
               de: 'Der Brief wurde geschrieben, 57 Probleme inventarisiert, 20 KPIs definiert, 120 Screens gezeichnet — und die zwei Features, von denen die ganze These abhängt, haben noch keinen Frame, während eines bereits ein 60%-Ziel hat. Ein dünner, hässlicher Frame der Goal-to-Log-Schleife in Woche eins hätte die harte Frage früher zutage gebracht.',
               es: 'Se escribió el brief, se inventariaron 57 problemas, se definieron 20 KPI y se dibujaron 120 pantallas, y las dos funcionalidades de las que depende toda la tesis siguen sin frame, mientras que una ya tiene un objetivo del 60 %. Un frame fino y feo del ciclo del objetivo al registro en la primera semana habría sacado a la luz antes la pregunta difícil.',
@@ -2052,7 +2052,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           title: l(
             L({
               en: "Non-negotiable survives arguments that advisory doesn't",
-              fa: 'غیرقابل‌مذاکره در برابر استدلال‌هایی دوام می‌آورد که توصیه‌ای نمی‌آورد',
+    fa: 'قاعدهٔ روشن و مستدل، در تصمیم‌های بعدی دوام می‌آورد',
               ar: 'غير القابل للتفاوض يصمد أمام حجج لا يصمد أمامها الاستشاري',
               de: 'Nicht verhandelbar übersteht Argumente, die beratend nicht übersteht',
               es: 'Lo innegociable resiste discusiones que lo orientativo no resiste',
@@ -2063,7 +2063,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           body: l(
             L({
               en: "'No public leaderboards' as guidance loses the first argument it has with a growth idea; phrased as a locked constraint with a stated reason, it holds. The same technique on vocabulary — declaring 'Meetup' and 'Event' discontinued rather than discouraged — gives the brand architecture teeth, though the file shows a locked decision still needs a migration pass to become real.",
-              fa: '«بدون جدول رده‌بندی عمومی» به‌عنوان راهنمایی اولین بحث را با یک ایدهٔ رشد می‌بازد؛ اما وقتی به شکل یک محدودیت قفل‌شده با دلیل مشخص بیان شود، دوام می‌آورد. همین فن روی واژگان — اعلام کردن «میت‌آپ» و «رویداد» به‌عنوان متوقف‌شده به‌جای دلسردکننده — به معماری برند دندان می‌دهد، هرچند فایل نشان می‌دهد یک تصمیم قفل‌شده هنوز به گذرِ مهاجرت نیاز دارد تا واقعی شود.',
+              fa: 'اگر «بدون جدول رده‌بندی عمومی» فقط یک توصیه باشد، ممکن است با نخستین ایدهٔ رشد کنار برود. وقتی دلیل فرهنگی آن ثبت و به قاعده‌ای قطعی تبدیل شود، در تصمیم‌های بعدی هم پابرجا می‌ماند. همین رویکرد برای کنار گذاشتن واژه‌های «میت‌آپ» و «رویداد» به نام‌گذاری جهت می‌دهد؛ هرچند فایل طراحی نشان می‌دهد متن‌های موجود هنوز باید با این تصمیم هماهنگ شوند.',
               ar: '«بلا لوحات صدارة عامة» كإرشاد يخسر أول جدال له مع فكرة نمو؛ لكن مصاغًا كقيد مُقفَل بسبب معلن، يصمد. التقنية نفسها على المفردات — إعلان "Meetup" و"Event" متوقّفَين بدل مثبَّطَين — يمنح هندسة العلامة التجارية قوة، مع أن الملف يُظهر أن قرارًا مُقفَلًا ما زال يحتاج تمريرة ترحيل ليصبح واقعًا.',
               de: '„Keine öffentlichen Ranglisten“ als Empfehlung verliert das erste Argument mit einer Wachstumsidee; formuliert als verriegelte Beschränkung mit genanntem Grund, hält sie stand. Dieselbe Technik beim Vokabular — „Meetup“ und „Event“ als eingestellt statt nur abgeraten zu erklären — verleiht der Markenarchitektur Biss, auch wenn die Datei zeigt, dass eine verriegelte Entscheidung noch einen Migrationsdurchgang braucht, um real zu werden.',
               es: '«Sin rankings públicos» como pauta pierde la primera discusión que tiene con una idea de crecimiento; formulada como restricción bloqueada y con su motivo explícito, se mantiene. La misma técnica aplicada al vocabulario —declarar «Meetup» y «Event» descontinuados en lugar de desaconsejados— da dientes a la arquitectura de marca, aunque el archivo muestra que una decisión bloqueada aún necesita una pasada de migración para hacerse realidad.',

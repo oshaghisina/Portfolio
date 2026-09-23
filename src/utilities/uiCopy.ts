@@ -198,16 +198,16 @@ export const uiCopy: Record<Locale, UiCopy> = {
     workProjects: { one: '{n} project', other: '{n} projects' },
   },
   fa: {
-    archiveNoResults: 'جستجو نتیجه‌ای نداشت.',
+    archiveNoResults: 'نتیجه‌ای پیدا نشد.',
     archiveRange: 'نمایش {range} از {total}',
     closeMenu: 'بستن منو',
     docsLabel: { other: '{n} مورد' },
-    fieldRequired: 'این فیلد الزامی است',
+    fieldRequired: 'پرکردن این بخش الزامی است.',
     formError: 'مشکلی پیش آمد.',
     formSubmitting: 'در حال ارسال، لطفاً صبر کنید…',
     requiredField: '(الزامی)',
     author: 'نویسنده',
-    goHome: 'رفتن به خانه',
+    goHome: 'بازگشت به صفحهٔ اصلی',
     errorLede: 'هنگام بارگذاری این صفحه مشکلی پیش آمد.',
     errorTitle: 'مشکلی پیش آمد',
     loadingLabel: 'در حال بارگذاری',
@@ -216,7 +216,7 @@ export const uiCopy: Record<Locale, UiCopy> = {
     noImage: 'بدون تصویر',
     notFoundLede: 'این صفحه پیدا نشد.',
     tryAgain: 'تلاش دوباره',
-    published: 'منتشرشده',
+    published: 'منتشرشده در',
     submit: 'ارسال',
     untitledCategory: 'دستهٔ بدون عنوان',
     heroConsoleStatus: 'فعال',
@@ -226,24 +226,24 @@ export const uiCopy: Record<Locale, UiCopy> = {
       domains: ['محصول', 'کسب‌وکار', 'فناوری'],
       centre: 'جایی که کار می‌کنم',
       caption: 'تقاطع',
-      description: 'نمودار: محصول، کسب‌وکار و فناوری که روی یک نقطه‌ی کاری مشترک هم‌گرا می‌شوند.',
+      description: 'نمودار پیوند محصول، کسب‌وکار و فناوری در شیوهٔ کار من.',
     },
     capabilityIndex: {
       groups: ['هسته', 'سیستم‌ها', 'اجرا', 'تخصصی'],
       indexLabel: 'در این صفحه',
       total: '{n} توانمندی',
-      description: 'فهرست: شانزده توانمندی در چهار گروه — هسته، سیستم‌ها، اجرا و تجربه‌ی تخصصی.',
+      description: 'فهرست ۱۶ توانمندی در چهار گروه: هسته، سیستم‌ها، اجرا و تخصصی.',
     },
     workbench: {
       output: 'خروجی',
-      seenIn: 'دیده‌شده در',
+      seenIn: 'نمونهٔ کاربرد',
       next: 'بعدی:',
-      backToFrame: 'بازگشت به قاب‌بندی',
+      backToFrame: 'بازگشت به تعریف مسئله',
     },
     labArchiveTitle: 'آزمایشگاه',
     language: 'زبان',
     next: 'بعدی',
-    opensInNewTab: 'در برگهٴ جدید باز می‌شود',
+    opensInNewTab: 'در برگهٔ جدید باز می‌شود',
     openMenu: 'باز کردن منو',
     previous: 'قبلی',
     search: 'جستجو',
@@ -254,14 +254,14 @@ export const uiCopy: Record<Locale, UiCopy> = {
     switchToDarkMode: 'تغییر به حالت تیره',
     switchToLightMode: 'تغییر به حالت روشن',
     workArchiveTag: 'آرشیو',
-    workCaseStudy: 'مطالعهٴ موردی',
+    workCaseStudy: 'مطالعهٔ موردی',
     workCompanies: { other: '{n} شرکت' },
     workEmpty: 'هنوز چیزی به این زبان منتشر نشده است.',
     workFilterAll: 'همه',
-    workFilterLabel: 'فیلتر بر اساس نوع کار',
-    workIndexTitle: 'همهٴ پروژه‌ها',
-    workLive: 'نسخهٴ زنده',
-    workMediaPending: 'تصویر پروژه در انتظار',
+    workFilterLabel: 'فیلتر بر اساس نوع پروژه',
+    workIndexTitle: 'همهٔ پروژه‌ها',
+    workLive: 'مشاهدهٔ نسخهٔ زنده',
+    workMediaPending: 'تصویر پروژه هنوز آماده نیست',
     workProjects: { other: '{n} پروژه' },
   },
   ar: {
@@ -608,11 +608,8 @@ export const uiCopy: Record<Locale, UiCopy> = {
 export const switchToLanguageLabel = (locale: Locale, targetName: string): string =>
   uiCopy[locale].switchToLanguage.replace('{language}', targetName)
 
-/**
- * Resolves a count template through CLDR plural rules. Digits stay Latin in every locale (DS-10:
- * codes and numbers are mono/Latin site-wide), so `{n}` is the plain number.
- */
+/** Resolve a count template through CLDR plural rules; Persian prose uses Persian digits. */
 export const pluralCopy = (locale: Locale, copy: PluralCopy, n: number): string => {
   const rule = new Intl.PluralRules(locale).select(n)
-  return (copy[rule] ?? copy.other).replace('{n}', String(n))
+  return (copy[rule] ?? copy.other).replace('{n}', locale === 'fa' ? new Intl.NumberFormat('fa-IR', { useGrouping: false }).format(n) : String(n))
 }
