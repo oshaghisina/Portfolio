@@ -226,7 +226,7 @@ export function emitThemeCss(json: TokensFile): string {
     block('@theme inline', bridge),
     `/* Persian overrides — same variables, script-specific values (D-016). */`,
     block(LOCALE_OVERRIDE_SELECTORS.fa!, localeOverrides.fa!),
-    `/* Arabic overrides — same variables; Vazirmatn already covers the Arabic subset. */`,
+    `/* Arabic overrides — same variables; Peyda already covers the Arabic subset. */`,
     block(LOCALE_OVERRIDE_SELECTORS.ar!, localeOverrides.ar!),
     `/* Japanese overrides — taller CJK leading, no negative tracking, Noto Sans JP through --font-sans-ja. */`,
     block(LOCALE_OVERRIDE_SELECTORS.ja!, localeOverrides.ja!),

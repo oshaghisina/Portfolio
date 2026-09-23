@@ -3,7 +3,8 @@ import type { Metadata } from 'next'
 import { cn } from '@/utilities/ui'
 import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
-import { Noto_Sans_JP, Vazirmatn } from 'next/font/google'
+import { Noto_Sans_JP } from 'next/font/google'
+import localFont from 'next/font/local'
 import React from 'react'
 
 import { AdminBar } from '@/components/AdminBar'
@@ -22,13 +23,35 @@ import { getLocaleReadinessMap } from '@/i18n/contentReady'
 import { parseLocalePath } from '@/i18n/navigation'
 import { langAttrs } from '@/utilities/locale'
 
-// Persian partner face (DS-04, D-016). Not preloaded: English pages never use it; a
-// lang="fa" subtree pulls it in through --font-sans-fa.
-const vazirmatn = Vazirmatn({
-  subsets: ['arabic', 'latin'],
-  variable: '--font-vazirmatn',
+// Persian/Arabic partner face (DS-04, D-025): Peyda 4 Pro, self-hosted and licensed — see
+// src/fonts/peyda/README.md. One variable file covers the 400/500/600 the site renders.
+//
+// `unicode-range` pins it to the Arabic script, so Latin words and Western digits inside a Persian
+// page keep rendering in Geist Sans rather than in Peyda's Latin. The four blocks are the ones
+// Peyda actually covers (Arabic Supplement and Ext-A hold one codepoint each); ZWNJ/ZWJ is in the
+// range because Persian is written with نیم‌فاصله, and the guillemets because Persian sets
+// quotations in «…» and Peyda draws its own.
+//
+// `adjustFontFallback: false` is load-bearing, not tidying: next/font would otherwise emit a second,
+// metric-adjusted Arial face and append it to --font-peyda. `declarations` only reaches the real
+// @font-face, so that fallback would carry no unicode-range and would swallow the Latin before
+// Geist Sans ever saw it.
+//
+// Not preloaded: English pages never use it; a lang="fa" or lang="ar" subtree pulls it in through
+// --font-sans-fa.
+const peyda = localFont({
+  src: '../../fonts/peyda/PeydaWebVF.woff2',
+  variable: '--font-peyda',
+  weight: '100 1000',
   display: 'swap',
   preload: false,
+  adjustFontFallback: false,
+  declarations: [
+    {
+      prop: 'unicode-range',
+      value: 'U+0600-06FF, U+200C-200D, U+FB50-FDFF, U+FE70-FEFF, U+00AB, U+00BB',
+    },
+  ],
 })
 
 // Japanese partner face. Also not preloaded; a lang="ja" subtree pulls it in through
@@ -48,7 +71,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
   return (
     <html
-      className={cn(GeistSans.variable, GeistMono.variable, vazirmatn.variable, notoSansJp.variable)}
+      className={cn(GeistSans.variable, GeistMono.variable, peyda.variable, notoSansJp.variable)}
       {...langAttrs(locale)}
       suppressHydrationWarning
     >

@@ -47,7 +47,7 @@ export const Type: React.FC<{ json: TokensFile }> = ({ json }) => {
       id="type"
       index="02"
       lead="Roles, not steps,"
-      lede="Geist Sans for reading, Geist Mono for labels and codes, Vazirmatn as the Persian partner. Sizes are fluid roles emitted as clamp(); each carries its own line-height and tracking. Inside lang=fa the same variables take Persian values — taller leading, zero tracking, no uppercase, a 13px eyebrow floor."
+      lede="Geist Sans for reading, Geist Mono for labels and codes, Peyda as the Persian partner — pinned to the Arabic script, so Latin words and digits inside Persian copy stay Geist. Sizes are fluid roles emitted as clamp(); each carries its own line-height and tracking. Inside lang=fa the same variables take Persian values — taller leading, zero tracking, no uppercase, a 13px eyebrow floor."
       tag="Type · DS-03 DS-04"
       tail="in two scripts."
     >
