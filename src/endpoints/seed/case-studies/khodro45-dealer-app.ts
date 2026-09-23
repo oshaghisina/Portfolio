@@ -782,7 +782,7 @@ const COPY: Record<Locale, Copy> = {
 type ArchiveLocale = Exclude<Locale, 'en'>
 const archiveIdentity = (locale: ArchiveLocale) => {
   const text = projectTextCopy[K45_SLUG]?.[locale]
-  const company = projectCompanyCopy[locale]['Carsparency & Khodro45']
+  const company = projectCompanyCopy[locale]['Khodro45']
   const role = projectRoleCopy[locale]['Product designer']
   if (!text || !company || !role)
     throw new Error(`khodro45-dealer-app case study: no archive copy in ${locale}`)
@@ -942,7 +942,7 @@ export function k45LocalizedFields(locale: Locale, media: K45MediaIds) {
           title: 'Khodro45 dealer app — a timed auction market for Iranian car dealers',
           summary:
             'The B2B side of Iran’s Khodro45 marketplace: 241 screens across three parallel market modes, a fair-price-guided bidding system, a six-step escrowed settlement pipeline, two generations of dealer monetisation, and a 28-frame prototype built to test the transaction state machine.',
-          company: 'Carsparency & Khodro45',
+          company: 'Khodro45',
           role: 'Product designer',
         }
       : archiveIdentity(locale)

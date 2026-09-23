@@ -109,23 +109,39 @@ describe('ExperienceCatalogueBlock', () => {
     expect(screen.getByText('Acme')).toBeTruthy()
   })
 
-  it('renders two marks for Carsparency & Khodro45', () => {
-    const { container } = render(
+  it('renders one mark each for Carsparency and Khodro45', () => {
+    const { container, rerender } = render(
       <ExperienceCatalogueBlock
         items={[
           {
             index: 'A3',
-            name: 'Carsparency & Khodro45',
+            name: 'Carsparency',
             role: 'Designer',
-            companyKey: 'carsparencyKhodro45',
+            companyKey: 'carsparency',
           },
         ]}
         sectionHeader={{ tag: 'Experience', lead: "Where I've", tail: 'worked' }}
       />,
     )
-    const imgs = container.querySelectorAll('img')
-    expect(imgs).toHaveLength(2)
+    let imgs = container.querySelectorAll('img')
+    expect(imgs).toHaveLength(1)
     expect(imgs[0]!.getAttribute('src')).toBe('/company-logos/carsparency.png')
-    expect(imgs[1]!.getAttribute('src')).toBe('/company-logos/khodro45.png')
+
+    rerender(
+      <ExperienceCatalogueBlock
+        items={[
+          {
+            index: 'A4',
+            name: 'Khodro45',
+            role: 'Designer',
+            companyKey: 'khodro45',
+          },
+        ]}
+        sectionHeader={{ tag: 'Experience', lead: "Where I've", tail: 'worked' }}
+      />,
+    )
+    imgs = container.querySelectorAll('img')
+    expect(imgs).toHaveLength(1)
+    expect(imgs[0]!.getAttribute('src')).toBe('/company-logos/khodro45.png')
   })
 })

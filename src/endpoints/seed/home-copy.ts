@@ -61,7 +61,7 @@ export interface HomeCopy {
    */
   proof: { metrics: { value: string; caption: string }[] }
   tools: { header: SectionHeaderCopy; categories: Record<CategoryKey, string> }
-  /** Ten employers. `index` (A1–A10) is ornament and stays Latin; `name` takes each script's form. */
+  /** Eleven employers. `index` (A1–A11) is ornament and stays Latin; `name` takes each script's form. */
   experience: { header: SectionHeaderCopy; items: { name: string; role: string; blurb: string }[] }
   /** The project mosaic's opener. Tile order and sizes are structure, not copy — see `HOME_MOSAIC`. */
   selectedWork: { header: SectionHeaderCopy }
@@ -163,7 +163,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
     proof: {
       metrics: [
         { value: '10 yrs', caption: 'Experience across product design and growth' },
-        { value: '10', caption: 'Companies and products' },
+        { value: '11', caption: 'Companies and products' },
         { value: '16', caption: 'Industries spanned' },
       ],
     },
@@ -205,9 +205,16 @@ export const homeCopy: Record<Locale, HomeCopy> = {
             'Replaced spreadsheets with BI dashboards and ran the campaigns that grew acquisition and engagement.',
         },
         {
-          name: 'Carsparency & Khodro45',
-          role: 'Product designer · 2.5 yr',
-          blurb: 'Designed the whole car marketplace — dealer app, operator console, inspection tool and seller web, on one design system.',
+          name: 'Carsparency',
+          role: 'Product designer · 1 yr',
+          blurb:
+            'Designed the English/UAE car marketplace across Pro, operator console, inspection tool and seller web, on one design system.',
+        },
+        {
+          name: 'Khodro45',
+          role: 'Product designer · 1.5 yr',
+          blurb:
+            'Designed the Persian RTL dealer app for the Iran marketplace — timed auction, fair-price and escrow flows.',
         },
         {
           name: 'Hadish Mall',
@@ -252,7 +259,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         tag: 'Work',
         lead: 'Selected',
         tail: 'work',
-        lede: 'Nine projects from the range — product, growth and research across ten companies.',
+        lede: 'Nine projects from the range — product, growth and research across eleven companies.',
       },
     },
     contact: {
@@ -268,111 +275,111 @@ export const homeCopy: Record<Locale, HomeCopy> = {
     meta: {
       title: 'سینا اوشاقی — طراح و مدیر محصول',
       description:
-        'طراح و مدیر محصول که رشد را هم پیش می‌برد — از پژوهش تا کمپین تا داشبوردهایی که نتیجه را نشان می‌دهند.',
+        'طراحی و مدیریت محصول، همراه با اجرای رشد؛ از پژوهش و کمپین تا داشبوردهایی که نتیجه را می‌سنجند.',
     },
     hero: {
       heading: 'طراح محصولی که رشد را هم پیش می‌برد',
-      lede: 'از پژوهش تا کمپین تا داشبوردهایی که نتیجه را نشان می‌دهند — ده سال در فین‌تک، ابر، خودرو، آموزش و رسانه.',
-      primaryLabel: 'کارهای منتخب',
-      secondaryLabel: 'ایمیل به سینا',
+      lede: 'ده سال کار در فین‌تک، زیرساخت ابری، خودرو، آموزش و رسانه؛ از پژوهش و کمپین تا سنجش نتیجه با داده.',
+      primaryLabel: 'پروژه‌های منتخب',
+      secondaryLabel: 'تماس با من',
     },
     workbench: {
       header: {
         tag: 'چطور کار می‌کنم',
         lead: 'چطور',
         tail: 'کار می‌کنم',
-        lede: 'مالک مسئله‌ام، نه بریف — از اولین درخواست مبهم تا اعداد بعد از انتشار.',
+        lede: 'از درخواست مبهم اولیه تا سنجش نتیجه پس از عرضه، مسئولیت مسئله را می‌پذیرم.',
       },
-      principle: 'مالک مسئله — در هر مرحله',
-      loopLabel: 'شواهد مدل را دوباره باز می‌کند',
+      principle: 'مسئولیت مسئله، در تمام مراحل',
+      loopLabel: 'یافته‌ها مسیر را بازنگری می‌کنند',
       stages: [
         {
-          label: 'قاب‌بندی',
-          statement: 'بریف مسئله نیست.',
-          question: 'واقعاً چه چیزی غلط است، و برای چه کسی؟',
+          label: 'صورت‌بندی',
+          statement: 'درخواست اولیه، خودِ مسئله نیست.',
+          question: 'مشکل واقعی چیست و چه کسانی با آن روبه‌رو هستند؟',
           description:
-            'نقشه می‌کشم چه کسی متأثر است، چه هزینه‌ای دارد و چه محدودیتی هست، بعد مسئله را طوری بازمی‌گویم که کسب‌وکار بتواند بسنجد.',
-          output: 'بیان مسئله + متریک موفقیت',
+            'افراد درگیر، هزینهٔ مسئله و محدودیت‌ها را بررسی می‌کنم. بعد مسئله را طوری صورت‌بندی می‌کنم که بتوان نتیجه را سنجید.',
+          output: 'تعریف مسئله و شاخص موفقیت',
         },
         {
           label: 'نقشه',
-          statement: 'اول کل سیستم را ببین.',
+          statement: 'اول تصویر کامل را ببین.',
           question: 'این مسئله بخشی از چه سیستمی است؟',
           description:
-            'بازیگران، عملیات، پول و داده روی یک مدل — تا رابط آخرین چیزی باشد که کشیده می‌شود، نه اولین.',
-          output: 'نقشهٔ سیستم و سرویس',
+            'آدم‌ها، عملیات، جریان مالی و داده را در یک نقشه کنار هم می‌گذارم تا پیش از طراحی رابط، خودِ سیستم روشن شود.',
+          output: 'نقشهٔ سیستم و خدمات',
         },
         {
           label: 'تصمیم',
-          statement: 'انتخاب کن، حذف کن، و بنویس.',
-          question: 'چه می‌سازیم، چه را کنار می‌گذاریم، و از کجا می‌فهمیم کار کرده؟',
+          statement: 'انتخاب کن، کنار بگذار و ثبت کن.',
+          question: 'چه چیزی می‌سازیم، چه چیزی را کنار می‌گذاریم و موفقیت را چطور می‌سنجیم؟',
           description:
-            'اولویت‌ها، دامنه و نیازمندی‌هایی آن‌قدر دقیق که طراحی، مهندسی و عملیات بدون حدس بسازند.',
-          output: 'نیازمندی‌های محدود با متریک',
+            'اولویت‌ها، دامنه و نیازمندی‌ها را روشن می‌کنم تا تیم‌های طراحی، مهندسی و عملیات برای اجرا نیاز به حدس‌زدن نداشته باشند.',
+          output: 'نیازمندی‌های مشخص و شاخص‌های سنجش',
         },
         {
-          label: 'ساخت',
-          statement: 'واقعی‌اش کن، بعد اجرا کن.',
-          question: 'در دنیای واقعی کار می‌کند، از جمله عملیات پشتش؟',
+          label: 'عرضه',
+          statement: 'راه‌حل باید در عمل کار کند.',
+          question: 'محصول و عملیات پشت آن، هر دو آمادهٔ اجرا هستند؟',
           description:
-            'محصول، سرویس یا کمپین را از ابتدا تا انتها طراحی و تحویل می‌دهم — از جمله عملیاتی که بعد از انتشار نگهش می‌دارد.',
-          output: 'محصول، سرویس یا کمپین زنده',
+            'محصول، خدمت یا کمپین را تا عرضه پیش می‌برم و به عملیاتی می‌پردازم که پس از عرضه آن را سرپا نگه می‌دارد.',
+          output: 'محصول، خدمت یا کمپینِ در حال اجرا',
         },
         {
           label: 'سنجش',
-          statement: 'بگذار اعداد جواب بدهند.',
-          question: 'واقعاً چه شد، و چه چیزی را عوض می‌کند؟',
+          statement: 'نتیجه را با داده بسنج.',
+          question: 'چه اتفاقی افتاد و بر اساس آن چه چیزی باید تغییر کند؟',
           description:
-            'از روی مشخصات ابزارگذاری شده، نه بعداً چسبانده‌شده. آنچه داده نشان می‌دهد مدل را — و تصمیم بعدی را — به‌روز می‌کند.',
-          output: 'شواهد → تصمیم بعدی',
+            'سنجش را از همان زمان تعریف نیازمندی‌ها در نظر می‌گیرم. داده‌ها مبنای بازنگری در مدل و تصمیم بعدی‌اند.',
+          output: 'شواهد برای تصمیم بعدی',
         },
       ],
     },
     tracks: {
       header: {
-        tag: 'مسیرها',
-        lead: 'تمرکز',
-        tail: 'اصلی روی',
-        lede: 'ده سال در طراحی محصول، ابزارهای روزمرهٔ هوش مصنوعی، و سیستم‌هایی که همه را کنار هم نگه می‌دارند.',
+        tag: 'حوزه‌های تمرکز',
+        lead: 'بیشتر روی',
+        tail: 'این‌ها کار می‌کنم',
+        lede: 'ده سال تجربه در طراحی محصول، کار روزمره با ابزارهای هوش مصنوعی و ساخت سیستم‌هایی که این کارها را به هم وصل می‌کنند.',
       },
       items: [
         {
           title: 'طراحی محصول',
           experience: '۱۰ سال',
           description:
-            'مالکیت محصول و نقشهٔ راه، طراحی تعامل، و پژوهشی که ثابت می‌کند آنچه منتشر شد واقعاً کار کرده است.',
+            'از تصمیم‌های محصول و نقشهٔ راه تا طراحی تعامل و پژوهشی که نشان می‌دهد محصول پس از عرضه چطور عمل کرده است.',
         },
         {
-          title: 'گردش‌کار هوش مصنوعی',
+          title: 'جریان‌های کاری هوش مصنوعی',
           description:
-            'کار روزمره از Cursor و Claude می‌گذرد، در کنار پشتهٔ تحلیلی — GA4، Amplitude، Search Console — که تصمیم‌ها را اندازه‌پذیر نگه می‌دارد.',
+            'در کار روزمره از Cursor و Claude استفاده می‌کنم و با GA4، Amplitude و Search Console نتیجهٔ تصمیم‌ها را می‌سنجم.',
         },
         {
           title: 'سیستم‌های طراحی',
           description:
-            'دیزاین‌سیستمِ زیر چهار محصول کارسپرنسی را نوشتم — دوازده طیف رنگ، مقیاس تایپی پنج‌وزنه و ماتریس کامل حالت‌های دکمه.',
+            'سیستم طراحیِ چهار محصول Carsparency را تدوین کردم: دوازده طیف رنگ، پنج وزن تایپ و ماتریس کامل حالت‌های دکمه.',
         },
       ],
     },
     proof: {
       metrics: [
         { value: '۱۰ سال', caption: 'تجربه در طراحی محصول و رشد' },
-        { value: '۱۰', caption: 'شرکت و محصول' },
-        { value: '۱۶', caption: 'صنعتی که در آن کار کرده‌ام' },
+        { value: '۱۱', caption: 'شرکت و محصول' },
+        { value: '۱۶', caption: 'حوزهٔ فعالیت' },
       ],
     },
     tools: {
       header: {
-        tag: 'ابزارها / پشته',
-        lead: 'سیستم‌هایی که پشت',
-        tail: 'فکر، طراحی و انتشار من هستند.',
-        lede: 'پژوهش، طراحی، ساخت، سنجش، دانش و زیرساختی که روی آن اجرا می‌شود — یک پشتهٔ به‌هم‌پیوسته، نه قفسه‌ای از جعبه‌ابزارهای جدا.',
+        tag: 'ابزارها و فناوری‌ها',
+        lead: 'ابزارهایی برای',
+        tail: 'فکرکردن، ساختن و سنجیدن',
+        lede: 'ابزارهای پژوهش، طراحی، ساخت و سنجش را در کنار دانش و زیرساخت لازم به کار می‌گیرم تا تصمیم‌ها به اجرا برسند.',
       },
       categories: {
-        designPrototyping: 'طراحی و تولید خلاق',
-        aiAgents: 'هوش مصنوعی و ایجنت‌ها',
+        designPrototyping: 'طراحی و نمونه‌سازی',
+        aiAgents: 'هوش مصنوعی و عامل‌ها',
         buildDelivery: 'ساخت و تحویل',
-        dataIntelligence: 'داده و هوشمندی محصول',
+        dataIntelligence: 'داده و تحلیل محصول',
         growthMeasurement: 'رشد و سنجش',
         infraOperations: 'زیرساخت و عملیات',
         knowledgeResearch: 'دانش و پژوهش',
@@ -383,75 +390,82 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         tag: 'تجربه',
         lead: 'کجا',
         tail: 'کار کرده‌ام',
-        lede: 'نقش‌هایی منتخب در محصول، طراحی، رشد و همکاری فنی.',
+        lede: 'نقش‌هایی در محصول، طراحی، رشد و همکاری با تیم‌های فنی.',
       },
       items: [
         {
           name: 'طاهاگشت',
           role: 'طراح و استراتژیست محصول · پاره‌وقت',
           blurb:
-            'طراحی و استراتژی محصول برای سایت رزرو، دیزاین‌سیستم و پنل داخلی یک کسب‌وکار سفر.',
+            'روی طراحی و استراتژی سایت رزرو، سیستم طراحی و پنل داخلی یک کسب‌وکار سفر کار کردم.',
         },
         {
           name: 'دیجی‌کالا (طلای دیجیتال)',
-          role: 'طراح / بازاریاب / توسعه‌دهندهٔ BI · ۲.۵ سال',
-          blurb: 'جای صفحه‌گسترده‌ها را با داشبوردهای BI گرفتم و کمپین‌هایی را اجرا کردم که جذب و تعامل را بالا برد.',
+          role: 'طراح، بازاریاب و توسعه‌دهندهٔ BI · ۲.۵ سال',
+          blurb: 'داشبوردهای BI را جایگزین صفحه‌گسترده‌های تیم کردم و کمپین‌هایی برای افزایش جذب و تعامل اجرا کردم.',
         },
         {
-          name: 'کارسپرنسی و خودرو۴۵',
-          role: 'طراح محصول · ۲.۵ سال',
-          blurb: 'کل مارکت‌پلیس خودرو را طراحی کردم — اپ نمایشگاه‌دار، کنسول اپراتور، ابزار بازرسی و وب فروشنده، روی یک دیزاین‌سیستم.',
+          name: 'Carsparency',
+          role: 'طراح محصول · ۱ سال',
+          blurb:
+            'بازارگاه خودروی انگلیسی‌زبانِ امارات را در چهار بخش طراحی کردم: Pro، کنسول اپراتور، ابزار بازرسی و وب فروشنده؛ همه بر پایهٔ یک سیستم طراحی.',
+        },
+        {
+          name: 'Khodro45',
+          role: 'طراح محصول · ۱.۵ سال',
+          blurb:
+            'اپ راست‌به‌چپ نمایشگاه‌داران در بازار ایران را طراحی کردم؛ با مزایدهٔ زمان‌دار، راهنمای قیمت منصفانه و فرایند تسویهٔ امانی.',
         },
         {
           name: 'مجتمع هدیش',
           role: 'بازاریابی · ۱ سال',
           blurb:
-            'با کمپین‌ها و همکاری با اینفلوئنسرها حضور بازدیدکننده را بیشتر کردم و اپی برای مدیریت مرکز خرید پیشنهاد دادم.',
+            'با کمپین‌ها و همکاری با اینفلوئنسرها به افزایش بازدید کمک کردم و طرح یک اپ برای مدیریت مرکز خرید را پیشنهاد دادم.',
         },
         {
           name: 'فیبونا',
           role: 'مدیر محصول · ۲ سال',
-          blurb: 'ذی‌نفعان را حول هویت برند، شعار و وب‌سایتی تازه — از صفر — هم‌راستا کردم.',
+          blurb: 'ذی‌نفعان را برای تدوین هویت برند، شعار و طراحی یک وب‌سایت تازه همراه کردم.',
         },
         {
           name: 'اوتیچر',
           role: 'مدیر محصول و طراح · ۱ سال',
-          blurb: 'پژوهش مدرس و زبان‌آموز را به نقشهٔ راهِ اعتبارسنجی‌شدهٔ تطبیق معلم و دانش‌آموز تبدیل کردم.',
+          blurb: 'با پژوهش دربارهٔ مدرس‌ها و زبان‌آموزان، نقشهٔ راهی اعتبارسنجی‌شده برای تطبیق آن‌ها تدوین کردم.',
         },
         {
           name: 'ابر آروان',
           role: 'طراح محصول · ۲ سال',
-          blurb: 'پلتفرم را حول شاخص‌های سروری که کاربران واقعاً لازم داشتند بازطراحی کردم و NPS بالا رفت.',
+          blurb: 'پلتفرم را بر اساس شاخص‌های سروریِ موردنیاز کاربران بازطراحی کردم؛ پس از آن NPS افزایش یافت.',
         },
         {
           name: 'بایومیز',
           role: 'مدیر محصول و طراح · ۳ سال',
-          blurb: 'وب‌سایت، پنل آموزش و سیستم طراحی را ساختم تا توسعه‌دهنده‌ها سریع منتشر کنند.',
+          blurb: 'وب‌سایت، پنل آموزش و سیستم طراحی را ساختم تا تیم توسعه بتواند سریع‌تر محصول را عرضه کند.',
         },
         {
           name: 'دیدستان',
           role: 'طراح UI/UX · ۸ ماه',
-          blurb: 'از دل پژوهش لین UX، پروتوتایپ یک پلتفرم ویدئوی داده‌محور را طراحی کردم.',
+          blurb: 'با تکیه بر پژوهش ناب UX، نمونهٔ اولیهٔ یک پلتفرم ویدئویی داده‌محور را طراحی کردم.',
         },
         {
           name: 'A1Paradise',
           role: 'طراح UI/UX · ۱.۲ سال',
-          blurb: 'میکروگیم‌های گیمیفای‌شده و یک اپ تماس دسکتاپ و B2C طراحی کردم.',
+          blurb: 'بازی‌های کوچک و یک اپ تماس برای دسکتاپ و کاربران عادی طراحی کردم.',
         },
       ],
     },
     selectedWork: {
       header: {
-        tag: 'کار',
-        lead: 'کارهای',
+        tag: 'پروژه‌ها',
+        lead: 'پروژه‌های',
         tail: 'منتخب',
-        lede: 'نُه پروژه از میان دامنه‌ای از کارها — محصول، رشد و پژوهش در ده شرکت.',
+        lede: 'نُه پروژه در حوزه‌های محصول، رشد و پژوهش، از میان تجربهٔ همکاری با یازده شرکت.',
       },
     },
     contact: {
       heading: 'گفت‌وگو کنیم',
-      body: 'اگر در حال استخدام‌اید، چیزی می‌سازید، یا می‌خواهید دربارهٔ محصول و رشد هم‌فکری کنیم — در تماس باشید.',
-      primaryLabel: 'ایمیل به سینا',
+      body: 'اگر برای محصول، طراحی یا رشد به همکاری نیاز دارید، خوشحال می‌شوم گفت‌وگو کنیم.',
+      primaryLabel: 'ایمیل به من',
       secondaryLabel: 'لینکدین',
     },
   },
@@ -550,7 +564,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
     proof: {
       metrics: [
         { value: '10 سنوات', caption: 'خبرة في تصميم المنتج والنمو' },
-        { value: '10', caption: 'شركة ومنتج' },
+        { value: '11', caption: 'شركة ومنتج' },
         { value: '16', caption: 'قطاعًا عملتُ فيه' },
       ],
     },
@@ -591,9 +605,16 @@ export const homeCopy: Record<Locale, HomeCopy> = {
           blurb: 'استبدلتُ الجداول بلوحات معلومات ذكاء الأعمال، وأدرتُ الحملات التي رفعت الاكتساب والتفاعل.',
         },
         {
-          name: 'كارسبارنسي وخودرو45',
-          role: 'مصمم منتج · سنتان ونصف',
-          blurb: 'صمّمتُ سوق السيارات بالكامل — تطبيق التاجر، وكنسول المشغّل، وأداة الفحص، وويب البائع، على نظام تصميم واحد.',
+          name: 'Carsparency',
+          role: 'مصمم منتج · سنة',
+          blurb:
+            'صمّمتُ سوق السيارات الإنجليزية/الإماراتية عبر Pro وكنسول المشغّل وأداة الفحص وويب البائع، على نظام تصميم واحد.',
+        },
+        {
+          name: 'Khodro45',
+          role: 'مصمم منتج · سنة ونصف',
+          blurb:
+            'صمّمتُ تطبيق التجّار الفارسي RTL لسوق إيران — مزاد موقّت وسعر عادل وتدفّقات الضمان.',
         },
         {
           name: 'هديش مول',
@@ -637,7 +658,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         tag: 'العمل',
         lead: 'أعمال',
         tail: 'مختارة',
-        lede: 'تسعة مشاريع من المدى — منتج ونمو وبحث عبر عشر شركات.',
+        lede: 'تسعة مشاريع من المدى — منتج ونمو وبحث عبر إحدى عشرة شركة.',
       },
     },
     contact: {
@@ -742,7 +763,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
     proof: {
       metrics: [
         { value: '10 años', caption: 'Experiencia entre diseño de producto y crecimiento' },
-        { value: '10', caption: 'Empresas y productos' },
+        { value: '11', caption: 'Empresas y productos' },
         { value: '16', caption: 'Sectores recorridos' },
       ],
     },
@@ -784,10 +805,16 @@ export const homeCopy: Record<Locale, HomeCopy> = {
             'Sustituí las hojas de cálculo por paneles de BI y dirigí las campañas que hicieron crecer la captación y la interacción.',
         },
         {
-          name: 'Carsparency & Khodro45',
-          role: 'Diseñador de producto · 2,5 años',
+          name: 'Carsparency',
+          role: 'Diseñador de producto · 1 año',
           blurb:
-            'Diseñé todo el marketplace de coches: app del concesionario, consola del operador, herramienta de inspección y web del vendedor, sobre un mismo sistema de diseño.',
+            'Diseñé el marketplace de coches en inglés/EAU en Pro, consola del operador, herramienta de inspección y web del vendedor, sobre un mismo sistema de diseño.',
+        },
+        {
+          name: 'Khodro45',
+          role: 'Diseñador de producto · 1,5 años',
+          blurb:
+            'Diseñé la app de concesionarios en persa RTL para el marketplace de Irán: subasta temporizada, precio justo y flujos de custodia.',
         },
         {
           name: 'Hadish Mall',
@@ -835,7 +862,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         tag: 'Trabajo',
         lead: 'Trabajo',
         tail: 'seleccionado',
-        lede: 'Nueve proyectos del conjunto: producto, crecimiento e investigación en diez empresas.',
+        lede: 'Nueve proyectos del conjunto: producto, crecimiento e investigación en once empresas.',
       },
     },
     contact: {
@@ -940,7 +967,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
     proof: {
       metrics: [
         { value: '10 Jahre', caption: 'Erfahrung in Produktdesign und Growth' },
-        { value: '10', caption: 'Unternehmen und Produkte' },
+        { value: '11', caption: 'Unternehmen und Produkte' },
         { value: '16', caption: 'Branchen abgedeckt' },
       ],
     },
@@ -982,10 +1009,16 @@ export const homeCopy: Record<Locale, HomeCopy> = {
             'Tabellen durch BI-Dashboards ersetzt und die Kampagnen geführt, die Neukundengewinnung und Engagement gesteigert haben.',
         },
         {
-          name: 'Carsparency & Khodro45',
-          role: 'Produktdesigner · 2,5 Jahre',
+          name: 'Carsparency',
+          role: 'Produktdesigner · 1 Jahr',
           blurb:
-            'Den gesamten Automarktplatz gestaltet – Händler-App, Operator-Konsole, Prüfwerkzeug und Verkäufer-Website, auf einem Designsystem.',
+            'Den englischsprachigen/VAE-Automarktplatz über Pro, Operator-Konsole, Prüfwerkzeug und Verkäufer-Website gestaltet — auf einem Designsystem.',
+        },
+        {
+          name: 'Khodro45',
+          role: 'Produktdesigner · 1,5 Jahre',
+          blurb:
+            'Die persische RTL-Händler-App für den iranischen Marktplatz gestaltet — zeitgesteuerte Auktion, Fair Price und Treuhand-Flows.',
         },
         {
           name: 'Hadish Mall',
@@ -1033,7 +1066,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         tag: 'Arbeit',
         lead: 'Ausgewählte',
         tail: 'Arbeiten',
-        lede: 'Neun Projekte aus der Bandbreite – Produkt, Growth und Research über zehn Unternehmen.',
+        lede: 'Neun Projekte aus der Bandbreite – Produkt, Growth und Research über elf Unternehmen.',
       },
     },
     contact: {
@@ -1138,7 +1171,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
     proof: {
       metrics: [
         { value: '10 ans', caption: 'Expérience entre design produit et croissance' },
-        { value: '10', caption: 'Entreprises et produits' },
+        { value: '11', caption: 'Entreprises et produits' },
         { value: '16', caption: 'Secteurs parcourus' },
       ],
     },
@@ -1180,10 +1213,16 @@ export const homeCopy: Record<Locale, HomeCopy> = {
             'J’ai remplacé les tableurs par des tableaux de bord BI et mené les campagnes qui ont fait croître l’acquisition et l’engagement.',
         },
         {
-          name: 'Carsparency & Khodro45',
-          role: 'Designer produit · 2,5 ans',
+          name: 'Carsparency',
+          role: 'Designer produit · 1 an',
           blurb:
-            'J’ai conçu toute la marketplace auto — app concessionnaire, console opérateur, outil d’inspection et web vendeur, sur un même design system.',
+            'J’ai conçu la marketplace auto anglophone/Émirats sur Pro, console opérateur, outil d’inspection et web vendeur, sur un même design system.',
+        },
+        {
+          name: 'Khodro45',
+          role: 'Designer produit · 1,5 an',
+          blurb:
+            'J’ai conçu l’app concessionnaires persane RTL pour le marketplace iranien — enchère minutée, prix équitable et flux d’escrow.',
         },
         {
           name: 'Hadish Mall',
@@ -1231,7 +1270,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         tag: 'Travail',
         lead: 'Travaux',
         tail: 'sélectionnés',
-        lede: 'Neuf projets parmi l’ensemble — produit, croissance et recherche dans dix entreprises.',
+        lede: 'Neuf projets parmi l’ensemble — produit, croissance et recherche dans onze entreprises.',
       },
     },
     contact: {
@@ -1336,7 +1375,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
     proof: {
       metrics: [
         { value: '10年', caption: 'プロダクトデザインとグロースの経験' },
-        { value: '10', caption: '企業とプロダクト' },
+        { value: '11', caption: '企業とプロダクト' },
         { value: '16', caption: '関わった業界' },
       ],
     },
@@ -1377,9 +1416,16 @@ export const homeCopy: Record<Locale, HomeCopy> = {
           blurb: 'スプレッドシートをBIダッシュボードに置き換え、獲得とエンゲージメントを伸ばしたキャンペーンを運用。',
         },
         {
-          name: 'Carsparency・Khodro45',
-          role: 'プロダクトデザイナー · 2.5年',
-          blurb: '自動車マーケットプレイス全体を設計。ディーラーアプリ、オペレーターコンソール、点検ツール、出品者ウェブを1つのデザインシステム上に。',
+          name: 'Carsparency',
+          role: 'プロダクトデザイナー · 1年',
+          blurb:
+            '英語圏／UAEの自動車マーケットプレイスを、Pro・オペレーターコンソール・点検ツール・出品者ウェブとして1つのデザインシステム上に設計。',
+        },
+        {
+          name: 'Khodro45',
+          role: 'プロダクトデザイナー · 1.5年',
+          blurb:
+            'イラン向けマーケットプレイスのペルシア語RTLディーラーアプリを設計。時間制オークション、公正価格、エスクローフロー。',
         },
         {
           name: 'Hadish Mall',
@@ -1423,7 +1469,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         tag: '仕事',
         lead: '主な',
         tail: '仕事',
-        lede: '幅広い仕事のなかから9つ。10社にわたるプロダクト、グロース、リサーチ。',
+        lede: '幅広い仕事のなかから9つ。11社にわたるプロダクト、グロース、リサーチ。',
       },
     },
     contact: {

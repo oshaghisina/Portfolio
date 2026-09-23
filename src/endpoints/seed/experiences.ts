@@ -10,8 +10,8 @@ import type { RequiredDataFromCollectionSlug } from 'payload'
  * `order` is a stable identity, not a row position — `experience-copy.ts` keys its five extra
  * locales off it and the About page's `careerStageOrder` points at it. So Taha Gasht, which the
  * docs added in 2026-09 as the most recent role (`resume_order: 1`, ahead of Digikala), enters at
- * `order: 0` rather than renumbering all ten existing keys. It sorts first, which is what the
- * resume order means, and nothing downstream has to move.
+ * `order: 0` rather than renumbering all ten existing keys. Khodro45 enters at `order: 11` for the
+ * same reason after splitting from Carsparency (`order: 2`).
  */
 type ExperienceLocaleFields = {
   title: string
@@ -80,23 +80,51 @@ export const experiencesData: ExperienceSeedEntry[] = [
     },
   },
   {
+    // Docs/Experience/Carsparency-Khodro45 — Carsparency span (Timeline Q6: 1 yr after Khodro45).
+    // Stable `order: 2` kept so About `careerStageOrder` and experience-copy locale keys stay put.
     order: 2,
     employment: 'full-time',
     en: {
-      title: 'Carsparency & Khodro45',
-      company: 'Carsparency & Khodro45',
+      title: 'Carsparency',
+      company: 'Carsparency',
       role: 'Product designer',
-      summary: 'Designed a full car buy-and-sell platform for the UAE market — dealer app, operator console, inspection tool and seller web, on one design system.',
+      summary:
+        'Designed the English/UAE car marketplace across Pro, operator console, inspection tool and seller web, on one design system.',
       domain: 'Automotive',
-      durationLabel: '2.5 yrs',
+      durationLabel: '1 yr',
     },
     fa: {
-      title: 'کارسپرنسی و خودرو۴۵',
-      company: 'کارسپرنسی و خودرو۴۵',
+      title: 'Carsparency',
+      company: 'Carsparency',
       role: 'طراح محصول',
-      summary: 'یک پلتفرم کامل خرید و فروش خودرو برای بازار امارات طراحی شد — اپ نمایشگاه‌دار، کنسول اپراتور، ابزار بازرسی و وب فروشنده، روی یک دیزاین‌سیستم.',
+      summary:
+        'بازارگاه خودرو انگلیسی/امارات را روی چهار سطح طراحی کرد — Pro، کنسول اپراتور، ابزار بازرسی و وب فروشنده، روی یک دیزاین‌سیستم.',
       domain: 'خودرو',
-      durationLabel: '۲.۵ سال',
+      durationLabel: '۱ سال',
+    },
+  },
+  {
+    // Docs/Experience/Carsparency-Khodro45 — Khodro45 span (Timeline Q6: 1.5 yr, before Carsparency).
+    // New stable identity `order: 11` — do not renumber existing experience-copy / About keys.
+    order: 11,
+    employment: 'full-time',
+    en: {
+      title: 'Khodro45',
+      company: 'Khodro45',
+      role: 'Product designer',
+      summary:
+        'Designed the Persian RTL dealer app for the Iran marketplace — timed auction, fair-price and escrow flows.',
+      domain: 'Automotive',
+      durationLabel: '1.5 yrs',
+    },
+    fa: {
+      title: 'Khodro45',
+      company: 'Khodro45',
+      role: 'طراح محصول',
+      summary:
+        'اپ نمایشگاه‌دار فارسی و راست‌به‌چپ بازارگاه ایران را طراحی کرد — حراج زمان‌دار، قیمت منصفانه و جریان‌های امانت.',
+      domain: 'خودرو',
+      durationLabel: '۱.۵ سال',
     },
   },
   {

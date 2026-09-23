@@ -50,12 +50,13 @@ export const experienceCopy: Record<ExperienceLocale, Record<number, ExperienceF
       durationLabel: 'سنتان ونصف',
     },
     2: {
-      title: 'كارسبارنسي وخودرو45',
-      company: 'كارسبارنسي وخودرو45',
+      title: 'Carsparency',
+      company: 'Carsparency',
       role: 'مصمم منتج',
       domain: 'السيارات',
-      summary: 'صمّمتُ منصّة بيع وشراء سيارات كاملة لسوق الإمارات — تطبيق التاجر، وكنسول المشغّل، وأداة الفحص، وويب البائع، على نظام تصميم واحد.',
-      durationLabel: 'سنتان ونصف',
+      summary:
+        'صمّمتُ سوق السيارات الإنجليزية/الإماراتية عبر Pro وكنسول المشغّل وأداة الفحص وويب البائع، على نظام تصميم واحد.',
+      durationLabel: 'سنة',
     },
     3: {
       title: 'هديش مول',
@@ -120,6 +121,15 @@ export const experienceCopy: Record<ExperienceLocale, Record<number, ExperienceF
       summary: 'تحديد نطاق وتصميم ساحة Play-to-Earn متعدّدة الألعاب، بقرارات منتج وأعمال تُتّخذ معًا.',
       durationLabel: 'مستمر',
     },
+    11: {
+      title: 'Khodro45',
+      company: 'Khodro45',
+      role: 'مصمم منتج',
+      domain: 'السيارات',
+      summary:
+        'صمّمتُ تطبيق التجّار الفارسي RTL لسوق إيران — مزاد موقّت وسعر عادل وتدفّقات الضمان.',
+      durationLabel: 'سنة ونصف',
+    },
   },
 
   es: {
@@ -141,12 +151,13 @@ export const experienceCopy: Record<ExperienceLocale, Record<number, ExperienceF
       durationLabel: '2,5 años',
     },
     2: {
-      title: 'Carsparency y Khodro45',
-      company: 'Carsparency y Khodro45',
+      title: 'Carsparency',
+      company: 'Carsparency',
       role: 'Diseñador de producto',
       domain: 'Automoción',
-      summary: 'Diseñé una plataforma completa de compraventa de coches para el mercado de los Emiratos: app del concesionario, consola del operador, herramienta de inspección y web del vendedor, sobre un mismo sistema de diseño.',
-      durationLabel: '2,5 años',
+      summary:
+        'Diseñé el marketplace de coches en inglés/EAU en Pro, consola del operador, herramienta de inspección y web del vendedor, sobre un mismo sistema de diseño.',
+      durationLabel: '1 año',
     },
     3: {
       title: 'Hadish Mall',
@@ -211,6 +222,15 @@ export const experienceCopy: Record<ExperienceLocale, Record<number, ExperienceF
       summary: 'Acotando y diseñando una arena play-to-earn multijuego, con las decisiones de producto y de negocio tomadas a la vez.',
       durationLabel: 'En curso',
     },
+    11: {
+      title: 'Khodro45',
+      company: 'Khodro45',
+      role: 'Diseñador de producto',
+      domain: 'Automoción',
+      summary:
+        'Diseñé la app de concesionarios en persa RTL para el marketplace de Irán: subasta temporizada, precio justo y flujos de custodia.',
+      durationLabel: '1,5 años',
+    },
   },
 
   de: {
@@ -232,12 +252,13 @@ export const experienceCopy: Record<ExperienceLocale, Record<number, ExperienceF
       durationLabel: '2,5 Jahre',
     },
     2: {
-      title: 'Carsparency & Khodro45',
-      company: 'Carsparency & Khodro45',
+      title: 'Carsparency',
+      company: 'Carsparency',
       role: 'Produktdesigner',
       domain: 'Automotive',
-      summary: 'Eine vollständige Kauf- und Verkaufsplattform für Autos für den VAE-Markt gestaltet – Händler-App, Operator-Konsole, Prüfwerkzeug und Verkäufer-Website, auf einem Designsystem.',
-      durationLabel: '2,5 Jahre',
+      summary:
+        'Den englischsprachigen/VAE-Automarktplatz über Pro, Operator-Konsole, Prüfwerkzeug und Verkäufer-Website gestaltet — auf einem Designsystem.',
+      durationLabel: '1 Jahr',
     },
     3: {
       title: 'Hadish Mall',
@@ -302,6 +323,15 @@ export const experienceCopy: Record<ExperienceLocale, Record<number, ExperienceF
       summary: 'Zuschnitt und Gestaltung einer Multi-Game-Play-to-Earn-Arena, Produkt- und Geschäftsentscheidungen gemeinsam getroffen.',
       durationLabel: 'Laufend',
     },
+    11: {
+      title: 'Khodro45',
+      company: 'Khodro45',
+      role: 'Produktdesigner',
+      domain: 'Automotive',
+      summary:
+        'Die persische RTL-Händler-App für den iranischen Marktplatz gestaltet — zeitgesteuerte Auktion, Fair Price und Treuhand-Flows.',
+      durationLabel: '1,5 Jahre',
+    },
   },
 
   fr: {
@@ -323,12 +353,13 @@ export const experienceCopy: Record<ExperienceLocale, Record<number, ExperienceF
       durationLabel: '2,5 ans',
     },
     2: {
-      title: 'Carsparency et Khodro45',
-      company: 'Carsparency et Khodro45',
+      title: 'Carsparency',
+      company: 'Carsparency',
       role: 'Designer produit',
       domain: 'Automobile',
-      summary: 'J’ai conçu une plateforme complète d’achat-vente de voitures pour le marché émirati — app concessionnaire, console opérateur, outil d’inspection et web vendeur, sur un même design system.',
-      durationLabel: '2,5 ans',
+      summary:
+        'J’ai conçu la marketplace auto anglophone/Émirats sur Pro, console opérateur, outil d’inspection et web vendeur, sur un même design system.',
+      durationLabel: '1 an',
     },
     3: {
       title: 'Hadish Mall',
@@ -393,6 +424,15 @@ export const experienceCopy: Record<ExperienceLocale, Record<number, ExperienceF
       summary: 'Cadrage et conception d’une arène play-to-earn multi-jeux, décisions produit et business prises ensemble.',
       durationLabel: 'En cours',
     },
+    11: {
+      title: 'Khodro45',
+      company: 'Khodro45',
+      role: 'Designer produit',
+      domain: 'Automobile',
+      summary:
+        'J’ai conçu l’app concessionnaires persane RTL pour le marketplace iranien — enchère minutée, prix équitable et flux d’escrow.',
+      durationLabel: '1,5 an',
+    },
   },
 
   ja: {
@@ -414,12 +454,13 @@ export const experienceCopy: Record<ExperienceLocale, Record<number, ExperienceF
       durationLabel: '2.5年',
     },
     2: {
-      title: 'Carsparency・Khodro45',
-      company: 'Carsparency・Khodro45',
+      title: 'Carsparency',
+      company: 'Carsparency',
       role: 'プロダクトデザイナー',
       domain: '自動車',
-      summary: 'UAE市場向けの自動車売買プラットフォームを全体設計。ディーラーアプリ、オペレーターコンソール、点検ツール、出品者ウェブを1つのデザインシステム上に。',
-      durationLabel: '2.5年',
+      summary:
+        '英語圏／UAEの自動車マーケットプレイスを、Pro・オペレーターコンソール・点検ツール・出品者ウェブとして1つのデザインシステム上に設計。',
+      durationLabel: '1年',
     },
     3: {
       title: 'Hadish Mall',
@@ -483,6 +524,15 @@ export const experienceCopy: Record<ExperienceLocale, Record<number, ExperienceF
       role: 'プロダクトデザイナー／ストラテジスト',
       summary: 'マルチゲームのPlay-to-Earnアリーナのスコープ定義とデザイン。プロダクトと事業の判断を同時に行っている。',
       durationLabel: '進行中',
+    },
+    11: {
+      title: 'Khodro45',
+      company: 'Khodro45',
+      role: 'プロダクトデザイナー',
+      domain: '自動車',
+      summary:
+        'イラン向けマーケットプレイスのペルシア語RTLディーラーアプリを設計。時間制オークション、公正価格、エスクローフロー。',
+      durationLabel: '1.5年',
     },
   },
 }

@@ -1509,7 +1509,8 @@ export interface ExperienceCatalogueBlock {
           | (
               | 'tahaGasht'
               | 'digikala'
-              | 'carsparencyKhodro45'
+              | 'carsparency'
+              | 'khodro45'
               | 'hadishMall'
               | 'fibona'
               | 'oteacher'

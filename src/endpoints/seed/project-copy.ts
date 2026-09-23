@@ -7,7 +7,7 @@ import type { Locale } from '@/utilities/locale'
  * and `overrideAccess: false`, so before this existed the archive listed 28 projects in English,
  * 2 in Persian and **0** in Spanish, French and Japanese.
  *
- * Split three ways on purpose. `company` and `role` repeat across the 35 rows — ten distinct
+ * Split three ways on purpose. `company` and `role` repeat across the 35 rows — eleven distinct
  * companies and ten distinct roles — so they are translated once and keyed by their English
  * value rather than retyped 35 times, which is also the only way they stay consistent with each
  * other. Only `title` and `summary` are genuinely per-project.
@@ -35,7 +35,8 @@ export const projectCompanyCopy: Record<ProjectLocale, Record<string, string>> =
     Digikala: 'دیجی‌کالا',
     Independent: 'مستقل',
     'Arvan Cloud': 'ابر آروان',
-    'Carsparency & Khodro45': 'کارسپرنسی و خودرو۴۵',
+    Carsparency: 'Carsparency',
+    Khodro45: 'Khodro45',
     'Hadish Mall': 'مجتمع هدیش',
     Fibona: 'فیبونا',
     OTeacher: 'اوتیچر',
@@ -48,7 +49,8 @@ export const projectCompanyCopy: Record<ProjectLocale, Record<string, string>> =
     Digikala: 'ديجيكالا',
     Independent: 'مستقل',
     'Arvan Cloud': 'أروان كلاود',
-    'Carsparency & Khodro45': 'كارسبارنسي وخودرو45',
+    Carsparency: 'Carsparency',
+    Khodro45: 'Khodro45',
     'Hadish Mall': 'هديش مول',
     Fibona: 'فيبونا',
     OTeacher: 'أوتيتشر',
@@ -61,7 +63,8 @@ export const projectCompanyCopy: Record<ProjectLocale, Record<string, string>> =
     Digikala: 'Digikala',
     Independent: 'Independiente',
     'Arvan Cloud': 'Arvan Cloud',
-    'Carsparency & Khodro45': 'Carsparency y Khodro45',
+    Carsparency: 'Carsparency',
+    Khodro45: 'Khodro45',
     'Hadish Mall': 'Hadish Mall',
     Fibona: 'Fibona',
     OTeacher: 'OTeacher',
@@ -74,7 +77,8 @@ export const projectCompanyCopy: Record<ProjectLocale, Record<string, string>> =
     Digikala: 'Digikala',
     Independent: 'Unabhängig',
     'Arvan Cloud': 'Arvan Cloud',
-    'Carsparency & Khodro45': 'Carsparency & Khodro45',
+    Carsparency: 'Carsparency',
+    Khodro45: 'Khodro45',
     'Hadish Mall': 'Hadish Mall',
     Fibona: 'Fibona',
     OTeacher: 'OTeacher',
@@ -87,7 +91,8 @@ export const projectCompanyCopy: Record<ProjectLocale, Record<string, string>> =
     Digikala: 'Digikala',
     Independent: 'Indépendant',
     'Arvan Cloud': 'Arvan Cloud',
-    'Carsparency & Khodro45': 'Carsparency et Khodro45',
+    Carsparency: 'Carsparency',
+    Khodro45: 'Khodro45',
     'Hadish Mall': 'Hadish Mall',
     Fibona: 'Fibona',
     OTeacher: 'OTeacher',
@@ -100,7 +105,8 @@ export const projectCompanyCopy: Record<ProjectLocale, Record<string, string>> =
     Digikala: 'Digikala',
     Independent: '独立',
     'Arvan Cloud': 'Arvan Cloud',
-    'Carsparency & Khodro45': 'Carsparency・Khodro45',
+    Carsparency: 'Carsparency',
+    Khodro45: 'Khodro45',
     'Hadish Mall': 'Hadish Mall',
     Fibona: 'Fibona',
     OTeacher: 'OTeacher',
@@ -200,7 +206,7 @@ export const projectRoleCopy: Record<ProjectLocale, Record<string, string>> = {
 }
 
 export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>> = {
-  // ── Carsparency & Khodro45 (six projects, from the 2026-09-22 Figma scan) ────────────────
+  // ── Khodro45 + Carsparency (six projects, from the 2026-09-22 Figma scan) ───────────────
   'khodro45-dealer-app': {
     fa: {
       title: 'اپلیکیشن نمایشگاه‌داران خودرو۴۵ — بازار مزایدهٔ زمان‌دار برای دلالان خودرو',

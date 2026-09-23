@@ -1,25 +1,34 @@
 import type { Payload } from 'payload'
 
-import { DEFAULT_LOCALE } from '@/utilities/locale'
+import { DEFAULT_LOCALE, LOCALES, type Locale } from '@/utilities/locale'
 
 import { EXPERIENCE_COMPANY_KEYS } from './home-content'
 import { homeCopy } from './home-copy'
 import { seedHomeTranslations } from './translations/home'
 
-const EXPERIENCE_INDEXES = ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10'] as const
+const EXPERIENCE_INDEXES = [
+  'A1',
+  'A2',
+  'A3',
+  'A4',
+  'A5',
+  'A6',
+  'A7',
+  'A8',
+  'A9',
+  'A10',
+  'A11',
+] as const
 
 /**
- * Patch `companyKey` onto the homepage `experienceCatalogue` rows without touching anything
- * else — additive and idempotent, so it can run against a live database instead of the
- * destructive full seed.
+ * Rebuild the homepage `experienceCatalogue` from canonical seed copy.
  *
- * Rows are matched by `index` (A1–A10). Every existing row `id` is kept; only `companyKey` is
- * written on those. Any missing index (e.g. a DB that still has nine employers) is appended
- * from English `homeCopy`, and only then are the other locales re-applied so localized leaves
- * land on the new row ids.
+ * Replaces the previous companyKey-only patcher so a local DB that still has the combined
+ * `Carsparency & Khodro45` row (A3) can split into Carsparency + Khodro45 and reindex A1–A11
+ * without a destructive full seed. English layout is written first; then every locale overlay
+ * re-applies localized name/role/blurb onto the new row ids.
  *
- * No `next/cache` import anywhere under this directory — the module also runs outside Next, via
- * `pnpm seed:home-experience`, where that import would throw.
+ * No `next/cache` import — this module also runs outside Next via `pnpm seed:home-experience`.
  */
 export async function seedHomeExperience({ payload }: { payload: Payload }) {
   const { docs } = await payload.find({
@@ -40,35 +49,33 @@ export async function seedHomeExperience({ payload }: { payload: Payload }) {
     throw new Error('The `home` layout has no `experienceCatalogue` block to patch.')
   }
 
-  const keyByIndex = new Map(
-    EXPERIENCE_INDEXES.map((index, i) => [index, EXPERIENCE_COMPANY_KEYS[i]!] as const),
-  )
-  const copyByIndex = new Map(
-    EXPERIENCE_INDEXES.map((index, i) => [index, homeCopy[DEFAULT_LOCALE].experience.items[i]!] as const),
-  )
+  const enItems = homeCopy[DEFAULT_LOCALE].experience.items
+  if (enItems.length !== EXPERIENCE_INDEXES.length) {
+    throw new Error(
+      `home experience catalogue length mismatch: copy has ${enItems.length}, indexes have ${EXPERIENCE_INDEXES.length}`,
+    )
+  }
+  if (EXPERIENCE_COMPANY_KEYS.length !== EXPERIENCE_INDEXES.length) {
+    throw new Error(
+      `home experience companyKey length mismatch: keys have ${EXPERIENCE_COMPANY_KEYS.length}, indexes have ${EXPERIENCE_INDEXES.length}`,
+    )
+  }
 
-  const items = (existing.items ?? []).map((row) => {
-    const companyKey = keyByIndex.get(row.index as (typeof EXPERIENCE_INDEXES)[number])
-    return companyKey ? { ...row, companyKey } : row
-  })
-
-  const present = new Set(items.map((row) => row.index))
-  let appended = 0
-  for (const index of EXPERIENCE_INDEXES) {
-    if (present.has(index)) continue
-    const copy = copyByIndex.get(index)!
-    items.push({
+  const items = EXPERIENCE_INDEXES.map((index, i) => {
+    const copy = enItems[i]!
+    return {
       index,
-      companyKey: keyByIndex.get(index)!,
+      companyKey: EXPERIENCE_COMPANY_KEYS[i]!,
       name: copy.name,
       role: copy.role,
       blurb: copy.blurb,
-    })
-    appended += 1
-  }
+    }
+  })
 
   const layout = (page.layout ?? []).map((block) =>
-    block.blockType === 'experienceCatalogue' ? { ...block, items } : block,
+    block.blockType === 'experienceCatalogue'
+      ? { ...block, items, sectionHeader: homeCopy[DEFAULT_LOCALE].experience.header }
+      : block,
   )
 
   await payload.update({
@@ -80,17 +87,29 @@ export async function seedHomeExperience({ payload }: { payload: Payload }) {
     locale: DEFAULT_LOCALE,
   })
 
-  const patched = items.filter((row) => Boolean(row.companyKey)).length
-  payload.logger.info(
-    `— Homepage experienceCatalogue companyKeys patched (page ${page.id}, ${patched} rows, ${appended} appended)`,
-  )
+  // Locale leaves need the new row ids (11 cells after the Carsparency/Khodro45 split).
+  const translations = await seedHomeTranslations({ payload })
 
-  // New row ids need locale leaves; a pure companyKey patch does not.
-  let locales: string[] | undefined
-  if (appended > 0) {
-    const translations = await seedHomeTranslations({ payload })
-    locales = translations.locales
+  // Also refresh experience catalogue leaves for every locale from homeCopy (translation helper
+  // overlays by index; assert counts match so a missing locale item fails loudly).
+  for (const locale of LOCALES) {
+    if (locale === DEFAULT_LOCALE) continue
+    const copy = homeCopy[locale as Locale]
+    if (copy.experience.items.length !== EXPERIENCE_INDEXES.length) {
+      throw new Error(
+        `home experience catalogue (${locale}) has ${copy.experience.items.length} items; expected ${EXPERIENCE_INDEXES.length}`,
+      )
+    }
   }
 
-  return { appended, blockId: existing.id, locales, pageId: page.id, patched }
+  payload.logger.info(
+    `— Homepage experienceCatalogue rebuilt (page ${page.id}, ${items.length} rows: Carsparency + Khodro45 split)`,
+  )
+
+  return {
+    blockId: existing.id,
+    locales: translations.locales,
+    pageId: page.id,
+    rows: items.length,
+  }
 }

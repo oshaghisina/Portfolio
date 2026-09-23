@@ -38,7 +38,7 @@ export type CompanyMark = {
 }
 
 export type CompanyLogoEntry = {
-  /** One or two marks in name order (Carsparency then Khodro45). */
+  /** One or more marks (almost always one; dual marks only if a cell truly shares brands). */
   marks: CompanyMark[]
   /** Canonical, human-visible employer name. Never localized — a brand name is a brand name. */
   name: string
@@ -75,9 +75,8 @@ export const COMPANY_LOGOS = {
     ],
   },
   // LinkedIn company logo (carsparency.com parked) — linkedin · low-quality 200² tile
-  // https://khodro45.com/build/images/khodro45-dark.svg — official · dark wordmark
-  carsparencyKhodro45: {
-    name: 'Carsparency & Khodro45',
+  carsparency: {
+    name: 'Carsparency',
     marks: [
       {
         src: '/company-logos/carsparency.png',
@@ -87,6 +86,12 @@ export const COMPANY_LOGOS = {
         onLight: 'none',
         onDark: 'none',
       },
+    ],
+  },
+  // https://khodro45.com/build/images/khodro45-dark.svg — official · dark wordmark
+  khodro45: {
+    name: 'Khodro45',
+    marks: [
       {
         src: '/company-logos/khodro45.png',
         width: 256,

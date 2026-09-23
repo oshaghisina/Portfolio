@@ -73,7 +73,7 @@ const biographyHeadingFa = heading(
 )
 const biographyBodyFa = [
   paragraph(
-    'من محصولات دیجیتال را طراحی و مدیریت می‌کنم، و بعد مطمئن می‌شوم که رشد می‌کنند. در طول ده سال، این کار حوزه‌های فین‌تک (طلای دیجیتال دیجی‌کالا)، زیرساخت ابری (آروان کلاد)، بازارگاه‌های خودرو (کارسپرنسی و خودرو۴۵)، آموزش (اوتیچر، بایومیز)، رسانه (دیدستان)، تلکام (A1Paradise) و سفر (طاهاگشت) را در بر گرفته است.',
+    'من محصولات دیجیتال را طراحی و مدیریت می‌کنم، و بعد مطمئن می‌شوم که رشد می‌کنند. در طول ده سال، این کار حوزه‌های فین‌تک (طلای دیجیتال دیجی‌کالا)، زیرساخت ابری (آروان کلاد)، بازارگاه‌های خودرو (Carsparency و Khodro45)، آموزش (اوتیچر، بایومیز)، رسانه (دیدستان)، تلکام (A1Paradise) و سفر (طاهاگشت) را در بر گرفته است.',
   ),
   paragraph(
     'الگویی که در این نقش‌ها تکرار می‌شود غیرمعمول است: یک نفر پژوهش را انجام می‌دهد، محصول را طراحی می‌کند، ورود به بازار را پیش می‌برد، و داشبوردهایی می‌سازد که می‌گویند نتیجه داده یا نه. در دیجی‌کالا این یعنی تعیین چشم‌انداز و ویژگی‌های طلای دیجیتال، طراحی کمپین‌های بدون‌کارمزد، اقساطی و کارت هدیه، ساخت مدل‌های بخش‌بندی کاربران بر پایه‌ی دارایی، جمعیت‌شناسی و رفتار، و جایگزینی اکسل‌های تیم با داشبوردهای هوش تجاری.',
@@ -90,22 +90,22 @@ const biographyBodyFa = [
 ]
 
 // ---------------------------------------------------------------------------
-// Career journey narratives (index-matched to experiencesData order 1, 2, 6, 1(again for Digikala already used) —
-// selected stages only: A1Paradise(9) → Arvan Cloud(6) → Carsparency & Khodro45(2) → Digikala(1) → Independent(10))
+// Career journey narratives (index-matched to experiencesData order) —
+// selected stages only: A1Paradise(9) → Arvan Cloud(6) → Carsparency(2) → Digikala(1) → Independent(10)
 
 export const careerStageOrder = [9, 6, 2, 1, 10]
 
 const careerNarrativesEn: Record<number, string> = {
   9: 'The first real brief: turn a rough idea for microgames and a calling app into interfaces people could actually use. The craft came first — screens, flows, the discipline of shipping something that worked, not just something that looked right.',
   6: 'A shift from screens to systems. Redesigning a cloud platform meant learning what the metrics on the screen actually meant to the engineers reading them — the interface stopped being the product, and the information architecture became the real design problem.',
-  2: 'Full platform ownership for the first time — not one screen or one flow, but a whole buy-and-sell marketplace. Four surfaces at once: the dealer app, the operator console, the inspector’s field tool and the seller’s web journey, all on one design system I authored.',
+  2: 'Full platform ownership for the first time — not one screen or one flow, but Carsparency’s English/UAE marketplace. Four surfaces at once: Pro, the operator console, the inspector’s field tool and the seller’s web journey, all on one design system I authored.',
   1: 'The point where design, product and growth stopped being separate jobs. Vision, interface, the zero-fee and installment campaigns, the segmentation models, and the dashboards that replaced the team’s spreadsheets — all one connected practice, owned end to end.',
   10: 'Now: independent, and using that range on my own terms — eleven engagements since 2022, across warranty operations, freight, proptech, commodities and retail. Some end in a shipped product I built myself; some end in a written verdict that the work isn’t ready to start. Decisions get documented as they’re made, and AI is a working layer for exploring more directions before committing to one.',
 }
 const careerNarrativesFa: Record<number, string> = {
   9: 'اولین بریف واقعی: تبدیل یک ایده‌ی خام برای بازی‌های کوچک و یک اپ‌ تماس به رابط‌هایی که واقعاً قابل‌استفاده باشند. مهارت طراحی اول شکل گرفت — صفحه‌ها، فلوها، و انضباط ساختن چیزی که کار می‌کند، نه فقط چیزی که درست به‌نظر می‌رسد.',
   6: 'گذار از صفحه به سیستم. بازطراحی یک پلتفرم ابری یعنی یادگرفتن اینکه اعداد روی صفحه واقعاً برای مهندسانی که آن‌ها را می‌خوانند چه معنایی دارد — رابط کاربری دیگر خودمحصول نبود، و معماری اطلاعات به مسئله‌ی اصلی طراحی تبدیل شد.',
-  2: 'برای اولین بار، مالکیت کامل یک پلتفرم — نه یک صفحه یا یک فلو، بلکه یک بازارگاه کامل خرید و فروش. چهار سطح هم‌زمان: اپ نمایشگاه‌دار، کنسول اپراتور، ابزار میدانی بازرس و مسیر وب فروشنده، همه روی یک دیزاین‌سیستم که خودم نوشتم.',
+  2: 'برای اولین بار، مالکیت کامل یک پلتفرم — نه یک صفحه یا یک فلو، بلکه بازارگاه انگلیسی/امارات Carsparency. چهار سطح هم‌زمان: Pro، کنسول اپراتور، ابزار میدانی بازرس و مسیر وب فروشنده، همه روی یک دیزاین‌سیستم که خودم نوشتم.',
   1: 'نقطه‌ای که طراحی، محصول و رشد دیگر کارهای جدا از هم نبودند. چشم‌انداز، رابط کاربری، کمپین‌های بدون‌کارمزد و اقساطی، مدل‌های بخش‌بندی، و داشبوردهایی که جای اکسل تیم را گرفت — همه یک عمل بههم‌پیوسته، از ابتدا تا انتها.',
   10: 'حالا: مستقل، و استفاده از این دامنه به شرط خودم — یازده همکاری از ۲۰۲۲، در خدمات پس از فروش، حمل‌ونقل، املاک، کالاهای پایه و خرده‌فروشی. بعضی به محصولی می‌رسند که خودم ساخته‌ام؛ بعضی به یک حکم مکتوب که کار هنوز آمادهی شروع نیست. تصمیم‌ها همزمان با گرفته‌شدن مستند می‌شوند، و هوش مصنوعی لایه‌ای کاری است برای کاوش مسیرهای بیشتر پیش از قطعی‌کردن یکی از آن‌ها.',
 }

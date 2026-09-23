@@ -211,12 +211,25 @@ export const buildToolsStackBlock = (copy: HomeCopy): NonNullable<PageLayout>[nu
  * overlay rather than retyped.
  */
 const TRACK_KEYS = ['productDesign', 'aiWorkflow', 'designSystems'] as const
-const EXPERIENCE_INDEXES = ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10'] as const
+const EXPERIENCE_INDEXES = [
+  'A1',
+  'A2',
+  'A3',
+  'A4',
+  'A5',
+  'A6',
+  'A7',
+  'A8',
+  'A9',
+  'A10',
+  'A11',
+] as const
 /** Stable `companyKey` per index — resolves marks in `companyLogos.ts`. Not localized. */
 export const EXPERIENCE_COMPANY_KEYS = [
   'tahaGasht',
   'digikala',
-  'carsparencyKhodro45',
+  'carsparency',
+  'khodro45',
   'hadishMall',
   'fibona',
   'oteacher',

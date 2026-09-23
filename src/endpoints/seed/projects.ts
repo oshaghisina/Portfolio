@@ -38,7 +38,8 @@ export interface ProjectSeedRow {
 const DIGIKALA = 'Digikala'
 const DIGIKALA_ROLE = 'Designer, Marketer, BI developer'
 const OTEACHER = 'OTeacher'
-const CARSPARENCY = 'Carsparency & Khodro45'
+const CARSPARENCY = 'Carsparency'
+const KHODRO45 = 'Khodro45'
 const CARSPARENCY_ROLE = 'Product designer'
 const TAHA_GASHT = 'Taha Gasht'
 const INDEPENDENT = 'Independent'
@@ -187,17 +188,16 @@ export const PROJECT_SEED: ProjectSeedRow[] = [
     status: 'published',
   },
 
-  // ── Carsparency & Khodro45 ──────────────────────────────────────────────────────────────
-  // Six real projects, from the six Figma files scanned into `Docs/Experience/Carsparency-Khodro45/`
-  // on 2026-09-22. They replace the two Inventory placeholders (`uae-car-marketplace`,
-  // `selling-conversion-programme`) whose CAR-01/CAR-02 ids the Docs reassigned to these — see
-  // `RETIRED_PROJECT_SLUGS` at the bottom of this file.
+  // ── Khodro45 / Carsparency ─────────────────────────────────────────────────────────────
+  // Six real projects from `Docs/Experience/Carsparency-Khodro45/` (folder name kept for asset
+  // paths). Company strings are separate: Khodro45 owns the dealer app; Carsparency owns the
+  // five English surfaces. They replace Inventory placeholders — see `RETIRED_PROJECT_SLUGS`.
   {
     slug: 'khodro45-dealer-app',
     title: 'Khodro45 dealer app — a timed auction market for Iranian car dealers',
     summary:
       'The B2B side of Iran\u2019s Khodro45 marketplace: 241 screens across three parallel market modes, a fair-price-guided bidding system, a six-step escrowed settlement pipeline, two generations of dealer monetisation, and a 28-frame prototype built to test the transaction state machine.',
-    company: CARSPARENCY,
+    company: KHODRO45,
     role: CARSPARENCY_ROLE,
     kind: ['product', 'systems'],
     order: 4,
