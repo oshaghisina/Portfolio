@@ -47,7 +47,9 @@ export default async function Page({ params: paramsPromise }: Args) {
       <PageOpener
         aside={<PageRange currentPage={posts.page} limit={12} locale={locale} totalDocs={posts.totalDocs} />}
         asideAlign="end"
+        locale={locale}
         title={uiCopy[locale].labArchiveTitle}
+        written
       />
 
       <div className="mt-12 md:mt-16">

@@ -4,10 +4,9 @@ import type { Page } from '@/payload-types'
 
 import { IntersectionDiagram } from '@/components/IntersectionDiagram'
 import { PageOpener } from '@/components/PageOpener'
-import RichText from '@/components/RichText'
 import type { Locale } from '@/utilities/locale'
 
-import { HERO_RICH_TEXT_CLASS } from '../richText'
+import { HeroWrittenRichText } from '../HeroWrittenRichText'
 
 /**
  * The About page's take on `PageOpener`: the same copy-led opening as `lowImpact`, plus the
@@ -22,15 +21,8 @@ export const AboutImpactHero: React.FC<Page['hero'] & { locale?: Locale }> = ({ 
       // column and the aside follows the copy, which is exactly the intended mobile stack.
       <IntersectionDiagram className="w-full shrink-0 lg:w-[26rem] xl:w-[32rem]" locale={locale} />
     }
-    titleSlot={
-      richText ? (
-        <RichText
-          className={HERO_RICH_TEXT_CLASS}
-          data={richText}
-          enableGutter={false}
-          enableProse={false}
-        />
-      ) : null
-    }
+    locale={locale}
+    titleSlot={richText ? <HeroWrittenRichText data={richText} locale={locale} /> : null}
+    written
   />
 )

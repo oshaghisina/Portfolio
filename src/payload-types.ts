@@ -170,8 +170,34 @@ export interface Page {
   id: string;
   title: string;
   hero: {
-    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact' | 'homeImpact' | 'aboutImpact' | 'experienceImpact';
+    type:
+      | 'none'
+      | 'highImpact'
+      | 'mediumImpact'
+      | 'lowImpact'
+      | 'homeImpact'
+      | 'aboutImpact'
+      | 'experienceImpact'
+      | 'contactImpact';
     richText?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    /**
+     * Right-column context beside the Contact headline.
+     */
+    aside?: {
       root: {
         type: string;
         children: {
@@ -1064,6 +1090,40 @@ export interface ArchiveBlock {
  */
 export interface FormBlock {
   form: string | Form;
+  /**
+   * Heading above the form grid (e.g. Start a conversation).
+   */
+  sectionTitle?: string | null;
+  emailPath: {
+    index: string;
+    title: string;
+    description?: string | null;
+    ctaLabel: string;
+  };
+  formPath: {
+    index: string;
+    title: string;
+    description?: string | null;
+    ctaLabel: string;
+  };
+  /**
+   * Reply expectation and privacy note under the form.
+   */
+  closingNote?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   enableIntro?: boolean | null;
   introContent?: {
     root: {
@@ -2357,6 +2417,7 @@ export interface PagesSelect<T extends boolean = true> {
     | {
         type?: T;
         richText?: T;
+        aside?: T;
         links?:
           | T
           | {
@@ -2497,6 +2558,24 @@ export interface ArchiveBlockSelect<T extends boolean = true> {
  */
 export interface FormBlockSelect<T extends boolean = true> {
   form?: T;
+  sectionTitle?: T;
+  emailPath?:
+    | T
+    | {
+        index?: T;
+        title?: T;
+        description?: T;
+        ctaLabel?: T;
+      };
+  formPath?:
+    | T
+    | {
+        index?: T;
+        title?: T;
+        description?: T;
+        ctaLabel?: T;
+      };
+  closingNote?: T;
   enableIntro?: T;
   introContent?: T;
   id?: T;

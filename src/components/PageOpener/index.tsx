@@ -1,6 +1,8 @@
 import React from 'react'
 
 import { SystemLandscape } from '@/components/SystemLandscape'
+import { WrittenHeadline } from '@/components/WrittenHeadline'
+import { DEFAULT_LOCALE, type Locale } from '@/utilities/locale'
 import { cn } from '@/utilities/ui'
 
 /**
@@ -10,6 +12,9 @@ import { cn } from '@/utilities/ui'
  *
  * The `aside` renders verbatim — its own responsive behaviour belongs to the caller, because the
  * homepage's console panel hides below `lg` while a case study's meta block stacks and stays.
+ *
+ * When `written` is set, the opener hosts the shared title-write entrance: `WrittenHeadline` owns
+ * the H1 motion; eyebrow / lede / actions / aside follow via `[data-hero-entrance]` CSS.
  */
 export interface PageOpenerProps {
   /** A row above the eyebrow — e.g. a case study's "All work" back link. */
@@ -32,6 +37,14 @@ export interface PageOpenerProps {
   /** A shorter opening rhythm for pages that need evidence in the first viewport. */
   compact?: boolean
   className?: string
+  /**
+   * Progressive title-write on this opener's H1. Pass `locale` when `title` is a plain string so
+   * segmentation can stay script-aware; `titleSlot` callers wire `WrittenHeadline` themselves.
+   */
+  written?: boolean
+  locale?: Locale
+  /** Fade the aside with supporting copy (Contact narrative column). */
+  asideSupports?: boolean
 }
 
 const ASIDE_ALIGN: Record<NonNullable<PageOpenerProps['asideAlign']>, string> = {
@@ -40,25 +53,61 @@ const ASIDE_ALIGN: Record<NonNullable<PageOpenerProps['asideAlign']>, string> = 
   start: 'lg:items-start',
 }
 
+const TITLE_CLASS = 'text-display tracking-display font-medium text-balance text-foreground'
+
 export const PageOpener: React.FC<PageOpenerProps> = ({
   actions,
   aside,
   asideAlign = 'center',
+  asideSupports = false,
   before,
   className,
   compact = false,
   eyebrow,
   index,
   lede,
+  locale = DEFAULT_LOCALE,
   rail = true,
   railLabels,
   title,
   titleSlot,
+  written = false,
 }) => {
   const hasKicker = Boolean(before || eyebrow || index)
 
+  const heading =
+    titleSlot ??
+    (title ? (
+      written && typeof title === 'string' ? (
+        <WrittenHeadline
+          className={cn(TITLE_CLASS, hasKicker && 'mt-4')}
+          locale={locale}
+          text={title}
+        />
+      ) : (
+        <h1 className={cn(TITLE_CLASS, hasKicker && 'mt-4')}>{title}</h1>
+      )
+    ) : null)
+
+  const eyebrowNode = index ? (
+    <span
+      className="flex items-center gap-2 eyebrow text-ink-3"
+      {...(written ? { 'data-hero-eyebrow': '' } : {})}
+    >
+      <span className="index-code text-ink-3">{index}</span>
+      {eyebrow}
+    </span>
+  ) : eyebrow ? (
+    <span className="eyebrow text-ink-3" {...(written ? { 'data-hero-eyebrow': '' } : {})}>
+      {eyebrow}
+    </span>
+  ) : null
+
   return (
-    <section className={cn('flex flex-col', className)}>
+    <section
+      className={cn('flex flex-col', className)}
+      {...(written ? { 'data-hero-entrance': '' } : {})}
+    >
       <div
         className={cn(
           'flex flex-col lg:flex-row lg:justify-between',
@@ -70,35 +119,28 @@ export const PageOpener: React.FC<PageOpenerProps> = ({
       >
         <div className="max-w-[42rem]">
           {before}
-          {index ? (
-            <span className="flex items-center gap-2 eyebrow text-ink-3">
-              <span className="index-code text-ink-3">{index}</span>
-              {eyebrow}
-            </span>
-          ) : eyebrow ? (
-            <span className="eyebrow text-ink-3">{eyebrow}</span>
-          ) : null}
-          {titleSlot ??
-            (title ? (
-              <h1
-                className={cn(
-                  'text-display tracking-display font-medium text-balance text-foreground',
-                  hasKicker && 'mt-4',
-                )}
-              >
-                {title}
-              </h1>
-            ) : null)}
+          {eyebrowNode}
+          {heading}
           {lede ? (
-            <p className="mt-6 max-w-[34ch] text-lede text-ink-2 md:max-w-[34rem]">{lede}</p>
+            <p
+              className="mt-6 max-w-[34ch] text-lede text-ink-2 md:max-w-[34rem]"
+              {...(written ? { 'data-hero-supporting': '' } : {})}
+            >
+              {lede}
+            </p>
           ) : null}
           {actions ? (
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
+            <div
+              className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4"
+              {...(written ? { 'data-hero-actions': '' } : {})}
+            >
               {actions}
             </div>
           ) : null}
         </div>
-        {aside}
+        {aside ? (
+          written && asideSupports ? <div data-hero-supporting="">{aside}</div> : aside
+        ) : null}
       </div>
       {rail ? <SystemLandscape className={compact ? 'sm:h-16' : undefined} labels={railLabels} /> : null}
     </section>

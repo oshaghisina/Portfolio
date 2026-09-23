@@ -1,171 +1,39 @@
-'use client'
-import type { FormFieldBlock, Form as FormType } from '@payloadcms/plugin-form-builder/types'
+import React from 'react'
 
-import { useRouter } from 'next/navigation'
-import React, { useCallback, useState } from 'react'
-import { useForm, FormProvider } from 'react-hook-form'
-import RichText from '@/components/RichText'
-import { DEFAULT_LOCALE, type Locale } from '@/utilities/locale'
-import { uiCopy } from '@/utilities/uiCopy'
-import { Button } from '@/components/ui/button'
+import type { Form as FormType } from '@payloadcms/plugin-form-builder/types'
 import type { DefaultTypedEditorState } from '@payloadcms/richtext-lexical'
 
-import { fields } from './fields'
-import { getClientSideURL } from '@/utilities/getURL'
+import { getCachedGlobal } from '@/utilities/getGlobals'
+import { DEFAULT_LOCALE, type Locale } from '@/utilities/locale'
+
+import { FormBlockClient } from './Component.client'
+import type { ContactPathData } from './ContactPaths'
 
 export type FormBlockType = {
   blockName?: string
   blockType?: 'formBlock'
-  enableIntro: boolean
+  closingNote?: DefaultTypedEditorState | null
+  emailPath?: ContactPathData | null
+  enableIntro?: boolean | null
   form: FormType
+  formPath?: ContactPathData | null
   introContent?: DefaultTypedEditorState
   /** Supplied by `RenderBlocks`; the field components read their chrome from `uiCopy`. */
   locale?: Locale
+  sectionTitle?: string | null
 }
 
-export const FormBlock: React.FC<
-  {
-    id?: string
-  } & FormBlockType
-> = (props) => {
-  const {
-    enableIntro,
-    form: formFromProps,
-    form: { id: formID, confirmationMessage, confirmationType, redirect, submitButtonLabel } = {},
-    introContent,
-    locale = DEFAULT_LOCALE,
-  } = props
+/**
+ * Server wrapper: resolves the Footer mailto once so the Contact paths strip does not hardcode
+ * Sina’s address. The interactive form lives in `FormBlockClient`.
+ */
+export const FormBlock: React.FC<{ id?: string } & FormBlockType> = async (props) => {
+  const locale = props.locale ?? DEFAULT_LOCALE
+  const footer = await getCachedGlobal('footer', locale, 1)()
+  const emailHref =
+    footer?.contact?.linkHref?.startsWith('mailto:')
+      ? footer.contact.linkHref
+      : footer?.social?.find((row) => row.kind === 'email')?.href ?? null
 
-  const copy = uiCopy[locale]
-
-  const formMethods = useForm({
-    defaultValues: formFromProps.fields,
-  })
-  const {
-    control,
-    formState: { errors },
-    handleSubmit,
-    register,
-  } = formMethods
-
-  const [isLoading, setIsLoading] = useState(false)
-  const [hasSubmitted, setHasSubmitted] = useState<boolean>()
-  const [error, setError] = useState<{ message: string; status?: string } | undefined>()
-  const router = useRouter()
-
-  const onSubmit = useCallback(
-    (data: FormFieldBlock[]) => {
-      let loadingTimerID: ReturnType<typeof setTimeout>
-      const submitForm = async () => {
-        setError(undefined)
-
-        const dataToSend = Object.entries(data).map(([name, value]) => ({
-          field: name,
-          value,
-        }))
-
-        // delay loading indicator by 1s
-        loadingTimerID = setTimeout(() => {
-          setIsLoading(true)
-        }, 1000)
-
-        try {
-          const req = await fetch(`${getClientSideURL()}/api/form-submissions`, {
-            body: JSON.stringify({
-              form: formID,
-              submissionData: dataToSend,
-            }),
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            method: 'POST',
-          })
-
-          const res = await req.json()
-
-          clearTimeout(loadingTimerID)
-
-          if (req.status >= 400) {
-            setIsLoading(false)
-
-            setError({
-              message: res.errors?.[0]?.message || 'Internal Server Error',
-              status: res.status,
-            })
-
-            return
-          }
-
-          setIsLoading(false)
-          setHasSubmitted(true)
-
-          if (confirmationType === 'redirect' && redirect) {
-            const { url } = redirect
-
-            const redirectUrl = url
-
-            if (redirectUrl) router.push(redirectUrl)
-          }
-        } catch (err) {
-          console.warn(err)
-          setIsLoading(false)
-          setError({
-            message: copy.formError,
-          })
-        }
-      }
-
-      void submitForm()
-    },
-    [copy, router, formID, redirect, confirmationType],
-  )
-
-  return (
-    <div className="lg:max-w-[48rem]">
-      {enableIntro && introContent && !hasSubmitted && (
-        <RichText className="mb-8 lg:mb-12" data={introContent} enableGutter={false} />
-      )}
-      <div className="p-4 lg:p-6 border border-border rounded-[0.8rem]">
-        <FormProvider {...formMethods}>
-          {!isLoading && hasSubmitted && confirmationType === 'message' && (
-            <RichText data={confirmationMessage} />
-          )}
-          {isLoading && !hasSubmitted && <p>{copy.formSubmitting}</p>}
-          {error && <div>{`${error.status || '500'}: ${error.message || ''}`}</div>}
-          {!hasSubmitted && (
-            <form id={formID} onSubmit={handleSubmit(onSubmit)}>
-              <div className="mb-4 last:mb-0">
-                {formFromProps &&
-                  formFromProps.fields &&
-                  formFromProps.fields?.map((field, index) => {
-                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                    const Field: React.FC<any> = fields?.[field.blockType as keyof typeof fields]
-                    if (Field) {
-                      return (
-                        <div className="mb-6 last:mb-0" key={index}>
-                          <Field
-                            form={formFromProps}
-                            locale={locale}
-                            {...field}
-                            {...formMethods}
-                            control={control}
-                            errors={errors}
-                            register={register}
-                          />
-                        </div>
-                      )
-                    }
-                    return null
-                  })}
-              </div>
-
-              <Button form={formID} type="submit" variant="default">
-                {submitButtonLabel}
-              </Button>
-            </form>
-          )}
-        </FormProvider>
-      </div>
-    </div>
-  )
+  return <FormBlockClient {...props} emailHref={emailHref} />
 }

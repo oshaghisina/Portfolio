@@ -7,6 +7,37 @@ import {
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
 
+const pathFields = [
+  {
+    name: 'index',
+    type: 'text' as const,
+    admin: { width: '20%' },
+    label: 'Index',
+    required: true,
+  },
+  {
+    name: 'title',
+    type: 'text' as const,
+    admin: { width: '40%' },
+    label: 'Title',
+    localized: true,
+    required: true,
+  },
+  {
+    name: 'description',
+    type: 'textarea' as const,
+    label: 'Description',
+    localized: true,
+  },
+  {
+    name: 'ctaLabel',
+    type: 'text' as const,
+    label: 'CTA label',
+    localized: true,
+    required: true,
+  },
+]
+
 export const FormBlock: Block = {
   slug: 'formBlock',
   interfaceName: 'FormBlock',
@@ -16,6 +47,41 @@ export const FormBlock: Block = {
       type: 'relationship',
       relationTo: 'forms',
       required: true,
+    },
+    {
+      name: 'sectionTitle',
+      type: 'text',
+      localized: true,
+      admin: {
+        description: 'Heading above the form grid (e.g. Start a conversation).',
+      },
+      label: 'Form section title',
+    },
+    {
+      name: 'emailPath',
+      type: 'group',
+      label: 'Email path',
+      fields: pathFields,
+    },
+    {
+      name: 'formPath',
+      type: 'group',
+      label: 'Form path',
+      fields: pathFields,
+    },
+    {
+      name: 'closingNote',
+      type: 'richText',
+      localized: true,
+      admin: {
+        description: 'Reply expectation and privacy note under the form.',
+      },
+      editor: lexicalEditor({
+        features: ({ rootFeatures }) => {
+          return [...rootFeatures, FixedToolbarFeature(), InlineToolbarFeature()]
+        },
+      }),
+      label: 'Closing note',
     },
     {
       name: 'enableIntro',

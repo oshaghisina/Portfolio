@@ -7,8 +7,10 @@ import React from 'react'
 
 import { DEFAULT_LOCALE, type Locale } from '@/utilities/locale'
 import { uiCopy } from '@/utilities/uiCopy'
+import { cn } from '@/utilities/ui'
 
 import { Error } from '../Error'
+import { formControlClassName, formLabelClassName } from '../fieldStyles'
 import { Width } from '../Width'
 
 export const Email: React.FC<
@@ -18,25 +20,38 @@ export const Email: React.FC<
     locale?: Locale
   }
 > = ({ name, defaultValue, errors, label, register, required, width, locale = DEFAULT_LOCALE }) => {
+  const copy = uiCopy[locale]
+
   return (
     <Width width={width}>
-      <Label htmlFor={name}>
+      <Label className={formLabelClassName} htmlFor={name}>
         {label}
-
-        {required && (
+        {required ? (
           <span className="required">
-            * <span className="sr-only">{uiCopy[locale].requiredField}</span>
+            {' '}
+            * <span className="sr-only">{copy.requiredField}</span>
           </span>
-        )}
+        ) : null}
       </Label>
       <Input
+        aria-describedby={errors[name] ? `${name}-error` : undefined}
+        aria-invalid={Boolean(errors[name])}
+        autoComplete="email"
+        className={cn(formControlClassName)}
         defaultValue={defaultValue}
+        dir="ltr"
         id={name}
-        type="text"
-        {...register(name, { pattern: /^\S[^\s@]*@\S+$/, required })}
+        inputMode="email"
+        type="email"
+        {...register(name, {
+          pattern: {
+            value: /^\S[^\s@]*@\S+$/,
+            message: copy.invalidEmail,
+          },
+          required: required ? copy.fieldRequired : false,
+        })}
       />
-
-      {errors[name] && <Error locale={locale} name={name} />}
+      {errors[name] ? <Error locale={locale} name={name} /> : null}
     </Width>
   )
 }

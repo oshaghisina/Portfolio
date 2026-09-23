@@ -4,6 +4,7 @@ import type { Page } from '@/payload-types'
 import type { Locale } from '@/utilities/locale'
 
 import { AboutImpactHero } from '@/heros/AboutImpact'
+import { ContactImpactHero } from '@/heros/ContactImpact'
 import { ExperienceImpactHero } from '@/heros/ExperienceImpact'
 import { HighImpactHero } from '@/heros/HighImpact'
 import { HomeImpactHero } from '@/heros/HomeImpact'
@@ -12,6 +13,7 @@ import { MediumImpactHero } from '@/heros/MediumImpact'
 
 const heroes = {
   aboutImpact: AboutImpactHero,
+  contactImpact: ContactImpactHero,
   experienceImpact: ExperienceImpactHero,
   highImpact: HighImpactHero,
   homeImpact: HomeImpactHero,

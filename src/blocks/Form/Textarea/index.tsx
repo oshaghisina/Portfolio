@@ -7,8 +7,10 @@ import React from 'react'
 
 import { DEFAULT_LOCALE, type Locale } from '@/utilities/locale'
 import { uiCopy } from '@/utilities/uiCopy'
+import { cn } from '@/utilities/ui'
 
 import { Error } from '../Error'
+import { formLabelClassName, formTextareaClassName } from '../fieldStyles'
 import { Width } from '../Width'
 
 export const Textarea: React.FC<
@@ -25,30 +27,33 @@ export const Textarea: React.FC<
   label,
   register,
   required,
-  rows = 3,
+  rows = 6,
   width,
   locale = DEFAULT_LOCALE,
 }) => {
   return (
     <Width width={width}>
-      <Label htmlFor={name}>
+      <Label className={formLabelClassName} htmlFor={name}>
         {label}
-
-        {required && (
+        {required ? (
           <span className="required">
+            {' '}
             * <span className="sr-only">{uiCopy[locale].requiredField}</span>
           </span>
-        )}
+        ) : null}
       </Label>
-
       <TextAreaComponent
+        aria-describedby={errors[name] ? `${name}-error` : undefined}
+        aria-invalid={Boolean(errors[name])}
+        className={cn(formTextareaClassName)}
         defaultValue={defaultValue}
         id={name}
         rows={rows}
-        {...register(name, { required: required })}
+        {...register(name, {
+          required: required ? uiCopy[locale].fieldRequired : false,
+        })}
       />
-
-      {errors[name] && <Error locale={locale} name={name} />}
+      {errors[name] ? <Error locale={locale} name={name} /> : null}
     </Width>
   )
 }

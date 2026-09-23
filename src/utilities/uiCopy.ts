@@ -11,12 +11,16 @@ export interface UiCopy {
   closeMenu: string
   /** Generic plural label for `PageRange`'s count line — e.g. "3 docs". */
   docsLabel: PluralCopy
+  /** Contact paths strip: `aria-label` on the routes nav. */
+  contactPathsLabel: string
   /** Form block: the inline error under a field left empty. */
   fieldRequired: string
   /** Form block: the generic failure line when a submission does not go through. */
   formError: string
   /** Form block: the in-flight line while a submission is being sent. */
   formSubmitting: string
+  /** Form block: invalid email address. */
+  invalidEmail: string
   /** Form block: screen-reader suffix marking a required input, rendered after the `*`. */
   requiredField: string
   /** Post hero byline labels. */
@@ -134,9 +138,11 @@ export const uiCopy: Record<Locale, UiCopy> = {
     archiveRange: 'Showing {range} of {total}',
     closeMenu: 'Close menu',
     docsLabel: { one: '{n} doc', other: '{n} docs' },
-    fieldRequired: 'This field is required',
-    formError: 'Something went wrong.',
-    formSubmitting: 'Loading, please wait...',
+    contactPathsLabel: 'Contact paths',
+    fieldRequired: 'This field is required.',
+    formError: 'Your message was not sent. Please try again.',
+    formSubmitting: 'Sending…',
+    invalidEmail: 'Enter a valid email so I can reply.',
     requiredField: '(required)',
     author: 'Author',
     goHome: 'Go home',
@@ -202,9 +208,11 @@ export const uiCopy: Record<Locale, UiCopy> = {
     archiveRange: 'نمایش {range} از {total}',
     closeMenu: 'بستن منو',
     docsLabel: { other: '{n} مورد' },
+    contactPathsLabel: 'مسیرهای تماس',
     fieldRequired: 'پرکردن این بخش الزامی است.',
-    formError: 'مشکلی پیش آمد.',
-    formSubmitting: 'در حال ارسال، لطفاً صبر کنید…',
+    formError: 'پیام ارسال نشد. لطفاً دوباره تلاش کنید.',
+    formSubmitting: 'در حال ارسال…',
+    invalidEmail: 'یک ایمیل معتبر وارد کنید تا بتوانم پاسخ بدهم.',
     requiredField: '(الزامی)',
     author: 'نویسنده',
     goHome: 'بازگشت به صفحهٔ اصلی',
@@ -269,9 +277,11 @@ export const uiCopy: Record<Locale, UiCopy> = {
     archiveRange: 'عرض {range} من {total}',
     closeMenu: 'إغلاق القائمة',
     docsLabel: { one: 'مستند واحد', two: 'مستندان', few: '{n} مستندات', other: '{n} مستندًا' },
-    fieldRequired: 'هذا الحقل مطلوب',
-    formError: 'حدث خطأ ما.',
-    formSubmitting: 'جارٍ الإرسال، يُرجى الانتظار…',
+    contactPathsLabel: 'مسارات التواصل',
+    fieldRequired: 'هذا الحقل مطلوب.',
+    formError: 'لم تُرسل رسالتك. يُرجى المحاولة مرة أخرى.',
+    formSubmitting: 'جارٍ الإرسال…',
+    invalidEmail: 'أدخل بريداً إلكترونياً صالحاً حتى أتمكن من الرد.',
     requiredField: '(مطلوب)',
     author: 'الكاتب',
     goHome: 'إلى الرئيسية',
@@ -336,9 +346,11 @@ export const uiCopy: Record<Locale, UiCopy> = {
     archiveRange: 'Mostrando {range} de {total}',
     closeMenu: 'Cerrar menú',
     docsLabel: { one: '{n} documento', other: '{n} documentos' },
-    fieldRequired: 'Este campo es obligatorio',
-    formError: 'Algo ha salido mal.',
-    formSubmitting: 'Enviando, espera un momento…',
+    contactPathsLabel: 'Vías de contacto',
+    fieldRequired: 'Este campo es obligatorio.',
+    formError: 'Tu mensaje no se envió. Inténtalo de nuevo.',
+    formSubmitting: 'Enviando…',
+    invalidEmail: 'Introduce un correo válido para que pueda responderte.',
     requiredField: '(obligatorio)',
     author: 'Autor',
     goHome: 'Ir al inicio',
@@ -404,9 +416,11 @@ export const uiCopy: Record<Locale, UiCopy> = {
     archiveRange: '{range} von {total} werden angezeigt',
     closeMenu: 'Menü schließen',
     docsLabel: { one: '{n} Dokument', other: '{n} Dokumente' },
-    fieldRequired: 'Dieses Feld ist erforderlich',
-    formError: 'Etwas ist schiefgelaufen.',
-    formSubmitting: 'Wird gesendet, bitte warten …',
+    contactPathsLabel: 'Kontaktwege',
+    fieldRequired: 'Dieses Feld ist erforderlich.',
+    formError: 'Ihre Nachricht wurde nicht gesendet. Bitte erneut versuchen.',
+    formSubmitting: 'Wird gesendet…',
+    invalidEmail: 'Geben Sie eine gültige E-Mail ein, damit ich antworten kann.',
     requiredField: '(Pflichtfeld)',
     author: 'Autor',
     goHome: 'Zur Startseite',
@@ -472,9 +486,11 @@ export const uiCopy: Record<Locale, UiCopy> = {
     archiveRange: 'Affichage de {range} sur {total}',
     closeMenu: 'Fermer le menu',
     docsLabel: { one: '{n} document', other: '{n} documents' },
-    fieldRequired: 'Ce champ est obligatoire',
-    formError: 'Une erreur est survenue.',
-    formSubmitting: 'Envoi en cours, veuillez patienter…',
+    contactPathsLabel: 'Moyens de contact',
+    fieldRequired: 'Ce champ est obligatoire.',
+    formError: 'Votre message n’a pas été envoyé. Veuillez réessayer.',
+    formSubmitting: 'Envoi en cours…',
+    invalidEmail: 'Indiquez une adresse e-mail valide pour que je puisse répondre.',
     requiredField: '(obligatoire)',
     author: 'Auteur',
     goHome: 'Aller à l’accueil',
@@ -540,9 +556,11 @@ export const uiCopy: Record<Locale, UiCopy> = {
     archiveRange: '{total}件中{range}件を表示',
     closeMenu: 'メニューを閉じる',
     docsLabel: { other: '{n}件のドキュメント' },
-    fieldRequired: 'この項目は必須です',
-    formError: '問題が発生しました。',
-    formSubmitting: '送信中です。お待ちください…',
+    contactPathsLabel: '連絡方法',
+    fieldRequired: 'この項目は必須です。',
+    formError: 'メッセージを送信できませんでした。もう一度お試しください。',
+    formSubmitting: '送信中…',
+    invalidEmail: '返信できるよう、有効なメールアドレスを入力してください。',
     requiredField: '(必須)',
     author: '著者',
     goHome: 'ホームへ',

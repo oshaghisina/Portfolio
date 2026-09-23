@@ -9,13 +9,16 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import React from 'react'
+import React, { useMemo } from 'react'
 
+import { contactCopy } from '@/endpoints/seed/contact-copy'
 import { DEFAULT_LOCALE, type Locale } from '@/utilities/locale'
 import { uiCopy } from '@/utilities/uiCopy'
+import { cn } from '@/utilities/ui'
 import { Controller } from 'react-hook-form'
 
 import { Error } from '../Error'
+import { formControlClassName, formLabelClassName } from '../fieldStyles'
 import { Width } from '../Width'
 
 export const Select: React.FC<
@@ -35,43 +38,58 @@ export const Select: React.FC<
   defaultValue,
   locale = DEFAULT_LOCALE,
 }) => {
+  const resolvedOptions = useMemo(() => {
+    if (name !== 'project-type') return options
+    const byValue = Object.fromEntries(
+      contactCopy[locale].form.projectTypes.map((row) => [row.value, row.label]),
+    )
+    return options.map((opt) => ({
+      ...opt,
+      label: byValue[opt.value] || opt.label || opt.value,
+    }))
+  }, [locale, name, options])
+
   return (
     <Width width={width}>
-      <Label htmlFor={name}>
+      <Label className={formLabelClassName} htmlFor={name}>
         {label}
-        {required && (
+        {required ? (
           <span className="required">
+            {' '}
             * <span className="sr-only">{uiCopy[locale].requiredField}</span>
           </span>
-        )}
+        ) : null}
       </Label>
       <Controller
         control={control}
         defaultValue={defaultValue}
         name={name}
         render={({ field: { onChange, value } }) => {
-          const controlledValue = options.find((t) => t.value === value)
+          const controlledValue = resolvedOptions.find((t) => t.value === value)
 
           return (
             <SelectComponent onValueChange={(val) => onChange(val)} value={controlledValue?.value}>
-              <SelectTrigger className="w-full" id={name}>
+              <SelectTrigger
+                aria-describedby={errors[name] ? `${name}-error` : undefined}
+                aria-invalid={Boolean(errors[name])}
+                className={cn(formControlClassName, 'h-11 w-full')}
+                id={name}
+              >
                 <SelectValue placeholder={label} />
               </SelectTrigger>
               <SelectContent>
-                {options.map(({ label, value }) => {
-                  return (
-                    <SelectItem key={value} value={value}>
-                      {label}
-                    </SelectItem>
-                  )
-                })}
+                {resolvedOptions.map(({ label: optionLabel, value: optionValue }) => (
+                  <SelectItem key={optionValue} value={optionValue}>
+                    {optionLabel}
+                  </SelectItem>
+                ))}
               </SelectContent>
             </SelectComponent>
           )
         }}
-        rules={{ required }}
+        rules={{ required: required ? uiCopy[locale].fieldRequired : false }}
       />
-      {errors[name] && <Error locale={locale} name={name} />}
+      {errors[name] ? <Error locale={locale} name={name} /> : null}
     </Width>
   )
 }

@@ -1,8 +1,8 @@
 /**
  * The tool set behind the TOOLS / STACK section: stable `toolKey` → canonical product name →
- * local brand mark. The `toolKey` select options in `config.ts`, the `<img src>` in
- * `ToolLogo.tsx` and the visible product name all read this one file, so the schema and the
- * renderer cannot drift apart.
+ * local brand mark → official product URL. The `toolKey` select options in `config.ts`, the
+ * `<img src>` in `ToolLogo.tsx`, the visible product name and the destination of each cell link
+ * all read this one file, so the schema and the renderer cannot drift apart.
  *
  * Deliberately dependency-free — no React, no node built-ins and above all no `@/payload-types`.
  * `config.ts` imports this module, and that config is evaluated by the server, by the admin
@@ -18,6 +18,9 @@
  * carry their own icon as PNG instead — `ToolLogo` renders a plain `<img>`, so the format is free,
  * and every one of those files is well above the 40px box it lands in. A PNG here means "no vector
  * exists", never "no-one looked".
+ *
+ * `url` is the canonical official destination (product site, app page, or docs/landing — never a
+ * search result, Wikipedia page or third-party mirror). Ownership matches name/logo: code, not CMS.
  */
 
 /**
@@ -39,6 +42,8 @@ type ToolLogoBase = {
   name: string
   /** Path under `public/`, or `null` while no verified mark has been sourced. */
   src: null | string
+  /** Official product / platform URL opened by the full-cell link. */
+  url: string
 }
 
 export type ToolLogo = ToolLogoBase &
@@ -47,11 +52,11 @@ export type ToolLogo = ToolLogoBase &
 /** Render order within a category comes from the CMS rows, not from this map. */
 export const TOOL_LOGOS = {
   // 01 · Design & Creative Production
-  figma: { name: 'Figma', onDark: 'none', src: '/tool-logos/figma.svg' },
+  figma: { name: 'Figma', onDark: 'none', src: '/tool-logos/figma.svg', url: 'https://www.figma.com/' },
   // No FigJam entry on purpose. Figma publishes no standalone FigJam symbol — not in its brand
   // kit, its static app icons or any catalogue — and FigJam is a surface of Figma rather than a
   // separate tool, so the Figma mark stands for both. Add it back here the day a real mark exists.
-  sketch: { name: 'Sketch', onDark: 'none', src: '/tool-logos/sketch.svg' },
+  sketch: { name: 'Sketch', onDark: 'none', src: '/tool-logos/sketch.svg', url: 'https://www.sketch.com/' },
   // Adobe's own CC product icons. Both are a near-black navy tile (#00005B) carrying a bright
   // lavender glyph, which is exactly how Adobe renders them on a dark surface — the tile going
   // darker than the paper is the official look, so no dark treatment applies. Media Encoder's
@@ -60,14 +65,21 @@ export const TOOL_LOGOS = {
     name: 'Adobe After Effects',
     onDark: 'none',
     src: '/tool-logos/after-effects.svg',
+    url: 'https://www.adobe.com/products/aftereffects.html',
   },
   mediaEncoder: {
     name: 'Adobe Media Encoder',
     onDark: 'none',
     src: '/tool-logos/media-encoder.svg',
+    url: 'https://www.adobe.com/products/media-encoder.html',
   },
   // Lime tile with a black glyph, so it holds on both surfaces as shipped.
-  higgsfield: { name: 'Higgsfield', onDark: 'none', src: '/tool-logos/higgsfield.png' },
+  higgsfield: {
+    name: 'Higgsfield',
+    onDark: 'none',
+    src: '/tool-logos/higgsfield.png',
+    url: 'https://higgsfield.ai/',
+  },
 
   // 02 · AI & Agents
   chatgpt: {
@@ -75,47 +87,77 @@ export const TOOL_LOGOS = {
     onDark: 'asset',
     src: '/tool-logos/chatgpt.svg',
     srcDark: '/tool-logos/chatgpt-dark.svg',
+    url: 'https://chatgpt.com/',
   },
-  claude: { name: 'Claude', onDark: 'none', src: '/tool-logos/claude.svg' },
+  claude: { name: 'Claude', onDark: 'none', src: '/tool-logos/claude.svg', url: 'https://claude.ai/' },
   // The 2025 multi-colour spark on a transparent ground, so it needs no dark treatment. The
   // macOS app icon would have worked too, but it bakes in a white tile that glares on dark paper.
-  gemini: { name: 'Google Gemini', onDark: 'none', src: '/tool-logos/gemini.svg' },
+  gemini: {
+    name: 'Google Gemini',
+    onDark: 'none',
+    src: '/tool-logos/gemini.svg',
+    url: 'https://gemini.google.com/',
+  },
   grok: {
     name: 'Grok',
     onDark: 'asset',
     src: '/tool-logos/grok.svg',
     srcDark: '/tool-logos/grok-dark.svg',
+    url: 'https://grok.com/',
   },
   codex: {
     name: 'Codex',
     onDark: 'asset',
     src: '/tool-logos/codex.svg',
     srcDark: '/tool-logos/codex-dark.svg',
+    url: 'https://openai.com/codex/',
   },
   // Nous Research's `hermes-agent`, the self-improving CLI agent — not the React Native JS engine
   // that happens to share the name. No vector is published, so the mark is its own app icon.
-  hermes: { name: 'Hermes Agent', onDark: 'none', src: '/tool-logos/hermes.png' },
+  hermes: {
+    name: 'Hermes Agent',
+    onDark: 'none',
+    src: '/tool-logos/hermes.png',
+    url: 'https://hermes-agent.nousresearch.com/',
+  },
   // A different product from `grok` above, not a second label for it: the desktop agent app that
   // ships under the name "Grok Bot" (bundle `com.anysphere.sand`, code-signed by Anysphere).
   // Labelled and marked exactly as it ships, since no vector exists either.
-  grokBot: { name: 'Grok Bot', onDark: 'none', src: '/tool-logos/grok-bot.png' },
+  grokBot: {
+    name: 'Grok Bot',
+    onDark: 'none',
+    src: '/tool-logos/grok-bot.png',
+    url: 'https://x.ai/bot',
+  },
   // The open-source multi-channel agent gateway (MIT, `openclaw/openclaw`), formerly Clawdbot and
   // then Moltbot. Unaffiliated with Anthropic — "Claw" is not "Claude", and `claude` above is a
   // separate entry. Mark is the project's own lobster, taken from the published package.
-  openclaw: { name: 'OpenClaw', onDark: 'none', src: '/tool-logos/openclaw.svg' },
+  openclaw: {
+    name: 'OpenClaw',
+    onDark: 'none',
+    src: '/tool-logos/openclaw.svg',
+    url: 'https://openclaw.ai/',
+  },
   openrouter: {
     name: 'OpenRouter',
     onDark: 'asset',
     src: '/tool-logos/openrouter.svg',
     srcDark: '/tool-logos/openrouter-dark.svg',
+    url: 'https://openrouter.ai/',
   },
   // Official mark, official colour: a pale blue that reads soft on light paper by design.
-  langchain: { name: 'LangChain', onDark: 'none', src: '/tool-logos/langchain.svg' },
+  langchain: {
+    name: 'LangChain',
+    onDark: 'none',
+    src: '/tool-logos/langchain.svg',
+    url: 'https://www.langchain.com/',
+  },
   typesafeAi: {
     name: 'TypeSafe AI',
     onDark: 'asset',
     src: '/tool-logos/typesafe-ai.svg',
     srcDark: '/tool-logos/typesafe-ai-dark.svg',
+    url: 'https://typesafe.ai/',
   },
 
   // 03 · Build & Delivery
@@ -124,23 +166,50 @@ export const TOOL_LOGOS = {
     onDark: 'asset',
     src: '/tool-logos/cursor.svg',
     srcDark: '/tool-logos/cursor-dark.svg',
+    url: 'https://cursor.com/',
   },
   // Full colour with its own internal gradients — no dark treatment applies or is needed.
-  antigravity: { name: 'Google Antigravity', onDark: 'none', src: '/tool-logos/antigravity.svg' },
-  vscode: { name: 'Visual Studio Code', onDark: 'none', src: '/tool-logos/vscode.svg' },
+  antigravity: {
+    name: 'Google Antigravity',
+    onDark: 'none',
+    src: '/tool-logos/antigravity.svg',
+    url: 'https://antigravity.google/',
+  },
+  vscode: {
+    name: 'Visual Studio Code',
+    onDark: 'none',
+    src: '/tool-logos/vscode.svg',
+    url: 'https://code.visualstudio.com/',
+  },
   payloadCms: {
     name: 'Payload CMS',
     onDark: 'asset',
     src: '/tool-logos/payload.svg',
     srcDark: '/tool-logos/payload-dark.svg',
+    url: 'https://payloadcms.com/',
   },
   // Black disc with a white wordmark — `invert` gives the official white-disc treatment.
-  nextjs: { name: 'Next.js', onDark: 'invert', src: '/tool-logos/nextjs.svg' },
-  docker: { name: 'Docker', onDark: 'none', src: '/tool-logos/docker.svg' },
+  nextjs: {
+    name: 'Next.js',
+    onDark: 'invert',
+    src: '/tool-logos/nextjs.svg',
+    url: 'https://nextjs.org/',
+  },
+  docker: { name: 'Docker', onDark: 'none', src: '/tool-logos/docker.svg', url: 'https://www.docker.com/' },
 
   // 04 · Data & Product Intelligence
-  ga4: { name: 'Google Analytics 4', onDark: 'none', src: '/tool-logos/ga4.svg' },
-  amplitude: { name: 'Amplitude', onDark: 'none', src: '/tool-logos/amplitude.svg' },
+  ga4: {
+    name: 'Google Analytics 4',
+    onDark: 'none',
+    src: '/tool-logos/ga4.svg',
+    url: 'https://marketingplatform.google.com/about/analytics/',
+  },
+  amplitude: {
+    name: 'Amplitude',
+    onDark: 'none',
+    src: '/tool-logos/amplitude.svg',
+    url: 'https://amplitude.com/',
+  },
   // Two ink bars beside two brand-green ones; the ink pair goes white on dark, as Heap's own
   // light-on-dark lockup does.
   heap: {
@@ -148,49 +217,78 @@ export const TOOL_LOGOS = {
     onDark: 'asset',
     src: '/tool-logos/heap.svg',
     srcDark: '/tool-logos/heap-dark.svg',
+    url: 'https://www.heap.io/',
   },
   // Favicon-sourced: the black container tile was stripped so only the starburst remains.
-  fullstory: { name: 'FullStory', onDark: 'invert', src: '/tool-logos/fullstory.svg' },
+  fullstory: {
+    name: 'FullStory',
+    onDark: 'invert',
+    src: '/tool-logos/fullstory.svg',
+    url: 'https://www.fullstory.com/',
+  },
   // Full-colour gradient prism, so it needs no dark treatment.
-  clarity: { name: 'Microsoft Clarity', onDark: 'none', src: '/tool-logos/clarity.png' },
-  hotjar: { name: 'Hotjar', onDark: 'none', src: '/tool-logos/hotjar.svg' },
+  clarity: {
+    name: 'Microsoft Clarity',
+    onDark: 'none',
+    src: '/tool-logos/clarity.png',
+    url: 'https://clarity.microsoft.com/',
+  },
+  hotjar: { name: 'Hotjar', onDark: 'none', src: '/tool-logos/hotjar.svg', url: 'https://www.hotjar.com/' },
   // Flat black, no internal contrast — the silhouette treatment, same as Sentry below.
-  umami: { name: 'Umami', onDark: 'whiten', src: '/tool-logos/umami.svg' },
+  umami: { name: 'Umami', onDark: 'whiten', src: '/tool-logos/umami.svg', url: 'https://umami.is/' },
 
   // 05 · Growth & Measurement
   googleTagManager: {
     name: 'Google Tag Manager',
     onDark: 'none',
     src: '/tool-logos/google-tag-manager.svg',
+    url: 'https://marketingplatform.google.com/about/tag-manager/',
   },
-  googleAds: { name: 'Google Ads', onDark: 'none', src: '/tool-logos/google-ads.svg' },
+  googleAds: {
+    name: 'Google Ads',
+    onDark: 'none',
+    src: '/tool-logos/google-ads.svg',
+    url: 'https://ads.google.com/',
+  },
   googleSearchConsole: {
     name: 'Google Search Console',
     onDark: 'none',
     src: '/tool-logos/google-search-console.svg',
+    url: 'https://search.google.com/search-console/about',
   },
 
   // 06 · Infrastructure & Operations
-  supabase: { name: 'Supabase', onDark: 'none', src: '/tool-logos/supabase.svg' },
+  supabase: {
+    name: 'Supabase',
+    onDark: 'none',
+    src: '/tool-logos/supabase.svg',
+    url: 'https://supabase.com/',
+  },
   vercel: {
     name: 'Vercel',
     onDark: 'asset',
     src: '/tool-logos/vercel.svg',
     srcDark: '/tool-logos/vercel-dark.svg',
+    url: 'https://vercel.com/',
   },
-  coolify: { name: 'Coolify', onDark: 'none', src: '/tool-logos/coolify.svg' },
+  coolify: { name: 'Coolify', onDark: 'none', src: '/tool-logos/coolify.svg', url: 'https://coolify.io/' },
   // The three git platforms sit together. GitHub's mark is a flat black Octocat whose eyes and
   // gaps are cut-outs rather than white fills, so the silhouette treatment gives exactly the
   // white-on-dark lockup GitHub publishes. Mark from GitHub's own Octicons set (`mark-github-24`).
-  github: { name: 'GitHub', onDark: 'whiten', src: '/tool-logos/github.svg' },
+  github: { name: 'GitHub', onDark: 'whiten', src: '/tool-logos/github.svg', url: 'https://github.com/' },
   // The tanuki, straight from `gitlab-org/gitlab` — four brand oranges, legible on both surfaces.
-  gitlab: { name: 'GitLab', onDark: 'none', src: '/tool-logos/gitlab.svg' },
-  gitea: { name: 'Gitea', onDark: 'none', src: '/tool-logos/gitea.svg' },
+  gitlab: { name: 'GitLab', onDark: 'none', src: '/tool-logos/gitlab.svg', url: 'https://gitlab.com/' },
+  gitea: { name: 'Gitea', onDark: 'none', src: '/tool-logos/gitea.svg', url: 'https://gitea.com/' },
   // Flat #362D59 — unreadable on dark paper, and Sentry's own dark mark is white.
-  sentry: { name: 'Sentry', onDark: 'whiten', src: '/tool-logos/sentry.svg' },
+  sentry: { name: 'Sentry', onDark: 'whiten', src: '/tool-logos/sentry.svg', url: 'https://sentry.io/' },
 
   // 07 · Knowledge & Research
-  obsidian: { name: 'Obsidian', onDark: 'none', src: '/tool-logos/obsidian.svg' },
+  obsidian: {
+    name: 'Obsidian',
+    onDark: 'none',
+    src: '/tool-logos/obsidian.svg',
+    url: 'https://obsidian.md/',
+  },
 } as const satisfies Record<string, ToolLogo>
 
 export type ToolKey = keyof typeof TOOL_LOGOS

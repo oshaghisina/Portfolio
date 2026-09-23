@@ -3,10 +3,12 @@ import React from 'react'
 import type { SectionHeaderField } from '@/payload-types'
 
 import { PageOpener } from '@/components/PageOpener'
-import { TwoTone } from '@/components/TwoTone'
+import { WrittenHeadline } from '@/components/WrittenHeadline'
 import type { Locale } from '@/utilities/locale'
 import { pluralCopy, uiCopy } from '@/utilities/uiCopy'
 import { cn } from '@/utilities/ui'
+
+import { HERO_HEADING_CLASS } from '@/heros/richText'
 
 export interface WorkIntroProps {
   sectionHeader?: SectionHeaderField | null
@@ -53,11 +55,20 @@ export const WorkIntro: React.FC<WorkIntroProps> = ({
       className={className}
       eyebrow={tag}
       lede={lede}
+      locale={locale}
       titleSlot={
         lead ? (
-          <TwoTone as="h1" className={cn(tag && 'mt-4')} lead={lead} size="display" tail={tail} />
+          <WrittenHeadline
+            className={cn(HERO_HEADING_CLASS, tag && 'mt-4')}
+            locale={locale}
+            tones={[
+              { text: lead },
+              ...(tail ? [{ text: tail, className: 'text-ink-3' as const }] : []),
+            ]}
+          />
         ) : null
       }
+      written
     />
   )
 }

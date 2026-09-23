@@ -7,8 +7,10 @@ import React from 'react'
 
 import { DEFAULT_LOCALE, type Locale } from '@/utilities/locale'
 import { uiCopy } from '@/utilities/uiCopy'
+import { cn } from '@/utilities/ui'
 
 import { Error } from '../Error'
+import { formControlClassName, formLabelClassName } from '../fieldStyles'
 import { Width } from '../Width'
 
 export const Text: React.FC<
@@ -18,19 +20,33 @@ export const Text: React.FC<
     locale?: Locale
   }
 > = ({ name, defaultValue, errors, label, register, required, width, locale = DEFAULT_LOCALE }) => {
+  const autocomplete =
+    name === 'full-name' ? 'name' : name === 'company' ? 'organization' : undefined
+
   return (
     <Width width={width}>
-      <Label htmlFor={name}>
+      <Label className={formLabelClassName} htmlFor={name}>
         {label}
-
-        {required && (
+        {required ? (
           <span className="required">
+            {' '}
             * <span className="sr-only">{uiCopy[locale].requiredField}</span>
           </span>
-        )}
+        ) : null}
       </Label>
-      <Input defaultValue={defaultValue} id={name} type="text" {...register(name, { required })} />
-      {errors[name] && <Error locale={locale} name={name} />}
+      <Input
+        aria-describedby={errors[name] ? `${name}-error` : undefined}
+        aria-invalid={Boolean(errors[name])}
+        autoComplete={autocomplete}
+        className={cn(formControlClassName)}
+        defaultValue={defaultValue}
+        id={name}
+        type="text"
+        {...register(name, {
+          required: required ? uiCopy[locale].fieldRequired : false,
+        })}
+      />
+      {errors[name] ? <Error locale={locale} name={name} /> : null}
     </Width>
   )
 }

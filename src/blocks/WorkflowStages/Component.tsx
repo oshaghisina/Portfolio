@@ -141,20 +141,36 @@ export const WorkflowStagesBlock: React.FC<WorkflowStagesProps> = ({
                   } as React.CSSProperties
                 }
               >
-                {tools.map((tool) => (
-                  <li
-                    className="flex min-w-0 flex-col items-center justify-start gap-2 bg-paper px-2 py-4 text-center sm:px-3"
-                    key={tool.id ?? tool.toolKey}
-                  >
-                    <ToolLogo toolKey={tool.toolKey} />
-                    {/* `text-caption`, never `eyebrow` — the latter uppercases, and brand names
-                        keep their canonical casing ("Next.js", not "NEXT.JS"). `dir="ltr"` keeps
-                        the punctuation and digits intact inside an RTL paragraph. */}
-                    <span className="min-w-0 break-words text-caption text-ink-2" dir="ltr">
-                      {TOOL_LOGOS[tool.toolKey].name}
-                    </span>
-                  </li>
-                ))}
+                {tools.map((tool) => {
+                  const entry = TOOL_LOGOS[tool.toolKey]
+                  return (
+                    <li className="min-w-0 bg-paper" key={tool.id ?? tool.toolKey}>
+                      {/* Full-cell external link: one hit target for logo + name. Grid cell stays
+                          paper with no card chrome; focus inset matches WorkMosaic tiles. */}
+                      <a
+                        className={cn(
+                          'group flex h-full min-w-0 flex-col items-center justify-start gap-2 px-2 py-4 text-center sm:px-3',
+                          'outline-none transition-colors duration-(--duration-fast) ease-standard',
+                          'focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-ring',
+                        )}
+                        href={entry.url}
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                        <ToolLogo toolKey={tool.toolKey} />
+                        {/* `text-caption`, never `eyebrow` — the latter uppercases, and brand names
+                            keep their canonical casing ("Next.js", not "NEXT.JS"). `dir="ltr"`
+                            keeps the punctuation and digits intact inside an RTL paragraph. */}
+                        <span
+                          className="min-w-0 break-words text-caption text-ink-2 transition-colors duration-(--duration-fast) ease-standard group-hover:text-foreground group-focus-visible:text-foreground"
+                          dir="ltr"
+                        >
+                          {entry.name}
+                        </span>
+                      </a>
+                    </li>
+                  )
+                })}
               </ul>
             </div>
           )

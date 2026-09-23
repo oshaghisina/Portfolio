@@ -186,19 +186,92 @@ const formBlock = (contact.layout as Doc[]).find((row) => row.blockType === 'for
 if (!formBlock) throw new Error('Missing contact form block')
 await addCollection('pages', String(contact.id), 'page/contact', {
   title: contactCopy.fa.title,
+  hero: {
+    type: 'contactImpact',
+    richText: richText(heading(contactCopy.fa.headline, 'h1', 'rtl')),
+    aside: richText(paragraph(contactCopy.fa.aside, 'rtl')),
+  },
   layout: (contact.layout as Doc[]).map((row) =>
-    row.blockType === 'formBlock' ? { ...row, introContent: richText(heading(contactCopy.fa.intro, 'h3', 'rtl')) } : row,
+    row.blockType === 'formBlock'
+      ? {
+          ...row,
+          enableIntro: false,
+          introContent: null,
+          sectionTitle: contactCopy.fa.sectionTitle,
+          emailPath: {
+            index: contactCopy.fa.paths.email.index,
+            title: contactCopy.fa.paths.email.title,
+            description: contactCopy.fa.paths.email.description,
+            ctaLabel: contactCopy.fa.paths.email.ctaLabel,
+          },
+          formPath: {
+            index: contactCopy.fa.paths.form.index,
+            title: contactCopy.fa.paths.form.title,
+            description: contactCopy.fa.paths.form.description,
+            ctaLabel: contactCopy.fa.paths.form.ctaLabel,
+          },
+          closingNote: richText(paragraph(contactCopy.fa.closingNote, 'rtl')),
+        }
+      : row,
   ),
   meta: { ...(asDoc(contact.meta)), ...contactCopy.fa.meta },
 })
 const formId = typeof formBlock.form === 'object' ? String(asDoc(formBlock.form).id) : String(formBlock.form)
 const form = asDoc(await payload.findByID({ collection: 'forms', id: formId, depth: 0, locale: 'en' }))
-const labelIndex: Record<string, number> = { 'full-name': 0, email: 1, phone: 2, message: 3 }
 await addCollection('forms', formId, 'form/contact', {
   submitButtonLabel: contactCopy.fa.form.submitLabel,
-  confirmationMessage: richText(paragraph(contactCopy.fa.form.confirmation, 'rtl')),
-  emails: (form.emails as Doc[] ?? []).map((email) => ({ ...email, subject: contactCopy.fa.form.emailSubject, message: richText(paragraph(contactCopy.fa.form.emailBody, 'rtl')) })),
-  fields: (form.fields as Doc[] ?? []).map((field) => ({ ...field, ...(labelIndex[String(field.name)] === undefined ? {} : { label: contactCopy.fa.form.labels[labelIndex[String(field.name)]!] }) })),
+  confirmationMessage: richText(
+    heading(contactCopy.fa.form.confirmationTitle, 'h2', 'rtl'),
+    paragraph(contactCopy.fa.form.confirmation, 'rtl'),
+  ),
+  emails: (form.emails as Doc[] ?? []).map((email) => ({
+    ...email,
+    subject: contactCopy.fa.form.emailSubject,
+    message: richText(paragraph(contactCopy.fa.form.emailBody, 'rtl')),
+  })),
+  fields: [
+    {
+      name: 'full-name',
+      blockName: 'full-name',
+      blockType: 'text',
+      label: contactCopy.fa.form.labels.fullName,
+      required: true,
+      width: 50,
+    },
+    {
+      name: 'email',
+      blockName: 'email',
+      blockType: 'email',
+      label: contactCopy.fa.form.labels.email,
+      required: true,
+      width: 50,
+    },
+    {
+      name: 'company',
+      blockName: 'company',
+      blockType: 'text',
+      label: contactCopy.fa.form.labels.company,
+      required: false,
+      width: 50,
+    },
+    {
+      name: 'project-type',
+      blockName: 'project-type',
+      blockType: 'select',
+      label: contactCopy.fa.form.labels.projectType,
+      options: contactCopy.fa.form.projectTypes,
+      required: false,
+      width: 50,
+    },
+    {
+      name: 'message',
+      blockName: 'message',
+      blockType: 'textarea',
+      label: contactCopy.fa.form.labels.message,
+      required: true,
+      width: 100,
+    },
+  ],
 })
 
 const header = asDoc(await payload.findGlobal({ slug: 'header', depth: 0, locale: 'en' }))

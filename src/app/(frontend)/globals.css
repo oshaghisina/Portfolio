@@ -340,6 +340,109 @@ html[data-theme='light'] {
    Only `translate` and `opacity` animate — both compositor-friendly, and neither reflows, so the
    hero cannot shift while the loop runs. `--ix-dx`/`--ix-dy` are set per domain group in the
    component (each one's unit vector toward the centre), so one keyframe serves all three. */
+
+/* Primary page-opener title write. Without `data-hero-writing` (no-JS / reduced motion) every
+   marked region stays at its final opacity — progressive enhancement only. */
+@keyframes hero-eyebrow-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes hero-supporting-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes hero-write-unit-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes hero-write-caret-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.hero-write-caret {
+  display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-hero-entrance][data-hero-writing] .hero-write-unit {
+    opacity: 0;
+    animation: hero-write-unit-in 1ms linear forwards;
+    animation-delay: calc(
+      100ms + (var(--hero-write-i, 0) / var(--hero-write-units, 1)) * var(--hero-write-duration, 1000ms)
+    );
+  }
+
+  [data-hero-entrance][data-hero-writing] .hero-write-caret {
+    display: inline-block;
+    width: 1px;
+    height: 0.85em;
+    margin-inline-start: 0.125rem;
+    translate: 0 0.08em;
+    background: var(--foreground);
+    vertical-align: baseline;
+    animation: hero-write-caret-in var(--duration-fast) var(--ease-standard) both;
+  }
+
+  [data-hero-entrance][data-hero-write-complete] .hero-write-caret {
+    display: none;
+  }
+
+  [data-hero-entrance][data-hero-writing] [data-hero-eyebrow] {
+    animation: hero-eyebrow-in var(--duration-fast) var(--ease-standard) both;
+  }
+
+  [data-hero-entrance][data-hero-writing] [data-hero-supporting] {
+    opacity: 0;
+    transform: translateY(6px);
+    animation: hero-supporting-in var(--duration-base) var(--ease-standard) forwards;
+    animation-delay: calc(var(--hero-write-duration, 1000ms) * 0.78);
+  }
+
+  [data-hero-entrance][data-hero-writing] [data-hero-actions] {
+    opacity: 0;
+    transform: translateY(6px);
+    animation: hero-supporting-in var(--duration-base) var(--ease-standard) forwards;
+    animation-delay: calc(var(--hero-write-duration, 1000ms) * 1.02);
+  }
+
+  [data-hero-entrance][data-hero-write-complete] [data-hero-supporting],
+  [data-hero-entrance][data-hero-write-complete] [data-hero-actions] {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* About intersection diagram waits until the headline is authored. */
+  [data-hero-entrance][data-hero-writing]:not([data-hero-write-complete]) .ix-domain,
+  [data-hero-entrance][data-hero-writing]:not([data-hero-write-complete]) .ix-link,
+  [data-hero-entrance][data-hero-writing]:not([data-hero-write-complete]) .ix-field,
+  [data-hero-entrance][data-hero-writing]:not([data-hero-write-complete]) .ix-mark,
+  [data-hero-entrance][data-hero-writing]:not([data-hero-write-complete]) .ix-core {
+    animation-play-state: paused;
+  }
+}
+
 .ix-domain {
   translate: var(--ix-dx, 0) var(--ix-dy, 0);
 }

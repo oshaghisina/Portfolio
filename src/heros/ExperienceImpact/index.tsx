@@ -4,10 +4,9 @@ import type { Page } from '@/payload-types'
 
 import { CapabilityIndex } from '@/components/CapabilityIndex'
 import { PageOpener } from '@/components/PageOpener'
-import RichText from '@/components/RichText'
 import type { Locale } from '@/utilities/locale'
 
-import { HERO_RICH_TEXT_CLASS } from '../richText'
+import { HeroWrittenRichText } from '../HeroWrittenRichText'
 
 /**
  * The `/experience` opener: the same copy-led opening as `lowImpact`, plus the capability index
@@ -24,15 +23,8 @@ export const ExperienceImpactHero: React.FC<Page['hero'] & { locale?: Locale }> 
 }) => (
   <PageOpener
     aside={<CapabilityIndex className="w-full shrink-0 lg:w-[24rem] xl:w-[28rem]" locale={locale} />}
-    titleSlot={
-      richText ? (
-        <RichText
-          className={HERO_RICH_TEXT_CLASS}
-          data={richText}
-          enableGutter={false}
-          enableProse={false}
-        />
-      ) : null
-    }
+    locale={locale}
+    titleSlot={richText ? <HeroWrittenRichText data={richText} locale={locale} /> : null}
+    written
   />
 )

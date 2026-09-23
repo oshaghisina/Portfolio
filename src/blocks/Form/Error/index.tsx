@@ -10,9 +10,12 @@ export const Error = ({ locale = DEFAULT_LOCALE, name }: { locale?: Locale; name
   const {
     formState: { errors },
   } = useFormContext()
+
+  const message = (errors[name]?.message as string | undefined) || uiCopy[locale].fieldRequired
+
   return (
-    <div className="mt-2 text-red-500 text-sm">
-      {(errors[name]?.message as string) || uiCopy[locale].fieldRequired}
-    </div>
+    <p className="mt-2 text-small text-danger" id={`${name}-error`} role="alert">
+      {message}
+    </p>
   )
 }

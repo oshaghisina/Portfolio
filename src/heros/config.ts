@@ -47,6 +47,10 @@ export const hero: Field = {
           label: 'Experience Impact',
           value: 'experienceImpact',
         },
+        {
+          label: 'Contact Impact',
+          value: 'contactImpact',
+        },
       ],
       required: true,
     },
@@ -65,6 +69,21 @@ export const hero: Field = {
         },
       }),
       label: false,
+    },
+    {
+      name: 'aside',
+      type: 'richText',
+      localized: true,
+      admin: {
+        condition: (_, { type } = {}) => type === 'contactImpact',
+        description: 'Right-column context beside the Contact headline.',
+      },
+      editor: lexicalEditor({
+        features: ({ rootFeatures }) => {
+          return [...rootFeatures, FixedToolbarFeature(), InlineToolbarFeature()]
+        },
+      }),
+      label: 'Aside',
     },
     linkGroup({
       overrides: {

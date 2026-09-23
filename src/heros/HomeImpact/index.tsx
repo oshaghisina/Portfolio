@@ -5,12 +5,10 @@ import type { Page } from '@/payload-types'
 import { CMSLink } from '@/components/Link'
 import { ConsolePanel } from '@/components/ConsolePanel'
 import { PageOpener } from '@/components/PageOpener'
-import RichText from '@/components/RichText'
 import { DEFAULT_LOCALE, type Locale } from '@/utilities/locale'
 import { uiCopy } from '@/utilities/uiCopy'
-import { cn } from '@/utilities/ui'
 
-import { HERO_RICH_TEXT_CLASS } from '../richText'
+import { HeroWrittenRichText } from '../HeroWrittenRichText'
 
 /**
  * The homepage's take on `PageOpener`: the shared opening gesture plus a small workspace console
@@ -29,7 +27,8 @@ export const HomeImpactHero: React.FC<Page['hero'] & { locale?: Locale }> = ({
   locale,
   richText,
 }) => {
-  const copy = uiCopy[locale ?? DEFAULT_LOCALE]
+  const resolvedLocale = locale ?? DEFAULT_LOCALE
+  const copy = uiCopy[resolvedLocale]
   const workspaceIndex = WORKSPACE_CODES.map((code, i) => ({
     code,
     label: copy.heroDisciplines[i]!,
@@ -76,17 +75,18 @@ export const HomeImpactHero: React.FC<Page['hero'] & { locale?: Locale }> = ({
         </ConsolePanel>
       }
       eyebrow="Sina Oshaghi"
+      locale={resolvedLocale}
       railLabels={workspaceIndex.map((row) => `${row.code} · ${row.label}`)}
       titleSlot={
         richText ? (
-          <RichText
-            className={cn('mt-4', HERO_RICH_TEXT_CLASS)}
+          <HeroWrittenRichText
             data={richText}
-            enableGutter={false}
-            enableProse={false}
+            headingClassName="mt-4"
+            locale={resolvedLocale}
           />
         ) : null
       }
+      written
     />
   )
 }
