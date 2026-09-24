@@ -158,3 +158,8 @@
     font-size: 21px;
   }
 }
+.intersection-caption-kicker:lang(fa),
+.intersection-caption-kicker:lang(ar) {
+  font-family: var(--font-sans), sans-serif;
+  letter-spacing: normal;
+}
