@@ -9,6 +9,14 @@ import {
   dgLocalizedFields,
 } from './digital-gold'
 import {
+  FAY_ASSETS,
+  FAY_LOCALES,
+  FAY_MEDIA,
+  FAY_SHARED_FIELDS,
+  FAY_SLUG,
+  fayLocalizedFields,
+} from './faymen'
+import {
   K45_ASSETS,
   K45_LOCALES,
   K45_MEDIA,
@@ -88,6 +96,18 @@ export const CASE_STUDIES: CaseStudySeedConfig<any, any>[] = [
     },
     sharedFields: K45_SHARED_FIELDS,
     localizedFields: k45LocalizedFields,
+  },
+  {
+    label: 'Fayman',
+    slug: FAY_SLUG,
+    assetsDir: FAY_ASSETS,
+    media: FAY_MEDIA,
+    seedLocales: FAY_LOCALES,
+    createFields: { kind: ['product'], order: 5, featured: true, coverMediaKey: 'cover' },
+    // The archive cover was the home page, which carries a live coupon and a sales number.
+    replaceCover: true,
+    sharedFields: FAY_SHARED_FIELDS,
+    localizedFields: fayLocalizedFields,
   },
 ]
 

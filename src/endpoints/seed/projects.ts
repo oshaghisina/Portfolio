@@ -451,10 +451,11 @@ export const PROJECT_SEED: ProjectSeedRow[] = [
     status: 'published',
     period: { start: '2026-06-01T00:00:00.000Z' },
     liveUrl: 'https://faymen.ir',
+    // A phone capture of one category grid: the home page carries a live coupon and a sales number.
     cover: {
-      path: 'Docs/Experience/Projects/faymen/assets/home/home.png',
-      name: 'faymen--home.png',
-      alt: 'Fayman — the Persian RTL storefront home page, opening on the seasonal menswear edit',
+      path: 'Docs/Experience/Projects/faymen/assets/capture-2026-09/mobile/waistcoats.png',
+      name: 'faymen--cover.png',
+      alt: 'Fayman on a phone — the waistcoat collection as a right-to-left product grid priced in Toman',
     },
   },
   {

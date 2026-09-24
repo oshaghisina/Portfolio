@@ -22,7 +22,7 @@ const DETAIL_POSITION: Record<string, string> = {
   'rp1-arena': 'object-[center_72%]',
   'digital-gold': 'object-[center_36%]',
   'khodro45-dealer-app': 'object-[center_12%]',
-  faymen: 'object-[center_8%]',
+  faymen: 'object-[center_30%]',
 }
 
 const GRID_STYLE = {

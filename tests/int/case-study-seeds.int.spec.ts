@@ -12,6 +12,7 @@ import { FIGURE_ITEM_COUNT, type FigureLayout } from '@/blocks/CaseStudy/Figure/
 import { CASE_STUDIES } from '@/endpoints/seed/case-studies'
 import { DG_LOCALES, DG_MEDIA, dgLocalizedFields } from '@/endpoints/seed/case-studies/digital-gold'
 import type { CaseStudyLocalizedFields } from '@/endpoints/seed/case-studies/seed-case-study'
+import { PROJECT_SEED } from '@/endpoints/seed/projects'
 import { collectIds, hasText } from '@/endpoints/seed/translations/audit'
 import { LOCALES, type Locale } from '@/utilities/locale'
 
@@ -196,3 +197,95 @@ describe('Digital Gold publication gates', () => {
     expect(JSON.stringify(DG_MEDIA)).not.toContain('brochure-05')
   })
 })
+
+describe('every case study agrees with its archive row', () => {
+  // `createFields` only applies when a fresh database has no row yet; if it drifts from
+  // `PROJECT_SEED`, a clean seed would number or feature the project differently.
+  it.each(CASE_STUDIES.map((config) => [config.label, config] as const))('%s', (_label, config) => {
+    const row = PROJECT_SEED.find((candidate) => candidate.slug === config.slug)
+    expect(row, config.slug).toBeDefined()
+    expect(config.createFields.kind).toEqual(row!.kind)
+    expect(config.createFields.order).toBe(row!.order)
+    expect(config.createFields.featured ?? false).toBe(row!.featured ?? false)
+  })
+})
+
+/**
+ * Publication gates for the studies added on 2026-09-23. Each lists the source files that must
+ * never be uploaded and the strings that must never be written, in any locale or alt text — the
+ * reasons are in each module's header and in its Docs README.
+ */
+const GATES: Record<string, { files: RegExp[]; text: RegExp[] }> = {
+  faymen: {
+    // Home, search and cart carry a live coupon and a sales number; contact carries phones and the
+    // showroom address; about, lookbook and made-to-measure carry imagery of unconfirmed origin.
+    files: [/home/, /search/, /cart/, /checkout/, /contact/, /find-order/, /create-account/, /about/, /lookbook/, /made-to-measure/],
+    text: [/DEAKJP/i, /09\d{9}/, /۰۹[۰-۹]{9}/, /44964292/, /reorder/i, /\bRCE\b/, /Metabase/i, /incident/i, /فایمن|فايمن/],
+  },
+}
+
+/**
+ * Looser than `scriptProblem`: a caption may quote the product's own Persian UI inside English, so
+ * this only asks that each string carries its own locale's script.
+ */
+const ownScriptProblem = (locale: Locale, text: string): string | null => {
+  const own =
+    locale === 'fa' || locale === 'ar'
+      ? ARABIC_SCRIPT.test(text)
+      : locale === 'ja'
+        ? JAPANESE_SCRIPT.test(text)
+        : /[A-Za-z]/.test(text) && !JAPANESE_SCRIPT.test(text)
+  return own ? null : `${locale}: not written in its own script: “${text}”`
+}
+
+describe.each(CASE_STUDIES.filter((config) => config.slug in GATES).map((config) => [config.label, config] as const))(
+  '%s publication gates',
+  (_label, config) => {
+    const gate = GATES[config.slug]
+    const media = fakeMedia(config.media)
+    const specs = Object.values(config.media) as { file: string; alt: Partial<Record<Locale, string>> }[]
+
+    it('uploads no gated source file', () => {
+      for (const spec of specs) for (const pattern of gate.files) expect(spec.file, String(pattern)).not.toMatch(pattern)
+    })
+
+    it('is written in every locale', () => {
+      expect(config.seedLocales).toEqual(LOCALES)
+    })
+
+    it.each(LOCALES)('%s: gives every upload an alt text in its own script', (locale) => {
+      for (const spec of specs) {
+        expect(hasText(spec.alt[locale]), `${spec.file} alt`).toBe(true)
+        expect(scriptProblem(locale, spec.alt[locale] ?? '')).toBeNull()
+      }
+    })
+
+    it.each(LOCALES)('%s: writes none of the gated strings', (locale) => {
+      const text = JSON.stringify(config.localizedFields(locale, media)) + JSON.stringify(specs.map((s) => s.alt[locale]))
+      for (const pattern of gate.text) expect(text, String(pattern)).not.toMatch(pattern)
+    })
+
+    it.each(LOCALES)('%s: every figure says what its media is', (locale) => {
+      const figures = rowsOf((config.localizedFields(locale, media) as CaseStudyLocalizedFields).sections).filter(
+        (block) => block.blockType === 'csFigure',
+      )
+      for (const figure of figures) expect(figure.treatment, String(figure.id)).not.toBe('auto')
+    })
+
+    it.each(LOCALES)('%s: titles, labels and captions are in its own script', (locale) => {
+      const fields = config.localizedFields(locale, media) as CaseStudyLocalizedFields
+      const texts: string[] = [fields.snapshot.role, fields.snapshot.result, fields.hero?.caption ?? '']
+      for (const block of rowsOf(fields.sections)) {
+        if (typeof block.caption === 'string') texts.push(block.caption)
+        for (const key of ['items', 'steps', 'annotations']) {
+          for (const item of (Array.isArray(block[key]) ? block[key] : []) as Row[]) {
+            for (const leaf of ['title', 'label', 'caption', 'text']) {
+              if (typeof item[leaf] === 'string' && item[leaf]) texts.push(item[leaf] as string)
+            }
+          }
+        }
+      }
+      expect(texts.map((text) => ownScriptProblem(locale, text)).filter(Boolean)).toEqual([])
+    })
+  },
+)
