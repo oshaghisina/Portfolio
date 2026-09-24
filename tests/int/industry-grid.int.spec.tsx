@@ -69,7 +69,13 @@ describe('Industry catalogue and rendering', () => {
       expect(screen.getAllByRole('heading', { level: 3 }).map((el) => el.textContent)).toEqual(
         INDUSTRY_KEYS.map((key) => industryLabels[locale][key]),
       )
-      const illustrations = [...container.querySelectorAll('svg')]
+      expect(container.querySelectorAll('.industry-row')).toHaveLength(1)
+      expect(
+        container.querySelectorAll('.industry-set:not([aria-hidden]) .industry-window'),
+      ).toHaveLength(15)
+      const illustrations = [
+        ...container.querySelectorAll('.industry-set:not([aria-hidden]) svg'),
+      ]
       expect(illustrations).toHaveLength(15)
       expect(new Set(illustrations.map((svg) => svg.innerHTML)).size).toBe(15)
       expect(
@@ -82,22 +88,24 @@ describe('Industry catalogue and rendering', () => {
       expect(container.querySelector('a, button, img, animate, .cap-anim, p')).toBeNull()
       const reveal = collectRevealTargets(container.firstElementChild as HTMLElement)
       expect(
-        reveal.filter((target) => target.element.matches('.industry-window') && target.contents),
-      ).toHaveLength(15)
+        reveal.filter((target) => target.element.matches('.industry-row') && target.contents),
+      ).toHaveLength(1)
     },
   )
 
-  it('places industries immediately before the workspace in the seed, fallback and every locale overlay', () => {
+  it('places industries first in the seed, fallback and every locale overlay', () => {
     const layouts = [
       homeStatic.layout,
       ...LOCALES.map((locale) => layoutFor(locale)),
       ...LOCALES.map((locale) => localizeHomeLayout(locale, layoutFor('en'))),
     ]
     for (const layout of layouts) {
-      const index = layout.findIndex((block) => block.blockType === 'industryGrid')
-      expect(index).toBeGreaterThanOrEqual(0)
-      expect(layout[index + 1]!.blockType).toBe('workspace')
+      expect(layout[0]!.blockType).toBe('industryGrid')
       expect(layout.filter((block) => block.blockType === 'industryGrid')).toHaveLength(1)
+      const mosaic = layout.findIndex((block) => block.blockType === 'workMosaic')
+      const workspace = layout.findIndex((block) => block.blockType === 'workspace')
+      expect(mosaic).toBeGreaterThanOrEqual(0)
+      expect(workspace).toBe(mosaic + 1)
     }
   })
 })
@@ -139,7 +147,7 @@ describe('Additive homepage update', () => {
     const layout = [...oldLayout('fa'), industry, { ...industry, id: 'duplicate' }]
     const next = upsertHomeIndustries(layout, 'fa')
     expect(next[0]).toEqual(industry)
-    expect(next[1]!.blockType).toBe('workspace')
+    expect(next[1]!.blockType).toBe('tracks')
     expect(next.filter((block) => block.blockType === 'industryGrid')).toHaveLength(1)
   })
 

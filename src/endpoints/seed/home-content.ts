@@ -25,13 +25,14 @@ type PageHero = RequiredDataFromCollectionSlug<'pages'>['hero']
  * (`home.ts`). Both need the identical Sina-specific narrative, so it lives here once rather than
  * drifting between two hand-kept copies.
  *
- * V4: rebuilt into a long, sparse editorial composition — Hero → Workbench → Primary Focus →
- * Metrics → Tools / Stack → Experience matrix → Selected work → Contact — with a dominant
+ * V4: rebuilt into a long, sparse editorial composition — Hero → Industries → Tracks →
+ * Tools / Stack → Experience → Selected work → Workbench → Contact — with a dominant
  * workbench artifact, one calm focus and real whitespace intervals, instead of a sequence of
  * roughly equal-weight catalogue blocks (see Docs/Benchmarks/Design/pleurat-com.md).
  *
  * V5 replaced the single Featured Project with the project mosaic: the same evidence layer,
- * but showing the breadth of the work rather than one example of it.
+ * but showing the breadth of the work rather than one example of it. Workbench sits after
+ * Selected work so case studies lead and the operating model follows.
  * Hero H1 revised to describe the work, not the name (Sina Oshaghi moves to a small kicker),
  * sourced from the already-drafted headline option in Docs/About-Me/Brand-Brief.md — no new
  * marketing copy invented.
@@ -293,27 +294,6 @@ export const buildHomeLayout = ({
   return [
     buildIndustryGridBlock(locale),
     {
-      blockName: 'Workbench',
-      blockType: 'workspace',
-      sectionHeader: copy.workbench.header,
-      principle: copy.workbench.principle,
-      loopLabel: copy.workbench.loopLabel,
-      stages: STAGE_KEYS.map((key, i) => {
-        const stage = copy.workbench.stages[i]!
-        const evidenceSlug = STAGE_EVIDENCE_SLUGS[key]
-        const evidence = evidenceSlug ? projects[evidenceSlug] : undefined
-        return {
-          key,
-          label: stage.label,
-          statement: stage.statement,
-          question: stage.question,
-          description: stage.description,
-          output: stage.output,
-          ...(evidence ? { evidence } : {}),
-        }
-      }),
-    },
-    {
       blockName: 'Tracks',
       blockType: 'tracks',
       sectionHeader: copy.tracks.header,
@@ -339,6 +319,27 @@ export const buildHomeLayout = ({
     },
     buildExperienceTeaserBlock(locale, teaserMetrics(copy)),
     buildWorkMosaicBlock(copy, projects),
+    {
+      blockName: 'Workbench',
+      blockType: 'workspace',
+      sectionHeader: copy.workbench.header,
+      principle: copy.workbench.principle,
+      loopLabel: copy.workbench.loopLabel,
+      stages: STAGE_KEYS.map((key, i) => {
+        const stage = copy.workbench.stages[i]!
+        const evidenceSlug = STAGE_EVIDENCE_SLUGS[key]
+        const evidence = evidenceSlug ? projects[evidenceSlug] : undefined
+        return {
+          key,
+          label: stage.label,
+          statement: stage.statement,
+          question: stage.question,
+          description: stage.description,
+          output: stage.output,
+          ...(evidence ? { evidence } : {}),
+        }
+      }),
+    },
     {
       blockName: 'Contact',
       blockType: 'cta',

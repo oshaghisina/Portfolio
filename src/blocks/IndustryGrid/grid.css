@@ -1,58 +1,175 @@
-.industry-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-auto-rows: 1fr;
-  gap: 1px;
+/* Compact single-row industry index — hairline grid, optional ambient marquee. */
+
+.industry-strip {
   border: 1px solid var(--line);
   background: var(--paper);
+  overflow: hidden;
+}
+
+.industry-row {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  background: var(--line);
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in oklab, var(--line) 80%, transparent) transparent;
+}
+
+.industry-row::-webkit-scrollbar {
+  height: 4px;
+}
+
+.industry-row::-webkit-scrollbar-thumb {
+  background: color-mix(in oklab, var(--line) 80%, transparent);
+}
+
+.industry-row::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.industry-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+.industry-set {
+  display: flex;
   list-style: none;
   margin: 0;
   padding: 0;
+  gap: 1px;
+  background: var(--line);
 }
+
+.industry-strip:not([data-marquee='on']) .industry-set--clone,
+.industry-strip:not([data-marquee='on']) .industry-set[aria-hidden] {
+  display: none;
+}
+
 .industry-window {
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto auto;
   justify-items: center;
-  align-items: start;
+  align-content: start;
+  gap: 6px;
+  flex: 0 0 auto;
+  width: 156px;
   min-width: 0;
-  padding: 12px 10px 18px;
+  padding: 10px 8px 12px;
   background: var(--paper);
   box-shadow: 0 0 0 1px var(--line);
 }
+
+.industry-icon {
+  display: grid;
+  place-items: center;
+  width: 96px;
+  height: calc(96px * 7 / 10);
+  overflow: hidden;
+}
+
 .industry-illustration {
   display: block;
   width: 100%;
-  max-width: 220px;
-  height: auto;
-  aspect-ratio: 10 / 7;
+  height: 100%;
+  max-width: none;
+  aspect-ratio: auto;
   direction: ltr;
+  transition: filter 160ms ease;
 }
+
 .industry-name {
   width: 100%;
-  max-width: 22ch;
-  min-height: 3.2em;
+  max-width: 18ch;
   margin: 0;
   text-align: center;
   text-wrap: balance;
   overflow-wrap: anywhere;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
-  line-height: 1.6;
+  line-height: 1.45;
   color: var(--foreground);
 }
+
+.industry-window:hover .industry-illustration,
+.industry-window:focus-within .industry-illustration {
+  filter: brightness(1.12) contrast(1.04);
+}
+
+.industry-window:hover .industry-name,
+.industry-window:focus-within .industry-name {
+  font-weight: 600;
+}
+
 @media (min-width: 640px) {
-  .industry-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
   .industry-window {
-    padding: 16px 14px 22px;
+    width: 168px;
+    padding: 12px 10px 14px;
+    gap: 8px;
   }
+
+  .industry-icon {
+    width: 104px;
+    height: calc(104px * 7 / 10);
+  }
+
+  .industry-name {
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .industry-window {
+    width: 176px;
+    padding: 12px 10px 14px;
+  }
+
+  .industry-icon {
+    width: 112px;
+    height: calc(112px * 7 / 10);
+  }
+
   .industry-name {
     font-size: 14px;
   }
 }
-@media (min-width: 1024px) {
-  .industry-grid {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+
+/* Optical corrections — keep disparate silhouettes in the same visual box. */
+.industry-window[data-industry='travel'] .industry-illustration,
+.industry-window[data-industry='telecom'] .industry-illustration {
+  transform: scale(0.92);
+  transform-origin: center;
+}
+
+.industry-window[data-industry='gaming'] .industry-illustration,
+.industry-window[data-industry='networking'] .industry-illustration {
+  transform: scale(0.94);
+  transform-origin: center;
+}
+
+@keyframes industry-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .industry-strip[data-marquee='on'] .industry-track {
+    animation: industry-marquee 42s linear infinite;
+  }
+
+  .industry-strip[data-marquee='on']:hover .industry-track,
+  .industry-strip[data-marquee='on']:focus-within .industry-track,
+  .industry-strip[data-marquee='on'][data-paused] .industry-track {
+    animation-play-state: paused;
+  }
+
+  /* Clip while playing; allow manual scroll when paused or reduced-motion. */
+  .industry-strip[data-marquee='on']:not(:hover):not(:focus-within):not([data-paused]) .industry-row {
+    overflow-x: hidden;
   }
 }

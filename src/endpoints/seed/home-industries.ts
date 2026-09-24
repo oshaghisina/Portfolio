@@ -6,14 +6,15 @@ import { buildIndustryGridBlock } from './home-content'
 import { homeCopy } from './home-copy'
 
 /** Only the new block and the existing industry total change. All other localized leaves,
- * relationship ids, block ids and nested row ids round-trip unchanged. */
+ * relationship ids, block ids and nested row ids round-trip unchanged. Industries always lead
+ * the layout (after the hero); Workbench sits later, after Selected work. */
 export function upsertHomeIndustries(
   layout: Page['layout'],
   locale: Locale,
   identity?: IndustryGridBlock,
 ): Page['layout'] {
   if (!layout.some((block) => block.blockType === 'workspace')) {
-    throw new Error('Home has no workspace block: cannot place industries before How I work.')
+    throw new Error('Home has no workspace block: refusing to mutate a non-home layout.')
   }
   const existing = layout.find((block) => block.blockType === 'industryGrid')
   const base = existing ?? buildIndustryGridBlock(locale)
@@ -37,8 +38,7 @@ export function upsertHomeIndustries(
         ),
       }
     })
-  const position = otherBlocks.findIndex((block) => block.blockType === 'workspace')
-  return [...otherBlocks.slice(0, position), industry, ...otherBlocks.slice(position)]
+  return [industry, ...otherBlocks]
 }
 
 /** Snapshot every translation BEFORE writing the shared blocks array. Unlike a full translation
