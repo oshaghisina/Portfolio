@@ -153,6 +153,7 @@ export const experiencesData: ExperienceSeedEntry[] = [
     en: {
       title: 'Fibona',
       company: 'Fibona',
+      domain: 'Business consulting',
       role: 'Product Manager',
       summary: 'Aligned stakeholders around a new brand identity, tagline and website from the ground up.',
       durationLabel: '2 yrs',
@@ -160,6 +161,7 @@ export const experiencesData: ExperienceSeedEntry[] = [
     fa: {
       title: 'فیبونا',
       company: 'فیبونا',
+      domain: 'مشاورهٔ کسب‌وکار',
       role: 'مدیر محصول',
       summary: 'ذی‌نفعان فیبونا را برای شکل‌دادن به هویت برند، شعار و وب‌سایتی تازه هم‌سو کردم.',
       durationLabel: '۲ سال',

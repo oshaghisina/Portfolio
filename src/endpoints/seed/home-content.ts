@@ -1,3 +1,4 @@
+import { INDUSTRY_KEYS, industryHeaders } from '@/blocks/IndustryGrid/catalogue'
 import type { RequiredDataFromCollectionSlug } from 'payload'
 
 import type { Project } from '@/payload-types'
@@ -238,7 +239,7 @@ export const EXPERIENCE_COMPANY_KEYS = [
 ] as const
 // Only the first metric is still the résumé's own claim. The company and industry counts are
 // counted off Docs/Experience/ frontmatter, so they cite the folder that can be re-counted.
-const METRIC_SOURCES = ['Resume.md', 'Experience/', 'Experience/'] as const
+const METRIC_SOURCES = ['Resume.md', 'Experience/', 'Experience/Industries.md'] as const
 
 /**
  * The proof metrics, as the Experience section wants them. They live in `homeCopy` rather than
@@ -270,6 +271,15 @@ export const buildWorkMosaicBlock = (
   }),
 })
 
+export const buildIndustryGridBlock = (
+  locale: Locale,
+): Extract<NonNullable<PageLayout>[number], { blockType: 'industryGrid' }> => ({
+  blockName: 'Industries',
+  blockType: 'industryGrid',
+  sectionHeader: industryHeaders[locale],
+  industries: INDUSTRY_KEYS.map((key) => ({ key })),
+})
+
 export const buildHomeLayout = ({
   locale,
   projects,
@@ -281,6 +291,7 @@ export const buildHomeLayout = ({
   const dir = dirFor(locale)
 
   return [
+    buildIndustryGridBlock(locale),
     {
       blockName: 'Workbench',
       blockType: 'workspace',
@@ -397,6 +408,8 @@ export const localizeHomeLayout = (
     const rows = (key: string) => (block[key] ?? []) as Record<string, unknown>[]
 
     switch (block.blockType) {
+      case 'industryGrid':
+        return { ...block, sectionHeader: { ...header, ...industryHeaders[locale] } }
       case 'workspace': {
         // Keyed overlay: stage order is editable in the CMS, and `key` is the stable identity
         // the copy table and the bench visuals are written against.

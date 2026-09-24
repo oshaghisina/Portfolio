@@ -251,6 +251,7 @@ export interface Page {
     | MetricsStripBlock
     | SelectedWorkBlock
     | WorkMosaicBlock
+    | IndustryGridBlock
     | WorkspaceBlock
     | TracksBlock
     | WorkflowStagesBlock
@@ -1403,6 +1404,38 @@ export interface WorkMosaicBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "IndustryGridBlock".
+ */
+export interface IndustryGridBlock {
+  sectionHeader?: SectionHeaderField;
+  /**
+   * All 15 industries, once each. Drag to reorder; names and illustrations are shared across languages.
+   */
+  industries: {
+    key:
+      | 'finance'
+      | 'automotive'
+      | 'education'
+      | 'cloud'
+      | 'travel'
+      | 'retail'
+      | 'media'
+      | 'telecom'
+      | 'gaming'
+      | 'real-estate'
+      | 'energy'
+      | 'logistics'
+      | 'after-sales'
+      | 'networking'
+      | 'consulting';
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'industryGrid';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "WorkspaceBlock".
  */
 export interface WorkspaceBlock {
@@ -2447,6 +2480,7 @@ export interface PagesSelect<T extends boolean = true> {
         metricsStrip?: T | MetricsStripBlockSelect<T>;
         selectedWork?: T | SelectedWorkBlockSelect<T>;
         workMosaic?: T | WorkMosaicBlockSelect<T>;
+        industryGrid?: T | IndustryGridBlockSelect<T>;
         workspace?: T | WorkspaceBlockSelect<T>;
         tracks?: T | TracksBlockSelect<T>;
         workflowStages?: T | WorkflowStagesBlockSelect<T>;
@@ -2631,6 +2665,21 @@ export interface WorkMosaicBlockSelect<T extends boolean = true> {
         project?: T;
         size?: T;
         mediaOverride?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "IndustryGridBlock_select".
+ */
+export interface IndustryGridBlockSelect<T extends boolean = true> {
+  sectionHeader?: T | SectionHeaderFieldSelect<T>;
+  industries?:
+    | T
+    | {
+        key?: T;
         id?: T;
       };
   id?: T;

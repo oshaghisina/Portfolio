@@ -1,3 +1,4 @@
+import { industryCountLabel } from '@/blocks/IndustryGrid/catalogue'
 import type { CategoryKey } from '@/blocks/WorkflowStages/toolLogos'
 import type { Locale } from '@/utilities/locale'
 
@@ -164,7 +165,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       metrics: [
         { value: '10 yrs', caption: 'Experience across product design and growth' },
         { value: '11', caption: 'Companies and products' },
-        { value: '16', caption: 'Industries spanned' },
+        { value: industryCountLabel('en'), caption: 'Industries spanned' },
       ],
     },
     tools: {
@@ -365,7 +366,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       metrics: [
         { value: '۱۰ سال', caption: 'تجربه در طراحی محصول و رشد' },
         { value: '۱۱', caption: 'شرکت و محصول' },
-        { value: '۱۶', caption: 'حوزهٔ فعالیت' },
+        { value: industryCountLabel('fa'), caption: 'حوزهٔ فعالیت' },
       ],
     },
     tools: {
@@ -565,7 +566,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       metrics: [
         { value: '10 سنوات', caption: 'خبرة في تصميم المنتج والنمو' },
         { value: '11', caption: 'شركة ومنتج' },
-        { value: '16', caption: 'قطاعًا عملتُ فيه' },
+        { value: industryCountLabel('ar'), caption: 'قطاعًا عملتُ فيه' },
       ],
     },
     tools: {
@@ -764,7 +765,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       metrics: [
         { value: '10 años', caption: 'Experiencia entre diseño de producto y crecimiento' },
         { value: '11', caption: 'Empresas y productos' },
-        { value: '16', caption: 'Sectores recorridos' },
+        { value: industryCountLabel('es'), caption: 'Sectores recorridos' },
       ],
     },
     tools: {
@@ -968,7 +969,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       metrics: [
         { value: '10 Jahre', caption: 'Erfahrung in Produktdesign und Growth' },
         { value: '11', caption: 'Unternehmen und Produkte' },
-        { value: '16', caption: 'Branchen abgedeckt' },
+        { value: industryCountLabel('de'), caption: 'Branchen abgedeckt' },
       ],
     },
     tools: {
@@ -1172,7 +1173,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       metrics: [
         { value: '10 ans', caption: 'Expérience entre design produit et croissance' },
         { value: '11', caption: 'Entreprises et produits' },
-        { value: '16', caption: 'Secteurs parcourus' },
+        { value: industryCountLabel('fr'), caption: 'Secteurs parcourus' },
       ],
     },
     tools: {
@@ -1376,7 +1377,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       metrics: [
         { value: '10年', caption: 'プロダクトデザインとグロースの経験' },
         { value: '11', caption: '企業とプロダクト' },
-        { value: '16', caption: '関わった業界' },
+        { value: industryCountLabel('ja'), caption: '関わった業界' },
       ],
     },
     tools: {

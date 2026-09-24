@@ -26,6 +26,7 @@ import { ThinkingMapBlock } from '@/blocks/ThinkingMap/Component'
 import { TracksBlock } from '@/blocks/Tracks/Component.client'
 import { WorkflowStagesBlock } from '@/blocks/WorkflowStages/Component'
 import { WorkMosaicBlock } from '@/blocks/WorkMosaic/Component'
+import { IndustryGridBlock } from '@/blocks/IndustryGrid/Component'
 import { WorkspaceBlock } from '@/blocks/Workspace/Component'
 
 const blockComponents = {
@@ -52,6 +53,7 @@ const blockComponents = {
   tracks: TracksBlock,
   workflowStages: WorkflowStagesBlock,
   workMosaic: WorkMosaicBlock,
+  industryGrid: IndustryGridBlock,
   workspace: WorkspaceBlock,
 }
 

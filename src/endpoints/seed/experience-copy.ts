@@ -69,6 +69,7 @@ export const experienceCopy: Record<ExperienceLocale, Record<number, ExperienceF
     4: {
       title: 'فيبونا',
       company: 'فيبونا',
+      domain: 'استشارات الأعمال',
       role: 'مدير منتج',
       summary: 'واءمتُ أصحاب المصلحة حول هوية علامة وشعار وموقع جديد من الصفر.',
       durationLabel: 'سنتان',
@@ -170,6 +171,7 @@ export const experienceCopy: Record<ExperienceLocale, Record<number, ExperienceF
     4: {
       title: 'Fibona',
       company: 'Fibona',
+      domain: 'Consultoría de negocios',
       role: 'Product Manager',
       summary: 'Alineé a las partes interesadas en torno a una nueva identidad de marca, eslogan y web desde cero.',
       durationLabel: '2 años',
@@ -271,6 +273,7 @@ export const experienceCopy: Record<ExperienceLocale, Record<number, ExperienceF
     4: {
       title: 'Fibona',
       company: 'Fibona',
+      domain: 'Unternehmensberatung',
       role: 'Product Manager',
       summary: 'Stakeholder um eine neue Markenidentität, Tagline und Website von Grund auf ausgerichtet.',
       durationLabel: '2 Jahre',
@@ -372,6 +375,7 @@ export const experienceCopy: Record<ExperienceLocale, Record<number, ExperienceF
     4: {
       title: 'Fibona',
       company: 'Fibona',
+      domain: 'Conseil aux entreprises',
       role: 'Product manager',
       summary: 'J’ai aligné les parties prenantes autour d’une nouvelle identité de marque, d’une accroche et d’un site, partis de zéro.',
       durationLabel: '2 ans',
@@ -473,6 +477,7 @@ export const experienceCopy: Record<ExperienceLocale, Record<number, ExperienceF
     4: {
       title: 'Fibona',
       company: 'Fibona',
+      domain: 'ビジネスコンサルティング',
       role: 'プロダクトマネージャー',
       summary: '新しいブランドアイデンティティ、タグライン、ウェブサイトをゼロから立ち上げ、関係者の合意を形成した。',
       durationLabel: '2年',

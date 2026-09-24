@@ -24,6 +24,7 @@ import { SelectedWork } from '../../blocks/SelectedWork/config'
 import { TeamProcess } from '../../blocks/TeamProcess/config'
 import { ThinkingMap } from '../../blocks/ThinkingMap/config'
 import { WorkMosaic } from '../../blocks/WorkMosaic/config'
+import { IndustryGrid } from '../../blocks/IndustryGrid/config'
 import { Workspace } from '../../blocks/Workspace/config'
 import { WorkflowStages } from '../../blocks/WorkflowStages/config'
 import { hero } from '@/heros/config'
@@ -102,6 +103,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 MetricsStrip,
                 SelectedWork,
                 WorkMosaic,
+                IndustryGrid,
                 Workspace,
                 Tracks,
                 WorkflowStages,
