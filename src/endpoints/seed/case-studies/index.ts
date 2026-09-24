@@ -1,6 +1,14 @@
 import type { Payload } from 'payload'
 
 import {
+  ARR_ASSETS,
+  ARR_LOCALES,
+  ARR_MEDIA,
+  ARR_SHARED_FIELDS,
+  ARR_SLUG,
+  arrLocalizedFields,
+} from './arash-rezvani'
+import {
   DG_ASSETS,
   DG_LOCALES,
   DG_MEDIA,
@@ -133,6 +141,18 @@ export const CASE_STUDIES: CaseStudySeedConfig<any, any>[] = [
     replaceCover: true,
     sharedFields: ND_SHARED_FIELDS,
     localizedFields: ndLocalizedFields,
+  },
+  {
+    label: 'Arash Rezvani',
+    slug: ARR_SLUG,
+    assetsDir: ARR_ASSETS,
+    media: ARR_MEDIA,
+    seedLocales: ARR_LOCALES,
+    createFields: { kind: ['product'], order: 100, coverMediaKey: 'cover' },
+    // The archive row had no cover; a case study needs one for its card and share image.
+    replaceCover: true,
+    sharedFields: ARR_SHARED_FIELDS,
+    localizedFields: arrLocalizedFields,
   },
 ]
 

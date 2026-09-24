@@ -425,6 +425,12 @@ export const PROJECT_SEED: ProjectSeedRow[] = [
     status: 'published',
     period: { start: '2026-08-01T00:00:00.000Z' },
     liveUrl: 'https://arashrezvani.me',
+    // Type only: the site's photographs are of Arash himself, and none is used here.
+    cover: {
+      path: 'Docs/Experience/Projects/arash-rezvani/assets/capture-2026-09/mobile/experience-fa.png',
+      name: 'arash-rezvani--cover.png',
+      alt: 'Arash Rezvani on a phone — the Persian experience page opening on its headline, “More than a title”, inside ruled walls',
+    },
   },
   {
     slug: 'marqevon',

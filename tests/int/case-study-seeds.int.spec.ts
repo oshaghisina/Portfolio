@@ -228,6 +228,12 @@ const GATES: Record<string, { files: RegExp[]; text: RegExp[] }> = {
     files: [/person-verification/, /step-1/, /register-login/, /profile/, /map-modal/, /gallery-modal/, /splash/, /step-5/, /desktop/],
     text: [/00223/, /0933|۰۹۳۳/, /برهان/, /خیابان پاسداران/, /91005453|۹۱۰۰۵۴۵۳/, /khodro|خودرو|carsparency|didestan|دیدستان/i, /V\.3\.1/],
   },
+  'arash-rezvani': {
+    // Type only: the pages that carry his photographs, covers and posters, the full books page, and
+    // the contact page below the calendar (his address and handle).
+    files: [/home/, /about/, /music/, /teach/, /road/, /looking/, /icon|logo/, /books(?!-fa-fold)/, /contact-(fa|en)-full/, /contact\/(fa|en)\//],
+    text: [/1359|1980|۱۳۵۹|۱۹۸۰/, /Khuzestan|خوزستان/i, /Shooshtari|شوشتری|شوشتري/i, /\bbrother|برادر|hermano|Bruder|frère|兄弟/i, /arash@/i, /ADVBROZ/i, /git\.arashrezvani/i, /dossier/i, /\bborn\b|متولد|nacido|geboren|年生まれ|テヘラン生まれ/i, /Farvardin|فروردین/i],
+  },
 }
 
 /**
