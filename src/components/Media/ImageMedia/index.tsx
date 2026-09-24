@@ -85,6 +85,12 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
         .map(([, value]) => `(max-width: ${value}px) ${value * 2}w`)
         .join(', ')
 
+  // Public Object Storage URLs (D-034) are already on Arvan's CDN. Proxying them through
+  // `/_next/image` on the 900MB VPS adds multi-second cold latency and makes figures look
+  // empty. Keep Sharp for relative `/api/media/...` (local-disk) paths only.
+  const unoptimized =
+    typeof src === 'string' && /^https?:\/\//i.test(src)
+
   return (
     <picture className={cn(pictureClassName)}>
       <NextImage
@@ -99,6 +105,7 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
         loading={loading}
         sizes={sizes}
         src={src}
+        unoptimized={unoptimized}
         width={!fill ? width : undefined}
       />
     </picture>
