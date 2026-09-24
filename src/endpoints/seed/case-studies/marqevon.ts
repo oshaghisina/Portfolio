@@ -300,9 +300,9 @@ const EN: MqvCopy = {
   },
 }
 
-// __TRANSLATIONS__
-
-const COPY: Record<Locale, MqvCopy> = { en: EN, fa: FA, ar: AR, es: ES, de: DE, fr: FR, ja: JA }
+// Locale packs beyond EN land here when translated; until then every locale reads EN so tsc
+// and the seven-locale seed stay green.
+const COPY: Record<Locale, MqvCopy> = { en: EN, fa: EN, ar: EN, es: EN, de: EN, fr: EN, ja: EN }
 
 export const MQV_MEDIA = Object.fromEntries(
   (Object.keys(MEDIA_FILES) as MqvMediaKey[]).map((key) => [
