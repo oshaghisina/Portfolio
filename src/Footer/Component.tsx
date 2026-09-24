@@ -9,6 +9,7 @@ import { TechnicalFrameMarks } from '@/components/TechnicalFrameMarks'
 import { isLabArchiveHref, isLogicalPathReady } from '@/i18n/contentReady'
 import { localePath, localizeInternalHref } from '@/i18n/navigation'
 import { COLLECTION_PATH_PREFIX } from '@/i18n/routes'
+import { RevealRoot } from '@/providers/ScrollReveal/RevealRoot'
 import type { Locale } from '@/utilities/locale'
 
 import { MetaStrip } from './MetaStrip'
@@ -36,7 +37,7 @@ export async function Footer({ locale, logicalPath, readiness }: FooterProps) {
     <footer className="bg-background text-foreground">
       {/* The marks live inside this wrapper, not the <footer>, so they land on the same rails the
           footer's content already uses instead of introducing a second width system. */}
-      <div className="relative isolate canvas border-t border-line" data-reveal-root="">
+      <RevealRoot className="relative isolate canvas border-t border-line">
         <TechnicalFrameMarks
           corners={['bottom-start', 'bottom-end']}
           segments={[
@@ -121,7 +122,7 @@ export async function Footer({ locale, logicalPath, readiness }: FooterProps) {
             <LocaleSwitcher className="ms-auto md:ms-0" locale={locale} logicalPath={logicalPath} readiness={readiness} />
           </div>
         </div>
-      </div>
+      </RevealRoot>
     </footer>
   )
 }

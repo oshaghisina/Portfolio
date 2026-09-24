@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { RevealRoot } from '@/providers/ScrollReveal/RevealRoot'
 import { cn } from '@/utilities/ui'
 
 /**
@@ -21,6 +22,6 @@ export const PageFrame: React.FC<PageFrameProps> = ({ children, className }) => 
   // `flex-1` on both: on a short page (a 404, an empty search) the sheet still reaches the
   // footer, so the rails never stop halfway down the viewport.
   <main className={cn('ruled-paper flex flex-1 flex-col', className)}>
-    <div className="canvas flex-1 pb-16 md:pb-24" data-reveal-root="">{children}</div>
+    <RevealRoot className="canvas flex-1 pb-16 md:pb-24">{children}</RevealRoot>
   </main>
 )

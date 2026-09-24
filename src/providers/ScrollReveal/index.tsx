@@ -3,9 +3,14 @@
 import { usePathname } from 'next/navigation'
 import { useEffect } from 'react'
 
+import { getRevealRoots, onRevealRootsChange } from './roots'
 import { collectRevealTargets } from './targets'
 
-/** One observer for the whole public page. Content is fully visible until JS opts it in. */
+/**
+ * One observer for the whole public page. Content is fully visible until JS opts it in, and only
+ * hydrated roots (see `RevealRoot`) are opted in: this effect runs with the layout, before the
+ * page segment hydrates, and annotating server HTML then is a hydration mismatch.
+ */
 export function ScrollReveal() {
   const pathname = usePathname()
 
@@ -73,9 +78,7 @@ export function ScrollReveal() {
       frame = 0
       if (preference.matches) return
 
-      const targets = Array.from(
-        document.querySelectorAll<HTMLElement>('[data-reveal-root]'),
-      ).flatMap(collectRevealTargets)
+      const targets = getRevealRoots().flatMap(collectRevealTargets)
       const current = new Set(targets.map(({ element }) => element))
       // A streamed container can become a collection of smaller sections. Release its old
       // entrance so newly registered children can never sit behind a hidden ancestor.
@@ -107,6 +110,10 @@ export function ScrollReveal() {
         }
       }
       revealHash()
+    }
+
+    const schedule = () => {
+      if (!frame) frame = requestAnimationFrame(scan)
     }
 
     const configure = () => {
@@ -145,12 +152,13 @@ export function ScrollReveal() {
             (node) => node instanceof HTMLElement,
           ),
         )
-        if (structural && !frame) frame = requestAnimationFrame(scan)
+        if (structural) schedule()
       })
       mutations.observe(document.body, { childList: true, subtree: true })
     }
 
     configure()
+    const stopRoots = onRevealRootsChange(schedule)
     preference.addEventListener('change', configure)
     document.addEventListener('focusin', onFocus)
     document.addEventListener('animationend', onAnimationEnd)
@@ -162,6 +170,7 @@ export function ScrollReveal() {
       observer?.disconnect()
       mutations?.disconnect()
       cancelAnimationFrame(frame)
+      stopRoots()
       preference.removeEventListener('change', configure)
       document.removeEventListener('focusin', onFocus)
       document.removeEventListener('animationend', onAnimationEnd)

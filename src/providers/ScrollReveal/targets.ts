@@ -13,7 +13,10 @@ export function collectRevealTargets(root: HTMLElement): RevealTarget[] {
   const visit = (element: HTMLElement) => {
     if (element.matches(SKIP)) return
     // Never transform a layout ancestor around nested chapters or a sticky section index.
-    if (element.matches(CONTAINER) || element.querySelector(BOUNDARY)) {
+    if (
+      !element.hasAttribute('data-reveal-unit') &&
+      (element.matches(CONTAINER) || element.querySelector(BOUNDARY))
+    ) {
       Array.from(element.children).forEach((child) => {
         if (child instanceof HTMLElement) visit(child)
       })
