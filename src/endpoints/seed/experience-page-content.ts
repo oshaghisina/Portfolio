@@ -83,7 +83,7 @@ export const EVIDENCE_PROJECT_SLUG: Partial<Record<EvidenceKey, string>> = {
   a1paradise: 'a1paradise-call-apps',
   arashRezvani: 'arash-rezvani',
   arvan: 'arvan-cloud-platform-redesign',
-  biomaze: 'biomaze-design-system',
+  biomaze: 'biomaze-website-education-panel',
   carsparency: 'carsparency-web',
   digikala: 'digital-gold',
   fayman: 'faymen',

@@ -17,7 +17,11 @@ const imageHosts = [
   NEXT_PUBLIC_SERVER_URL,
   'https://sinaoshaghi.com',
   'https://sinaoshaghi.ir',
-]
+  // Baked into the image so next/image allows Object Storage even when S3_PUBLIC_URL
+  // is only set at runtime (deploy build-args do not pass it today).
+  'https://sinaoshaghi-portfolio.s3.ir-thr-at1.arvanstorage.ir',
+  process.env.S3_PUBLIC_URL,
+].filter(Boolean) as string[]
 
 const nextConfig: NextConfig = {
   output: 'standalone',
@@ -34,7 +38,7 @@ const nextConfig: NextConfig = {
     ],
     qualities: [100],
     remotePatterns: [
-      ...[...new Set(imageHosts.filter(Boolean))].map((item) => {
+      ...[...new Set(imageHosts)].map((item) => {
         const url = new URL(item)
 
         return {

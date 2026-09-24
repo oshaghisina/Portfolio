@@ -9,6 +9,14 @@ import {
   arrLocalizedFields,
 } from './arash-rezvani'
 import {
+  BIO_ASSETS,
+  BIO_LOCALES,
+  BIO_MEDIA,
+  BIO_SHARED_FIELDS,
+  BIO_SLUG,
+  bioLocalizedFields,
+} from './biomaze-website-education-panel'
+import {
   DG_ASSETS,
   DG_LOCALES,
   DG_MEDIA,
@@ -153,6 +161,20 @@ export const CASE_STUDIES: CaseStudySeedConfig<any, any>[] = [
     replaceCover: true,
     sharedFields: ARR_SHARED_FIELDS,
     localizedFields: arrLocalizedFields,
+  },
+  {
+    label: 'Biomaze',
+    slug: BIO_SLUG,
+    assetsDir: BIO_ASSETS,
+    media: BIO_MEDIA,
+    seedLocales: BIO_LOCALES,
+    createFields: {
+      kind: ['product', 'systems'],
+      order: 70,
+      coverMediaKey: 'cover',
+    },
+    sharedFields: BIO_SHARED_FIELDS,
+    localizedFields: bioLocalizedFields,
   },
 ]
 

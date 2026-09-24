@@ -6,8 +6,9 @@ Start with `.claude/skills/payload/SKILL.md` for a quick reference, then see `.c
 ## Production (local Docs)
 
 Ops for the live VPS live in `Docs/Deploy.md` (gitignored with the rest of `Docs/`). Redeploy
-with `./scripts/deploy.sh`. Do not seed on the server; see that runbook for Mongo/media migrate,
-WireGuard constraints, and the HTTPS DNS-01 follow-up (D-027…D-030 in `Docs/Decisions.md`).
+with `./scripts/deploy.sh`. Do not seed on the server; see that runbook for Mongo restore,
+Arvan Object Storage (D-034), WireGuard constraints, and the HTTPS DNS-01 follow-up
+(D-027…D-030 in `Docs/Decisions.md`).
 
 <!-- BEGIN:nextjs-agent-rules -->
 

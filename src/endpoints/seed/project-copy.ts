@@ -985,37 +985,67 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
     },
   },
   'biomaze-website-education-panel': {
-    fa: { title: 'وب‌سایت و پنل آموزش', summary: 'وب‌سایت عمومی بایومیز و پنل یادگیری آن را طراحی کردم.' },
-    ar: { title: 'الموقع ولوحة التعليم', summary: 'صمّمتُ موقع بايوميز العام ولوحة التعلّم الخاصة به.' },
-    es: { title: 'Web y panel de formación', summary: 'Diseñé la web pública de Biomaze y su panel de aprendizaje.' },
-    de: { title: 'Website & Schulungspanel', summary: 'Biomazes öffentliche Website und ihr Lernpanel gestaltet.' },
-    fr: { title: 'Site et panneau de formation', summary: 'J’ai conçu le site public de Biomaze et son panneau d’apprentissage.' },
-    ja: { title: 'ウェブサイトと教育パネル', summary: 'Biomazeの公開ウェブサイトと学習パネルを設計した。' },
+    fa: {
+      title: 'وب‌سایت و پنل آموزش',
+      summary:
+        'وب‌سایت عمومی ماز و پنل یادگیری راست‌به‌چپ — کلاس‌ها، آزمون‌ها، کلاس زنده، کیف پول و فروش بسته — در یک فایل ۳۲صفحه‌ای Figma همراه با سیستم طراحی موازی.',
+    },
+    ar: {
+      title: 'الموقع ولوحة التعليم',
+      summary:
+        'موقع ماز العام ولوحة التعلّم من اليمين لليسار — صفوف وامتحانات وبث مباشر ومحفظة وتجارة الحزم — عبر ملف Figma من 32 صفحة مع نظام تصميم موازٍ.',
+    },
+    es: {
+      title: 'Web y panel de formación',
+      summary:
+        'El sitio público de Maz y su panel RTL: clases, exámenes, clase en vivo, monedero y comercio de paquetes — en un archivo Figma de 32 páginas con el design system en paralelo.',
+    },
+    de: {
+      title: 'Website & Schulungspanel',
+      summary:
+        'Maz’ öffentliche Website und RTL-Lernpanel — Kurse, Prüfungen, Live-Klasse, Wallet und Paketkauf — in einer 32-Seiten-Figma-Datei mit parallel gebautem Design-System.',
+    },
+    fr: {
+      title: 'Site et panneau de formation',
+      summary:
+        'Le site public de Maz et son panneau RTL : cours, examens, classe en direct, portefeuille et vente de forfaits — dans un fichier Figma de 32 pages, design system en parallèle.',
+    },
+    ja: {
+      title: 'ウェブサイトと教育パネル',
+      summary:
+        'Mazの公開サイトとRTL学習パネル。授業・試験・ライブ授業・ウォレット・パッケージ販売を、32ページのFigmaファイルでデザインシステムと並行して設計した。',
+    },
   },
   'biomaze-design-system': {
     fa: {
       title: 'سیستم طراحی',
-      summary: 'در کنار وب‌سایت و پنل آموزش بایومیز، سیستم اجزایی ساختم که به تیم توسعه کمک می‌کرد سریع‌تر محصول را منتشر کند.',
+      summary:
+        'بردهای رنگ، تایپ، دکمه، فرم و کروم در فایل BioMaze Design — کیت مشترکی که کنار وب‌سایت و پنل آموزش ساخته شد تا تیم فنی سریع‌تر منتشر کند.',
     },
     ar: {
       title: 'نظام التصميم',
-      summary: 'نظام مكوّنات مكّن مطوّري بايوميز من الشحن بسرعة — بُني إلى جانب الموقع ولوحة التعليم.',
+      summary:
+        'لوحات اللون والنوع والأزرار والنماذج والإطار في ملف BioMaze Design — العدّة المشتركة بُنيت إلى جانب الموقع ولوحة التعليم ليُشحن المطوّرون أسرع.',
     },
     es: {
       title: 'Sistema de diseño',
-      summary: 'Un sistema de componentes que permitió a los desarrolladores de Biomaze lanzar rápido, construido junto a la web y el panel de formación.',
+      summary:
+        'Tableros de color, tipografía, botones, formularios y chrome en el archivo BioMaze Design — el kit compartido construido junto a la web y el panel para que los desarrolladores lanzaran más rápido.',
     },
     de: {
       title: 'Design-System',
-      summary: 'Ein Komponentensystem, mit dem Biomazes Entwickler schnell ausliefern konnten – parallel zur Website und zum Schulungspanel gebaut.',
+      summary:
+        'Farb-, Typo-, Button-, Formular- und Chrome-Boards in der BioMaze-Design-Datei — das gemeinsame Kit, parallel zu Website und Panel gebaut, damit Entwickler schneller ausliefern konnten.',
     },
     fr: {
       title: 'Design system',
-      summary: 'Un système de composants qui a permis aux développeurs de Biomaze de livrer vite — construit en parallèle du site et du panneau de formation.',
+      summary:
+        'Planches couleur, type, boutons, formulaires et chrome dans le fichier BioMaze Design — le kit partagé bâti avec le site et le panneau pour que les développeurs livrent plus vite.',
     },
     ja: {
       title: 'デザインシステム',
-      summary: 'Biomazeの開発者が速くリリースできるようにしたコンポーネントシステム。ウェブサイトと教育パネルと並行して構築した。',
+      summary:
+        'BioMaze Designファイル内のカラー・タイプ・ボタン・フォーム・クロムボード。ウェブサイトと教育パネルと並行して作った共有キットで、開発の出荷を速くした。',
     },
   },
   'didestan-video-platform': {

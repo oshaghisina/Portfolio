@@ -21,8 +21,6 @@ services:
       - .env.prod
     ports:
       - "127.0.0.1:3000:3000"
-    volumes:
-      - /srv/portfolio/media:/app/public/media
     depends_on:
       - mongo
     mem_limit: 900m

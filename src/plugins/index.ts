@@ -3,6 +3,7 @@ import { nestedDocsPlugin } from '@payloadcms/plugin-nested-docs'
 import { redirectsPlugin } from '@payloadcms/plugin-redirects'
 import { seoPlugin } from '@payloadcms/plugin-seo'
 import { searchPlugin } from '@payloadcms/plugin-search'
+import { s3Storage } from '@payloadcms/storage-s3'
 import { Plugin } from 'payload'
 import { revalidateRedirects } from '@/hooks/revalidateRedirects'
 import { GenerateTitle, GenerateURL } from '@payloadcms/plugin-seo/types'
@@ -14,6 +15,9 @@ import { Page, Post, Project } from '@/payload-types'
 import { docPath, isRoutedCollection } from '@/i18n/routes'
 import { getServerSideURL } from '@/utilities/getURL'
 import { withSiteName } from '@/utilities/site'
+
+const s3Enabled = Boolean(process.env.S3_BUCKET && process.env.S3_PUBLIC_URL)
+const s3PublicUrl = (process.env.S3_PUBLIC_URL || '').replace(/\/$/, '')
 
 const generateTitle: GenerateTitle<Post | Page | Project> = ({ doc }) => withSiteName(doc?.title)
 
@@ -88,6 +92,29 @@ export const plugins: Plugin[] = [
       fields: ({ defaultFields }) => {
         return [...defaultFields, ...searchFields]
       },
+    },
+  }),
+  s3Storage({
+    enabled: s3Enabled,
+    bucket: process.env.S3_BUCKET || '',
+    acl: 'public-read',
+    collections: {
+      media: {
+        disablePayloadAccessControl: true,
+        generateFileURL: ({ filename, prefix }) => {
+          const key = prefix ? `${prefix}/${filename}` : filename
+          return `${s3PublicUrl}/${key}`
+        },
+      },
+    },
+    config: {
+      credentials: {
+        accessKeyId: process.env.S3_ACCESS_KEY_ID || '',
+        secretAccessKey: process.env.S3_SECRET_ACCESS_KEY || '',
+      },
+      region: process.env.S3_REGION || 'ir-thr-at1',
+      endpoint: process.env.S3_ENDPOINT,
+      forcePathStyle: true,
     },
   }),
 ]

@@ -87,11 +87,13 @@ export async function upsertMedia(
     const file = await readAsset(assetsDir, spec.file, spec.name)
     // A re-export changed the bytes — swap the file on the document rather than adding a second one.
     if (file && file.size !== current.filesize) {
-      // Payload picks `name-1.png` while the target name is still on disk, so clear the old file
-      // first — the document keeps its id (and every reference to it) and its canonical name.
+      // Local disk only: Payload picks `name-1.png` while the target name is still on disk, so
+      // clear the old file first. With Arvan S3 (`S3_BUCKET` set), `disableLocalStorage` is on
+      // and the adapter owns object lifecycle on update — skip the fs.rm.
       const staticDir = mediaStaticDir(payload)
-      if (staticDir && current.filename) {
-        await fs.rm(path.join(staticDir, current.filename), { force: true })
+      const usingLocalDisk = Boolean(staticDir) && !process.env.S3_BUCKET
+      if (usingLocalDisk && current.filename) {
+        await fs.rm(path.join(staticDir!, current.filename), { force: true })
       }
       await payload.update({ collection: 'media', id, depth: 0, data: {}, file })
       payload.logger.info(`— Replaced changed asset: ${spec.name}`)

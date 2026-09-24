@@ -33,7 +33,7 @@ Local Mongo defaults are in `.env.example` / `docker-compose.yml` (dev compose o
 | **Projects** | Work archive + case studies → `/work`, `/work/[slug]` |
 | **Posts** | Lab writing → `/lab` |
 | **Experiences** | Career / capability reference data |
-| **Media** | Uploads (covers, case-study figures) |
+| **Media** | Uploads (covers, case-study figures). Local `public/media` in dev; Arvan Object Storage when `S3_BUCKET` + `S3_PUBLIC_URL` are set |
 | **Categories** | Post taxonomy |
 | **Users** | Admin auth |
 | **Header / Footer** | Nav + site chrome (localized labels) |
@@ -69,7 +69,7 @@ pnpm seed:translations
 pnpm audit:translations
 ```
 
-**`Docs/` is gitignored and local-only.** Seeds read research assets from `Docs/Experience/…`. Do not expect `Docs/` on a production server — migrate Mongo + `public/media` instead (see deploy notes below).
+**`Docs/` is gitignored and local-only.** Seeds read research assets from `Docs/Experience/…`. Do not expect `Docs/` on a production server — migrate Mongo (and sync media into Arvan Object Storage if needed) instead; see deploy notes below.
 
 ## Design tokens
 
@@ -97,7 +97,7 @@ Without it, sitemap generation falls back to `https://example.com`. Local `publi
 
 Dynamic sitemaps for pages, posts, and projects live under `src/app/(frontend)/(sitemaps)/`.
 
-Code releases go through `pnpm deploy:prod`: it validates the committed tree, builds the image once, and sends only the image layers the server doesn't already have (`--dry-run`, `--rollback`). Content changes need no deploy, because every route renders dynamically. The runbook (Caddy, Mongo restore, media copy, rollback) is the local `Docs/Deploy.md` when present.
+Code releases go through `pnpm deploy:prod`: it validates the committed tree, builds the image once, and sends only the image layers the server doesn't already have (`--dry-run`, `--rollback`). Content changes need no deploy, because every route renders dynamically. The runbook (Caddy, Mongo restore, Arvan Object Storage / `pnpm migrate:media-urls`, rollback) is the local `Docs/Deploy.md` when present.
 
 ## Admin
 

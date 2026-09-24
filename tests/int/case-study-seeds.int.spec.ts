@@ -234,6 +234,20 @@ const GATES: Record<string, { files: RegExp[]; text: RegExp[] }> = {
     files: [/home/, /about/, /music/, /teach/, /road/, /looking/, /icon|logo/, /books(?!-fa-fold)/, /contact-(fa|en)-full/, /contact\/(fa|en)\//],
     text: [/1359|1980|۱۳۵۹|۱۹۸۰/, /Khuzestan|خوزستان/i, /Shooshtari|شوشتری|شوشتري/i, /\bbrother|برادر|hermano|Bruder|frère|兄弟/i, /arash@/i, /ADVBROZ/i, /git\.arashrezvani/i, /dossier/i, /\bborn\b|متولد|nacido|geboren|年生まれ|テヘラン生まれ/i, /Farvardin|فروردین/i],
   },
+  'biomaze-website-education-panel': {
+    // Brand Brief Tier-1: never the unverified “first player” market claim, in any locale.
+    files: [],
+    text: [
+      /first player/i,
+      /official education system/i,
+      /اولین بازیکن|اولین\s*بازیکن/,
+      /نظام رسمی آموزش|نظام\s*رسمی\s*آموزش/,
+      /primer (jugador|actor).{0,40}(educaci[oó]n|sistema)/i,
+      /erster player|offiziellen bildungssystem/i,
+      /premier (acteur|joueur).{0,40}(éducation|educatif)/i,
+      /第一人者|公式教育/,
+    ],
+  },
 }
 
 /**

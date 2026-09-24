@@ -370,22 +370,34 @@ export const PROJECT_SEED: ProjectSeedRow[] = [
   {
     slug: 'biomaze-website-education-panel',
     title: 'Website & education panel',
-    summary: "Designed Biomaze's public website and its learning panel.",
+    summary:
+      "Maz's public site and RTL learning panel — classes, exams, live class, wallet and package commerce — designed across a 32-page Figma file with the design system built in parallel.",
     company: 'Biomaze',
     role: 'Product manager & designer',
-    kind: ['product'],
+    kind: ['product', 'systems'],
     order: 70,
     status: 'published',
+    cover: {
+      path: 'Docs/Experience/Biomaze/website-education-panel/assets/biomaze--panel-classes-desktop.png',
+      name: 'biomaze--panel-classes-desktop.png',
+      alt: 'Biomaze education panel — the classes list on desktop in Persian, with teacher cards, schedule chips and the panel chrome',
+    },
   },
   {
     slug: 'biomaze-design-system',
     title: 'Design system',
-    summary: "A component system that let Biomaze's developers ship fast — built alongside the website and the education panel.",
+    summary:
+      'Colour, type, buttons, forms and chrome boards in the BioMaze Design file — the shared kit built alongside the website and education panel so developers could ship faster.',
     company: 'Biomaze',
     role: 'Product manager & designer',
     kind: ['systems'],
     order: 71,
     status: 'published',
+    cover: {
+      path: 'Docs/Experience/Biomaze/design-system/assets/biomaze--ds-color.png',
+      name: 'biomaze--ds-color.png',
+      alt: 'Biomaze design system — the colour board from the shared UI kit',
+    },
   },
 
   // ── Didestan ────────────────────────────────────────────────────────────────────────────
@@ -443,6 +455,12 @@ export const PROJECT_SEED: ProjectSeedRow[] = [
     order: 101,
     status: 'published',
     period: { start: '2026-06-01T00:00:00.000Z' },
+    // Type-led: below its hero the home page carries third-party market prices.
+    cover: {
+      path: 'Docs/Experience/Projects/marqevon/assets/crops/cover.png',
+      name: 'marqevon--cover.png',
+      alt: 'Marqevon — the procedure page, “How a transaction runs, by delivery mode”, set on a dark petroleum ground',
+    },
   },
   {
     slug: 'faymen',
