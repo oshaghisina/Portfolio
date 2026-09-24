@@ -1867,6 +1867,10 @@ export interface CapabilityModelBlock {
    * The fields the work draws on. Six reads best — the grid is two or three columns, so six fills it exactly.
    */
   disciplines: {
+    /**
+     * Select the concept illustrated by this row. Leave empty for a custom discipline.
+     */
+    disciplineKey?: ('business' | 'product' | 'design' | 'technology' | 'operations' | 'ai') | null;
     label: string;
     id?: string | null;
   }[];
@@ -2889,6 +2893,7 @@ export interface CapabilityModelBlockSelect<T extends boolean = true> {
   disciplines?:
     | T
     | {
+        disciplineKey?: T;
         label?: T;
         id?: T;
       };

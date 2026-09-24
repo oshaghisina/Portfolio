@@ -1,6 +1,7 @@
 import type { Block } from 'payload'
 
 import { sectionHeader } from '@/fields/sectionHeader'
+import { DISCIPLINE_KEYS } from '@/components/ExperienceVisuals/copy'
 
 /**
  * Working across disciplines: the several fields the practice draws on, and the one thing they
@@ -30,6 +31,15 @@ export const CapabilityModel: Block = {
       minRows: 3,
       required: true,
       fields: [
+        {
+          name: 'disciplineKey',
+          type: 'select',
+          options: [...DISCIPLINE_KEYS],
+          admin: {
+            description:
+              'Select the concept illustrated by this row. Leave empty for a custom discipline.',
+          },
+        },
         {
           name: 'label',
           type: 'text',

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
 import { PageFrame } from '@/components/PageFrame'
+import { ExperienceMotion } from '@/components/ExperienceVisuals/Motion.client'
 import { PayloadRedirects } from '@/components/PayloadRedirects'
 import configPromise from '@payload-config'
 import { getPayload, type RequiredDataFromCollectionSlug } from 'payload'
@@ -107,8 +108,17 @@ export default async function Page({ params: paramsPromise }: Args) {
       )}
 
       <PageFrame>
-        <RenderHero {...hero} locale={locale} />
-        <RenderBlocks blocks={layout} locale={locale} />
+        {page.slug === 'experience' ? (
+          <ExperienceMotion>
+            <RenderHero {...hero} locale={locale} />
+            <RenderBlocks blocks={layout} locale={locale} />
+          </ExperienceMotion>
+        ) : (
+          <>
+            <RenderHero {...hero} locale={locale} />
+            <RenderBlocks blocks={layout} locale={locale} />
+          </>
+        )}
       </PageFrame>
     </>
   )

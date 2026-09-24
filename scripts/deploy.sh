@@ -114,10 +114,19 @@ healthy() {
   done
   return 1
 }
+ensure_cloudflared() {
+  # Token file from Zero Trust (D-036). Skip if missing so rollback/deploy still works.
+  if [[ ! -f .env.cloudflared ]] || ! grep -q '^TUNNEL_TOKEN=.\+' .env.cloudflared; then
+    echo "cloudflared: .env.cloudflared / TUNNEL_TOKEN unset — skip"
+    return 0
+  fi
+  compose --profile tunnel up -d cloudflared
+}
 switch_to() {
   set_image "$1"
   echo "$1" > .current-image
   compose up -d app
+  ensure_cloudflared
 }
 
 CUR="$(cat .current-image 2>/dev/null || true)"
@@ -145,7 +154,8 @@ if [[ "$RELOAD_CADDY" == 1 ]]; then
   compose up -d caddy
   compose exec -T caddy caddy reload --config /etc/caddy/Caddyfile || true
 fi
-compose ps app
+ensure_cloudflared
+compose --profile tunnel ps app cloudflared 2>/dev/null || compose ps app
 
 echo "Waiting for app health on :3000"
 if ! healthy; then

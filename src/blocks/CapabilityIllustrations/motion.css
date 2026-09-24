@@ -15,7 +15,33 @@
   --cap-lens-edge: color-mix(in oklab, var(--paper) 48%, var(--ink));
   --cap-glass: color-mix(in oklab, var(--track-accent) 3%, transparent);
   --cap-shadow: color-mix(in oklab, var(--ink) 4%, transparent);
+  /* Ambient ground lift — transparent by default; dark industry icons opt in. */
+  --cap-ground: transparent;
   overflow: visible;
+}
+
+/*
+ * Dark theme inverts --paper/--ink, so the light-mode mixes collapse faces into
+ * the canvas and flip "dark" materials bright. Industry miniatures need an
+ * explicit graphite ladder so silhouette, planes, and grounding stay readable.
+ *
+ * Approximate luminance ladder vs --paper (~20%):
+ * ground/bg → ink-right → ink → muted → paper-right → paper-left → paper-top → edge
+ */
+[data-theme='dark'] .industry-illustration {
+  --cap-top: color-mix(in oklab, var(--paper) 34%, var(--ink));
+  --cap-left: color-mix(in oklab, var(--paper) 48%, var(--ink));
+  --cap-right: color-mix(in oklab, var(--paper) 58%, var(--ink));
+  --cap-muted: color-mix(in oklab, var(--paper) 54%, var(--ink));
+  --cap-edge: color-mix(in oklab, var(--paper) 26%, var(--ink));
+  --cap-dark: color-mix(in oklab, var(--paper) 68%, var(--ink));
+  --cap-dark-left: color-mix(in oklab, var(--paper) 76%, var(--ink));
+  --cap-dark-right: color-mix(in oklab, var(--paper) 86%, var(--ink));
+  --cap-accent-left: color-mix(in oklab, var(--track-accent) 74%, black);
+  --cap-accent-right: color-mix(in oklab, var(--track-accent) 58%, black);
+  --cap-lens-edge: color-mix(in oklab, var(--paper) 30%, var(--ink));
+  --cap-shadow: color-mix(in oklab, black 36%, transparent);
+  --cap-ground: color-mix(in oklab, var(--ink) 9%, transparent);
 }
 
 .cap-illustration--service {

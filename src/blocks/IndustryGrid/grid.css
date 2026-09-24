@@ -97,6 +97,11 @@
   filter: brightness(1.12) contrast(1.04);
 }
 
+[data-theme='dark'] .industry-window:hover .industry-illustration,
+[data-theme='dark'] .industry-window:focus-within .industry-illustration {
+  filter: brightness(1.16) contrast(1.06);
+}
+
 .industry-window:hover .industry-name,
 .industry-window:focus-within .industry-name {
   font-weight: 600;

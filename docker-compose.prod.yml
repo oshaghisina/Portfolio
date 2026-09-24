@@ -35,6 +35,21 @@ services:
       - caddy_data:/data
       - caddy_config:/config
 
+  # Outbound connector for sinaoshaghi.com (D-036). Host network → 127.0.0.1:3000 (D-029).
+  # Token via .env.cloudflared (TUNNEL_TOKEN=…) — env_file values are not Compose-interpolated,
+  # so `$` inside the JWT is safe. Profile `tunnel` so bare `compose up -d` skips it.
+  cloudflared:
+    image: cloudflare/cloudflared:2025.11.1
+    restart: unless-stopped
+    network_mode: host
+    profiles: ["tunnel"]
+    command: tunnel --no-autoupdate run
+    env_file:
+      - path: .env.cloudflared
+        required: true
+    depends_on:
+      - app
+
 volumes:
   mongo_data:
   caddy_data:

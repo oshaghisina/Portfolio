@@ -1,383 +1,181 @@
 import React from 'react'
-
 import type { SkillKey } from './keys'
+import { SkillArtwork } from '@/components/ExperienceVisuals/Artwork'
+import { cn } from '@/utilities/ui'
 
-/**
- * Sixteen mini marks for the complete capability reference. The four large operating diagrams
- * are shared between Home and Experience in `../CapabilityIllustrations`.
- *
- * The language is the house drafting vocabulary already used by `Tracks/Illustrations.tsx` and
- * `components/IntersectionDiagram` — `var(--line)` hairlines at 1.25, `var(--panel)` plates at
- * half opacity, `var(--paper)` knockouts, registration corners, dashed tolerance zones, and
- * dimension lines with perpendicular end ticks instead of arrowheads. As in those files, the
- * accent (`var(--track-accent)`) appears in **exactly one place per drawing**: whatever the
- * capability actually turns on.
- *
- * Flat orthographic, not the isometric projection Tracks uses. Sixteen isometric marks collapse
- * into identical grey blobs at 32px; flat construction stays legible and still reads as the same
- * family.
- *
- * No `<text>` anywhere. Labels inside art would need seven locales and would reintroduce exactly
- * the overlap that `ProcessDiagram` and `IntersectionDiagram` were rebuilt to make impossible —
- * so every concept here is carried by geometry, and the words live in HTML beside the mark.
- *
- * Art never mirrors: `direction: 'ltr'` on every root `<svg>`. `rtl-persian` is not an exception —
- * it depicts both directions inside its own geometry, which is the point of it.
- */
-
-const STROKE = 'var(--line)'
-const SW = 1.25
+const INK = 'var(--ink-3)'
+const PAPER = 'var(--paper)'
+const PANEL = 'var(--panel)'
 const ACCENT = 'var(--track-accent)'
-const ASW = 1.5
 
-// ─────────────────────────────────────────────────────────────────────────────
-// Mini marks — 32×32, one per skill. Content is inset to roughly 3…29.
-// ─────────────────────────────────────────────────────────────────────────────
+/** Optical small-size counterparts of the isometric scenes. No miniature drafting hairlines. */
+const SKILL_MARKS: Record<SkillKey, React.ReactNode> = {
+  'product-management': (
+    <>
+      <rect x="3" y="4" width="26" height="24" rx="1" fill={PANEL} />
+      <path d="M3 11h26M11 11v17M20 11v17" />
+      <path d="M6 16h2m6 6h3" strokeWidth="3" />
+      <rect x="22" y="14" width="5" height="7" fill={ACCENT} stroke={ACCENT} />
+    </>
+  ),
+  'product-discovery': (
+    <>
+      <path d="M5 7V4h22v19h-4M3 11v16h16" />
+      <circle cx="19" cy="13" r="8" fill={PAPER} strokeWidth="2" />
+      <path d="m13 20-8 8" strokeWidth="4" />
+      <circle cx="19" cy="13" r="2.5" fill={ACCENT} stroke={ACCENT} />
+    </>
+  ),
+  'service-design': (
+    <>
+      <path d="M3 12h26M3 24h26M8 12v12m16-12v12" />
+      <circle cx="8" cy="6" r="3" fill={PAPER} />
+      <circle cx="24" cy="6" r="3" fill={PAPER} />
+      <rect x="5" y="21" width="6" height="6" fill={PANEL} />
+      <rect x="21" y="21" width="6" height="6" fill={ACCENT} stroke={ACCENT} />
+    </>
+  ),
+  requirements: (
+    <>
+      <rect x="3" y="3" width="12" height="25" rx="1" fill={PANEL} />
+      <path d="M6 7h6M6 11h4M15 16h5V8h4m-4 8v9h4" />
+      <rect x="24" y="5" width="5" height="6" fill={PAPER} />
+      <rect x="24" y="22" width="5" height="6" fill={ACCENT} stroke={ACCENT} />
+      <path d="m9 16 3 3-3 3-3-3Z" fill={INK} />
+    </>
+  ),
+  'ai-product-development': (
+    <>
+      <rect x="2" y="4" width="7" height="11" fill={PANEL} />
+      <path d="M4 7h3m-3 3h3M9 10h4m7 7v6h3" />
+      <rect x="13" y="8" width="11" height="11" rx="1" fill={PAPER} />
+      <path d="M16 5v3m5-3v3m-5 11v3M24 11h3m-3 5h3" />
+      <path d="m16 13 2 2 4-5" stroke={ACCENT} strokeWidth="2" />
+      <rect x="23" y="23" width="7" height="6" fill={PANEL} />
+    </>
+  ),
+  'process-operations': (
+    <>
+      <path d="M5 9h22v16H6v-7m-3 3 3-3 3 3" />
+      <rect x="3" y="6" width="6" height="6" fill={PANEL} />
+      <rect x="23" y="6" width="6" height="6" fill={PAPER} />
+      <rect x="13" y="6" width="6" height="6" fill={ACCENT} stroke={ACCENT} />
+      <rect x="13" y="22" width="6" height="6" fill={PAPER} />
+    </>
+  ),
+  'business-modeling': (
+    <>
+      <path d="M8 8h16v16H8Z" />
+      <rect x="3" y="3" width="10" height="10" fill={PANEL} />
+      <rect x="19" y="3" width="10" height="10" fill={PANEL} />
+      <rect x="3" y="19" width="10" height="10" fill={PANEL} />
+      <rect x="19" y="19" width="10" height="10" fill={PANEL} />
+      <path d="M6 8h4m12 16 2-2 3 1M8 22v4m-2-2h4" />
+      <circle cx="16" cy="16" r="3" fill={ACCENT} stroke={ACCENT} />
+    </>
+  ),
+  'technical-pm': (
+    <>
+      <path d="m3 19 13 7 13-7M3 25l13 6 13-6" />
+      <path d="M3 8 16 2l13 6v7l-13 7-13-7Z" fill={PANEL} />
+      <path d="m3 8 13 7 13-7m-13 7v7" />
+      <path d="M24 18v10" stroke={ACCENT} strokeWidth="2.5" />
+    </>
+  ),
+  'documentation-spec': (
+    <>
+      <path d="M3 3h11l4 4v21H3Z" fill={PANEL} />
+      <path d="M14 3v5h4M6 12h8m-8 5h8m-8 5h5M18 16h4V7h4m-4 9v9h4" />
+      <rect x="26" y="4" width="4" height="6" fill={PAPER} />
+      <rect x="26" y="22" width="4" height="6" fill={PAPER} />
+      <path d="M22 7v18" stroke={ACCENT} strokeWidth="2" />
+    </>
+  ),
+  'analytics-experimentation': (
+    <>
+      <path d="M3 4v24h26M5 24l8-8 7 5 8-1" />
+      <path d="m13 16 7-7 8-4" stroke={ACCENT} strokeWidth="2" />
+      <circle cx="28" cy="5" r="2" fill={ACCENT} stroke={ACCENT} />
+      <path d="M28 11v14H13" strokeDasharray="2 3" />
+    </>
+  ),
+  'ux-direction': (
+    <>
+      <rect x="2" y="11" width="7" height="15" fill={PANEL} />
+      <rect x="12" y="4" width="10" height="20" fill={PAPER} />
+      <rect x="25" y="11" width="5" height="15" fill={PANEL} />
+      <path d="M9 18h3m10 0h3M15 13h4m-4 4h4" />
+      <path d="M14 8h6" stroke={ACCENT} strokeWidth="3" />
+    </>
+  ),
+  'stakeholder-management': (
+    <>
+      <circle cx="6" cy="6" r="3" fill={PAPER} />
+      <circle cx="26" cy="6" r="3" fill={PAPER} />
+      <circle cx="16" cy="27" r="3" fill={PAPER} />
+      <path d="m8 9 5 5m11-5-5 5m-3 6v4" />
+      <path d="m16 11 6 5-6 5-6-5Z" fill={ACCENT} stroke={ACCENT} />
+    </>
+  ),
+  'fintech-strategy': (
+    <>
+      <rect x="2" y="10" width="14" height="17" rx="2" fill={PANEL} />
+      <path d="M11 16h5v6h-5Z" fill={PAPER} />
+      <rect x="22" y="5" width="8" height="23" fill={PAPER} />
+      <path d="M24 10h4m-4 5h4m-4 5h4" />
+      <circle cx="9" cy="5" r="3" fill={ACCENT} stroke={ACCENT} />
+      <path d="M16 19h6" stroke={ACCENT} strokeWidth="2" />
+    </>
+  ),
+  'rtl-persian': (
+    <>
+      <rect x="2" y="3" width="12" height="18" fill={PANEL} />
+      <rect x="18" y="3" width="12" height="18" fill={PANEL} />
+      <path d="M5 7h6M5 11h4M21 7h6m-4 4h4" />
+      <path d="M4 26h24m-4-4 4 4-4 4M8 22l-4 4 4 4" stroke={ACCENT} />
+    </>
+  ),
+  gamification: (
+    <>
+      <path d="M3 28V21h7v-7h7V7h8v21Z" fill={PANEL} />
+      <path d="M3 28h26" />
+      <path d="M25 8V2l5 2-5 3" stroke={ACCENT} strokeWidth="2" />
+      <path d="M28 13v16H7" strokeDasharray="2 3" />
+    </>
+  ),
+  'product-function-setup': (
+    <>
+      <path d="M16 11v6H6v5m10-5h10v5m-10-5v5" />
+      <rect x="2" y="22" width="8" height="7" fill={PANEL} />
+      <rect x="12" y="22" width="8" height="7" fill={PANEL} />
+      <rect x="22" y="22" width="8" height="7" fill={PANEL} />
+      <rect x="11" y="3" width="10" height="8" fill={ACCENT} stroke={ACCENT} />
+    </>
+  ),
+}
 
-/** Scope, framing and prioritisation held together: satellite panels coordinated from one edge. */
-const ProductManagementMark: React.FC = () => (
-  <>
-    <rect fill="var(--panel)" fillOpacity={0.5} height={12} stroke={STROKE} strokeWidth={SW} width={13} x={3} y={8} />
-    <g fill="var(--paper)" stroke={STROKE} strokeWidth={SW}>
-      <rect height={7} width={8} x={21} y={4} />
-      <rect height={9} width={8} x={21} y={17} />
-    </g>
-    <g stroke={STROKE} strokeWidth={SW}>
-      <line x1={16} x2={21} y1={12} y2={7.5} />
-      <line x1={16} x2={21} y1={16} y2={21.5} />
-    </g>
-    {/* the coordinating edge — where both dependencies are held */}
-    <line stroke={ACCENT} strokeWidth={ASW} x1={16} x2={16} y1={10} y2={18} />
-  </>
-)
-
-/** Surface signal, then the layer under it, then the root — which is never quite where you looked. */
-const ProductDiscoveryMark: React.FC = () => (
-  <>
-    <circle cx={16} cy={16} r={12.5} stroke={STROKE} strokeDasharray="2 6" strokeWidth={SW} />
-    <circle cx={16.9} cy={16.9} r={7.6} fill="var(--panel)" fillOpacity={0.5} stroke={STROKE} strokeWidth={SW} />
-    <circle cx={17.8} cy={17.8} r={3.4} fill="var(--paper)" stroke={STROKE} strokeWidth={SW} />
-    <circle cx={17.8} cy={17.8} fill={ACCENT} r={1.7} />
-  </>
-)
-
-/** Several actors, each with its own touchpoint, resolving onto one service. */
-const ServiceDesignMark: React.FC = () => (
-  <>
-    <g stroke={STROKE} strokeWidth={SW}>
-      <line x1={4} x2={24.5} y1={16} y2={16} />
-      <line x1={7} x2={7} y1={9.8} y2={16} />
-      <line x1={14} x2={14} y1={22.2} y2={16} />
-      <line x1={21} x2={21} y1={9.8} y2={16} />
-    </g>
-    <g fill="var(--paper)" stroke={STROKE} strokeWidth={SW}>
-      <circle cx={7} cy={7.2} r={2.6} />
-      <circle cx={14} cy={24.8} r={2.6} />
-      <circle cx={21} cy={7.2} r={2.6} />
-    </g>
-    {/* the service every actor resolves onto */}
-    <circle cx={27} cy={16} fill={ACCENT} r={2.4} />
-  </>
-)
-
-/** Input, one rule, then the branches — and the exception that has to be written down too. */
-const RequirementsMark: React.FC = () => (
-  <>
-    <g stroke={STROKE} strokeWidth={SW}>
-      <line x1={3} x2={10} y1={16} y2={16} />
-      <line x1={17} x2={21} y1={16} y2={16} />
-      <line x1={21} x2={21} y1={8.5} y2={23.5} />
-      <line x1={21} x2={24} y1={8.5} y2={8.5} />
-      <line x1={21} x2={24} y1={23.5} y2={23.5} />
-    </g>
-    <rect fill="var(--panel)" fillOpacity={0.5} height={9} stroke={STROKE} strokeWidth={SW} width={7} x={10} y={11.5} />
-    <rect fill="var(--paper)" height={5.5} stroke={STROKE} strokeWidth={SW} width={5} x={24} y={5.75} />
-    {/* the exception branch — the one everybody forgets to specify */}
-    <rect fill="none" height={5.5} stroke={ACCENT} strokeWidth={ASW} width={5} x={24} y={20.75} />
-  </>
-)
-
-/** Context in, agents around, one human decision in the middle, execution out. */
-const AiProductDevelopmentMark: React.FC = () => (
-  <>
-    <g fill="var(--paper)" stroke={STROKE} strokeWidth={SW}>
-      <rect height={5} width={6} x={3} y={5} />
-      <rect height={5} width={6} x={23} y={5} />
-      <rect height={5} width={6} x={3} y={22} />
-    </g>
-    <g stroke={STROKE} strokeWidth={SW}>
-      <line x1={9} x2={12.6} y1={7.5} y2={13.2} />
-      <line x1={23} x2={19.4} y1={7.5} y2={13.2} />
-      <line x1={9} x2={12.6} y1={24.5} y2={18.8} />
-      <line x1={19.8} x2={26} y1={18.6} y2={24} />
-      <line x1={24} x2={28} y1={25.7} y2={22.3} />
-    </g>
-    {/* the decision node — a person, not a model */}
-    <rect
-      fill="none"
-      height={8}
-      stroke={ACCENT}
-      strokeWidth={ASW}
-      transform="rotate(45 16 16)"
-      width={8}
-      x={12}
-      y={12}
-    />
-  </>
-)
-
-/** A process path that forks, with the checkpoint that decides whether it may continue. */
-const ProcessOperationsMark: React.FC = () => (
-  <>
-    <g stroke={STROKE} strokeWidth={SW}>
-      <line x1={3} x2={12} y1={11} y2={11} />
-      <line x1={19} x2={23.5} y1={11} y2={11} />
-      <line x1={15.5} x2={15.5} y1={18} y2={23} />
-      <line x1={15.5} x2={27} y1={23} y2={23} />
-    </g>
-    <rect fill="var(--panel)" fillOpacity={0.5} height={7} stroke={STROKE} strokeWidth={SW} width={7} x={12} y={7.5} />
-    <circle cx={27} cy={23} fill="var(--paper)" r={2.2} stroke={STROKE} strokeWidth={SW} />
-    {/* the operational checkpoint */}
-    <rect fill="none" height={5} stroke={ACCENT} strokeWidth={ASW} width={5} x={23.5} y={8.5} />
-  </>
-)
-
-/** Customer, product, revenue and operations — four parts that only work as one model. */
-const BusinessModelingMark: React.FC = () => (
-  <>
-    <g fill="var(--panel)" fillOpacity={0.5} stroke={STROKE} strokeWidth={SW}>
-      <rect height={10} width={10} x={4} y={4} />
-      <rect height={10} width={10} x={18} y={4} />
-      <rect height={10} width={10} x={4} y={18} />
-      <rect height={10} width={10} x={18} y={18} />
-    </g>
-    <g stroke={STROKE} strokeWidth={SW}>
-      <line x1={14} x2={16} y1={14} y2={16} />
-      <line x1={18} x2={16} y1={14} y2={16} />
-      <line x1={14} x2={16} y1={18} y2={16} />
-      <line x1={18} x2={16} y1={18} y2={16} />
-    </g>
-    {/* the point where the four stop being separate */}
-    <circle cx={16} cy={16} fill={ACCENT} r={2} />
-  </>
-)
-
-/** A product surface with the API, data and infrastructure it actually rests on. */
-const TechnicalPmMark: React.FC = () => (
-  <>
-    <rect fill="var(--panel)" fillOpacity={0.5} height={7} stroke={STROKE} strokeWidth={SW} width={22} x={5} y={4} />
-    <g stroke={STROKE} strokeWidth={SW}>
-      <line x1={11} x2={11} y1={4} y2={11} />
-      <line x1={5} x2={27} y1={7.5} y2={7.5} />
-    </g>
-    <g fill="var(--paper)" stroke={STROKE} strokeWidth={SW}>
-      <rect height={4.5} width={18} x={7} y={14} />
-      <rect height={4.5} width={18} x={7} y={21.5} />
-    </g>
-    {/* the bus that makes them one product, not four systems */}
-    <line stroke={ACCENT} strokeWidth={ASW} x1={21} x2={21} y1={11} y2={26} />
-  </>
-)
-
-/** A written document resolved into the linked blocks engineering can build from. */
-const DocumentationSpecMark: React.FC = () => (
-  <>
-    <rect fill="var(--panel)" fillOpacity={0.5} height={22} stroke={STROKE} strokeWidth={SW} width={11} x={3} y={5} />
-    <g stroke={STROKE} strokeWidth={1}>
-      <line x1={5.5} x2={11.5} y1={10} y2={10} />
-      <line x1={5.5} x2={11.5} y1={14} y2={14} />
-      <line x1={5.5} x2={9.5} y1={18} y2={18} />
-      <line x1={5.5} x2={11.5} y1={22} y2={22} />
-    </g>
-    <g fill="var(--paper)" stroke={STROKE} strokeWidth={SW}>
-      <rect height={5} width={9} x={20} y={6} />
-      <rect height={5} width={9} x={20} y={13.5} />
-      <rect height={5} width={9} x={20} y={21} />
-    </g>
-    <g stroke={STROKE} strokeWidth={SW}>
-      <line x1={17} x2={20} y1={8.5} y2={8.5} />
-      <line x1={17} x2={20} y1={16} y2={16} />
-      <line x1={17} x2={20} y1={23.5} y2={23.5} />
-      <line x1={14} x2={17} y1={16} y2={16} />
-    </g>
-    {/* the spine that keeps them one specification instead of three documents */}
-    <line stroke={ACCENT} strokeWidth={ASW} x1={17} x2={17} y1={8.5} y2={23.5} />
-  </>
-)
-
-/** A measured baseline, the point where an experiment splits off it, and the result observed. */
-const AnalyticsExperimentationMark: React.FC = () => (
-  <>
-    <line stroke={STROKE} strokeDasharray="2 5" strokeWidth={SW} x1={17} x2={17} y1={5} y2={27} />
-    <g fill="none" stroke={STROKE} strokeWidth={SW}>
-      <polyline points="4,23 10,20 17,21" />
-      <polyline points="17,21 24,22 29,22" />
-      <polyline points="17,21 23,14 28,10" />
-    </g>
-    <circle cx={10} cy={20} fill="var(--paper)" r={1.8} stroke={STROKE} strokeWidth={SW} />
-    {/* the observed result */}
-    <circle cx={28} cy={10} fill={ACCENT} r={2.2} />
-  </>
-)
-
-/** An interface plane with a real hierarchy on it — what reads first, and what follows. */
-const UxDirectionMark: React.FC = () => (
-  <>
-    <rect fill="var(--panel)" fillOpacity={0.5} height={22} stroke={STROKE} strokeWidth={SW} width={26} x={3} y={5} />
-    <g fill="var(--paper)" stroke={STROKE} strokeWidth={SW}>
-      <rect height={9} width={8} x={6} y={15} />
-      <rect height={4} width={9} x={17} y={15} />
-      <rect height={3} width={9} x={17} y={21} />
-    </g>
-    {/* the top of the hierarchy — the one thing that reads first */}
-    <rect fill="none" height={3.5} stroke={ACCENT} strokeWidth={ASW} width={20} x={6} y={8.5} />
-  </>
-)
-
-/** Separate functions, each with its own stake, converging on one decision. */
-const StakeholderManagementMark: React.FC = () => (
-  <>
-    <g stroke={STROKE} strokeWidth={SW}>
-      <line x1={7.4} x2={18.5} y1={5} y2={14.6} />
-      <line x1={7.4} x2={18.5} y1={12} y2={15.4} />
-      <line x1={7.4} x2={18.5} y1={20} y2={16.6} />
-      <line x1={7.4} x2={18.5} y1={27} y2={17.4} />
-    </g>
-    <g fill="var(--paper)" stroke={STROKE} strokeWidth={SW}>
-      <circle cx={5} cy={5} r={2.4} />
-      <circle cx={5} cy={12} r={2.4} />
-      <circle cx={5} cy={20} r={2.4} />
-      <circle cx={5} cy={27} r={2.4} />
-    </g>
-    {/* the decision they all converge on */}
-    <rect
-      fill="none"
-      height={8}
-      stroke={ACCENT}
-      strokeWidth={ASW}
-      transform="rotate(45 23 16)"
-      width={8}
-      x={19}
-      y={12}
-    />
-  </>
-)
-
-/** Value moving through the product and the system that has to settle it. */
-const FintechStrategyMark: React.FC = () => (
-  <>
-    <g fill="var(--panel)" fillOpacity={0.5} stroke={STROKE} strokeWidth={SW}>
-      <rect height={7} width={7} x={3} y={12.5} />
-      <rect height={7} width={7} x={13} y={5} />
-      <rect height={7} width={7} x={13} y={20} />
-    </g>
-    <g stroke={STROKE} strokeWidth={SW}>
-      <line x1={10} x2={13} y1={15} y2={9.5} />
-      <line x1={10} x2={13} y1={17} y2={22.5} />
-      <line x1={20} x2={23} y1={9.5} y2={14.5} />
-      <line x1={20} x2={23} y1={22.5} y2={17.5} />
-    </g>
-    {/* where the value actually lands */}
-    <rect fill="none" height={8} stroke={ACCENT} strokeWidth={ASW} width={6} x={23} y={12} />
-  </>
-)
-
-/** Two reading directions, two systems, one product that has to hold both. */
-const RtlPersianMark: React.FC = () => (
-  <>
-    <rect fill="var(--panel)" fillOpacity={0.5} height={9} stroke={STROKE} strokeWidth={SW} width={26} x={3} y={3} />
-    <g stroke={STROKE} strokeWidth={1}>
-      <line x1={17} x2={27} y1={6} y2={6} />
-      <line x1={12} x2={27} y1={9} y2={9} />
-    </g>
-    <rect fill="var(--panel)" fillOpacity={0.5} height={9} stroke={STROKE} strokeWidth={SW} width={26} x={3} y={20} />
-    <g stroke={STROKE} strokeWidth={1}>
-      <line x1={5} x2={15} y1={23} y2={23} />
-      <line x1={5} x2={20} y1={26} y2={26} />
-    </g>
-    {/* the crossing — the same system read both ways */}
-    <g stroke={ACCENT} strokeWidth={ASW}>
-      <line x1={11} x2={21} y1={12} y2={20} />
-      <line x1={21} x2={11} y1={12} y2={20} />
-    </g>
-  </>
-)
-
-/** States, the transitions between them, and the loop that makes progression feel like progress. */
-const GamificationMark: React.FC = () => (
-  <>
-    <g stroke={STROKE} strokeWidth={SW}>
-      <line x1={17.7} x2={24.1} y1={9.2} y2={19.3} />
-      <line x1={22.4} x2={9.6} y1={24} y2={24} />
-      <line x1={13} x2={13} y1={20.5} y2={19} />
-      <line x1={23} x2={24.4} y1={15.5} y2={16.3} />
-    </g>
-    <g fill="var(--paper)" stroke={STROKE} strokeWidth={SW}>
-      <circle cx={16} cy={6.5} r={3} />
-      <circle cx={26} cy={24} r={3} />
-      <circle cx={6} cy={24} r={3} />
-    </g>
-    {/* the return leg — the transition that closes the loop and starts the next cycle */}
-    <line stroke={ACCENT} strokeWidth={ASW} x1={7.9} x2={14.3} y1={21.7} y2={9.2} />
-  </>
-)
-
-/** An undefined system on one side, an operating model on the other. */
-const ProductFunctionSetupMark: React.FC = () => (
-  <>
-    <rect height={17} stroke={STROKE} strokeDasharray="2 6" strokeWidth={SW} width={10} x={3} y={7.5} />
-    <rect fill="var(--panel)" fillOpacity={0.5} height={17} stroke={STROKE} strokeWidth={SW} width={10} x={19} y={7.5} />
-    <g stroke={STROKE} strokeWidth={1}>
-      <line x1={19} x2={29} y1={13} y2={13} />
-      <line x1={19} x2={29} y1={19} y2={19} />
-      <line x1={24} x2={24} y1={13} y2={24.5} />
-    </g>
-    {/* the move from one to the other — a dimension line, no arrowhead */}
-    <g stroke={ACCENT} strokeWidth={ASW}>
-      <line x1={14} x2={18} y1={16} y2={16} />
-      <line x1={18} x2={18} y1={13.8} y2={18.2} />
-    </g>
-  </>
-)
-
-const SKILL_MARKS = {
-  'ai-product-development': AiProductDevelopmentMark,
-  'analytics-experimentation': AnalyticsExperimentationMark,
-  'business-modeling': BusinessModelingMark,
-  'documentation-spec': DocumentationSpecMark,
-  'fintech-strategy': FintechStrategyMark,
-  gamification: GamificationMark,
-  'process-operations': ProcessOperationsMark,
-  'product-discovery': ProductDiscoveryMark,
-  'product-function-setup': ProductFunctionSetupMark,
-  'product-management': ProductManagementMark,
-  requirements: RequirementsMark,
-  'rtl-persian': RtlPersianMark,
-  'service-design': ServiceDesignMark,
-  'stakeholder-management': StakeholderManagementMark,
-  'technical-pm': TechnicalPmMark,
-  'ux-direction': UxDirectionMark,
-} satisfies Record<SkillKey, React.FC>
-
-/**
- * One skill's mark. Decorative by contract: the skill's title is always rendered beside it, so
- * the SVG stays out of the accessibility tree entirely (§49) rather than exposing sixteen
- * unlabelled graphics.
- */
-export const SkillIcon: React.FC<{ className?: string; skillKey: SkillKey }> = ({
-  className,
-  skillKey,
-}) => {
-  const Mark = SKILL_MARKS[skillKey]
+/** Labels remain HTML. The default compact variant is safe for existing callers. */
+export const SkillIcon: React.FC<{
+  className?: string
+  skillKey: SkillKey
+  variant?: 'compact' | 'illustration'
+}> = ({ className, skillKey, variant = 'compact' }) => {
+  if (variant === 'illustration') return <SkillArtwork className={className} skillKey={skillKey} />
   return (
     <svg
       aria-hidden="true"
-      className={className}
+      focusable="false"
+      className={cn('experience-compact-art', className)}
+      data-artwork={skillKey}
       fill="none"
+      stroke={INK}
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
       style={{ direction: 'ltr' }}
       viewBox="0 0 32 32"
     >
-      <Mark />
+      {SKILL_MARKS[skillKey]}
     </svg>
   )
 }

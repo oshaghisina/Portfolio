@@ -75,13 +75,15 @@ export const CapabilityMatrixBlock: React.FC<CapabilityMatrixProps> = ({
                 const evidence = (skill.evidence ?? []).filter((e) => e.label)
                 return (
                   <li
+                    data-experience-scene=""
                     className="grid gap-x-8 gap-y-2 border-b border-line py-5 lg:grid-cols-12 lg:gap-y-4 lg:py-7"
                     key={skill.id ?? skill.key}
                   >
                     <div className="flex min-w-0 items-start gap-4 lg:col-span-4">
                       <SkillIcon
-                        className="mt-0.5 size-8 shrink-0 sm:size-9"
+                        className="experience-skill-art mt-1"
                         skillKey={skill.key as SkillKey}
+                        variant="illustration"
                       />
                       <div className="min-w-0">
                         <span className="index-code text-ink-3" dir="ltr">

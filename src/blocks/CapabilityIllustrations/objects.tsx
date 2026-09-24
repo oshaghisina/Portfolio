@@ -114,6 +114,8 @@ export const Wire = ({
 /** Contact shadows are geometry, not animated blur filters. */
 export const Ground = ({ wide = false }: { wide?: boolean }) => (
   <g>
+    {/* Soft ambient lift — --cap-ground is transparent unless a theme opts in. */}
+    <ellipse cx="202" cy="228" fill="var(--cap-ground)" rx={wide ? 168 : 132} ry="26" />
     <ellipse cx="202" cy="228" fill="var(--cap-shadow)" rx={wide ? 142 : 112} ry="17" />
     <ellipse cx="202" cy="228" fill="var(--cap-shadow)" rx={wide ? 108 : 82} ry="10" />
     <g fill="var(--ink-3)" opacity=".25">

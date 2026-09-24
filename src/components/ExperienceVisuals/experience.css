@@ -1,0 +1,402 @@
+.experience-visual-scope {
+  display: contents;
+}
+.experience-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 10 / 7;
+}
+.experience-art-object {
+  stroke-linejoin: round;
+}
+.experience-index-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  gap: 1px;
+  border: 1px solid var(--line);
+  background: var(--line);
+}
+.experience-index-card {
+  min-width: 0;
+  background: var(--paper);
+}
+.experience-index-card > a {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 14px 12px 18px;
+  transition: background 180ms var(--ease-standard);
+}
+.experience-index-card > a:hover {
+  background: var(--panel);
+}
+.experience-index-card > a:focus-visible,
+.experience-motion-control:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 3px;
+  position: relative;
+  z-index: 1;
+}
+.experience-index-art {
+  aspect-ratio: 10 / 7;
+  width: 100%;
+  margin-block: 5px 12px;
+}
+.experience-index-meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+.experience-index-title {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+.experience-index-count {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-3);
+}
+.experience-index-description {
+  margin-top: 7px;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--ink-2);
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+}
+.experience-index-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+}
+.experience-motion-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--ink-2);
+  font-size: 11px;
+  line-height: 1.5;
+  text-align: start;
+  cursor: pointer;
+  min-height: 32px;
+}
+.experience-motion-control:disabled {
+  cursor: default;
+  color: var(--ink-3);
+}
+.experience-skill-art {
+  width: 64px;
+  flex-shrink: 0;
+  aspect-ratio: 10 / 7;
+}
+.experience-compact-art {
+  display: block;
+  flex-shrink: 0;
+}
+
+.experience-model-network {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 20px;
+  padding-block: 24px;
+  border-block: 1px solid var(--line);
+}
+.experience-model-inputs {
+  display: contents;
+}
+.experience-model-input {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  min-width: 0;
+  padding-block: 18px;
+  border-bottom: 1px solid var(--line);
+}
+.experience-model-input-art {
+  width: 80px;
+  aspect-ratio: 10 / 7;
+  flex-shrink: 0;
+}
+.experience-model-label {
+  color: var(--ink);
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 1.5;
+}
+.experience-model-contribution {
+  margin-top: 5px;
+  color: var(--ink-2);
+  font-size: 12px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.experience-model-delivery {
+  grid-column: 1 / -1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-top: 30px;
+  min-width: 0;
+}
+.experience-model-delivery::before {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 30px;
+  position: absolute;
+  top: 0;
+  background: var(--track-accent);
+}
+.experience-model-delivery > .experience-art {
+  max-width: 400px;
+}
+.experience-model-output {
+  max-width: 28ch;
+  font-weight: 500;
+  color: var(--ink);
+  font-size: 21px;
+  line-height: 1.4;
+  text-wrap: balance;
+  margin-top: 7px;
+}
+.experience-model-network {
+  --exp-cycle: 6s;
+}
+.exp-anim {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.exp-signal {
+  opacity: 0;
+  stroke-dasharray: 0.18 0.82;
+}
+
+@media (min-width: 640px) {
+  .experience-index-card > a {
+    padding: 18px 18px 22px;
+  }
+  .experience-index-description {
+    font-size: 13px;
+  }
+  .experience-index-title {
+    font-size: 16px;
+  }
+  .experience-model-input {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+@media (min-width: 1024px) {
+  .experience-skill-art {
+    width: 80px;
+  }
+  .experience-model-network {
+    grid-template-columns: minmax(0, 1fr) minmax(240px, 1.15fr) minmax(0, 1fr);
+    column-gap: 32px;
+    padding-block: 36px;
+  }
+  .experience-model-input {
+    grid-row: var(--discipline-row);
+    grid-column: var(--discipline-column);
+    padding-block: 22px;
+  }
+  .experience-model-input::after {
+    content: '';
+    position: absolute;
+    inset-inline-end: -32px;
+    top: 50%;
+    width: 32px;
+    height: 1px;
+    background: var(--ink-3);
+    opacity: 0.5;
+  }
+  .experience-model-input:nth-child(even)::after {
+    inset-inline-end: auto;
+    inset-inline-start: -32px;
+  }
+  .experience-model-delivery {
+    grid-column: 2;
+    grid-row: 1 / span var(--discipline-rows, 3);
+    padding: 0;
+  }
+  .experience-model-delivery::before {
+    display: none;
+  }
+  .experience-model-label {
+    font-size: 17px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-exp-motion='true'] .exp-anim {
+    animation-duration: var(--exp-cycle, 4s);
+    animation-delay: var(--exp-delay, 0s);
+    animation-timing-function: cubic-bezier(0.22, 0.75, 0.22, 1);
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+    animation-play-state: paused;
+  }
+  [data-exp-motion='true'] [data-exp-visible='true'] .exp-anim {
+    animation-play-state: running;
+  }
+  [data-exp-motion='true'] .exp-lift {
+    animation-name: exp-lift;
+  }
+  [data-exp-motion='true'] .exp-slide {
+    animation-name: exp-slide;
+  }
+  [data-exp-motion='true'] .exp-choose {
+    animation-name: exp-choose;
+  }
+  [data-exp-motion='true'] .exp-layer {
+    animation-name: exp-layer;
+  }
+  [data-exp-motion='true'] .exp-search {
+    animation-name: exp-search;
+  }
+  [data-exp-motion='true'] .exp-transfer {
+    animation-name: exp-transfer;
+  }
+  [data-exp-motion='true'] .exp-signal {
+    animation-name: exp-signal;
+  }
+  [data-exp-paused='true'] .exp-anim,
+  [data-exp-paused='true'] .cap-anim {
+    animation-play-state: paused !important;
+  }
+  @keyframes exp-lift {
+    0%,
+    65%,
+    100% {
+      transform: translateY(0);
+    }
+    25%,
+    38% {
+      transform: translateY(-10px);
+    }
+    52% {
+      transform: translateY(2px);
+    }
+  }
+  @keyframes exp-slide {
+    0%,
+    68%,
+    100% {
+      transform: translate(0, 0);
+    }
+    22%,
+    38% {
+      transform: translate(-15px, 8px);
+    }
+  }
+  @keyframes exp-choose {
+    0%,
+    12%,
+    76%,
+    100% {
+      transform: translate(0, 0);
+    }
+    28%,
+    42% {
+      transform: translate(-13px, -12px);
+    }
+    60% {
+      transform: translate(0, 2px);
+    }
+  }
+  @keyframes exp-layer {
+    0%,
+    72%,
+    100% {
+      transform: translateY(0);
+    }
+    20%,
+    38% {
+      transform: translateY(-13px);
+    }
+    59% {
+      transform: translateY(2px);
+    }
+  }
+  @keyframes exp-search {
+    0%,
+    75%,
+    100% {
+      transform: translate(0, 0);
+    }
+    20% {
+      transform: translate(-18px, 9px);
+    }
+    40% {
+      transform: translate(10px, -5px);
+    }
+    60% {
+      transform: translate(0, 0);
+    }
+  }
+  @keyframes exp-transfer {
+    0%,
+    10%,
+    85%,
+    100% {
+      transform: translate(0, 0);
+      opacity: 1;
+    }
+    50%,
+    61% {
+      transform: translate(46px, 47px);
+      opacity: 1;
+    }
+    72% {
+      transform: translate(46px, 47px);
+      opacity: 0;
+    }
+    74% {
+      transform: translate(0, 0);
+      opacity: 0;
+    }
+  }
+  @keyframes exp-signal {
+    0%,
+    8% {
+      opacity: 0;
+      stroke-dashoffset: 1;
+    }
+    14% {
+      opacity: 1;
+      stroke-dashoffset: 1;
+    }
+    68% {
+      opacity: 1;
+      stroke-dashoffset: 0;
+    }
+    76%,
+    100% {
+      opacity: 0;
+      stroke-dashoffset: 0;
+    }
+  }
+}
+@media print {
+  .exp-anim {
+    animation: none !important;
+    transform: none !important;
+  }
+  .experience-motion-control {
+    display: none;
+  }
+}

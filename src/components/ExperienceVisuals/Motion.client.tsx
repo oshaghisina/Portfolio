@@ -30,13 +30,16 @@ export function ExperienceMotion({ children }: { children: ReactNode }) {
       setReduced(preference.matches)
       element.dataset.expMotion = String(!preference.matches)
       if (!preference.matches && typeof IntersectionObserver !== 'undefined') {
-        observer = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) visible.add(entry.target)
-            else visible.delete(entry.target)
-          })
-          sync()
-        }, { threshold: 0, rootMargin: '0px' })
+        observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) visible.add(entry.target)
+              else visible.delete(entry.target)
+            })
+            sync()
+          },
+          { threshold: 0, rootMargin: '0px' },
+        )
         scenes.forEach((scene) => observer?.observe(scene))
       }
       sync()

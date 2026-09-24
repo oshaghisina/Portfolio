@@ -97,7 +97,7 @@ Without it, sitemap generation falls back to `https://example.com`. Local `publi
 
 Dynamic sitemaps for pages, posts, and projects live under `src/app/(frontend)/(sitemaps)/`.
 
-Code releases go through `pnpm deploy:prod`: it validates the committed tree, builds the image once, and sends only the image layers the server doesn't already have (`--dry-run`, `--rollback`). Content changes need no deploy, because every route renders dynamically. The runbook (Caddy, Mongo restore, Arvan Object Storage / `pnpm migrate:media-urls`, rollback) is the local `Docs/Deploy.md` when present.
+Code releases go through `pnpm deploy:prod`: it validates the committed tree, builds the image once, and sends only the image layers the server doesn't already have (`--dry-run`, `--rollback`). Content changes need no deploy, because every route renders dynamically. The runbook (Caddy, Mongo restore, Arvan Object Storage / `pnpm migrate:media-urls`, Cloudflare Tunnel for `.com` / D-036, rollback) is the local `Docs/Deploy.md` when present.
 
 ## Admin
 

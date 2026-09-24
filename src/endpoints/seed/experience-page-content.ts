@@ -8,6 +8,7 @@ import {
   type SkillKey,
 } from '@/blocks/CapabilityIcons/keys'
 import { dirFor, type Locale } from '@/utilities/locale'
+import { DISCIPLINE_KEYS } from '@/components/ExperienceVisuals/copy'
 
 import { heading, paragraph, richText } from './lexical-helpers'
 import {
@@ -190,7 +191,7 @@ export const buildExperienceLayout = (copy: ExperiencePageCopy, projectIds?: Pro
       blockName: 'Working across disciplines',
       blockType: 'capabilityModel',
       sectionHeader: copy.model.header,
-      disciplines: copy.model.disciplines.map((label) => ({ label })),
+      disciplines: copy.model.disciplines.map((label, i) => ({ label, disciplineKey: DISCIPLINE_KEYS[i] })),
       outputLabel: copy.model.outputLabel,
       output: copy.model.output,
     },

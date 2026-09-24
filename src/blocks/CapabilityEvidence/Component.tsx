@@ -60,7 +60,7 @@ export const CapabilityEvidenceBlock: React.FC<CapabilityEvidenceProps> = ({
               <ul className="flex flex-wrap items-center gap-x-3 gap-y-3 border-s border-line ps-4 lg:col-span-7 lg:ms-4">
                 {capabilities.map((capability, c) => (
                     <li className="flex items-center gap-2" key={capability.id ?? c}>
-                      <SkillIcon className="size-6 shrink-0" skillKey={capability.key as SkillKey} />
+                      <SkillIcon className="size-7 shrink-0" skillKey={capability.key as SkillKey} variant="compact" />
                       <span className="eyebrow text-ink-2">{capability.label}</span>
                       {c < capabilities.length - 1 ? (
                         <span aria-hidden className="ms-1 text-small text-ink-3">+</span>
