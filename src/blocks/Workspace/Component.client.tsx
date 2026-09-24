@@ -27,7 +27,7 @@ export type WorkspaceClientProps = {
 
 /**
  * How I work: an operating loop (Frame → Map → Decide → Ship → Measure) under one ownership
- * principle. Real WAI-ARIA tabs with roving tabindex; one morphing bench; a stage panel with
+ * principle. Real WAI-ARIA tabs with roving tabindex; one responsive working model; a stage panel with
  * Output / Seen in / Next. No autoplay — the rail already tells the whole story at rest.
  */
 export const WorkspaceClient: React.FC<WorkspaceClientProps> = ({
@@ -54,7 +54,7 @@ export const WorkspaceClient: React.FC<WorkspaceClientProps> = ({
   const select = (next: number) => {
     if (next < 0 || next > last) return
     setIndex(next)
-    tabsRef.current[next]?.focus()
+    tabsRef.current[next]?.focus({ preventScroll: true })
   }
 
   const onTabKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -87,7 +87,7 @@ export const WorkspaceClient: React.FC<WorkspaceClientProps> = ({
   const panelId = (i: number) => `${baseId}-panel-${i}`
 
   return (
-    <section className={cn(className)}>
+    <section className={cn('workbench', className)}>
       <SectionHeader
         {...sectionHeader}
         className="mb-10 max-md:mb-8 max-md:border-t-0 max-md:pt-0"
@@ -181,13 +181,12 @@ export const WorkspaceClient: React.FC<WorkspaceClientProps> = ({
         </div>
 
         {/* Body: bench + panel */}
-        <div className="flex flex-col lg:min-h-[28rem] lg:flex-row">
-          <div className="min-w-0 flex-1 p-4 sm:p-6 lg:w-8/12 lg:flex-[8] lg:border-e lg:border-line lg:p-8">
-            <WorkspaceBench className="hidden md:block" stage={stageKey} />
-            <WorkspaceBench className="md:hidden" compact stage={stageKey} />
+        <div className="flex flex-col lg:min-h-[28rem] lg:flex-row" data-reveal-unit="">
+          <div className="min-w-0 flex-1 p-4 sm:p-6 lg:w-7/12 lg:flex-[7] lg:border-e lg:border-line lg:p-8">
+            <WorkspaceBench locale={locale} stage={stageKey} />
           </div>
 
-          <div className="relative flex min-w-0 flex-col p-4 sm:p-6 lg:w-4/12 lg:flex-[4] lg:p-8">
+          <div className="relative flex min-w-0 flex-col p-4 sm:p-6 lg:w-5/12 lg:flex-[5] lg:p-8">
             {/* 1×1 grid stack — height = tallest panel */}
             <div className="grid flex-1 grid-cols-1 grid-rows-1">
               {stages.map((stage, i) => {
@@ -197,6 +196,7 @@ export const WorkspaceClient: React.FC<WorkspaceClientProps> = ({
                 return (
                   <div
                     aria-hidden={!selected}
+                    inert={!selected}
                     aria-labelledby={tabId(i)}
                     className={cn(
                       'col-start-1 row-start-1 flex flex-col',
@@ -211,17 +211,14 @@ export const WorkspaceClient: React.FC<WorkspaceClientProps> = ({
                     <span className="index-code text-ink-3" dir="ltr">
                       {padStageIndex(i)} / {totalCode}
                     </span>
-                    {/* Desktop: core question as h3. Mobile: statement as h3. */}
-                    <h3 className="mt-3 text-h3 tracking-h3 font-medium text-foreground max-md:hidden">
+                    {/* Keep the core question readable at every viewport width. */}
+                    <h3 className="mt-3 text-h3 tracking-h3 font-medium text-foreground">
                       {stage.question}
-                    </h3>
-                    <h3 className="mt-3 text-h3 tracking-h3 font-medium text-foreground md:hidden">
-                      {stage.statement}
                     </h3>
                     <p className="mt-3 text-small text-ink-2">{stage.description}</p>
 
                     <dl className="mt-6 space-y-3 text-caption">
-                      <div className="flex flex-wrap gap-x-3 gap-y-1">
+                      <div className="wb-output">
                         <dt className="eyebrow text-ink-3">{copy.output}</dt>
                         <dd className="text-foreground">{stage.output}</dd>
                       </div>
@@ -261,7 +258,7 @@ export const WorkspaceClient: React.FC<WorkspaceClientProps> = ({
                         ) : (
                           <>
                             {copy.next} {panelNext.label}
-                            <span aria-hidden>→</span>
+                            <span aria-hidden>{isRtl(locale) ? '←' : '→'}</span>
                           </>
                         )}
                       </button>

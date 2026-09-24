@@ -1,0 +1,160 @@
+.intersection-diagram {
+  margin: 0;
+  max-width: 36rem;
+  align-self: center;
+}
+.intersection-label {
+  text-align: center;
+}
+.intersection-domain {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 9px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--foreground);
+}
+.intersection-domain .index-code {
+  font-size: 10px;
+  color: var(--track-accent);
+}
+.intersection-lens {
+  display: block;
+  margin-top: 5px;
+  font-size: 12px;
+  color: var(--ink-3);
+}
+.intersection-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 520 / 420;
+  margin-top: 8px;
+  overflow: visible;
+}
+.intersection-bottom-labels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 20%;
+  margin-top: -16px;
+}
+.intersection-caption {
+  margin: 24px auto 0;
+  padding: 20px 12px 0;
+  border-top: 1px solid var(--line);
+  text-align: center;
+}
+.intersection-caption-kicker {
+  display: block;
+  color: var(--track-accent);
+  font:
+    10px var(--font-mono),
+    monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+.intersection-caption strong {
+  display: block;
+  margin-top: 7px;
+  font-size: 23px;
+  line-height: 1.4;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+}
+.intersection-caption p {
+  max-width: 34ch;
+  margin: 9px auto 0;
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--ink-2);
+}
+.intersection-signal {
+  opacity: 0;
+}
+@keyframes intersection-arrive {
+  from {
+    opacity: 0.2;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes intersection-signal {
+  0% {
+    opacity: 0;
+    translate: var(--signal-x) var(--signal-y);
+  }
+  20% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    translate: 0 0;
+  }
+}
+@keyframes intersection-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  45% {
+    opacity: 0.85;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .intersection-field {
+    animation: intersection-arrive 800ms ease-out backwards;
+  }
+  .intersection-field-1 {
+    animation-delay: 100ms;
+  }
+  .intersection-field-2 {
+    animation-delay: 200ms;
+  }
+  .intersection-overlap {
+    animation: intersection-arrive 900ms 350ms ease-out backwards;
+  }
+  .intersection-signal {
+    animation: intersection-signal 1500ms 650ms var(--ease-standard, ease-out) both;
+  }
+  .intersection-signal-0 {
+    --signal-x: 0px;
+    --signal-y: -105px;
+  }
+  .intersection-signal-1 {
+    --signal-x: -92px;
+    --signal-y: 58px;
+    animation-delay: 800ms;
+  }
+  .intersection-signal-2 {
+    --signal-x: 92px;
+    --signal-y: 58px;
+    animation-delay: 950ms;
+  }
+  .intersection-pulse {
+    animation: intersection-pulse 1800ms 1200ms ease-in-out 2;
+  }
+}
+@media (max-width: 480px) {
+  .intersection-domain {
+    font-size: 13px;
+    gap: 6px;
+  }
+  .intersection-lens {
+    font-size: 11px;
+  }
+  .intersection-bottom-labels {
+    column-gap: 12%;
+    margin-top: -5px;
+  }
+  .intersection-caption {
+    margin-top: 22px;
+  }
+  .intersection-caption strong {
+    font-size: 21px;
+  }
+}

@@ -3,6 +3,8 @@
 /* Generated from Docs/Design-System/tokens/sina.tokens.json by `pnpm tokens:build` (D-014). */
 @import './theme.css';
 @import '../../blocks/CapabilityIllustrations/motion.css';
+@import '../../blocks/Workspace/workspace.css';
+@import '../../components/IntersectionDiagram/diagram.css';
 @import '../../providers/ScrollReveal/reveal.css';
 
 @plugin "@tailwindcss/typography";
@@ -328,21 +330,6 @@ html[data-theme='light'] {
   opacity: initial;
 }
 
-/* ── About hero: the intersection diagram (src/components/IntersectionDiagram) ─────────────
-   The site's one animated illustration. Hand-written CSS rather than utilities because it is a
-   keyframed system, not a set of states, and because the base rules below are load-bearing:
-
-   THE BASE STYLES ARE THE REDUCED-MOTION STATE. At rest the three domains sit converged, the
-   relationship lines are fully drawn, and the centre node carries the accent — a complete,
-   meaningful diagram. `animation` is applied ONLY inside `prefers-reduced-motion: no-preference`,
-   so a reader who asked for no motion gets that static state and no keyframes at all: nothing
-   hidden, no duplicate markup, no `motion-reduce:` variants. Same posture as the scroll-behavior
-   rule in @layer base.
-
-   Only `translate` and `opacity` animate — both compositor-friendly, and neither reflows, so the
-   hero cannot shift while the loop runs. `--ix-dx`/`--ix-dy` are set per domain group in the
-   component (each one's unit vector toward the centre), so one keyframe serves all three. */
-
 /* Primary page-opener title write. Reduced motion keeps full opacity (no keyframes). */
 [data-hero-entrance] {
   --hero-write-duration: 1100ms;
@@ -404,7 +391,8 @@ html[data-theme='light'] {
     opacity: 0;
     animation: hero-write-unit-in 1ms linear forwards;
     animation-delay: calc(
-      100ms + (var(--hero-write-i, 0) / var(--hero-write-units, 1)) * var(--hero-write-duration, 1000ms)
+      100ms + (var(--hero-write-i, 0) / var(--hero-write-units, 1)) *
+        var(--hero-write-duration, 1000ms)
     );
   }
 
@@ -419,9 +407,7 @@ html[data-theme='light'] {
     animation:
       hero-write-caret-in var(--duration-fast) var(--ease-standard) both,
       hero-write-caret-out var(--duration-fast) var(--ease-standard) forwards;
-    animation-delay:
-      100ms,
-      calc(100ms + var(--hero-write-duration, 1000ms));
+    animation-delay: 100ms, calc(100ms + var(--hero-write-duration, 1000ms));
   }
 
   [data-hero-entrance] [data-hero-eyebrow] {
@@ -440,155 +426,5 @@ html[data-theme='light'] {
     transform: translateY(6px);
     animation: hero-supporting-in var(--duration-base) var(--ease-standard) forwards;
     animation-delay: calc(var(--hero-write-duration, 1100ms) * 1.02);
-  }
-
-  /* About diagram: wait for the write window, then start the existing loops. */
-  [data-hero-entrance]:has(.hero-written-title) .ix-domain {
-    animation-delay: calc(100ms + var(--hero-write-duration, 1100ms));
-  }
-
-  [data-hero-entrance]:has(.hero-written-title) .ix-domain.ix-lag-1 {
-    animation-delay: calc(100ms + var(--hero-write-duration, 1100ms) + var(--ix-cycle) * -0.96);
-  }
-
-  [data-hero-entrance]:has(.hero-written-title) .ix-domain.ix-lag-2 {
-    animation-delay: calc(100ms + var(--hero-write-duration, 1100ms) + var(--ix-cycle) * -0.92);
-  }
-
-  [data-hero-entrance]:has(.hero-written-title) .ix-link,
-  [data-hero-entrance]:has(.hero-written-title) .ix-field,
-  [data-hero-entrance]:has(.hero-written-title) .ix-mark,
-  [data-hero-entrance]:has(.hero-written-title) .ix-core {
-    animation-delay: calc(100ms + var(--hero-write-duration, 1100ms));
-  }
-
-  [data-hero-entrance]:has(.hero-written-title) .ix-link.ix-lag-1,
-  [data-hero-entrance]:has(.hero-written-title) .ix-field.ix-lag-1,
-  [data-hero-entrance]:has(.hero-written-title) .ix-mark.ix-lag-1 {
-    animation-delay: calc(100ms + var(--hero-write-duration, 1100ms) + var(--ix-cycle) * -0.96);
-  }
-
-  [data-hero-entrance]:has(.hero-written-title) .ix-link.ix-lag-2,
-  [data-hero-entrance]:has(.hero-written-title) .ix-field.ix-lag-2,
-  [data-hero-entrance]:has(.hero-written-title) .ix-mark.ix-lag-2 {
-    animation-delay: calc(100ms + var(--hero-write-duration, 1100ms) + var(--ix-cycle) * -0.92);
-  }
-}
-
-.ix-domain {
-  translate: var(--ix-dx, 0) var(--ix-dy, 0);
-}
-
-/* `pathLength="1"` on each line means dasharray/dashoffset are fractions of the path — the draw-in
-   needs no measured length and survives any geometry edit. */
-.ix-link {
-  stroke-dasharray: 1;
-  stroke-dashoffset: 0;
-  opacity: 0.55;
-}
-
-.ix-field {
-  opacity: 0.7;
-}
-
-.ix-core {
-  opacity: 1;
-}
-
-.ix-mark {
-  opacity: 0.6;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  @keyframes ix-converge {
-    0%,
-    8% {
-      translate: 0 0;
-    }
-    42%,
-    58% {
-      translate: var(--ix-dx, 0) var(--ix-dy, 0);
-    }
-    92%,
-    100% {
-      translate: 0 0;
-    }
-  }
-
-  @keyframes ix-draw {
-    0%,
-    8% {
-      stroke-dashoffset: 1;
-      opacity: 0.2;
-    }
-    42%,
-    58% {
-      stroke-dashoffset: 0;
-      opacity: 1;
-    }
-    92%,
-    100% {
-      stroke-dashoffset: 1;
-      opacity: 0.2;
-    }
-  }
-
-  @keyframes ix-bloom {
-    0%,
-    8% {
-      opacity: 0.12;
-    }
-    42%,
-    58% {
-      opacity: 1;
-    }
-    92%,
-    100% {
-      opacity: 0.12;
-    }
-  }
-
-  @keyframes ix-settle {
-    0%,
-    8% {
-      opacity: 0.3;
-    }
-    42%,
-    58% {
-      opacity: 1;
-    }
-    92%,
-    100% {
-      opacity: 0.3;
-    }
-  }
-
-  .ix-domain {
-    animation: ix-converge var(--ix-cycle) var(--ease-standard) infinite;
-  }
-
-  .ix-link {
-    animation: ix-draw var(--ix-cycle) var(--ease-standard) infinite;
-  }
-
-  .ix-field,
-  .ix-mark {
-    animation: ix-bloom var(--ix-cycle) var(--ease-standard) infinite;
-  }
-
-  .ix-core {
-    animation: ix-settle var(--ix-cycle) var(--ease-standard) infinite;
-  }
-
-  /* Business and Technology arrive after Product, so the convergence reads as a sequence rather
-     than a shrug. Negative and expressed as a fraction of the cycle: a positive delay would hold
-     the element at its base style (converged) until it elapsed, which reads as a jump on load,
-     and a fraction keeps the stagger proportional if the cycle is ever retuned. */
-  .ix-lag-1 {
-    animation-delay: calc(var(--ix-cycle) * -0.96);
-  }
-
-  .ix-lag-2 {
-    animation-delay: calc(var(--ix-cycle) * -0.92);
   }
 }

@@ -17,23 +17,29 @@ afterEach(() => {
   cleanup()
 })
 
-const publishedProject = (overrides: Partial<Project> & Pick<Project, 'id' | 'slug' | 'title'>): Project =>
+const publishedProject = (
+  overrides: Partial<Project> & Pick<Project, 'id' | 'slug' | 'title'>,
+): Project =>
   ({
     caseStudyStatus: 'published',
     ...overrides,
   }) as Project
 
-const draftProject = (overrides: Partial<Project> & Pick<Project, 'id' | 'slug' | 'title'>): Project =>
+const draftProject = (
+  overrides: Partial<Project> & Pick<Project, 'id' | 'slug' | 'title'>,
+): Project =>
   ({
     caseStudyStatus: 'draft',
     ...overrides,
   }) as Project
 
-const stageFixture = (overrides: {
-  evidence?: Project | string | null
-  key?: StageKey
-  shuffle?: boolean
-} = {}) => {
+const stageFixture = (
+  overrides: {
+    evidence?: Project | string | null
+    key?: StageKey
+    shuffle?: boolean
+  } = {},
+) => {
   const keys = overrides.shuffle
     ? (['measure', 'frame', 'ship', 'map', 'decide'] as StageKey[])
     : [...STAGE_KEYS]
@@ -58,9 +64,7 @@ describe('Workspace schema', () => {
     expect(field && 'validate' in field && typeof field.validate === 'function').toBe(true)
     const validate = (field as { validate: (v: unknown) => true | string }).validate
     expect(validate([{ key: 'frame' }])).toMatch(/exactly these keys/)
-    expect(
-      validate(STAGE_KEYS.map((key) => ({ key }))),
-    ).toBe(true)
+    expect(validate(STAGE_KEYS.map((key) => ({ key })))).toBe(true)
   })
 })
 
@@ -80,13 +84,7 @@ describe('WorkspaceBlock', () => {
   }
 
   it('renders a real tablist with five tabs and matching panels', () => {
-    render(
-      <WorkspaceBlock
-        {...baseProps}
-        locale="en"
-        stages={stageFixture()}
-      />,
-    )
+    render(<WorkspaceBlock {...baseProps} locale="en" stages={stageFixture()} />)
     const tablist = screen.getByRole('tablist')
     const tabs = within(tablist).getAllByRole('tab')
     expect(tabs).toHaveLength(5)
@@ -101,13 +99,7 @@ describe('WorkspaceBlock', () => {
   })
 
   it('moves selection with arrow keys (LTR)', () => {
-    render(
-      <WorkspaceBlock
-        {...baseProps}
-        locale="en"
-        stages={stageFixture()}
-      />,
-    )
+    render(<WorkspaceBlock {...baseProps} locale="en" stages={stageFixture()} />)
     const tablist = screen.getByRole('tablist')
     fireEvent.keyDown(tablist, { key: 'ArrowRight' })
     const tabs = within(tablist).getAllByRole('tab')
@@ -128,7 +120,9 @@ describe('WorkspaceBlock', () => {
         })}
       />,
     )
-    expect(screen.queryByText(homeCopy.en.workbench.stages[0]!.output)).toBeTruthy()
+    expect(
+      within(screen.getByRole('tabpanel')).getByText(homeCopy.en.workbench.stages[0]!.output),
+    ).toBeTruthy()
     expect(screen.queryByText(/Seen in/i)).toBeNull()
     expect(screen.queryByRole('link', { name: 'Digital Gold' })).toBeNull()
   })
@@ -149,11 +143,7 @@ describe('WorkspaceBlock', () => {
 
   it('marks the bench with motion-reduce-safe classes', () => {
     const { container } = render(
-      <WorkspaceBlock
-        {...baseProps}
-        locale="en"
-        stages={stageFixture()}
-      />,
+      <WorkspaceBlock {...baseProps} locale="en" stages={stageFixture()} />,
     )
     const benches = container.querySelectorAll('.workbench-bench')
     expect(benches.length).toBeGreaterThan(0)
@@ -162,14 +152,27 @@ describe('WorkspaceBlock', () => {
     })
   })
 
+  it('keeps hidden panel controls out of keyboard navigation', () => {
+    render(<WorkspaceBlock {...baseProps} locale="en" stages={stageFixture()} />)
+    const panels = screen.getAllByRole('tabpanel', { hidden: true })
+    expect(panels[0]!.hasAttribute('inert')).toBe(false)
+    expect(panels.slice(1).every((panel) => panel.hasAttribute('inert'))).toBe(true)
+    fireEvent.click(screen.getByRole('tab', { name: /05\s*Measure/ }))
+    expect(panels[4]!.hasAttribute('inert')).toBe(false)
+    expect(panels[0]!.hasAttribute('inert')).toBe(true)
+    expect(screen.getByRole('figure').textContent).toContain('Next decision')
+  })
+
+  it('uses readable Persian diagrams and RTL keyboard order', () => {
+    render(<WorkspaceBlock {...baseProps} locale="fa" stages={stageFixture()} />)
+    expect(screen.getByRole('figure').textContent).toContain('معیار موفقیت')
+    fireEvent.keyDown(screen.getByRole('tablist'), { key: 'ArrowLeft' })
+    expect(screen.getByRole('tab', { name: /02\s*Map/ }).getAttribute('aria-selected')).toBe('true')
+    expect(screen.getByRole('figure').textContent).toContain('تجربهٔ محصول')
+  })
+
   it('cycles Next through stages and Back to Frame on the last', () => {
-    render(
-      <WorkspaceBlock
-        {...baseProps}
-        locale="en"
-        stages={stageFixture()}
-      />,
-    )
+    render(<WorkspaceBlock {...baseProps} locale="en" stages={stageFixture()} />)
     const next = screen.getByRole('button', { name: /Next:.*Map/i })
     fireEvent.click(next)
     expect(
