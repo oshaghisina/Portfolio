@@ -222,6 +222,12 @@ const GATES: Record<string, { files: RegExp[]; text: RegExp[] }> = {
     files: [/home/, /search/, /cart/, /checkout/, /contact/, /find-order/, /create-account/, /about/, /lookbook/, /made-to-measure/],
     text: [/DEAKJP/i, /09\d{9}/, /۰۹[۰-۹]{9}/, /44964292/, /reorder/i, /\bRCE\b/, /Metabase/i, /incident/i, /فایمن|فايمن/],
   },
+  'nim-dang': {
+    // A national ID, a real name and phone numbers; desktop footers with a company name, phone and
+    // address; a map of the wrong country; stock galleries; the design system's lineage.
+    files: [/person-verification/, /step-1/, /register-login/, /profile/, /map-modal/, /gallery-modal/, /splash/, /step-5/, /desktop/],
+    text: [/00223/, /0933|۰۹۳۳/, /برهان/, /خیابان پاسداران/, /91005453|۹۱۰۰۵۴۵۳/, /khodro|خودرو|carsparency|didestan|دیدستان/i, /V\.3\.1/],
+  },
 }
 
 /**

@@ -23,6 +23,7 @@ const DETAIL_POSITION: Record<string, string> = {
   'digital-gold': 'object-[center_36%]',
   'khodro45-dealer-app': 'object-[center_12%]',
   faymen: 'object-[center_30%]',
+  'nim-dang': 'object-[center_40%]',
 }
 
 const GRID_STYLE = {

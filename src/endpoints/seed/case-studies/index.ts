@@ -25,6 +25,14 @@ import {
   k45LocalizedFields,
 } from './khodro45-dealer-app'
 import {
+  ND_ASSETS,
+  ND_LOCALES,
+  ND_MEDIA,
+  ND_SHARED_FIELDS,
+  ND_SLUG,
+  ndLocalizedFields,
+} from './nim-dang'
+import {
   RP1_ASSETS,
   RP1_MEDIA,
   RP1_SHARED_FIELDS,
@@ -108,6 +116,23 @@ export const CASE_STUDIES: CaseStudySeedConfig<any, any>[] = [
     replaceCover: true,
     sharedFields: FAY_SHARED_FIELDS,
     localizedFields: fayLocalizedFields,
+  },
+  {
+    label: 'Nim Dang',
+    slug: ND_SLUG,
+    assetsDir: ND_ASSETS,
+    media: ND_MEDIA,
+    seedLocales: ND_LOCALES,
+    createFields: {
+      kind: ['product', 'systems'],
+      order: 6,
+      featured: true,
+      coverMediaKey: 'cover',
+    },
+    // The archive cover was the desktop detail, whose footer carries an address and a phone number.
+    replaceCover: true,
+    sharedFields: ND_SHARED_FIELDS,
+    localizedFields: ndLocalizedFields,
   },
 ]
 

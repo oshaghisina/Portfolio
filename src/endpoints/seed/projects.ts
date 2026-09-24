@@ -507,10 +507,11 @@ export const PROJECT_SEED: ProjectSeedRow[] = [
     featured: true,
     status: 'published',
     period: { start: '2022-06-01T00:00:00.000Z' },
+    // The seller list re-exported at 2×: the desktop detail's footer carries a real address and phone.
     cover: {
-      path: 'Docs/Experience/Projects/nim-dang/assets/property-detail/detail-desktop.png',
-      name: 'nim-dang--detail-desktop.png',
-      alt: 'Nim Dang — a Tehran property detail page on desktop, priced by the square metre beside its ownership breakdown',
+      path: 'Docs/Experience/Projects/nim-dang/assets/2x/trading-hall/seller-list.png',
+      name: 'nim-dang--cover.png',
+      alt: 'Nim Dang — the trading hall seller list, where only peer resales carry a low, fair or high price gauge',
     },
   },
   {
