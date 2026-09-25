@@ -44,6 +44,13 @@
   --cap-ground: color-mix(in oklab, var(--ink) 9%, transparent);
 }
 
+/* Thin / wire-heavy silhouettes need a slightly brighter stroke at small sizes. */
+[data-theme='dark'] .industry-window[data-industry='travel'] .industry-illustration,
+[data-theme='dark'] .industry-window[data-industry='telecom'] .industry-illustration,
+[data-theme='dark'] .industry-window[data-industry='gaming'] .industry-illustration {
+  --cap-edge: color-mix(in oklab, var(--paper) 16%, var(--ink));
+}
+
 .cap-illustration--service {
   --cap-cycle: 3.8s;
 }

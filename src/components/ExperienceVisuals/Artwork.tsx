@@ -400,12 +400,12 @@ function Technical() {
         <path d="M12 19h154M12 44h154M12 70h154" stroke={PAPER} strokeWidth="3" />
       </Solid>
       <Move kind="layer">
-        <Solid x={-87} y={-66} z={40} w={172} d={125} h={12} tone="muted" />
+        <Solid x={-87} y={-66} z={30} w={172} d={125} h={10} tone="muted" />
       </Move>
-      <Sheet x={-83} y={-62} z={76} w={164} d={117} type="interface" />
+      <Sheet x={-83} y={-62} z={55} w={164} d={117} type="interface" />
       <Signal
         vertices={[
-          [75, 54, 81],
+          [75, 54, 60],
           [75, 54, 22],
           [42, 54, 22],
         ]}
@@ -698,7 +698,7 @@ function SystemsGroup() {
     <>
       <Technical />
       <Move kind="choose" delay={0.4}>
-        <Tile x={-72} y={-51} z={89} tone="accent" mark="check" />
+        <Tile x={-49} y={-24} z={63} tone="accent" mark="check" />
       </Move>
     </>
   )
