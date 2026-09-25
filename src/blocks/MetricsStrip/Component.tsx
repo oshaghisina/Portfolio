@@ -61,7 +61,7 @@ export const MetricsStripBlock: React.FC<MetricsStripProps> = ({ className, metr
       <dl className="flex flex-col gap-12 sm:grid sm:grid-cols-2 sm:gap-x-12 sm:gap-y-14 lg:grid-cols-4">
         {rows.map((m, i) => (
           <div
-            className="flex min-w-0 flex-col gap-3 max-sm:items-center max-sm:text-center"
+            className="flex min-w-0 flex-col gap-3 text-start max-sm:items-center max-sm:text-center"
             key={m.id ?? i}
           >
             <dd
@@ -69,9 +69,8 @@ export const MetricsStripBlock: React.FC<MetricsStripProps> = ({ className, metr
                 'text-num tracking-num font-medium tabular-nums',
                 i === 0 ? 'text-brand' : 'text-foreground',
               )}
-              dir="ltr"
             >
-              {m.value}
+              <bdi dir="ltr">{m.value}</bdi>
             </dd>
             <div className="relative mt-2 h-3 w-full overflow-hidden border border-line max-sm:hidden">
               <span

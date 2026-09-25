@@ -1,0 +1,82 @@
+.tracks-blueprint {
+  background-image:
+    linear-gradient(color-mix(in oklab, var(--ink) 4%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklab, var(--ink) 4%, transparent) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+.tracks-blueprint .tracks-story-art {
+  --cap-top: color-mix(in oklab, var(--ink) 91%, var(--paper));
+  --cap-left: color-mix(in oklab, var(--ink) 75%, var(--paper));
+  --cap-right: color-mix(in oklab, var(--ink) 59%, var(--paper));
+  --cap-muted: color-mix(in oklab, var(--ink) 38%, var(--paper));
+  --cap-edge: color-mix(in oklab, var(--ink) 40%, var(--paper));
+  --cap-dark: var(--paper);
+  --cap-dark-left: var(--panel);
+  --cap-dark-right: color-mix(in oklab, var(--paper) 80%, black);
+  --cap-shadow: #0003;
+  --cap-glass: color-mix(in oklab, var(--track-accent) 8%, transparent);
+  width: 100%;
+  height: auto;
+  aspect-ratio: 8 / 5;
+}
+.tracks-story-stack {
+  display: grid;
+  grid-template: 1fr / 1fr;
+}
+.tracks-story-scene {
+  grid-area: 1 / 1;
+  min-width: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 220ms var(--ease-standard);
+}
+.tracks-story-scene[data-track-active='true'] {
+  opacity: 1;
+  pointer-events: auto;
+}
+.tracks-story-scene[data-track-active='false'] .exp-anim {
+  animation-play-state: paused !important;
+}
+.tracks-story-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+.tracks-story-steps li {
+  min-width: 0;
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  text-align: center;
+}
+.tracks-story-steps .index-code {
+  color: var(--track-accent);
+  font-size: 10px;
+}
+.tracks-story-steps li > span:last-child {
+  color: var(--ink-2);
+  font-size: 12px;
+  line-height: 1.6;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+}
+.tracks-motion-control {
+  display: flex;
+  justify-content: center;
+  margin-top: 18px;
+}
+@media (max-width: 639px) {
+  .tracks-story-steps {
+    gap: 8px;
+  }
+  .tracks-story-steps li > span:last-child {
+    font-size: 11px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tracks-story-scene {
+    transition: none;
+  }
+}

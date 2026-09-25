@@ -1,262 +1,340 @@
-import React from 'react'
-
-/**
- * Shared isometric illustration system for the Tracks viewer (DS-40 territory, but scoped to
- * just this block — see the plan's "DS-numbering" note). One shallow projection, one shared
- * plate, one generic box primitive reused at different proportions for every object across all
- * three states. Every color comes from an existing CSS custom property; the three "token cube"
- * accents reuse --brand/--success/--danger at reduced opacity rather than adding new tokens.
- */
+import React, { type CSSProperties, type ReactNode } from 'react'
+import { ACCENT, EDGE, INK, PAPER, Solid } from '@/blocks/CapabilityIllustrations/objects'
+import { cn } from '@/utilities/ui'
 
 export type TrackKey = 'productDesign' | 'aiWorkflow' | 'designSystems'
-
-// Shallow dimetric projection: one grid unit right = (+CELL_X, +CELL_Y) on screen, one grid unit
-// "back" = (-CELL_X, +CELL_Y), one height unit = straight up. Flatter than true 30° isometric,
-// matching the spec's "shallow" plate.
-const CELL_X = 17
-const CELL_Y = 8
-const ORIGIN = { x: 195, y: 128 }
-
-function project(gx: number, gy: number, hpx = 0): [number, number] {
-  return [ORIGIN.x + (gx - gy) * CELL_X, ORIGIN.y + (gx + gy) * CELL_Y - hpx]
-}
-
-function pts(coords: Array<[number, number, number?]>): string {
-  return coords.map(([gx, gy, h]) => project(gx, gy, h ?? 0).join(',')).join(' ')
-}
-
-const STROKE = 'var(--line)'
-const STROKE_WIDTH = 1.25
-
-/** Generic isometric box: one box footprint (gx0..gx1, gy0..gy1) extruded from z0 to z1. Renders
- *  its top face plus the two visible side faces, shaded by opacity alone so a single `fill`
- *  covers all three faces (no extra color tokens needed per object). */
-const IsoBox: React.FC<{
-  fill: string
-  fillOpacity?: number
-  gx0: number
-  gx1: number
-  gy0: number
-  gy1: number
-  z0?: number
-  z1: number
-}> = ({ fill, fillOpacity = 1, gx0, gx1, gy0, gy1, z0 = 0, z1 }) => (
-  <g>
-    <polygon
-      fill={fill}
-      fillOpacity={fillOpacity}
-      points={pts([
-        [gx0, gy0, z1],
-        [gx1, gy0, z1],
-        [gx1, gy1, z1],
-        [gx0, gy1, z1],
-      ])}
-      stroke={STROKE}
-      strokeLinejoin="round"
-      strokeWidth={STROKE_WIDTH}
-    />
-    <polygon
-      fill={fill}
-      fillOpacity={fillOpacity * 0.78}
-      points={pts([
-        [gx0, gy1, z1],
-        [gx1, gy1, z1],
-        [gx1, gy1, z0],
-        [gx0, gy1, z0],
-      ])}
-      stroke={STROKE}
-      strokeLinejoin="round"
-      strokeWidth={STROKE_WIDTH}
-    />
-    <polygon
-      fill={fill}
-      fillOpacity={fillOpacity * 0.6}
-      points={pts([
-        [gx1, gy0, z1],
-        [gx1, gy1, z1],
-        [gx1, gy1, z0],
-        [gx1, gy0, z0],
-      ])}
-      stroke={STROKE}
-      strokeLinejoin="round"
-      strokeWidth={STROKE_WIDTH}
-    />
+const Stage = ({ x, children }: { x: number; children: ReactNode }) => (
+  <g transform={`translate(${x - 200} 65)`}>{children}</g>
+)
+const Move = ({
+  children,
+  kind = 'lift',
+  delay = 0,
+}: {
+  children: ReactNode
+  kind?: string
+  delay?: number
+}) => (
+  <g className={`exp-anim exp-${kind}`} style={{ '--exp-delay': `${delay}s` } as CSSProperties}>
+    {children}
   </g>
 )
 
-/** A smaller inset square let into a box's top face — used for the AI Workflow centerpiece. */
-const InsetTop: React.FC<{ gx0: number; gx1: number; gy0: number; gy1: number; inset?: number; z: number }> = ({
-  gx0,
-  gx1,
-  gy0,
-  gy1,
-  inset = 0.22,
-  z,
-}) => {
-  const dx = (gx1 - gx0) * inset
-  const dy = (gy1 - gy0) * inset
+function Page({
+  x = -56,
+  y = -54,
+  z = 18,
+  w = 112,
+  d = 124,
+  type = 'document',
+}: {
+  x?: number
+  y?: number
+  z?: number
+  w?: number
+  d?: number
+  type?: 'document' | 'screen' | 'components'
+}) {
   return (
-    <polygon
+    <Solid x={x} y={y} z={z} w={w} d={d} h={7}>
+      <rect x="9" y="10" width={w - 18} height="9" rx="2" fill={INK} />
+      {type === 'document' ? (
+        <>
+          {[34, 47, 60, 73].map((line, i) => (
+            <rect
+              key={line}
+              x="12"
+              y={line}
+              width={w - 27 - (i % 2) * 15}
+              height="3"
+              fill="var(--cap-muted)"
+            />
+          ))}
+          <circle cx="24" cy={d - 23} r="8" fill={ACCENT} />
+          <path d={`M39 ${d - 23}h${w - 53}`} stroke={EDGE} strokeWidth="4" />
+        </>
+      ) : type === 'components' ? (
+        <>
+          <rect x="11" y="31" width={w - 22} height="19" rx="5" fill={ACCENT} />
+          <path d={`M25 40h${w - 50}`} stroke={PAPER} strokeWidth="3" />
+          <rect
+            x="11"
+            y="61"
+            width={w - 22}
+            height="18"
+            rx="3"
+            fill="none"
+            stroke={EDGE}
+            strokeWidth="2"
+          />
+          <rect x="11" y="91" width="26" height="20" rx="3" fill="var(--cap-left)" />
+          <path d={`M47 94h${w - 61}m-${w - 61} 9h${w - 71}`} stroke={INK} strokeWidth="3" />
+        </>
+      ) : (
+        <>
+          <rect x="10" y="30" width={w - 20} height={d * 0.33} rx="2" fill="var(--cap-left)" />
+          <path d={`M17 43h${w * 0.4}m-${w * 0.4} 12h${w * 0.28}`} stroke={INK} strokeWidth="4" />
+          <path
+            d={`M12 ${d - 35}h${w - 24}m-${w - 24} 9h${w * 0.45}`}
+            stroke={EDGE}
+            strokeWidth="3"
+          />
+          <rect x="12" y={d - 18} width={w - 24} height="9" rx="3" fill={ACCENT} />
+        </>
+      )}
+    </Solid>
+  )
+}
+
+const Flow = ({ returnPath = false, rtl = false }: { returnPath?: boolean; rtl?: boolean }) => (
+  <g
+    transform={rtl ? 'translate(640 0) scale(-1 1)' : undefined}
+    fill="none"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    {['M184 216C210 216 219 194 242 194', 'M393 194C418 194 425 216 451 216'].map((d, i) => (
+      <g key={d}>
+        <path d={d} stroke={EDGE} strokeWidth="1.8" />
+        <path
+          d={d}
+          pathLength="1"
+          className="exp-anim exp-signal"
+          stroke={ACCENT}
+          strokeWidth="4"
+          style={{ '--exp-delay': `${i * 1.1}s` } as CSSProperties}
+        />
+      </g>
+    ))}
+    <path d="m235 189 7 5-7 5m209 12 7 5-7 5" stroke={ACCENT} strokeWidth="2" />
+    {returnPath ? (
+      <>
+        <path
+          d="M527 298C527 339 320 352 113 302"
+          stroke={EDGE}
+          strokeDasharray="3 7"
+          strokeWidth="1.2"
+        />
+        <path
+          d="M527 298C527 339 320 352 113 302"
+          className="exp-anim exp-signal"
+          pathLength="1"
+          stroke={ACCENT}
+          strokeWidth="2.4"
+          style={{ '--exp-delay': '1.8s' } as CSSProperties}
+        />
+        <path d="m119 296-7 6 5 8" stroke={ACCENT} strokeWidth="2" />
+      </>
+    ) : null}
+  </g>
+)
+
+function Research() {
+  return (
+    <>
+      <Solid x={-62} y={-53} w={114} d={123} h={5} tone="muted" />
+      <Move kind="slide">
+        <Page x={-57} y={-56} z={19} />
+      </Move>
+      <path d="m189 132-44 38" stroke={INK} strokeWidth="14" strokeLinecap="round" />
+      <ellipse
+        cx="218"
+        cy="104"
+        rx="39"
+        ry="28"
+        fill="var(--cap-glass)"
+        stroke={INK}
+        strokeWidth="8"
+      />
+      <circle cx="218" cy="104" r="7" fill={ACCENT} />
+    </>
+  )
+}
+function Decisions() {
+  return (
+    <>
+      <Solid x={-61} y={-47} w={124} d={104} h={8} tone="muted" />
+      <Solid x={-31} y={-54} w={62} d={36} z={20} h={7}>
+        <path d="M12 12h35m-35 10h24" stroke={INK} strokeWidth="3" />
+      </Solid>
+      <path d="M199 129v29m0 0-37 21m37-21 39 21" fill="none" stroke={EDGE} strokeWidth="2.4" />
+      <Solid x={-56} y={18} w={39} d={35} h={10} z={12} tone="paper" />
+      <Move kind="choose">
+        <Solid x={24} y={18} w={39} d={35} h={10} z={12} tone="accent">
+          <path d="m11 17 6 6 13-14" stroke={PAPER} strokeWidth="3" fill="none" />
+        </Solid>
+      </Move>
+    </>
+  )
+}
+function Screens() {
+  return (
+    <>
+      <Page x={-65} y={-66} w={120} d={130} z={21} type="screen" />
+      <Move kind="layer" delay={0.45}>
+        <Page x={45} y={-2} w={43} d={78} z={41} type="screen" />
+      </Move>
+    </>
+  )
+}
+function Agents() {
+  return (
+    <>
+      <path d="M177 176 200 145 230 176M200 145V102" stroke={EDGE} strokeWidth="2" fill="none" />
+      {[
+        [-56, 6],
+        [14, 6],
+        [-20, -66],
+      ].map(([x, y], i) => (
+        <Move key={i} delay={i * 0.3}>
+          <Solid x={x} y={y} w={44} d={44} h={23} z={14} tone={i === 2 ? 'accent' : 'ink'}>
+            <rect
+              x="11"
+              y="11"
+              width="22"
+              height="22"
+              rx="2"
+              fill="none"
+              stroke={PAPER}
+              strokeWidth="2"
+            />
+            <path
+              d="M16 4v7m12-7v7m-12 22v7m12-7v7M4 16h7m-7 12h7m22-12h7m-7 12h7"
+              stroke={PAPER}
+              strokeWidth="1.5"
+            />
+          </Solid>
+        </Move>
+      ))}
+    </>
+  )
+}
+function HumanReview() {
+  return (
+    <>
+      <Page x={-61} y={-52} w={107} d={118} type="screen" />
+      <g transform="translate(261 157)">
+        <ellipse cx="0" cy="29" rx="21" ry="10" fill="var(--cap-left)" />
+        <path
+          d="M-18 24v-10a18 18 0 0 1 36 0v10q-18 12-36 0Z"
+          fill={PAPER}
+          stroke={EDGE}
+          strokeWidth="1.5"
+        />
+        <circle cy="-17" r="14" fill={INK} />
+      </g>
+      <Move kind="choose">
+        <Solid x={-20} y={-35} w={40} d={40} h={9} z={42} tone="accent">
+          <path d="m9 19 7 7 15-17" fill="none" stroke={PAPER} strokeWidth="3" />
+        </Solid>
+      </Move>
+    </>
+  )
+}
+function Tokens() {
+  return (
+    <>
+      <Solid x={-57} y={-54} w={114} d={119} h={9}>
+        {[0, 1, 2].map((i) => (
+          <circle
+            cx={24 + i * 32}
+            cy="26"
+            r="11"
+            fill={i === 0 ? ACCENT : i === 1 ? INK : 'var(--cap-muted)'}
+            key={i}
+          />
+        ))}
+        <path d="M14 59h61m-61 15h85m-85 12h47" stroke={INK} strokeWidth="5" />
+        <path d="M14 104h85m-85-5v10m22-10v10m28-10v10m35-10v10" stroke={EDGE} strokeWidth="2" />
+      </Solid>
+      <Move kind="lift">
+        <Solid x={-44} y={-44} w={23} d={23} z={22} h={8} tone="accent" />
+      </Move>
+    </>
+  )
+}
+function Components() {
+  return (
+    <>
+      <Solid x={-65} y={-57} w={114} d={130} h={6} tone="muted" />
+      <Move kind="layer">
+        <Page x={-57} y={-63} z={27} w={114} d={130} type="components" />
+      </Move>
+    </>
+  )
+}
+
+const place = (x: number, rtl: boolean) => (rtl ? 640 - x : x)
+const scenes: Record<TrackKey, React.FC<{ rtl: boolean }>> = {
+  productDesign: ({ rtl }) => (
+    <>
+      <Flow returnPath rtl={rtl} />
+      <Stage x={place(110, rtl)}>
+        <Research />
+      </Stage>
+      <Stage x={place(320, rtl)}>
+        <Decisions />
+      </Stage>
+      <Stage x={place(527, rtl)}>
+        <Screens />
+      </Stage>
+    </>
+  ),
+  aiWorkflow: ({ rtl }) => (
+    <>
+      <Flow returnPath rtl={rtl} />
+      <Stage x={place(110, rtl)}>
+        <Solid x={-67} y={-50} w={112} d={124} h={6} tone="muted" />
+        <Move kind="slide">
+          <Page />
+        </Move>
+      </Stage>
+      <Stage x={place(320, rtl)}>
+        <Agents />
+      </Stage>
+      <Stage x={place(527, rtl)}>
+        <HumanReview />
+      </Stage>
+    </>
+  ),
+  designSystems: ({ rtl }) => (
+    <>
+      <Flow rtl={rtl} />
+      <Stage x={place(110, rtl)}>
+        <Tokens />
+      </Stage>
+      <Stage x={place(320, rtl)}>
+        <Components />
+      </Stage>
+      <Stage x={place(527, rtl)}>
+        <Screens />
+      </Stage>
+    </>
+  ),
+}
+
+export const TrackIllustration: React.FC<{
+  className?: string
+  trackKey: TrackKey
+  rtl?: boolean
+}> = ({ className, trackKey, rtl = false }) => {
+  const Scene = scenes[trackKey]
+  return (
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      className={cn('cap-illustration tracks-story-art', className)}
+      data-track-art={trackKey}
       fill="none"
-      points={pts([
-        [gx0 + dx, gy0 + dy, z],
-        [gx1 - dx, gy0 + dy, z],
-        [gx1 - dx, gy1 - dy, z],
-        [gx0 + dx, gy1 - dy, z],
-      ])}
-      stroke={STROKE}
-      strokeWidth={STROKE_WIDTH}
-    />
-  )
-}
-
-/** A regular grid of small construction dots on the ground plane, real SVG circles (this file is
- *  inline-SVG only, no CSS background tricks). */
-const DotField: React.FC<{ gx0: number; gx1: number; gy0: number; gy1: number; step?: number; z?: number }> = ({
-  gx0,
-  gx1,
-  gy0,
-  gy1,
-  step = 1,
-  z = 0,
-}) => {
-  const dots: Array<[number, number]> = []
-  for (let gx = gx0; gx <= gx1 + 0.001; gx += step) {
-    for (let gy = gy0; gy <= gy1 + 0.001; gy += step) {
-      dots.push([gx, gy])
-    }
-  }
-  return (
-    <g fill="var(--line)" fillOpacity={0.6}>
-      {dots.map(([gx, gy], i) => {
-        const [x, y] = project(gx, gy, z)
-        return <circle cx={x} cy={y} key={i} r={0.9} />
-      })}
-    </g>
-  )
-}
-
-/** A small mono annotation label, e.g. "U1" or "1440 · 12 COL". */
-const Annotation: React.FC<{ align?: 'end' | 'middle' | 'start'; gx: number; gy: number; z?: number; text: string }> = ({
-  align = 'start',
-  gx,
-  gy,
-  z = 0,
-  text,
-}) => {
-  const [x, y] = project(gx, gy, z)
-  return (
-    <text
-      fill="var(--ink-3)"
-      fontFamily="var(--font-mono)"
-      fontSize={9.5}
-      letterSpacing="0.04em"
-      textAnchor={align}
-      x={x}
-      y={y}
+      style={{ direction: 'ltr' }}
+      viewBox="0 0 640 400"
     >
-      {text}
-    </text>
+      <g fill="var(--cap-shadow)">
+        {[110, 320, 527].map((x) => (
+          <ellipse key={x} cx={x} cy="308" rx="84" ry="13" />
+        ))}
+      </g>
+      <Scene rtl={rtl} />
+    </svg>
   )
 }
-
-/** A hairline dimension line with small perpendicular end ticks — no arrowheads. */
-const DimensionLine: React.FC<{ from: [number, number, number?]; tick?: number; to: [number, number, number?] }> = ({
-  from,
-  tick = 3,
-  to,
-}) => {
-  const [x1, y1] = project(from[0], from[1], from[2])
-  const [x2, y2] = project(to[0], to[1], to[2])
-  const dx = x2 - x1
-  const dy = y2 - y1
-  const len = Math.hypot(dx, dy) || 1
-  const px = (-dy / len) * tick
-  const py = (dx / len) * tick
-  return (
-    <g stroke="var(--line)" strokeWidth={1}>
-      <line x1={x1} x2={x2} y1={y1} y2={y2} />
-      <line x1={x1 - px} x2={x1 + px} y1={y1 - py} y2={y1 + py} />
-      <line x1={x2 - px} x2={x2 + px} y1={y2 - py} y2={y2 + py} />
-    </g>
-  )
-}
-
-/** The shared shallow base every track's objects sit on — warm ivory top, thin warm-gray
- *  outline, minimal lower thickness. Identical across all three states. */
-const IsoPlate: React.FC = () => (
-  <IsoBox fill="var(--paper)" fillOpacity={1} gx0={-2.4} gx1={6.4} gy0={-2.4} gy1={6.4} z0={-6} z1={0} />
-)
-
-const ProductDesignIllustration: React.FC = () => (
-  <g>
-    {/* larger neutral block, back/above */}
-    <IsoBox fill="var(--panel)" gx0={1.4} gx1={4.6} gy0={0.6} gy1={2.6} z1={64} />
-    {/* dominant accent slab, front/lower-left */}
-    <IsoBox fill="var(--track-accent)" gx0={-1.6} gx1={2.6} gy0={2.6} gy1={5.6} z1={30} />
-    {/* smaller slotted prism, right */}
-    <IsoBox fill="var(--panel)" gx0={4.2} gx1={6.2} gy0={-1.2} gy1={1.4} z1={46} />
-    {/* slot lines on the prism's top face */}
-    <g stroke="var(--line)" strokeWidth={1}>
-      {[0.3, 0.55, 0.8].map((t) => {
-        const [x1, y1] = project(4.2 + (6.2 - 4.2) * t, -1.2, 46)
-        const [x2, y2] = project(4.2 + (6.2 - 4.2) * t, 1.4, 46)
-        return <line key={t} x1={x1} x2={x2} y1={y1} y2={y2} />
-      })}
-    </g>
-    <Annotation gx={-1.5} gy={5.9} text="U1" z={30} />
-    <Annotation gx={1.5} gy={0.5} text="ART" z={64} />
-    <DimensionLine from={[-2, 6.4]} to={[6.4, 6.4]} />
-    <Annotation align="middle" gx={2.2} gy={6.4} text="1440 · 12 COL" />
-  </g>
-)
-
-const AiWorkflowIllustration: React.FC = () => {
-  const centre = { gx0: 1.6, gx1: 4, gy0: 1.6, gy1: 4 }
-  return (
-    <g>
-      {/* peripheral blocks */}
-      <IsoBox fill="var(--panel)" gx0={-1.4} gx1={0.6} gy0={0} gy1={1.8} z1={34} />
-      <IsoBox fill="var(--panel)" gx0={4.6} gx1={6.4} gy0={0.4} gy1={2.2} z1={26} />
-      <IsoBox fill="var(--panel)" gx0={-0.4} gx1={1.6} gy0={4} gy1={5.8} z1={30} />
-      <IsoBox fill="var(--panel)" gx0={4} gx1={6} gy0={4} gy1={5.8} z1={44} />
-      {/* tallest central block with inset top */}
-      <IsoBox fill="var(--panel)" {...centre} z1={104} />
-      <InsetTop {...centre} z={104} />
-      {/* small accent node + one thin connecting line */}
-      <IsoBox fill="var(--track-accent)" gx0={2.5} gx1={3.1} gy0={2.5} gy1={3.1} z1={116} />
-      <DimensionLine from={[2.8, 2.8, 116]} to={[5, 4.9, 44]} tick={0} />
-      <Annotation gx={1.7} gy={1.2} text="PLAN" z={104} />
-      <Annotation gx={-1.3} gy={1.9} text="B01" z={0} />
-    </g>
-  )
-}
-
-const DesignSystemsIllustration: React.FC = () => {
-  const footprint = { gx0: 2, gx1: 4.5, gy0: 2, gy1: 4.5 }
-  return (
-    <g>
-      {/* three small diagonal token cubes, upper-left/back — existing semantic roles, restrained opacity */}
-      <IsoBox fill="var(--brand)" fillOpacity={0.4} gx0={-1.6} gx1={-0.6} gy0={-1.6} gy1={-0.6} z1={20} />
-      <IsoBox fill="var(--success)" fillOpacity={0.4} gx0={-0.6} gx1={0.3} gy0={-2.4} gy1={-1.5} z1={20} />
-      <IsoBox fill="var(--danger)" fillOpacity={0.4} gx0={-2.4} gx1={-1.5} gy0={-0.6} gy1={0.3} z1={20} />
-      {/* layered central cube: lower neutral, middle brand, top accent — same footprint, stacked */}
-      <IsoBox fill="var(--panel)" fillOpacity={0.55} z0={0} z1={34} {...footprint} />
-      <IsoBox fill="var(--brand)" z0={34} z1={66} {...footprint} />
-      <IsoBox fill="var(--track-accent)" z0={66} z1={92} {...footprint} />
-      <Annotation gx={-2} gy={-1.9} text="TOKENS" z={20} />
-      <DimensionLine from={[2, 4.7]} to={[4.5, 4.7]} />
-      <Annotation align="middle" gx={3.25} gy={4.7} text="12 PARTS · V3" />
-    </g>
-  )
-}
-
-export const TrackIllustration: React.FC<{ className?: string; trackKey: TrackKey }> = ({ className, trackKey }) => (
-  <svg aria-hidden="true" className={className} style={{ direction: 'ltr' }} viewBox="0 0 400 240">
-    <IsoPlate />
-    <DotField gx0={-2} gx1={6} gy0={-2} gy1={6} step={2} z={0.01} />
-    {trackKey === 'productDesign' && <ProductDesignIllustration />}
-    {trackKey === 'aiWorkflow' && <AiWorkflowIllustration />}
-    {trackKey === 'designSystems' && <DesignSystemsIllustration />}
-  </svg>
-)

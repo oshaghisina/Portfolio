@@ -50,7 +50,8 @@ export const Tracks: Block = {
           type: 'text',
           localized: true,
           admin: {
-            description: 'Optional short duration label, e.g. "10 yrs". Leave blank until source-verified.',
+            description:
+              'Optional short duration label, e.g. "10 yrs". Leave blank until source-verified.',
           },
         },
         { name: 'description', type: 'textarea', localized: true, required: true },

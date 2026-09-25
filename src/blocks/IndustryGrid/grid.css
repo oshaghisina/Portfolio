@@ -21,7 +21,9 @@
 
 .industry-track {
   display: flex;
+  gap: 1px; /* same hairline as .industry-set — included in --industry-shift */
   width: max-content;
+  background: var(--line);
   will-change: transform;
 }
 
@@ -145,12 +147,13 @@
   transform-origin: center;
 }
 
+/* Distance = one sequence width + track gap; set as --industry-shift by JS. */
 @keyframes industry-marquee {
   from {
     transform: translate3d(0, 0, 0);
   }
   to {
-    transform: translate3d(-50%, 0, 0);
+    transform: translate3d(calc(-1 * var(--industry-shift, 0px)), 0, 0);
   }
 }
 
@@ -161,11 +164,12 @@
 
   .industry-strip[data-marquee='on']:hover .industry-track,
   .industry-strip[data-marquee='on']:focus-within .industry-track,
-  .industry-strip[data-marquee='on'][data-paused] .industry-track {
+  .industry-strip[data-marquee='on'][data-paused] .industry-track,
+  .industry-strip[data-marquee='on'][data-idle] .industry-track {
     animation-play-state: paused;
   }
 
-  /* Clip while playing; allow manual scroll when paused or reduced-motion. */
+  /* Clip while playing (incl. idle pause); allow manual scroll on hover/focus/pointer. */
   .industry-strip[data-marquee='on']:not(:hover):not(:focus-within):not([data-paused]) .industry-row {
     overflow-x: hidden;
   }

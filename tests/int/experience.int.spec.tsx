@@ -438,6 +438,16 @@ describe('homepage preview', () => {
     expect([...list.querySelectorAll('dd')].map((el) => el.textContent)).toEqual(
       HOME_TEASER_METRICS.map((metric) => metric.value),
     )
+    // Logical start for LTR/RTL; value phrase isolated so number/unit order stays stable.
+    for (const cell of list.querySelectorAll(':scope > div')) {
+      expect(cell.className).toContain('text-start')
+    }
+    for (const [i, dd] of [...list.querySelectorAll('dd')].entries()) {
+      expect(dd.getAttribute('dir')).toBeNull()
+      const bdi = dd.querySelector('bdi')
+      expect(bdi?.getAttribute('dir')).toBe('ltr')
+      expect(bdi?.textContent).toBe(HOME_TEASER_METRICS[i]!.value)
+    }
     // The old strip drew a decorative bar per metric at a hardcoded width. A number that needs a
     // bar to be understood is a number that should not be in a proof strip.
     expect(container.querySelectorAll('[style*="width"]')).toHaveLength(0)

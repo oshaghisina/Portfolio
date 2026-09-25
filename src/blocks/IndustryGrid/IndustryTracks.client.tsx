@@ -1,35 +1,45 @@
 'use client'
 
-import React, { useEffect, useRef } from 'react'
-import type { Locale } from '@/utilities/locale'
+import React, { useEffect, useRef, useState } from 'react'
+import { dirFor, type Locale } from '@/utilities/locale'
 import type { IndustryKey } from './catalogue'
 import { industryLabels } from './catalogue'
 import { IndustryIllustration } from './Illustrations'
+
+/** Hairline between sets — must match `.industry-track { gap }` and `--industry-shift`. */
+const TRACK_GAP_PX = 1
 
 export type IndustryTrackRow = { key: IndustryKey; id?: string | null }
 
 function IndustrySet({
   items,
   locale,
-  clone = false,
+  cloneIndex,
 }: {
   items: IndustryTrackRow[]
   locale: Locale
-  clone?: boolean
+  /** When set, this is a visual-only duplicate (aria-hidden). */
+  cloneIndex?: number
 }) {
+  const clone = cloneIndex !== undefined
+  const labelDir = dirFor(locale)
   const tiles = items.map(({ key, id }) => (
     <li
       className="industry-window"
       data-industry={key}
-      key={clone ? `clone-${id ?? key}` : (id ?? key)}
+      key={clone ? `clone-${cloneIndex}-${id ?? key}` : (id ?? key)}
     >
       <span className="industry-icon">
         <IndustryIllustration industry={key} />
       </span>
       {clone ? (
-        <span className="industry-name">{industryLabels[locale][key]}</span>
+        <span className="industry-name" dir={labelDir}>
+          {industryLabels[locale][key]}
+        </span>
       ) : (
-        <h3 className="industry-name">{industryLabels[locale][key]}</h3>
+        <h3 className="industry-name" dir={labelDir}>
+          {industryLabels[locale][key]}
+        </h3>
       )}
     </li>
   ))
@@ -58,6 +68,8 @@ export function IndustryTracks({
 }) {
   const stripRef = useRef<HTMLDivElement>(null)
   const rowSignature = rows.map((row) => row.key).join(',')
+  /** Total sequences on the track (canonical + clones). At least 2 when marquee can run. */
+  const [setCount, setSetCount] = useState(2)
 
   useEffect(() => {
     const strip = stripRef.current
@@ -75,15 +87,38 @@ export function IndustryTracks({
     }
 
     const sync = () => {
-      const play =
-        !preference.matches && !document.hidden && overflowing && isInView()
-      strip.dataset.marquee = play ? 'on' : 'off'
+      const canMarquee = !preference.matches && overflowing
+      strip.dataset.marquee = canMarquee ? 'on' : 'off'
+
+      // Pause offscreen / hidden tab without tearing down clones (keeps loop position).
+      if (canMarquee && (document.hidden || !isInView())) {
+        strip.dataset.idle = ''
+      } else {
+        delete strip.dataset.idle
+      }
     }
 
     const measure = () => {
       const row = strip.querySelector<HTMLElement>('.industry-row')
       const set = row?.querySelector<HTMLElement>('.industry-set:not([aria-hidden])')
-      overflowing = Boolean(row && set && set.scrollWidth > row.clientWidth + 1)
+      if (!row || !set) {
+        overflowing = false
+        sync()
+        return
+      }
+
+      const sequenceWidth = set.offsetWidth
+      overflowing = sequenceWidth > row.clientWidth + 1
+      const canMarquee = !preference.matches && overflowing
+
+      if (canMarquee && sequenceWidth > 0) {
+        const needed = Math.max(2, Math.ceil(row.clientWidth / sequenceWidth) + 1)
+        setSetCount((prev) => (prev === needed ? prev : needed))
+        strip.style.setProperty('--industry-shift', `${sequenceWidth + TRACK_GAP_PX}px`)
+      } else {
+        strip.style.removeProperty('--industry-shift')
+      }
+
       sync()
     }
 
@@ -134,19 +169,31 @@ export function IndustryTracks({
       strip.removeEventListener('pointerdown', onPointerDown)
       window.removeEventListener('pointerup', onPointerUp)
       window.removeEventListener('pointercancel', onPointerUp)
+      strip.style.removeProperty('--industry-shift')
       delete strip.dataset.marquee
       delete strip.dataset.paused
+      delete strip.dataset.idle
     }
   }, [rowSignature])
 
   if (!rows.length) return null
 
+  const cloneCount = Math.max(0, setCount - 1)
+
   return (
     <div className="industry-strip" data-marquee="on" data-reveal-group="" ref={stripRef}>
-      <div className="industry-row">
-        <div className="industry-track">
+      {/* LTR overflow origin — page RTL must not flip marquee geometry. Labels keep dirFor(locale). */}
+      <div className="industry-row" dir="ltr">
+        <div className="industry-track" dir="ltr">
           <IndustrySet items={rows} locale={locale} />
-          <IndustrySet items={rows} locale={locale} clone />
+          {Array.from({ length: cloneCount }, (_, index) => (
+            <IndustrySet
+              items={rows}
+              locale={locale}
+              cloneIndex={index}
+              key={`industry-clone-${index}`}
+            />
+          ))}
         </div>
       </div>
     </div>

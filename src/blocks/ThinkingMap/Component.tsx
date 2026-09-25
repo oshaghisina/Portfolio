@@ -6,7 +6,12 @@ import type { Locale } from '@/utilities/locale'
 
 import RichText from '@/components/RichText'
 import { SectionHeader } from '@/components/SectionHeader'
-import { FORK_FLOW_SHAPE, ProcessDiagram, toRows, type ProcessDiagramNode } from '@/components/ProcessDiagram'
+import {
+  FORK_FLOW_SHAPE,
+  ProcessDiagram,
+  toRows,
+  type ProcessDiagramNode,
+} from '@/components/ProcessDiagram'
 import { DEFAULT_LOCALE } from '@/utilities/locale'
 
 export type ThinkingMapProps = Pick<ThinkingMapBlockProps, 'intro' | 'nodes' | 'sectionHeader'> & {
@@ -34,7 +39,11 @@ export const ThinkingMapBlock: React.FC<ThinkingMapProps> = ({
 
   return (
     <section className={cn(className)}>
-      <SectionHeader {...sectionHeader} className="mb-10 max-md:mb-8 max-md:border-t-0 max-md:pt-0" tagTone="mono" />
+      <SectionHeader
+        {...sectionHeader}
+        className="mb-10 max-md:mb-8 max-md:border-t-0 max-md:pt-0"
+        tagTone="mono"
+      />
       {intro ? (
         <RichText
           className="mb-10 text-body text-ink-2 max-w-measure"
@@ -44,7 +53,11 @@ export const ThinkingMapBlock: React.FC<ThinkingMapProps> = ({
           locale={locale}
         />
       ) : null}
-      <ProcessDiagram className="mx-auto max-w-2xl" rows={toRows(diagramNodes, FORK_FLOW_SHAPE)} />
+      <ProcessDiagram
+        className="mx-auto max-w-4xl"
+        rows={toRows(diagramNodes, FORK_FLOW_SHAPE)}
+        variant="thinking"
+      />
     </section>
   )
 }

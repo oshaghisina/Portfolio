@@ -7,7 +7,7 @@ import React, { useEffect, useState } from 'react'
 
 import type { Header } from '@/payload-types'
 import { Signature } from '@/components/Signature'
-import { localePath } from '@/i18n/navigation'
+import { localePath, parseLocalePath } from '@/i18n/navigation'
 import type { Locale } from '@/utilities/locale'
 
 import { HeaderNav } from './Nav'
@@ -19,11 +19,14 @@ interface HeaderClientProps {
   readiness: Partial<Record<Locale, boolean>>
 }
 
-export const HeaderClient: React.FC<HeaderClientProps> = ({ data, locale, logicalPath, readiness }) => {
+export const HeaderClient: React.FC<HeaderClientProps> = ({ data, locale, readiness }) => {
   /* Storing the value in a useState to avoid hydration errors */
   const [theme, setTheme] = useState<string | null>(null)
   const { headerTheme, setHeaderTheme } = useHeaderTheme()
   const pathname = usePathname()
+  // Live path so desktop active state (and locale destinations) update on client navigations.
+  // Server `logicalPath` would stay frozen after the first paint.
+  const logicalPath = parseLocalePath(pathname).logicalPath
 
   useEffect(() => {
     setHeaderTheme(null)

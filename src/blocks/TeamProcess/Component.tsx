@@ -6,10 +6,18 @@ import type { Locale } from '@/utilities/locale'
 
 import RichText from '@/components/RichText'
 import { SectionHeader } from '@/components/SectionHeader'
-import { FORK_FLOW_SHAPE, ProcessDiagram, toRows, type ProcessDiagramNode } from '@/components/ProcessDiagram'
+import {
+  FORK_FLOW_SHAPE,
+  ProcessDiagram,
+  toRows,
+  type ProcessDiagramNode,
+} from '@/components/ProcessDiagram'
 import { DEFAULT_LOCALE } from '@/utilities/locale'
 
-export type TeamProcessProps = Pick<TeamProcessBlockProps, 'intro' | 'nodes' | 'sectionHeader' | 'statements'> & {
+export type TeamProcessProps = Pick<
+  TeamProcessBlockProps,
+  'intro' | 'nodes' | 'sectionHeader' | 'statements'
+> & {
   className?: string
   locale?: Locale
 }
@@ -37,7 +45,11 @@ export const TeamProcessBlock: React.FC<TeamProcessProps> = ({
 
   return (
     <section className={cn(className)}>
-      <SectionHeader {...sectionHeader} className="mb-10 max-md:mb-8 max-md:border-t-0 max-md:pt-0" tagTone="mono" />
+      <SectionHeader
+        {...sectionHeader}
+        className="mb-10 max-md:mb-8 max-md:border-t-0 max-md:pt-0"
+        tagTone="mono"
+      />
       {intro ? (
         <RichText
           className="mb-10 text-body text-ink-2 max-w-measure"
@@ -50,7 +62,12 @@ export const TeamProcessBlock: React.FC<TeamProcessProps> = ({
       {/* The return rail is the point of this diagram: node 06 says learning feeds the next
           Business Context, and until now nothing drew that edge. ThinkingMap makes no such claim
           and stays open-ended, which also keeps the two diagrams from reading as one picture twice. */}
-      <ProcessDiagram className="mx-auto max-w-2xl" loopBack rows={toRows(diagramNodes, FORK_FLOW_SHAPE)} />
+      <ProcessDiagram
+        className="mx-auto max-w-4xl"
+        loopBack
+        rows={toRows(diagramNodes, FORK_FLOW_SHAPE)}
+        variant="team"
+      />
       {statementRows.length ? (
         <ul className="mt-12 grid gap-8 sm:grid-cols-2 lg:mt-16">
           {statementRows.map((s, i) => (

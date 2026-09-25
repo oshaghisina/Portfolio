@@ -21,6 +21,7 @@ export const AboutImpactHero: React.FC<Page['hero'] & { locale?: Locale }> = ({ 
       // column and the aside follows the copy, which is exactly the intended mobile stack.
       <IntersectionDiagram className="w-full shrink-0 lg:w-[26rem] xl:w-[32rem]" locale={locale} />
     }
+    asideSupports
     locale={locale}
     titleSlot={richText ? <HeroWrittenRichText data={richText} locale={locale} /> : null}
     written

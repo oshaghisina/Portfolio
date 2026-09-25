@@ -28,7 +28,8 @@
  * Approximate luminance ladder vs --paper (~20%):
  * ground/bg → ink-right → ink → muted → paper-right → paper-left → paper-top → edge
  */
-[data-theme='dark'] .industry-illustration {
+[data-theme='dark'] .industry-illustration,
+[data-theme='dark'] .intersection-art {
   --cap-top: color-mix(in oklab, var(--paper) 34%, var(--ink));
   --cap-left: color-mix(in oklab, var(--paper) 48%, var(--ink));
   --cap-right: color-mix(in oklab, var(--paper) 58%, var(--ink));

@@ -4,6 +4,7 @@
 @import './theme.css';
 @import '../../blocks/CapabilityIllustrations/motion.css';
 @import '../../components/ExperienceVisuals/experience.css';
+@import '../../blocks/Tracks/tracks.css';
 @import '../../blocks/Workspace/workspace.css';
 @import '../../blocks/IndustryGrid/grid.css';
 @import '../../components/IntersectionDiagram/diagram.css';

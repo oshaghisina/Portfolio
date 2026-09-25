@@ -79,7 +79,7 @@ export const ExperienceTeaserBlock: React.FC<ExperienceTeaserProps> = ({
             // `flex-col-reverse` puts the value above its caption on screen while keeping the
             // `<dt>` before its `<dd>` in the DOM, which is the order a description list requires.
             <div
-              className="flex min-w-0 flex-col-reverse bg-paper px-5 py-5 lg:px-6"
+              className="flex min-w-0 flex-col-reverse bg-paper px-5 py-5 text-start lg:px-6"
               key={metric.id ?? i}
             >
               <dt className="eyebrow mt-2 text-ink-3">{metric.caption}</dt>
@@ -88,9 +88,8 @@ export const ExperienceTeaserBlock: React.FC<ExperienceTeaserProps> = ({
                   'text-h2 tracking-num font-medium tabular-nums',
                   i === 0 ? 'text-brand' : 'text-foreground',
                 )}
-                dir="ltr"
               >
-                {metric.value}
+                <bdi dir="ltr">{metric.value}</bdi>
               </dd>
             </div>
           ))}

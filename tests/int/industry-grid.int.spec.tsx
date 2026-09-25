@@ -70,9 +70,16 @@ describe('Industry catalogue and rendering', () => {
         INDUSTRY_KEYS.map((key) => industryLabels[locale][key]),
       )
       expect(container.querySelectorAll('.industry-row')).toHaveLength(1)
+      expect(container.querySelector('.industry-row')?.getAttribute('dir')).toBe('ltr')
+      expect(container.querySelector('.industry-track')?.getAttribute('dir')).toBe('ltr')
       expect(
         container.querySelectorAll('.industry-set:not([aria-hidden]) .industry-window'),
       ).toHaveLength(15)
+      expect(
+        container.querySelector('.industry-set:not([aria-hidden]) .industry-name')?.getAttribute(
+          'dir',
+        ),
+      ).toBe(locale === 'fa' ? 'rtl' : 'ltr')
       const illustrations = [
         ...container.querySelectorAll('.industry-set:not([aria-hidden]) svg'),
       ]

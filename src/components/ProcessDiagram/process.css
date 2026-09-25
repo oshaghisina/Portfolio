@@ -1,0 +1,236 @@
+.process-diagram {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  padding: clamp(12px, 2.5vw, 28px);
+  border: 1px solid var(--line);
+  background-color: var(--paper);
+  background-image: radial-gradient(
+    color-mix(in oklab, var(--ink) 13%, transparent) 0.7px,
+    transparent 0.8px
+  );
+  background-size: 22px 22px;
+}
+
+.process-flow {
+  position: relative;
+  z-index: 1;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.process-band {
+  min-width: 0;
+}
+
+.process-band-cards {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+}
+
+.process-band--fork .process-band-cards {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.process-card {
+  display: grid;
+  grid-template-columns: clamp(112px, 17vw, 174px) minmax(0, 1fr);
+  align-items: center;
+  min-width: 0;
+  min-height: 132px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--panel);
+}
+
+.process-card--active {
+  border-color: color-mix(in oklab, var(--track-accent) 68%, var(--line));
+}
+
+.process-card-art {
+  display: grid;
+  place-items: center;
+  align-self: stretch;
+  min-width: 0;
+  overflow: hidden;
+  padding: 8px;
+  border-inline-end: 1px solid var(--line);
+  background: color-mix(in oklab, var(--panel) 70%, var(--paper));
+}
+
+.process-card-art .experience-art {
+  width: 100%;
+  max-width: 176px;
+  aspect-ratio: 10 / 7;
+  height: auto;
+  transform: scale(1.22);
+}
+
+.process-card-copy {
+  min-width: 0;
+  padding: 14px clamp(12px, 2vw, 24px);
+}
+
+.process-card-index {
+  display: block;
+  color: var(--track-accent);
+  font-size: 11px;
+  line-height: 1.3;
+}
+
+.process-card-title {
+  margin-top: 4px;
+  color: var(--foreground);
+  font-size: clamp(16px, 1.5vw, 20px);
+  font-weight: 600;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.process-card-description {
+  max-width: 58ch;
+  margin-top: 7px;
+  color: var(--ink-2);
+  font-size: 13px;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+.process-connector {
+  position: relative;
+  display: block;
+  width: 2px;
+  height: 28px;
+  margin-inline: auto;
+  background: var(--track-accent);
+}
+
+.process-connector-dot {
+  position: absolute;
+  inset-block-end: -3px;
+  inset-inline-start: -3px;
+  width: 8px;
+  height: 8px;
+  border: 1px solid var(--track-accent);
+  border-radius: 50%;
+  background: var(--paper);
+}
+
+.process-connector--split::after,
+.process-connector--merge::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  width: min(42vw, 418px);
+  height: 14px;
+  border-color: var(--line);
+  border-style: solid;
+  transform: translateX(-50%);
+}
+
+.process-connector--split::after {
+  inset-block-end: 0;
+  border-width: 1px 1px 0;
+}
+
+.process-connector--merge::after {
+  inset-block-start: 0;
+  border-width: 0 1px 1px;
+}
+
+.process-return-rail {
+  display: none;
+}
+
+[data-theme='dark'] .process-card-art .experience-art {
+  --cap-top: color-mix(in oklab, var(--paper) 34%, var(--ink));
+  --cap-left: color-mix(in oklab, var(--paper) 48%, var(--ink));
+  --cap-right: color-mix(in oklab, var(--paper) 58%, var(--ink));
+  --cap-muted: color-mix(in oklab, var(--paper) 54%, var(--ink));
+  --cap-edge: color-mix(in oklab, var(--paper) 26%, var(--ink));
+  --cap-dark: color-mix(in oklab, var(--paper) 68%, var(--ink));
+  --cap-dark-left: color-mix(in oklab, var(--paper) 76%, var(--ink));
+  --cap-dark-right: color-mix(in oklab, var(--paper) 86%, var(--ink));
+  --cap-shadow: color-mix(in oklab, black 36%, transparent);
+  --cap-ground: color-mix(in oklab, var(--ink) 9%, transparent);
+}
+
+@media (min-width: 768px) {
+  .process-diagram[data-process-loop='true'] {
+    padding-inline-end: 48px;
+  }
+
+  .process-return-rail {
+    position: absolute;
+    z-index: 0;
+    display: block;
+    inset-block: 76px;
+    inset-inline-end: 18px;
+    width: 26px;
+    border: 1px solid var(--track-accent);
+    border-inline-start: 0;
+    opacity: 0.6;
+  }
+}
+
+@media (max-width: 767px) {
+  .process-card {
+    grid-template-columns: 112px minmax(0, 1fr);
+  }
+
+  .process-band--fork .process-card {
+    grid-template-columns: minmax(0, 1fr);
+    align-content: start;
+  }
+
+  .process-band--fork .process-card-art {
+    min-height: 106px;
+    border-inline-end: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .process-band--fork .process-card-copy {
+    padding: 11px;
+  }
+}
+
+@media (max-width: 479px) {
+  .process-card {
+    grid-template-columns: 92px minmax(0, 1fr);
+    min-height: 112px;
+  }
+
+  .process-card-art {
+    padding: 3px;
+  }
+
+  .process-card-art .experience-art {
+    transform: scale(1.4);
+  }
+
+  .process-card-copy {
+    padding: 10px;
+  }
+
+  .process-card-description {
+    font-size: 12px;
+  }
+
+  .process-band--fork .process-band-cards {
+    gap: 6px;
+  }
+
+  .process-band--fork .process-card-art {
+    min-height: 76px;
+  }
+
+  .process-band--fork .process-card-title {
+    font-size: 14px;
+  }
+
+  .process-band--fork .process-card-description {
+    font-size: 11px;
+  }
+}

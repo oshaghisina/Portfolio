@@ -429,12 +429,20 @@ export const localizeHomeLayout = (
           }),
         }
       }
-      case 'tracks':
+      case 'tracks': {
+        // Keyed overlay: row order is editable in the CMS; `key` is the stable identity.
+        const itemByKey = Object.fromEntries(
+          TRACK_KEYS.map((key, i) => [key, copy.tracks.items[i]!]),
+        )
         return {
           ...block,
           sectionHeader: { ...header, ...copy.tracks.header },
-          tracks: rows('tracks').map((row, i) => ({ ...row, ...copy.tracks.items[i] })),
+          tracks: rows('tracks').map((row) => {
+            const overlay = itemByKey[row.key as (typeof TRACK_KEYS)[number]]
+            return overlay ? { ...row, ...overlay } : row
+          }),
         }
+      }
       case 'workflowStages':
         // Keyed, not index-matched: category order is editable in the CMS, and `key` is the
         // stable identity the copy table is written against.

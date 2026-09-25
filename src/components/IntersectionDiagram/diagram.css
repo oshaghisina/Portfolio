@@ -1,11 +1,16 @@
 .intersection-diagram {
+  --ix-cycle: 8.2s;
+  /* Wait for hero supporting fade (~78% of write) plus a short beat. */
+  --ix-start: calc(var(--hero-write-duration, 1100ms) * 0.78 + 450ms);
   margin: 0;
   max-width: 36rem;
   align-self: center;
 }
+
 .intersection-label {
   text-align: center;
 }
+
 .intersection-domain {
   display: flex;
   align-items: baseline;
@@ -15,36 +20,42 @@
   font-weight: 500;
   color: var(--foreground);
 }
+
 .intersection-domain .index-code {
   font-size: 10px;
   color: var(--track-accent);
 }
+
 .intersection-lens {
   display: block;
   margin-top: 5px;
   font-size: 12px;
   color: var(--ink-3);
 }
+
 .intersection-art {
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 520 / 420;
-  margin-top: 8px;
+  aspect-ratio: 400 / 280;
+  margin-top: 4px;
   overflow: visible;
 }
+
 .intersection-bottom-labels {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  column-gap: 20%;
-  margin-top: -16px;
+  column-gap: 12%;
+  margin-top: 4px;
 }
+
 .intersection-caption {
   margin: 24px auto 0;
   padding: 20px 12px 0;
   border-top: 1px solid var(--line);
   text-align: center;
 }
+
 .intersection-caption-kicker {
   display: block;
   color: var(--track-accent);
@@ -54,6 +65,7 @@
   text-transform: uppercase;
   letter-spacing: 0.12em;
 }
+
 .intersection-caption strong {
   display: block;
   margin-top: 7px;
@@ -62,6 +74,7 @@
   font-weight: 500;
   letter-spacing: -0.025em;
 }
+
 .intersection-caption p {
   max-width: 34ch;
   margin: 9px auto 0;
@@ -69,97 +82,225 @@
   line-height: 1.65;
   color: var(--ink-2);
 }
-.intersection-signal {
+
+.intersection-caption-kicker:lang(fa),
+.intersection-caption-kicker:lang(ar) {
+  font-family: var(--font-sans), sans-serif;
+  letter-spacing: normal;
+}
+
+.ix-anim {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+/* Packets hidden until the motion cycle draws them. */
+.ix-packet {
   opacity: 0;
+  stroke-dasharray: 0.14 0.86;
 }
-@keyframes intersection-arrive {
-  from {
-    opacity: 0.2;
-  }
-  to {
-    opacity: 1;
-  }
+
+.ix-signal {
+  opacity: 0.15;
 }
-@keyframes intersection-signal {
-  0% {
-    opacity: 0;
-    translate: var(--signal-x) var(--signal-y);
-  }
-  20% {
-    opacity: 1;
-  }
-  85% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    translate: 0 0;
-  }
+
+.ix-wire {
+  opacity: 0.55;
 }
-@keyframes intersection-pulse {
-  0%,
-  100% {
-    opacity: 0.35;
-  }
-  45% {
-    opacity: 0.85;
-  }
+
+/* Resolved defaults — no motion / reduce: fully assembled. */
+.ix-core,
+.ix-module {
+  transform: none;
 }
+
 @media (prefers-reduced-motion: no-preference) {
-  .intersection-field {
-    animation: intersection-arrive 800ms ease-out backwards;
+  .intersection-diagram[data-cap-motion='true'][data-cap-visible='true'] .ix-module {
+    animation: ix-converge var(--ix-cycle) cubic-bezier(0.22, 0.75, 0.22, 1) infinite both;
+    animation-delay: var(--ix-start);
   }
-  .intersection-field-1 {
-    animation-delay: 100ms;
+
+  .intersection-diagram[data-cap-motion='true'][data-cap-visible='true'] .ix-module-product {
+    --ix-dx: 0px;
+    --ix-dy: -14px;
   }
-  .intersection-field-2 {
-    animation-delay: 200ms;
+
+  .intersection-diagram[data-cap-motion='true'][data-cap-visible='true'] .ix-module-business {
+    --ix-dx: -16px;
+    --ix-dy: 8px;
+    animation-delay: calc(var(--ix-start) + 80ms);
   }
-  .intersection-overlap {
-    animation: intersection-arrive 900ms 350ms ease-out backwards;
+
+  .intersection-diagram[data-cap-motion='true'][data-cap-visible='true'] .ix-module-technology {
+    --ix-dx: 16px;
+    --ix-dy: 8px;
+    animation-delay: calc(var(--ix-start) + 160ms);
   }
-  .intersection-signal {
-    animation: intersection-signal 1500ms 650ms var(--ease-standard, ease-out) both;
+
+  .intersection-diagram[data-cap-motion='true'][data-cap-visible='true'] .ix-core {
+    animation: ix-core var(--ix-cycle) cubic-bezier(0.22, 0.75, 0.22, 1) infinite both;
+    animation-delay: var(--ix-start);
   }
-  .intersection-signal-0 {
-    --signal-x: 0px;
-    --signal-y: -105px;
+
+  .intersection-diagram[data-cap-motion='true'][data-cap-visible='true'] .ix-signal {
+    animation: ix-signal var(--ix-cycle) ease-in-out infinite both;
+    animation-delay: var(--ix-start);
   }
-  .intersection-signal-1 {
-    --signal-x: -92px;
-    --signal-y: 58px;
-    animation-delay: 800ms;
+
+  .intersection-diagram[data-cap-motion='true'][data-cap-visible='true']
+    .ix-module-business
+    .ix-signal {
+    animation-delay: calc(var(--ix-start) + 0.35s);
   }
-  .intersection-signal-2 {
-    --signal-x: 92px;
-    --signal-y: 58px;
-    animation-delay: 950ms;
+
+  .intersection-diagram[data-cap-motion='true'][data-cap-visible='true']
+    .ix-module-technology
+    .ix-signal {
+    animation-delay: calc(var(--ix-start) + 0.7s);
   }
-  .intersection-pulse {
-    animation: intersection-pulse 1800ms 1200ms ease-in-out 2;
+
+  .intersection-diagram[data-cap-motion='true'][data-cap-visible='true'] .ix-wire {
+    animation: ix-wire var(--ix-cycle) ease-in-out infinite both;
+    animation-delay: var(--ix-start);
+  }
+
+  .intersection-diagram[data-cap-motion='true'][data-cap-visible='true'] .ix-packet {
+    animation: ix-packet var(--ix-cycle) linear infinite both;
+    animation-delay: var(--ix-start);
+  }
+
+  .intersection-diagram[data-cap-motion='true'][data-cap-visible='true'] .ix-packet-business {
+    animation-delay: calc(var(--ix-start) + 0.35s);
+  }
+
+  .intersection-diagram[data-cap-motion='true'][data-cap-visible='true'] .ix-packet-technology {
+    animation-delay: calc(var(--ix-start) + 0.7s);
+  }
+
+  /*
+   * Semantic cycle (one loop):
+   * 0–12%  independent (modules offset)
+   * 12–28% signals wake Product → Business → Technology
+   * 28–42% connectors / packets
+   * 42–55% converge
+   * 55–72% core activates / hold
+   * 72–88% resolved pause
+   * 88–100% calm reset
+   */
+  @keyframes ix-converge {
+    0%,
+    12% {
+      transform: translate(var(--ix-dx, 0), var(--ix-dy, 0));
+    }
+    42%,
+    85% {
+      transform: translate(0, 0);
+    }
+    92%,
+    100% {
+      transform: translate(var(--ix-dx, 0), var(--ix-dy, 0));
+    }
+  }
+
+  @keyframes ix-core {
+    0%,
+    40% {
+      transform: translateY(6px);
+      opacity: 0.72;
+    }
+    55%,
+    82% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    92%,
+    100% {
+      transform: translateY(6px);
+      opacity: 0.72;
+    }
+  }
+
+  @keyframes ix-signal {
+    0%,
+    10% {
+      opacity: 0.12;
+    }
+    16%,
+    28% {
+      opacity: 1;
+    }
+    38%,
+    80% {
+      opacity: 0.35;
+    }
+    90%,
+    100% {
+      opacity: 0.12;
+    }
+  }
+
+  @keyframes ix-wire {
+    0%,
+    22% {
+      opacity: 0.2;
+    }
+    32%,
+    78% {
+      opacity: 0.7;
+    }
+    90%,
+    100% {
+      opacity: 0.2;
+    }
+  }
+
+  @keyframes ix-packet {
+    0%,
+    24% {
+      opacity: 0;
+      stroke-dashoffset: 1;
+    }
+    28% {
+      opacity: 1;
+      stroke-dashoffset: 1;
+    }
+    42% {
+      opacity: 1;
+      stroke-dashoffset: 0;
+    }
+    52%,
+    100% {
+      opacity: 0;
+      stroke-dashoffset: 0;
+    }
   }
 }
+
 @media (max-width: 480px) {
   .intersection-domain {
     font-size: 13px;
     gap: 6px;
   }
+
   .intersection-lens {
     font-size: 11px;
   }
+
   .intersection-bottom-labels {
-    column-gap: 12%;
-    margin-top: -5px;
+    column-gap: 8%;
+    margin-top: 2px;
   }
+
   .intersection-caption {
-    margin-top: 22px;
+    margin-top: 20px;
   }
+
   .intersection-caption strong {
     font-size: 21px;
   }
-}
-.intersection-caption-kicker:lang(fa),
-.intersection-caption-kicker:lang(ar) {
-  font-family: var(--font-sans), sans-serif;
-  letter-spacing: normal;
+
+  /* Soften secondary drafting marks; keep the converge story. */
+  .intersection-art .cap-scene > g[opacity] {
+    opacity: 0.35;
+  }
 }
