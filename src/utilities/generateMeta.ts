@@ -9,6 +9,17 @@ import { mergeOpenGraph } from './mergeOpenGraph'
 import { getServerSideURL } from './getURL'
 import { withSiteName } from './site'
 
+/** Open Graph locale tags — BCP 47 region forms expected by social crawlers. */
+export const OG_LOCALE: Record<Locale, string> = {
+  en: 'en_US',
+  fa: 'fa_IR',
+  ar: 'ar_SA',
+  es: 'es_ES',
+  de: 'de_DE',
+  fr: 'fr_FR',
+  ja: 'ja_JP',
+}
+
 const getImageURL = (image?: Media | Config['db']['defaultIDType'] | null) => {
   const serverUrl = getServerSideURL()
 
@@ -23,18 +34,29 @@ const getImageURL = (image?: Media | Config['db']['defaultIDType'] | null) => {
   return url
 }
 
+const docTitle = (doc: Partial<Page> | Partial<Post> | Partial<Project> | null | undefined) =>
+  doc?.meta?.title || doc?.title || null
+
+const docDescription = (doc: Partial<Page> | Partial<Post> | Partial<Project> | null | undefined) => {
+  if (doc?.meta?.description) return doc.meta.description
+  if (doc && 'summary' in doc && typeof doc.summary === 'string' && doc.summary) return doc.summary
+  return undefined
+}
+
 export const generateMeta = async (args: {
   doc: Partial<Page> | Partial<Post> | Partial<Project> | null
   /** Current locale — drives the canonical URL and which `alternates.languages` are emitted. */
   locale?: Locale
   /** Unprefixed logical path, e.g. `/about` or `/lab/hello` — defaults to the homepage. */
   logicalPath?: string
+  /** When true (draft / live preview), emit noindex so preview HTML is not indexed. */
+  draft?: boolean
 }): Promise<Metadata> => {
-  const { doc, locale = DEFAULT_LOCALE, logicalPath = '/' } = args
+  const { doc, locale = DEFAULT_LOCALE, logicalPath = '/', draft = false } = args
 
   const ogImage = getImageURL(doc?.meta?.image)
-
-  const title = withSiteName(doc?.meta?.title)
+  const description = docDescription(doc)
+  const title = withSiteName(docTitle(doc))
 
   const serverUrl = getServerSideURL()
   const canonicalPath = localePath(locale, logicalPath)
@@ -51,24 +73,28 @@ export const generateMeta = async (args: {
       languages[candidate] = `${serverUrl}${localePath(candidate, logicalPath)}`
   }
 
+  const images = ogImage ? [{ url: ogImage }] : undefined
+
   return {
     alternates: {
       canonical: `${serverUrl}${canonicalPath}`,
       languages,
     },
-    description: doc?.meta?.description,
+    description,
     openGraph: mergeOpenGraph({
-      description: doc?.meta?.description || '',
-      images: ogImage
-        ? [
-            {
-              url: ogImage,
-            },
-          ]
-        : undefined,
+      description: description || '',
+      images,
+      locale: OG_LOCALE[locale],
       title,
       url: canonicalPath,
     }),
+    ...(draft ? { robots: { index: false, follow: false } } : {}),
     title,
+    twitter: {
+      card: 'summary_large_image',
+      description: description || undefined,
+      images: ogImage ? [ogImage] : undefined,
+      title,
+    },
   }
 }

@@ -9,7 +9,8 @@ import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import React from 'react'
 import PageClient from './page.client'
-import { docPath } from '@/i18n/routes'
+import { COLLECTION_PATH_PREFIX, docPath } from '@/i18n/routes'
+import { generateMeta } from '@/utilities/generateMeta'
 import { getLocale } from '@/utilities/getLocale'
 import { uiCopy } from '@/utilities/uiCopy'
 
@@ -65,7 +66,13 @@ export default async function Page() {
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale()
-  return {
-    title: uiCopy[locale].labArchiveTitle,
-  }
+  const copy = uiCopy[locale]
+  return generateMeta({
+    doc: {
+      meta: { title: copy.labArchiveTitle, description: copy.labArchiveDescription },
+      title: copy.labArchiveTitle,
+    },
+    locale,
+    logicalPath: COLLECTION_PATH_PREFIX.posts,
+  })
 }

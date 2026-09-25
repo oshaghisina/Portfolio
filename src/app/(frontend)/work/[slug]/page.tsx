@@ -20,7 +20,8 @@ import { NextProject, type NextProjectDoc } from '@/components/NextProject'
 import { PageFrame } from '@/components/PageFrame'
 import { PayloadRedirects } from '@/components/PayloadRedirects'
 import { localePath } from '@/i18n/navigation'
-import { hasPublicCaseStudy, projectPath } from '@/i18n/routes'
+import { hasPublicCaseStudy, projectPath, WORK_PATH } from '@/i18n/routes'
+import { buildBreadcrumbJsonLd } from '@/utilities/breadcrumbSchema'
 import { buildCreativeWorkJsonLd } from '@/utilities/creativeWorkSchema'
 import { generateMeta } from '@/utilities/generateMeta'
 import { getLocale } from '@/utilities/getLocale'
@@ -72,11 +73,19 @@ export default async function ProjectPage({ params: paramsPromise }: Args) {
   const chapters = buildChapters(sections, copy)
   const next = await queryNextProject({ current: project, locale })
   const serverUrl = getServerSideURL()
+  const caseStudyUrl = `${serverUrl}${localePath(locale, url)}`
+  const workArchiveUrl = `${serverUrl}${localePath(locale, WORK_PATH)}`
   const jsonLd = buildCreativeWorkJsonLd({
     locale,
     project,
     serverUrl,
-    url: `${serverUrl}${localePath(locale, url)}`,
+    url: caseStudyUrl,
+  })
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd({
+    items: [
+      { name: copy.allWork, url: workArchiveUrl },
+      { name: project.title, url: caseStudyUrl },
+    ],
   })
 
   return (
@@ -88,6 +97,12 @@ export default async function ProjectPage({ params: paramsPromise }: Args) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
         type="application/ld+json"
       />
+      {breadcrumbJsonLd && (
+        <script
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd).replace(/</g, '\\u003c') }}
+          type="application/ld+json"
+        />
+      )}
 
       <PageFrame>
         <article>
@@ -118,12 +133,18 @@ export default async function ProjectPage({ params: paramsPromise }: Args) {
 }
 
 export async function generateMetadata({ params: paramsPromise }: Args): Promise<Metadata> {
+  const { isEnabled: draft } = await draftMode()
   const locale = await getLocale()
   const { slug = '' } = await paramsPromise
   const decodedSlug = decodeURIComponent(slug)
   const project = await queryProjectBySlug({ locale, slug: decodedSlug })
 
-  return generateMeta({ doc: project, locale, logicalPath: projectPath({ slug: decodedSlug }) })
+  return generateMeta({
+    doc: project,
+    draft,
+    locale,
+    logicalPath: projectPath({ slug: decodedSlug }),
+  })
 }
 
 const queryProjectBySlug = cache(async ({ locale, slug }: { locale: Locale; slug: string }) => {

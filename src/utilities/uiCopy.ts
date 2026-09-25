@@ -102,6 +102,8 @@ export interface UiCopy {
   }
   /** `/lab` archive index title and nav label. */
   labArchiveTitle: string
+  /** Meta description for the `/lab` archive (and its pagination pages). */
+  labArchiveDescription: string
   language: string
   next: string
   /** Screen-reader suffix for links that open a new tab. */
@@ -180,6 +182,8 @@ export const uiCopy: Record<Locale, UiCopy> = {
       backToFrame: 'Back to Frame',
     },
     labArchiveTitle: 'Lab',
+    labArchiveDescription:
+      'Notes, experiments and writing on product, design, growth and systems — from the Lab.',
     language: 'Language',
     next: 'Next',
     opensInNewTab: 'opens in a new tab',
@@ -249,6 +253,8 @@ export const uiCopy: Record<Locale, UiCopy> = {
       backToFrame: 'بازگشت به تعریف مسئله',
     },
     labArchiveTitle: 'آزمایشگاه',
+    labArchiveDescription:
+      'یادداشت‌ها، آزمایش‌ها و نوشته‌هایی دربارهٔ محصول، طراحی، رشد و سیستم‌ها — از آزمایشگاه.',
     language: 'زبان',
     next: 'بعدی',
     opensInNewTab: 'در برگهٔ جدید باز می‌شود',
@@ -318,6 +324,8 @@ export const uiCopy: Record<Locale, UiCopy> = {
       backToFrame: 'العودة إلى التأطير',
     },
     labArchiveTitle: 'المختبر',
+    labArchiveDescription:
+      'ملاحظات وتجارب وكتابات حول المنتج والتصميم والنمو والأنظمة — من المختبر.',
     language: 'اللغة',
     next: 'التالي',
     opensInNewTab: 'يُفتح في علامة تبويب جديدة',
@@ -388,6 +396,8 @@ export const uiCopy: Record<Locale, UiCopy> = {
       backToFrame: 'Volver a Enmarcar',
     },
     labArchiveTitle: 'Laboratorio',
+    labArchiveDescription:
+      'Notas, experimentos y escritos sobre producto, diseño, crecimiento y sistemas — desde el Laboratorio.',
     language: 'Idioma',
     next: 'Siguiente',
     opensInNewTab: 'se abre en una pestaña nueva',
@@ -458,6 +468,8 @@ export const uiCopy: Record<Locale, UiCopy> = {
       backToFrame: 'Zurück zu Rahmen',
     },
     labArchiveTitle: 'Labor',
+    labArchiveDescription:
+      'Notizen, Experimente und Texte zu Produkt, Design, Growth und Systemen — aus dem Labor.',
     language: 'Sprache',
     next: 'Weiter',
     opensInNewTab: 'öffnet in neuem Tab',
@@ -528,6 +540,8 @@ export const uiCopy: Record<Locale, UiCopy> = {
       backToFrame: 'Retour à Cadrer',
     },
     labArchiveTitle: 'Laboratoire',
+    labArchiveDescription:
+      'Notes, expérimentations et écrits sur le produit, le design, la croissance et les systèmes — depuis le Laboratoire.',
     language: 'Langue',
     next: 'Suivant',
     opensInNewTab: "s'ouvre dans un nouvel onglet",
@@ -597,6 +611,8 @@ export const uiCopy: Record<Locale, UiCopy> = {
       backToFrame: 'フレーミングに戻る',
     },
     labArchiveTitle: 'ラボ',
+    labArchiveDescription:
+      'プロダクト、デザイン、グロース、システムについてのノート、実験、文章 — ラボより。',
     language: '言語',
     next: '次へ',
     opensInNewTab: '新しいタブで開きます',

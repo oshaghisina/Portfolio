@@ -7,6 +7,8 @@ import { DEFAULT_LOCALE } from '@/utilities/locale'
 import { EVIDENCE_PROJECT_SLUG } from './experience-page-content'
 import { upsertMedia } from './media'
 import { PROJECT_SEED, RETIRED_PROJECT_SLUGS, toProjectData, type ProjectSeedRow } from './projects'
+import { syncCarsparencyNextProjects } from './sync-carsparency-next'
+import { syncRetiredRedirects } from './sync-retired-redirects'
 
 /**
  * Bring the `projects` collection in line with `PROJECT_SEED` **without wiping anything**:
@@ -55,6 +57,8 @@ export interface SyncProjectsResult {
   caseStudyOwned: string[]
   /** Covers named in `PROJECT_SEED` whose file is not on disk. */
   missingCovers: string[]
+  redirects: { created: string[]; updated: string[]; unchanged: string[] }
+  carsparencyNext: { updated: string[]; skipped: string[] }
 }
 
 export async function syncProjects({
@@ -72,6 +76,8 @@ export async function syncProjects({
     deleted: [],
     caseStudyOwned: [],
     missingCovers: [],
+    redirects: { created: [], updated: [], unchanged: [] },
+    carsparencyNext: { updated: [], skipped: [] },
   }
 
   // `depth: 0` keeps `cover` an id, so comparing it never trips over a populated relationship.
@@ -158,6 +164,9 @@ export async function syncProjects({
       payload.logger.warn(`— /experience evidence "${key}" points at "${slug}", which no project defines`)
     }
   }
+
+  result.redirects = await syncRetiredRedirects({ payload })
+  result.carsparencyNext = await syncCarsparencyNextProjects({ payload })
 
   return result
 }

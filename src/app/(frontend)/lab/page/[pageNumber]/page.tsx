@@ -11,6 +11,7 @@ import React from 'react'
 import PageClient from './page.client'
 import { notFound } from 'next/navigation'
 import { docPath } from '@/i18n/routes'
+import { generateMeta } from '@/utilities/generateMeta'
 import { getLocale } from '@/utilities/getLocale'
 import { uiCopy } from '@/utilities/uiCopy'
 
@@ -72,9 +73,19 @@ export default async function Page({ params: paramsPromise }: Args) {
 export async function generateMetadata({ params: paramsPromise }: Args): Promise<Metadata> {
   const { pageNumber } = await paramsPromise
   const locale = await getLocale()
-  return {
-    title: `${uiCopy[locale].labArchiveTitle} ${pageNumber || ''}`.trim(),
-  }
+  const copy = uiCopy[locale]
+  const n = pageNumber || '1'
+  return generateMeta({
+    doc: {
+      meta: {
+        title: `${copy.labArchiveTitle} — ${n}`,
+        description: copy.labArchiveDescription,
+      },
+      title: copy.labArchiveTitle,
+    },
+    locale,
+    logicalPath: `${docPath('posts', 'page')}/${n}`,
+  })
 }
 
 export async function generateStaticParams() {

@@ -18,7 +18,7 @@ module.exports = {
     policies: [
       {
         userAgent: '*',
-        disallow: '/admin/*',
+        disallow: ['/admin/*', '/api/*', '/next/*', '/design'],
       },
     ],
     additionalSitemaps: [

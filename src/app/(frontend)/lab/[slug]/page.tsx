@@ -83,13 +83,19 @@ export default async function Post({ params: paramsPromise }: Args) {
 }
 
 export async function generateMetadata({ params: paramsPromise }: Args): Promise<Metadata> {
+  const { isEnabled: draft } = await draftMode()
   const locale = await getLocale()
   const { slug = '' } = await paramsPromise
   // Decode to support slugs with special characters
   const decodedSlug = decodeURIComponent(slug)
   const post = await queryPostBySlug({ locale, slug: decodedSlug })
 
-  return generateMeta({ doc: post, locale, logicalPath: docPath('posts', decodedSlug) })
+  return generateMeta({
+    doc: post,
+    draft,
+    locale,
+    logicalPath: docPath('posts', decodedSlug),
+  })
 }
 
 const queryPostBySlug = cache(async ({ locale, slug }: { locale: Locale; slug: string }) => {

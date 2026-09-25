@@ -18,6 +18,7 @@ import { getLocale } from '@/utilities/getLocale'
 import { getServerSideURL } from '@/utilities/getURL'
 import { DEFAULT_LOCALE, type Locale } from '@/utilities/locale'
 import { buildPersonJsonLd } from '@/utilities/personSchema'
+import { buildWebSiteJsonLd } from '@/utilities/websiteSchema'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 
@@ -87,11 +88,14 @@ export default async function Page({ params: paramsPromise }: Args) {
 
   const { hero, layout } = page
   const isAbout = page.slug === 'about'
+  const isHome = page.slug === 'home'
+  const serverUrl = getServerSideURL()
 
   // Person JSON-LD is About-only — no need to fetch the `about` global on every page.
   const personJsonLd = isAbout
-    ? buildPersonJsonLd({ about: await getCachedGlobal('about', locale, 1)(), serverUrl: getServerSideURL() })
+    ? buildPersonJsonLd({ about: await getCachedGlobal('about', locale, 1)(), serverUrl })
     : null
+  const webSiteJsonLd = isHome ? buildWebSiteJsonLd({ locale, serverUrl }) : null
 
   // Every page opens flush against the header: the sheet and the header are both `.canvas`, so
   // with no gap between them the hairline rails run unbroken through the header's bottom border.
@@ -104,7 +108,16 @@ export default async function Page({ params: paramsPromise }: Args) {
 
       {draft && <LivePreviewListener />}
       {personJsonLd && (
-        <script dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }} type="application/ld+json" />
+        <script
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd).replace(/</g, '\\u003c') }}
+          type="application/ld+json"
+        />
+      )}
+      {webSiteJsonLd && (
+        <script
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteJsonLd).replace(/</g, '\\u003c') }}
+          type="application/ld+json"
+        />
       )}
 
       <PageFrame>
@@ -125,6 +138,7 @@ export default async function Page({ params: paramsPromise }: Args) {
 }
 
 export async function generateMetadata({ params: paramsPromise }: Args): Promise<Metadata> {
+  const { isEnabled: draft } = await draftMode()
   const locale = await getLocale()
   const { slug = 'home' } = await paramsPromise
   // Decode to support slugs with special characters
@@ -136,7 +150,7 @@ export async function generateMetadata({ params: paramsPromise }: Args): Promise
     })) ?? staticFallback(decodedSlug, locale)
   const logicalPath = decodedSlug === 'home' ? '/' : `/${decodedSlug}`
 
-  return generateMeta({ doc: page, locale, logicalPath })
+  return generateMeta({ doc: page, draft, locale, logicalPath })
 }
 
 const queryPageBySlug = cache(async ({ locale, slug }: { locale: Locale; slug: string }) => {

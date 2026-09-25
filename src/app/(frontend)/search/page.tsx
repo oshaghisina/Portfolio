@@ -10,6 +10,7 @@ import { Search } from '@/search/Component'
 import PageClient from './page.client'
 import { CardPostData } from '@/components/Card'
 import { getLocale } from '@/utilities/getLocale'
+import { withSiteName } from '@/utilities/site'
 import { uiCopy } from '@/utilities/uiCopy'
 
 type Args = {
@@ -95,6 +96,7 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale()
   return {
-    title: uiCopy[locale].search,
+    robots: { index: false, follow: true },
+    title: withSiteName(uiCopy[locale].search),
   }
 }

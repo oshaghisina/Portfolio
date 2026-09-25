@@ -32,9 +32,12 @@ function collectionForLogicalPath(logicalPath: string): {
   collection: 'pages' | 'posts' | 'projects'
   slug: string
 } {
-  // The bare archive root (e.g. `/lab`) has no `pages` document behind it — it's judged by
-  // whether the locale has any published post, not by a slug lookup (see `isLogicalPathReady`).
-  if (logicalPath === COLLECTION_PATH_PREFIX.posts) {
+  // The bare archive root (e.g. `/lab`) and its pagination (`/lab/page/2`) have no `pages`
+  // document behind them — judged by whether the locale has any published post.
+  if (
+    logicalPath === COLLECTION_PATH_PREFIX.posts ||
+    logicalPath.startsWith(`${COLLECTION_PATH_PREFIX.posts}/page/`)
+  ) {
     return { collection: 'posts', slug: '' }
   }
   // `/work` itself is the `work` page; only `/work/<slug>` is a project document.

@@ -33,6 +33,8 @@ import { post1 } from './post-1'
 import { post2 } from './post-2'
 import { post3 } from './post-3'
 import { PROJECT_SEED, toProjectData } from './projects'
+import { syncCarsparencyNextProjects } from './sync-carsparency-next'
+import { syncRetiredRedirects } from './sync-retired-redirects'
 import { buildWorkLayout, buildWorkPage, WORK_SLUG, workCopy } from './work-content'
 
 const collections: CollectionSlug[] = [
@@ -608,6 +610,10 @@ export const seed = async ({
   // The RP1 case study sits on top of its archive entry — additive, so it also runs standalone
   // against a live database via `pnpm seed:case-studies`.
   await seedCaseStudies({ payload })
+
+  // Retired `/work/<slug>` → `/work`, plus Carsparency next-project links when case studies exist.
+  await syncRetiredRedirects({ payload })
+  await syncCarsparencyNextProjects({ payload })
 
   payload.logger.info('Seeded database successfully!')
 }
