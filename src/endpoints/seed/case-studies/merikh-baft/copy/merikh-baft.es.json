@@ -1,0 +1,289 @@
+{
+  "statement": "Una fábrica de tejido espaciador donde cada rollo lleva una etiqueta QR y se verifica cada entrega, de la tintorería al conductor y al cliente.",
+  "industry": "Textil · Fabricación B2B",
+  "team": "Un archivo de Figma: marca, sitio web, panel de gestión y una app de tareas para cinco roles",
+  "heroCaption": "La app de tareas en el móvil: el etiquetado de rollos nuevos en el almacén, el control de carga del conductor y la página de inicio del sitio web.",
+  "snapshot": {
+    "problem": "Un rollo de tela pasa por el almacén, la tintorería, un conductor y un cliente. En cada entrega se puede contar mal o perder.",
+    "role": "Diseñador de producto en el descubrimiento de marca, la identidad, un sitio web adaptable, un panel de gestión de escritorio y una app móvil por roles.",
+    "result": "128 pantallas diseñadas y una biblioteca de 334 componentes. El archivo no indica si el producto llegó a lanzarse."
+  },
+  "alt": {
+    "cover": "App de tareas de Merikh Baft en el móvil — la hoja para etiquetar tela nueva: introducir los datos, imprimir una etiqueta por rollo, pegar las etiquetas",
+    "dyeing": "App de tareas de Merikh Baft — la hoja de la tintorería: escanear los códigos QR, imprimir la lista de embalaje, entregar la carga al conductor, el conductor confirma",
+    "driver": "App de tareas de Merikh Baft — la hoja del conductor: cotejar la carga con la lista de embalaje, recibir el destino, confirmar la entrega",
+    "customer": "App de tareas de Merikh Baft — la hoja del cliente: confirmar la recepción y luego confirmar que la carga coincide con la lista de embalaje",
+    "homeMobile": "Sitio web de Merikh Baft en el móvil — la portada, «una nueva generación de tejidos que respiran», sobre cifras de clientes, almacenes y envíos mensuales",
+    "homeFold": "Sitio web de Merikh Baft en escritorio — una mano sostiene un trozo de tejido espaciador junto al titular, con una barra de cifras debajo",
+    "taskList": "App de tareas de Merikh Baft — la lista de solicitudes del almacén con pestañas de pendientes, en curso y hechas, y botones para introducir datos o generar un código QR",
+    "settingsWarehouse": "App de tareas de Merikh Baft — ajustes del almacén: ubicaciones de depósito, unidades de medida, resolución de problemas y una línea directa con un asesor técnico",
+    "settingsDyeing": "App de tareas de Merikh Baft — ajustes de la tintorería: ajustes de máquina, preferencias de color, tamaño de lote, una guía del proceso y resolución de problemas",
+    "settingsRoute": "App de tareas de Merikh Baft — ajustes del conductor: optimización de rutas, alertas, datos del vehículo, preguntas frecuentes de transporte y un contacto de emergencia",
+    "settingsCustomer": "App de tareas de Merikh Baft — ajustes del cliente: ajustes de pedidos, avisos de mantenimiento, novedades y alertas de pedidos atrasados y plazos de entrega",
+    "requestDetail": "Panel de gestión de Merikh Baft — una solicitud: la calificación crediticia y el saldo del cliente, las cifras del pedido, una línea de tiempo de nueve pasos y las líneas del pedido",
+    "warehouseQc": "Panel de gestión de Merikh Baft — la página del almacén: existencias totales, volumen saliente, próxima fecha de envío y el número de rollos a la espera del control de calidad",
+    "customerDetail": "Panel de gestión de Merikh Baft — un cliente: el representante interno, la próxima entrega, la situación financiera y pestañas de entregas, pagos, contactos, solicitudes y facturas",
+    "consultation": "Sitio web de Merikh Baft — el formulario de asesoría: elegir un sector, un tipo de tejido y un volumen de pedido, y pedir consejo",
+    "productPage": "Sitio web de Merikh Baft — una página de tejido: la foto y los colores, los sectores a los que se adapta, una tabla de especificaciones y un precio por metro",
+    "persona": "Persona de marca de Merikh Baft — la frase típica, el perfil, los objetivos, las frustraciones, los hábitos de pago y las expectativas de un mayorista del bazar",
+    "logo": "Logotipo de Merikh Baft — un monograma de trama de punto dentro de un círculo junto al nombre en alfabeto latino y persa, en azul marino",
+    "tone": "Tono de voz de Merikh Baft — ocho controles deslizantes entre pares como simple y complejo, moderno y clásico, básico y exclusivo",
+    "sidebars": "Panel de gestión de Merikh Baft — tres versiones de la barra lateral una junto a otra, con elementos distintos y un elemento distinto resaltado en cada una",
+    "color": "Sistema de diseño de Merikh Baft, versión 0.0.1 — la escala azul principal y la escala de grises"
+  },
+  "chapters": {
+    "context": {
+      "heading": "Una fábrica que teje tela que respira",
+      "body": [
+        "Merikh Baft fabrica tejido espaciador de punto: un textil de tres capas, con dos caras exteriores unidas por una capa de pelo, que deja pasar el aire y mantiene su forma. Se usa en zapatos, sillas de oficina, asientos de coche, colchones y productos médicos, y se vende por metros a fabricantes y mayoristas del bazar.",
+        "Todo el proyecto está en un archivo de Figma de 17 páginas: un taller de marca, personas y un tono de voz; un logotipo y tarjetas de visita; un sitio web en persa, de derecha a izquierda, en tres anchos y con su flujo de acceso; un panel de gestión de escritorio; y una app móvil de tareas para quienes mueven la tela. En total, 128 pantallas diseñadas."
+      ]
+    },
+    "problem": {
+      "heading": "Un rollo cambia de manos cuatro veces",
+      "body": [
+        "Entre la máquina y el cliente, un rollo se pesa y se almacena, pasa a la tintorería, se carga en un camión y se entrega. Cada paso es una entrega entre personas que nunca ven el pedido completo, y cada uno es una ocasión para contar mal un rollo, confundirlo u olvidarlo.",
+        "La pregunta para la app era fácil de plantear: ¿cómo confirma cada persona que los rollos que tiene delante son los de la lista, sin aprender un sistema pensado para el trabajo de otro?"
+      ]
+    },
+    "approach": {
+      "heading": "Un patrón de tareas para cinco roles",
+      "body": [
+        "La app tiene cinco roles: gerente, almacén, tintorería, conductor y cliente. Cada uno ve solo sus propias tareas, siempre en las mismas dos vistas: una lista de tareas y una hoja por tarea que la divide en pasos. Cada paso se marca como hecho o no hecho, y cada hoja termina con los mismos dos botones: informar de un problema y enviar un SMS.",
+        "Una tarea se puede alimentar de dos formas: escribiendo sus datos o escaneando un código QR. La arquitectura de información dibujada junto a las pantallas muestra ambos caminos y el flujo de etiquetas que hay detrás: introducir modelo, peso y longitud, generar una etiqueta con su código QR e imprimirla."
+      ]
+    },
+    "solution": {
+      "heading": "Ajustes propios de cada trabajo",
+      "body": [
+        "Cada rol tiene sus propios ajustes. El almacén define ubicaciones de depósito y unidades de medida: metros cuadrados, metros lineales o kilos, báscula manual o automática, decimales y rangos permitidos. La tintorería configura máquinas, preferencias de color y tamaño de lote, y guarda una guía del proceso. El conductor configura la optimización de rutas y las alertas. El cliente indica una dirección de entrega, un método de pago preferido y una moneda.",
+        "Las notificaciones siguen el mismo reparto: poco stock de un material, un rollo defectuoso marcado por control de calidad, rollos nuevos, una solicitud de teñido asignada, un cambio de ruta, una entrega firmada por el cliente."
+      ],
+      "insight": "Todos usan la misma app, pero un conductor nunca ve un ajuste de la tintorería."
+    },
+    "office": {
+      "heading": "La misma cadena, vista desde la oficina",
+      "customLabel": "Panel de gestión",
+      "body": [
+        "El panel de gestión es para escritorio y tableta: solicitudes, existencias, almacenes, clientes y niveles de acceso. Una solicitud muestra sobre el pedido la calificación crediticia del cliente en estrellas y su saldo pendiente. Debajo aparece una línea de tiempo de nueve pasos: del pedido a la factura proforma, el anticipo, la carga, el envío y la entrega, hasta la liquidación. Después vienen las líneas del pedido con código de tejido, cantidad, unidad, método de pago, estado de stock y fecha de entrega.",
+        "La página del almacén cuenta lo que produce la app: existencias totales, volumen saliente, la próxima fecha de envío y el número de rollos en la cola de control de calidad. La página de un cliente añade el representante interno, una cuota de membresía escalonada según el volumen de compra y una nota sobre cómo un anticipo afecta a la clasificación del cliente."
+      ]
+    },
+    "website": {
+      "heading": "Asesoría antes del carrito",
+      "customLabel": "Sitio web",
+      "body": [
+        "El sitio web se diseñó a 1440, 1028 y 360 píxeles en once páginas: dos versiones de la página de inicio, una página de tejido, el listado de tejidos, sectores y una página de sector, un blog y un artículo, quiénes somos, contacto y preguntas frecuentes. La página de inicio abre con la transpirabilidad y sigue con las propiedades del tejido, los sectores, por qué Merikh Baft y un formulario de asesoría guiado: qué sector, qué tipo de tejido, cuántos metros.",
+        "Una página de tejido empieza con una tabla de especificaciones (composición, ancho, grosor, peso, certificación, fábricas) y los sectores a los que se adapta, antes del precio por metro. La página de inicio también promete seguimiento de pedidos a través de un panel de cliente."
+      ]
+    },
+    "brand": {
+      "heading": "Cuatro compradores y trece controles",
+      "customLabel": "Marca",
+      "body": [
+        "La marca fue lo primero. Un kit de taller —adjetivos de personalidad, una lista de lo que es y lo que no es, un mapa de empatía, una plantilla de persona y preguntas como «¿Cómo describiría nuestro tono actual en el comercio textil?»— dio lugar a cuatro personas compradoras: un mayorista del bazar de 60 años que quiere un código de tejido que ningún rival pueda comprar, un joven zapatero que busca descuentos, un comprador de productos médicos que debe probar muestras y un fabricante de muebles de oficina que paga la mitad con cheque.",
+        "El tono de voz se fija en trece controles deslizantes, de simple a complejo y de básico a exclusivo. Se preseleccionaron seis tipografías persas y se eligió Yekan Bakh. El logotipo sitúa un monograma de trama de punto dentro de un círculo junto al nombre en alfabeto latino y persa."
+      ]
+    },
+    "critique": {
+      "heading": "Estados activos que señalan el lugar equivocado",
+      "customLabel": "Crítica",
+      "body": [
+        "El mismo pequeño error se repite en las tres superficies. La cabecera del sitio web marca Contacto como página actual en la página de inicio, en la de tejido y en el listado de tejidos. La página del almacén del panel de gestión resalta Solicitudes en la barra lateral, y dos de las tres versiones de la barra lateral muestran los clientes dos veces, con dos nombres y dos iconos. En la app, las pantallas de ajustes muestran el icono de tareas en la pestaña de notificaciones.",
+        "La página de solicitud de escritorio dibuja su línea de tiempo de nueve pasos como nueve círculos sin etiquetas, así que la secuencia más importante de la oficina hay que leerla de memoria. Y la columna móvil del panel de gestión contiene cuatro marcos vacíos."
+      ],
+      "bullets": [
+        "En cada tabla, todas las filas repiten los mismos valores de relleno (un código de tejido, una longitud, un precio), así que ninguna tabla se probó con datos reales.",
+        "El sitio web promete un panel de cliente para seguir los pedidos, pero ese panel nunca se diseñó."
+      ],
+      "insight": "El estado de la navegación es contenido: cuando falla, los usuarios dejan de confiar en dónde están."
+    },
+    "system": {
+      "heading": "Un sistema 0.0.1 en azul marino y azul",
+      "customLabel": "Sistema",
+      "body": [
+        "El sistema de diseño lleva la etiqueta de versión 0.0.1. Tiene 21 conjuntos de componentes y 334 componentes: color, tipografía, campos de formulario, botones, migas de pan, casillas y botones de opción, interruptores, modales, avisos emergentes, perfil, cabecera y pie, y el menú lateral. El color son 22 estilos en una escala azul y otra gris, con el azul marino de la marca en el extremo oscuro del azul. La tipografía son 11 estilos, todos en Yekan Bakh, desde un titular de 24 píxeles hasta un texto de 12 píxeles.",
+        "Como casi todas las primeras versiones, lo guarda todo como estilos. Solo hay una variable, así que el sistema aún no puede cambiar de tema ni de densidad."
+      ]
+    }
+  },
+  "figures": {
+    "fold": {
+      "caption": "La página de inicio en escritorio: primero la transpirabilidad, con cifras de clientes, envíos y almacenes debajo."
+    },
+    "chain": {
+      "caption": "El recorrido de un rollo en cuatro hojas de tareas. Cada una termina con informar de un problema y un SMS.",
+      "items": [
+        "Almacén: introducir los datos, imprimir una etiqueta por rollo y pegarla.",
+        "Tintorería: escanear la entrada de los rollos, imprimir la lista de embalaje y entregar al conductor.",
+        "Conductor: cotejar la carga con la lista de embalaje y luego confirmar la entrega.",
+        "Cliente: confirmar la recepción y luego que la carga coincide con la lista."
+      ]
+    },
+    "taskList": {
+      "caption": "La lista de tareas del almacén: cada solicitud se puede escribir a mano o convertir en una etiqueta QR.",
+      "annotations": [
+        "Solicitudes divididas en pendientes, en curso y hechas",
+        "Cada solicitud indica el trabajo y la hora en que se creó",
+        "Dos formas de entrada: introducir los datos a mano o generar un código QR"
+      ]
+    },
+    "settings": {
+      "caption": "Ajustes por rol: almacén, tintorería, conductor y cliente ven solo los suyos.",
+      "items": [
+        "Almacén",
+        "Tintorería",
+        "Conductor",
+        "Cliente"
+      ]
+    },
+    "request": {
+      "caption": "Una solicitud en el panel de gestión: calificación crediticia y saldo, el pedido, una línea de tiempo de nueve pasos y las líneas del pedido."
+    },
+    "office": {
+      "caption": "Existencias y clientes.",
+      "items": [
+        "La página del almacén cuenta los rollos a la espera del control de calidad.",
+        "La página de un cliente: representante, próxima entrega, saldo y cinco pestañas de historial."
+      ]
+    },
+    "web": {
+      "caption": "El sitio web pregunta qué necesita el comprador antes de vender.",
+      "items": [
+        "El formulario de asesoría: sector, tipo de tejido y volumen de pedido.",
+        "Una página de tejido: tabla de especificaciones y sectores antes del precio."
+      ]
+    },
+    "persona": {
+      "caption": "Una de las cuatro personas: el mayorista del bazar que quiere la exclusiva de un código de tejido y paga con cheque puntualmente."
+    },
+    "identity": {
+      "caption": "La identidad: el logotipo de trama de punto y la primera de dos hojas de tono de voz.",
+      "items": [
+        "El logotipo en alfabeto latino y persa.",
+        "Tono de voz: ocho de los trece controles."
+      ]
+    },
+    "sidebars": {
+      "caption": "Tres barras laterales de un mismo panel de gestión: las dos primeras muestran los clientes dos veces, y la del medio, en la página del almacén, resalta Solicitudes."
+    },
+    "color": {
+      "caption": "La paleta de color, versión 0.0.1: el azul principal y la escala de grises."
+    }
+  },
+  "process": {
+    "heading": "Un rollo, cinco entregas",
+    "steps": [
+      {
+        "label": "Pesar y etiquetar",
+        "note": "El almacén introduce modelo, peso y longitud e imprime una etiqueta por rollo"
+      },
+      {
+        "label": "A la tintorería",
+        "note": "La tintorería escanea los rollos al entrar en su almacén de tela cruda"
+      },
+      {
+        "label": "Lista de embalaje",
+        "note": "El gerente libera la lista de embalaje del almacén de producto terminado para el conductor"
+      },
+      {
+        "label": "Control de carga",
+        "note": "El conductor coteja la carga con la lista de embalaje"
+      },
+      {
+        "label": "Control de entrega",
+        "note": "El cliente vuelve a cotejarla al recibirla y un SMS confirma la recepción"
+      }
+    ]
+  },
+  "decisions": {
+    "heading": "Cinco decisiones detrás de la cadena",
+    "lede": "El archivo deja ver estas decisiones en sus pantallas y en su diagrama de arquitectura.",
+    "items": [
+      {
+        "title": "Dar a cada rol las mismas dos vistas",
+        "why": "El personal de almacén, los operarios de tintorería y los conductores usan la app para un solo trabajo cada uno. Una lista de tareas y una hoja de pasos con hecho o no hecho es lo único que tiene que aprender cada uno.",
+        "tradeoff": "Nadie en la app ve el pedido completo. Para eso, el gerente tiene que abrir el panel de gestión."
+      },
+      {
+        "title": "Permitir escribir o escanear una tarea",
+        "why": "Las etiquetas se imprimen con datos escritos al inicio de la cadena y después se escanean en todas partes. El diagrama de arquitectura dibuja ambas entradas, así que una tarea se puede completar aunque una etiqueta no se pueda escanear.",
+        "tradeoff": "Una entrada escrita se salta la verificación que da un escaneo."
+      },
+      {
+        "title": "Revisar la carga dos veces",
+        "why": "El conductor coteja la carga con la lista de embalaje en la tintorería, y el cliente la vuelve a cotejar al recibirla. En ambas entregas se envía un SMS, así cada parte tiene un registro.",
+        "tradeoff": "Dos pasos más en cada entrega. Y ante una discrepancia solo hay una salida: informar de un problema."
+      },
+      {
+        "title": "Asesorar antes de vender",
+        "why": "Las personas compran por sector y por costumbre, y una de ellas debe probar muestras primero. La página de inicio abre con un formulario de asesoría, y una página de tejido muestra especificaciones y sectores antes del precio.",
+        "tradeoff": "Un cliente habitual que ya conoce el código de tejido tarda más en llegar al carrito."
+      },
+      {
+        "title": "Llevar el crédito y los cheques al producto",
+        "why": "En Irán, los compradores textiles B2B suelen pagar con cheque. El panel de gestión muestra la calificación crediticia y el saldo del cliente en cada solicitud, y la regla de pago de la app envía los pedidos de menos de 30 millones de tomanes al pago en línea y los mayores al pago con cheque.",
+        "tradeoff": "Una calificación necesita una regla explícita, y el archivo no dice cómo se ganan las estrellas."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "La parte de Sina",
+    "intro": "Sina diseñó el trabajo de este archivo, del taller de marca a la app de tareas.",
+    "own": [
+      "El taller de marca, cuatro personas y el tono de voz",
+      "El logotipo y las tarjetas de visita",
+      "El sitio web en tres anchos y el flujo de acceso",
+      "El panel de gestión de solicitudes, existencias, almacenes y clientes",
+      "La app de tareas para cinco roles y su diagrama de arquitectura",
+      "El sistema de diseño: 21 conjuntos de componentes y 334 componentes"
+    ],
+    "collaborate": [
+      "El equipo de Merikh Baft, que participó en el taller de marca"
+    ],
+    "note": "Las pantallas del archivo que se pegaron desde otros proyectos no forman parte de este caso y no se muestran."
+  },
+  "outcomes": {
+    "heading": "Un registro de diseño completo",
+    "intro": "El archivo no indica si el sitio web o la app se lanzaron, así que no hay cifras de uso. Lo que contiene es un diseño completo de la marca, las ventas y las operaciones de una fábrica textil.",
+    "delivered": [
+      {
+        "label": "pantallas diseñadas",
+        "context": "32 en la app, 24 en el panel de gestión, 46 en el sitio web y 26 de acceso"
+      },
+      {
+        "label": "roles en la app de tareas",
+        "context": "Gerente, almacén, tintorería, conductor y cliente"
+      },
+      {
+        "label": "componentes del sistema de diseño",
+        "context": "21 conjuntos de componentes, todos en Yekan Bakh"
+      }
+    ],
+    "shipped": [
+      "Un taller de marca, cuatro personas y un tono de voz",
+      "Un logotipo y tarjetas de visita",
+      "Un sitio web en persa en tres anchos, con acceso",
+      "Un panel de gestión de solicitudes, existencias, almacenes y clientes",
+      "Una app móvil de tareas para cinco roles, con etiquetas QR",
+      "Un sistema de diseño, versión 0.0.1"
+    ]
+  },
+  "lessons": {
+    "heading": "Lo que cambiaría",
+    "items": [
+      {
+        "title": "Revisar el estado activo en cada pantalla",
+        "body": "El mismo descuido aparece en el sitio web, el panel de gestión y la app. Una revisión con una sola pregunta por pantalla (¿dónde dice esto que estoy?) habría detectado los tres."
+      },
+      {
+        "title": "Llenar las tablas con datos reales",
+        "body": "Cada fila de una tabla repite un código de tejido y un precio. Códigos reales, nombres de cliente largos y unidades mixtas habrían mostrado dónde se rompen las tablas."
+      },
+      {
+        "title": "Etiquetar la secuencia más importante",
+        "body": "La línea de tiempo del pedido es la vista que tiene la oficina de toda la cadena, y en escritorio no tiene etiquetas. La secuencia más importante de un producto debería ser la más fácil de leer."
+      }
+    ]
+  }
+}

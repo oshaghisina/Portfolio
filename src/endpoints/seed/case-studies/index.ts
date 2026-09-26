@@ -79,6 +79,14 @@ import {
   fayLocalizedFields,
 } from './faymen'
 import {
+  HMA_ASSETS,
+  HMA_COVER_KEY,
+  HMA_MEDIA,
+  HMA_SHARED_FIELDS,
+  HMA_SLUG,
+  hmaLocalizedFields,
+} from './hadish-mall-app/study'
+import {
   K45_ASSETS,
   K45_COVER_KEY,
   K45_LOCALES,
@@ -95,6 +103,14 @@ import {
   MQV_SLUG,
   mqvLocalizedFields,
 } from './marqevon'
+import {
+  MKB_ASSETS,
+  MKB_COVER_KEY,
+  MKB_MEDIA,
+  MKB_SHARED_FIELDS,
+  MKB_SLUG,
+  mkbLocalizedFields,
+} from './merikh-baft/study'
 import {
   ND_ASSETS,
   ND_LOCALES,
@@ -346,6 +362,30 @@ export const CASE_STUDIES: CaseStudySeedConfig<any, any>[] = [
     createFields: { kind: ['product'], order: 102, coverMediaKey: CPROP_COVER_KEY },
     sharedFields: CPROP_SHARED_FIELDS,
     localizedFields: cpropLocalizedFields,
+  },
+  // Hadish Mall's app concept: an existing archive row (order 31) with no cover until now.
+  {
+    label: 'Hadish Mall app',
+    slug: HMA_SLUG,
+    assetsDir: HMA_ASSETS,
+    media: HMA_MEDIA,
+    seedLocales: LOCALES,
+    createFields: { kind: ['concept'], order: 31, coverMediaKey: HMA_COVER_KEY },
+    replaceCover: true,
+    sharedFields: HMA_SHARED_FIELDS,
+    localizedFields: hmaLocalizedFields,
+  },
+  // Merikh Baft: a new archive row (order 108), so the create path sets its cover. Carsparency's
+  // chapter grammar again, with its own gate in the seeds spec.
+  {
+    label: 'Merikh Baft',
+    slug: MKB_SLUG,
+    assetsDir: MKB_ASSETS,
+    media: MKB_MEDIA,
+    seedLocales: LOCALES,
+    createFields: { kind: ['product', 'systems'], order: 108, coverMediaKey: MKB_COVER_KEY },
+    sharedFields: MKB_SHARED_FIELDS,
+    localizedFields: mkbLocalizedFields,
   },
 ]
 

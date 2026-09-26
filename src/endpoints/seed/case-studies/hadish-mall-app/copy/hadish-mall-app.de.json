@@ -1,0 +1,238 @@
+{
+  "statement": "Ein Webdienst für Miete, Nebenkosten und Reparaturen eines Einkaufszentrums – für Hadish Mall entworfen und gepitcht.",
+  "industry": "Gewerbeimmobilien · Betrieb von Einkaufszentren",
+  "team": "Eine Figma-Datei: 6 Mieter-Screens, ein Manager-Panel und zwei Pitch-Decks",
+  "heroCaption": "Die Mieterseite auf dem Smartphone: die Startseite von Hadish Mall, eine Liste buchbarer und bezahlbarer Services und das Wallet.",
+  "snapshot": {
+    "problem": "Ein Einkaufszentrum zieht von jeder Einheit Miete und Nebenkosten ein und schickt Personal zum Reinigen und Reparieren, und jeder Schritt braucht eine Erinnerung, einen Preis und jemanden, der ihn prüft.",
+    "role": "Im Marketing eingestiegen; die App vorgeschlagen, ihre Mieter-Screens und das Manager-Panel gestaltet und die Decks geschrieben, mit denen sie gepitcht wurde.",
+    "result": "Ein Konzept und ein Pitch mit 17 Folien samt 12-Wochen-Lieferplan. Nichts in der Datei zeigt, dass es gebaut wurde."
+  },
+  "alt": {
+    "cover": "Das Deckblatt des Hadish-Mall-Pitches: das Logo des Einkaufszentrums und der Titel „Hadish Mall commercial complex management“ neben einem Laptop mit der Mieterliste",
+    "home": "Die Mieter-Web-App für Hadish Mall auf dem Smartphone: ein Foto des Atriums unter dem Titel „Hadish Mall management system“ und ein Button „View services“",
+    "services": "Der Services-Screen auf dem Smartphone: ankreuzbare Karten für Nebenkostenzahlung, Ladenreinigung und Klimaanlagenreparatur, jede mit Preis, über einem grünen Bezahlen-Button und der Summe",
+    "wallet": "Der Wallet-Screen auf dem Smartphone: das Guthaben, eine Aufladekarte mit festen Beträgen und einem Rabattcode sowie eine Liste früherer Transaktionen",
+    "receipt": "Der Zahlungs-Screen auf dem Smartphone: ein Hinweis, dass der Betrag exakt stimmen muss, der überwiesene Betrag, ein Upload-Feld für ein Foto des Bankbelegs und ein Absenden-Button",
+    "walletError": "Der abgedunkelte Services-Screen hinter einer roten Meldung auf dem Smartphone: Das Wallet-Guthaben reicht nicht, bitte aufladen",
+    "threeServices": "Eine Pitch-Folie mit den drei Teilen des Dienstes – Mieter, Manager sowie Services und Anfragen –, jeder mit Geräte-Mock-up und kurzer Beschreibung",
+    "rentCharge": "Eine Pitch-Folie zur Verwaltung von Miete und Nebenkosten: ein Smartphone mit Zahlungen pro Einheit neben einer Checkliste mit Wallet, Säumniszuschlägen und Belohnungen für pünktliche Zahlung",
+    "cutoff": "Eine Pitch-Folie zum Sperren von Leistungen: ein Smartphone mit roter Meldung neben einer Checkliste mit Schritten wie dem Deaktivieren eines Kontos und dem Stoppen laufender Services",
+    "managerPanel": "Eine Pitch-Folie zum Manager-Panel: ein Tablet mit der Mietertabelle neben einer Checkliste dessen, was Manager sehen und tun können",
+    "staff": "Eine Pitch-Folie zur Überwachung des Personals: ein Laptop mit Dashboard neben einer Checkliste mit Einstempelzeiten, täglichen Aufgabenerinnerungen und einem Organigramm",
+    "transparency": "Eine Pitch-Folie zur finanziellen Transparenz: ein Laptop neben einer Checkliste mit bepreisten Services, protokollierten Start- und Endzeiten und fotografiertem Material",
+    "roadmap": "Eine Pitch-Folie mit einem 12-Wochen-Plan als Gantt-Diagramm: ein Treffen mit den Managern, Flows, dann zwei Phasen aus Design, Umsetzung und Übergabe"
+  },
+  "chapters": {
+    "context": {
+      "heading": "Aus dem Marketing, mit einem Softwarevorschlag",
+      "body": [
+        "Hadish Mall ist ein großes Einkaufs- und Unterhaltungszentrum im Nordosten Teherans: Läden auf mehreren Etagen, ein Food Court, Kinos und Parkplätze. Sina kam in Teilzeit fürs Marketing dazu und organisierte Events, Social-Media-Kampagnen und Influencer-Kooperationen, um Besucher anzulocken.",
+        "Hinter den Schaufenstern funktioniert das Zentrum wie eine kleine Stadt. Jede Einheit schuldet Miete und monatliche Nebenkosten, und Mieter fordern Reinigung, Reparaturen und Klimaanlagenwartung an, die das Personal erledigt und die jemand bepreisen muss. Sina schlug vor, all das in einen einzigen Webdienst zu verlagern, und gestaltete ihn: die Screens für Mieter, ein Panel für das Management des Zentrums und die Decks, mit denen er gepitcht wurde."
+      ]
+    },
+    "problem": {
+      "heading": "Drei Gruppen, eine Abrechnung",
+      "body": [
+        "Der Pitch nennt drei Gruppen und gibt jeder einen eigenen Dienst. Mieter bezahlen, buchen Services und stellen Anfragen. Manager verfolgen Einnahmen, Außenstände, Anfragen und laufende Arbeiten. Das Servicepersonal erhält Aufgaben, protokolliert Beginn und Ende jedes Einsatzes und meldet zurück.",
+        "Das Deck benennt die Probleme, die es beseitigen will: Zahlungen, die von Erinnerungen und von Leuten abhängen, die ihnen hinterherlaufen, verspätete Zahlungen ohne Folgen, Services, deren Preis festlegt, wer den Auftrag ausführt, und Personal, dessen Arbeit niemand sieht."
+      ],
+      "insight": "Jedes Versprechen im Pitch dreht sich um Geld oder Verantwortlichkeit, nicht um Komfort."
+    },
+    "approach": {
+      "heading": "Erst die Screens, dann das Argument",
+      "body": [
+        "Node-IDs in Figma steigen, während eine Datei bearbeitet wird, und zeigen so die Reihenfolge der Arbeit. Die Mieter-Screens kamen zuerst: sechs Smartphone-Screens im Hadish-Mall-Branding, gezeichnet in einem mobilen Browser unter der Webadresse des Zentrums, mit Beispieldaten von Anfang 2023. Danach folgte das Manager-Panel, angelegt für drei Bereiche in Desktop-, Tablet- und Mobile-Breite.",
+        "Dann der Pitch. Ein erstes Deck für Hadish Mall endete mit drei Preisstufen. Ein zweites mit 17 Folien ließ die Preise weg und ergänzte, was ein Käufer als Nächstes fragen würde: Personalüberwachung, finanzielle Transparenz, Sicherheit, Schulung, Deployment und einen 12-Wochen-Plan."
+      ]
+    },
+    "solution": {
+      "heading": "Zahlungen, die sich selbst eintreiben",
+      "body": [
+        "Mieter öffnen den Dienst über einen Link auf dem Smartphone. Die Services sind eine Liste von Karten – Nebenkostenzahlung, Ladenreinigung, Klimaanlagenreparatur –, jede mit Preis; Mieter kreuzen an, was sie brauchen, und zahlen unten die Summe. Das Wallet hält ein Guthaben, lässt sich mit festen Beträgen aufladen, nimmt einen Rabattcode an und listet jede Transaktion. Reicht das Guthaben nicht, bittet eine rote Meldung ums Aufladen.",
+        "Mieter können auch außerhalb der App zahlen: Der Zahlungs-Screen nimmt den überwiesenen Betrag und ein Foto des Bankbelegs entgegen und weist darauf hin, dass der Betrag exakt dem erwarteten entsprechen muss.",
+        "Das Deck ergänzt die Regeln, mit denen sich Zahlungen selbst durchsetzen: Belohnungen für pünktlich zahlende Mieter, automatisch berechnete Säumniszuschläge und eine Sperre, die technische Services, Anfragen und Konto einer Einheit aussetzt, sie von der Liste der zuverlässigen Zahler streicht und laufende Arbeiten stoppt, bis die Schuld beglichen ist. SMS informieren Mieter, Personal und Manager über jeden Schritt, sodass niemand nachtelefonieren muss."
+      ]
+    },
+    "operations": {
+      "heading": "Jeder Einsatz mit Preis und Protokoll",
+      "customLabel": "Betrieb",
+      "body": [
+        "Im Manager-Panel laufen Einnahmen, Forderungen, Zahlungen, Anfragen und Nachrichten zusammen: Einheiten und ihre Konten, offene Rechnungen, ausstehende Aufgaben, Einnahmen aus Services und Feedback von Mietern. Der Personaldienst macht aus jeder Anfrage eine Aufgabe mit Start- und Endzeit.",
+        "Zwei Folien begründen den betrieblichen Nutzen. Eine verspricht finanzielle Transparenz: jeder Service in der Software bepreist, jeder Einsatz mit Beginn und Ende protokolliert, ein Foto jedes in einer Einheit verbauten Materials und Bezahlung über die App, damit das Personal keine falschen Preise nennen kann. Die andere verspricht Überwachung: Einstempelzeiten, tägliche Aufgabenerinnerungen, Aufgaben pro Tag und Monat, Teams und ein Organigramm."
+      ],
+      "insight": "Die Personalfolie heißt „Verhalten überwachen und Personal abbauen“ – geschrieben für den Eigentümer, nicht für die Menschen, die sie überwacht."
+    },
+    "product": {
+      "heading": "Als Abonnement bepreist",
+      "customLabel": "Produkt",
+      "body": [
+        "Schon das erste Deck bepreiste den Dienst als Abo in drei Stufen – Base für 100 Nutzer, Pro für 300 und Custom ohne Limit –, monatlich oder jährlich mit 30 % Rabatt abgerechnet, für mindestens sechs Monate. Base verzichtete auf die Automatisierung: keine automatischen Benachrichtigungen, keine automatische Sperre, keine Belohnungen oder Säumniszuschläge.",
+        "Die letzte Folie ist der Lieferplan: ein Treffen mit den Managern in Woche eins, Flows in Woche zwei, dann zwei Phasen. Phase zwei wird gestaltet, während Phase eins entsteht; so wird Phase eins in den Wochen sechs und sieben übergeben und Phase zwei in den Wochen elf und zwölf."
+      ]
+    },
+    "critique": {
+      "heading": "Der Pitch eilt den Screens voraus",
+      "customLabel": "Kritik",
+      "body": [
+        "Das Deck verspricht ein Manager-Panel, einen Personaldienst und automatische Regeln. Die Datei zeichnet die Mieterseite. Die Panel-Seite bietet Platz für achtzehn Screens – drei Bereiche, zwei Zustände, drei Breiten – und enthält zwei: eine Mietertabelle und ein Finanz-Dashboard, dessen Menü zu einem Produkt für Terminbuchungen in Kliniken gehört. Manager- und Personalseite werden auf Folien begründet, nicht gestaltet.",
+        "An denselben Stellen stimmen die Zahlen nicht. Auf dem Services-Screen sind drei Services zu je 250.000 Toman angekreuzt, und die Summe lautet 250.000. Auf der Preisfolie zieht der Jahresschalter 30 % von Pro und Custom ab, nicht aber von Base, sodass der günstigste Tarif einen höheren Monatspreis zeigt als der mittlere."
+      ],
+      "bullets": [
+        "Der Beleg-Upload bedeutet, dass jemand jede Banküberweisung von Hand prüft – entgegen dem Versprechen des Decks, dass niemand Zahlungen hinterherlaufen muss.",
+        "Alle Service-Karten teilen sich einen Preis und eine Platzhalterbeschreibung."
+      ],
+      "insight": "Einem Käufer wäre ausgerechnet die Hälfte des Produkts verkauft worden, die am wenigsten gezeichnet war."
+    }
+  },
+  "figures": {
+    "services3": {
+      "caption": "Folie 2 des Hadish-Mall-Decks: ein Dienst in drei Teilen – Mieter, Manager sowie Services und Anfragen."
+    },
+    "serviceList": {
+      "caption": "Der Services-Screen: ankreuzen, was man braucht, die Summe zahlen.",
+      "annotations": [
+        "Die Webadresse des Zentrums im mobilen Browser: ein Link, keine App zum Installieren",
+        "Jeder Service ist eine Karte mit eigenem Preis und einer Checkbox",
+        "Die Nebenkostenzahlung steht in derselben Liste wie Reinigung und Reparaturen",
+        "Summe und grüner Bezahlen-Button bleiben unten fixiert"
+      ]
+    },
+    "pay": {
+      "caption": "Drei Wege einer Zahlung: aus dem Wallet, per Banküberweisung mit Beleg oder blockiert wegen zu geringen Guthabens.",
+      "items": [
+        "Das Wallet: Guthaben, Aufladen und Transaktionen.",
+        "Zahlung per Banküberweisung: der Betrag und ein Foto des Belegs.",
+        "Zu wenig im Wallet: Der Mieter wird gebeten aufzuladen."
+      ]
+    },
+    "rules": {
+      "caption": "Die Zahlungsregeln aus dem Pitch.",
+      "items": [
+        "Miete und Nebenkosten: Belohnungen für pünktliche Zahlung, Säumniszuschläge und ein Wallet für jeden Mieter.",
+        "Die Sperre: Services, Anfragen und Konto ausgesetzt, bis die Schuld beglichen ist."
+      ]
+    },
+    "panel": {
+      "caption": "Das Manager-Panel, wie der Pitch es zeigt: die Mietertabelle auf einem Tablet und was Manager verfolgen können. Kontaktdaten im Mock-up sind unkenntlich gemacht."
+    },
+    "staff": {
+      "caption": "Die betrieblichen Versprechen.",
+      "items": [
+        "Personalüberwachung: Einstempelzeiten, Aufgabenerinnerungen, Teams und ein Organigramm.",
+        "Transparenz: jeder Service in der Software bepreist, zeitlich erfasst und fotografiert."
+      ]
+    },
+    "roadmap": {
+      "caption": "Der 12-Wochen-Plan: Phase zwei wird gestaltet, während Phase eins entsteht, und jede Phase endet mit Übergabe und Einrichtung."
+    }
+  },
+  "process": {
+    "heading": "Vier Versionen in der Reihenfolge ihrer Entstehung",
+    "steps": [
+      {
+        "label": "Mieter-Screens",
+        "note": "Sechs Smartphone-Screens für Hadish Mall: Startseite, Services, Wallet und drei Zahlungszustände"
+      },
+      {
+        "label": "Manager-Panel",
+        "note": "Angelegt für drei Bereiche in drei Breiten; eine Mietertabelle und ein Finanz-Dashboard gezeichnet"
+      },
+      {
+        "label": "Erster Pitch",
+        "note": "Ein Deck für Hadish Mall, das mit drei Preisstufen endet"
+      },
+      {
+        "label": "Zweiter Pitch",
+        "note": "17 Folien: Betrieb, Sicherheit, Schulung, Deployment und ein 12-Wochen-Plan; keine Preise"
+      }
+    ]
+  },
+  "decisions": {
+    "heading": "Fünf Entscheidungen hinter dem Konzept",
+    "lede": "Jede ist in den Screens sichtbar oder in den Decks festgehalten.",
+    "items": [
+      {
+        "title": "Ein Webdienst für drei Gruppen statt drei Apps",
+        "why": "Mieter, Manager und Personal nutzen alle einen Dienst im Browser; die Mieter-Screens sind unter der Webadresse des Zentrums gezeichnet und werden über einen Link geöffnet. Niemand muss etwas installieren, und das Zentrum betreibt ein einziges System.",
+        "tradeoff": "Eine Webseite kann keine Push-Benachrichtigungen senden, also geht jede Meldung als SMS hinaus."
+      },
+      {
+        "title": "Zahlungsregeln, die sich selbst durchsetzen",
+        "why": "Belohnungen für pünktliche Zahlung, automatische Säumniszuschläge und eine Sperre, die die Services einer Einheit aussetzt, ersetzen die Erinnerungen und das Hinterherlaufen, die das Deck abschaffen will.",
+        "tradeoff": "Eine automatische Sperre ist ein grobes Werkzeug gegenüber einem Mieter, den das Zentrum halten will."
+      },
+      {
+        "title": "Jeder Einsatz mit Preis und Protokoll",
+        "why": "Services sind in der Software bepreist, und das Personal protokolliert Beginn und Ende jedes Einsatzes und fotografiert verbautes Material, sodass sich die Rechnung eines Mieters mit der Arbeit abgleichen lässt.",
+        "tradeoff": "Mehr Protokollierung für das Personal und ein Protokoll, das sich als Überwachung lesen lässt."
+      },
+      {
+        "title": "Überweisungsbelege neben dem Wallet akzeptieren",
+        "why": "Mieter können außerhalb der App zahlen und ein Foto des Belegs hochladen, mit dem Hinweis, dass der Betrag exakt stimmen muss.",
+        "tradeoff": "Jeder Beleg muss von einem Menschen geprüft werden – genau die Arbeit, die der Rest des Designs abschaffen will."
+      },
+      {
+        "title": "Als Abo verkaufen, nicht als einmaliges Projekt",
+        "why": "Stufen nach Nutzerzahl, monatlich oder jährlich abgerechnet, mindestens sechs Monate: Das Zentrum zahlt für einen laufenden Dienst, statt ein fertiges Projekt zu kaufen.",
+        "tradeoff": "Eine Mindestlaufzeit verlangt eine Zusage, bevor das Zentrum den Dienst arbeiten sieht."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "Sinas Anteil",
+    "intro": "Aus der Datei zusammengestellt. Sie nennt kein Team; das ist also die Arbeit in der Datei, kein Anspruch auf alleinige Urheberschaft.",
+    "own": [
+      "Die Idee: eine App, vorgeschlagen aus einer Marketingrolle heraus",
+      "Sechs Mieter-Screens: Startseite, Services, Wallet und drei Zahlungszustände",
+      "Layout, Mietertabelle und Finanz-Dashboard des Manager-Panels",
+      "Zwei Pitch-Decks für Hadish Mall",
+      "Die drei Preisstufen und der 12-Wochen-Lieferplan"
+    ],
+    "collaborate": [
+      "Das Management von Hadish Mall, Publikum des ersten Pitches"
+    ],
+    "note": "Die technischen Folien – Infrastruktur, Sicherheit und Deployment – beschreiben die Umsetzung, die ein Entwicklungsteam übernehmen würde. Nichts in der Datei zeigt, dass sie gebaut oder gekauft wurde."
+  },
+  "outcomes": {
+    "heading": "Ein Pitch, kein Produkt",
+    "intro": "Nichts in der Datei belegt, dass der Dienst gebaut, verkauft oder genutzt wurde. Sie enthält ein Design der Mieterseite und einen vollständigen Pitch für Hadish Mall.",
+    "delivered": [
+      {
+        "label": "Mieter-Screens",
+        "context": "Startseite, Services, Wallet und drei Zahlungszustände, für Hadish Mall"
+      },
+      {
+        "label": "Folien im finalen Pitch",
+        "context": "Von den drei Diensten bis zu Sicherheit, Schulung und Deployment"
+      },
+      {
+        "label": "Wochen im Lieferplan",
+        "context": "Zwei Phasen, die zweite gestaltet, während die erste entsteht"
+      }
+    ],
+    "shipped": [
+      "Ein Design für die Mieter-Web-App: Services, Wallet und Zahlungszustände",
+      "Ein Layout für das Manager-Panel mit Mietertabelle",
+      "Drei Preisstufen nach Nutzerzahl",
+      "Ein Pitch mit 17 Folien und ein 12-Wochen-Lieferplan"
+    ]
+  },
+  "lessons": {
+    "heading": "Was ich ändern würde",
+    "items": [
+      {
+        "title": "Die Seite zeichnen, die man verkauft",
+        "body": "Der Pitch verkaufte Managern ein Panel und Eigentümern einen Personaldienst, und die Datei zeichnet die Screens der Mieter. Zwei fertige Panel-Screens hätten überzeugender argumentiert als vier Folien voller Checklisten."
+      },
+      {
+        "title": "Die Zahlen vor dem Pitch stimmig machen",
+        "body": "Eine Summe, die zwei von drei angekreuzten Posten ignoriert, und ein Jahresrabatt, der den günstigsten Tarif am teuersten aussehen lässt. In einem Pitch über finanzielle Transparenz prüft ein Käufer zuerst die Rechnungen auf den Folien."
+      },
+      {
+        "title": "Die Lücke schließen, die das Design offen lässt",
+        "body": "Der Beleg-Upload holt einen Menschen zurück in die Zahlungen, die der Pitch zu automatisieren verspricht. Ein Zahlungs-Gateway in Phase eins – oder wenigstens eine Warteschlange im Manager-Panel zum Prüfen der Belege – hätte dieses Versprechen gehalten."
+      }
+    ]
+  }
+}

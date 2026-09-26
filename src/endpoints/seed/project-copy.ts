@@ -1237,6 +1237,38 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
         'バンクーバー周辺のローワーメインランドで、プレセール（竣工前販売）のコンドミニアムやタウンハウスを探す買い手のためのマーケットプレイス。デポジット（手付金）のスケジュール、契約譲渡手数料、住戸ごとの費用を並べて示す76のレスポンシブ画面が、不動産エージェントにデータを販売していた以前のバージョンに取って代わった。',
     },
   },
+  'merikh-baft': {
+    fa: {
+      title: 'مریخ بافت — ردیابی هر طاقه پارچه از انبار تا مشتری',
+      summary:
+        'برند، وب‌سایت، پنل مدیریت و اپ وظایف پنج‌نقشی برای یک کارخانهٔ پارچهٔ اسپیسر در ایران: ۱۲۸ صفحه که در آن هر طاقه برچسب QR می‌گیرد و در هر تحویل، از رنگرزی تا راننده و مشتری، بررسی می‌شود.',
+    },
+    ar: {
+      title: 'مريخ بافت — تتبّع كل لفّة قماش من المستودع إلى العميل',
+      summary:
+        'هوية بصرية وموقع ولوحة إدارة وتطبيق مهام بخمسة أدوار لمصنع إيراني لأقمشة السبيسر: 128 شاشة تحصل فيها كل لفّة على ملصق QR وتُفحص عند كل تسليم، من المصبغة إلى السائق إلى العميل.',
+    },
+    es: {
+      title: 'Merikh Baft — cada rollo de tela seguido del almacén al cliente',
+      summary:
+        'Marca, web, back office y una app de tareas con cinco roles para una fábrica iraní de tejido spacer: 128 pantallas en las que cada rollo lleva una etiqueta QR y se verifica en cada entrega, de la tintorería al conductor y al cliente.',
+    },
+    de: {
+      title: 'Merikh Baft — jede Stoffrolle vom Lager bis zum Kunden verfolgt',
+      summary:
+        'Marke, Website, Backoffice und eine Aufgaben-App mit fünf Rollen für eine iranische Abstandsgewirke-Fabrik: 128 Screens, in denen jede Rolle ein QR-Etikett bekommt und bei jeder Übergabe geprüft wird – von der Färberei über den Fahrer bis zum Kunden.',
+    },
+    fr: {
+      title: 'Merikh Baft — suivre chaque rouleau de tissu, de l’entrepôt au client',
+      summary:
+        'Marque, site, back-office et une app de tâches à cinq rôles pour une usine iranienne de tissu 3D spacer : 128 écrans où chaque rouleau reçoit une étiquette QR et est vérifié à chaque passage de main, de la teinturerie au chauffeur puis au client.',
+    },
+    ja: {
+      title: 'メリフ・バフト — 生地ロールを倉庫から顧客まで追跡する',
+      summary:
+        'イランのスペーサーファブリック工場のためのブランド、ウェブサイト、バックオフィス、5つの役割を持つタスクアプリ。128の画面で、すべてのロールにQRラベルを付け、染色工場からドライバー、顧客へと渡るたびに照合する。',
+    },
+  },
   faymen: {
     fa: {
       title: 'فیمن — فروشگاه فارسی پوشاک مردانه',

@@ -1,0 +1,289 @@
+{
+  "statement": "Ein Hersteller von Abstandsgewirken: Jede Rolle trägt ein QR-Etikett, und jede Übergabe von der Färberei über den Fahrer bis zum Kunden wird geprüft.",
+  "industry": "Textil · B2B-Fertigung",
+  "team": "Eine Figma-Datei: Marke, Website, Backoffice und eine Aufgaben-App für fünf Rollen",
+  "heroCaption": "Die Aufgaben-App auf dem Smartphone: neue Rollen im Lager etikettieren, die Ladungsprüfung des Fahrers und die Startseite der Website.",
+  "snapshot": {
+    "problem": "Eine Stoffrolle geht durch Lager, Färberei, Fahrer und Kunde. Bei jeder Übergabe kann sie falsch gezählt werden oder verloren gehen.",
+    "role": "Produktdesigner für Markenfindung, Identität, eine responsive Website, ein Desktop-Backoffice und eine rollenbasierte mobile App.",
+    "result": "128 gestaltete Screens und eine Bibliothek mit 334 Komponenten. Ob das Produkt veröffentlicht wurde, geht aus der Datei nicht hervor."
+  },
+  "alt": {
+    "cover": "Aufgaben-App von Merikh Baft auf dem Smartphone – das Blatt zum Etikettieren neuer Ware: Daten eingeben, pro Rolle ein Etikett drucken, Etiketten anbringen",
+    "dyeing": "Aufgaben-App von Merikh Baft – das Blatt der Färberei: QR-Codes scannen, Packliste drucken, Ladung an den Fahrer übergeben, der Fahrer bestätigt",
+    "driver": "Aufgaben-App von Merikh Baft – das Blatt des Fahrers: Ladung mit der Packliste abgleichen, Ziel erhalten, Lieferung bestätigen",
+    "customer": "Aufgaben-App von Merikh Baft – das Blatt des Kunden: Empfang bestätigen, dann bestätigen, dass die Ladung zur Packliste passt",
+    "homeMobile": "Website von Merikh Baft auf dem Smartphone – der Hero-Bereich „eine neue Generation von Stoffen, die atmen“ über Kennzahlen zu Kunden, Lagern und monatlichen Lieferungen",
+    "homeFold": "Website von Merikh Baft am Desktop – eine Hand hält ein Stück Abstandsgewirke neben der Überschrift, darunter eine Kennzahlenleiste",
+    "taskList": "Aufgaben-App von Merikh Baft – die Anfrageliste des Lagers mit den Tabs Offen, In Bearbeitung und Erledigt sowie Buttons zum Erfassen von Daten oder Erzeugen eines QR-Codes",
+    "settingsWarehouse": "Aufgaben-App von Merikh Baft – Lagereinstellungen: Lagerorte, Maßeinheiten, Fehlerbehebung und ein direkter Draht zu einem technischen Berater",
+    "settingsDyeing": "Aufgaben-App von Merikh Baft – Einstellungen der Färberei: Maschineneinstellungen, Farbvorgaben, Chargengröße, ein Prozessleitfaden und Fehlerbehebung",
+    "settingsRoute": "Aufgaben-App von Merikh Baft – Einstellungen des Fahrers: Routenoptimierung, Benachrichtigungen, Fahrzeugdaten, Transport-FAQ und ein Notfallkontakt",
+    "settingsCustomer": "Aufgaben-App von Merikh Baft – Einstellungen des Kunden: Bestelleinstellungen, Wartungshinweise, Neuigkeiten sowie Warnungen zu verspäteten Bestellungen und Lieferfristen",
+    "requestDetail": "Backoffice von Merikh Baft – eine Anfrage: Bonität und Saldo des Kunden, die Bestellzahlen, eine Bestell-Timeline in neun Schritten und die Bestellpositionen",
+    "warehouseQc": "Backoffice von Merikh Baft – die Lagerseite: Gesamtbestand, ausgehende Menge, nächster Versandtermin und die Zahl der Rollen, die auf die Qualitätskontrolle warten",
+    "customerDetail": "Backoffice von Merikh Baft – ein Kunde: der interne Ansprechpartner, die nächste Lieferung, der Finanzstatus und Tabs für Lieferungen, Zahlungen, Kontakte, Anfragen und Rechnungen",
+    "consultation": "Website von Merikh Baft – das Beratungsformular: Branche, Bindungsart und Bestellmenge wählen, dann um Beratung bitten",
+    "productPage": "Website von Merikh Baft – eine Stoffseite: Foto und Farben, passende Branchen, eine Spezifikationstabelle und ein Preis pro Meter",
+    "persona": "Markenpersona von Merikh Baft – Leitspruch, Hintergrund, Ziele, Schmerzpunkte, Zahlungsgewohnheiten und Erwartungen eines Basar-Großhändlers",
+    "logo": "Logo von Merikh Baft – ein Monogramm aus einem Maschenraster im Kreis neben dem Namen in lateinischer und persischer Schrift, in Marineblau",
+    "tone": "Tonalität von Merikh Baft – acht Schieberegler zwischen Paaren wie einfach und komplex, modern und klassisch, schlicht und hochwertig",
+    "sidebars": "Backoffice von Merikh Baft – drei Versionen der Seitenleiste nebeneinander, mit unterschiedlichen Einträgen und jeweils einem anderen hervorgehobenen Eintrag",
+    "color": "Designsystem von Merikh Baft, Version 0.0.1 – die blaue Hauptskala und die Grauskala"
+  },
+  "chapters": {
+    "context": {
+      "heading": "Eine Wirkerei für Stoffe, die atmen",
+      "body": [
+        "Merikh Baft stellt Abstandsgewirke her: ein dreilagiges Textil aus zwei Außenflächen, die durch eine Polschicht verbunden sind. Es lässt Luft durch und behält seine Form. Es steckt in Schuhen, Bürostühlen, Autositzen, Matratzen und Medizinprodukten und wird meterweise an Hersteller und Basar-Großhändler verkauft.",
+        "Das ganze Projekt liegt in einer Figma-Datei mit 17 Seiten: ein Marken-Workshop, Personas und eine Tonalität; ein Logo und Visitenkarten; eine persische Website mit Leserichtung von rechts nach links in drei Breiten, samt Anmeldeflow; ein Desktop-Backoffice; und eine mobile Aufgaben-App für die Menschen, die den Stoff bewegen. Zusammen sind das 128 gestaltete Screens."
+      ]
+    },
+    "problem": {
+      "heading": "Eine Rolle wechselt viermal die Hände",
+      "body": [
+        "Zwischen Maschine und Kunde wird eine Rolle gewogen und eingelagert, in die Färberei gebracht, auf einen Lkw geladen und ausgeliefert. Jeder Schritt ist eine Übergabe zwischen Menschen, die nie den ganzen Auftrag sehen. Und jeder ist eine Gelegenheit, eine Rolle falsch zu zählen, zu vertauschen oder zurückzulassen.",
+        "Die Frage an die App war schnell gestellt: Wie bestätigt jede Person, dass die Rollen vor ihr die auf der Liste sind – ohne ein System zu lernen, das für die Arbeit eines anderen gebaut wurde?"
+      ]
+    },
+    "approach": {
+      "heading": "Ein Aufgabenmuster für fünf Rollen",
+      "body": [
+        "Die App kennt fünf Rollen: Leitung, Lager, Färberei, Fahrer und Kunde. Jede sieht nur ihre eigenen Aufgaben, immer in denselben zwei Ansichten: einer Aufgabenliste und einem Blatt für eine einzelne Aufgabe, das sie in Schritte zerlegt. Jeder Schritt ist als erledigt oder nicht erledigt markiert, und jedes Blatt endet mit denselben zwei Buttons: Problem melden und SMS senden.",
+        "Eine Aufgabe lässt sich auf zwei Wegen füllen: durch Eintippen der Daten oder durch Scannen eines QR-Codes. Die Informationsarchitektur neben den Screens zeigt beide Wege und die Etiketten-Pipeline dahinter: Modell, Gewicht und Länge eingeben, ein Etikett mit QR-Code erzeugen, drucken."
+      ]
+    },
+    "solution": {
+      "heading": "Einstellungen für genau eine Tätigkeit",
+      "body": [
+        "Jede Rolle hat ihre eigenen Einstellungen. Das Lager legt Lagerorte und Maßeinheiten fest – Quadratmeter, laufende Meter oder Kilogramm, manuelle oder automatische Waage, Nachkommastellen und zulässige Bereiche. Die Färberei stellt Maschinen, Farbvorgaben und Chargengröße ein und führt einen Prozessleitfaden. Der Fahrer stellt Routenoptimierung und Benachrichtigungen ein. Der Kunde hinterlegt Lieferadresse, bevorzugte Zahlungsart und Währung.",
+        "Die Benachrichtigungen folgen derselben Aufteilung: niedriger Bestand eines Materials, eine von der Qualitätskontrolle beanstandete Rolle, neue Rollen, ein zugewiesener Färbeauftrag, eine geänderte Route, eine vom Kunden quittierte Lieferung."
+      ],
+      "insight": "Alle nutzen dieselbe App, doch ein Fahrer sieht nie eine Einstellung der Färberei."
+    },
+    "office": {
+      "heading": "Dieselbe Kette, vom Büro aus gesehen",
+      "customLabel": "Backoffice",
+      "body": [
+        "Das Backoffice ist für Desktop und Tablet gedacht: Anfragen, Bestand, Lager, Kunden und Zugriffsrechte. Eine Anfrage zeigt über der Bestellung die Bonität des Kunden in Sternen und seinen offenen Saldo. Darunter folgt eine Timeline in neun Schritten, von der Bestellung über Proformarechnung, Anzahlung, Verladung, Versand und Lieferung bis zur Abrechnung. Danach kommen die Bestellpositionen mit Stoffcode, Menge, Einheit, Zahlungsart, Lagerstatus und Liefertermin.",
+        "Die Lagerseite zählt, was die App erzeugt: Gesamtbestand, ausgehende Menge, den nächsten Versandtermin und die Zahl der Rollen in der Warteschlange der Qualitätskontrolle. Eine Kundenseite ergänzt den internen Ansprechpartner, einen nach Einkaufsvolumen gestaffelten Mitgliedsbeitrag und einen Hinweis, wie sich eine Anzahlung auf das Ranking eines Kunden auswirkt."
+      ]
+    },
+    "website": {
+      "heading": "Beratung vor dem Warenkorb",
+      "customLabel": "Website",
+      "body": [
+        "Die Website wurde in 1.440, 1.028 und 360 Pixel Breite über elf Seiten gestaltet: zwei Versionen der Startseite, eine Stoffseite, die Stoffliste, Branchen und eine Branchenseite, ein Blog und ein Beitrag, Über uns, Kontakt und FAQ. Die Startseite beginnt mit der Atmungsaktivität. Dann folgen Stoffeigenschaften, Branchen, Gründe für Merikh Baft und ein geführtes Beratungsformular: welche Branche, welche Bindungsart, wie viele Meter.",
+        "Eine Stoffseite zeigt zuerst eine Spezifikationstabelle – Zusammensetzung, Breite, Dicke, Gewicht, Zertifizierung, Werke – und die passenden Branchen, erst danach den Preis pro Meter. Die Startseite verspricht außerdem eine Auftragsverfolgung über ein Kunden-Dashboard."
+      ]
+    },
+    "brand": {
+      "heading": "Vier Käufer und dreizehn Regler",
+      "customLabel": "Marke",
+      "body": [
+        "Die Marke kam zuerst. Ein Workshop-Kit – Persönlichkeitsadjektive, eine Liste „ist / ist nicht“, eine Empathiekarte, eine Persona-Vorlage und Fragen wie „Wie würden Sie unseren heutigen Ton im Textilhandel beschreiben?“ – führte zu vier Käufer-Personas: ein 60-jähriger Basar-Großhändler, der einen Stoffcode will, den kein Konkurrent kaufen kann; ein junger Schuhmacher auf der Jagd nach Rabatten; ein Einkäufer für Medizinprodukte, der Muster testen muss; und ein Büromöbelhersteller, der die Hälfte per Scheck zahlt.",
+        "Die Tonalität ist auf dreizehn Reglern festgelegt, von einfach bis komplex und von schlicht bis hochwertig. Sechs persische Schriften kamen in die engere Wahl, gewählt wurde Yekan Bakh. Das Logo stellt ein Monogramm aus einem Maschenraster im Kreis neben den Namen in lateinischer und persischer Schrift."
+      ]
+    },
+    "critique": {
+      "heading": "Aktive Zustände, die an die falsche Stelle zeigen",
+      "customLabel": "Kritik",
+      "body": [
+        "Derselbe kleine Fehler taucht auf allen drei Oberflächen auf. Der Website-Header markiert Kontakt als aktuelle Seite – auf der Startseite, der Stoffseite und der Stoffliste. Die Lagerseite des Backoffice hebt in der Seitenleiste Anfragen hervor, und zwei der drei Seitenleisten-Versionen führen Kunden doppelt, unter zwei Namen mit zwei Icons. In der App zeigen die Einstellungsscreens das Aufgaben-Icon auf dem Tab für Benachrichtigungen.",
+        "Die Desktop-Anfrageseite zeichnet ihre Bestell-Timeline als neun Kreise ohne Beschriftung. Die wichtigste Abfolge im Büro muss man also aus dem Gedächtnis lesen. Und die mobile Spalte des Backoffice enthält vier leere Frames."
+      ],
+      "bullets": [
+        "In jeder Tabelle wiederholt jede Zeile dieselben Platzhalterwerte – ein Stoffcode, eine Länge, ein Preis. Keine Tabelle wurde also mit echten Daten getestet.",
+        "Die Website verspricht ein Kunden-Dashboard zur Auftragsverfolgung, doch ein solches Dashboard wurde nie gestaltet."
+      ],
+      "insight": "Der Navigationszustand ist Inhalt: Stimmt er nicht, verlieren Nutzer das Vertrauen darin, wo sie sind."
+    },
+    "system": {
+      "heading": "Ein System in Version 0.0.1, in Marineblau und Blau",
+      "customLabel": "System",
+      "body": [
+        "Das Designsystem trägt die Versionsnummer 0.0.1. Es umfasst 21 Komponentensets und 334 Komponenten: Farbe, Typografie, Formularfelder, Buttons, Breadcrumbs, Checkboxen und Radiobuttons, Schalter, Modals, Toasts, Profil, Header und Footer sowie das Seitenmenü. Die Farbe besteht aus 22 Styles in einer Blau- und einer Grauskala, mit dem Marineblau der Marke am dunklen Ende des Blaus. Die Typografie besteht aus 11 Styles, alle in Yekan Bakh, von einer 24-Pixel-Überschrift bis zu 12 Pixel Fließtext.",
+        "Wie die meisten ersten Versionen speichert es alles als Styles. Es gibt nur eine einzige Variable, deshalb kann das System noch nicht zwischen Themes oder Dichten wechseln."
+      ]
+    }
+  },
+  "figures": {
+    "fold": {
+      "caption": "Die Startseite am Desktop: zuerst die Atmungsaktivität, darunter Kennzahlen zu Kunden, Lieferungen und Lagern."
+    },
+    "chain": {
+      "caption": "Der Weg einer Rolle als vier Aufgabenblätter. Jedes endet mit „Problem melden“ und einer SMS.",
+      "items": [
+        "Lager: Daten eingeben, pro Rolle ein Etikett drucken, anbringen.",
+        "Färberei: Rollen einscannen, Packliste drucken, an den Fahrer übergeben.",
+        "Fahrer: Ladung mit der Packliste abgleichen, dann die Lieferung bestätigen.",
+        "Kunde: Empfang bestätigen, dann bestätigen, dass die Ladung zur Liste passt."
+      ]
+    },
+    "taskList": {
+      "caption": "Die Aufgabenliste des Lagers: Jede Anfrage lässt sich eintippen oder in ein QR-Etikett verwandeln.",
+      "annotations": [
+        "Anfragen aufgeteilt in offen, in Bearbeitung und erledigt",
+        "Jede Anfrage nennt den Auftrag und den Zeitpunkt, zu dem sie gestellt wurde",
+        "Zwei Wege hinein: Daten von Hand eingeben oder einen QR-Code erzeugen"
+      ]
+    },
+    "settings": {
+      "caption": "Einstellungen nach Rolle: Lager, Färberei, Fahrer und Kunde sehen jeweils nur ihre eigenen.",
+      "items": [
+        "Lager",
+        "Färberei",
+        "Fahrer",
+        "Kunde"
+      ]
+    },
+    "request": {
+      "caption": "Eine Anfrage im Backoffice: Bonität und Saldo, die Bestellung, eine Timeline in neun Schritten und die Bestellpositionen."
+    },
+    "office": {
+      "caption": "Bestand und Kunden.",
+      "items": [
+        "Die Lagerseite zählt Rollen, die auf die Qualitätskontrolle warten.",
+        "Eine Kundenseite: Ansprechpartner, nächste Lieferung, Saldo und fünf Tabs mit Verlauf."
+      ]
+    },
+    "web": {
+      "caption": "Die Website fragt, was ein Käufer braucht, bevor sie verkauft.",
+      "items": [
+        "Das Beratungsformular: Branche, Bindungsart und Bestellmenge.",
+        "Eine Stoffseite: Spezifikationstabelle und Branchen vor dem Preis."
+      ]
+    },
+    "persona": {
+      "caption": "Eine von vier Personas: der Basar-Großhändler, der Exklusivität auf einen Stoffcode will und pünktlich per Scheck zahlt."
+    },
+    "identity": {
+      "caption": "Die Identität: das Logo aus dem Maschenraster und das erste von zwei Blättern zur Tonalität.",
+      "items": [
+        "Das Logo in lateinischer und persischer Schrift.",
+        "Tonalität: acht der dreizehn Regler."
+      ]
+    },
+    "sidebars": {
+      "caption": "Drei Seitenleisten aus einem Backoffice: Die ersten beiden führen Kunden doppelt, und die mittlere, auf der Lagerseite, hebt Anfragen hervor."
+    },
+    "color": {
+      "caption": "Die Farbtafel, Version 0.0.1: das Hauptblau und die Grauskala."
+    }
+  },
+  "process": {
+    "heading": "Eine Rolle, fünf Übergaben",
+    "steps": [
+      {
+        "label": "Wiegen und etikettieren",
+        "note": "Das Lager gibt Modell, Gewicht und Länge ein und druckt ein Etikett pro Rolle"
+      },
+      {
+        "label": "Ab in die Färberei",
+        "note": "Die Färberei scannt die Rollen in ihr Rohwarenlager ein"
+      },
+      {
+        "label": "Packliste",
+        "note": "Die Leitung gibt die Packliste aus dem Fertigwarenlager für den Fahrer frei"
+      },
+      {
+        "label": "Ladungsprüfung",
+        "note": "Der Fahrer gleicht die Ladung mit der Packliste ab"
+      },
+      {
+        "label": "Lieferprüfung",
+        "note": "Der Kunde gleicht sie bei Ankunft erneut ab, und eine SMS bestätigt den Empfang"
+      }
+    ]
+  },
+  "decisions": {
+    "heading": "Fünf Entscheidungen hinter der Kette",
+    "lede": "Die Datei macht diese Entscheidungen in ihren Screens und im Architekturdiagramm sichtbar.",
+    "items": [
+      {
+        "title": "Jeder Rolle dieselben zwei Ansichten geben",
+        "why": "Lagerpersonal, Färbereimitarbeiter und Fahrer nutzen die App jeweils für eine einzige Aufgabe. Eine Aufgabenliste und ein Schrittblatt mit erledigt oder nicht erledigt: Mehr muss keiner von ihnen lernen.",
+        "tradeoff": "In der App sieht niemand den ganzen Auftrag. Dafür muss die Leitung das Backoffice öffnen."
+      },
+      {
+        "title": "Aufgaben eintippen oder scannen lassen",
+        "why": "Etiketten werden am Anfang der Kette aus eingetippten Daten gedruckt und danach überall gescannt. Das Architekturdiagramm zeigt beide Eingaben. So lässt sich eine Aufgabe auch dann abschließen, wenn ein Etikett nicht scannbar ist.",
+        "tradeoff": "Eine getippte Eingabe überspringt die Prüfung, die ein Scan liefert."
+      },
+      {
+        "title": "Die Ladung zweimal prüfen",
+        "why": "Der Fahrer gleicht die Ladung in der Färberei mit der Packliste ab, der Kunde bei Ankunft noch einmal. Bei beiden Übergaben geht eine SMS raus, damit jede Seite einen Nachweis hat.",
+        "tradeoff": "Zwei zusätzliche Schritte bei jeder Lieferung. Und bei einer Abweichung gibt es nur einen Ausweg: Problem melden."
+      },
+      {
+        "title": "Erst beraten, dann verkaufen",
+        "why": "Die Personas kaufen nach Branche und aus Gewohnheit, und eine von ihnen muss zuerst Muster testen. Die Startseite beginnt deshalb mit einem Beratungsformular, und eine Stoffseite zeigt Spezifikationen und Branchen vor dem Preis.",
+        "tradeoff": "Ein Stammkunde, der den Stoffcode kennt, hat einen längeren Weg zum Warenkorb."
+      },
+      {
+        "title": "Bonität und Schecks ins Produkt holen",
+        "why": "B2B-Textilkäufer im Iran zahlen oft per Scheck. Das Backoffice zeigt bei jeder Anfrage Bonität und Saldo des Kunden. Die Zahlungsregel der App leitet Bestellungen unter 30 Millionen Toman in die Onlinezahlung, größere in die Zahlung per Scheck.",
+        "tradeoff": "Ein Rating braucht eine klare Regel, und die Datei sagt nicht, wie man die Sterne verdient."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "Sinas Anteil",
+    "intro": "Sina hat die Arbeit in dieser Datei gestaltet, vom Marken-Workshop bis zur Aufgaben-App.",
+    "own": [
+      "Der Marken-Workshop, vier Personas und die Tonalität",
+      "Das Logo und die Visitenkarten",
+      "Die Website in drei Breiten und der Anmeldeflow",
+      "Das Backoffice für Anfragen, Bestand, Lager und Kunden",
+      "Die Aufgaben-App für fünf Rollen und ihr Architekturdiagramm",
+      "Das Designsystem: 21 Komponentensets und 334 Komponenten"
+    ],
+    "collaborate": [
+      "Das Team von Merikh Baft, das am Marken-Workshop teilnahm"
+    ],
+    "note": "Screens in der Datei, die aus anderen Projekten eingefügt wurden, gehören nicht zu dieser Fallstudie und werden nicht gezeigt."
+  },
+  "outcomes": {
+    "heading": "Eine vollständige Designdokumentation",
+    "intro": "Ob Website oder App veröffentlicht wurden, geht aus der Datei nicht hervor. Nutzungszahlen gibt es daher keine. Die Datei enthält ein vollständiges Design für Marke, Vertrieb und Betrieb eines Textilwerks.",
+    "delivered": [
+      {
+        "label": "gestaltete Screens",
+        "context": "32 in der App, 24 im Backoffice, 46 auf der Website und 26 für die Anmeldung"
+      },
+      {
+        "label": "Rollen in der Aufgaben-App",
+        "context": "Leitung, Lager, Färberei, Fahrer und Kunde"
+      },
+      {
+        "label": "Komponenten im Designsystem",
+        "context": "21 Komponentensets, alle in Yekan Bakh gesetzt"
+      }
+    ],
+    "shipped": [
+      "Ein Marken-Workshop, vier Personas und eine Tonalität",
+      "Ein Logo und Visitenkarten",
+      "Eine persische Website in drei Breiten, mit Anmeldung",
+      "Ein Backoffice für Anfragen, Bestand, Lager und Kunden",
+      "Eine mobile Aufgaben-App für fünf Rollen, mit QR-Etiketten",
+      "Ein Designsystem, Version 0.0.1"
+    ]
+  },
+  "lessons": {
+    "heading": "Was ich ändern würde",
+    "items": [
+      {
+        "title": "Den aktiven Zustand auf jedem Screen prüfen",
+        "body": "Derselbe Ausrutscher steckt in der Website, im Backoffice und in der App. Ein Durchgang mit einer Frage pro Screen – wo bin ich laut dieser Anzeige? – hätte alle drei gefunden."
+      },
+      {
+        "title": "Tabellen mit echten Daten füllen",
+        "body": "Jede Tabellenzeile wiederholt einen Stoffcode und einen Preis. Echte Stoffcodes, lange Kundennamen und gemischte Einheiten hätten gezeigt, wo die Tabellen brechen."
+      },
+      {
+        "title": "Die wichtigste Abfolge beschriften",
+        "body": "Die Bestell-Timeline ist die Sicht des Büros auf die ganze Kette, und am Desktop hat sie keine Beschriftungen. Die wichtigste Abfolge eines Produkts sollte die am leichtesten lesbare sein."
+      }
+    ]
+  }
+}

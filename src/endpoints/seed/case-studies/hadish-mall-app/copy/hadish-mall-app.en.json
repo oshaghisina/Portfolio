@@ -1,0 +1,238 @@
+{
+  "statement": "One web service for a mall’s rent, service charges and repairs — designed and pitched for Hadish Mall.",
+  "industry": "Retail real estate · mall operations",
+  "team": "One Figma file: 6 tenant screens, a manager panel and two pitch decks",
+  "heroCaption": "The tenant side on a phone: the Hadish Mall home, a list of services to book and pay for, and the wallet.",
+  "snapshot": {
+    "problem": "A mall collects rent and service charges from every unit and sends staff to clean and repair them, and every step needs a reminder, a price and a person to check it.",
+    "role": "Joined as a marketer; proposed the app, designed its tenant screens and manager panel, and wrote the decks that pitched it.",
+    "result": "A concept and a 17-slide pitch with a 12-week delivery plan. Nothing in the file shows it was built."
+  },
+  "alt": {
+    "cover": "The cover of the Hadish Mall pitch: the mall’s logo and the title “Hadish Mall commercial complex management” beside a laptop showing the tenant list",
+    "home": "The tenant web app for Hadish Mall on a phone: a photo of the mall’s atrium under the title “Hadish Mall management system” and a View services button",
+    "services": "The services screen on a phone: checkable cards for charge payment, shop cleaning and air-conditioner repair, each priced, above a green Pay button and the total",
+    "wallet": "The wallet screen on a phone: the balance, a top-up card with preset amounts and a discount code, and a list of past transactions",
+    "receipt": "The payment screen on a phone: a warning that the amount must match exactly, the amount transferred, an upload area for a photo of the bank receipt and a Submit button",
+    "walletError": "The services screen dimmed behind a red alert on a phone: the wallet balance is too low, please top up",
+    "threeServices": "A pitch slide showing the three parts of the service — tenant, manager, and services and requests — each with a device mock-up and a short description",
+    "rentCharge": "A pitch slide on rent and charge management: a phone showing unit payments beside a checklist that includes a wallet, late fees and on-time rewards",
+    "cutoff": "A pitch slide on cutting off services: a phone with a red alert beside a checklist of steps such as disabling an account and stopping services in progress",
+    "managerPanel": "A pitch slide on the manager panel: a tablet showing the tenant table beside a checklist of what managers can see and do",
+    "staff": "A pitch slide on monitoring staff: a laptop with a dashboard beside a checklist that includes clock-in times, daily task reminders and an org chart",
+    "transparency": "A pitch slide on financial transparency: a laptop beside a checklist that includes pricing services, logging start and end times and photographing supplies",
+    "roadmap": "A pitch slide with a 12-week plan drawn as a Gantt chart: a meeting with managers, flows, then two phases of design, build and delivery"
+  },
+  "chapters": {
+    "context": {
+      "heading": "A marketer who proposed software",
+      "body": [
+        "Hadish Mall is a large shopping and entertainment mall in northeast Tehran: shops over several floors, a food court, cinemas and parking. Sina joined part-time as a marketer, running events, social campaigns and influencer partnerships to bring visitors in.",
+        "Behind the shop fronts, the mall runs like a small town. Every unit owes rent and a monthly service charge, and tenants ask for cleaning, repairs and air-conditioner visits that staff carry out and someone has to price. Sina proposed moving all of it into one web service and designed it: the screens a tenant would use, a panel for the mall’s managers, and the decks that pitched it."
+      ]
+    },
+    "problem": {
+      "heading": "Three groups, one set of bills",
+      "body": [
+        "The pitch names three groups and gives each one a service. Tenants pay, book services and send requests. Managers track income, debts, requests and work in progress. Service staff receive tasks, log when each job starts and ends, and report back.",
+        "The deck states the problems it promises to remove: payments that depend on reminders and on people to chase them, late payments with no consequence, services priced by whoever does the job, and staff whose work nobody can see."
+      ],
+      "insight": "Every promise in the pitch is about money or accountability, not convenience."
+    },
+    "approach": {
+      "heading": "Screens first, then the argument",
+      "body": [
+        "Figma node IDs grow as a file is edited, so they show the order of work. The tenant screens came first: six phone screens branded for Hadish Mall, drawn inside a phone browser at the mall’s own web address, with sample dates from early 2023. The manager panel came next, laid out for three sections at desktop, tablet and phone width.",
+        "Then the pitch. A first deck for Hadish Mall ended with three price tiers. A second, 17 slides long, dropped the prices and added what a buyer would ask next: staff monitoring, financial transparency, security, training, deployment and a 12-week plan."
+      ]
+    },
+    "solution": {
+      "heading": "Payments that chase themselves",
+      "body": [
+        "A tenant opens the service from a link, on a phone. Services is a list of cards — charge payment, shop cleaning, air-conditioner repair — each with a price; tenants tick what they need and pay the total at the bottom. The wallet holds a balance, tops up in preset amounts, takes a discount code and lists every transaction. If the balance is too low, a red alert asks the tenant to top it up.",
+        "Tenants can also pay outside the app: the payment screen takes the amount transferred and a photo of the bank receipt, and warns that the amount must match what the system expects exactly.",
+        "The deck adds the rules that make payment enforce itself: rewards for tenants who pay on time, late fees calculated automatically, and a cut-off that suspends a unit’s technical services, requests and account, removes it from the list of good payers and stops work in progress until the debt is paid. Text messages tell tenants, staff and managers what happened at each step, so no one has to make a follow-up call."
+      ]
+    },
+    "operations": {
+      "heading": "Every job with a price and a record",
+      "customLabel": "Operations",
+      "body": [
+        "The manager panel is where income, receivables, payments, requests and messages meet: units and their accounts, unpaid bills, pending tasks, income from services, and feedback from tenants. The staff service turns each request into a task with a start and an end time.",
+        "Two slides make the operational case. One promises financial transparency: every service priced in the software, every job logged with its start and end, a photo of any supplies fitted to a unit, and payment through the app, so staff can’t misquote a price. The other promises monitoring: clock-in times, daily task reminders, task counts per day and month, teams and an org chart."
+      ],
+      "insight": "The staff slide is titled “Monitoring behaviour and reducing headcount” — written for the owner, not for the people it monitors."
+    },
+    "product": {
+      "heading": "Priced as a subscription",
+      "customLabel": "Product",
+      "body": [
+        "The first deck already priced the service as a subscription in three tiers — Base for 100 users, Pro for 300, and Custom with no limit — billed monthly or yearly with 30% off, for at least six months. Base left out the automation: no automatic notifications, no automatic cut-off, no rewards or late fees.",
+        "The last slide is the delivery plan: a meeting with managers in week one, flows in week two, then two phases. Phase two is designed while phase one is being built, so phase one is delivered in weeks six and seven and phase two in weeks eleven and twelve."
+      ]
+    },
+    "critique": {
+      "heading": "The pitch runs ahead of the screens",
+      "customLabel": "Critique",
+      "body": [
+        "The deck promises a manager panel, a staff service and automated rules. The file draws the tenant side. The panel page has room for eighteen screens — three sections, two states, three widths — and holds two: a tenant table, and a finance dashboard whose menu belongs to a clinic-booking product. The manager and staff sides are argued in slides, not designed.",
+        "The numbers slip in the same places. On the services screen, three services are ticked at 250,000 toman each and the total says 250,000. On the pricing slide, the yearly switch takes 30% off Pro and Custom but not Base, so the cheapest plan shows a higher monthly price than the middle one."
+      ],
+      "bullets": [
+        "The receipt upload means someone checks each bank transfer by hand, against the deck’s promise of payments without people chasing them.",
+        "Every service card shares one price and one placeholder description."
+      ],
+      "insight": "A buyer would have been sold the half of the product that was drawn least."
+    }
+  },
+  "figures": {
+    "services3": {
+      "caption": "Slide 2 of the Hadish Mall deck: one service in three parts — tenants, managers, and services and requests."
+    },
+    "serviceList": {
+      "caption": "The services screen: tick what you need, pay the total.",
+      "annotations": [
+        "The mall’s web address in a phone browser: a link, not an app to install",
+        "Each service is a card with its own price and a checkbox",
+        "Charge payment sits in the same list as cleaning and repairs",
+        "The total and a green Pay button stay pinned to the bottom"
+      ]
+    },
+    "pay": {
+      "caption": "Three ways a payment goes: from the wallet, by bank transfer with a receipt, or blocked for a low balance.",
+      "items": [
+        "The wallet: balance, top-up and transactions.",
+        "Paying by bank transfer: the amount and a photo of the receipt.",
+        "Too little in the wallet: the tenant is asked to top up."
+      ]
+    },
+    "rules": {
+      "caption": "The payment rules from the pitch.",
+      "items": [
+        "Rent and charge: on-time rewards, late fees, and a wallet for every tenant.",
+        "The cut-off: services, requests and the account suspended until the debt is paid."
+      ]
+    },
+    "panel": {
+      "caption": "The manager panel as the pitch shows it: the tenant table on a tablet, and what managers can track. Contact details in the mock-up are blurred."
+    },
+    "staff": {
+      "caption": "The operational promises.",
+      "items": [
+        "Staff monitoring: clock-in times, task reminders, teams and an org chart.",
+        "Transparency: every service priced, timed and photographed in the software."
+      ]
+    },
+    "roadmap": {
+      "caption": "The 12-week plan: phase two is designed while phase one is built, and each phase ends with delivery and set-up."
+    }
+  },
+  "process": {
+    "heading": "Four versions, in the order they were made",
+    "steps": [
+      {
+        "label": "Tenant screens",
+        "note": "Six phone screens for Hadish Mall: home, services, wallet and three payment states"
+      },
+      {
+        "label": "Manager panel",
+        "note": "Laid out for three sections at three widths; a tenant table and a finance dashboard drawn"
+      },
+      {
+        "label": "First pitch",
+        "note": "A deck for Hadish Mall that ends with three price tiers"
+      },
+      {
+        "label": "Second pitch",
+        "note": "17 slides: operations, security, training, deployment and a 12-week plan; no prices"
+      }
+    ]
+  },
+  "decisions": {
+    "heading": "Five decisions behind the concept",
+    "lede": "Each one is visible in the screens or stated in the decks.",
+    "items": [
+      {
+        "title": "One web service for three groups, not three apps",
+        "why": "Tenants, managers and staff all use one service in a browser; the tenant screens are drawn at the mall’s web address, opened from a link. Nobody has to install anything, and the mall has one system to run.",
+        "tradeoff": "A web page can’t send push notifications, so every alert goes out as a text message."
+      },
+      {
+        "title": "Make the payment rules enforce themselves",
+        "why": "On-time rewards, automatic late fees and a cut-off that suspends a unit’s services replace the reminders and chasing the deck promises to remove.",
+        "tradeoff": "An automatic cut-off is a blunt tool to use on a tenant the mall wants to keep."
+      },
+      {
+        "title": "Put a price and a record on every job",
+        "why": "Services are priced in the software, and staff log each job’s start and end and photograph any supplies fitted, so a tenant’s bill can be checked against the work.",
+        "tradeoff": "More logging for staff, and a record that can be read as surveillance."
+      },
+      {
+        "title": "Accept bank-transfer receipts beside the wallet",
+        "why": "Tenants can pay outside the app and upload a photo of the receipt, with a warning that the amount must match exactly.",
+        "tradeoff": "Every receipt has to be checked by a person, the work the rest of the design tries to remove."
+      },
+      {
+        "title": "Sell it as a subscription, not a one-off build",
+        "why": "Tiers by number of users, billed monthly or yearly for at least six months: the mall would pay for a running service, not buy a finished project.",
+        "tradeoff": "A minimum term asks the mall to commit before it has seen the service work."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "Sina’s part",
+    "intro": "Listed from the file. It names no team, so this is the work in the file, not a claim of sole authorship.",
+    "own": [
+      "The idea: an app proposed from inside a marketing role",
+      "Six tenant screens: home, services, wallet and three payment states",
+      "The manager panel’s layout, tenant table and finance dashboard",
+      "Two pitch decks for Hadish Mall",
+      "The three price tiers and the 12-week delivery plan"
+    ],
+    "collaborate": [
+      "Hadish Mall’s management, the audience for the first pitch"
+    ],
+    "note": "The technical slides — infrastructure, security and deployment — describe the build a development team would carry out. Nothing in the file shows that it was built or bought."
+  },
+  "outcomes": {
+    "heading": "A pitch, not a product",
+    "intro": "There is no evidence in the file that the service was built, sold or used. What it holds is a tenant-side design and a complete pitch for Hadish Mall.",
+    "delivered": [
+      {
+        "label": "tenant screens",
+        "context": "Home, services, wallet and three payment states, for Hadish Mall"
+      },
+      {
+        "label": "slides in the final pitch",
+        "context": "From the three services to security, training and deployment"
+      },
+      {
+        "label": "weeks in the delivery plan",
+        "context": "Two phases, the second designed while the first is built"
+      }
+    ],
+    "shipped": [
+      "A tenant web app design: services, wallet and payment states",
+      "A manager-panel layout with a tenant table",
+      "Three price tiers by number of users",
+      "A 17-slide pitch and a 12-week delivery plan"
+    ]
+  },
+  "lessons": {
+    "heading": "What I’d change",
+    "items": [
+      {
+        "title": "Draw the side you are selling",
+        "body": "The pitch sold managers a panel and owners a staff service, and the file draws the tenant’s screens. Two finished panel screens would have argued the case better than four slides of checklists."
+      },
+      {
+        "title": "Make the numbers add up before the pitch",
+        "body": "A total that ignores two of three ticked items, and a yearly discount that makes the cheapest plan look dearest. In a pitch about financial transparency, the sums on the slides are the first thing a buyer checks."
+      },
+      {
+        "title": "Close the loop the design leaves open",
+        "body": "The receipt upload puts a person back into the payments the pitch promises to automate. A payment gateway in phase one — or at least a queue in the manager panel for checking receipts — would have kept that promise."
+      }
+    ]
+  }
+}

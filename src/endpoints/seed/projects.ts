@@ -262,6 +262,12 @@ export const PROJECT_SEED: ProjectSeedRow[] = [
     kind: ['concept'],
     order: 31,
     status: 'published',
+    // The first pitch deck's cover, with Sina's email repainted out of the laptop's tenant table.
+    cover: {
+      path: 'Docs/Experience/Hadish-Mall/mall-app/assets/crops/cover-hadish.png',
+      name: 'mall-management-app-concept--cover.png',
+      alt: 'The cover of the Hadish Mall pitch: the mall’s logo and the title “Hadish Mall commercial complex management” beside a laptop showing the tenant list',
+    },
   },
 
   // ── Fibona ──────────────────────────────────────────────────────────────────────────────
@@ -479,6 +485,23 @@ export const PROJECT_SEED: ProjectSeedRow[] = [
       path: 'Docs/Experience/Projects/cproperty/assets/crops/cover.png',
       name: 'cproperty--cover.png',
       alt: 'CProperty on a phone — a presale property page with a price band and tiles for delivery year, deposit, investment rate, monthly payment, plan types and average rent',
+    },
+  },
+  {
+    slug: 'merikh-baft',
+    title: 'Merikh Baft — tracking every fabric roll from warehouse to customer',
+    summary:
+      'Brand, website, back office and a five-role task app for an Iranian spacer-fabric mill: 128 screens in which every roll gets a QR label and is checked at each hand-off, from the dye house to the driver to the customer.',
+    company: INDEPENDENT,
+    role: 'Product designer',
+    kind: ['product', 'systems'],
+    order: 108,
+    status: 'published',
+    // No period: the file records no dates (SCAN.md Q3). The task app's labelling sheet, from a 2× export.
+    cover: {
+      path: 'Docs/Experience/Projects/merikh-baft/assets/crops/cover.png',
+      name: 'merikh-baft--cover.png',
+      alt: 'Merikh Baft task app on a phone — the sheet for labelling new fabric: enter the data, print a label for each roll, attach the labels',
     },
   },
   {

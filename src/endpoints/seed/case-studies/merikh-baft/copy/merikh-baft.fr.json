@@ -1,0 +1,289 @@
+{
+  "statement": "Une usine de tissus 3D où chaque rouleau porte une étiquette QR et où chaque passage de relais, de la teinturerie au chauffeur puis au client, est vérifié.",
+  "industry": "Textile · industrie B2B",
+  "team": "Un seul fichier Figma : marque, site web, back-office et une application de tâches à cinq rôles",
+  "heroCaption": "L’application de tâches sur smartphone : l’étiquetage des nouveaux rouleaux en entrepôt, le contrôle du chargement par le chauffeur et la page d’accueil du site.",
+  "snapshot": {
+    "problem": "Un rouleau de tissu passe par l’entrepôt, la teinturerie, un chauffeur et un client. À chaque passage de relais, il peut être mal compté ou perdu.",
+    "role": "Designer produit, de la découverte de marque à l’identité, en passant par un site responsive, un back-office desktop et une application mobile organisée par rôle.",
+    "result": "128 écrans conçus et une bibliothèque de 334 composants. Le fichier n’indique pas si le produit a été lancé."
+  },
+  "alt": {
+    "cover": "L’application de tâches Merikh Baft sur smartphone — la fiche d’étiquetage d’un nouveau tissu : saisir les données, imprimer une étiquette par rouleau, poser les étiquettes",
+    "dyeing": "Application de tâches Merikh Baft — la fiche de la teinturerie : scanner les codes QR, imprimer la liste de colisage, remettre le chargement au chauffeur, confirmation du chauffeur",
+    "driver": "Application de tâches Merikh Baft — la fiche du chauffeur : comparer le chargement à la liste de colisage, recevoir la destination, confirmer la livraison",
+    "customer": "Application de tâches Merikh Baft — la fiche du client : confirmer la réception, puis confirmer que le chargement correspond à la liste de colisage",
+    "homeMobile": "Le site Merikh Baft sur smartphone — l’accroche « une nouvelle génération de tissus respirants », au-dessus des chiffres sur les clients, les entrepôts et les expéditions mensuelles",
+    "homeFold": "Le site Merikh Baft sur desktop — une main tenant un morceau de tissu 3D à côté du titre, avec une barre de statistiques en dessous",
+    "taskList": "Application de tâches Merikh Baft — la liste des demandes de l’entrepôt, avec les onglets en attente, en cours et terminées, et des boutons pour saisir les données ou générer un code QR",
+    "settingsWarehouse": "Application de tâches Merikh Baft — réglages de l’entrepôt : emplacements de stockage, unités de mesure, dépannage et une ligne directe vers un conseiller technique",
+    "settingsDyeing": "Application de tâches Merikh Baft — réglages de la teinturerie : réglages des machines, préférences de couleur, taille de lot, guide de procédé et dépannage",
+    "settingsRoute": "Application de tâches Merikh Baft — réglages du chauffeur : optimisation d’itinéraire, alertes, informations sur le véhicule, FAQ transport et contact d’urgence",
+    "settingsCustomer": "Application de tâches Merikh Baft — réglages du client : paramètres de commande, avis de maintenance, mises à jour et alertes pour les commandes en retard et les délais de livraison",
+    "requestDetail": "Back-office Merikh Baft — une demande : la note de crédit et le solde du client, les chiffres de la commande, une chronologie de commande en neuf étapes et les lignes de commande",
+    "warehouseQc": "Back-office Merikh Baft — la page entrepôt : stock total, volume sortant, prochaine date d’expédition et nombre de rouleaux en attente de contrôle qualité",
+    "customerDetail": "Back-office Merikh Baft — un client : le représentant interne, la prochaine livraison, la situation financière et des onglets pour les livraisons, paiements, contacts, demandes et factures",
+    "consultation": "Site Merikh Baft — le formulaire de conseil : choisir un secteur, une armure et un volume de commande, puis demander conseil",
+    "productPage": "Site Merikh Baft — la page d’un tissu : photo et coloris, secteurs adaptés, tableau de caractéristiques et prix au mètre",
+    "persona": "Persona de la marque Merikh Baft — la formule fétiche d’un grossiste du bazar, son parcours, ses objectifs, ses difficultés, ses habitudes de paiement et ses attentes",
+    "logo": "Logo Merikh Baft — un monogramme en grille de maille dans un cercle, à côté du nom en alphabet latin et persan, en bleu marine",
+    "tone": "Ton de voix Merikh Baft — huit curseurs entre des paires comme simple et complexe, moderne et classique, basique et haut de gamme",
+    "sidebars": "Back-office Merikh Baft — trois versions de la barre latérale côte à côte, chacune avec d’autres éléments et un autre élément mis en évidence",
+    "color": "Design system Merikh Baft, version 0.0.1 — la gamme de bleus principale et la gamme de gris"
+  },
+  "chapters": {
+    "context": {
+      "heading": "Une usine qui tricote un tissu qui respire",
+      "body": [
+        "Merikh Baft tricote du tissu 3D, aussi appelé tissu spacer : un textile en trois couches, deux faces extérieures reliées par une couche de fils, qui laisse passer l’air et garde sa forme. On le trouve dans les chaussures, les sièges de bureau, les sièges auto, les matelas et les produits médicaux. Il se vend au mètre aux fabricants et aux grossistes du bazar.",
+        "Tout le projet tient dans un seul fichier Figma de 17 pages : un atelier de marque, des personas et un ton de voix ; un logo et des cartes de visite ; un site en persan, écrit de droite à gauche, en trois largeurs avec son parcours de connexion ; un back-office desktop ; et une application mobile de tâches pour les personnes qui déplacent le tissu. Au total, 128 écrans conçus."
+      ]
+    },
+    "problem": {
+      "heading": "Un rouleau change quatre fois de mains",
+      "body": [
+        "Entre le métier à tricoter et le client, un rouleau est pesé et stocké, envoyé à la teinturerie, chargé dans un camion puis livré. Chaque étape est un passage de relais entre des personnes qui ne voient jamais la commande entière. Et à chacune, un rouleau peut être mal compté, échangé ou oublié.",
+        "La question posée à l’application était simple : comment chacun peut-il confirmer que les rouleaux devant lui sont bien ceux de la liste, sans apprendre un système conçu pour le métier d’un autre ?"
+      ]
+    },
+    "approach": {
+      "heading": "Un même modèle de tâche pour cinq rôles",
+      "body": [
+        "L’application compte cinq rôles : responsable, entrepôt, teinturerie, chauffeur et client. Chacun ne voit que ses propres tâches, dans les deux mêmes vues : une liste de tâches, et une fiche qui découpe une tâche en étapes. Chaque étape est marquée faite ou non faite, et chaque fiche se termine par les deux mêmes boutons : signaler un problème et envoyer un SMS.",
+        "Une tâche peut être alimentée de deux façons : en saisissant ses données ou en scannant un code QR. L’architecture de l’information dessinée à côté des écrans montre les deux chemins, ainsi que la chaîne d’étiquetage qui les sous-tend : saisir le modèle, le poids et la longueur, produire une étiquette et son code QR, l’imprimer."
+      ]
+    },
+    "solution": {
+      "heading": "Des réglages propres à chaque métier",
+      "body": [
+        "Chaque rôle a ses propres réglages. L’entrepôt définit les emplacements de stockage et les unités de mesure : mètres carrés, mètres linéaires ou kilogrammes, balance manuelle ou automatique, nombre de décimales et plages autorisées. La teinturerie règle les machines, les préférences de couleur et la taille des lots, et tient un guide de procédé. Le chauffeur règle l’optimisation d’itinéraire et les alertes. Le client indique une adresse de livraison, un moyen de paiement préféré et une devise.",
+        "Les notifications suivent le même découpage : stock faible d’une matière, rouleau défectueux signalé par le contrôle qualité, nouveaux rouleaux, demande de teinture attribuée, itinéraire modifié, livraison signée par le client."
+      ],
+      "insight": "Tout le monde utilise la même application, mais un chauffeur ne voit jamais un réglage de la teinturerie."
+    },
+    "office": {
+      "heading": "La même chaîne, vue du bureau",
+      "customLabel": "Back-office",
+      "body": [
+        "Le back-office est conçu pour desktop et tablette : demandes, stock, entrepôts, clients et niveaux d’accès. Une demande affiche la note de crédit du client en étoiles et son solde restant dû au-dessus de la commande. Vient ensuite une chronologie en neuf étapes, de la commande au règlement, en passant par la facture pro forma, l’acompte, le chargement, l’expédition et la livraison. Enfin, les lignes de commande indiquent le code tissu, la quantité, l’unité, le moyen de paiement, l’état du stock et la date de livraison.",
+        "La page entrepôt compte ce que l’application produit : stock total, volume sortant, prochaine date d’expédition et nombre de rouleaux en file d’attente du contrôle qualité. Une page client ajoute le représentant interne, une cotisation échelonnée selon le volume d’achat et une note sur l’effet d’un acompte sur le classement du client."
+      ]
+    },
+    "website": {
+      "heading": "Le conseil avant le panier",
+      "customLabel": "Site web",
+      "body": [
+        "Le site a été dessiné en 1 440, 1 028 et 360 pixels sur onze pages : deux versions de la page d’accueil, une page tissu, la liste des tissus, les secteurs et une page secteur, un blog et un article, à propos, contact et FAQ. La page d’accueil s’ouvre sur la respirabilité, puis présente les propriétés des tissus, les secteurs, les raisons de choisir Merikh Baft, et un formulaire de conseil guidé : quel secteur, quelle armure, combien de mètres.",
+        "Une page tissu commence par un tableau de caractéristiques (composition, largeur, épaisseur, grammage, certification, usines) et par les secteurs adaptés, avant le prix au mètre. La page d’accueil promet aussi un suivi des commandes dans un espace client."
+      ]
+    },
+    "brand": {
+      "heading": "Quatre acheteurs et treize curseurs",
+      "customLabel": "Marque",
+      "body": [
+        "La marque est venue en premier. Un kit d’atelier (adjectifs de personnalité, une liste « est / n’est pas », une carte d’empathie, un modèle de persona et des questions comme « Comment décririez-vous notre ton actuel dans le commerce textile ? ») a abouti à quatre personas d’acheteurs : un grossiste du bazar de 60 ans qui veut un code tissu qu’aucun concurrent ne peut acheter, un jeune fabricant de chaussures à l’affût des remises, un acheteur de produits médicaux qui doit tester des échantillons, et un fabricant de mobilier de bureau qui paie la moitié par chèque.",
+        "Le ton de voix se règle sur treize curseurs, de simple à complexe et de basique à haut de gamme. Six polices persanes ont été présélectionnées, et Yekan Bakh a été retenue. Le logo associe un monogramme en grille de maille dans un cercle au nom écrit en alphabet latin et persan."
+      ]
+    },
+    "critique": {
+      "heading": "Des états actifs qui pointent au mauvais endroit",
+      "customLabel": "Critique",
+      "body": [
+        "La même petite erreur revient sur les trois supports. L’en-tête du site marque Contact comme page courante sur la page d’accueil, la page tissu et la liste des tissus. La page entrepôt du back-office met Demandes en évidence dans la barre latérale, et deux des trois versions de la barre latérale listent les clients deux fois, sous deux noms et avec deux icônes. Dans l’application, les écrans de réglages affichent l’icône des tâches sur l’onglet des notifications.",
+        "Sur desktop, la page de demande dessine sa chronologie de commande en neuf étapes sous forme de neuf cercles sans libellés. La séquence la plus importante du bureau doit donc se lire de mémoire. Et la colonne mobile du back-office contient quatre cadres vides."
+      ],
+      "bullets": [
+        "Dans chaque tableau, toutes les lignes répètent les mêmes valeurs fictives : un seul code tissu, une seule longueur, un seul prix. Aucun tableau n’a donc été testé avec des données réelles.",
+        "Le site promet un espace client pour suivre les commandes, mais cet espace n’a jamais été conçu."
+      ],
+      "insight": "L’état de navigation fait partie du contenu : quand il est faux, les utilisateurs ne se fient plus à ce qu’il leur indique."
+    },
+    "system": {
+      "heading": "Un système 0.0.1 en marine et en bleu",
+      "customLabel": "Système",
+      "body": [
+        "Le design system porte le numéro de version 0.0.1. Il compte 21 ensembles de composants et 334 composants : couleurs, typographie, champs de formulaire, boutons, fils d’Ariane, cases à cocher et boutons radio, interrupteurs, fenêtres modales, notifications toast, profil, en-tête et pied de page, et menu latéral. La couleur tient en 22 styles, répartis entre une gamme de bleus et une gamme de gris, avec le bleu marine de la marque à l’extrémité sombre des bleus. La typographie compte 11 styles, tous en Yekan Bakh, d’un titre de 24 pixels à un texte courant de 12 pixels.",
+        "Comme la plupart des premières versions, il enregistre tout sous forme de styles. Il n’existe qu’une seule variable, si bien que le système ne peut pas encore changer de thème ni de densité."
+      ]
+    }
+  },
+  "figures": {
+    "fold": {
+      "caption": "La page d’accueil sur desktop : la respirabilité d’abord, puis les chiffres sur les clients, les expéditions et les entrepôts."
+    },
+    "chain": {
+      "caption": "Le parcours d’un rouleau en quatre fiches de tâche, chacune terminée par « signaler un problème » et un SMS.",
+      "items": [
+        "Entrepôt : saisir les données, imprimer une étiquette par rouleau, la poser.",
+        "Teinturerie : scanner les rouleaux à l’entrée, imprimer la liste de colisage, remettre au chauffeur.",
+        "Chauffeur : comparer le chargement à la liste de colisage, puis confirmer la livraison.",
+        "Client : confirmer la réception, puis confirmer que le chargement correspond à la liste."
+      ]
+    },
+    "taskList": {
+      "caption": "La liste de tâches de l’entrepôt : chaque demande peut être saisie à la main ou transformée en étiquette QR.",
+      "annotations": [
+        "Les demandes sont réparties entre en attente, en cours et terminées",
+        "Chaque demande indique la tâche et l’heure de sa création",
+        "Deux entrées possibles : saisir les données à la main ou générer un code QR"
+      ]
+    },
+    "settings": {
+      "caption": "Les réglages par rôle : entrepôt, teinturerie, chauffeur et client ne voient que les leurs.",
+      "items": [
+        "Entrepôt",
+        "Teinturerie",
+        "Chauffeur",
+        "Client"
+      ]
+    },
+    "request": {
+      "caption": "Une demande dans le back-office : note de crédit et solde, la commande, une chronologie en neuf étapes et les lignes de commande."
+    },
+    "office": {
+      "caption": "Stock et clients.",
+      "items": [
+        "La page entrepôt compte les rouleaux en attente de contrôle qualité.",
+        "Une page client : représentant, prochaine livraison, solde et cinq onglets d’historique."
+      ]
+    },
+    "web": {
+      "caption": "Le site demande ce dont l’acheteur a besoin avant de vendre.",
+      "items": [
+        "Le formulaire de conseil : secteur, armure et volume de commande.",
+        "Une page tissu : tableau de caractéristiques et secteurs avant le prix."
+      ]
+    },
+    "persona": {
+      "caption": "L’un des quatre personas : le grossiste du bazar qui veut l’exclusivité sur un code tissu et paie par chèque à l’échéance."
+    },
+    "identity": {
+      "caption": "L’identité : le logo en grille de maille et la première des deux planches de ton de voix.",
+      "items": [
+        "Le logo en alphabet latin et persan.",
+        "Ton de voix : huit des treize curseurs."
+      ]
+    },
+    "sidebars": {
+      "caption": "Trois barres latérales d’un même back-office : les deux premières listent les clients deux fois, et celle du milieu, sur la page entrepôt, met Demandes en évidence."
+    },
+    "color": {
+      "caption": "La planche des couleurs, version 0.0.1 : le bleu principal et la gamme de gris."
+    }
+  },
+  "process": {
+    "heading": "Un rouleau, cinq passages de relais",
+    "steps": [
+      {
+        "label": "Peser et étiqueter",
+        "note": "L’entrepôt saisit le modèle, le poids et la longueur, et imprime une étiquette par rouleau"
+      },
+      {
+        "label": "Entrée en teinturerie",
+        "note": "La teinturerie scanne les rouleaux à leur entrée dans son stock de tissu brut"
+      },
+      {
+        "label": "Liste de colisage",
+        "note": "Le responsable transmet au chauffeur la liste de colisage issue du stock de produits finis"
+      },
+      {
+        "label": "Contrôle du chargement",
+        "note": "Le chauffeur compare le chargement à la liste de colisage"
+      },
+      {
+        "label": "Contrôle à la livraison",
+        "note": "Le client vérifie à nouveau à l’arrivée, et un SMS confirme la réception"
+      }
+    ]
+  },
+  "decisions": {
+    "heading": "Cinq décisions derrière la chaîne",
+    "lede": "Le fichier rend ces choix visibles dans ses écrans et dans son schéma d’architecture.",
+    "items": [
+      {
+        "title": "Donner à chaque rôle les deux mêmes vues",
+        "why": "Le personnel d’entrepôt, les opérateurs de teinturerie et les chauffeurs utilisent l’application pour une seule tâche chacun. Une liste de tâches et une fiche d’étapes faites ou non faites : c’est tout ce que chacun doit apprendre.",
+        "tradeoff": "Personne dans l’application ne voit la commande entière. Pour cela, le responsable doit ouvrir le back-office."
+      },
+      {
+        "title": "Permettre de saisir ou de scanner une tâche",
+        "why": "Les étiquettes sont imprimées à partir de données saisies au début de la chaîne, puis scannées à chaque étape suivante. Le schéma d’architecture prévoit les deux entrées, pour qu’une tâche puisse être terminée même quand une étiquette ne se scanne pas.",
+        "tradeoff": "Une saisie manuelle se passe du contrôle qu’apporte un scan."
+      },
+      {
+        "title": "Contrôler le chargement deux fois",
+        "why": "Le chauffeur compare le chargement à la liste de colisage à la teinturerie, et le client le vérifie à nouveau à l’arrivée. Un SMS part à chacun de ces deux passages de relais, pour que chaque partie garde une trace.",
+        "tradeoff": "Deux étapes de plus à chaque livraison, et une seule issue en cas d’écart : signaler un problème."
+      },
+      {
+        "title": "Conseiller avant de vendre",
+        "why": "Les personas achètent selon leur secteur et leurs habitudes, et l’un d’eux doit d’abord tester des échantillons. La page d’accueil met en avant un formulaire de conseil, et une page tissu montre les caractéristiques et les secteurs avant le prix.",
+        "tradeoff": "Un client régulier qui connaît le code tissu met plus de temps à atteindre le panier."
+      },
+      {
+        "title": "Intégrer le crédit et les chèques au produit",
+        "why": "En Iran, les acheteurs textiles B2B paient souvent par chèque. Le back-office affiche la note de crédit et le solde du client sur chaque demande. Selon la règle de paiement de l’application, les commandes de moins de 30 millions de tomans se paient en ligne, et les plus importantes par chèque.",
+        "tradeoff": "Une note exige une règle explicite, et le fichier ne dit pas comment les étoiles s’obtiennent."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "La part de Sina",
+    "intro": "Sina a conçu le travail présent dans ce fichier, de l’atelier de marque à l’application de tâches.",
+    "own": [
+      "L’atelier de marque, quatre personas et le ton de voix",
+      "Le logo et les cartes de visite",
+      "Le site en trois largeurs et le parcours de connexion",
+      "Le back-office pour les demandes, le stock, les entrepôts et les clients",
+      "L’application de tâches à cinq rôles et son schéma d’architecture",
+      "Le design system : 21 ensembles de composants et 334 composants"
+    ],
+    "collaborate": [
+      "L’équipe de Merikh Baft, qui a participé à l’atelier de marque"
+    ],
+    "note": "Les écrans du fichier collés depuis d’autres projets ne font pas partie de cette étude et ne sont pas montrés."
+  },
+  "outcomes": {
+    "heading": "Un dossier de design complet",
+    "intro": "Le fichier n’indique pas si le site ou l’application ont été lancés : il n’y a donc aucun chiffre d’usage à présenter. Il contient en revanche un design complet pour la marque, les ventes et l’exploitation d’une usine.",
+    "delivered": [
+      {
+        "label": "écrans conçus",
+        "context": "32 dans l’application, 24 dans le back-office, 46 sur le site et 26 pour la connexion"
+      },
+      {
+        "label": "rôles dans l’application de tâches",
+        "context": "Responsable, entrepôt, teinturerie, chauffeur et client"
+      },
+      {
+        "label": "composants du design system",
+        "context": "21 ensembles de composants, tous en Yekan Bakh"
+      }
+    ],
+    "shipped": [
+      "Un atelier de marque, quatre personas et un ton de voix",
+      "Un logo et des cartes de visite",
+      "Un site en persan en trois largeurs, avec connexion",
+      "Un back-office pour les demandes, le stock, les entrepôts et les clients",
+      "Une application mobile de tâches pour cinq rôles, avec étiquettes QR",
+      "Un design system, version 0.0.1"
+    ]
+  },
+  "lessons": {
+    "heading": "Ce que je changerais",
+    "items": [
+      {
+        "title": "Vérifier l’état actif sur chaque écran",
+        "body": "La même erreur apparaît sur le site, le back-office et l’application. Une relecture qui pose une seule question par écran (où cet écran dit-il que je suis ?) aurait permis de repérer les trois."
+      },
+      {
+        "title": "Remplir les tableaux avec des données réelles",
+        "body": "Chaque ligne de tableau répète un seul code tissu et un seul prix. De vrais codes tissu, des noms de clients longs et des unités mélangées auraient montré où les tableaux cassent."
+      },
+      {
+        "title": "Libeller la séquence la plus importante",
+        "body": "La chronologie de commande est la vue du bureau sur toute la chaîne, et sur desktop elle n’a aucun libellé. La séquence la plus importante d’un produit devrait être la plus facile à lire."
+      }
+    ]
+  }
+}

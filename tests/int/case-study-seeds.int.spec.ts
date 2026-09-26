@@ -332,6 +332,52 @@ const GATES: Record<string, { files: RegExp[]; text: RegExp[] }> = {
       /cproperty\.ca/i,
     ],
   },
+  'merikh-baft': {
+    // Crops only (`crops/`): the two back-office screens have a real person's name painted out.
+    // Never the investor deck (executives, capital, valuation, capacity), the business cards (names,
+    // address, phone), the group that owns the mill, the pages pasted from other clients (OTeacher,
+    // IranicaCard, a car app, a pill reminder, a Pierre Cardin kit, a Decathlon palette), the website
+    // footer (another client's phone numbers and copyright), or the domain.
+    files: [/^(?!crops\/)/, /bp\/|pdf\/|business-card|customer-panel|leftover/],
+    text: [
+      /Joodaki|جودکی|Karimi|کریمی/i,
+      /Merikh Novin|مریخ نوین|مريخ نوين/i,
+      /khodro|خودرو\s?(45|۴۵)|carsparency|کارسپرنسی|azki|ازکی|EFDC/i,
+      /Sprich ?Baft|اسپریچ/i,
+      /OTeacher|اُتیچر|اتیچر|Iranica|ایرانیکارت/i,
+      /Pierre Cardin|پیرکاردین|Decathlon|دکاتلون/i,
+      /Arvan|آروان/i,
+      /ایده گزین|Borhan|برهان/i,
+      /071|۰۷۱/,
+      /merikhbaft\.com/i,
+      /figma\.com/i,
+      /@|gmail/i,
+      /Snapp|اسنپ/i,
+      /billion|میلیارد|مليار|Milliard|milliard|mil millones|億/i,
+    ],
+  },
+  'mall-management-app-concept': {
+    // Hadish Mall branding only (Sina, 2026-09-26): nothing from the Home Plus or Hamila Center
+    // rebrands. Only redacted crops, two clean phone exports and four Hadish deck slides; the panel
+    // exports and the unredacted panel, three-services and transparency slides carry Sina's email
+    // and a mobile number. No prices (README Q3), no clinic product, no domain.
+    files: [
+      /^(?!crops\/|customers-app\/(home|wallet)\.png$|hadish-deck\/v2-(03|07|09|17)-)/,
+      /panel\//,
+      /hamila|homeplus/,
+      /hadish-deck\/v1-|hadish-deck\/v2-(02|06|08)-/,
+    ],
+    text: [
+      /hamila|home ?plus|home\+|همیلا|هامیلا|هوم ?پلاس|ハミラ|ホームプラス/i,
+      /@|gmail/i,
+      /0933|۰۹۳۳|\+98/,
+      /figma\.com/i,
+      /hadishmall\.(com|ir)/i,
+      /million|millón|millones|百万|میلیون|مليون/i,
+      /14[.,٫]7|۱۴[.٫]۷/,
+      /مطب|پزشک|doctor|Arzt|médecin|médico|医師/i,
+    ],
+  },
   'biomaze-website-education-panel': {
     // Brand Brief Tier-1: never the unverified “first player” market claim, in any locale.
     files: [],

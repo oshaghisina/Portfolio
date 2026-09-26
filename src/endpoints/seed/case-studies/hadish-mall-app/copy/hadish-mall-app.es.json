@@ -1,0 +1,238 @@
+{
+  "statement": "Un servicio web para el alquiler, las cuotas de servicio y las reparaciones de un centro comercial, diseñado y presentado para Hadish Mall.",
+  "industry": "Inmobiliaria comercial · gestión de centros comerciales",
+  "team": "Un archivo de Figma: 6 pantallas para inquilinos, un panel de gestión y dos presentaciones",
+  "heroCaption": "El lado del inquilino en el móvil: el inicio de Hadish Mall, una lista de servicios para reservar y pagar, y el monedero.",
+  "snapshot": {
+    "problem": "Un centro comercial cobra alquiler y cuotas de servicio a cada local y envía personal a limpiarlos y repararlos, y cada paso necesita un recordatorio, un precio y alguien que lo compruebe.",
+    "role": "Entró en el equipo de marketing; propuso la aplicación, diseñó sus pantallas para inquilinos y el panel de gestión, y redactó las presentaciones con las que se ofreció.",
+    "result": "Un concepto y una presentación de 17 diapositivas con un plan de entrega de 12 semanas. Nada en el archivo indica que llegara a construirse."
+  },
+  "alt": {
+    "cover": "La portada de la presentación de Hadish Mall: el logotipo del centro comercial y el título «Gestión del complejo comercial Hadish Mall» junto a un portátil que muestra la lista de inquilinos",
+    "home": "La aplicación web para inquilinos de Hadish Mall en el móvil: una foto del atrio del centro comercial bajo el título «Sistema de gestión de Hadish Mall» y un botón para ver los servicios",
+    "services": "La pantalla de servicios en el móvil: tarjetas con casilla para el pago de cuotas, la limpieza del local y la reparación del aire acondicionado, cada una con su precio, sobre un botón verde de pago y el total",
+    "wallet": "La pantalla del monedero en el móvil: el saldo, una tarjeta de recarga con importes predefinidos y un código de descuento, y una lista de transacciones anteriores",
+    "receipt": "La pantalla de pago en el móvil: un aviso de que el importe debe coincidir exactamente, el importe transferido, una zona para subir una foto del justificante bancario y un botón de envío",
+    "walletError": "La pantalla de servicios atenuada tras una alerta roja en el móvil: el saldo del monedero es insuficiente, recárgalo",
+    "threeServices": "Una diapositiva que muestra las tres partes del servicio —inquilino, gestión, y servicios y solicitudes—, cada una con la maqueta de un dispositivo y una breve descripción",
+    "rentCharge": "Una diapositiva sobre la gestión del alquiler y las cuotas: un móvil con los pagos de los locales junto a una lista de comprobación que incluye un monedero, recargos por demora y recompensas por pagar a tiempo",
+    "cutoff": "Una diapositiva sobre la suspensión de servicios: un móvil con una alerta roja junto a una lista de pasos como desactivar una cuenta y detener los servicios en curso",
+    "managerPanel": "Una diapositiva sobre el panel de gestión: una tableta con la tabla de inquilinos junto a una lista de lo que los gestores pueden ver y hacer",
+    "staff": "Una diapositiva sobre la supervisión del personal: un portátil con un panel de control junto a una lista que incluye horas de fichaje, recordatorios de tareas diarias y un organigrama",
+    "transparency": "Una diapositiva sobre transparencia financiera: un portátil junto a una lista que incluye poner precio a los servicios, registrar las horas de inicio y fin y fotografiar los materiales",
+    "roadmap": "Una diapositiva con un plan de 12 semanas dibujado como diagrama de Gantt: una reunión con los gestores, los flujos y después dos fases de diseño, desarrollo y entrega"
+  },
+  "chapters": {
+    "context": {
+      "heading": "Del marketing a proponer software",
+      "body": [
+        "Hadish Mall es un gran centro comercial y de ocio en el noreste de Teherán: tiendas repartidas en varias plantas, zona de restauración, cines y aparcamiento. Sina se incorporó a media jornada para ocuparse del marketing: eventos, campañas en redes sociales y colaboraciones con influencers para atraer visitantes.",
+        "Detrás de los escaparates, el centro comercial funciona como un pequeño pueblo. Cada local debe un alquiler y una cuota de servicio mensual, y los inquilinos piden limpiezas, reparaciones y visitas del técnico del aire acondicionado que el personal realiza y a las que alguien tiene que poner precio. Sina propuso llevarlo todo a un único servicio web y lo diseñó: las pantallas que usaría un inquilino, un panel para los gestores del centro y las presentaciones con las que se ofreció."
+      ]
+    },
+    "problem": {
+      "heading": "Tres grupos, un mismo conjunto de facturas",
+      "body": [
+        "La presentación nombra tres grupos y da a cada uno un servicio. Los inquilinos pagan, reservan servicios y envían solicitudes. Los gestores siguen los ingresos, las deudas, las solicitudes y los trabajos en curso. El personal de servicio recibe tareas, registra cuándo empieza y termina cada trabajo e informa del resultado.",
+        "La presentación enumera los problemas que promete eliminar: pagos que dependen de recordatorios y de personas que los reclamen, retrasos en el pago sin consecuencias, servicios cuyo precio fija quien hace el trabajo y un personal cuyo trabajo nadie puede ver."
+      ],
+      "insight": "Cada promesa de la presentación trata de dinero o de rendición de cuentas, no de comodidad."
+    },
+    "approach": {
+      "heading": "Primero las pantallas, después el argumento",
+      "body": [
+        "Los node IDs de Figma crecen a medida que se edita un archivo, así que muestran el orden del trabajo. Las pantallas para inquilinos llegaron primero: seis pantallas móviles con la marca Hadish Mall, dibujadas dentro de un navegador móvil en la propia dirección web del centro, con fechas de ejemplo de principios de 2023. Después vino el panel de gestión, planteado para tres secciones en anchos de escritorio, tableta y móvil.",
+        "Luego, la propuesta. Una primera presentación para Hadish Mall terminaba con tres niveles de precio. Una segunda, de 17 diapositivas, quitó los precios y añadió lo que un comprador preguntaría después: supervisión del personal, transparencia financiera, seguridad, formación, despliegue y un plan de 12 semanas."
+      ]
+    },
+    "solution": {
+      "heading": "Pagos que se reclaman solos",
+      "body": [
+        "El inquilino abre el servicio desde un enlace, en el móvil. Los servicios son una lista de tarjetas —pago de cuotas, limpieza del local, reparación del aire acondicionado—, cada una con su precio; el inquilino marca lo que necesita y paga el total al pie. El monedero guarda un saldo, se recarga con importes predefinidos, admite un código de descuento y lista todas las transacciones. Si el saldo no alcanza, una alerta roja pide al inquilino que lo recargue.",
+        "El inquilino también puede pagar fuera de la aplicación: la pantalla de pago recoge el importe transferido y una foto del justificante bancario, y advierte de que el importe debe coincidir exactamente con el que espera el sistema.",
+        "La presentación añade las reglas que hacen que el pago se imponga solo: recompensas para quien paga a tiempo, recargos por demora calculados automáticamente y una suspensión que desactiva los servicios técnicos, las solicitudes y la cuenta de un local, lo retira de la lista de buenos pagadores y detiene los trabajos en curso hasta que se salda la deuda. Mensajes de texto informan a inquilinos, personal y gestores de lo ocurrido en cada paso, para que nadie tenga que hacer una llamada de seguimiento."
+      ]
+    },
+    "operations": {
+      "heading": "Cada trabajo, con precio y registro",
+      "customLabel": "Operaciones",
+      "body": [
+        "El panel de gestión es donde confluyen ingresos, cobros pendientes, pagos, solicitudes y mensajes: los locales y sus cuentas, las facturas impagadas, las tareas pendientes, los ingresos por servicios y las opiniones de los inquilinos. El servicio para el personal convierte cada solicitud en una tarea con hora de inicio y de fin.",
+        "Dos diapositivas defienden el argumento operativo. Una promete transparencia financiera: cada servicio con su precio en el software, cada trabajo registrado con su inicio y su fin, una foto de cualquier material instalado en un local y el pago a través de la aplicación, para que el personal no pueda dar un precio equivocado. La otra promete supervisión: horas de fichaje, recordatorios de tareas diarias, número de tareas por día y por mes, equipos y un organigrama."
+      ],
+      "insight": "La diapositiva del personal se titula «Supervisar el comportamiento y reducir la plantilla»: está escrita para el propietario, no para las personas a las que supervisa."
+    },
+    "product": {
+      "heading": "Con precio de suscripción",
+      "customLabel": "Producto",
+      "body": [
+        "La primera presentación ya planteaba el servicio como una suscripción en tres niveles —Base para 100 usuarios, Pro para 300 y Custom sin límite—, con facturación mensual o anual con un 30 % de descuento, durante al menos seis meses. Base dejaba fuera la automatización: sin notificaciones automáticas, sin suspensión automática, sin recompensas ni recargos por demora.",
+        "La última diapositiva es el plan de entrega: una reunión con los gestores en la primera semana, los flujos en la segunda y después dos fases. La fase dos se diseña mientras se construye la fase uno, de modo que la fase uno se entrega en las semanas seis y siete, y la fase dos, en las semanas once y doce."
+      ]
+    },
+    "critique": {
+      "heading": "La presentación va por delante de las pantallas",
+      "customLabel": "Crítica",
+      "body": [
+        "La presentación promete un panel de gestión, un servicio para el personal y reglas automatizadas. El archivo dibuja el lado del inquilino. La página del panel tiene sitio para dieciocho pantallas —tres secciones, dos estados, tres anchos— y contiene dos: una tabla de inquilinos y un panel financiero cuyo menú pertenece a un producto de reservas para clínicas. Los lados de gestión y de personal se defienden en diapositivas, no se diseñan.",
+        "Las cifras fallan en los mismos sitios. En la pantalla de servicios hay tres servicios marcados a 250 000 tomanes cada uno y el total indica 250 000. En la diapositiva de precios, la opción anual descuenta un 30 % a Pro y Custom pero no a Base, así que el plan más barato muestra un precio mensual más alto que el intermedio."
+      ],
+      "bullets": [
+        "Subir el justificante implica que alguien revise a mano cada transferencia bancaria, frente a la promesa de la presentación de pagos sin nadie que los reclame.",
+        "Todas las tarjetas de servicio comparten un mismo precio y una misma descripción provisional."
+      ],
+      "insight": "A un comprador se le habría vendido la mitad del producto que menos se había dibujado."
+    }
+  },
+  "figures": {
+    "services3": {
+      "caption": "Diapositiva 2 de la presentación de Hadish Mall: un servicio en tres partes — inquilinos, gestores, y servicios y solicitudes."
+    },
+    "serviceList": {
+      "caption": "La pantalla de servicios: marca lo que necesitas y paga el total.",
+      "annotations": [
+        "La dirección web del centro comercial en un navegador móvil: un enlace, no una aplicación que instalar",
+        "Cada servicio es una tarjeta con su propio precio y una casilla",
+        "El pago de cuotas está en la misma lista que la limpieza y las reparaciones",
+        "El total y un botón verde de pago quedan fijos al pie"
+      ]
+    },
+    "pay": {
+      "caption": "Tres caminos para un pago: desde el monedero, por transferencia bancaria con justificante o bloqueado por saldo insuficiente.",
+      "items": [
+        "El monedero: saldo, recarga y transacciones.",
+        "Pago por transferencia bancaria: el importe y una foto del justificante.",
+        "Saldo insuficiente en el monedero: se pide al inquilino que recargue."
+      ]
+    },
+    "rules": {
+      "caption": "Las reglas de pago de la presentación.",
+      "items": [
+        "Alquiler y cuotas: recompensas por pagar a tiempo, recargos por demora y un monedero para cada inquilino.",
+        "La suspensión: servicios, solicitudes y cuenta desactivados hasta que se salda la deuda."
+      ]
+    },
+    "panel": {
+      "caption": "El panel de gestión tal como lo muestra la presentación: la tabla de inquilinos en una tableta y lo que los gestores pueden seguir. Los datos de contacto de la maqueta están difuminados."
+    },
+    "staff": {
+      "caption": "Las promesas operativas.",
+      "items": [
+        "Supervisión del personal: horas de fichaje, recordatorios de tareas, equipos y un organigrama.",
+        "Transparencia: cada servicio con precio, tiempos y fotos en el software."
+      ]
+    },
+    "roadmap": {
+      "caption": "El plan de 12 semanas: la fase dos se diseña mientras se construye la fase uno, y cada fase termina con la entrega y la puesta en marcha."
+    }
+  },
+  "process": {
+    "heading": "Cuatro versiones, en el orden en que se hicieron",
+    "steps": [
+      {
+        "label": "Pantallas para inquilinos",
+        "note": "Seis pantallas móviles para Hadish Mall: inicio, servicios, monedero y tres estados de pago"
+      },
+      {
+        "label": "Panel de gestión",
+        "note": "Planteado para tres secciones en tres anchos; dibujados una tabla de inquilinos y un panel financiero"
+      },
+      {
+        "label": "Primera presentación",
+        "note": "Una presentación para Hadish Mall que termina con tres niveles de precio"
+      },
+      {
+        "label": "Segunda presentación",
+        "note": "17 diapositivas: operaciones, seguridad, formación, implantación y un plan de 12 semanas; sin precios"
+      }
+    ]
+  },
+  "decisions": {
+    "heading": "Cinco decisiones detrás del concepto",
+    "lede": "Cada una se ve en las pantallas o se afirma en las presentaciones.",
+    "items": [
+      {
+        "title": "Un servicio web para tres grupos, no tres aplicaciones",
+        "why": "Inquilinos, gestores y personal usan un mismo servicio en el navegador; las pantallas para inquilinos están dibujadas en la dirección web del centro comercial y se abren desde un enlace. Nadie tiene que instalar nada y el centro tiene un solo sistema que gestionar.",
+        "tradeoff": "Una página web no puede enviar notificaciones push, así que cada alerta sale como mensaje de texto."
+      },
+      {
+        "title": "Hacer que las reglas de pago se impongan solas",
+        "why": "Las recompensas por pagar a tiempo, los recargos automáticos por demora y una suspensión que desactiva los servicios de un local sustituyen los recordatorios y las reclamaciones que la presentación promete eliminar.",
+        "tradeoff": "Una suspensión automática es una herramienta tosca para aplicarla a un inquilino que el centro quiere conservar."
+      },
+      {
+        "title": "Poner precio y registro a cada trabajo",
+        "why": "Los servicios tienen su precio en el software, y el personal registra el inicio y el fin de cada trabajo y fotografía cualquier material instalado, de modo que la factura de un inquilino se puede contrastar con el trabajo realizado.",
+        "tradeoff": "Más registros para el personal, y un historial que puede leerse como vigilancia."
+      },
+      {
+        "title": "Aceptar justificantes de transferencia junto al monedero",
+        "why": "El inquilino puede pagar fuera de la aplicación y subir una foto del justificante, con un aviso de que el importe debe coincidir exactamente.",
+        "tradeoff": "Cada justificante tiene que revisarlo una persona, justo el trabajo que el resto del diseño intenta eliminar."
+      },
+      {
+        "title": "Venderlo como suscripción, no como un proyecto único",
+        "why": "Niveles según el número de usuarios, con pago mensual o anual durante al menos seis meses: el centro pagaría por un servicio en marcha, no compraría un proyecto terminado.",
+        "tradeoff": "Un plazo mínimo pide al centro comprometerse antes de ver funcionar el servicio."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "La parte de Sina",
+    "intro": "Según el archivo. No nombra a ningún equipo, así que esto es el trabajo que contiene el archivo, no una afirmación de autoría exclusiva.",
+    "own": [
+      "La idea: una aplicación propuesta desde un puesto de marketing",
+      "Seis pantallas para inquilinos: inicio, servicios, monedero y tres estados de pago",
+      "La estructura del panel de gestión, la tabla de inquilinos y el panel financiero",
+      "Dos presentaciones para Hadish Mall",
+      "Los tres niveles de precio y el plan de entrega de 12 semanas"
+    ],
+    "collaborate": [
+      "La dirección de Hadish Mall, destinataria de la primera presentación"
+    ],
+    "note": "Las diapositivas técnicas —infraestructura, seguridad e implantación— describen el desarrollo que llevaría a cabo un equipo técnico. Nada en el archivo indica que se construyera ni que se comprara."
+  },
+  "outcomes": {
+    "heading": "Una presentación, no un producto",
+    "intro": "No hay pruebas en el archivo de que el servicio se construyera, se vendiera o se usara. Lo que contiene es el diseño del lado del inquilino y una propuesta completa para Hadish Mall.",
+    "delivered": [
+      {
+        "label": "pantallas para inquilinos",
+        "context": "Inicio, servicios, monedero y tres estados de pago, para Hadish Mall"
+      },
+      {
+        "label": "diapositivas en la presentación final",
+        "context": "De los tres servicios a la seguridad, la formación y la implantación"
+      },
+      {
+        "label": "semanas en el plan de entrega",
+        "context": "Dos fases; la segunda se diseña mientras se construye la primera"
+      }
+    ],
+    "shipped": [
+      "Un diseño de aplicación web para inquilinos: servicios, monedero y estados de pago",
+      "Una estructura de panel de gestión con una tabla de inquilinos",
+      "Tres niveles de precio por número de usuarios",
+      "Una presentación de 17 diapositivas y un plan de entrega de 12 semanas"
+    ]
+  },
+  "lessons": {
+    "heading": "Lo que cambiaría",
+    "items": [
+      {
+        "title": "Dibujar el lado que se vende",
+        "body": "La presentación vendía un panel a los gestores y un servicio para el personal a los propietarios, y el archivo dibuja las pantallas del inquilino. Dos pantallas del panel terminadas habrían defendido el argumento mejor que cuatro diapositivas de listas de comprobación."
+      },
+      {
+        "title": "Cuadrar las cifras antes de presentar",
+        "body": "Un total que ignora dos de los tres elementos marcados, y un descuento anual que hace que el plan más barato parezca el más caro. En una presentación sobre transparencia financiera, las cuentas de las diapositivas son lo primero que comprueba un comprador."
+      },
+      {
+        "title": "Cerrar el círculo que el diseño deja abierto",
+        "body": "Subir el comprobante devuelve a una persona a los pagos que la propuesta promete automatizar. Una pasarela de pago en la primera fase —o al menos una cola en el panel de gestión para revisar comprobantes— habría cumplido esa promesa."
+      }
+    ]
+  }
+}

@@ -1,0 +1,289 @@
+{
+  "statement": "A spacer-fabric mill where every roll carries a QR label and each hand-off, from dye house to driver to customer, is checked.",
+  "industry": "Textiles · B2B manufacturing",
+  "team": "One Figma file: brand, website, back office and a five-role task app",
+  "heroCaption": "The task app on a phone: labelling new rolls in the warehouse, the driver’s load check, and the website’s home page.",
+  "snapshot": {
+    "problem": "A roll of fabric passes through the warehouse, the dye house, a driver and a customer, and at each hand-off it can be miscounted or lost.",
+    "role": "Product designer across brand discovery, identity, a responsive website, a desktop back office and a role-based mobile app.",
+    "result": "128 designed screens and a 334-component library; the file does not record whether the product launched."
+  },
+  "alt": {
+    "cover": "Merikh Baft task app on a phone — the sheet for labelling new fabric: enter the data, print a label for each roll, attach the labels",
+    "dyeing": "Merikh Baft task app — the dye-house sheet: scan the QR codes, print the packing list, hand the load to the driver, the driver confirms",
+    "driver": "Merikh Baft task app — the driver’s sheet: match the load against the packing list, receive the destination, confirm delivery",
+    "customer": "Merikh Baft task app — the customer’s sheet: confirm receipt, then confirm the load matches the packing list",
+    "homeMobile": "Merikh Baft website on a phone — the hero, “a new generation of fabrics for breathing”, above figures for customers, warehouses and monthly shipments",
+    "homeFold": "Merikh Baft website on desktop — a hand holding a piece of spacer fabric beside the headline, with a stats bar below",
+    "taskList": "Merikh Baft task app — the warehouse request list with pending, in-progress and done tabs, and buttons to enter data or generate a QR code",
+    "settingsWarehouse": "Merikh Baft task app — warehouse settings: storehouse locations, units of measure, troubleshooting and a line to a technical adviser",
+    "settingsDyeing": "Merikh Baft task app — dye-house settings: machine settings, colour preferences, batch size, a process guide and troubleshooting",
+    "settingsRoute": "Merikh Baft task app — driver settings: route optimisation, alerts, vehicle details, transport FAQ and an emergency contact",
+    "settingsCustomer": "Merikh Baft task app — customer settings: order settings, maintenance notices, updates and alerts for late orders and delivery deadlines",
+    "requestDetail": "Merikh Baft back office — a request: the customer’s credit rating and balance, the order figures, a nine-step order timeline and the order lines",
+    "warehouseQc": "Merikh Baft back office — the warehouse page: total stock, outgoing volume, next shipping date and the number of rolls waiting for quality control",
+    "customerDetail": "Merikh Baft back office — a customer: the in-house representative, next delivery, financial status and tabs for deliveries, payments, contacts, requests and invoices",
+    "consultation": "Merikh Baft website — the consultation form: pick an industry, a weave and an order size, then ask for advice",
+    "productPage": "Merikh Baft website — a fabric page: the photo and colours, industries it suits, a spec table and a price per metre",
+    "persona": "Merikh Baft brand persona — a bazaar wholesaler’s catchphrase, background, goals, pains, payment habits and expectations",
+    "logo": "Merikh Baft logo — a knit-grid monogram in a circle beside the name in Latin and Persian script, in navy",
+    "tone": "Merikh Baft tone of voice — eight sliders between pairs such as simple and complex, modern and classic, basic and high-end",
+    "sidebars": "Merikh Baft back office — three versions of the sidebar side by side, with different items and a different item highlighted",
+    "color": "Merikh Baft design system, version 0.0.1 — the main blue ramp and the grey ramp"
+  },
+  "chapters": {
+    "context": {
+      "heading": "A mill that knits fabric that breathes",
+      "body": [
+        "Merikh Baft knits spacer fabric: a three-layer textile, two outer faces joined by a layer of pile, that lets air through and holds its shape. It goes into shoes, office chairs, car seats, mattresses and medical products, and it is sold by the metre to manufacturers and bazaar wholesalers.",
+        "The whole project sits in one Figma file of 17 pages: a brand workshop, personas and a tone of voice; a logo and business cards; a Persian right-to-left website at three widths with its sign-in flow; a desktop back office; and a mobile task app for the people who move the fabric. That comes to 128 designed screens."
+      ]
+    },
+    "problem": {
+      "heading": "A roll changes hands four times",
+      "body": [
+        "Between the loom and the customer a roll is weighed and stored, moved into the dye house, loaded onto a truck and delivered. Each move is a hand-off between people who never see the whole order, and each one is a chance for a roll to be miscounted, swapped or left behind.",
+        "The question for the app was simple to state: how does each person confirm that the rolls in front of them are the ones on the list, without learning a system built for someone else’s job?"
+      ]
+    },
+    "approach": {
+      "heading": "One task pattern for five roles",
+      "body": [
+        "The app has five roles: manager, warehouse, dye house, driver and customer. Each sees only its own tasks, in the same two views: a list of tasks, and a sheet for one task that breaks it into steps. Every step is marked done or not done, and every sheet ends with the same two buttons: report a problem, and send an SMS.",
+        "A task can be fed two ways, by typing its data or by scanning a QR code. The information architecture drawn beside the screens shows both paths, and the label pipeline behind them: enter the model, weight and length, produce a label and its QR code, print it."
+      ]
+    },
+    "solution": {
+      "heading": "Settings that belong to one job",
+      "body": [
+        "Each role’s settings are its own. The warehouse sets storehouse locations and units of measure — square metres, running metres or kilograms, a manual or automatic scale, decimal places and allowed ranges. The dye house sets machines, colour preferences and batch size, and keeps a process guide. The driver sets route optimisation and alerts. The customer sets a delivery address, a preferred payment method and currency.",
+        "Notifications follow the same split: low stock of a material, a defective roll flagged by quality control, new rolls, a dye request assigned, a route changed, a delivery signed for by the customer."
+      ],
+      "insight": "Everyone uses the same app, but a driver never sees a dye-house setting."
+    },
+    "office": {
+      "heading": "The same chain, seen from the office",
+      "customLabel": "Back office",
+      "body": [
+        "The back office is for desktop and tablet: requests, stock, warehouses, customers and access levels. A request shows the customer’s credit rating in stars and their outstanding balance above the order, then a nine-step timeline from placing the order through the pro-forma invoice, the deposit, loading, shipping and delivery to settlement, then the order lines with fabric code, quantity, unit, payment method, stock status and delivery date.",
+        "The warehouse page counts what the app produces: total stock, outgoing volume, the next shipping date and the number of rolls waiting in the quality-control queue. A customer page adds the in-house representative, a membership fee tiered by purchase volume, and a note on how a deposit affects a customer’s ranking."
+      ]
+    },
+    "website": {
+      "heading": "Advice before a basket",
+      "customLabel": "Website",
+      "body": [
+        "The website was drawn at 1,440, 1,028 and 360 pixels across eleven pages: two versions of the home page, a fabric page, the fabric list, industries and an industry page, a blog and a post, about, contact and FAQ. The home page opens on breathability, then fabric properties, industries, why Merikh Baft, and a guided consultation form: which industry, which weave, how many metres.",
+        "A fabric page leads with a spec table — composition, width, thickness, weight, certification, factories — and the industries it suits, before the price per metre. The home page also promises order tracking through a customer dashboard."
+      ]
+    },
+    "brand": {
+      "heading": "Four buyers and thirteen sliders",
+      "customLabel": "Brand",
+      "body": [
+        "The brand came first. A workshop kit — personality adjectives, an is and is-not list, an empathy map, a persona template and questions such as “How would you describe our current tone in the textile trade?” — led to four buyer personas: a 60-year-old bazaar wholesaler who wants a fabric code no rival can buy, a young shoemaker chasing discounts, a medical-products buyer who must test samples, and an office-furniture maker who pays half by cheque.",
+        "The tone of voice is set on thirteen sliders, from simple to complex and basic to high-end. Six Persian typefaces were shortlisted and Yekan Bakh was chosen. The logo sets a knit-grid monogram in a circle beside the name in Latin and Persian script."
+      ]
+    },
+    "critique": {
+      "heading": "Active states that point to the wrong place",
+      "customLabel": "Critique",
+      "body": [
+        "The same small error recurs on all three surfaces. The website header marks Contact as the current page on the home page, the fabric page and the fabric list. The back office’s warehouse page highlights Requests in the sidebar, and two of the three sidebar versions list customers twice, under two names with two icons. In the app, the settings screens show the task icon on the notifications tab.",
+        "The desktop request page draws its nine-step order timeline as nine circles without labels, so the most important sequence in the office has to be read from memory. And the back office’s mobile column holds four empty frames."
+      ],
+      "bullets": [
+        "Within each table every row repeats the same placeholder values — one fabric code, one length, one price — so no table was tried with real data.",
+        "The website promises a customer dashboard for tracking orders, and no such dashboard was designed."
+      ],
+      "insight": "Navigation state is content: when it is wrong, users stop trusting where they are."
+    },
+    "system": {
+      "heading": "A 0.0.1 system in navy and blue",
+      "customLabel": "System",
+      "body": [
+        "The design system is labelled version 0.0.1. It has 21 component sets and 334 components across colour, type, form fields, buttons, breadcrumbs, checkboxes and radios, toggles, modals, toasts, profile, header and footer, and the side menu. Colour is 22 styles in a blue ramp and a grey ramp, with the brand’s navy at the dark end of the blue; type is 11 styles, all Yekan Bakh, from a 24-pixel heading down to a 12-pixel body.",
+        "Like most first versions it stores everything as styles. There is a single variable, so the system cannot yet switch theme or density."
+      ]
+    }
+  },
+  "figures": {
+    "fold": {
+      "caption": "The home page on desktop: breathability first, with figures for customers, shipments and warehouses below."
+    },
+    "chain": {
+      "caption": "One roll’s journey as four task sheets, each ending with report a problem and an SMS.",
+      "items": [
+        "Warehouse: enter the data, print a label per roll, attach it.",
+        "Dye house: scan the rolls in, print the packing list, hand over to the driver.",
+        "Driver: match the load to the packing list, then confirm delivery.",
+        "Customer: confirm receipt, then confirm the load matches the list."
+      ]
+    },
+    "taskList": {
+      "caption": "The warehouse’s task list: every request can be typed in or turned into a QR label.",
+      "annotations": [
+        "Requests split into pending, in progress and done",
+        "Each request names the job and the time it was raised",
+        "Two ways in: enter the data by hand, or generate a QR code"
+      ]
+    },
+    "settings": {
+      "caption": "Settings by role: warehouse, dye house, driver and customer each see only their own.",
+      "items": [
+        "Warehouse",
+        "Dye house",
+        "Driver",
+        "Customer"
+      ]
+    },
+    "request": {
+      "caption": "A request in the back office: credit rating and balance, the order, a nine-step timeline and the order lines."
+    },
+    "office": {
+      "caption": "Stock and customers.",
+      "items": [
+        "The warehouse page counts rolls waiting for quality control.",
+        "A customer page: representative, next delivery, balance and five tabs of history."
+      ]
+    },
+    "web": {
+      "caption": "The website asks what a buyer needs before it sells.",
+      "items": [
+        "The consultation form: industry, weave and order size.",
+        "A fabric page: spec table and industries before the price."
+      ]
+    },
+    "persona": {
+      "caption": "One of four personas: the bazaar wholesaler who wants exclusivity on a fabric code and pays by cheque on time."
+    },
+    "identity": {
+      "caption": "The identity: the knit-grid logo, and the first of two tone-of-voice sheets.",
+      "items": [
+        "The logo in Latin and Persian script.",
+        "Tone of voice: eight of the thirteen sliders."
+      ]
+    },
+    "sidebars": {
+      "caption": "Three sidebars from one back office: the first two list customers twice, and the middle one, on the warehouse page, highlights Requests."
+    },
+    "color": {
+      "caption": "The colour board, version 0.0.1: the main blue and the grey ramp."
+    }
+  },
+  "process": {
+    "heading": "One roll, five hand-offs",
+    "steps": [
+      {
+        "label": "Weigh and label",
+        "note": "The warehouse enters model, weight and length and prints one label per roll"
+      },
+      {
+        "label": "Into the dye house",
+        "note": "The dye house scans the rolls into its raw-fabric store"
+      },
+      {
+        "label": "Packing list",
+        "note": "The manager releases the packing list from the finished-goods store to the driver"
+      },
+      {
+        "label": "Load check",
+        "note": "The driver matches the load against the packing list"
+      },
+      {
+        "label": "Delivery check",
+        "note": "The customer matches it again on arrival and an SMS confirms receipt"
+      }
+    ]
+  },
+  "decisions": {
+    "heading": "Five decisions behind the chain",
+    "lede": "The file makes these choices visible in its screens and its architecture diagram.",
+    "items": [
+      {
+        "title": "Give every role the same two views",
+        "why": "Warehouse staff, dye-house operators and drivers use the app for one job each. A task list and a step sheet with done or not done is the only thing any of them has to learn.",
+        "tradeoff": "Nobody in the app sees the whole order; the manager has to open the back office for that."
+      },
+      {
+        "title": "Let a task be typed or scanned",
+        "why": "Labels are printed from typed data at the start of the chain, and scanned everywhere after. The architecture diagram draws both inputs, so a task can still be completed when a label cannot be scanned.",
+        "tradeoff": "A typed entry skips the check that a scan gives."
+      },
+      {
+        "title": "Check the load twice",
+        "why": "The driver matches the load against the packing list at the dye house, and the customer matches it again on arrival. An SMS is sent at both hand-offs, so each side has a record.",
+        "tradeoff": "Two extra steps at every delivery, and a mismatch has only one way out: report a problem."
+      },
+      {
+        "title": "Advise before selling",
+        "why": "The personas buy by industry and by habit, and one of them must test samples first. The home page leads with a consultation form, and a fabric page shows specs and industries before its price.",
+        "tradeoff": "A repeat buyer who knows the fabric code takes a longer path to the basket."
+      },
+      {
+        "title": "Put credit and cheques in the product",
+        "why": "B2B textile buyers in Iran often pay by cheque. The back office shows each customer’s credit rating and balance on every request, and the app’s payment rule sends orders under 30 million toman online and larger ones by cheque.",
+        "tradeoff": "A rating needs a stated rule, and the file does not say how the stars are earned."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "Sina’s part",
+    "intro": "Sina designed the work in this file, from the brand workshop to the task app.",
+    "own": [
+      "The brand workshop, four personas and the tone of voice",
+      "The logo and business cards",
+      "The website at three widths and the sign-in flow",
+      "The back office for requests, stock, warehouses and customers",
+      "The five-role task app and its architecture diagram",
+      "The design system: 21 component sets and 334 components"
+    ],
+    "collaborate": [
+      "Merikh Baft’s team, who took part in the brand workshop"
+    ],
+    "note": "Screens in the file that were pasted from other projects are not part of this study and are not shown."
+  },
+  "outcomes": {
+    "heading": "A full design record",
+    "intro": "The file does not record whether the website or the app launched, so there are no usage numbers to report. What it holds is a complete design for a mill’s brand, sales and operations.",
+    "delivered": [
+      {
+        "label": "designed screens",
+        "context": "32 in the app, 24 in the back office, 46 on the website and 26 for sign-in"
+      },
+      {
+        "label": "roles in the task app",
+        "context": "Manager, warehouse, dye house, driver and customer"
+      },
+      {
+        "label": "design-system components",
+        "context": "21 component sets, all set in Yekan Bakh"
+      }
+    ],
+    "shipped": [
+      "A brand workshop, four personas and a tone of voice",
+      "A logo and business cards",
+      "A Persian website at three widths, with sign-in",
+      "A back office for requests, stock, warehouses and customers",
+      "A mobile task app for five roles, with QR labels",
+      "A design system, version 0.0.1"
+    ]
+  },
+  "lessons": {
+    "heading": "What I’d change",
+    "items": [
+      {
+        "title": "Check the active state on every screen",
+        "body": "The same slip appears on the website, the back office and the app. A pass that asks one question per screen — where does this say I am? — would have caught all three."
+      },
+      {
+        "title": "Fill tables with real data",
+        "body": "Every row in a table repeats one fabric code and one price. Real fabric codes, long customer names and mixed units would have shown where the tables break."
+      },
+      {
+        "title": "Label the sequence that matters most",
+        "body": "The order timeline is the office’s view of the whole chain, and on desktop it has no labels. The most important sequence in a product should be the easiest one to read."
+      }
+    ]
+  }
+}

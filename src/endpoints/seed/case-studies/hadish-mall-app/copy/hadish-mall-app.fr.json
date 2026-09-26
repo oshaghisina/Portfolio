@@ -1,0 +1,238 @@
+{
+  "statement": "Un service web pour les loyers, les charges et les réparations d’un centre commercial — conçu et présenté pour Hadish Mall.",
+  "industry": "Immobilier commercial · gestion de centre commercial",
+  "team": "Un fichier Figma : 6 écrans locataires, un panneau de gestion et deux présentations",
+  "heroCaption": "Le côté locataire sur smartphone : l’accueil du Hadish Mall, une liste de services à réserver et à payer, et le portefeuille.",
+  "snapshot": {
+    "problem": "Un centre commercial encaisse le loyer et les charges de chaque local et envoie du personnel pour les nettoyer et les réparer ; chaque étape demande un rappel, un prix et quelqu’un pour vérifier.",
+    "role": "Recrutement au marketing ; proposition de l’app, design de ses écrans locataires et de son panneau de gestion, rédaction des decks qui l’ont présentée.",
+    "result": "Un concept et un pitch de 17 slides avec un plan de livraison sur 12 semaines. Rien dans le fichier ne montre qu’il a été développé."
+  },
+  "alt": {
+    "cover": "La couverture du pitch du Hadish Mall : le logo du centre et le titre « Gestion du complexe commercial Hadish Mall » à côté d’un ordinateur portable affichant la liste des locataires",
+    "home": "L’application web locataire du Hadish Mall sur smartphone : une photo de l’atrium du centre sous le titre « Système de gestion du Hadish Mall » et un bouton Voir les services",
+    "services": "L’écran des services sur smartphone : des cartes à cocher pour le paiement des charges, le nettoyage de la boutique et la réparation de la climatisation, chacune avec son prix, au-dessus d’un bouton vert Payer et du total",
+    "wallet": "L’écran du portefeuille sur smartphone : le solde, une carte de rechargement avec des montants prédéfinis et un code de réduction, et la liste des transactions passées",
+    "receipt": "L’écran de paiement sur smartphone : un avertissement indiquant que le montant doit correspondre exactement, le montant viré, une zone pour déposer la photo du reçu bancaire et un bouton Envoyer",
+    "walletError": "L’écran des services grisé derrière une alerte rouge sur smartphone : le solde du portefeuille est insuffisant, veuillez le recharger",
+    "threeServices": "Une slide du pitch montrant les trois volets du service — locataire, gestionnaire, et services et demandes — chacun avec une maquette d’appareil et une courte description",
+    "rentCharge": "Une slide du pitch sur la gestion des loyers et des charges : un smartphone affichant les paiements des locaux à côté d’une checklist qui inclut un portefeuille, des pénalités de retard et des récompenses pour paiement à temps",
+    "cutoff": "Une slide du pitch sur la suspension des services : un smartphone avec une alerte rouge à côté d’une checklist d’étapes, comme la désactivation d’un compte et l’arrêt des services en cours",
+    "managerPanel": "Une slide du pitch sur le panneau de gestion : une tablette affichant le tableau des locataires à côté d’une checklist de ce que les gestionnaires peuvent voir et faire",
+    "staff": "Une slide du pitch sur le suivi du personnel : un ordinateur portable avec un tableau de bord à côté d’une checklist qui inclut les heures de pointage, les rappels de tâches quotidiennes et un organigramme",
+    "transparency": "Une slide du pitch sur la transparence financière : un ordinateur portable à côté d’une checklist qui inclut la tarification des services, l’enregistrement des heures de début et de fin et la photo des fournitures",
+    "roadmap": "Une slide du pitch avec un plan sur 12 semaines dessiné en diagramme de Gantt : une réunion avec les gestionnaires, les parcours, puis deux phases de design, de développement et de livraison"
+  },
+  "chapters": {
+    "context": {
+      "heading": "Une proposition de logiciel venue du marketing",
+      "body": [
+        "Le Hadish Mall est un grand centre commercial et de loisirs du nord-est de Téhéran : des boutiques sur plusieurs étages, une aire de restauration, des cinémas et un parking. Sina y a rejoint le marketing à temps partiel, pour organiser des événements, des campagnes sur les réseaux sociaux et des partenariats avec des influenceurs afin d’attirer des visiteurs.",
+        "Derrière les vitrines, le centre fonctionne comme une petite ville. Chaque local doit un loyer et des charges mensuelles, et les locataires demandent du nettoyage, des réparations et des interventions sur la climatisation, que le personnel réalise et que quelqu’un doit chiffrer. Sina a proposé de tout regrouper dans un seul service web et l’a conçu : les écrans qu’utiliserait un locataire, un panneau pour les gestionnaires du centre, et les decks qui l’ont présenté."
+      ]
+    },
+    "problem": {
+      "heading": "Trois groupes, une seule série de factures",
+      "body": [
+        "Le pitch nomme trois groupes et donne à chacun un service. Les locataires paient, réservent des services et envoient des demandes. Les gestionnaires suivent les revenus, les impayés, les demandes et les travaux en cours. Le personnel de service reçoit des tâches, enregistre le début et la fin de chaque intervention et rend compte.",
+        "Le deck énonce les problèmes qu’il promet de supprimer : des paiements qui dépendent de rappels et de personnes pour les relancer, des retards de paiement sans conséquence, des services tarifés par la personne qui fait le travail, et un personnel dont personne ne voit le travail."
+      ],
+      "insight": "Chaque promesse du pitch porte sur l’argent ou la responsabilité, pas sur le confort."
+    },
+    "approach": {
+      "heading": "D’abord les écrans, ensuite l’argumentaire",
+      "body": [
+        "Les identifiants de nœuds Figma augmentent au fil des modifications d’un fichier : ils révèlent donc l’ordre du travail. Les écrans locataires sont venus en premier : six écrans mobiles aux couleurs du Hadish Mall, dessinés dans un navigateur mobile à l’adresse web du centre, avec des dates d’exemple du début de 2023. Le panneau de gestion a suivi, prévu pour trois sections en largeur desktop, tablette et mobile.",
+        "Puis la présentation. Une première, pour Hadish Mall, se terminait par trois niveaux de prix. Une seconde, de 17 diapositives, retirait les prix et ajoutait ce qu’un acheteur demanderait ensuite : suivi du personnel, transparence financière, sécurité, formation, déploiement et un plan sur 12 semaines."
+      ]
+    },
+    "solution": {
+      "heading": "Des paiements qui se relancent tout seuls",
+      "body": [
+        "Le locataire ouvre le service depuis un lien, sur son smartphone. Les services forment une liste de cartes — paiement des charges, nettoyage de la boutique, réparation de la climatisation — chacune avec son prix ; le locataire coche ce dont il a besoin et paie le total en bas. Le portefeuille affiche un solde, se recharge par montants prédéfinis, accepte un code de réduction et liste chaque transaction. Si le solde est insuffisant, une alerte rouge invite le locataire à le recharger.",
+        "Les locataires peuvent aussi payer hors de l’app : l’écran de paiement reçoit le montant viré et une photo du reçu bancaire, et avertit que le montant doit correspondre exactement à ce qu’attend le système.",
+        "Le deck ajoute les règles grâce auxquelles le paiement s’impose de lui-même : des récompenses pour les locataires qui paient à temps, des pénalités de retard calculées automatiquement, et une suspension qui coupe les services techniques, les demandes et le compte d’un local, le retire de la liste des bons payeurs et arrête les travaux en cours jusqu’au règlement de la dette. Des SMS informent locataires, personnel et gestionnaires à chaque étape, si bien que personne n’a à passer d’appel de relance."
+      ]
+    },
+    "operations": {
+      "heading": "Chaque intervention avec un prix et une trace",
+      "customLabel": "Opérations",
+      "body": [
+        "Le panneau de gestion réunit revenus, créances, paiements, demandes et messages : les locaux et leurs comptes, les factures impayées, les tâches en attente, les revenus des services et les retours des locataires. Le service du personnel transforme chaque demande en tâche avec une heure de début et de fin.",
+        "Deux slides défendent l’argument opérationnel. L’une promet la transparence financière : chaque service tarifé dans le logiciel, chaque intervention enregistrée avec son début et sa fin, une photo de toute fourniture installée dans un local, et le paiement via l’app, pour que le personnel ne puisse pas annoncer un faux prix. L’autre promet le suivi : heures de pointage, rappels de tâches quotidiennes, nombre de tâches par jour et par mois, équipes et organigramme."
+      ],
+      "insight": "La slide sur le personnel s’intitule « Suivre les comportements et réduire les effectifs » — écrite pour le propriétaire, pas pour les personnes qu’elle surveille."
+    },
+    "product": {
+      "heading": "Vendu par abonnement",
+      "customLabel": "Produit",
+      "body": [
+        "Le premier deck tarifait déjà le service en abonnement à trois niveaux — Base pour 100 utilisateurs, Pro pour 300 et Custom sans limite — facturé au mois ou à l’année avec 30 % de réduction, pour six mois au minimum. Base excluait l’automatisation : pas de notifications automatiques, pas de suspension automatique, ni récompenses ni pénalités de retard.",
+        "La dernière slide présente le plan de livraison : une réunion avec les gestionnaires la première semaine, les parcours la deuxième, puis deux phases. La phase deux est conçue pendant le développement de la phase un : la phase un est donc livrée aux semaines six et sept, et la phase deux aux semaines onze et douze."
+      ]
+    },
+    "critique": {
+      "heading": "Le pitch devance les écrans",
+      "customLabel": "Critique",
+      "body": [
+        "Le deck promet un panneau de gestion, un service pour le personnel et des règles automatisées. Le fichier dessine le côté locataire. La page du panneau a de la place pour dix-huit écrans — trois sections, deux états, trois largeurs — et n’en contient que deux : un tableau des locataires, et un tableau de bord financier dont le menu appartient à un produit de prise de rendez-vous en clinique. Les côtés gestionnaire et personnel sont défendus en slides, pas dessinés.",
+        "Les chiffres dérapent aux mêmes endroits. Sur l’écran des services, trois services sont cochés à 250 000 tomans chacun, et le total affiche 250 000. Sur la slide des prix, l’option annuelle retire 30 % à Pro et à Custom mais pas à Base, si bien que l’offre la moins chère affiche un prix mensuel plus élevé que celle du milieu."
+      ],
+      "bullets": [
+        "Le dépôt du reçu implique que quelqu’un vérifie chaque virement bancaire à la main, à rebours de la promesse du deck : des paiements sans personne pour les relancer.",
+        "Toutes les cartes de service partagent un même prix et une même description provisoire."
+      ],
+      "insight": "Un acheteur se serait vu vendre la moitié du produit la moins dessinée."
+    }
+  },
+  "figures": {
+    "services3": {
+      "caption": "Diapositive 2 de la présentation Hadish Mall : un service en trois parties — locataires, gestionnaires, et services et demandes."
+    },
+    "serviceList": {
+      "caption": "L’écran des services : cocher ce dont on a besoin, payer le total.",
+      "annotations": [
+        "L’adresse web du centre dans un navigateur mobile : un lien, pas une app à installer",
+        "Chaque service est une carte avec son propre prix et une case à cocher",
+        "Le paiement des charges figure dans la même liste que le nettoyage et les réparations",
+        "Le total et un bouton vert Payer restent fixés en bas"
+      ]
+    },
+    "pay": {
+      "caption": "Trois issues pour un paiement : depuis le portefeuille, par virement bancaire avec reçu, ou bloqué faute de solde suffisant.",
+      "items": [
+        "Le portefeuille : solde, rechargement et transactions.",
+        "Payer par virement bancaire : le montant et une photo du reçu.",
+        "Solde insuffisant dans le portefeuille : le locataire est invité à le recharger."
+      ]
+    },
+    "rules": {
+      "caption": "Les règles de paiement du pitch.",
+      "items": [
+        "Loyer et charges : récompenses pour paiement à temps, pénalités de retard et un portefeuille pour chaque locataire.",
+        "La suspension : services, demandes et compte suspendus jusqu’au règlement de la dette."
+      ]
+    },
+    "panel": {
+      "caption": "Le panneau de gestion tel que le montre le pitch : le tableau des locataires sur tablette, et ce que les gestionnaires peuvent suivre. Les coordonnées de la maquette sont floutées."
+    },
+    "staff": {
+      "caption": "Les promesses opérationnelles.",
+      "items": [
+        "Suivi du personnel : heures de pointage, rappels de tâches, équipes et organigramme.",
+        "Transparence : chaque service tarifé, chronométré et photographié dans le logiciel."
+      ]
+    },
+    "roadmap": {
+      "caption": "Le plan sur 12 semaines : la phase deux est conçue pendant le développement de la phase un, et chaque phase se termine par la livraison et la mise en place."
+    }
+  },
+  "process": {
+    "heading": "Quatre versions, dans l’ordre où elles ont été faites",
+    "steps": [
+      {
+        "label": "Écrans locataires",
+        "note": "Six écrans mobiles pour le Hadish Mall : accueil, services, portefeuille et trois états de paiement"
+      },
+      {
+        "label": "Panneau de gestion",
+        "note": "Prévu pour trois sections en trois largeurs ; un tableau des locataires et un tableau de bord financier dessinés"
+      },
+      {
+        "label": "Premier pitch",
+        "note": "Un deck pour le Hadish Mall qui se termine par trois niveaux de prix"
+      },
+      {
+        "label": "Second pitch",
+        "note": "17 slides : opérations, sécurité, formation, déploiement et un plan sur 12 semaines ; sans prix"
+      }
+    ]
+  },
+  "decisions": {
+    "heading": "Cinq décisions derrière le concept",
+    "lede": "Chacune est visible dans les écrans ou énoncée dans les decks.",
+    "items": [
+      {
+        "title": "Un seul service web pour trois groupes, pas trois apps",
+        "why": "Locataires, gestionnaires et personnel utilisent tous un même service dans un navigateur ; les écrans locataires sont dessinés à l’adresse web du centre, ouverte depuis un lien. Personne n’a rien à installer, et le centre n’a qu’un seul système à gérer.",
+        "tradeoff": "Une page web ne peut pas envoyer de notifications push : chaque alerte part donc par SMS."
+      },
+      {
+        "title": "Faire appliquer les règles de paiement automatiquement",
+        "why": "Récompenses pour paiement à temps, pénalités de retard automatiques et une suspension qui coupe les services d’un local remplacent les rappels et les relances que le deck promet de supprimer.",
+        "tradeoff": "Une suspension automatique est un outil brutal face à un locataire que le centre veut garder."
+      },
+      {
+        "title": "Donner un prix et une trace à chaque intervention",
+        "why": "Les services sont tarifés dans le logiciel, et le personnel enregistre le début et la fin de chaque intervention et photographie toute fourniture installée : la facture d’un locataire peut ainsi être confrontée au travail réalisé.",
+        "tradeoff": "Plus de saisie pour le personnel, et une trace qui peut être perçue comme de la surveillance."
+      },
+      {
+        "title": "Accepter les reçus de virement à côté du portefeuille",
+        "why": "Les locataires peuvent payer hors de l’app et déposer une photo du reçu, avec un avertissement : le montant doit correspondre exactement.",
+        "tradeoff": "Chaque reçu doit être vérifié par une personne, précisément le travail que le reste du design cherche à supprimer."
+      },
+      {
+        "title": "Le vendre en abonnement, pas comme un projet ponctuel",
+        "why": "Des niveaux selon le nombre d’utilisateurs, facturés au mois ou à l’année pour six mois au moins : le centre paierait un service en fonctionnement, pas un projet livré.",
+        "tradeoff": "Une durée minimale demande au centre de s’engager avant d’avoir vu le service fonctionner."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "La part de Sina",
+    "intro": "Établie à partir du fichier. Il ne nomme aucune équipe : il s’agit donc du travail présent dans le fichier, pas d’une revendication de paternité exclusive.",
+    "own": [
+      "L’idée : une app proposée depuis un poste marketing",
+      "Six écrans locataires : accueil, services, portefeuille et trois états de paiement",
+      "La mise en page du panneau de gestion, le tableau des locataires et le tableau de bord financier",
+      "Deux présentations pour Hadish Mall",
+      "Les trois niveaux de prix et le plan de livraison sur 12 semaines"
+    ],
+    "collaborate": [
+      "La direction du Hadish Mall, destinataire du premier pitch"
+    ],
+    "note": "Les slides techniques — infrastructure, sécurité et déploiement — décrivent le développement qu’une équipe technique réaliserait. Rien dans le fichier ne montre que le service a été développé ou acheté."
+  },
+  "outcomes": {
+    "heading": "Un pitch, pas un produit",
+    "intro": "Rien dans le fichier ne montre que le service a été construit, vendu ou utilisé. Il contient une conception côté locataire et une présentation complète pour Hadish Mall.",
+    "delivered": [
+      {
+        "label": "écrans locataires",
+        "context": "Accueil, services, portefeuille et trois états de paiement, pour le Hadish Mall"
+      },
+      {
+        "label": "slides dans le pitch final",
+        "context": "Des trois services à la sécurité, la formation et le déploiement"
+      },
+      {
+        "label": "semaines dans le plan de livraison",
+        "context": "Deux phases, la seconde conçue pendant le développement de la première"
+      }
+    ],
+    "shipped": [
+      "Le design d’une application web locataire : services, portefeuille et états de paiement",
+      "Une mise en page de panneau de gestion avec un tableau des locataires",
+      "Trois niveaux de prix selon le nombre d’utilisateurs",
+      "Un pitch de 17 slides et un plan de livraison sur 12 semaines"
+    ]
+  },
+  "lessons": {
+    "heading": "Ce que je changerais",
+    "items": [
+      {
+        "title": "Dessiner le côté que l’on vend",
+        "body": "Le pitch vendait un panneau aux gestionnaires et un service du personnel aux propriétaires, et le fichier dessine les écrans du locataire. Deux écrans de panneau finis auraient mieux défendu l’argument que quatre slides de checklists."
+      },
+      {
+        "title": "Faire tomber les chiffres juste avant le pitch",
+        "body": "Un total qui ignore deux des trois éléments cochés, et une remise annuelle qui fait paraître l’offre la moins chère comme la plus coûteuse. Dans un pitch sur la transparence financière, les calculs des slides sont la première chose que vérifie un acheteur."
+      },
+      {
+        "title": "Fermer la boucle que la conception laisse ouverte",
+        "body": "Le dépôt du reçu remet une personne dans les paiements que la présentation promet d’automatiser. Une passerelle de paiement dès la phase un — ou au moins une file de vérification des reçus dans le panneau de gestion — aurait tenu cette promesse."
+      }
+    ]
+  }
+}
