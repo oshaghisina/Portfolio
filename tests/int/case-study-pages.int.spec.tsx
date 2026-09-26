@@ -111,6 +111,8 @@ describe('FigureBlock pages (DS-25)', () => {
     fireEvent.click(opener)
 
     expect(dialog.hasAttribute('open')).toBe(true)
+    // Smooth scroll must leave the wheel to the viewer, or the whole page cannot be scrolled.
+    expect(dialog.hasAttribute('data-lenis-prevent')).toBe(true)
     expect(within(dialog).getByRole('img').getAttribute('alt')).toBe('desktop-full-1')
     expect(dialog.textContent).toContain('01 / 03')
 

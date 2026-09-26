@@ -303,9 +303,12 @@ export const PageIndex: React.FC<PageIndexProps> = ({ copy, locale, pages }) => 
         ) : null}
       </div>
 
+      {/* `data-lenis-prevent`: root-mode Lenis cancels every wheel event on the page, including
+          ones meant for the viewer's own scroll area — this hands the wheel back to the browser. */}
       <dialog
         aria-labelledby={titleId}
         className="m-0 h-dvh max-h-none w-full max-w-none overflow-hidden border-0 bg-transparent p-0 text-foreground backdrop:bg-background/95 open:flex open:flex-col"
+        data-lenis-prevent=""
         onClose={onDialogClose}
         onKeyDown={onDialogKeyDown}
         ref={dialogRef}
