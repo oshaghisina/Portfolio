@@ -1,20 +1,23 @@
 /**
  * The signature and its writing (jsdom). The outline data stays one closed shape per contour
  * however it is drawn, the animated SVG carries the pen windows its CSS reads, the route loader
- * writes it, and the first-load controller decides, docks, skips and caps the intro on its own,
- * without React.
+ * writes it and holds a page that arrives too soon, and the first-load controller decides, docks,
+ * skips and caps the intro on its own, without React.
  */
-import { cleanup, render, screen } from '@testing-library/react'
+import { act, cleanup, render, screen } from '@testing-library/react'
 import React from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import Loading from '@/app/(frontend)/loading'
+import { PageFrame } from '@/components/PageFrame'
 import { Signature } from '@/components/Signature'
 import { SIGNATURE_INTRO, signatureIntro } from '@/components/Signature/intro'
+import { hideLoader, LOADER_MIN_MS, loaderWait, showLoader } from '@/components/Signature/loader'
 import { drawSignature, SIGNATURE_PATH, SIGNATURE_STROKES } from '@/components/Signature/outline'
 import { SignatureDraw } from '@/components/Signature/SignatureDraw'
 import { SignatureIntro, SignatureIntroScript } from '@/components/Signature/SignatureIntro'
+import { SignatureLoader } from '@/components/Signature/SignatureLoader'
 import { uiCopy } from '@/utilities/uiCopy'
 
 vi.mock('@/utilities/getLocale', () => ({ getLocale: async () => 'fa' }))
@@ -104,6 +107,27 @@ describe('Signature and SignatureDraw', () => {
       expect(line.style.getPropertyValue('--signature-to')).not.toBe('')
     }
   })
+})
+
+describe('route loader', () => {
+  const elapsed = (container: HTMLElement) =>
+    container.querySelector('svg')!.style.getPropertyValue('--signature-loop-elapsed')
+
+  beforeEach(() => {
+    vi.useFakeTimers()
+    vi.stubGlobal(
+      'matchMedia',
+      vi.fn(() => ({ matches: false })),
+    )
+  })
+
+  afterEach(async () => {
+    cleanup()
+    // Lets the loaders unmounted above end their navigation.
+    await Promise.resolve()
+    vi.useRealTimers()
+    vi.unstubAllGlobals()
+  })
 
   it('loads a route by writing the signature on a sheet one viewport tall', async () => {
     const { container } = render(await Loading())
@@ -113,6 +137,80 @@ describe('Signature and SignatureDraw', () => {
     expect(status.hasAttribute('data-reveal-skip')).toBe(true)
     expect(status.querySelector('svg')!.getAttribute('data-mode')).toBe('loop')
     expect(container.querySelector('main')!.className).toContain('min-h-[calc(100svh-3.5rem)]')
+  })
+
+  it('shows a page at once when no loader is up', () => {
+    expect(loaderWait()).toBeNull()
+  })
+
+  it('holds a page that arrives early until the loader has been up for the minimum', async () => {
+    showLoader()
+    vi.advanceTimersByTime(400)
+    const wait = loaderWait()
+    expect(wait).toBeInstanceOf(Promise)
+    expect(loaderWait()).toBe(wait)
+
+    let settled = false
+    void wait!.then(() => {
+      settled = true
+    })
+    await vi.advanceTimersByTimeAsync(LOADER_MIN_MS - 401)
+    expect(settled).toBe(false)
+    await vi.advanceTimersByTimeAsync(1)
+    expect(settled).toBe(true)
+    expect(loaderWait()).toBeNull()
+    hideLoader()
+  })
+
+  it('keeps one clock across a nested loader, and ends with the last one', async () => {
+    expect(showLoader()).toBe(0)
+    vi.advanceTimersByTime(300)
+    // The outer boundary's loader leaves as the nested one arrives, in the same commit.
+    hideLoader()
+    expect(showLoader()).toBe(300)
+    await Promise.resolve()
+    expect(loaderWait()).not.toBeNull()
+
+    hideLoader()
+    await Promise.resolve()
+    expect(loaderWait()).toBeNull()
+  })
+
+  it('picks the write up where the loader it replaces was', () => {
+    const outer = render(<SignatureLoader />)
+    expect(elapsed(outer.container)).toBe('')
+    vi.advanceTimersByTime(250)
+    outer.unmount()
+    const nested = render(<SignatureLoader />)
+    expect(elapsed(nested.container)).toBe('250ms')
+  })
+
+  it('suspends an arriving page under the loader, but never the loader’s own frame', async () => {
+    render(<SignatureLoader />)
+    render(<PageFrame fillViewport>loader frame</PageFrame>)
+    expect(screen.getByText('loader frame')).toBeTruthy()
+
+    await act(async () => {
+      render(
+        <React.Suspense fallback={<p>loader</p>}>
+          <PageFrame>page</PageFrame>
+        </React.Suspense>,
+      )
+    })
+    expect(screen.getByText('loader')).toBeTruthy()
+    expect(screen.queryByText('page')).toBeNull()
+
+    await act(() => vi.advanceTimersByTimeAsync(LOADER_MIN_MS))
+    expect(screen.getByText('page')).toBeTruthy()
+  })
+
+  it('never holds a page for reduced motion, which has no writing to finish', () => {
+    vi.stubGlobal(
+      'matchMedia',
+      vi.fn(() => ({ matches: true })),
+    )
+    render(<SignatureLoader />)
+    expect(loaderWait()).toBeNull()
   })
 })
 

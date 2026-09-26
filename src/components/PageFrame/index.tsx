@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { SignatureLoaderHold } from '@/components/Signature/SignatureLoader'
 import { RevealRoot } from '@/providers/ScrollReveal/RevealRoot'
 import { cn } from '@/utilities/ui'
 
@@ -18,8 +19,9 @@ export interface PageFrameProps {
   className?: string
   /**
    * Hold the sheet at least one viewport tall below the sticky header (`h-14`, `xl:h-16`) and
-   * let its children stretch into that height. The loading skeleton uses it so the footer stays
-   * below the fold until the page arrives.
+   * let its children stretch into that height. The route loader (`loading.tsx`) uses it so the
+   * footer stays below the fold until the page arrives. A frame that fills the viewport is the
+   * loader's own, so it never waits for the loader.
    */
   fillViewport?: boolean
 }
@@ -34,6 +36,8 @@ export const PageFrame: React.FC<PageFrameProps> = ({ children, className, fillV
       className,
     )}
   >
+    {/* A page that arrives while the route loader is still writing the name waits for it. */}
+    {!fillViewport && <SignatureLoaderHold />}
     <RevealRoot className={cn('canvas flex-1 pb-16 md:pb-24', fillViewport && 'flex flex-col')}>
       {children}
     </RevealRoot>

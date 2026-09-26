@@ -17,6 +17,7 @@ export interface SignatureDrawProps {
    * `loop` writes it, holds, fades the ink in writing order and starts again (loading).
    */
   mode: 'loop' | 'write'
+  ref?: React.Ref<SVGSVGElement>
 }
 
 /**
@@ -25,12 +26,13 @@ export interface SignatureDrawProps {
  * `--signature-size` (the rendered width in px, unitless), which also keeps the traced line about
  * 1.25px. Decorative, like `Signature`.
  */
-export const SignatureDraw: React.FC<SignatureDrawProps> = ({ className, mode }) => (
+export const SignatureDraw: React.FC<SignatureDrawProps> = ({ className, mode, ref }) => (
   <svg
     aria-hidden="true"
     className={cn('signature-draw', className)}
     data-mode={mode}
     focusable="false"
+    ref={ref}
     viewBox={SIGNATURE_VIEWBOX}
     xmlns="http://www.w3.org/2000/svg"
   >

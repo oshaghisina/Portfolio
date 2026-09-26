@@ -107,9 +107,11 @@
     animation: signature-write var(--signature-write-duration, 1.7s) linear both;
   }
 
-  /* The delay keeps a fast navigation from flashing the first stroke. */
   .signature-draw[data-mode='loop'] {
-    animation: signature-loop 2.8s linear 120ms infinite both;
+    animation: signature-loop 2.8s linear infinite both;
+    /* A loader taking over from another in the same navigation (a nested loading.tsx) carries on
+       its write: SignatureLoader sets how long the first one has been up. */
+    animation-delay: calc(var(--signature-loop-elapsed, 0ms) * -1);
   }
 }
 
