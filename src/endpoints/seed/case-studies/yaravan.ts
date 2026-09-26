@@ -28,8 +28,15 @@ import { paragraph, prose } from './lexical'
  *   method. No legal exposure, no code weakness, no warranty terms, prices or SLA figures, no
  *   staging hostname, no comment authors.
  * - Every board crop stops above its risk panel (the concurrency note is a code weakness) and
- *   above any row naming the retailer or the support system; the coverage matrix and most
- *   economics slides name both too often to crop, so they are described, not shown.
+ *   above any row naming the retailer or the support system. Where a board had to be shown whole
+ *   (the guide's rules, the notices, the coverage matrix, the economics board map), every text
+ *   node naming a person, the retailer, the support system or a code weakness is painted over
+ *   from its Figma position, and the caption says so.
+ * - Every page of the Figma file has its template on the page (Sina, 2026-09-26): page 09's icon
+ *   set is imported and captioned as such; page 10 is shown by its structural controls and the
+ *   comparison header, never an access matrix; page 11's card shows its front only (the back
+ *   promises SMS and an extension the platform does not do), with the legal entity, address and
+ *   phone removed and the QR code — a live short link — pixelated.
  *
  * Copy lives in one `Copy` object per locale; the sections builder is a pure template over it, so
  * a missing string or a wrong tuple length is a type error. Shared fields (codes, media, layout,
@@ -45,17 +52,25 @@ const MEDIA_FILES = {
   // The archive row's cover: a crop of the activation blueprint.
   cover: { file: 'crops/service-cover.png', name: ARCHIVE.row.cover.name },
   map: { file: 'crops/l0-map.png', name: 'yaravan--l0-macro-map.png' },
+  guide: { file: 'crops/guide-rules.png', name: 'yaravan--guide-rules.png' },
   library: { file: 'crops/component-library.png', name: 'yaravan--component-library.png' },
+  // Page 09 is an imported icon set, shown once and captioned as imported.
+  icons: { file: 'crops/icon-set-page.png', name: 'yaravan--imported-icon-set.png' },
+  card: { file: 'crops/printable-card-front.png', name: 'yaravan--printable-card-front.png' },
   l1: { file: 'crops/pr024-l1.png', name: 'yaravan--activation-l1.png' },
   blueprint: { file: 'crops/pr024-blueprint.png', name: 'yaravan--activation-blueprint.png' },
   swimlane: { file: 'crops/pr024-swimlane.png', name: 'yaravan--activation-swimlane.png' },
   sop: { file: 'crops/sop-006.png', name: 'yaravan--activation-code-procedure.png' },
   wi: { file: 'crops/wi-007.png', name: 'yaravan--activation-work-instruction.png' },
-  notice: { file: 'crops/wi-notice.png', name: 'yaravan--work-instruction-notice.png' },
+  notice: { file: 'crops/notices.png', name: 'yaravan--notice-boards.png' },
+  coverage: { file: 'crops/coverage-matrix.png', name: 'yaravan--coverage-matrix.png' },
   role: { file: 'crops/role-004.png', name: 'yaravan--open-role-card.png' },
   raci: { file: 'crops/raci.png', name: 'yaravan--raci-matrix.png' },
+  access: { file: 'crops/access-compare.png', name: 'yaravan--access-controls.png' },
   promise: { file: 'crops/economics-promise.png', name: 'yaravan--economics-promise.png' },
   controls: { file: 'crops/economics-controls.png', name: 'yaravan--economics-controls.png' },
+  boardMap: { file: 'crops/economics-board-map.png', name: 'yaravan--economics-board-map.png' },
+  glossary: { file: 'crops/economics-glossary.png', name: 'yaravan--economics-glossary.png' },
 } as const
 
 export type YarMediaKey = keyof typeof MEDIA_FILES
@@ -93,19 +108,33 @@ export interface YarCopy {
     processHeading: string
     steps: Six<{ label: string; note: string }>
   }
-  research: { heading: string; body: Three; libraryCaption: string }
+  research: { heading: string; body: Three; guideCaption: string; libraryCaption: string }
   levels: {
     label: string
     heading: string
     body: Three
     insight: string
+    cardCaption: string
     l1Caption: string
     blueprintCaption: string
     swimlaneCaption: string
     procedureCaption: string
   }
-  findings: { label: string; heading: string; body: Three; noticeCaption: string }
-  roles: { label: string; heading: string; body: Two; roleCaption: string; raciCaption: string }
+  findings: {
+    label: string
+    heading: string
+    body: Three
+    noticeCaption: string
+    coverageCaption: string
+  }
+  roles: {
+    label: string
+    heading: string
+    body: Three
+    roleCaption: string
+    raciCaption: string
+    accessCaption: string
+  }
   decisions: {
     heading: string
     lede: string
@@ -118,6 +147,7 @@ export interface YarCopy {
     insight: string
     promiseCaption: string
     controlsCaption: string
+    apparatusCaption: string
   }
   outcomes: {
     heading: string
@@ -146,8 +176,12 @@ const EN: YarCopy = {
     cover:
       'Yaravan — the service blueprint for warranty activation in Persian: customer actions, touchpoints and the lines of interaction and visibility',
     map: 'Yaravan — the macro process map in Persian: eighteen process cards in five lanes, each with a status badge, and a notice that closes the count',
+    guide:
+      'Yaravan — the rules section of the design guide in Persian: six house rules, the scope amendment and the five evidence tiers',
     library:
       'Yaravan — the diagram component library: seven flow shapes, a four-state status badge, lane headers, breadcrumbs and process cards',
+    icons: 'Yaravan — one category of the imported line-icon set: about a hundred icons in a grid',
+    card: 'Yaravan — the front of the printable warranty card in Persian: device model, warranty code, expiry date, an empty contact field and a blurred QR code',
     l1: 'Yaravan — the end-to-end card for customer warranty activation in Persian: trigger, owner, phases, decision gates, inputs and outputs, controls, and a KPI and SLA marked as needing determination',
     blueprint:
       'Yaravan — the service blueprint for customer warranty activation in Persian: four steps across layers from customer actions to evidence, divided by the lines of interaction, visibility and internal interaction',
@@ -156,13 +190,21 @@ const EN: YarCopy = {
     sop: 'Yaravan — the identity card of the activation-code procedure in Persian: version 0.3 draft, approver and review date needing determination, and the status “not approved”',
     wi: 'Yaravan — the work instruction for activating a warranty code in Persian: identity, preconditions, the panel path and seven numbered steps',
     notice:
-      'Yaravan — a notice board in Persian naming the work instructions that cannot yet be written, and the reason for each',
+      'Yaravan — three notice boards in Persian, from the service-map, swimlane and work-instruction pages, each listing what is not drawn and why',
+    coverage:
+      'Yaravan — the coverage matrix in Persian: a 22-row table of processes against their sources, levels and gaps, with status counts beneath',
     role: 'Yaravan — the role card for warranty operations in Persian: a red banner saying the role exists in the code but in no business document, and every field marked as needing determination',
     raci: 'Yaravan — the RACI matrix in Persian, with a red banner marking the Accountable column as open and red cells for deliberate exclusions',
+    access:
+      'Yaravan — two boards in Persian: eight structural access controls enforced in the code, and the header of the comparison between the current model and the staff’s proposal',
     promise:
       'Yaravan warranty economics — a slide in Persian: a warranty is a promise, with three unknowns at the moment of issue — whether, when and how much',
     controls:
       'Yaravan warranty economics — five control levers in Persian, ordered from cheapest to costliest, each with its status today',
+    boardMap:
+      'Yaravan warranty economics — the deck’s board map in Persian: the narrative arc and a table of every slide with its message and evidence badge',
+    glossary:
+      'Yaravan warranty economics — the glossary appendix in Persian: one fixed Persian term for each concept, with its definition',
   },
   context: {
     heading: 'A dormant identity, an undocumented operation',
@@ -245,19 +287,23 @@ const EN: YarCopy = {
       'One rule decides the shape of the whole file: what may be drawn depends on the evidence behind it, claim by claim. Five evidence tiers run from executable code, which licenses a full swimlane, down to no source at all, for which drawing is forbidden and only a notice may appear. The lower the tier, the less you may draw.',
       'So the file is honest about its absences. Where a level stops short, a notice board names what is missing and why, and the service-map and swimlane notices close their own arithmetic back to 22. A diagram of an undocumented sequence would be the same invention the rules forbid — only more convincing.',
     ],
+    guideCaption:
+      'Page 00’s rules: six house rules, the amendment that widened the scope to 22 processes, and the five evidence tiers that decide what may be drawn. Lines naming the retailer or the support system are removed.',
     libraryCaption:
-      'Page 00: the library every diagram is built from — seven flow shapes, a four-state status badge and the furniture that makes a map navigable.',
+      'The furniture of every diagram: the component library drawn on page 00, beside one category of page 09’s icon set — imported, not drawn for this file.',
   },
   levels: {
     label: 'Six levels',
     heading: 'One process, followed all the way down',
     body: [
       'The architecture has six levels, and each answers a different question. Customer warranty activation is one of the few processes drawn at every one of them, so it shows the whole stack. On the macro map it is one card with an owner, an output and a status. At level 1 it becomes an end-to-end card: trigger, owner, start and end events, four phases, the decision gates, what it takes in and hands on, the controls the code enforces — and a KPI and SLA marked “needs determination”, because no approved formula or time exists in any source.',
-      'Level 2 is a service blueprint: the customer’s actions, the touchpoints, and what staff and systems do on each side of the lines of interaction, visibility and internal interaction, down to the records and controls each step leaves behind. Here it shows that the printed label the customer starts from is a touchpoint the system does not control — printing happens outside it. Level 3 turns the same sequence into a swimlane with a lane for each actor.',
+      'Level 2 is a service blueprint: the customer’s actions, the touchpoints, and what staff and systems do on each side of the lines of interaction, visibility and internal interaction, down to the records and controls each step leaves behind. Here it shows that the printed label the customer starts from is a touchpoint the system does not control — printing happens outside it. The file draws that touchpoint too: a printable warranty card, front and back, in ten variants. Level 3 turns the same sequence into a swimlane with a lane for each actor.',
       'Levels 4 and 5 are for the people who run it. The procedure covers four processes at once — procedures and processes are not one-to-one — and is stamped “not approved”, with its approver and review date left as “needs determination”. The work instruction is the customer’s own seven steps, with a checklist written for them: the code alphabet has no zero, O, one, I or L, so nothing on the printed label can be misread.',
     ],
     insight:
       'Each level is allowed to stop. Only fourteen of the 22 processes have a swimlane and only six have a blueprint; the rest have a notice saying why, and the notices close their own count back to 22.',
+    cardCaption:
+      'Where activation starts: the front of the printable warranty card on page 11, one of ten variants. The legal entity, address and phone are removed, and the QR code is blurred.',
     l1Caption:
       'Level 1 — customer warranty activation end to end: trigger and owner, four phases flowing right to left, the decision gates, and a KPI and SLA that no source defines yet.',
     blueprintCaption:
@@ -276,7 +322,9 @@ const EN: YarCopy = {
       'The file also audits itself. A coverage matrix sets each of the 22 processes against its source, the levels that exist and what is missing: six complete, six incomplete, one in conflict, nine needing determination. It reopens three gaps that had been marked closed — closed is not the same as resolved by the organisation — and it withdraws its own citations where a source turned out not to say what it had been cited for.',
     ],
     noticeCaption:
-      'An absence, drawn: six work instructions that cannot be written yet, each with the missing mechanism or policy that blocks it.',
+      'Absences, drawn: the notices on the service-map, swimlane and work-instruction pages, each naming what is missing and why. Lines naming the retailer are removed.',
+    coverageCaption:
+      'Page 08: the coverage matrix — each of the 22 processes against its source, the levels that exist and what is missing, with the status counts beneath. Cells naming people, the support system or a code weakness are removed.',
   },
   roles: {
     label: 'Roles',
@@ -284,11 +332,14 @@ const EN: YarCopy = {
     body: [
       'Eight role cards set out each role’s purpose, duties, exclusive rights, deliberate exclusions and gaps, with the KPI and SLA marked “needs determination” on every card. Some cards are mostly questions. One role exists in the code and has access, but no business document, organisation chart or procedure defines it, so its lane is drawn dashed until the business decides whether it is real or another name for an existing role.',
       'The responsibility matrix could only be three-quarters derived. Responsible, consulted and informed came out of the code; accountable could not, because the code says who can execute an action, not who answers for its result. The matrix ships with that column open and a banner saying so, and it marks deliberate exclusions — segregation of duties — in red so they cannot be mistaken for gaps: the role that sets the void ceiling cannot approve voids, because it could raise its own ceiling.',
+      'The access model got the same treatment. One page sets out eight structural controls the code enforces — deny by default, a 404 rather than a 403 so a role cannot learn that a page exists, and no invented defaults: “inventing a default means silently publishing a policy nobody approved.” Beside it, the after-sales staff’s own role proposal — eight roles, 76 items — is checked against the code item by item, side by side, “not merged, not reconciled”. Three of the 76 are fully built and twenty conflict with an approved architecture decision, and the page states its own limit: it gives no verdict on whether the proposal is right.',
     ],
     roleCaption:
       'A role that exists only in the code: every field of its card reads “needs determination”, and the banner puts the question to the business.',
     raciCaption:
       'The first eleven rows of the 22-process matrix. The main column ships empty, and says why. The banner states the gap and who holds the decision; the name is hidden here.',
+    accessCaption:
+      'Page 10: the eight structural controls the code enforces — deny by default, 404 instead of 403, one module behind menu, page and server — above the header of the side-by-side comparison with the staff’s own proposal.',
   },
   decisions: {
     heading: 'Six rules for drawing what nobody could confirm',
@@ -346,6 +397,8 @@ const EN: YarCopy = {
       'The deck opens on the concept: on the day it is issued, a warranty is three unknowns — whether a claim comes, when, and at what cost.',
     controlsCaption:
       'Five control levers, ordered from cheapest to costliest, each tied to the factor of the cost equation it moves.',
+    apparatusCaption:
+      'The deck’s own apparatus: a board map with the narrative arc and every slide’s evidence badge, and a glossary appendix that fixes one Persian word per concept. One line naming a person is removed.',
   },
   outcomes: {
     heading: 'A drawn operation, with its gaps owned',
@@ -422,8 +475,12 @@ const FA: YarCopy = {
     cover:
       'یاراوان — بلوپرینت خدمت برای فعال‌سازی گارانتی به فارسی: اقدام‌های مشتری، نقاط تماس و خطوط تعامل و دیدپذیری',
     map: 'یاراوان — نقشهٔ کلان فرایندها به فارسی: هجده کارت فرایند در پنج مسیر، هر یک با نشان وضعیت، و اطلاعیه‌ای که شمارش را کامل می‌کند',
+    guide:
+      'یاراوان — بخش قواعد راهنمای طراحی به فارسی: شش قاعدهٔ داخلی، اصلاحیهٔ دامنه و پنج ردهٔ شواهد',
     library:
       'یاراوان — کتابخانهٔ اجزای نمودار: هفت شکل جریان، نشان وضعیت چهارحالته، سرعنوان مسیرها، بردکرامب‌ها و کارت‌های فرایند',
+    icons: 'یاراوان — یک دسته از مجموعهٔ آیکون‌های خطی واردشده: حدود صد آیکون در یک شبکه',
+    card: 'یاراوان — روی کارت گارانتی قابل چاپ به فارسی: مدل دستگاه، کد گارانتی، تاریخ انقضا، یک فیلد تماس خالی و یک کد QR تارشده',
     l1: 'یاراوان — کارت سرتاسری فعال‌سازی گارانتی توسط مشتری به فارسی: رویداد آغازگر، مالک، فازها، دروازه‌های تصمیم، ورودی‌ها و خروجی‌ها، کنترل‌ها، و یک KPI و SLA که «نیازمند تعیین» علامت خورده‌اند',
     blueprint:
       'یاراوان — بلوپرینت خدمت فعال‌سازی گارانتی توسط مشتری به فارسی: چهار گام در لایه‌هایی از اقدام‌های مشتری تا شواهد، که خطوط تعامل، دیدپذیری و تعامل داخلی از هم جدایشان می‌کنند',
@@ -432,13 +489,21 @@ const FA: YarCopy = {
     sop: 'یاراوان — شناسنامهٔ رویهٔ کدهای فعال‌سازی به فارسی: پیش‌نویس نسخهٔ ۰٫۳، تأییدکننده و تاریخ بازبینی «نیازمند تعیین»، و وضعیت «تأییدنشده»',
     wi: 'یاراوان — دستورالعمل کاری فعال‌سازی کد گارانتی به فارسی: شناسه، پیش‌شرط‌ها، مسیر در پنل و هفت گام شماره‌دار',
     notice:
-      'یاراوان — تابلوی اطلاعیه‌ای به فارسی که دستورالعمل‌های کاری‌ای را نام می‌برد که هنوز نوشتنی نیستند، همراه با دلیل هر یک',
+      'یاراوان — سه تابلوی اطلاعیه به فارسی، از صفحه‌های نقشهٔ خدمات، سوئیم‌لین و دستورالعمل کاری، که هر یک فهرست می‌کند چه چیزی ترسیم نشده و چرا',
+    coverage:
+      'یاراوان — ماتریس پوشش به فارسی: جدولی با ۲۲ ردیف از فرایندها در برابر منابع، سطوح و شکاف‌هایشان، با شمارش وضعیت‌ها در زیر آن',
     role: 'یاراوان — کارت نقش عملیات گارانتی به فارسی: نواری قرمز که می‌گوید این نقش در کد وجود دارد اما در هیچ سند کسب‌وکاری نه، و همهٔ فیلدها با علامت «نیازمند تعیین»',
     raci: 'یاراوان — ماتریس RACI به فارسی، با نواری قرمز که ستون «پاسخ‌گو» را باز اعلام می‌کند و خانه‌هایی قرمز برای استثناهای عامدانه',
+    access:
+      'یاراوان — دو بورد به فارسی: هشت کنترل دسترسی ساختاری که در کد اعمال می‌شوند، و سرعنوان مقایسهٔ مدل فعلی با پیشنهاد کارکنان',
     promise:
       'اقتصاد گارانتی یاراوان — اسلایدی به فارسی: گارانتی یک وعده است، با سه مجهول در لحظهٔ صدور — وقوع، زمان و میزان',
     controls:
       'اقتصاد گارانتی یاراوان — پنج اهرم کنترلی به فارسی، مرتب از کم‌هزینه‌ترین تا پرهزینه‌ترین، هر یک با وضعیت امروزش',
+    boardMap:
+      'اقتصاد گارانتی یاراوان — نقشهٔ بوردهای ارائه به فارسی: قوس روایی و جدولی از همهٔ اسلایدها، هر یک با پیام و نشان شواهدش',
+    glossary:
+      'اقتصاد گارانتی یاراوان — پیوست واژه‌نامه به فارسی: یک اصطلاح فارسی ثابت برای هر مفهوم، همراه با تعریفش',
   },
   context: {
     heading: 'هویتی خفته، عملیاتی مستندنشده',
@@ -521,19 +586,23 @@ const FA: YarCopy = {
       'یک قاعده شکل کل فایل را تعیین می‌کند: آنچه مجاز به ترسیم است به شواهد پشت آن بستگی دارد، ادعا به ادعا. پنج ردهٔ شواهد از کد اجرایی، که مجوز یک سوئیم‌لین کامل را می‌دهد، تا نبود هیچ منبعی امتداد دارند؛ در این ردهٔ آخر ترسیم ممنوع است و فقط یک اطلاعیه می‌تواند بیاید. هرچه رده پایین‌تر، مجال ترسیم کمتر.',
       'پس فایل دربارهٔ غیاب‌هایش صادق است. هر جا سطحی ناتمام می‌ماند، یک تابلوی اطلاعیه نام می‌برد که چه چیزی کم است و چرا، و اطلاعیه‌های نقشهٔ خدمات و سوئیم‌لین حساب خود را تا ۲۲ می‌بندند. نمودار یک توالی مستندنشده همان جعلی است که قواعد منع می‌کنند — فقط باورپذیرتر.',
     ],
+    guideCaption:
+      'قواعد صفحهٔ ۰۰: شش قاعدهٔ داخلی، اصلاحیه‌ای که دامنه را به ۲۲ فرایند گسترش داد، و پنج ردهٔ شواهد که تعیین می‌کنند چه چیزی را می‌توان ترسیم کرد. خط‌هایی که نام خرده‌فروش یا سامانهٔ پشتیبانی را می‌آورند حذف شده‌اند.',
     libraryCaption:
-      'صفحهٔ ۰۰: کتابخانه‌ای که هر نمودار از آن ساخته می‌شود — هفت شکل جریان، نشان وضعیت چهارحالته، و اجزایی که یک نقشه را پیمایش‌پذیر می‌کنند.',
+      'اسباب هر نمودار: کتابخانهٔ اجزایی که در صفحهٔ ۰۰ ترسیم شده، در کنار یک دسته از مجموعهٔ آیکون صفحهٔ ۰۹ — واردشده، نه ترسیم‌شده برای این فایل.',
   },
   levels: {
     label: 'شش سطح',
     heading: 'یک فرایند، دنبال‌شده تا پایین‌ترین سطح',
     body: [
       'این معماری شش سطح دارد، و هر سطح به پرسشی متفاوت پاسخ می‌دهد. فعال‌سازی گارانتی توسط مشتری یکی از معدود فرایندهایی است که در همهٔ این سطوح ترسیم شده، پس کل این ساختار لایه‌لایه را نشان می‌دهد. در نقشهٔ کلان، یک کارت است با یک مالک، یک خروجی و یک وضعیت. در سطح ۱ به کارتی سرتاسری بدل می‌شود: رویداد آغازگر، مالک، رویدادهای شروع و پایان، چهار فاز، دروازه‌های تصمیم، آنچه دریافت می‌کند و آنچه تحویل می‌دهد، کنترل‌هایی که کد اعمال می‌کند — و یک KPI و SLA با علامت «نیازمند تعیین»، چون در هیچ منبعی فرمول یا زمان تأییدشده‌ای وجود ندارد.',
-      'سطح ۲ یک بلوپرینت خدمت است: اقدام‌های مشتری، نقاط تماس، و آنچه کارکنان و سامانه‌ها در هر سوی خطوط تعامل، دیدپذیری و تعامل داخلی انجام می‌دهند، تا سوابق و کنترل‌هایی که هر گام برجا می‌گذارد. در این‌جا نشان می‌دهد که برچسب چاپی‌ای که مشتری کارش را از آن آغاز می‌کند، نقطهٔ تماسی است که سامانه کنترلی بر آن ندارد — چاپ بیرون از آن انجام می‌شود. سطح ۳ همین توالی را به یک سوئیم‌لین تبدیل می‌کند، با یک مسیر برای هر کنشگر.',
+      'سطح ۲ یک بلوپرینت خدمت است: اقدام‌های مشتری، نقاط تماس، و آنچه کارکنان و سامانه‌ها در هر سوی خطوط تعامل، دیدپذیری و تعامل داخلی انجام می‌دهند، تا سوابق و کنترل‌هایی که هر گام برجا می‌گذارد. در این‌جا نشان می‌دهد که برچسب چاپی‌ای که مشتری کارش را از آن آغاز می‌کند، نقطهٔ تماسی است که سامانه کنترلی بر آن ندارد — چاپ بیرون از آن انجام می‌شود. فایل این نقطهٔ تماس را هم ترسیم می‌کند: یک کارت گارانتی قابل چاپ، رو و پشت، در ده گونه. سطح ۳ همین توالی را به یک سوئیم‌لین تبدیل می‌کند، با یک مسیر برای هر کنشگر.',
       'سطوح ۴ و ۵ برای کسانی است که آن را اجرا می‌کنند. رویه چهار فرایند را هم‌زمان پوشش می‌دهد — رویه‌ها و فرایندها تناظر یک به یک ندارند — و مهر «تأییدنشده» خورده است، و تأییدکننده و تاریخ بازبینی‌اش «نیازمند تعیین» مانده‌اند. دستورالعمل کاری همان هفت گام خود مشتری است، با چک‌لیستی که برای او نوشته شده: الفبای کد صفر، حرف O، یک، حرف I و حرف L را ندارد، تا هیچ چیزی روی برچسب چاپی اشتباه خوانده نشود.',
     ],
     insight:
       'هر سطح اجازه دارد متوقف شود. از ۲۲ فرایند، فقط چهارده فرایند سوئیم‌لین دارند و فقط شش فرایند بلوپرینت؛ بقیه اطلاعیه‌ای دارند که می‌گوید چرا، و اطلاعیه‌ها شمارش خود را تا ۲۲ می‌بندند.',
+    cardCaption:
+      'جایی که فعال‌سازی آغاز می‌شود: روی کارت گارانتی قابل چاپ در صفحهٔ ۱۱، یکی از ده گونه. شخصیت حقوقی، نشانی و تلفن حذف شده‌اند، و کد QR تار شده است.',
     l1Caption:
       'سطح ۱ — فعال‌سازی گارانتی توسط مشتری به‌صورت سرتاسری: رویداد آغازگر و مالک، چهار فاز که از راست به چپ جریان دارند، دروازه‌های تصمیم، و یک KPI و SLA که هنوز هیچ منبعی تعریفشان نکرده است.',
     blueprintCaption:
@@ -552,7 +621,9 @@ const FA: YarCopy = {
       'فایل خودش را هم ممیزی می‌کند. یک ماتریس پوشش، هر یک از ۲۲ فرایند را در برابر منبعش، سطوح موجود و آنچه کم است قرار می‌دهد: شش کامل، شش ناقص، یکی در تعارض، نُه نیازمند تعیین. سه شکافی را که بسته علامت خورده بودند دوباره باز می‌کند — بسته شدن با حل شدن از سوی سازمان یکی نیست — و هر جا معلوم شد منبعی آنچه را که به استناد آن ذکر شده بود نمی‌گوید، استنادهای خودش را پس می‌گیرد.',
     ],
     noticeCaption:
-      'غیابی ترسیم‌شده: شش دستورالعمل کاری که هنوز نوشتنی نیستند، هر یک با سازوکار یا سیاست ناموجودی که مانعش است.',
+      'غیاب‌هایی ترسیم‌شده: اطلاعیه‌های صفحه‌های نقشهٔ خدمات، سوئیم‌لین و دستورالعمل کاری، که هر یک نام می‌برد چه چیزی کم است و چرا. خط‌هایی که نام خرده‌فروش را می‌آورند حذف شده‌اند.',
+    coverageCaption:
+      'صفحهٔ ۰۸: ماتریس پوشش — هر یک از ۲۲ فرایند در برابر منبعش، سطوح موجود و آنچه کم است، با شمارش وضعیت‌ها در زیر آن. خانه‌هایی که اشخاص، سامانهٔ پشتیبانی یا ضعفی در کد را نام می‌برند حذف شده‌اند.',
   },
   roles: {
     label: 'نقش‌ها',
@@ -560,11 +631,14 @@ const FA: YarCopy = {
     body: [
       'هشت کارت نقش، هدف، وظایف، اختیارات انحصاری، استثناهای عامدانه و شکاف‌های هر نقش را بیان می‌کنند، و KPI و SLA روی همهٔ کارت‌ها «نیازمند تعیین» علامت خورده‌اند. برخی کارت‌ها بیشتر پرسش‌اند. یک نقش در کد وجود دارد و دسترسی دارد، اما هیچ سند کسب‌وکاری، نمودار سازمانی یا رویه‌ای آن را تعریف نمی‌کند؛ پس مسیرش خط‌چین ترسیم شده است تا کسب‌وکار تصمیم بگیرد که این نقش واقعی است یا نام دیگری برای نقشی موجود.',
       'ماتریس مسئولیت را فقط تا سه‌چهارم می‌شد استخراج کرد. مسئول اجرا، مشورت‌شونده و مطلع‌شونده از کد به دست آمدند؛ پاسخ‌گو نه، چون کد می‌گوید چه کسی می‌تواند اقدامی را اجرا کند، نه اینکه چه کسی پاسخ‌گوی نتیجهٔ آن است. ماتریس با همین ستونِ باز و نواری که این را اعلام می‌کند منتشر می‌شود، و استثناهای عامدانه — تفکیک وظایف — را قرمز علامت می‌زند تا با جای خالی اشتباه گرفته نشوند: نقشی که سقف ابطال را تعیین می‌کند نمی‌تواند ابطال‌ها را تأیید کند، چون می‌توانست سقف خودش را بالا ببرد.',
+      'با مدل دسترسی هم همین‌گونه رفتار شد. یک صفحه هشت کنترل ساختاری را که کد اعمال می‌کند برمی‌شمارد — منع به‌صورت پیش‌فرض، خطای 404 به‌جای 403 تا هیچ نقشی نتواند بفهمد صفحه‌ای وجود دارد، و هیچ پیش‌فرض ساختگی‌ای: «ساختن یک پیش‌فرض یعنی انتشار بی‌صدای سیاستی که هیچ‌کس تأییدش نکرده است.» در کنار آن، پیشنهاد نقش‌هایی که خود کارکنان خدمات پس از فروش داده‌اند — هشت نقش، ۷۶ مورد — مورد به مورد و پهلو به پهلو با کد سنجیده می‌شود، «نه ادغام، نه تطبیق». سه مورد از این ۷۶ مورد به‌طور کامل ساخته شده‌اند و بیست مورد با یک تصمیم معماری تأییدشده در تعارض‌اند، و صفحه محدودیت خودش را هم بیان می‌کند: هیچ حکمی دربارهٔ درستی پیشنهاد نمی‌دهد.',
     ],
     roleCaption:
       'نقشی که فقط در کد وجود دارد: همهٔ فیلدهای کارتش «نیازمند تعیین» است، و نوار پرسش را پیش روی کسب‌وکار می‌گذارد.',
     raciCaption:
       'یازده ردیف نخست ماتریس ۲۲ فرایند. ستون اصلی خالی منتشر می‌شود، و می‌گوید چرا. نوار، شکاف و دارندهٔ تصمیم را اعلام می‌کند؛ نام در این‌جا پنهان شده است.',
+    accessCaption:
+      'صفحهٔ ۱۰: هشت کنترل ساختاری که کد اعمال می‌کند — منع به‌صورت پیش‌فرض، 404 به‌جای 403، یک ماژول پشت منو، صفحه و سرور — بالای سرعنوان مقایسهٔ پهلو به پهلو با پیشنهاد خود کارکنان.',
   },
   decisions: {
     heading: 'شش قاعده برای ترسیم آنچه هیچ‌کس نمی‌توانست تأیید کند',
@@ -622,6 +696,8 @@ const FA: YarCopy = {
       'ارائه با خود مفهوم آغاز می‌شود: گارانتی در روز صدورش سه مجهول است — اینکه آیا مطالبه‌ای می‌رسد، کی، و با چه هزینه‌ای.',
     controlsCaption:
       'پنج اهرم کنترلی، مرتب از کم‌هزینه‌ترین تا پرهزینه‌ترین، هر یک پیوسته به عاملی از معادلهٔ هزینه که آن را جابه‌جا می‌کند.',
+    apparatusCaption:
+      'ابزارهای خود ارائه: نقشهٔ بوردها با قوس روایی و نشان شواهد هر اسلاید، و پیوست واژه‌نامه‌ای که برای هر مفهوم یک واژهٔ فارسی را ثابت می‌کند. یک خط که نام یک شخص را می‌آورد حذف شده است.',
   },
   outcomes: {
     heading: 'عملیاتی ترسیم‌شده، با شکاف‌هایی صاحب‌دار',
@@ -698,8 +774,12 @@ const AR: YarCopy = {
     cover:
       'ياراوان — مخطط الخدمة التفصيلي لتفعيل الضمان بالفارسية: إجراءات العميل، ونقاط الاتصال، وخطّا التفاعل والرؤية',
     map: 'ياراوان — خريطة العمليات الكلية بالفارسية: ثماني عشرة بطاقة عملية في خمسة مسارات، لكلٍّ منها شارة حالة، وإشعار يُكمل الحصيلة',
+    guide:
+      'ياراوان — قسم القواعد في دليل التصميم بالفارسية: ست قواعد داخلية، وتعديل النطاق، ودرجات الأدلة الخمس',
     library:
       'ياراوان — مكتبة مكوّنات المخططات: سبعة أشكال للتدفق، وشارة حالة بأربع حالات، وترويسات المسارات، وشرائط التنقل التسلسلي، وبطاقات العمليات',
+    icons: 'ياراوان — فئة واحدة من مجموعة الأيقونات الخطية المستورَدة: نحو مئة أيقونة في شبكة',
+    card: 'ياراوان — الوجه الأمامي لبطاقة الضمان القابلة للطباعة بالفارسية: طراز الجهاز، ورمز الضمان، وتاريخ انتهاء الصلاحية، وحقل تواصل فارغ، ورمز QR مموَّه',
     l1: 'ياراوان — بطاقة تفعيل ضمان العميل من البداية إلى النهاية بالفارسية: المُحفِّز، والمالك، والمراحل، وبوابات القرار، والمدخلات والمخرجات، والضوابط، ومؤشر KPI ومستوى خدمة SLA موسومان بأنهما يحتاجان إلى تحديد',
     blueprint:
       'ياراوان — مخطط الخدمة التفصيلي لتفعيل ضمان العميل بالفارسية: أربع خطوات عبر طبقات تمتد من إجراءات العميل إلى الأدلة، تفصل بينها خطوط التفاعل والرؤية والتفاعل الداخلي',
@@ -708,13 +788,21 @@ const AR: YarCopy = {
     sop: 'ياراوان — بطاقة تعريف إجراء رموز التفعيل بالفارسية: مسودة الإصدار 0.3، والمعتمِد وتاريخ المراجعة بحاجة إلى تحديد، والحالة «غير معتمد»',
     wi: 'ياراوان — تعليمات العمل لتفعيل رمز الضمان بالفارسية: التعريف، والشروط المسبقة، والمسار داخل اللوحة، وسبع خطوات مرقّمة',
     notice:
-      'ياراوان — لوحة إشعارات بالفارسية تسمّي تعليمات العمل التي لا يمكن كتابتها بعد، وسبب كلٍّ منها',
+      'ياراوان — ثلاث لوحات إشعارات بالفارسية، من صفحات خريطة الخدمة ومخططات المسارات وتعليمات العمل، تسرد كلٌّ منها ما لم يُرسم ولماذا',
+    coverage:
+      'ياراوان — مصفوفة التغطية بالفارسية: جدول من 22 صفًّا يضع العمليات في مقابل مصادرها ومستوياتها وفجواتها، وتحته أعداد الحالات',
     role: 'ياراوان — بطاقة دور عمليات الضمان بالفارسية: شريط أحمر يقول إن الدور موجود في الشيفرة لكنه غير موجود في أي وثيقة أعمال، وكل حقل موسوم بأنه يحتاج إلى تحديد',
     raci: 'ياراوان — مصفوفة RACI بالفارسية، مع شريط أحمر يشير إلى أن عمود المساءلة لا يزال مفتوحًا، وخلايا حمراء للاستثناءات المتعمَّدة',
+    access:
+      'ياراوان — لوحتان بالفارسية: ثمانية ضوابط بنيوية للوصول تفرضها الشيفرة، وترويسة المقارنة بين النموذج الحالي ومقترح الموظفين',
     promise:
       'ياراوان — اقتصاديات الضمان، شريحة بالفارسية: الضمان وعدٌ ينطوي لحظة إصداره على ثلاثة مجاهيل — هل يُستحق، ومتى، وبكم',
     controls:
       'ياراوان — اقتصاديات الضمان: خمس روافع للتحكم بالفارسية، مرتّبة من الأرخص إلى الأعلى كلفة، مع حالة كلٍّ منها اليوم',
+    boardMap:
+      'ياراوان — اقتصاديات الضمان، خريطة لوحات وثيقة العرض بالفارسية: القوس السردي، وجدول يضم كل شريحة مع رسالتها وشارة أدلتها',
+    glossary:
+      'ياراوان — اقتصاديات الضمان، ملحق المسرد بالفارسية: مصطلح فارسي ثابت واحد لكل مفهوم، مع تعريفه',
   },
   context: {
     heading: 'هوية خاملة، وتشغيل غير موثَّق',
@@ -797,19 +885,23 @@ const AR: YarCopy = {
       'قاعدة واحدة تحدّد شكل الملف كله: ما يجوز رسمه يتوقف على الأدلة التي تسنده، ادعاءً بادعاء. تمتد خمس درجات للأدلة من الشيفرة القابلة للتنفيذ، التي تُجيز مخطط مسارات كاملًا، نزولًا إلى انعدام أي مصدر، حيث يُحظر الرسم ولا يجوز أن يظهر إلا إشعار. وكلما انخفضت الدرجة، قلّ ما يجوز رسمه.',
       'وهكذا يكون الملف صادقًا بشأن ما يغيب عنه. فحيث يتوقف مستوى قبل اكتماله، تسمّي لوحة إشعارات ما هو مفقود ولماذا، وتُكمل إشعارات خريطة الخدمة ومخططات المسارات حسابها ليعود المجموع إلى 22. فمخطط لتسلسل غير موثَّق سيكون الاختلاق نفسه الذي تحظره القواعد — لكنه أكثر إقناعًا.',
     ],
+    guideCaption:
+      'قواعد الصفحة 00: ست قواعد داخلية، والتعديل الذي وسّع النطاق إلى 22 عملية، ودرجات الأدلة الخمس التي تحدّد ما يجوز رسمه. وقد أُزيلت الأسطر التي تسمّي تاجر التجزئة أو نظام الدعم.',
     libraryCaption:
-      'الصفحة 00: المكتبة التي يُبنى منها كل مخطط — سبعة أشكال للتدفق، وشارة حالة بأربع حالات، والعناصر التي تجعل الخريطة قابلة للتنقل.',
+      'لوازم كل مخطط: مكتبة المكوّنات المرسومة في الصفحة 00، إلى جانب فئة واحدة من مجموعة الأيقونات في الصفحة 09 — مستورَدة، لا مرسومة لهذا الملف.',
   },
   levels: {
     label: 'ستة مستويات',
     heading: 'عملية واحدة، متتبَّعة حتى أعمق مستوى',
     body: [
       'تتألف هندسة العمليات من ستة مستويات، يجيب كلٌّ منها عن سؤال مختلف. وتفعيل ضمان العميل من العمليات القليلة المرسومة على كل مستوى منها، ولذلك يُظهر الطبقات كلها. فعلى الخريطة الكلية هو بطاقة واحدة لها مالك ومُخرَج وحالة. وفي المستوى 1 يصبح بطاقة من البداية إلى النهاية: المُحفِّز، والمالك، وحدثا البدء والانتهاء، وأربع مراحل، وبوابات القرار، وما تتلقاه العملية وما تسلّمه، والضوابط التي تفرضها الشيفرة — ومؤشر KPI ومستوى خدمة SLA موسومان بعبارة «يحتاج إلى تحديد»، لأنه لا توجد في أي مصدر معادلة معتمدة أو مدة زمنية معتمدة.',
-      'المستوى 2 مخطط خدمة تفصيلي: إجراءات العميل، ونقاط الاتصال، وما يفعله الموظفون والأنظمة على جانبي خطوط التفاعل والرؤية والتفاعل الداخلي، وصولًا إلى السجلات والضوابط التي تخلّفها كل خطوة. وهنا يُظهر المخطط أن الملصق المطبوع الذي يبدأ منه العميل نقطة اتصال لا يتحكم فيها النظام — فالطباعة تجري خارجه. ويحوّل المستوى 3 التسلسل نفسه إلى مخطط مسارات، لكل فاعل فيه مسار.',
+      'المستوى 2 مخطط خدمة تفصيلي: إجراءات العميل، ونقاط الاتصال، وما يفعله الموظفون والأنظمة على جانبي خطوط التفاعل والرؤية والتفاعل الداخلي، وصولًا إلى السجلات والضوابط التي تخلّفها كل خطوة. وهنا يُظهر المخطط أن الملصق المطبوع الذي يبدأ منه العميل نقطة اتصال لا يتحكم فيها النظام — فالطباعة تجري خارجه. ويرسم الملف نقطة الاتصال هذه أيضًا: بطاقة ضمان قابلة للطباعة، بوجهيها الأمامي والخلفي، في عشر تنويعات. ويحوّل المستوى 3 التسلسل نفسه إلى مخطط مسارات، لكل فاعل فيه مسار.',
       'أما المستويان 4 و5 فهما لمن يديرون العملية. يغطي الإجراء أربع عمليات دفعة واحدة — فالإجراءات والعمليات ليست متقابلة واحدًا لواحد — ويحمل ختم «غير معتمد»، مع ترك المعتمِد وتاريخ المراجعة على «يحتاج إلى تحديد». وتعليمات العمل هي خطوات العميل السبع نفسه، مع قائمة تحقق مكتوبة له: لا تحتوي أبجدية الرمز على الصفر ولا الحرف O ولا الواحد ولا الحرفين I وL، فلا يمكن أن يُقرأ أي شيء على الملصق المطبوع خطأً.',
     ],
     insight:
       'يُسمح لكل مستوى بأن يتوقف. فأربع عشرة فقط من العمليات الـ22 لها مخطط مسارات، وست فقط لها مخطط خدمة تفصيلي؛ أما البقية فلها إشعار يقول السبب، وتُكمل الإشعارات حسابها ليعود المجموع إلى 22.',
+    cardCaption:
+      'حيث يبدأ التفعيل: الوجه الأمامي لبطاقة الضمان القابلة للطباعة في الصفحة 11، وهي واحدة من عشر تنويعات. وقد أُزيل الكيان القانوني والعنوان والهاتف، ومُوِّه رمز QR.',
     l1Caption:
       'المستوى 1 — تفعيل ضمان العميل من البداية إلى النهاية: المُحفِّز والمالك، وأربع مراحل تتدفق من اليمين إلى اليسار، وبوابات القرار، ومؤشر KPI ومستوى خدمة SLA لم يحدّدهما أي مصدر بعد.',
     blueprintCaption:
@@ -828,7 +920,9 @@ const AR: YarCopy = {
       'ويدقّق الملف نفسه أيضًا. فمصفوفة تغطية تضع كل عملية من العمليات الـ22 في مقابل مصدرها، والمستويات الموجودة، وما هو مفقود: ست مكتملة، وست غير مكتملة، وواحدة في تعارض، وتسع تحتاج إلى تحديد. وهي تعيد فتح ثلاث فجوات كانت موسومة بأنها مغلقة — فالإغلاق ليس هو الحسم من قِبل المؤسسة — وتسحب استشهاداتها هي حيث تبيّن أن مصدرًا لا يقول ما استُشهد به من أجله.',
     ],
     noticeCaption:
-      'غيابٌ مرسوم: ست تعليمات عمل لا يمكن كتابتها بعد، ومع كلٍّ منها الآلية أو السياسة المفقودة التي تعوقها.',
+      'غياباتٌ مرسومة: الإشعارات في صفحات خريطة الخدمة ومخططات المسارات وتعليمات العمل، يسمّي كلٌّ منها ما هو مفقود ولماذا. وقد أُزيلت الأسطر التي تسمّي تاجر التجزئة.',
+    coverageCaption:
+      'الصفحة 08: مصفوفة التغطية — كل عملية من العمليات الـ22 في مقابل مصدرها، والمستويات الموجودة، وما هو مفقود، وتحتها أعداد الحالات. وقد أُزيلت الخلايا التي تسمّي أشخاصًا أو نظام الدعم أو نقطة ضعف في الشيفرة.',
   },
   roles: {
     label: 'الأدوار',
@@ -836,11 +930,14 @@ const AR: YarCopy = {
     body: [
       'تعرض ثماني بطاقات أدوار غاية كل دور، ومهامه، وصلاحياته الحصرية، واستثناءاته المتعمَّدة، وفجواته، مع وسم مؤشر KPI ومستوى الخدمة SLA بعبارة «يحتاج إلى تحديد» على كل بطاقة. وبعض البطاقات أسئلة في معظمها. فأحد الأدوار موجود في الشيفرة وله صلاحيات وصول، لكن لا وثيقة أعمال ولا هيكل تنظيمي ولا إجراء يعرّفه، ولذلك يُرسم مساره بخط متقطع إلى أن يقرر الجانب التجاري هل هو دور حقيقي أم اسم آخر لدور قائم.',
       'لم يكن ممكنًا استخلاص مصفوفة المسؤوليات إلا بمقدار ثلاثة أرباعها. فقد خرجت أدوار المنفِّذ والمستشار والمُطَّلِع من الشيفرة؛ أما المساءلة فلم تخرج، لأن الشيفرة تقول من يستطيع تنفيذ إجراء، لا من يُسأل عن نتيجته. وتُعرض المصفوفة بهذا العمود مفتوحًا مع شريط يقول ذلك، وتُعلِّم الاستثناءات المتعمَّدة — الفصل بين المهام — باللون الأحمر كي لا تُحسَب فجوات: فالدور الذي يحدّد سقف الإلغاء لا يستطيع الموافقة على الإلغاءات، لأنه قد يرفع سقفه بنفسه.',
+      'ونال نموذج الوصول المعاملة نفسها. فصفحة واحدة تعرض ثمانية ضوابط بنيوية تفرضها الشيفرة — المنع افتراضيًا، و404 بدلًا من 403 كي لا يستطيع دورٌ أن يعرف أن صفحةً ما موجودة، ولا قيم افتراضية مختلَقة: «اختلاق قيمة افتراضية يعني نشر سياسة لم يعتمدها أحد في صمت.» وإلى جانبها، يُطابَق مقترح الأدوار الذي وضعه موظفو خدمات ما بعد البيع أنفسهم — ثمانية أدوار، و76 بندًا — مع الشيفرة بندًا بندًا، جنبًا إلى جنب، «دون دمج، ودون توفيق». ثلاثة من البنود الـ76 مبنية بالكامل، وعشرون تتعارض مع قرار معماري معتمد، والصفحة تذكر حدودها بنفسها: فهي لا تُصدر حكمًا على ما إذا كان المقترح صائبًا.',
     ],
     roleCaption:
       'دورٌ لا وجود له إلا في الشيفرة: كل حقل في بطاقته يقول «يحتاج إلى تحديد»، والشريط يطرح السؤال على الجانب التجاري.',
     raciCaption:
       'الصفوف الأحد عشر الأولى من مصفوفة العمليات الـ22. يُنشر العمود الرئيسي فارغًا، ويقول السبب. يذكر الشريط الفجوة ومن يملك القرار؛ والاسم مخفيّ هنا.',
+    accessCaption:
+      'الصفحة 10: الضوابط البنيوية الثمانية التي تفرضها الشيفرة — المنع افتراضيًا، و404 بدلًا من 403، ووحدة واحدة خلف القائمة والصفحة والخادم — فوق ترويسة المقارنة جنبًا إلى جنب مع مقترح الموظفين أنفسهم.',
   },
   decisions: {
     heading: 'ست قواعد لرسم ما لم يستطع أحد تأكيده',
@@ -898,6 +995,8 @@ const AR: YarCopy = {
       'تفتتح وثيقة العرض بالمفهوم: الضمان يوم إصداره ثلاثة مجاهيل — هل تأتي مطالبة، ومتى، وبأي كلفة.',
     controlsCaption:
       'خمس روافع للتحكم، مرتّبة من الأرخص إلى الأعلى كلفة، كلٌّ منها مرتبط بعامل معادلة الكلفة الذي يحرّكه.',
+    apparatusCaption:
+      'أدوات وثيقة العرض نفسها: خريطة لوحات تضم القوس السردي وشارة الأدلة لكل شريحة، وملحق مسرد يثبّت كلمة فارسية واحدة لكل مفهوم. وقد أُزيل سطر واحد يسمّي شخصًا.',
   },
   outcomes: {
     heading: 'تشغيلٌ مرسوم، ولكل فجوة فيه مالك',
@@ -974,8 +1073,13 @@ const ES: YarCopy = {
     cover:
       'Yaravan — el blueprint de servicio de la activación de la garantía, en persa: acciones del cliente, puntos de contacto y las líneas de interacción y de visibilidad',
     map: 'Yaravan — el mapa macro de procesos en persa: dieciocho tarjetas de proceso en cinco carriles, cada una con una insignia de estado, y un aviso que cierra el recuento',
+    guide:
+      'Yaravan — la sección de reglas de la guía de diseño, en persa: seis reglas de la casa, la enmienda del alcance y los cinco niveles de evidencia',
     library:
       'Yaravan — la biblioteca de componentes de diagramas: siete formas de flujo, una insignia de estado de cuatro estados, cabeceras de carril, migas de pan y tarjetas de proceso',
+    icons:
+      'Yaravan — una categoría del conjunto de iconos lineales importado: alrededor de un centenar de iconos en una cuadrícula',
+    card: 'Yaravan — el anverso de la tarjeta de garantía imprimible, en persa: modelo del dispositivo, código de garantía, fecha de vencimiento, un campo de contacto vacío y un código QR difuminado',
     l1: 'Yaravan — la tarjeta de extremo a extremo de la activación de la garantía por el cliente, en persa: disparador, responsable, fases, puertas de decisión, entradas y salidas, controles, y un KPI y un SLA marcados como por determinar',
     blueprint:
       'Yaravan — el blueprint de servicio de la activación de la garantía por el cliente, en persa: cuatro pasos a través de capas que van de las acciones del cliente a la evidencia, divididas por las líneas de interacción, de visibilidad y de interacción interna',
@@ -984,13 +1088,21 @@ const ES: YarCopy = {
     sop: 'Yaravan — la ficha de identidad del procedimiento de códigos de activación, en persa: borrador de la versión 0.3, aprobador y fecha de revisión por determinar, y el estado «no aprobado»',
     wi: 'Yaravan — la instrucción de trabajo para activar un código de garantía, en persa: identificación, condiciones previas, la ruta en el panel y siete pasos numerados',
     notice:
-      'Yaravan — un tablón de avisos en persa que nombra las instrucciones de trabajo que aún no pueden redactarse, y el motivo de cada una',
+      'Yaravan — tres tablones de avisos en persa, de las páginas del mapa de servicios, de los diagramas de carriles y de las instrucciones de trabajo, cada uno con lo que no se dibuja y por qué',
+    coverage:
+      'Yaravan — la matriz de cobertura en persa: una tabla de 22 filas que contrasta los procesos con sus fuentes, sus niveles y sus huecos, con los recuentos por estado debajo',
     role: 'Yaravan — la tarjeta de rol de operaciones de garantía, en persa: un banner rojo que indica que el rol existe en el código pero en ningún documento de negocio, y todos los campos marcados como por determinar',
     raci: 'Yaravan — la matriz RACI en persa, con un banner rojo que marca como abierta la columna de Aprobador y celdas rojas para las exclusiones deliberadas',
+    access:
+      'Yaravan — dos tableros en persa: ocho controles de acceso estructurales que impone el código, y la cabecera de la comparación entre el modelo actual y la propuesta del personal',
     promise:
       'Yaravan, economía de la garantía — una diapositiva en persa: una garantía es una promesa, con tres incógnitas en el momento de su emisión — si, cuándo y cuánto',
     controls:
       'Yaravan, economía de la garantía — cinco palancas de control en persa, ordenadas de la más barata a la más costosa, cada una con su estado actual',
+    boardMap:
+      'Yaravan, economía de la garantía — el mapa de tableros del documento, en persa: el arco narrativo y una tabla de todas las diapositivas con su mensaje y su insignia de evidencia',
+    glossary:
+      'Yaravan, economía de la garantía — el apéndice de glosario en persa: un término persa fijo para cada concepto, con su definición',
   },
   context: {
     heading: 'Una identidad dormida, una operación sin documentar',
@@ -1075,19 +1187,23 @@ const ES: YarCopy = {
       'Una regla decide la forma de todo el archivo: lo que puede dibujarse depende de la evidencia que lo respalda, afirmación por afirmación. Cinco niveles de evidencia van desde el código ejecutable, que autoriza un diagrama de carriles completo, hasta la ausencia total de fuente, para la que dibujar está prohibido y solo puede aparecer un aviso. Cuanto más bajo el nivel, menos se puede dibujar.',
       'Así, el archivo es honesto sobre sus ausencias. Donde un nivel se queda corto, un tablón de avisos nombra lo que falta y por qué, y los avisos del mapa de servicios y de los diagramas de carriles cuadran su propia aritmética hasta 22. Un diagrama de una secuencia sin documentar sería la misma invención que prohíben las reglas — solo que más convincente.',
     ],
+    guideCaption:
+      'Las reglas de la página 00: seis reglas de la casa, la enmienda que amplió el alcance a 22 procesos y los cinco niveles de evidencia que deciden lo que puede dibujarse. Se han eliminado las líneas que nombran al minorista o al sistema de soporte.',
     libraryCaption:
-      'Página 00: la biblioteca con la que se construye cada diagrama — siete formas de flujo, una insignia de estado de cuatro estados y los elementos que hacen navegable un mapa.',
+      'Los elementos de cada diagrama: la biblioteca de componentes dibujada en la página 00, junto a una categoría del conjunto de iconos de la página 09 — importado, no dibujado para este archivo.',
   },
   levels: {
     label: 'Seis niveles',
     heading: 'Un proceso, seguido hasta el fondo',
     body: [
       'La arquitectura tiene seis niveles, y cada uno responde a una pregunta distinta. La activación de la garantía por el cliente es uno de los pocos procesos dibujados en todos ellos, así que muestra la pila completa. En el mapa macro es una tarjeta con un responsable, un resultado y un estado. En el nivel 1 se convierte en una tarjeta de extremo a extremo: disparador, responsable, eventos de inicio y fin, cuatro fases, las puertas de decisión, lo que recibe y lo que entrega, los controles que impone el código — y un KPI y un SLA marcados «por determinar», porque no existe en ninguna fuente una fórmula ni un plazo aprobados.',
-      'El nivel 2 es un blueprint de servicio: las acciones del cliente, los puntos de contacto y lo que hacen el personal y los sistemas a cada lado de las líneas de interacción, de visibilidad y de interacción interna, hasta los registros y controles que deja cada paso. Aquí muestra que la etiqueta impresa de la que parte el cliente es un punto de contacto que el sistema no controla — la impresión ocurre fuera de él. El nivel 3 convierte la misma secuencia en un diagrama de carriles con un carril para cada actor.',
+      'El nivel 2 es un blueprint de servicio: las acciones del cliente, los puntos de contacto y lo que hacen el personal y los sistemas a cada lado de las líneas de interacción, de visibilidad y de interacción interna, hasta los registros y controles que deja cada paso. Aquí muestra que la etiqueta impresa de la que parte el cliente es un punto de contacto que el sistema no controla — la impresión ocurre fuera de él. El archivo también dibuja ese punto de contacto: una tarjeta de garantía imprimible, anverso y reverso, en diez variantes. El nivel 3 convierte la misma secuencia en un diagrama de carriles con un carril para cada actor.',
       'Los niveles 4 y 5 son para quienes lo ejecutan. El procedimiento cubre cuatro procesos a la vez — procedimientos y procesos no se corresponden uno a uno — y lleva el sello «no aprobado», con su aprobador y su fecha de revisión en «por determinar». La instrucción de trabajo son los siete pasos del propio cliente, con una lista de comprobación escrita para él: el alfabeto del código no tiene cero, O, uno, I ni L, así que nada en la etiqueta impresa puede leerse mal.',
     ],
     insight:
       'Cada nivel tiene permitido detenerse. Solo catorce de los 22 procesos tienen diagrama de carriles y solo seis tienen blueprint; el resto tiene un aviso que explica por qué, y los avisos cuadran su propio recuento hasta 22.',
+    cardCaption:
+      'Donde empieza la activación: el anverso de la tarjeta de garantía imprimible de la página 11, una de diez variantes. Se han eliminado la entidad jurídica, la dirección y el teléfono, y el código QR está difuminado.',
     l1Caption:
       'Nivel 1 — la activación de la garantía por el cliente de extremo a extremo: disparador y responsable, cuatro fases que fluyen de derecha a izquierda, las puertas de decisión, y un KPI y un SLA que ninguna fuente define todavía.',
     blueprintCaption:
@@ -1106,7 +1222,9 @@ const ES: YarCopy = {
       'El archivo también se audita a sí mismo. Una matriz de cobertura contrasta cada uno de los 22 procesos con su fuente, los niveles que existen y lo que falta: seis completos, seis incompletos, uno en conflicto y nueve por determinar. Reabre tres huecos que se habían marcado como cerrados — cerrado no es lo mismo que resuelto por la organización — y retira sus propias citas donde una fuente resultó no decir aquello para lo que se había citado.',
     ],
     noticeCaption:
-      'Una ausencia, dibujada: seis instrucciones de trabajo que aún no pueden redactarse, cada una con el mecanismo o la política que falta y que la bloquea.',
+      'Ausencias, dibujadas: los avisos de las páginas del mapa de servicios, de los diagramas de carriles y de las instrucciones de trabajo, cada uno de los cuales nombra lo que falta y por qué. Se han eliminado las líneas que nombran al minorista.',
+    coverageCaption:
+      'Página 08: la matriz de cobertura — cada uno de los 22 procesos frente a su fuente, los niveles que existen y lo que falta, con los recuentos por estado debajo. Se han eliminado las celdas que nombran a personas, al sistema de soporte o una debilidad del código.',
   },
   roles: {
     label: 'Roles',
@@ -1114,11 +1232,14 @@ const ES: YarCopy = {
     body: [
       'Ocho tarjetas de rol recogen el propósito, las funciones, los derechos exclusivos, las exclusiones deliberadas y los huecos de cada rol, con el KPI y el SLA marcados «por determinar» en todas las tarjetas. Algunas tarjetas son sobre todo preguntas. Un rol existe en el código y tiene acceso, pero ningún documento de negocio, organigrama ni procedimiento lo define, así que su carril se dibuja con línea discontinua hasta que el negocio decida si es real o es otro nombre de un rol existente.',
       'La matriz de responsabilidades solo pudo derivarse en tres cuartas partes. Responsable, consultado e informado salieron del código; el aprobador no, porque el código dice quién puede ejecutar una acción, no quién responde de su resultado. La matriz se entrega con esa columna abierta y un banner que lo indica, y marca en rojo las exclusiones deliberadas — segregación de funciones — para que no se confundan con huecos: el rol que fija el límite de anulación no puede aprobar anulaciones, porque podría elevar su propio límite.',
+      'El modelo de acceso recibió el mismo tratamiento. Una página expone ocho controles estructurales que impone el código — denegar por defecto, un 404 en lugar de un 403 para que un rol no pueda saber que una página existe, y ningún valor predeterminado inventado: «inventar un valor predeterminado significa publicar en silencio una política que nadie aprobó». A su lado, la propia propuesta de roles del personal de posventa — ocho roles, 76 elementos — se contrasta con el código elemento por elemento, en paralelo, «sin fusionar, sin conciliar». Tres de los 76 están totalmente construidos y veinte entran en conflicto con una decisión de arquitectura aprobada, y la página declara su propio límite: no emite ningún veredicto sobre si la propuesta es correcta.',
     ],
     roleCaption:
       'Un rol que solo existe en el código: todos los campos de su tarjeta dicen «por determinar», y el banner traslada la pregunta al negocio.',
     raciCaption:
       'Las once primeras filas de la matriz de 22 procesos. La columna principal se entrega vacía y dice por qué. El banner declara el hueco y quién tiene la decisión; aquí el nombre está oculto.',
+    accessCaption:
+      'Página 10: los ocho controles estructurales que impone el código — denegar por defecto, 404 en lugar de 403, un único módulo detrás del menú, la página y el servidor — sobre la cabecera de la comparación en paralelo con la propia propuesta del personal.',
   },
   decisions: {
     heading: 'Seis reglas para dibujar lo que nadie podía confirmar',
@@ -1179,6 +1300,8 @@ const ES: YarCopy = {
       'El documento se abre con el concepto: el día en que se emite, una garantía son tres incógnitas — si llegará una reclamación, cuándo y a qué coste.',
     controlsCaption:
       'Cinco palancas de control, ordenadas de la más barata a la más costosa, cada una ligada al factor de la ecuación de costes que modifica.',
+    apparatusCaption:
+      'El propio aparato del documento: un mapa de tableros con el arco narrativo y la insignia de evidencia de cada diapositiva, y un apéndice de glosario que fija una palabra persa por concepto. Se ha eliminado una línea que nombra a una persona.',
   },
   outcomes: {
     heading: 'Una operación dibujada, con responsables para sus huecos',
@@ -1255,8 +1378,13 @@ const DE: YarCopy = {
     cover:
       'Yaravan — der Service-Blueprint der Garantieaktivierung auf Persisch: Aktionen des Kunden, Touchpoints sowie die Interaktions- und die Sichtbarkeitslinie',
     map: 'Yaravan — die Makro-Prozesslandkarte auf Persisch: achtzehn Prozesskarten in fünf Bahnen, jede mit Status-Badge, und ein Hinweis, der die Zählung abschließt',
+    guide:
+      'Yaravan — der Regelteil des Designleitfadens auf Persisch: sechs Hausregeln, die Ergänzung zum Umfang und die fünf Nachweisstufen',
     library:
       'Yaravan — die Komponentenbibliothek der Diagramme: sieben Ablaufformen, ein Status-Badge mit vier Zuständen, Bahnköpfe, Breadcrumbs und Prozesskarten',
+    icons:
+      'Yaravan — eine Kategorie des importierten Line-Icon-Sets: rund hundert Icons in einem Raster',
+    card: 'Yaravan — die Vorderseite der druckbaren Garantiekarte auf Persisch: Gerätemodell, Garantiecode, Ablaufdatum, ein leeres Kontaktfeld und ein unscharf gemachter QR-Code',
     l1: 'Yaravan — die End-to-End-Karte der Garantieaktivierung durch den Kunden, auf Persisch: Auslöser, Verantwortlicher, Phasen, Entscheidungspunkte, Inputs und Outputs, Kontrollen sowie ein KPI und ein SLA, die als „noch festzulegen“ markiert sind',
     blueprint:
       'Yaravan — der Service-Blueprint der Garantieaktivierung durch den Kunden, auf Persisch: vier Schritte über die Ebenen von den Aktionen des Kunden bis zu den Nachweisen, getrennt durch die Interaktionslinie, die Sichtbarkeitslinie und die Linie der internen Interaktion',
@@ -1265,13 +1393,21 @@ const DE: YarCopy = {
     sop: 'Yaravan — der Steckbrief der Verfahrensanweisung für Aktivierungscodes, auf Persisch: Entwurf in Version 0.3, freigebende Person und Überprüfungsdatum noch festzulegen, und der Status „nicht freigegeben“',
     wi: 'Yaravan — die Arbeitsanweisung zum Aktivieren eines Garantiecodes, auf Persisch: Kenndaten, Voraussetzungen, der Pfad im Panel und sieben nummerierte Schritte',
     notice:
-      'Yaravan — eine Hinweistafel auf Persisch, die die Arbeitsanweisungen nennt, die sich noch nicht schreiben lassen, jeweils mit Begründung',
+      'Yaravan — drei Hinweistafeln auf Persisch, von den Seiten zur Service-Landkarte, zu den Swimlanes und zu den Arbeitsanweisungen, die jeweils auflisten, was nicht gezeichnet ist und warum',
+    coverage:
+      'Yaravan — die Abdeckungsmatrix auf Persisch: eine Tabelle mit 22 Zeilen, die Prozesse ihren Quellen, Ebenen und Lücken gegenüberstellt, darunter die Anzahl je Status',
     role: 'Yaravan — die Rollenkarte für den Garantiebetrieb, auf Persisch: ein rotes Banner, das sagt, dass die Rolle im Code existiert, aber in keinem Geschäftsdokument, und jedes Feld als „noch festzulegen“ markiert',
     raci: 'Yaravan — die RACI-Matrix auf Persisch, mit einem roten Banner, das die Spalte „Accountable“ als offen markiert, und roten Zellen für bewusste Ausschlüsse',
+    access:
+      'Yaravan — zwei Boards auf Persisch: acht strukturelle Zugriffskontrollen, die im Code durchgesetzt werden, und der Kopfbereich des Vergleichs zwischen dem aktuellen Modell und dem Vorschlag der Mitarbeitenden',
     promise:
       'Yaravan-Garantieökonomie — eine Folie auf Persisch: Eine Garantie ist ein Versprechen mit drei Unbekannten im Moment der Ausstellung — ob, wann und wie viel',
     controls:
       'Yaravan-Garantieökonomie — fünf Steuerungshebel auf Persisch, vom günstigsten zum teuersten geordnet, jeder mit seinem heutigen Status',
+    boardMap:
+      'Yaravan-Garantieökonomie — die Board-Landkarte des Decks auf Persisch: der Erzählbogen und eine Tabelle aller Folien mit ihrer Botschaft und ihrem Nachweis-Badge',
+    glossary:
+      'Yaravan-Garantieökonomie — der Glossar-Anhang auf Persisch: ein fester persischer Begriff für jedes Konzept, mit seiner Definition',
   },
   context: {
     heading: 'Eine ruhende Identität, ein undokumentierter Betrieb',
@@ -1356,19 +1492,23 @@ const DE: YarCopy = {
       'Eine Regel bestimmt die Gestalt der ganzen Datei: Was gezeichnet werden darf, hängt von den Nachweisen dahinter ab, Aussage für Aussage. Fünf Nachweisstufen reichen von ausführbarem Code, der ein vollständiges Swimlane-Diagramm erlaubt, bis zu gar keiner Quelle, bei der Zeichnen verboten ist und nur ein Hinweis erscheinen darf. Je niedriger die Stufe, desto weniger darf gezeichnet werden.',
       'So ist die Datei ehrlich über ihre Leerstellen. Wo eine Ebene vorzeitig endet, nennt eine Hinweistafel, was fehlt und warum, und die Hinweise zur Service-Landkarte und zu den Swimlanes rechnen ihre eigene Zählung auf 22 zurück. Ein Diagramm einer undokumentierten Abfolge wäre dieselbe Erfindung, die die Regeln verbieten — nur überzeugender.',
     ],
+    guideCaption:
+      'Die Regeln von Seite 00: sechs Hausregeln, die Ergänzung, die den Umfang auf 22 Prozesse erweiterte, und die fünf Nachweisstufen, die entscheiden, was gezeichnet werden darf. Zeilen, die den Händler oder das Supportsystem nennen, sind entfernt.',
     libraryCaption:
-      'Seite 00: die Bibliothek, aus der jedes Diagramm gebaut ist — sieben Ablaufformen, ein Status-Badge mit vier Zuständen und das Mobiliar, das eine Landkarte navigierbar macht.',
+      'Das Mobiliar jedes Diagramms: die auf Seite 00 gezeichnete Komponentenbibliothek, neben einer Kategorie des Icon-Sets von Seite 09 — importiert, nicht für diese Datei gezeichnet.',
   },
   levels: {
     label: 'Sechs Ebenen',
     heading: 'Ein Prozess, bis ganz nach unten verfolgt',
     body: [
       'Die Architektur hat sechs Ebenen, und jede beantwortet eine andere Frage. Die Garantieaktivierung durch den Kunden ist einer der wenigen Prozesse, die auf jeder davon gezeichnet sind, und zeigt deshalb den gesamten Aufbau. Auf der Makro-Landkarte ist sie eine Karte mit Verantwortlichem, Ergebnis und Status. Auf Ebene 1 wird sie zur End-to-End-Karte: Auslöser, Verantwortlicher, Start- und Endereignisse, vier Phasen, die Entscheidungspunkte, was sie aufnimmt und weitergibt, die Kontrollen, die der Code durchsetzt — und ein KPI und ein SLA, markiert als „noch festzulegen“, weil in keiner Quelle eine freigegebene Formel oder Zeit existiert.',
-      'Ebene 2 ist ein Service-Blueprint: die Aktionen des Kunden, die Touchpoints und was Mitarbeitende und Systeme auf beiden Seiten der Interaktionslinie, der Sichtbarkeitslinie und der Linie der internen Interaktion tun, bis hin zu den Aufzeichnungen und Kontrollen, die jeder Schritt hinterlässt. Hier zeigt er, dass das gedruckte Etikett, von dem der Kunde ausgeht, ein Touchpoint ist, den das System nicht kontrolliert — der Druck erfolgt außerhalb des Systems. Ebene 3 macht aus derselben Abfolge ein Swimlane-Diagramm mit einer Bahn für jeden Akteur.',
+      'Ebene 2 ist ein Service-Blueprint: die Aktionen des Kunden, die Touchpoints und was Mitarbeitende und Systeme auf beiden Seiten der Interaktionslinie, der Sichtbarkeitslinie und der Linie der internen Interaktion tun, bis hin zu den Aufzeichnungen und Kontrollen, die jeder Schritt hinterlässt. Hier zeigt er, dass das gedruckte Etikett, von dem der Kunde ausgeht, ein Touchpoint ist, den das System nicht kontrolliert — der Druck erfolgt außerhalb des Systems. Die Datei zeichnet auch diesen Touchpoint: eine druckbare Garantiekarte, Vorder- und Rückseite, in zehn Varianten. Ebene 3 macht aus derselben Abfolge ein Swimlane-Diagramm mit einer Bahn für jeden Akteur.',
       'Die Ebenen 4 und 5 sind für die Menschen, die ihn ausführen. Die Verfahrensanweisung deckt vier Prozesse zugleich ab — Verfahren und Prozesse entsprechen einander nicht eins zu eins — und trägt den Stempel „nicht freigegeben“; freigebende Person und Überprüfungsdatum stehen auf „noch festzulegen“. Die Arbeitsanweisung besteht aus den sieben Schritten des Kunden selbst, mit einer eigens für ihn geschriebenen Checkliste: Das Code-Alphabet enthält keine Null, kein O, keine Eins, kein I und kein L, sodass nichts auf dem gedruckten Etikett falsch gelesen werden kann.',
     ],
     insight:
       'Jede Ebene darf aufhören. Nur vierzehn der 22 Prozesse haben ein Swimlane-Diagramm und nur sechs einen Blueprint; die übrigen haben einen Hinweis, der sagt, warum, und die Hinweise rechnen ihre eigene Zählung auf 22 zurück.',
+    cardCaption:
+      'Wo die Aktivierung beginnt: die Vorderseite der druckbaren Garantiekarte auf Seite 11, eine von zehn Varianten. Die juristische Person, die Adresse und die Telefonnummer sind entfernt, und der QR-Code ist unscharf gemacht.',
     l1Caption:
       'Ebene 1 — die Garantieaktivierung durch den Kunden von Anfang bis Ende: Auslöser und Verantwortlicher, vier Phasen, die von rechts nach links verlaufen, die Entscheidungspunkte sowie ein KPI und ein SLA, die noch keine Quelle definiert.',
     blueprintCaption:
@@ -1387,7 +1527,9 @@ const DE: YarCopy = {
       'Die Datei prüft sich auch selbst. Eine Abdeckungsmatrix stellt jeden der 22 Prozesse seiner Quelle, den vorhandenen Ebenen und dem Fehlenden gegenüber: sechs vollständig, sechs unvollständig, einer im Konflikt, neun noch festzulegen. Sie öffnet drei Lücken wieder, die als geschlossen markiert waren — geschlossen ist nicht dasselbe wie von der Organisation gelöst —, und sie zieht ihre eigenen Quellenverweise zurück, wo sich herausstellte, dass eine Quelle nicht sagt, wofür sie angeführt worden war.',
     ],
     noticeCaption:
-      'Eine Leerstelle, gezeichnet: sechs Arbeitsanweisungen, die sich noch nicht schreiben lassen, jede mit dem fehlenden Mechanismus oder der fehlenden Richtlinie, die sie blockiert.',
+      'Leerstellen, gezeichnet: die Hinweise auf den Seiten zur Service-Landkarte, zu den Swimlanes und zu den Arbeitsanweisungen, die jeweils nennen, was fehlt und warum. Zeilen, die den Händler nennen, sind entfernt.',
+    coverageCaption:
+      'Seite 08: die Abdeckungsmatrix — jeder der 22 Prozesse im Abgleich mit seiner Quelle, den vorhandenen Ebenen und dem Fehlenden, darunter die Anzahl je Status. Zellen, die Personen, das Supportsystem oder eine Schwachstelle im Code nennen, sind entfernt.',
   },
   roles: {
     label: 'Rollen',
@@ -1395,11 +1537,14 @@ const DE: YarCopy = {
     body: [
       'Acht Rollenkarten legen für jede Rolle Zweck, Aufgaben, exklusive Rechte, bewusste Ausschlüsse und Lücken dar, mit KPI und SLA auf jeder Karte als „noch festzulegen“ markiert. Manche Karten bestehen überwiegend aus Fragen. Eine Rolle existiert im Code und hat Zugriff, aber kein Geschäftsdokument, kein Organigramm und keine Verfahrensanweisung definiert sie, also ist ihre Bahn gestrichelt gezeichnet, bis das Geschäft entscheidet, ob sie real ist oder ein anderer Name für eine bestehende Rolle.',
       'Die Verantwortungsmatrix ließ sich nur zu drei Vierteln ableiten. Responsible, Consulted und Informed ergaben sich aus dem Code; Accountable nicht, denn der Code sagt, wer eine Aktion ausführen kann, nicht, wer für ihr Ergebnis einsteht. Die Matrix wird mit dieser Spalte offen und einem Banner ausgeliefert, das genau das sagt, und sie markiert bewusste Ausschlüsse — Funktionstrennung — in Rot, damit sie nicht mit Lücken verwechselt werden: Die Rolle, die die Stornogrenze festlegt, kann keine Stornierungen genehmigen, weil sie sonst ihre eigene Grenze anheben könnte.',
+      'Das Zugriffsmodell wurde genauso behandelt. Eine Seite legt acht strukturelle Kontrollen dar, die der Code durchsetzt — standardmäßige Verweigerung, ein 404 statt eines 403, damit eine Rolle nicht erfahren kann, dass eine Seite existiert, und keine erfundenen Standardwerte: „Einen Standardwert zu erfinden heißt, stillschweigend eine Richtlinie zu veröffentlichen, die niemand freigegeben hat.“ Daneben wird der eigene Rollenvorschlag der Mitarbeitenden des Kundendienstes — acht Rollen, 76 Punkte — Punkt für Punkt am Code geprüft, Seite an Seite, „nicht zusammengeführt, nicht abgeglichen“. Drei der 76 sind vollständig umgesetzt, zwanzig stehen im Konflikt mit einer freigegebenen Architekturentscheidung, und die Seite nennt ihre eigene Grenze: Sie fällt kein Urteil darüber, ob der Vorschlag richtig ist.',
     ],
     roleCaption:
       'Eine Rolle, die nur im Code existiert: Jedes Feld ihrer Karte lautet „noch festzulegen“, und das Banner richtet die Frage an das Geschäft.',
     raciCaption:
       'Die ersten elf Zeilen der Matrix über 22 Prozesse. Die Hauptspalte wird leer ausgeliefert und sagt, warum. Das Banner benennt die Lücke und wer die Entscheidung trägt; der Name ist hier ausgeblendet.',
+    accessCaption:
+      'Seite 10: die acht strukturellen Kontrollen, die der Code durchsetzt — standardmäßige Verweigerung, 404 statt 403, ein Modul hinter Menü, Seite und Server — über dem Kopfbereich der Gegenüberstellung mit dem eigenen Vorschlag der Mitarbeitenden.',
   },
   decisions: {
     heading: 'Sechs Regeln, um zu zeichnen, was niemand bestätigen konnte',
@@ -1459,6 +1604,8 @@ const DE: YarCopy = {
       'Das Deck beginnt mit dem Konzept: Am Tag ihrer Ausstellung ist eine Garantie drei Unbekannte — ob ein Garantiefall eintritt, wann und zu welchen Kosten.',
     controlsCaption:
       'Fünf Steuerungshebel, vom günstigsten zum teuersten geordnet, jeder an den Faktor der Kostengleichung gebunden, den er bewegt.',
+    apparatusCaption:
+      'Der eigene Apparat des Decks: eine Board-Landkarte mit dem Erzählbogen und dem Nachweis-Badge jeder Folie sowie ein Glossar-Anhang, der ein persisches Wort pro Konzept festlegt. Eine Zeile, die eine Person nennt, ist entfernt.',
   },
   outcomes: {
     heading: 'Ein gezeichneter Betrieb, dessen Lücken Verantwortliche haben',
@@ -1536,8 +1683,13 @@ const FR: YarCopy = {
     cover:
       'Yaravan — le blueprint de service de l’activation de la garantie, en persan : actions du client, points de contact et lignes d’interaction et de visibilité',
     map: 'Yaravan — la carte macro des processus en persan : dix-huit cartes de processus en cinq couloirs, chacune avec une pastille de statut, et un avis qui boucle le décompte',
+    guide:
+      'Yaravan — la section des règles du guide de design, en persan : six règles maison, l’amendement de périmètre et les cinq niveaux de preuve',
     library:
       'Yaravan — la bibliothèque de composants des diagrammes : sept formes de flux, une pastille de statut à quatre états, des en-têtes de couloir, un fil d’Ariane et des cartes de processus',
+    icons:
+      'Yaravan — une catégorie du jeu d’icônes au trait importé : une centaine d’icônes disposées en grille',
+    card: 'Yaravan — le recto de la carte de garantie imprimable, en persan : modèle de l’appareil, code de garantie, date d’expiration, un champ de contact vide et un QR code flouté',
     l1: 'Yaravan — la carte de bout en bout de l’activation de la garantie par le client, en persan : déclencheur, responsable, phases, points de décision, entrées et sorties, contrôles, et un KPI et un SLA marqués « à déterminer »',
     blueprint:
       'Yaravan — le blueprint de service de l’activation de la garantie par le client, en persan : quatre étapes à travers les couches, des actions du client jusqu’aux preuves, séparées par les lignes d’interaction, de visibilité et d’interaction interne',
@@ -1546,13 +1698,21 @@ const FR: YarCopy = {
     sop: 'Yaravan — la fiche d’identité de la procédure des codes d’activation, en persan : version 0.3 en brouillon, approbateur et date de revue à déterminer, et le statut « non approuvé »',
     wi: 'Yaravan — l’instruction de travail pour activer un code de garantie, en persan : identité, prérequis, le chemin dans l’espace client et sept étapes numérotées',
     notice:
-      'Yaravan — un panneau d’avis en persan qui nomme les instructions de travail impossibles à rédiger pour l’instant, et la raison de chacune',
+      'Yaravan — trois panneaux d’avis en persan, tirés des pages de la carte des services, des diagrammes en couloirs et des instructions de travail, chacun énumérant ce qui n’est pas dessiné et pourquoi',
+    coverage:
+      'Yaravan — la matrice de couverture en persan : un tableau de 22 lignes qui met les processus en regard de leurs sources, de leurs niveaux et de leurs lacunes, avec le décompte des statuts en dessous',
     role: 'Yaravan — la fiche de rôle des opérations de garantie, en persan : un bandeau rouge indiquant que le rôle existe dans le code mais dans aucun document métier, et chaque champ marqué « à déterminer »',
     raci: 'Yaravan — la matrice RACI en persan, avec un bandeau rouge signalant que la colonne A (approbateur) reste ouverte, et des cellules rouges pour les exclusions délibérées',
+    access:
+      'Yaravan — deux planches en persan : huit contrôles d’accès structurels appliqués dans le code, et l’en-tête de la comparaison entre le modèle actuel et la proposition du personnel',
     promise:
       'Économie de la garantie Yaravan — une diapositive en persan : une garantie est une promesse, avec trois inconnues au moment de son émission — si elle jouera, quand et pour combien',
     controls:
       'Économie de la garantie Yaravan — cinq leviers de contrôle en persan, classés du moins cher au plus coûteux, chacun avec son statut actuel',
+    boardMap:
+      'Économie de la garantie Yaravan — la carte des planches du document, en persan : l’arc narratif et un tableau de toutes les diapositives, chacune avec son message et sa pastille de preuve',
+    glossary:
+      'Économie de la garantie Yaravan — l’annexe du glossaire, en persan : un terme persan fixe pour chaque concept, avec sa définition',
   },
   context: {
     heading: 'Une identité en sommeil, une opération non documentée',
@@ -1637,19 +1797,23 @@ const FR: YarCopy = {
       'Une règle détermine la forme de tout le fichier : ce qui peut être dessiné dépend des preuves qui l’étayent, affirmation par affirmation. Cinq niveaux de preuve vont du code exécutable, qui autorise un diagramme en couloirs complet, à l’absence totale de source, pour laquelle le dessin est interdit et seul un avis peut apparaître. Plus le niveau est bas, moins on peut dessiner.',
       'Le fichier est donc honnête sur ses absences. Là où un niveau s’arrête court, un panneau d’avis nomme ce qui manque et pourquoi, et les avis de la carte des services et des diagrammes en couloirs bouclent leur propre calcul pour retomber sur 22. Un diagramme d’une séquence non documentée serait la même invention que les règles interdisent — seulement plus convaincante.',
     ],
+    guideCaption:
+      'Les règles de la page 00 : six règles maison, l’amendement qui a élargi le périmètre à 22 processus, et les cinq niveaux de preuve qui décident de ce qui peut être dessiné. Les lignes qui nomment le distributeur ou le système de support sont retirées.',
     libraryCaption:
-      'Page 00 : la bibliothèque à partir de laquelle chaque diagramme est construit — sept formes de flux, une pastille de statut à quatre états et le mobilier qui rend une carte navigable.',
+      'Le mobilier de chaque diagramme : la bibliothèque de composants dessinée à la page 00, à côté d’une catégorie du jeu d’icônes de la page 09 — importé, et non dessiné pour ce fichier.',
   },
   levels: {
     label: 'Six niveaux',
     heading: 'Un processus, suivi jusqu’au dernier niveau',
     body: [
       'L’architecture compte six niveaux, et chacun répond à une question différente. L’activation de la garantie par le client fait partie des rares processus dessinés à chacun d’eux ; elle montre donc toute la pile. Sur la carte macro, c’est une carte avec un responsable, un livrable et un statut. Au niveau 1, elle devient une carte de bout en bout : déclencheur, responsable, événements de début et de fin, quatre phases, les points de décision, ce qu’elle reçoit et ce qu’elle transmet, les contrôles que le code applique — et un KPI et un SLA marqués « à déterminer », parce qu’aucune source ne contient de formule ni de délai approuvés.',
-      'Le niveau 2 est un blueprint de service : les actions du client, les points de contact, et ce que font le personnel et les systèmes de part et d’autre des lignes d’interaction, de visibilité et d’interaction interne, jusqu’aux enregistrements et aux contrôles que laisse chaque étape. Ici, il montre que l’étiquette imprimée dont part le client est un point de contact que le système ne contrôle pas — l’impression se fait en dehors de lui. Le niveau 3 transforme la même séquence en diagramme en couloirs, avec un couloir par acteur.',
+      'Le niveau 2 est un blueprint de service : les actions du client, les points de contact, et ce que font le personnel et les systèmes de part et d’autre des lignes d’interaction, de visibilité et d’interaction interne, jusqu’aux enregistrements et aux contrôles que laisse chaque étape. Ici, il montre que l’étiquette imprimée dont part le client est un point de contact que le système ne contrôle pas — l’impression se fait en dehors de lui. Le fichier dessine aussi ce point de contact : une carte de garantie imprimable, recto et verso, en dix variantes. Le niveau 3 transforme la même séquence en diagramme en couloirs, avec un couloir par acteur.',
       'Les niveaux 4 et 5 s’adressent aux personnes qui l’exécutent. La procédure couvre quatre processus à la fois — procédures et processus ne se correspondent pas un à un — et porte le tampon « non approuvé », avec son approbateur et sa date de revue laissés « à déterminer ». L’instruction de travail, ce sont les sept étapes du client lui-même, avec une liste de contrôle rédigée pour lui : l’alphabet des codes ne contient ni zéro, ni O, ni un, ni I, ni L, si bien que rien sur l’étiquette imprimée ne peut être mal lu.',
     ],
     insight:
       'Chaque niveau a le droit de s’arrêter. Seuls quatorze des 22 processus ont un diagramme en couloirs, et seuls six ont un blueprint ; les autres ont un avis qui dit pourquoi, et les avis bouclent leur propre décompte pour retomber sur 22.',
+    cardCaption:
+      'Là où commence l’activation : le recto de la carte de garantie imprimable de la page 11, l’une des dix variantes. L’entité juridique, l’adresse et le téléphone sont retirés, et le QR code est flouté.',
     l1Caption:
       'Niveau 1 — l’activation de la garantie par le client de bout en bout : déclencheur et responsable, quatre phases qui s’enchaînent de droite à gauche, les points de décision, et un KPI et un SLA qu’aucune source ne définit encore.',
     blueprintCaption:
@@ -1668,7 +1832,9 @@ const FR: YarCopy = {
       'Le fichier s’audite aussi lui-même. Une matrice de couverture met chacun des 22 processus en regard de sa source, des niveaux existants et de ce qui manque : six complets, six incomplets, un en conflit, neuf à déterminer. Elle rouvre trois lacunes qui avaient été marquées comme closes — clos ne veut pas dire résolu par l’organisation — et retire ses propres citations là où une source s’est révélée ne pas dire ce pour quoi elle avait été citée.',
     ],
     noticeCaption:
-      'Une absence, dessinée : six instructions de travail qui ne peuvent pas encore être rédigées, chacune avec le mécanisme ou la politique manquante qui la bloque.',
+      'Des absences, dessinées : les avis des pages de la carte des services, des diagrammes en couloirs et des instructions de travail, chacun nommant ce qui manque et pourquoi. Les lignes qui nomment le distributeur sont retirées.',
+    coverageCaption:
+      'Page 08 : la matrice de couverture — chacun des 22 processus mis en regard de sa source, des niveaux existants et de ce qui manque, avec le décompte des statuts en dessous. Les cellules qui nomment des personnes, le système de support ou une faiblesse du code sont retirées.',
   },
   roles: {
     label: 'Rôles',
@@ -1676,11 +1842,14 @@ const FR: YarCopy = {
     body: [
       'Huit fiches de rôle exposent, pour chaque rôle, sa finalité, ses tâches, ses droits exclusifs, ses exclusions délibérées et ses lacunes, avec le KPI et le SLA marqués « à déterminer » sur chaque fiche. Certaines fiches sont surtout des questions. Un rôle existe dans le code et dispose d’accès, mais aucun document métier, organigramme ou procédure ne le définit ; son couloir est donc dessiné en pointillés jusqu’à ce que l’entreprise décide s’il est réel ou s’il n’est qu’un autre nom d’un rôle existant.',
       'La matrice des responsabilités ne pouvait être dérivée qu’aux trois quarts. Réalisation, consultation et information sont sorties du code ; l’approbation (le A de RACI) ne le pouvait pas, car le code dit qui peut exécuter une action, pas qui répond de son résultat. La matrice est livrée avec cette colonne ouverte et un bandeau qui le signale, et elle marque en rouge les exclusions délibérées — la séparation des tâches — pour qu’on ne puisse pas les prendre pour des lacunes : le rôle qui fixe le plafond d’annulation ne peut pas approuver d’annulations, car il pourrait relever son propre plafond.',
+      'Le modèle d’accès a reçu le même traitement. Une page expose huit contrôles structurels que le code applique — refus par défaut, un 404 plutôt qu’un 403 pour qu’un rôle ne puisse pas apprendre qu’une page existe, et aucune valeur par défaut inventée : « inventer une valeur par défaut, c’est publier en silence une politique que personne n’a approuvée. » À côté, la proposition de rôles émanant du personnel de l’après-vente lui-même — huit rôles, 76 éléments — est confrontée au code élément par élément, côte à côte, « ni fusionnée, ni réconciliée ». Trois des 76 éléments sont entièrement construits et vingt entrent en conflit avec une décision d’architecture approuvée, et la page énonce sa propre limite : elle ne rend aucun verdict sur la justesse de la proposition.',
     ],
     roleCaption:
       'Un rôle qui n’existe que dans le code : chaque champ de sa fiche indique « à déterminer », et le bandeau pose la question à l’entreprise.',
     raciCaption:
       'Les onze premières lignes de la matrice des 22 processus. La colonne principale est livrée vide, et dit pourquoi. Le bandeau énonce la lacune et qui détient la décision ; le nom est masqué ici.',
+    accessCaption:
+      'Page 10 : les huit contrôles structurels que le code applique — refus par défaut, 404 au lieu de 403, un seul module derrière le menu, la page et le serveur — au-dessus de l’en-tête de la comparaison côte à côte avec la proposition émanant du personnel lui-même.',
   },
   decisions: {
     heading: 'Six règles pour dessiner ce que personne ne pouvait confirmer',
@@ -1741,6 +1910,8 @@ const FR: YarCopy = {
       'Le document s’ouvre sur le concept : le jour de son émission, une garantie, ce sont trois inconnues — si une réclamation viendra, quand, et à quel coût.',
     controlsCaption:
       'Cinq leviers de contrôle, classés du moins cher au plus coûteux, chacun rattaché au facteur de l’équation de coût sur lequel il agit.',
+    apparatusCaption:
+      'L’outillage propre au document : une carte des planches avec l’arc narratif et la pastille de preuve de chaque diapositive, et une annexe de glossaire qui fixe un seul mot persan par concept. Une ligne qui nomme une personne est retirée.',
   },
   outcomes: {
     heading: 'Une opération dessinée, chaque lacune avec son responsable',
@@ -1818,8 +1989,12 @@ const JA: YarCopy = {
     cover:
       'Yaravan — ペルシア語の、保証有効化のサービスブループリント。顧客の行動、タッチポイント、そして相互作用線と可視線',
     map: 'Yaravan — ペルシア語のマクロプロセスマップ。5つのレーンに18のプロセスカードが並び、それぞれにステータスバッジが付く。数の内訳を締めくくる注記も添えている',
+    guide:
+      'Yaravan — ペルシア語の、デザインガイドのルールのセクション。6つのハウスルール、範囲の修正、そして5段階の証拠',
     library:
       'Yaravan — 図のコンポーネントライブラリ。7つのフロー図形、4状態のステータスバッジ、レーンの見出し、パンくずリスト、プロセスカード',
+    icons: 'Yaravan — 取り込んだラインアイコンセットの1カテゴリー。グリッドに並ぶ約100のアイコン',
+    card: 'Yaravan — ペルシア語の、印刷用保証カードの表面。端末のモデル、保証コード、有効期限、空欄の連絡先欄、そしてぼかしを入れたQRコード',
     l1: 'Yaravan — ペルシア語の、顧客による保証有効化のエンドツーエンドカード。トリガー、担当者、フェーズ、判断ゲート、インプットとアウトプット、統制、そして「要確定」と記されたKPIとSLA',
     blueprint:
       'Yaravan — ペルシア語の、顧客による保証有効化のサービスブループリント。顧客の行動から証跡までの層にまたがる4つのステップを、相互作用線、可視線、内部相互作用線が区切る',
@@ -1828,13 +2003,21 @@ const JA: YarCopy = {
     sop: 'Yaravan — ペルシア語の、有効化コードに関する業務手順書の識別カード。バージョン0.3の草案、「要確定」の承認者とレビュー日、そして「未承認」のステータス',
     wi: 'Yaravan — ペルシア語の、保証コードを有効化するための作業手順書。識別情報、前提条件、パネル上の経路、番号付きの7つのステップ',
     notice:
-      'Yaravan — ペルシア語の注記ボード。まだ書けない作業手順書と、それぞれの理由を挙げている',
+      'Yaravan — ペルシア語の3つの注記ボード。サービスマップ、スイムレーン、作業手順書の各ページから取ったもので、それぞれが描かれていないものとその理由を挙げている',
+    coverage:
+      'Yaravan — ペルシア語のカバレッジマトリクス。プロセスをその情報源、階層、空白と照らし合わせた22行の表と、その下に並ぶステータスごとの件数',
     role: 'Yaravan — ペルシア語の、保証業務の役割カード。この役割はコードには存在するが、どの業務文書にも存在しないと告げる赤いバナーと、すべて「要確定」と記された項目',
     raci: 'Yaravan — ペルシア語のRACIマトリクス。赤いバナーがAccountable（説明責任者）の列を未決と示し、意図的な除外は赤いセルで示す',
+    access:
+      'Yaravan — ペルシア語の2つのボード。コードで強制される8つの構造的なアクセス統制と、現行のモデルとスタッフの提案との比較の見出し部分',
     promise:
       'Yaravan保証の経済性 — ペルシア語のスライド。保証とは約束であり、発行の時点で3つの不明点がある — 発生するか、いつか、いくらか',
     controls:
       'Yaravan保証の経済性 — ペルシア語で示した5つの管理レバー。最も安いものから最も高いものへ並び、それぞれに現在の状況が付く',
+    boardMap:
+      'Yaravan保証の経済性 — ペルシア語の、資料のボードマップ。ストーリーの流れと、すべてのスライドをそのメッセージと証拠のバッジとともに並べた表',
+    glossary:
+      'Yaravan保証の経済性 — ペルシア語の、用語集の付録。概念ごとに固定した一つのペルシア語の用語と、その定義',
   },
   context: {
     heading: '眠っていたアイデンティティと、文書化されていない業務',
@@ -1919,19 +2102,23 @@ const JA: YarCopy = {
       'ファイル全体の形を決めるルールが一つある。何を描いてよいかは、主張ごとに、その裏付けとなる証拠で決まる。証拠は5段階に分かれ、最上位の実行可能なコードならスイムレーンを完全に描けるが、最下位の根拠がまったくないものは描くことが禁じられ、注記だけが許される。段階が低いほど、描いてよいものは少なくなる。',
       'だからファイルは、欠けているものについて正直である。ある階層が途中で止まる箇所では、注記ボードが何が欠けていて、なぜなのかを示す。サービスマップとスイムレーンの注記は、自らの数の内訳を22に合わせて締めくくる。文書化されていない手順を図にすれば、ルールが禁じる創作と同じものになる。ただ、より説得力があるだけだ。',
     ],
+    guideCaption:
+      'ページ00のルール：6つのハウスルール、範囲を22のプロセスまで広げた修正、そして何を描いてよいかを決める5段階の証拠。小売企業やサポートシステムの名前を記した行は削除している。',
     libraryCaption:
-      'ページ00：すべての図の元になるライブラリ。7つのフロー図形、4状態のステータスバッジ、そしてマップを見て回れるようにする備品。',
+      'すべての図の備品：ページ00に描かれたコンポーネントライブラリと、その隣に並ぶページ09のアイコンセットの1カテゴリー — このファイルのために描いたものではなく、取り込んだもの。',
   },
   levels: {
     label: '6つの階層',
     heading: '一つのプロセスを、最下層までたどる',
     body: [
       'アーキテクチャには6つの階層があり、それぞれが異なる問いに答える。顧客による保証の有効化は、そのすべての階層で描かれた数少ないプロセスの一つであり、全体の積み重なりを示してくれる。マクロマップ上では、担当者、アウトプット、ステータスを持つ1枚のカードである。レベル1ではエンドツーエンドのカードになる。トリガー、担当者、開始と終了のイベント、4つのフェーズ、判断ゲート、受け取るものと引き渡すもの、コードが強制する統制 — そして「要確定」と記されたKPIとSLAである。承認された計算式も時間も、どの情報源にも存在しないからだ。',
-      'レベル2はサービスブループリントである。顧客の行動、タッチポイント、そして相互作用線、可視線、内部相互作用線のそれぞれの側でスタッフとシステムが行うことを、各ステップが残す記録と統制まで描く。ここでは、顧客が出発点とする印刷ラベルが、システムの管理外にあるタッチポイントであることがわかる。印刷はシステムの外で行われるからだ。レベル3は、同じ手順をアクターごとのレーンを持つスイムレーンに変える。',
+      'レベル2はサービスブループリントである。顧客の行動、タッチポイント、そして相互作用線、可視線、内部相互作用線のそれぞれの側でスタッフとシステムが行うことを、各ステップが残す記録と統制まで描く。ここでは、顧客が出発点とする印刷ラベルが、システムの管理外にあるタッチポイントであることがわかる。印刷はシステムの外で行われるからだ。ファイルはそのタッチポイントも描いている。表面と裏面からなる印刷用の保証カードで、バリエーションは10種類ある。レベル3は、同じ手順をアクターごとのレーンを持つスイムレーンに変える。',
       'レベル4と5は、それを運用する人のためのものだ。業務手順書は4つのプロセスを一度に扱い — 業務手順書とプロセスは一対一ではない — 「未承認」の印が押され、承認者とレビュー日は「要確定」のまま残されている。作業手順書は顧客自身が行う7つのステップで、顧客のために書かれたチェックリストが付く。コードに使う文字には0、O、1、I、Lが含まれないため、印刷ラベル上の文字を読み違えることはない。',
     ],
     insight:
       'どの階層も、途中で止まることが許されている。22のプロセスのうちスイムレーンがあるのは14だけ、ブループリントがあるのは6つだけで、残りにはその理由を述べる注記がある。そして注記は、自らの数の内訳を22に合わせて締めくくる。',
+    cardCaption:
+      '有効化が始まる場所：ページ11にある印刷用保証カードの表面で、10のバリエーションのうちの一つ。法人名、住所、電話番号は削除し、QRコードにはぼかしを入れている。',
     l1Caption:
       'レベル1 — 顧客による保証の有効化をエンドツーエンドで。トリガーと担当者、右から左へ流れる4つのフェーズ、判断ゲート、そしてまだどの情報源も定義していないKPIとSLA。',
     blueprintCaption:
@@ -1950,7 +2137,9 @@ const JA: YarCopy = {
       'ファイルは自らを監査してもいる。カバレッジマトリクスは22のプロセスそれぞれを、その情報源、存在する階層、欠けているものと照らし合わせる。完了が6、不完全が6、矛盾が1、要確定が9。クローズ済みとされていた3つの空白を再び開いている — クローズ済みであることは、組織によって解決されたことと同じではない。そして、情報源が引用された内容を実際には述べていなかった箇所では、自らの引用を取り下げている。',
     ],
     noticeCaption:
-      '描かれた欠落。まだ書けない6つの作業手順書と、それぞれを阻んでいる欠けた仕組みや方針。',
+      '描かれた欠落：サービスマップ、スイムレーン、作業手順書の各ページにある注記。それぞれが、何が欠けていて、なぜなのかを示す。小売企業の名前を記した行は削除している。',
+    coverageCaption:
+      'ページ08：カバレッジマトリクス — 22のプロセスそれぞれを、その情報源、存在する階層、欠けているものと照らし合わせ、その下にステータスごとの件数を示す。人の名前、サポートシステム、コードの弱点を記したセルは削除している。',
   },
   roles: {
     label: '役割',
@@ -1958,11 +2147,14 @@ const JA: YarCopy = {
     body: [
       '8枚の役割カードが、各役割の目的、職務、固有の権限、意図的な除外、空白を示し、どのカードでもKPIとSLAは「要確定」と記されている。問いがほとんどを占めるカードもある。ある役割はコードに存在し、アクセス権も持っているが、どの業務文書、組織図、業務手順書もそれを定義していない。そのため、それが実在する役割なのか、既存の役割の別名なのかを事業側が決めるまで、そのレーンは破線で描かれている。',
       '責任分担マトリクスは、4分の3までしか導けなかった。Responsible（実行責任者）、Consulted（相談先）、Informed（報告先）はコードから導けたが、Accountable（説明責任者）は導けなかった。コードが語るのは誰が操作を実行できるかであって、誰がその結果に責任を負うかではないからだ。マトリクスはその列を空けたまま、そう明記したバナーを付けて公開され、意図的な除外 — 職務の分離 — を赤で示して、空白と取り違えられないようにしている。取り消しの上限額を設定する役割は、取り消しを承認できない。自分の上限を自分で引き上げられてしまうからである。',
+      'アクセスモデルも同じように扱った。あるページは、コードが強制する8つの構造的な統制を示している — デフォルトで拒否すること、役割がページの存在を知ることさえできないよう403ではなく404を返すこと、そしてデフォルト値を創作しないこと。「デフォルト値を創作することは、誰も承認していない方針を黙って公開することを意味する。」その隣では、アフターサービス部門のスタッフ自身による役割の提案 — 8つの役割、76の項目 — を、「統合せず、すり合わせもせず」、項目ごとに横に並べてコードと照らし合わせている。76のうち完全に実装されているのは3つで、20は承認済みのアーキテクチャ上の決定と矛盾している。そしてページは自らの限界を明記している。提案が正しいかどうかについては、判定を下さない。',
     ],
     roleCaption:
       'コードの中にだけ存在する役割。カードのすべての項目が「要確定」となっており、バナーがその問いを事業側に投げかけている。',
     raciCaption:
       '22プロセスのマトリクスの最初の11行。主要な列は空のまま公開され、その理由を述べている。バナーは空白と、その判断を握る人を示す。名前はここでは伏せている。',
+    accessCaption:
+      'ページ10：コードが強制する8つの構造的な統制 — デフォルトで拒否、403ではなく404、メニュー、ページ、サーバーの背後にある一つのモジュール。その下に、スタッフ自身の提案と横に並べた比較の見出し部分が続く。',
   },
   decisions: {
     heading: '誰も確認できなかったものを描くための6つのルール',
@@ -2021,6 +2213,8 @@ const JA: YarCopy = {
       '資料は概念から始まる。発行された日の保証は、3つの不明点そのものである — 請求が来るのか、いつ来るのか、いくらかかるのか。',
     controlsCaption:
       '最も安いものから最も高いものへ並べた5つの管理レバー。それぞれが、コスト方程式のどの要素を動かすかに結びついている。',
+    apparatusCaption:
+      '資料自体の仕組み：ストーリーの流れとすべてのスライドの証拠のバッジを示すボードマップと、概念ごとにペルシア語の言葉を一つに定める用語集の付録。人の名前を記した1行は削除している。',
   },
   outcomes: {
     heading: '図として描かれた業務と、担当者の決まった空白',
@@ -2175,12 +2369,21 @@ export function yarSections(locale: Locale, media: YarMediaIds): Sections {
       blockType: 'csFigure',
       layout: 'full',
       treatment: 'diagram',
-      items: items(['library', 'yar-f08-1']),
+      items: items(['guide', 'yar-f08-1']),
+      annotations: [],
+      caption: c.research.guideCaption,
+    },
+    {
+      id: 'yar-s09',
+      blockType: 'csFigure',
+      layout: 'split',
+      treatment: 'diagram',
+      items: items(['library', 'yar-f09-1'], ['icons', 'yar-f09-2']),
       annotations: [],
       caption: c.research.libraryCaption,
     },
     {
-      id: 'yar-s09',
+      id: 'yar-s10',
       blockType: 'csNarrative',
       label: 'custom',
       customLabel: c.levels.label,
@@ -2189,43 +2392,52 @@ export function yarSections(locale: Locale, media: YarMediaIds): Sections {
       insight: c.levels.insight,
     },
     {
-      id: 'yar-s10',
-      blockType: 'csFigure',
-      layout: 'full',
-      treatment: 'diagram',
-      items: items(['l1', 'yar-f10-1']),
-      annotations: [],
-      caption: c.levels.l1Caption,
-    },
-    {
       id: 'yar-s11',
       blockType: 'csFigure',
       layout: 'full',
-      treatment: 'diagram',
-      items: items(['blueprint', 'yar-f11-1']),
+      treatment: 'plain',
+      items: items(['card', 'yar-f11-1']),
       annotations: [],
-      caption: c.levels.blueprintCaption,
+      caption: c.levels.cardCaption,
     },
     {
       id: 'yar-s12',
       blockType: 'csFigure',
       layout: 'full',
       treatment: 'diagram',
-      items: items(['swimlane', 'yar-f12-1']),
+      items: items(['l1', 'yar-f12-1']),
       annotations: [],
-      caption: c.levels.swimlaneCaption,
+      caption: c.levels.l1Caption,
     },
     {
       id: 'yar-s13',
       blockType: 'csFigure',
+      layout: 'full',
+      treatment: 'diagram',
+      items: items(['blueprint', 'yar-f13-1']),
+      annotations: [],
+      caption: c.levels.blueprintCaption,
+    },
+    {
+      id: 'yar-s14',
+      blockType: 'csFigure',
+      layout: 'full',
+      treatment: 'diagram',
+      items: items(['swimlane', 'yar-f14-1']),
+      annotations: [],
+      caption: c.levels.swimlaneCaption,
+    },
+    {
+      id: 'yar-s15',
+      blockType: 'csFigure',
       layout: 'split',
       treatment: 'diagram',
-      items: items(['sop', 'yar-f13-1'], ['wi', 'yar-f13-2']),
+      items: items(['sop', 'yar-f15-1'], ['wi', 'yar-f15-2']),
       annotations: [],
       caption: c.levels.procedureCaption,
     },
     {
-      id: 'yar-s14',
+      id: 'yar-s16',
       blockType: 'csNarrative',
       label: 'custom',
       customLabel: c.findings.label,
@@ -2234,16 +2446,25 @@ export function yarSections(locale: Locale, media: YarMediaIds): Sections {
       insight: '',
     },
     {
-      id: 'yar-s15',
+      id: 'yar-s17',
       blockType: 'csFigure',
       layout: 'full',
       treatment: 'diagram',
-      items: items(['notice', 'yar-f15-1']),
+      items: items(['notice', 'yar-f17-1']),
       annotations: [],
       caption: c.findings.noticeCaption,
     },
     {
-      id: 'yar-s16',
+      id: 'yar-s18',
+      blockType: 'csFigure',
+      layout: 'full',
+      treatment: 'diagram',
+      items: items(['coverage', 'yar-f18-1']),
+      annotations: [],
+      caption: c.findings.coverageCaption,
+    },
+    {
+      id: 'yar-s19',
       blockType: 'csNarrative',
       label: 'custom',
       customLabel: c.roles.label,
@@ -2252,25 +2473,34 @@ export function yarSections(locale: Locale, media: YarMediaIds): Sections {
       insight: '',
     },
     {
-      id: 'yar-s17',
+      id: 'yar-s20',
       blockType: 'csFigure',
       layout: 'full',
       treatment: 'diagram',
-      items: items(['role', 'yar-f17-1']),
+      items: items(['role', 'yar-f20-1']),
       annotations: [],
       caption: c.roles.roleCaption,
     },
     {
-      id: 'yar-s18',
+      id: 'yar-s21',
       blockType: 'csFigure',
       layout: 'full',
       treatment: 'diagram',
-      items: items(['raci', 'yar-f18-1']),
+      items: items(['raci', 'yar-f21-1']),
       annotations: [],
       caption: c.roles.raciCaption,
     },
     {
-      id: 'yar-s19',
+      id: 'yar-s22',
+      blockType: 'csFigure',
+      layout: 'full',
+      treatment: 'diagram',
+      items: items(['access', 'yar-f22-1']),
+      annotations: [],
+      caption: c.roles.accessCaption,
+    },
+    {
+      id: 'yar-s23',
       blockType: 'csDecisions',
       heading: c.decisions.heading,
       lede: c.decisions.lede,
@@ -2284,7 +2514,7 @@ export function yarSections(locale: Locale, media: YarMediaIds): Sections {
       })),
     },
     {
-      id: 'yar-s20',
+      id: 'yar-s24',
       blockType: 'csNarrative',
       label: 'custom',
       customLabel: c.economics.label,
@@ -2293,25 +2523,34 @@ export function yarSections(locale: Locale, media: YarMediaIds): Sections {
       insight: c.economics.insight,
     },
     {
-      id: 'yar-s21',
+      id: 'yar-s25',
       blockType: 'csFigure',
       layout: 'full',
       treatment: 'plain',
-      items: items(['promise', 'yar-f21-1']),
+      items: items(['promise', 'yar-f25-1']),
       annotations: [],
       caption: c.economics.promiseCaption,
     },
     {
-      id: 'yar-s22',
+      id: 'yar-s26',
       blockType: 'csFigure',
       layout: 'full',
       treatment: 'plain',
-      items: items(['controls', 'yar-f22-1']),
+      items: items(['controls', 'yar-f26-1']),
       annotations: [],
       caption: c.economics.controlsCaption,
     },
     {
-      id: 'yar-s23',
+      id: 'yar-s27',
+      blockType: 'csFigure',
+      layout: 'split',
+      treatment: 'plain',
+      items: items(['boardMap', 'yar-f27-1'], ['glossary', 'yar-f27-2']),
+      annotations: [],
+      caption: c.economics.apparatusCaption,
+    },
+    {
+      id: 'yar-s28',
       blockType: 'csOutcomes',
       heading: c.outcomes.heading,
       intro: c.outcomes.intro,
@@ -2324,7 +2563,7 @@ export function yarSections(locale: Locale, media: YarMediaIds): Sections {
       shipped: c.outcomes.shipped,
     },
     {
-      id: 'yar-s24',
+      id: 'yar-s29',
       blockType: 'csLessons',
       heading: c.lessons.heading,
       items: c.lessons.items.map((lesson, index) => ({

@@ -244,13 +244,15 @@ const CARSPARENCY_GATE = {
 
 /**
  * Yaravan's two studies (service design and platform, split 2026-09-26) share one gate: product
- * name only, and only redacted crops — never an invoice, extension or warranty screen (prices,
- * extension terms).
+ * name only, and only redacted crops — never an invoice, extension-order or warranties screen
+ * (prices, extension terms).
  */
 const YARAVAN_GATE = {
   // Product name only (2026-09-26): only redacted crops are uploaded — never the confidential
-  // charter, the competitor or portrait slides, the imported icons, or a raw screenshot or board.
-  files: [/^(?!crops\/)/, /invoice|extension|warrant/, /charter/, /market-analysis\/(03|09|14)/, /product-report\/23/, /icons/, /about/, /slide-00/, /edit-view/, /ROLE-001/],
+  // charter, the competitor or portrait slides, or a raw screenshot or board. Page 09's imported
+  // icon set appears once, as `crops/icon-set-page.png`, captioned as imported; `/icons/` still
+  // keeps the raw library folder out.
+  files: [/^(?!crops\/)/, /invoice|extension|warranties/, /charter/, /market-analysis\/(03|09|14)/, /product-report\/23/, /icons/, /about/, /slide-00/, /edit-view/, /ROLE-001/],
   text: [
     /Mobile\s?140|موبایل\s?۱۴۰|موبايل/i,
     /(?<![\d۰-۹])(140|۱۴۰)(?![\d۰-۹])/,
