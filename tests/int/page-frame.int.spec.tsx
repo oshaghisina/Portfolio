@@ -115,7 +115,7 @@ describe('the frame owns width', () => {
 })
 
 describe('page openers share the gesture', () => {
-  it('the work archive opens on the shared opener with a computed count line', () => {
+  it('the work archive opens on its compact written intro with a computed count line', () => {
     const { container } = render(
       <WorkIntro
         companyCount={4}
@@ -125,7 +125,7 @@ describe('page openers share the gesture', () => {
       />,
     )
     expect(container.querySelector('h1')!.textContent).toContain('Selected')
-    expect(container.querySelector('h1')!.className).toContain('text-display')
+    expect(container.querySelector('h1')!.className).toContain('work-intro-title')
     expect(container.textContent).toContain('7 projects')
     expect(container.querySelector('.container')).toBeNull()
   })

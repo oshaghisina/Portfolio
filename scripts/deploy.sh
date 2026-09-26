@@ -255,7 +255,13 @@ if [[ "$SKIP_CHECKS" == 0 ]]; then
   if [[ "$GATE_DIR" == "$SRC" ]]; then
     # Validate exactly what ships, reusing the local toolchain. Some int specs read the gitignored
     # Docs/ tree or connect to local Mongo through .env, so those are linked in for the checks only.
-    for f in node_modules Docs .env; do [[ -e "$f" ]] && ln -s "$ROOT/$f" "$SRC/$f"; done
+    # A tracked file under gitignored Docs/ (CASE_STUDY_ROADMAP.md) makes the export hold a real
+    # Docs/ dir, and `ln -s` would then nest the link inside it. .dockerignore drops Docs anyway.
+    for f in node_modules Docs .env; do
+      [[ -e "$f" ]] || continue
+      [[ -d "$SRC/$f" && ! -L "$SRC/$f" ]] && rm -rf "$SRC/$f"
+      ln -s "$ROOT/$f" "$SRC/$f"
+    done
     for f in next-env.d.ts tsconfig.tsbuildinfo; do [[ -f "$f" ]] && cp "$f" "$SRC/"; done
   fi
   (cd "$GATE_DIR" && pnpm -s lint && npx tsc --noEmit && pnpm -s test:int)
