@@ -1,5 +1,7 @@
 import type { Payload } from 'payload'
 
+import { LOCALES } from '@/utilities/locale'
+
 import {
   ARR_ASSETS,
   ARR_LOCALES,
@@ -16,6 +18,42 @@ import {
   BIO_SLUG,
   bioLocalizedFields,
 } from './biomaze-website-education-panel'
+import {
+  CBO_ASSETS,
+  CBO_COVER_KEY,
+  CBO_MEDIA,
+  CBO_SLUG,
+  cboLocalizedFields,
+} from './carsparency/back-office'
+import {
+  CDS_ASSETS,
+  CDS_COVER_KEY,
+  CDS_MEDIA,
+  CDS_SLUG,
+  cdsLocalizedFields,
+} from './carsparency/design-system'
+import {
+  CINS_ASSETS,
+  CINS_COVER_KEY,
+  CINS_MEDIA,
+  CINS_SLUG,
+  cinsLocalizedFields,
+} from './carsparency/inspection'
+import {
+  CPRO_ASSETS,
+  CPRO_COVER_KEY,
+  CPRO_MEDIA,
+  CPRO_SLUG,
+  cproLocalizedFields,
+} from './carsparency/pro'
+import { CSP_SHARED_FIELDS } from './carsparency/shared'
+import {
+  CWEB_ASSETS,
+  CWEB_COVER_KEY,
+  CWEB_MEDIA,
+  CWEB_SLUG,
+  cwebLocalizedFields,
+} from './carsparency/web'
 import {
   DG_ASSETS,
   DG_LOCALES,
@@ -41,6 +79,14 @@ import {
   k45LocalizedFields,
 } from './khodro45-dealer-app'
 import {
+  MQV_ASSETS,
+  MQV_LOCALES,
+  MQV_MEDIA,
+  MQV_SHARED_FIELDS,
+  MQV_SLUG,
+  mqvLocalizedFields,
+} from './marqevon'
+import {
   ND_ASSETS,
   ND_LOCALES,
   ND_MEDIA,
@@ -59,6 +105,14 @@ import {
 import type { CaseStudySeedConfig, CaseStudySeedResult } from './seed-case-study'
 import { assertNoUnseededLocales, seedCaseStudy } from './seed-case-study'
 import { VIN_ASSETS, VIN_MEDIA, VIN_SHARED_FIELDS, VIN_SLUG, vinLocalizedFields } from './vin-app'
+import {
+  YAR_ASSETS,
+  YAR_LOCALES,
+  YAR_MEDIA,
+  YAR_SHARED_FIELDS,
+  YAR_SLUG,
+  yarLocalizedFields,
+} from './yaravan'
 
 /**
  * Every project with a full case study. Add one `CaseStudySeedConfig` entry per project — see
@@ -163,6 +217,30 @@ export const CASE_STUDIES: CaseStudySeedConfig<any, any>[] = [
     localizedFields: arrLocalizedFields,
   },
   {
+    label: 'Marqevon',
+    slug: MQV_SLUG,
+    assetsDir: MQV_ASSETS,
+    media: MQV_MEDIA,
+    seedLocales: MQV_LOCALES,
+    createFields: { kind: ['product'], order: 101, coverMediaKey: 'cover' },
+    // The archive row had no cover; the case study's is a type-only crop of the procedure page.
+    replaceCover: true,
+    sharedFields: MQV_SHARED_FIELDS,
+    localizedFields: mqvLocalizedFields,
+  },
+  {
+    label: 'Yaravan',
+    slug: YAR_SLUG,
+    assetsDir: YAR_ASSETS,
+    media: YAR_MEDIA,
+    seedLocales: YAR_LOCALES,
+    createFields: { kind: ['product', 'systems', 'research'], order: 104, coverMediaKey: 'cover' },
+    // Same stored name as the archive cover: the badge-free crop replaces its bytes in place.
+    replaceCover: true,
+    sharedFields: YAR_SHARED_FIELDS,
+    localizedFields: yarLocalizedFields,
+  },
+  {
     label: 'Biomaze',
     slug: BIO_SLUG,
     assetsDir: BIO_ASSETS,
@@ -175,6 +253,59 @@ export const CASE_STUDIES: CaseStudySeedConfig<any, any>[] = [
     },
     sharedFields: BIO_SHARED_FIELDS,
     localizedFields: bioLocalizedFields,
+  },
+  // Carsparency: five studies, one per Figma file, sharing one chapter grammar
+  // (`carsparency/shared.ts`). Archive orders 20–24 are unchanged; the cover keys reuse each
+  // archive cover's stored name, so the sharper export replaces the file in place.
+  {
+    label: 'Carsparency Pro',
+    slug: CPRO_SLUG,
+    assetsDir: CPRO_ASSETS,
+    media: CPRO_MEDIA,
+    seedLocales: LOCALES,
+    createFields: { kind: ['product'], order: 20, coverMediaKey: CPRO_COVER_KEY },
+    sharedFields: CSP_SHARED_FIELDS,
+    localizedFields: cproLocalizedFields,
+  },
+  {
+    label: 'Carsparency Back Office',
+    slug: CBO_SLUG,
+    assetsDir: CBO_ASSETS,
+    media: CBO_MEDIA,
+    seedLocales: LOCALES,
+    createFields: { kind: ['product', 'data'], order: 21, coverMediaKey: CBO_COVER_KEY },
+    sharedFields: CSP_SHARED_FIELDS,
+    localizedFields: cboLocalizedFields,
+  },
+  {
+    label: 'Carsparency Inspection',
+    slug: CINS_SLUG,
+    assetsDir: CINS_ASSETS,
+    media: CINS_MEDIA,
+    seedLocales: LOCALES,
+    createFields: { kind: ['product'], order: 22, coverMediaKey: CINS_COVER_KEY },
+    sharedFields: CSP_SHARED_FIELDS,
+    localizedFields: cinsLocalizedFields,
+  },
+  {
+    label: 'Carsparency Web',
+    slug: CWEB_SLUG,
+    assetsDir: CWEB_ASSETS,
+    media: CWEB_MEDIA,
+    seedLocales: LOCALES,
+    createFields: { kind: ['product', 'growth'], order: 23, coverMediaKey: CWEB_COVER_KEY },
+    sharedFields: CSP_SHARED_FIELDS,
+    localizedFields: cwebLocalizedFields,
+  },
+  {
+    label: 'Carsparency Design System',
+    slug: CDS_SLUG,
+    assetsDir: CDS_ASSETS,
+    media: CDS_MEDIA,
+    seedLocales: LOCALES,
+    createFields: { kind: ['systems'], order: 24, coverMediaKey: CDS_COVER_KEY },
+    sharedFields: CSP_SHARED_FIELDS,
+    localizedFields: cdsLocalizedFields,
   },
 ]
 

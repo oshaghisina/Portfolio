@@ -1,0 +1,210 @@
+{
+  "statement": "A seller journey that shows a price before it asks for detail, then lets owners inspect their own car with a phone camera in sixteen guided shots.",
+  "industry": "Automotive marketplace · consumer",
+  "team": "Product designer; team size and roles are not recorded in the files",
+  "heroCaption": "The seller wizard on a phone: choosing the brand, the first price estimate with its validity, and the start of the guided self-inspection.",
+  "snapshot": {
+    "problem": "A seller wants a number, and the marketplace needs a detailed, photographed record. Asking for the record first loses the seller before they see why it matters.",
+    "role": "Product designer on the seller side: the three-step wizard, the price estimates, the car-detail questions and the guided self-inspection, on mobile and desktop.",
+    "result": "114 mobile frames and 112 desktop frames. The files record no launch date or funnel data."
+  },
+  "alt": {
+    "homeFold": "Carsparency Web — the seller home page on desktop, with a valuation box offering licence plate, VIN or make and model",
+    "brand": "Carsparency Web — step one of the seller wizard on mobile: choosing the car's brand from top brands or a full list",
+    "before": "Carsparency Web — the first estimated price in dirhams with its validity time, shown before the car details are asked for",
+    "after": "Carsparency Web — the estimated price again after the car details, with the three-step progress complete up to step two",
+    "finance": "Carsparency Web — the finance question with three ways to resolve an outstanding loan",
+    "welcome": "Carsparency Web — the self-inspection welcome screen for the seller's car",
+    "position": "Carsparency Web — a self-inspection tutorial screen: position your car inside the guides, then enable the camera",
+    "review": "Carsparency Web — the photo review board grouped into exterior, wheels, treads, interior, conditions and damage, and service history",
+    "checklist": "Carsparency Web — the condition checklist asking about scratches, dents, paintwork, windscreen, fittings and warning lights",
+    "damage": "Carsparency Web — the damage locator: choose the side of the car and the size of the damage"
+  },
+  "chapters": {
+    "context": {
+      "heading": "Where every car on the marketplace begins",
+      "body": [
+        "Carsparency bought cars from private owners in the UAE and sold them to dealers at auction. The website is the owner's side: enter the car, get a price, add the details and photos, and hand the rest to Carsparency.",
+        "Its Figma file holds 114 mobile frames and 112 desktop frames across a first iteration, a benchmark of an existing seller flow, and the later UAE pages: prices in dirhams, +971 phone numbers and a question about GCC specification."
+      ]
+    },
+    "problem": {
+      "heading": "The seller wants a number; the marketplace needs a dossier",
+      "body": [
+        "Everything downstream (the inspection, the operators' pricing, the dealer's bid) depends on a detailed and honest account of the car. A seller arriving from a search wants something much simpler: what is my car worth?",
+        "Ask for the dossier first and most sellers leave before seeing a number. Show the number and ask for nothing, and the number means little. The flow had to earn each question."
+      ]
+    },
+    "flow": {
+      "heading": "Three steps, with the price in the middle of them",
+      "customLabel": "Flow",
+      "body": [
+        "The wizard is Car Info, Car Details and Self Inspection. Car Info identifies the car with taps (brand, model, year, trim, style, mileage band and colour) and verifies a phone number. The seller then sees an estimated price, marked valid until a set time, before any harder question.",
+        "Car Details asks seven questions (title ownership, finance, condition, warranty, service history, warning lights and location) and ends with the estimate again. Self Inspection follows only once the seller has a price worth protecting."
+      ]
+    },
+    "solution": {
+      "heading": "Every question earns its place",
+      "body": [
+        "Two levels of progress keep the long flow legible: three numbered steps across the top, and a row of chips for the questions inside the current step. The car's identity builds up in the header as it is answered, from the brand alone to the brand, model, year, trim and body style.",
+        "The hard questions come with a way through. Finance does not stop at yes: it offers I will clear the loan, ask Carsparency to clear the loan, or the loan is cleared but not yet updated. The self-inspection prepares the seller before the camera opens (enough light, a clean car, stand back, rotate the phone, position the car inside the guides) and then asks for sixteen named angles."
+      ],
+      "bullets": [
+        "Entry by licence plate, VIN or make and model",
+        "Tap-first car identification with brand and model search",
+        "Estimate before and after the car details, each with a validity time",
+        "Guided photo capture with damage location, size and quality examples"
+      ]
+    },
+    "ecosystem": {
+      "heading": "The seller's answers become the inspector's checklist",
+      "customLabel": "Ecosystem",
+      "body": [
+        "The questions the seller answers here (title holder, finance, warranty, service history, warning lights, GCC specification) are the same ones the inspector verifies in the field and the inspection report prints. The web collects the claim; the inspection checks it.",
+        "The estimate is the seller-facing face of the same valuation dealers see as Fair Market Value in Pro and operators see as Fair in the back office. The website runs in the library's light theme, where the other three products use its dark one."
+      ]
+    }
+  },
+  "figures": {
+    "home": {
+      "caption": "The desktop home page opens on the valuation box: the seller chooses how to identify the car (licence plate, VIN, or make and model) before anything else."
+    },
+    "estimates": {
+      "caption": "The estimate appears twice: once after the car info and a phone check, before any of the harder questions, and again after the car details. Both carry the time the price is valid until.",
+      "items": [
+        "Before the car details",
+        "After the car details"
+      ]
+    },
+    "guidance": {
+      "caption": "Two moments where the flow helps rather than asks: an outstanding loan turns into three ways forward, and the camera is only opened once the seller knows how to frame the car.",
+      "items": [
+        "Finance, with ways through",
+        "Framing before the camera"
+      ]
+    },
+    "review": {
+      "caption": "The photo review board, sized for a tablet or desktop browser.",
+      "annotations": [
+        "Photos grouped the way a buyer reads a car: exterior, wheels, treads, interior, damage, service history",
+        "Every slot is named for its angle, so nothing is ambiguous",
+        "The number of required photos is stated up front",
+        "Save and finish later, because a seller rarely has sixteen photos in one go"
+      ]
+    },
+    "damage": {
+      "caption": "Damage in the seller's words, but structured: a checklist of problem types with examples, then the side of the car and a size band for each one.",
+      "items": [
+        "Condition checklist",
+        "Location and size"
+      ]
+    }
+  },
+  "process": {
+    "heading": "The seller wizard, as the file sequences it",
+    "steps": [
+      {
+        "label": "Car info",
+        "note": "Brand, model, year, trim, style, mileage band, colour, then phone verification."
+      },
+      {
+        "label": "Estimate",
+        "note": "A first price with its validity time, before anything harder is asked."
+      },
+      {
+        "label": "Car details",
+        "note": "Title, finance, condition, warranty, service history, warning lights, location."
+      },
+      {
+        "label": "Re-estimate",
+        "note": "The price again, now informed by the details."
+      },
+      {
+        "label": "Self-inspect",
+        "note": "A short tutorial, sixteen guided angles, then damage and review."
+      }
+    ]
+  },
+  "decisions": {
+    "heading": "Four decisions behind the seller flow",
+    "lede": "Read from the frames and their order; the file does not record the reasoning.",
+    "items": [
+      {
+        "title": "Price before questions",
+        "why": "The estimate appears after the tap-only car info and a phone check, and before the seven detail questions. The seller gets what they came for early, and every question after it reads as refining their price rather than as a toll.",
+        "tradeoff": "The first number is rougher, and the second can disagree with it."
+      },
+      {
+        "title": "Put a validity time on the price",
+        "why": "Every estimate says when it expires. That keeps a market price honest about being a moment in time and gives the seller a reason to continue now.",
+        "alternatives": "An open-ended estimate, which a changing market would quietly contradict."
+      },
+      {
+        "title": "Turn blockers into paths",
+        "why": "A car still on finance is a common reason a sale stalls. Instead of a yes that ends the flow, the question offers three ways to resolve the loan, including handing it to Carsparency."
+      },
+      {
+        "title": "Teach the camera shot before taking it",
+        "why": "Photos from sellers are the weakest link in any remote inspection. A short tutorial, named angles, and good and bad examples make the seller's photos usable as evidence."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "Sina's part",
+    "intro": "Listed from the Web file. The files do not record team size or who decided what, so this is the work in the file, not a claim of sole authorship.",
+    "own": [
+      "The three-step seller wizard and its two-level progress",
+      "The estimate screens before and after the car details",
+      "The car-detail questions and their branching answers",
+      "The guided self-inspection: tutorial, named angles, damage and review",
+      "Supporting pages on desktop and mobile: account, service history, help and errors"
+    ],
+    "collaborate": [
+      "Engineering and operations colleagues, not named in the files"
+    ],
+    "note": "The file keeps a benchmark of an existing seller flow and a first iteration of the pages; the wizard and self-inspection pages are the later, UAE-localised version."
+  },
+  "outcomes": {
+    "heading": "What the file delivers",
+    "intro": "Counts of designed frames, not results. The marketing pages carry review and dealer figures that are placeholder copy, so none is repeated here.",
+    "delivered": [
+      {
+        "label": "mobile frames",
+        "context": "The wizard, self-inspection and supporting pages"
+      },
+      {
+        "label": "desktop frames",
+        "context": "The same journey and pages at 1,440 px"
+      },
+      {
+        "label": "guided photo angles",
+        "context": "Each named, with a tutorial before the camera opens"
+      }
+    ],
+    "shipped": [
+      "Valuation entry by plate, VIN or make and model",
+      "Three-step seller wizard",
+      "Estimates before and after the car details",
+      "Finance, title and condition questions with branches",
+      "Guided self-inspection and photo review",
+      "Account, service history, help and error pages"
+    ]
+  },
+  "lessons": {
+    "heading": "What this work taught",
+    "items": [
+      {
+        "title": "Pay the user before you ask them for more",
+        "body": "Placing the estimate in the middle of the flow changes what the questions after it mean: they refine something the seller already holds."
+      },
+      {
+        "title": "A benchmark is a starting point, not a design",
+        "body": "The first iteration followed an existing seller service closely, and benchmark frames still sit beside the design. The later pages are where the flow was made for the UAE: prices in dirhams, +971 numbers and a GCC specification question."
+      },
+      {
+        "title": "Remote evidence is a teaching problem",
+        "body": "The quality of the seller's photos depends less on the capture screen than on the tutorial before it."
+      }
+    ]
+  }
+}

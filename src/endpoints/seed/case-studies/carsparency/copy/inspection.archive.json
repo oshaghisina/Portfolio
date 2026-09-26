@@ -1,0 +1,26 @@
+{
+  "fa": {
+    "title": "Carsparency Inspection — تبدیل بازدیدی فیزیکی به سابقه‌ای ساختاریافته",
+    "summary": "ابزار میدانی‌ای که مدرکِ مبنای معاملات بازار را می‌سازد: صفی از خودروها، ویزارد مشخصات خودرو، ده بخش کارشناسی با قبول یا رد برای هر قطعه، و ایرادهایی که با عکس‌های خودشان ثبت می‌شوند — سرچشمهٔ داده‌های وضعیت خودرو که نمایشگاه‌دارها می‌خوانند."
+  },
+  "ar": {
+    "title": "Carsparency Inspection — تحويل المعاينة الفعلية إلى سجلّ منظَّم",
+    "summary": "الأداة الميدانية التي تُنتج الأدلة التي يقوم عليها التداول في السوق: قائمة بالسيارات، ومعالج لتفاصيل السيارة، وعشرة مجالات فحص مع نجاح أو إخفاق لكل قطعة، وعيوب تُسجَّل بصورها الخاصة — مصدر بيانات الحالة التي يقرؤها التجّار."
+  },
+  "es": {
+    "title": "Carsparency Inspection — convertir una revisión física en un registro estructurado",
+    "summary": "La herramienta de campo que produce la evidencia sobre la que opera el marketplace: una cola de coches, un asistente de datos del coche, diez áreas de inspección con aprobado o rechazado para cada pieza y defectos registrados con sus propias fotos — la fuente de los datos de estado que leen los concesionarios."
+  },
+  "de": {
+    "title": "Carsparency Inspection — aus einer physischen Begutachtung wird ein strukturiertes Protokoll",
+    "summary": "Das Außendienst-Tool, das die Belege liefert, auf denen der Marktplatz handelt: eine Warteschlange von Autos, ein Fahrzeugdaten-Assistent, zehn Prüfbereiche mit Bestanden oder Nicht bestanden für jedes Teil und Mängel mit eigenen Fotos — die Quelle der Zustandsdaten, die Händler lesen."
+  },
+  "fr": {
+    "title": "Carsparency Inspection — transformer un examen physique en dossier structuré",
+    "summary": "L’outil de terrain qui produit les preuves sur lesquelles repose le marché : une file de voitures, un assistant de saisie du véhicule, dix zones d’inspection avec conforme ou non conforme pour chaque pièce, et des défauts enregistrés avec leurs propres photos — la source des données d’état que lisent les marchands."
+  },
+  "ja": {
+    "title": "Carsparency Inspection — 物理的な車両確認を構造化された記録へ",
+    "summary": "マーケットプレイスの取引を支える証拠を生み出す現場ツール。車両のキュー、車両情報ウィザード、部位ごとに合格・不合格を付ける10の検査エリア、そして専用の写真とともに記録される不具合。ディーラーが読む車両状態データの源泉。"
+  }
+}

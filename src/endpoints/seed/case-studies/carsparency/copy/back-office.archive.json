@@ -1,0 +1,26 @@
+{
+  "fa": {
+    "title": "بک‌آفیس Carsparency — کنسول اپراتور در پشت بازار آنلاین",
+    "summary": "کنسول کارکنان در پشت بازار آنلاین: ۶۸ صفحهٔ دسکتاپ با نوار کناری هفت‌بخشی، نمای سریع درخواست با تاریخچهٔ کامنت و قیمت، چهار قیمت کنار هم (هدف، فروشنده، منصفانه و نمایشگاه‌دار) و گزارش کارشناسی قابل چاپ."
+  },
+  "ar": {
+    "title": "المكتب الخلفي لـ Carsparency — لوحة المشغّلين خلف السوق الإلكترونية",
+    "summary": "لوحة الموظفين خلف السوق: 68 شاشة مكتبية عبر شريط جانبي من سبعة أقسام، وعرض سريع للطلب مع سجل التعليقات والأسعار، وأربعة أسعار جنبًا إلى جنب (المستهدف والبائع والعادل والتاجر)، وتقرير الفحص القابل للطباعة."
+  },
+  "es": {
+    "title": "Back office de Carsparency — la consola de operaciones detrás del marketplace",
+    "summary": "La consola del equipo detrás del marketplace: 68 pantallas de escritorio con una barra lateral de siete secciones, una vista rápida de solicitudes con historial de comentarios y precios, cuatro precios uno junto a otro (objetivo, del vendedor, justo y del concesionario) y el informe de inspección imprimible."
+  },
+  "de": {
+    "title": "Carsparency Back Office — die Operator-Konsole hinter dem Marktplatz",
+    "summary": "Die interne Konsole hinter dem Marktplatz: 68 Desktop-Screens mit einer Seitenleiste aus sieben Bereichen, eine Schnellansicht für Anfragen mit Kommentar- und Preisverlauf, vier Preise nebeneinander (Ziel-, Verkäufer-, fairer und Händlerpreis) und der druckbare Inspektionsbericht."
+  },
+  "fr": {
+    "title": "Back-office Carsparency — la console opérateur derrière la place de marché",
+    "summary": "La console interne derrière la place de marché : 68 écrans desktop organisés par une barre latérale en sept sections, une vue rapide des demandes avec historique des commentaires et des prix, quatre prix côte à côte (cible, vendeur, juste et marchand) et le rapport d’inspection imprimable."
+  },
+  "ja": {
+    "title": "Carsparencyバックオフィス — マーケットプレイスを支えるオペレーターコンソール",
+    "summary": "マーケットプレイスの裏側を担うスタッフ用コンソール。7セクションのサイドバーにまたがる68のデスクトップ画面、コメント履歴と価格履歴を備えた依頼のクイックビュー、目標・売り手・適正・ディーラーの四つの価格の並列表示、そして印刷可能な検査レポート。"
+  }
+}

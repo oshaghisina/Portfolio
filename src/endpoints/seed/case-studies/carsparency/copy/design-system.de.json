@@ -1,0 +1,188 @@
+{
+  "statement": "Eine Bibliothek, vier Produkte: zwölf Farbskalen, eine Zustandsmatrix je Bedienelement und Komponenten für Händler-, Operator-, Prüfer- und Verkäufer-Screens.",
+  "industry": "Automobil-Marktplatz · Designsysteme",
+  "team": "Produktdesigner; wer über Sinas Dateien hinaus an der Bibliothek mitgewirkt hat, ist nicht dokumentiert",
+  "heroCaption": "Das Formularfeld-Board: jeder Eingabetyp in jedem Zustand, für das helle und das dunkle Theme nebeneinander gezeichnet.",
+  "snapshot": {
+    "problem": "Vier Produkte für vier Zielgruppen (Verkäufer, Prüfer, Operatoren und Händler) sollten in zwei Themes wie ein Unternehmen wirken, ohne jeden Button viermal zu kopieren.",
+    "role": "Produktdesigner: Farbskalen, Typoskala, Komponentensets mit ihren Zustandsmatrizen und die Boards, die sie dokumentieren.",
+    "result": "15 Komponentensets mit 265 Varianten, 12 Farbskalen und der Nachweis, dass alle vier Produktdateien dieselbe Bibliothek nutzen."
+  },
+  "alt": {
+    "formFields": "Carsparency-Designsystem — das Formularfeld-Board: Eingabetypen nach Zustand, hell und dunkel",
+    "colors": "Carsparency-Designsystem — das Farb-Board: Primärgrün, Grau und weitere Skalen von 900 bis 50, mit 500 als Hauptstufe markiert",
+    "buttons": "Carsparency-Designsystem — die Button-Matrix: gefüllt und Outline, primär und grau, in drei Größen und fünf Zuständen",
+    "fonts": "Carsparency-Designsystem — das Typo-Board: fünf Schnitte von Black bis Semibold Oblique",
+    "dark": "Carsparency-Prüf-App im dunklen Theme, gebaut aus der gemeinsamen Bibliothek",
+    "light": "Verkaufsassistent der Carsparency-Website im hellen Theme, gebaut aus derselben Bibliothek"
+  },
+  "chapters": {
+    "context": {
+      "heading": "Vier Produkte, eine visuelle Sprache",
+      "body": [
+        "Carsparency betrieb vier Produktoberflächen: eine Website für Verkäufer, eine Außendienst-App für Prüfer, ein Backoffice für Mitarbeitende und eine Plattform für Händler. Jede hat eine eigene Figma-Datei, und alle vier basieren auf einer gemeinsamen Bibliothek.",
+        "Die Designsystem-Datei dokumentiert diese Bibliothek auf elf Boards (Farbe, Typografie, Buttons, Formularfelder, Toggles, Breadcrumbs, Paginierung, Toasts, Modals, Header und Footer sowie kleine Komponenten) und einer Icon-Seite."
+      ]
+    },
+    "problem": {
+      "heading": "Vier Zielgruppen, zwei Themes, ein Satz Bausteine",
+      "body": [
+        "Die vier Produkte sehen bewusst nicht gleich aus. Die Verkäufer-Website ist hell und offen, die Prüf-App, das Backoffice und die Händlerplattform sind dunkel und dicht. Trotzdem sollen Verkäufer und Händler dasselbe Unternehmen wiedererkennen.",
+        "Ohne gemeinsame Bibliothek würde jede Datei ihre eigenen Buttons und Eingabefelder neu zeichnen, und die vier Produkte würden Screen für Screen auseinanderdriften."
+      ]
+    },
+    "structure": {
+      "heading": "Von Skalen über Komponenten zu Produkten",
+      "customLabel": "Struktur",
+      "body": [
+        "Farbe ist in zwölf Skalen organisiert (Primärgrün, Grau, Blau, Grün, Rot, Orange, Lila, Koralle, Blauviolett, Gelborange, Marineblau und ein Cyanblau). Jede reicht von 900 bis 50, die Grauskala läuft weiter bis Weiß, und die Stufe 500 ist als Hauptwert markiert. Die Primärfarbe der Marke, #00B86B, ist die 500 der Grünskala.",
+        "Komponenten sind als Sets aufgebaut, deren Varianten Typ, Größe und Zustand gemeinsam abdecken. Allein das Button-Set umfasst 90 Varianten: gefüllt und Outline, primär und grau, drei Größen sowie die Zustände Standard, Hover, gedrückt, deaktiviert und Laden."
+      ]
+    },
+    "solution": {
+      "heading": "Ein Zustand für jedes Bedienelement, ein Theme für jedes Produkt",
+      "body": [
+        "Jede interaktive Komponente ist in jedem Zustand gezeichnet, den sie annehmen kann, nicht nur im Ruhezustand. Das Formularfeld-Board zeigt Standard, mit Icon, angehakt, Fehler, Hover und Dropdown, jeweils ausgewählt und nicht ausgewählt, hell und dunkel, damit niemand in der Entwicklung raten muss, wie ein Fehler im dunklen Theme aussieht.",
+        "Dieselben Skalen bedienen beide Themes. Die Website nutzt die hellen Enden der Grauskala für Flächen, die dunklen Produkte das dunkle Ende, und Primärgrün bleibt in beiden die konstante Aktionsfarbe."
+      ],
+      "bullets": [
+        "Buttons: 90 Varianten",
+        "Texteingabe: 42 Varianten",
+        "Toggles und Auswahlelemente: 30 Varianten",
+        "Segmente, Paginierung, Breadcrumbs, Header, Footer, Toasts und Modals"
+      ]
+    },
+    "ecosystem": {
+      "heading": "Der Beleg, dass es genutzt und nicht nur gezeichnet wurde",
+      "customLabel": "Ökosystem",
+      "body": [
+        "Der stärkste Beleg für ein Designsystem liegt in den Dateien, die es nutzen. Frames in den Dateien Pro, Backoffice, Prüfung und Web beziehen ihre Farben alle aus denselben veröffentlichten Styles (den Skalen für Primärgrün und Grau) statt aus lokalen Kopien.",
+        "Auch ihre Komponenten stammen aus derselben Bibliothek. Texteingaben, Modals, Paginierung, Breadcrumbs, Buttons und System-Icons in den Produktdateien sind Instanzen von Bibliothekskomponenten, bis hin zu einem Toggle-Set, dessen falsch geschriebener Name in der Bibliothek und in der Prüf-App identisch ist."
+      ]
+    }
+  },
+  "figures": {
+    "colors": {
+      "caption": "Das Farb-Board: zwölf Skalen von 900 bis 50, die Grauskala weiter bis Weiß, und die Stufe 500 jeder Skala als Hauptwert markiert."
+    },
+    "buttons": {
+      "caption": "Die Button-Matrix. Zeilen sind Typ und Größe, Spalten der Zustand, sodass eine fehlende Kombination als Lücke sichtbar wäre."
+    },
+    "fonts": {
+      "caption": "Das Typo-Board: fünf Schnitte, von Black bei 900 bis zu einem Semibold Oblique, jeder auf demselben Beispielsatz."
+    },
+    "themes": {
+      "caption": "Eine Bibliothek, zwei Themes: die Prüf-App in Dunkel und der Verkaufsassistent in Hell, mit demselben Primärgrün, derselben Grauskala und denselben Eingabe- und Button-Komponenten.",
+      "items": [
+        "Dunkel: Prüf-App",
+        "Hell: Verkaufsassistent"
+      ]
+    }
+  },
+  "process": {
+    "heading": "Wie die Bibliothek geschichtet ist",
+    "steps": [
+      {
+        "label": "Farbe",
+        "note": "Zwölf Skalen, 900 bis 50, als gemeinsame Farbstyles veröffentlicht."
+      },
+      {
+        "label": "Typografie",
+        "note": "Fünf Schnitte auf einem Beispiel, von Black bis Semibold Oblique."
+      },
+      {
+        "label": "Bedienelemente",
+        "note": "Buttons, Eingabefelder, Toggles und Segmente mit vollständigen Zustandsmatrizen."
+      },
+      {
+        "label": "Muster",
+        "note": "Toasts, Modals, Breadcrumbs, Paginierung, Header und Footer."
+      },
+      {
+        "label": "Produkte",
+        "note": "Genutzt von den Dateien Pro, Backoffice, Prüfung und Web."
+      }
+    ]
+  },
+  "decisions": {
+    "heading": "Vier Entscheidungen, die die Bibliothek tragen",
+    "lede": "Abgeleitet aus den Boards und daraus, wie die Produktdateien sie nutzen.",
+    "items": [
+      {
+        "title": "Skalen statt Palette",
+        "why": "Jede Farbe kommt in zehn Stufen mit markiertem Hauptwert. Dichte dunkle Screens brauchen mehrere nah beieinanderliegende Töne für Flächen, Rahmen und Text, und Skalen liefern sie, ohne neue Farben zu erfinden.",
+        "tradeoff": "Zwölf Skalen sind mehr Farbe, als vier Produkte streng genommen brauchen."
+      },
+      {
+        "title": "Jeden Zustand zeichnen",
+        "why": "Buttons und Eingabefelder sind als Matrizen aus Typ, Größe und Zustand dokumentiert. Hover, gedrückt, deaktiviert, Laden und Fehler sind gestaltet, statt denen überlassen zu werden, die sie umsetzen."
+      },
+      {
+        "title": "Veröffentlichen statt kopieren",
+        "why": "Farben und Komponenten erreichen die Produktdateien als Bibliotheksstyles und -instanzen, nicht als eingefügte Kopien, sodass eine Änderung in der Bibliothek alle vier Produkte erreichen kann."
+      },
+      {
+        "title": "Ein Satz Skalen für zwei Themes",
+        "why": "Die helle Verkäufer-Website und die dunklen Profi-Tools greifen von entgegengesetzten Enden auf dieselben Skalen zu. So bleibt die Marke konsistent, und jede Zielgruppe bekommt die Dichte, die sie braucht."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "Sinas Anteil",
+    "intro": "Zusammengestellt anhand der Designsystem-Datei. Die Dateien halten nicht fest, wer sonst an der Bibliothek gearbeitet hat, und ihre Farbstyles werden aus einer Bibliotheksdatei außerhalb dieses Bestands veröffentlicht; dies ist also kein Anspruch auf alleinige Urheberschaft.",
+    "own": [
+      "Die Farbskalen und ihr Dokumentations-Board",
+      "Das Typo-Board",
+      "Komponentensets mit ihren Zustandsmatrizen: Buttons, Eingabefelder, Toggles, Segmente, Paginierung und Breadcrumbs",
+      "Muster: Toasts, Modals, Header und Footer",
+      "Die Anwendung der Bibliothek in den vier Produktdateien"
+    ],
+    "collaborate": [
+      "Kolleginnen und Kollegen aus der Entwicklung, in den Dateien nicht namentlich genannt"
+    ],
+    "note": "Die Boards sind mit Version 0.0.1 gekennzeichnet: eine frühe Fassung der Bibliothek, keine fertige."
+  },
+  "outcomes": {
+    "heading": "Was die Datei liefert",
+    "intro": "Zählungen gestalteter Arbeit, keine Ergebnisse. Ob die Entwicklung die Bibliothek als Code übernommen hat, ist nicht dokumentiert.",
+    "delivered": [
+      {
+        "label": "Komponentenvarianten",
+        "context": "Verteilt auf 15 Komponentensets"
+      },
+      {
+        "label": "Farbskalen",
+        "context": "Jeweils von 900 bis 50, mit markierter Hauptstufe"
+      },
+      {
+        "label": "Produktdateien, die sie nutzen",
+        "context": "Pro, Backoffice, Prüfung und Web"
+      }
+    ],
+    "shipped": [
+      "Farbskalen",
+      "Typoskala",
+      "Buttons und Eingabefelder mit Zustandsmatrizen",
+      "Toggles, Segmente, Paginierung und Breadcrumbs",
+      "Toasts, Modals, Header und Footer",
+      "Icon-Seite"
+    ]
+  },
+  "lessons": {
+    "heading": "Was diese Arbeit gelehrt hat",
+    "items": [
+      {
+        "title": "Nur die Nutzung zählt als Beweis",
+        "body": "Eine Bibliothek verdient den Namen, wenn andere Dateien sie nutzen. Der Beleg liegt hier in den Ebenen der Produktdateien selbst, nicht in den Boards."
+      },
+      {
+        "title": "Zustände sind der teure Teil",
+        "body": "Komponenten im Ruhezustand sind schnell gezeichnet. Die 265 Varianten sind überwiegend Zustände, und genau dort entscheidet sich die Konsistenz zwischen vier Produkten."
+      },
+      {
+        "title": "Namen reisen mit den Komponenten",
+        "body": "Ein falsch geschriebener Komponentenname überlebt in jedem Produkt, das die Komponente nutzt. Deshalb lohnt es sich, die Benennung vor dem Veröffentlichen richtig zu machen."
+      }
+    ]
+  }
+}

@@ -1,0 +1,203 @@
+{
+  "statement": "A mobile tool that turns a walk around a car into structured evidence: ten survey areas, defects with photos, and a record the whole marketplace trades on.",
+  "industry": "Automotive marketplace · field operations",
+  "team": "Product designer; the number of inspectors and the wider team are not recorded in the files",
+  "heroCaption": "The inspector's app: the survey dashboard with pass and fail counts per area, the inspection queue, and the tyre and body checklist.",
+  "snapshot": {
+    "problem": "Dealers bid on cars they never see, so the inspection is the product's evidence. A physical, variable walk-around had to come out as a consistent record.",
+    "role": "Product designer on the inspection app: the queue, the car-details wizard, the area checklists, defect entry and photo capture.",
+    "result": "27 mobile frames and three local component sets. The files record no field use, inspector count or timing data."
+  },
+  "alt": {
+    "dashboard": "Carsparency Inspection — the survey dashboard: documents, car information, images and videos, and ten areas each showing failed and passed counts",
+    "list": "Carsparency Inspection — the inspection queue with All, In Progress and Inspected tabs and cars ready to start or continue",
+    "tireBody": "Carsparency Inspection — the tyre and body checklist with pass or fail per part and defect toggles with descriptions and photos",
+    "wizard1": "Carsparency Inspection — the car-details wizard, step one: mileage band, title holder, GCC specification and colour",
+    "wizard2": "Carsparency Inspection — the same wizard with an unanswered title question outlined in red",
+    "pictures": "Carsparency Inspection — the car pictures page, a grid of photo slots each named for a wheel or corner of the car",
+    "takePicture": "Carsparency Inspection — the upload sheet offering gallery or camera, then moving on to the next named angle",
+    "reportDefects": "Carsparency inspection report — the defects page drawn on an exploded car map, with a legend for repainted, painted, original and not-available panels"
+  },
+  "chapters": {
+    "context": {
+      "heading": "The evidence behind every bid",
+      "body": [
+        "On Carsparency a dealer buys a car without seeing it. What they trust instead is the inspection: a Carsparency inspector's record of the car's condition, printed on every detail page in the dealer app and in the report the business hands over.",
+        "The inspection app is where that record is made. Its file holds 27 mobile frames, three local component sets and a benchmark page of another inspection app kept for reference."
+      ]
+    },
+    "problem": {
+      "heading": "A walk around a car does not arrive in order",
+      "body": [
+        "An inspector works standing next to the car, on a phone, and no two cars are the same: equipment differs, and a company car has a different title holder from a private one. Yet what comes out has to be comparable from one car to the next.",
+        "The design problem is to impose a structure the inspector can follow in any order, without forcing them to type what they can tap, and without letting a skipped area pass unnoticed."
+      ]
+    },
+    "flow": {
+      "heading": "From the queue to a completed record",
+      "customLabel": "Flow",
+      "body": [
+        "The inspector starts from a queue split into All, In Progress and Inspected. Each card says whether the car is ready to start or already half done, so interrupted inspections are picked up with Continue rather than restarted.",
+        "A short wizard captures the car's identity first. Then a dashboard opens the ten survey areas as tiles, each showing how many checks failed and passed, with a time-remaining bar and a single Complete inspection action at the bottom."
+      ]
+    },
+    "solution": {
+      "heading": "Tap what is normal, document what is not",
+      "body": [
+        "Inside an area, each part is a row with a pass and a fail button. A default value is recorded when no defect is reported, so the inspector only spends time on exceptions.",
+        "A defect opens its own controls, one toggle each for hail damage, painted, partly repainted, dent, scratch and replaced, and every one that is switched on asks for a description and its own photos. Pictures are taken against named slots (front driver alloy, rear passenger corner and so on), so the photo set is complete and comparable rather than a camera roll."
+      ],
+      "bullets": [
+        "Queue: all, in progress and inspected, with search and empty states",
+        "Car details: mileage band, title holder, GCC specification, colour, keys and location",
+        "Ten areas: car body, transmission, engine, chassis, suspension and brakes, tyres, interior and electrical, air conditioning, glass and mirrors, features",
+        "Evidence: per-defect photos, named photo slots, images and videos"
+      ]
+    },
+    "ecosystem": {
+      "heading": "The inspection becomes the report, and the report becomes the listing",
+      "customLabel": "Ecosystem",
+      "body": [
+        "The inspection sits between the seller's own account of the car and the dealer's bid. The seller answers the same questions on the web (title holder, finance, warranty, service history), and the inspector's app verifies them in the field.",
+        "What the inspector records flows out twice: into the Advanced Inspection Report, whose defects page uses the same exploded car map as the dealer app, and into the condition sections dealers read in Pro before they bid."
+      ]
+    }
+  },
+  "figures": {
+    "wizard": {
+      "caption": "The car-details wizard. Each step names the part that comes next, and a question left unanswered is outlined in place rather than reported in a banner.",
+      "items": [
+        "Step one, basic details",
+        "An unanswered question flagged"
+      ]
+    },
+    "checklist": {
+      "caption": "The tyre and body checklist, the core interaction of the app.",
+      "annotations": [
+        "Optional equipment is a toggle, not a question",
+        "Pass or fail per part, in one tap",
+        "The default value stands unless a defect is reported",
+        "Each defect type is switched on separately",
+        "Every defect takes its own description and photos",
+        "Time remaining stays in view; the area closes with one action"
+      ]
+    },
+    "photos": {
+      "caption": "Evidence against named slots: each picture belongs to an angle of the car, and the upload sheet moves straight on to the next one.",
+      "items": [
+        "Named photo slots",
+        "Gallery or camera"
+      ]
+    },
+    "report": {
+      "caption": "Where the inspection ends up: the defects page of the Advanced Inspection Report, drawn on the same exploded car map as the dealer app."
+    }
+  },
+  "process": {
+    "heading": "An inspection, as the app sequences it",
+    "steps": [
+      {
+        "label": "Pick up",
+        "note": "Choose a car from the queue, or continue one in progress."
+      },
+      {
+        "label": "Identify",
+        "note": "Mileage band, title holder, GCC specification, colour, keys, location."
+      },
+      {
+        "label": "Survey",
+        "note": "Ten areas, each a checklist of parts with pass or fail."
+      },
+      {
+        "label": "Evidence",
+        "note": "Defect photos and descriptions, then the named photo set."
+      },
+      {
+        "label": "Complete",
+        "note": "Close the inspection once every area is done."
+      }
+    ]
+  },
+  "decisions": {
+    "heading": "Four decisions that fit the job to a phone",
+    "lede": "Read from the frames; the file shows the choices, not the discussion behind them.",
+    "items": [
+      {
+        "title": "A dashboard of areas instead of one long form",
+        "why": "An inspector does not walk a car in a fixed order. Ten tiles, each with its own failed and passed counts, let them work in any order and see at a glance what is left.",
+        "alternatives": "A single scrolling form, which punishes any change of order."
+      },
+      {
+        "title": "Record exceptions, not everything",
+        "why": "Each part has a default value that stands unless a defect is reported. Most parts of most cars are fine, so the inspector's time goes to the ones that are not.",
+        "tradeoff": "A careless inspector can pass a part without looking; the per-area counts make that visible afterwards rather than preventing it."
+      },
+      {
+        "title": "Every defect carries its own proof",
+        "why": "A scratch with no photo is an opinion. Each defect type opens its own description and photo slots, so the report a dealer reads is evidence rather than a checklist."
+      },
+      {
+        "title": "Make interruption safe",
+        "why": "Cards in the queue show In Progress and Continue, and the dashboard keeps a time-remaining bar in view. An inspection that stops for a phone call resumes where it stopped."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "Sina's part",
+    "intro": "Listed from the Inspection file. The files do not record team size or who decided what, so this is the work in the file, not a claim of sole authorship.",
+    "own": [
+      "The inspection queue, with its states and search",
+      "The car-details wizard and its validation",
+      "The ten-area dashboard and the area checklists",
+      "Defect entry with per-defect photos and descriptions",
+      "Photo capture against named angles"
+    ],
+    "collaborate": [
+      "Inspection and operations colleagues, not named in the files"
+    ],
+    "note": "A second version of the wizard sits beside the first in the file (Version 1 and Version 2), so the car-details step was iterated."
+  },
+  "outcomes": {
+    "heading": "What the file delivers",
+    "intro": "Counts of designed work, not results. The profile screen shows inspected, rejected and scheduled counts and an average time, but those are placeholder values, not recorded data.",
+    "delivered": [
+      {
+        "label": "mobile frames",
+        "context": "Queue, wizard, dashboard, checklists, photos, sign-in and profile"
+      },
+      {
+        "label": "survey areas",
+        "context": "From car body to glass and mirrors, each with pass and fail counts"
+      },
+      {
+        "label": "defect types per part",
+        "context": "Hail damage, painted, partly repainted, dent, scratch and replaced"
+      }
+    ],
+    "shipped": [
+      "Inspection queue and search",
+      "Car-details wizard",
+      "Ten-area survey dashboard",
+      "Part checklists with defect entry",
+      "Named photo capture",
+      "Completion and time-remaining tracking"
+    ]
+  },
+  "lessons": {
+    "heading": "What this work taught",
+    "items": [
+      {
+        "title": "Structure is what makes field data comparable",
+        "body": "The value of an inspection is that two cars can be compared. Named slots, fixed areas and fixed defect types do more for that than any amount of free text."
+      },
+      {
+        "title": "Design for the exception",
+        "body": "A default value per part keeps the common case to one tap and saves the inspector's attention for the parts that need it."
+      },
+      {
+        "title": "A tool used standing up needs to survive interruption",
+        "body": "Resumable inspections and a visible time bar matter as much in the field as any individual screen."
+      }
+    ]
+  }
+}

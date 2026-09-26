@@ -1,0 +1,203 @@
+{
+  "statement": "Un outil mobile qui fait du tour d’une voiture une preuve structurée : dix zones, des défauts photographiés et un dossier sur lequel repose tout le marché.",
+  "industry": "Marketplace automobile · opérations terrain",
+  "team": "Product designer ; le nombre d’inspecteurs et l’équipe élargie ne sont pas consignés dans les fichiers",
+  "heroCaption": "L’application de l’inspecteur : le tableau de bord avec les points conformes et non conformes par zone, la file d’inspections et la checklist pneus et carrosserie.",
+  "snapshot": {
+    "problem": "Les marchands enchérissent sur des voitures qu’ils ne voient jamais : l’inspection est donc la preuve sur laquelle repose le produit. Un examen physique et variable devait aboutir à un dossier homogène.",
+    "role": "Product designer de l’application d’inspection : la file, l’assistant de saisie du véhicule, les checklists par zone, la saisie des défauts et la prise de photos.",
+    "result": "27 écrans mobiles et trois jeux de composants locaux. Les fichiers ne consignent ni usage terrain, ni nombre d’inspecteurs, ni données de durée."
+  },
+  "alt": {
+    "dashboard": "Carsparency Inspection — le tableau de bord d’inspection : documents, informations du véhicule, images et vidéos, et dix zones affichant chacune leurs points non conformes et conformes",
+    "list": "Carsparency Inspection — la file d’inspections avec les onglets Toutes, En cours et Inspectées, et des voitures prêtes à commencer ou à reprendre",
+    "tireBody": "Carsparency Inspection — la checklist pneus et carrosserie, avec conforme ou non conforme par pièce et des interrupteurs de défaut accompagnés de descriptions et de photos",
+    "wizard1": "Carsparency Inspection — l’assistant de saisie du véhicule, étape un : tranche de kilométrage, titulaire, spécification GCC et couleur",
+    "wizard2": "Carsparency Inspection — le même assistant, avec une question sur le titulaire restée sans réponse et encadrée en rouge",
+    "pictures": "Carsparency Inspection — la page des photos du véhicule, une grille d’emplacements portant chacun le nom d’une roue ou d’un angle de la voiture",
+    "takePicture": "Carsparency Inspection — le panneau d’import proposant galerie ou appareil photo, puis passant à l’angle nommé suivant",
+    "reportDefects": "Rapport d’inspection Carsparency — la page des défauts dessinée sur une vue éclatée de la voiture, avec une légende pour les éléments repeints, peints, d’origine et non disponibles"
+  },
+  "chapters": {
+    "context": {
+      "heading": "La preuve derrière chaque enchère",
+      "body": [
+        "Sur Carsparency, un marchand achète une voiture sans la voir. Ce à quoi il se fie à la place, c’est l’inspection : le relevé de l’état du véhicule établi par un inspecteur Carsparency, reproduit sur chaque fiche de l’application marchands et dans le rapport remis par l’entreprise.",
+        "C’est dans l’application d’inspection que ce relevé est produit. Son fichier contient 27 écrans mobiles, trois jeux de composants locaux et une page de benchmark d’une autre application d’inspection, conservée comme référence."
+      ]
+    },
+    "problem": {
+      "heading": "Le tour d’une voiture ne se fait pas dans l’ordre",
+      "body": [
+        "L’inspecteur travaille debout à côté de la voiture, sur un téléphone, et aucune voiture ne ressemble à une autre : l’équipement varie, et une voiture de société n’a pas le même titulaire qu’une voiture particulière. Le résultat doit pourtant être comparable d’une voiture à l’autre.",
+        "L’enjeu de design : imposer une structure que l’inspecteur peut suivre dans n’importe quel ordre, sans l’obliger à taper ce qu’il peut sélectionner d’un geste, et sans laisser passer inaperçue une zone oubliée."
+      ]
+    },
+    "flow": {
+      "heading": "De la file à un dossier complet",
+      "customLabel": "Parcours",
+      "body": [
+        "L’inspecteur part d’une file répartie entre Toutes, En cours et Inspectées. Chaque carte indique si la voiture est prête à commencer ou déjà à moitié traitée, si bien qu’une inspection interrompue se reprend avec Continuer au lieu de repartir de zéro.",
+        "Un court assistant enregistre d’abord l’identité du véhicule. Un tableau de bord ouvre ensuite les dix zones d’inspection sous forme de tuiles, chacune indiquant le nombre de contrôles non conformes et conformes, avec une barre de temps restant et une seule action en bas de l’écran : Terminer l’inspection."
+      ]
+    },
+    "solution": {
+      "heading": "Valider ce qui est normal, documenter ce qui ne l’est pas",
+      "body": [
+        "Dans une zone, chaque pièce est une ligne avec un bouton conforme et un bouton non conforme. Une valeur par défaut est enregistrée si aucun défaut n’est signalé : l’inspecteur ne consacre son temps qu’aux exceptions.",
+        "Un défaut ouvre ses propres commandes, un interrupteur pour chaque type (dégât de grêle, peint, partiellement repeint, bosse, rayure et remplacé), et chaque interrupteur activé demande une description et ses propres photos. Les photos sont prises dans des emplacements nommés (jante avant côté conducteur, angle arrière côté passager, etc.), pour que la série soit complète et comparable plutôt qu’une simple pellicule."
+      ],
+      "bullets": [
+        "File : toutes, en cours et inspectées, avec recherche et états vides",
+        "Données du véhicule : tranche de kilométrage, titulaire, spécification GCC, couleur, clés et emplacement",
+        "Dix zones : carrosserie, transmission, moteur, châssis, suspension et freins, pneus, habitacle et électricité, climatisation, vitrage et rétroviseurs, équipements",
+        "Preuves : photos par défaut, emplacements photo nommés, images et vidéos"
+      ]
+    },
+    "ecosystem": {
+      "heading": "L’inspection devient le rapport, et le rapport devient l’annonce",
+      "customLabel": "Écosystème",
+      "body": [
+        "L’inspection s’intercale entre la description que le vendeur fait de sa voiture et l’enchère du marchand. Le vendeur répond aux mêmes questions sur le web (titulaire, financement, garantie, historique d’entretien), et l’application de l’inspecteur les vérifie sur le terrain.",
+        "Ce que l’inspecteur enregistre ressort deux fois : dans le rapport d’inspection avancé, dont la page des défauts reprend la même vue éclatée de la voiture que l’application marchands, et dans les sections sur l’état du véhicule que les marchands lisent dans Pro avant d’enchérir."
+      ]
+    }
+  },
+  "figures": {
+    "wizard": {
+      "caption": "L’assistant de saisie du véhicule. Chaque étape annonce la partie suivante, et une question sans réponse est encadrée sur place plutôt que signalée dans une bannière.",
+      "items": [
+        "Étape un, informations de base",
+        "Une question sans réponse, signalée"
+      ]
+    },
+    "checklist": {
+      "caption": "La checklist pneus et carrosserie, l’interaction centrale de l’application.",
+      "annotations": [
+        "L’équipement optionnel est un interrupteur, pas une question",
+        "Conforme ou non conforme par pièce, d’un seul geste",
+        "La valeur par défaut s’applique tant qu’aucun défaut n’est signalé",
+        "Chaque type de défaut s’active séparément",
+        "Chaque défaut reçoit sa propre description et ses propres photos",
+        "Le temps restant reste visible ; la zone se clôt en une seule action"
+      ]
+    },
+    "photos": {
+      "caption": "Des preuves dans des emplacements nommés : chaque photo correspond à un angle de la voiture, et le panneau d’import passe directement au suivant.",
+      "items": [
+        "Emplacements photo nommés",
+        "Galerie ou appareil photo"
+      ]
+    },
+    "report": {
+      "caption": "Là où aboutit l’inspection : la page des défauts du rapport d’inspection avancé, dessinée sur la même vue éclatée de la voiture que dans l’application marchands."
+    }
+  },
+  "process": {
+    "heading": "Une inspection, telle que l’application l’enchaîne",
+    "steps": [
+      {
+        "label": "Prendre en charge",
+        "note": "Choisir une voiture dans la file, ou reprendre une inspection en cours."
+      },
+      {
+        "label": "Identifier",
+        "note": "Tranche de kilométrage, titulaire, spécification GCC, couleur, clés, emplacement."
+      },
+      {
+        "label": "Inspecter",
+        "note": "Dix zones, chacune une checklist de pièces à déclarer conformes ou non conformes."
+      },
+      {
+        "label": "Documenter",
+        "note": "Photos et descriptions des défauts, puis la série de photos nommées."
+      },
+      {
+        "label": "Terminer",
+        "note": "Clore l’inspection une fois toutes les zones traitées."
+      }
+    ]
+  },
+  "decisions": {
+    "heading": "Quatre décisions pour faire tenir le travail dans un téléphone",
+    "lede": "Déduites des écrans ; le fichier montre les choix, pas les discussions qui les ont précédés.",
+    "items": [
+      {
+        "title": "Un tableau de bord de zones plutôt qu’un long formulaire",
+        "why": "Un inspecteur ne fait pas le tour d’une voiture dans un ordre fixe. Dix tuiles, chacune avec ses propres points non conformes et conformes, lui permettent de travailler dans n’importe quel ordre et de voir d’un coup d’œil ce qui reste.",
+        "alternatives": "Un formulaire unique à faire défiler, qui pénalise le moindre changement d’ordre."
+      },
+      {
+        "title": "Consigner les exceptions, pas tout",
+        "why": "Chaque pièce a une valeur par défaut qui s’applique tant qu’aucun défaut n’est signalé. La plupart des pièces de la plupart des voitures sont en bon état : le temps de l’inspecteur va à celles qui ne le sont pas.",
+        "tradeoff": "Un inspecteur négligent peut valider une pièce sans la regarder ; les compteurs par zone le rendent visible après coup plutôt que de l’empêcher."
+      },
+      {
+        "title": "Chaque défaut porte sa propre preuve",
+        "why": "Une rayure sans photo n’est qu’une opinion. Chaque type de défaut ouvre ses propres champs de description et emplacements photo, pour que le rapport lu par le marchand soit une preuve et non une simple checklist."
+      },
+      {
+        "title": "Rendre l’interruption sans risque",
+        "why": "Les cartes de la file affichent En cours et Continuer, et le tableau de bord garde en vue une barre de temps restant. Une inspection interrompue par un appel reprend là où elle s’était arrêtée."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "La part de Sina",
+    "intro": "Établi d’après le fichier Inspection. Les fichiers ne consignent ni la taille de l’équipe ni qui a décidé quoi : il s’agit donc du travail présent dans le fichier, pas d’une revendication de paternité exclusive.",
+    "own": [
+      "La file d’inspections, avec ses états et sa recherche",
+      "L’assistant de saisie du véhicule et sa validation",
+      "Le tableau de bord à dix zones et les checklists par zone",
+      "La saisie des défauts, avec photos et description pour chacun",
+      "La prise de photos selon des angles nommés"
+    ],
+    "collaborate": [
+      "Des collègues de l’inspection et des opérations, non nommés dans les fichiers"
+    ],
+    "note": "Une deuxième version de l’assistant figure à côté de la première dans le fichier (Version 1 et Version 2) : l’étape de saisie du véhicule a donc fait l’objet d’itérations."
+  },
+  "outcomes": {
+    "heading": "Ce que livre le fichier",
+    "intro": "Des volumes de travail conçu, pas des résultats. L’écran de profil affiche des nombres de voitures inspectées, refusées et planifiées ainsi qu’un temps moyen, mais ce sont des valeurs fictives, pas des données enregistrées.",
+    "delivered": [
+      {
+        "label": "écrans mobiles",
+        "context": "File, assistant, tableau de bord, checklists, photos, connexion et profil"
+      },
+      {
+        "label": "zones d’inspection",
+        "context": "De la carrosserie au vitrage et aux rétroviseurs, chacune avec ses points conformes et non conformes"
+      },
+      {
+        "label": "types de défaut par pièce",
+        "context": "Dégât de grêle, peint, partiellement repeint, bosse, rayure et remplacé"
+      }
+    ],
+    "shipped": [
+      "File d’inspections et recherche",
+      "Assistant de saisie du véhicule",
+      "Tableau de bord d’inspection à dix zones",
+      "Checklists de pièces avec saisie des défauts",
+      "Prise de photos dans des emplacements nommés",
+      "Suivi de l’achèvement et du temps restant"
+    ]
+  },
+  "lessons": {
+    "heading": "Les enseignements de ce travail",
+    "items": [
+      {
+        "title": "C’est la structure qui rend les données terrain comparables",
+        "body": "La valeur d’une inspection tient à la possibilité de comparer deux voitures. Des emplacements nommés, des zones fixes et des types de défaut fixes y contribuent davantage que n’importe quelle quantité de texte libre."
+      },
+      {
+        "title": "Concevoir pour l’exception",
+        "body": "Une valeur par défaut par pièce ramène le cas courant à un seul geste et réserve l’attention de l’inspecteur aux pièces qui en ont besoin."
+      },
+      {
+        "title": "Un outil utilisé debout doit résister aux interruptions",
+        "body": "Des inspections qu’on peut reprendre et une barre de temps visible comptent autant, sur le terrain, que n’importe quel écran pris isolément."
+      }
+    ]
+  }
+}

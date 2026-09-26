@@ -1,0 +1,218 @@
+{
+  "statement": "La console interne entre la demande du vendeur et l’offre du marchand : demandes, inspection, prix, enchères et paiements dans un outil desktop dense et sombre.",
+  "industry": "Place de marché automobile · outils internes",
+  "team": "Designer produit ; la taille et les rôles de l’équipe d’opérateurs ne sont pas consignés dans les fichiers",
+  "heroCaption": "La vue rapide d’une demande : coordonnées et détails du véhicule, historique des commentaires, historique des prix et estimation par état, dans une seule fenêtre au-dessus de la liste.",
+  "snapshot": {
+    "problem": "Chaque voiture passe entre les mains de l’équipe : des demandes à qualifier, des inspections à relire, quatre prix à concilier, des marchands à inviter et des paiements à confirmer, le tout au volume d’une longue liste.",
+    "role": "Designer produit de la console opérateur : architecture de l’information, pipeline des demandes, tarification, enchères, utilisateurs et finances, ainsi que le rapport d’inspection.",
+    "result": "68 écrans de console et un rapport d’inspection de quatre pages. La console nomme quatre indicateurs de conversion, mais n’en consigne aucune mesure."
+  },
+  "alt": {
+    "list": "Back-office Carsparency — le tableau des demandes à côté d’une barre latérale en sept sections, avec filtre, recherche, action groupée et création de demande",
+    "quickView": "Back-office Carsparency — la vue rapide d’une demande, ouverte au-dessus de la liste des demandes",
+    "quickCrop": "Back-office Carsparency — la vue rapide en gros plan : détails de la demande, historique des commentaires, historique des prix et estimations par état",
+    "auctions": "Back-office Carsparency — le tableau des enchères avec dernier prix, prix initial, prix cible et prix juste, offres et vues pour chaque voiture",
+    "suggested": "Back-office Carsparency — la fenêtre des marchands suggérés, listant les marchands à inviter pour une BMW X4",
+    "columns": "Back-office Carsparency — le gestionnaire de colonnes avec un interrupteur pour chaque colonne du tableau",
+    "employees": "Back-office Carsparency — la liste des employés avec filtres par rôle et par nom et puces de tri actives",
+    "dealer": "Back-office Carsparency — le formulaire de profil d’un marchand avec vérification de la carte de visite, de la pièce d’identité et des documents",
+    "report2": "Rapport d’inspection Carsparency — page deux, extérieur et informations générales du véhicule",
+    "report3": "Rapport d’inspection Carsparency — page trois, détails de l’intérieur",
+    "report4": "Rapport d’inspection Carsparency — page quatre, la vue des défauts sur une vue éclatée de la voiture"
+  },
+  "chapters": {
+    "context": {
+      "heading": "La place de marché repose sur des personnes, et voici leur bureau",
+      "body": [
+        "Carsparency n’était pas un site de petites annonces en libre-service. Entre le moment où un vendeur saisissait une voiture et celui où un marchand la remportait, il y avait un processus piloté par l’équipe : qualifier les demandes, inspecter et estimer les voitures, inviter les marchands, mener les enchères et confirmer les paiements. Le back-office est l’endroit où ce travail se fait.",
+        "C’est la plus grande surface desktop de l’ensemble : 68 écrans en 1 440 px, organisés par une barre latérale en sept sections — Demandes (Requests), Commerce (Trade), Voitures (Cars), Prix des voitures (Car Price), Utilisateurs (Users), Finances (Finance) et Paramètres (Setting) —, plus le rapport d’inspection que l’équipe opérationnelle remet aux acheteurs."
+      ]
+    },
+    "problem": {
+      "heading": "Quatre prix, deux conversations et une file qui ne se vide jamais",
+      "body": [
+        "Une voiture a plusieurs prix à la fois : celui que vise l’entreprise, celui que veut le vendeur, celui qu’indique l’estimation et celui que proposent les marchands. Quelqu’un doit tous les voir pour combler l’écart.",
+        "Les raisons d’un changement de prix se trouvent dans les conversations : certaines avec le marchand, d’autres internes. Et les demandes arrivent plus vite qu’on ne peut les ouvrir une page à la fois ; la console doit donc permettre à l’équipe d’agir depuis la liste."
+      ]
+    },
+    "flow": {
+      "heading": "De la demande à la transaction réglée",
+      "customLabel": "Flux",
+      "body": [
+        "La barre latérale suit l’ordre dans lequel une voiture avance. Une demande entre par Demandes, devient une voiture dans Voitures, reçoit un prix dans Prix des voitures, est vendue dans Commerce (enchères, stock et annonces) puis payée dans Finances. Utilisateurs regroupe les trois types de personnes concernées : marchands, vendeurs et employés.",
+        "Le statut d’une demande se modifie depuis la liste elle-même — Enchère, Annuler l’enchère ou Relire l’inspection —, si bien que faire avancer une voiture n’oblige pas à quitter la file."
+      ]
+    },
+    "solution": {
+      "heading": "Agir depuis la liste, n’ouvrir la page qu’en cas de besoin",
+      "body": [
+        "La vue rapide est le cœur de la console. Depuis n’importe quelle ligne, une seule fenêtre affiche le bandeau de la demande (contact, téléphone, voiture, statut, motif, dernier éditeur, ville, date de création), l’historique des commentaires, l’historique des prix et une estimation pour chaque niveau d’état : comme neuf, bon, médiocre et très médiocre.",
+        "Autour d’elle, les tableaux sont conçus pour être façonnés par ceux qui les utilisent : des puces de filtre et de tri qui restent visibles, un gestionnaire pour afficher ou masquer les colonnes, des actions groupées pour les modifications en masse et, pour chaque voiture, une liste de marchands suggérés avec un compte à rebours en direct jusqu’à la fin de l’enchère."
+      ],
+      "bullets": [
+        "Demandes : liste, filtres, vue rapide, changement de statut en ligne, commentaires",
+        "Commerce : enchères, stocks et annonces, chacun avec ses offres et ses marchands suggérés",
+        "Voitures et Prix des voitures : marque, modèle, finition, année et options ; quatre prix avec historique",
+        "Utilisateurs et Finances : marchands, vendeurs et employés ; paiements et historiques de portefeuille"
+      ]
+    },
+    "ecosystem": {
+      "heading": "La console fait d’une inspection quelque chose à quoi un marchand peut se fier",
+      "customLabel": "Écosystème",
+      "body": [
+        "Le back-office se situe au milieu de la chaîne. Il reçoit ce que le vendeur a déclaré sur le web et ce que l’inspecteur a relevé sur le terrain, puis envoie les voitures estimées aux marchands dans Pro. Son prix juste est le même chiffre que les marchands voient comme Fair Market Value (juste valeur marchande).",
+        "Le même fichier contient le rapport d’inspection avancé, un document imprimable sur la voiture : détails extérieurs, généraux et intérieurs avec marques de vérification, puis une page des défauts dessinée sur la vue éclatée de la voiture que l’on retrouve aussi dans le fichier Pro, avec des champs de signature pour le marchand et l’acheteur."
+      ]
+    }
+  },
+  "figures": {
+    "list": {
+      "caption": "Le tableau des demandes, la vue d’accueil de la console.",
+      "annotations": [
+        "Sept sections dans l’ordre où avance une voiture : Demandes, Commerce, Voitures, Prix des voitures, Utilisateurs, Finances, Paramètres",
+        "Recherche limitée au tableau affiché",
+        "Action groupée pour les modifications en masse",
+        "L’équipe peut créer des demandes, pas seulement les traiter",
+        "Actions par ligne : commenter, inspecter, modifier, plus",
+        "Statut et dernier éditeur sur chaque ligne"
+      ]
+    },
+    "quick": {
+      "caption": "La vue rapide en gros plan. Les commentaires du marchand et les notes internes suivent des fils séparés, l’historique des prix consigne chaque modification avec son auteur, et la colonne d’estimation chiffre la voiture pour quatre niveaux d’état."
+    },
+    "auctions": {
+      "caption": "Les enchères en tableau plutôt qu’en cartes : chaque ligne porte le dernier prix, le prix initial, le prix cible et le prix juste à côté du nombre d’offres et de vues, pour qu’un opérateur compare les voitures d’un coup d’œil."
+    },
+    "tools": {
+      "caption": "Deux façons dont les tableaux se plient à la tâche : une liste de marchands suggérés pour chaque voiture, affichée face au compte à rebours de l’enchère, et un gestionnaire de colonnes pour choisir ce que montre le tableau.",
+      "items": [
+        "Marchands suggérés",
+        "Gestionnaire de colonnes"
+      ]
+    },
+    "users": {
+      "caption": "Les personnes comme fiches : des employés filtrés et triés par rôle, et un profil de marchand dont la carte de visite, la pièce d’identité et les documents ont chacun leur propre vérification.",
+      "items": [
+        "Employés",
+        "Profil de marchand"
+      ]
+    },
+    "report": {
+      "caption": "Trois pages du rapport d’inspection avancé : extérieur et informations générales, intérieur, et la vue des défauts avec une légende pour les éléments repeints, peints, d’origine et non renseignés.",
+      "items": [
+        "Extérieur et général",
+        "Intérieur",
+        "Vue des défauts"
+      ]
+    }
+  },
+  "process": {
+    "heading": "Le pipeline de l’opérateur, dans l’ordre de la barre latérale",
+    "steps": [
+      {
+        "label": "Demande",
+        "note": "La demande d’un vendeur est listée, filtrée, commentée et qualifiée."
+      },
+      {
+        "label": "Inspection",
+        "note": "L’inspection est relue avant que la voiture passe à l’étape suivante."
+      },
+      {
+        "label": "Prix",
+        "note": "Prix cible, vendeur, juste et marchand côte à côte, avec historique."
+      },
+      {
+        "label": "Enchère",
+        "note": "Enchères, stocks et annonces, avec offres et marchands suggérés."
+      },
+      {
+        "label": "Règlement",
+        "note": "Paiements et portefeuilles dans Finances."
+      }
+    ]
+  },
+  "decisions": {
+    "heading": "Quatre décisions qui rendent la console praticable",
+    "lede": "Déduites des écrans ; le fichier montre ce qui a été construit, pas le débat qui l’a précédé.",
+    "items": [
+      {
+        "title": "Une vue rapide plutôt qu’une page",
+        "why": "Un opérateur qui traite une file perd le fil chaque fois qu’une ligne ouvre une nouvelle page. La vue rapide affiche tout ce qui concerne une demande au-dessus de la liste et permet d’en changer le statut sur place.",
+        "tradeoff": "La fenêtre est dense : quatre panneaux dans une seule vue."
+      },
+      {
+        "title": "Montrer tous les prix à la fois",
+        "why": "Les prix cible, vendeur, juste et marchand divergent généralement. Afficher les quatre, avec l’historique de qui a changé quoi, rend la négociation visible et met sous les yeux de l’opérateur l’écart qu’il doit combler.",
+        "alternatives": "Un champ de prix unique, qui masque le jugement de l’opérateur."
+      },
+      {
+        "title": "Séparer ce que voit le marchand de ce que l’équipe se dit en interne",
+        "why": "Les commentaires du marchand et la communication interne sont tenus dans des fils distincts. L’un peut être partagé ; l’autre peut rester franc, ce qui compte pour une entreprise qui vend sur la transparence."
+      },
+      {
+        "title": "Laisser l’équipe façonner le tableau",
+        "why": "Filtres et tris restent visibles sous forme de puces amovibles, un gestionnaire de colonnes masque ce dont une tâche n’a pas besoin, et les actions groupées agissent sur de nombreuses lignes à la fois. Le tableau s’adapte au travail, et non l’inverse."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "La part de Sina",
+    "intro": "Établi à partir du fichier du back-office. Les fichiers ne consignent ni la taille de l’équipe ni qui a décidé quoi, et une version du rapport porte le nom d’une autre personne : la paternité y est donc partagée.",
+    "own": [
+      "Architecture de l’information : la barre latérale en sept sections et ses sous-sections",
+      "La liste des demandes, la vue rapide et les changements de statut en ligne",
+      "Les écrans de tarification, d’enchères, d’offres et de marchands suggérés",
+      "Les écrans utilisateurs, employés, paiements et portefeuilles",
+      "La mise en page du rapport d’inspection avancé"
+    ],
+    "collaborate": [
+      "Une autre personne, créditée sur une version du rapport d’inspection",
+      "Des collègues des opérations et de l’ingénierie, non nommés dans les fichiers"
+    ],
+    "note": "Le menu latéral est le seul jeu de composants construit localement dans ce fichier ; les fenêtres, les champs, la pagination et les icônes des écrans de la console viennent de la bibliothèque partagée de Carsparency."
+  },
+  "outcomes": {
+    "heading": "Ce que livre le fichier",
+    "intro": "Des décomptes du travail conçu, pas des résultats. La console nomme quatre indicateurs (taux de passage de la vue à l’offre, taux de passage de l’offre à l’adjudication, taux d’annulation et taux de remise), mais aucun fichier n’en consigne de mesure.",
+    "delivered": [
+      {
+        "label": "écrans de console",
+        "context": "En 1 440 px, couvrant demandes, commerce, voitures, tarification, utilisateurs et finances"
+      },
+      {
+        "label": "sections de la barre latérale",
+        "context": "Ordonnées selon le parcours d’une voiture dans l’entreprise"
+      },
+      {
+        "label": "prix par voiture",
+        "context": "Cible, vendeur, juste et marchand, affichés côte à côte"
+      }
+    ],
+    "shipped": [
+      "Liste des demandes et vue rapide",
+      "Changements de statut en ligne et fils de commentaires",
+      "Quatre prix avec historique",
+      "Enchères, stocks, offres et marchands suggérés",
+      "Fiches des marchands, vendeurs et employés",
+      "Paiements, portefeuilles et rapport d’inspection"
+    ]
+  },
+  "lessons": {
+    "heading": "Ce que ce travail a appris",
+    "items": [
+      {
+        "title": "Les outils internes méritent la même attention de design que le produit",
+        "body": "C’est dans la console que vit la vraie définition du succès pour l’entreprise : ses seuls libellés d’indicateurs se trouvent ici, pas sur le site grand public."
+      },
+      {
+        "title": "Afficher quatre prix est une décision produit",
+        "body": "La plupart des outils choisissent un chiffre et cachent le reste, ce qui rend invisible le jugement de l’opérateur. Mettre les quatre à l’écran fait de la tarification une conversation documentée."
+      },
+      {
+        "title": "Tester les écrans denses avec des données qui divergent",
+        "body": "Chaque ligne du fichier montre la même demande et chaque prix le même chiffre : une console conçue pour résoudre les désaccords n’a jamais été dessinée avec un seul."
+      }
+    ]
+  }
+}

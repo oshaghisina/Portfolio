@@ -1,0 +1,218 @@
+{
+  "statement": "Consola interna entre la solicitud de venta y la puja del concesionario: solicitudes, inspección, precios, subastas y pagos en una herramienta densa y oscura.",
+  "industry": "Marketplace de automóviles · herramientas internas",
+  "team": "Diseñador de producto; los archivos no registran el tamaño ni los roles del equipo de operaciones",
+  "heroCaption": "La vista rápida de una solicitud: datos de contacto y del coche, historial de comentarios, historial de precios y una tasación por estado de conservación, en un solo diálogo sobre la lista.",
+  "snapshot": {
+    "problem": "Cada coche pasa por manos del equipo: solicitudes que calificar, inspecciones que revisar, cuatro precios que conciliar, concesionarios que invitar y pagos que confirmar, todo ello al volumen de una lista larga.",
+    "role": "Diseñador de producto de la consola de operaciones: arquitectura de la información, el flujo de solicitudes, precios, subastas, usuarios y finanzas, además del informe de inspección.",
+    "result": "68 pantallas de consola y un informe de inspección de cuatro páginas. La consola nombra cuatro métricas de conversión, pero no registra ninguna medición de ellas."
+  },
+  "alt": {
+    "list": "Back office de Carsparency — la tabla de solicitudes junto a una barra lateral de siete secciones, con controles para filtrar, buscar, aplicar operaciones en grupo y crear solicitudes",
+    "quickView": "Back office de Carsparency — la vista rápida de una solicitud abierta sobre la lista de solicitudes",
+    "quickCrop": "Back office de Carsparency — la vista rápida de cerca: detalles de la solicitud, historial de comentarios, historial de precios y tasaciones por estado",
+    "auctions": "Back office de Carsparency — la tabla de subastas con los precios último, inicial, objetivo y justo, y las pujas y visitas de cada coche",
+    "suggested": "Back office de Carsparency — el diálogo de concesionarios sugeridos con los concesionarios que se pueden invitar para un BMW X4",
+    "columns": "Back office de Carsparency — el gestor de columnas con un interruptor para cada columna de la tabla",
+    "employees": "Back office de Carsparency — la lista de empleados con filtros por rol y nombre y chips de ordenación activos",
+    "dealer": "Back office de Carsparency — el formulario de perfil de un concesionario con verificaciones de tarjeta de visita, identificación y documentos",
+    "report2": "Informe de inspección de Carsparency — página dos, detalles exteriores y generales del coche",
+    "report3": "Informe de inspección de Carsparency — página tres, detalles del interior",
+    "report4": "Informe de inspección de Carsparency — página cuatro, la vista de defectos sobre un despiece del coche"
+  },
+  "chapters": {
+    "context": {
+      "heading": "El marketplace lo gestionan personas, y esta es su mesa de trabajo",
+      "body": [
+        "Carsparency no era un portal de anuncios en autoservicio. Entre el momento en que un vendedor registraba un coche y el momento en que un concesionario lo ganaba había un proceso llevado por el equipo: se calificaban solicitudes, se inspeccionaban y tasaban coches, se invitaba a concesionarios, se celebraban subastas y se confirmaban pagos. El back office es donde ocurre ese trabajo.",
+        "Es la superficie de escritorio más grande del conjunto: 68 pantallas a 1440 px organizadas por una barra lateral de siete secciones —Solicitudes (Requests), Comercio (Trade), Coches (Cars), Precio del coche (Car Price), Usuarios (Users), Finanzas (Finance) y Ajustes (Setting)—, más el informe de inspección que el equipo de operaciones entrega a los compradores."
+      ]
+    },
+    "problem": {
+      "heading": "Cuatro precios, dos conversaciones y una cola que nunca se vacía",
+      "body": [
+        "Un coche tiene varios precios a la vez: el que persigue el negocio, el que quiere el vendedor, el que indica la tasación y el que pujan los concesionarios. Alguien tiene que verlos todos para cerrar la brecha.",
+        "Los motivos por los que cambió un precio viven en conversaciones: unas con el concesionario, otras internas. Y las solicitudes llegan más rápido de lo que se pueden abrir de una en una, así que la consola tiene que permitir al equipo actuar desde la lista."
+      ]
+    },
+    "flow": {
+      "heading": "De la solicitud a la operación liquidada",
+      "customLabel": "Flujo",
+      "body": [
+        "La barra lateral sigue el orden en que se mueve un coche. Una solicitud entra en Solicitudes, se convierte en coche en Coches, recibe su precio en Precio del coche, se vende en Comercio (subastas, inventario y anuncios) y se paga en Finanzas. Usuarios reúne a los tres tipos de personas implicadas: concesionarios, vendedores y empleados.",
+        "El estado de una solicitud se puede cambiar desde la propia lista —a Subasta, Cancelar subasta o Revisar inspección—, de modo que hacer avanzar un coche no obliga a salir de la cola."
+      ]
+    },
+    "solution": {
+      "heading": "Actuar desde la lista y abrir la página solo cuando haga falta",
+      "body": [
+        "La vista rápida es el centro de la consola. Desde cualquier fila, un único diálogo muestra la franja de la solicitud (contacto, teléfono, coche, estado, motivo, último editor, ciudad, fecha de creación), el historial de comentarios, el historial de precios y una tasación para cada grado de estado: como nuevo, bueno, malo y muy malo.",
+        "A su alrededor, las tablas están pensadas para que las adapten quienes las usan: chips de filtro y ordenación que permanecen visibles, un gestor de columnas para mostrarlas u ocultarlas, operaciones en grupo para cambios masivos y, para cada coche, una lista de concesionarios sugeridos con una cuenta atrás en vivo hasta el cierre de la subasta."
+      ],
+      "bullets": [
+        "Solicitudes: lista, filtros, vista rápida, cambio de estado en línea, comentarios",
+        "Comercio: subastas, inventarios y anuncios de coches, cada uno con pujas y concesionarios sugeridos",
+        "Coches y Precio del coche: marca, modelo, versión, año y equipamiento; cuatro precios con historial",
+        "Usuarios y Finanzas: concesionarios, vendedores y empleados; pagos e historiales de monedero"
+      ]
+    },
+    "ecosystem": {
+      "heading": "La consola convierte una inspección en algo en lo que un concesionario puede confiar",
+      "customLabel": "Ecosistema",
+      "body": [
+        "El back office está en el centro de la cadena. Recibe lo que el vendedor declaró en la web y lo que el inspector registró sobre el terreno, y envía los coches ya tasados a los concesionarios en Pro. Su precio justo es la misma cifra que los concesionarios ven como Fair Market Value (valor justo de mercado).",
+        "El mismo archivo contiene el Informe de Inspección Avanzada, un registro imprimible del coche: detalles exteriores, generales e interiores con marcas de verificación y, después, una página de defectos dibujada sobre el despiece del coche que también aparece en el archivo de Pro, con campos de firma para el concesionario y el comprador."
+      ]
+    }
+  },
+  "figures": {
+    "list": {
+      "caption": "La tabla de solicitudes, la vista de entrada de la consola.",
+      "annotations": [
+        "Siete secciones en el orden en que se mueve un coche: Solicitudes, Comercio, Coches, Precio del coche, Usuarios, Finanzas, Ajustes",
+        "Búsqueda limitada a la tabla actual",
+        "Operación en grupo para cambios masivos",
+        "El equipo puede crear solicitudes, no solo procesarlas",
+        "Acciones por fila: comentar, inspeccionar, editar, más",
+        "Estado y último editor en cada fila"
+      ]
+    },
+    "quick": {
+      "caption": "La vista rápida de cerca. Los comentarios del concesionario y las notas internas van en hilos separados, el historial de precios registra cada cambio con su autor y la columna de tasación valora el coche para cuatro grados de estado."
+    },
+    "auctions": {
+      "caption": "Subastas en tabla y no en tarjetas: cada fila lleva los precios último, inicial, objetivo y justo junto al número de pujas y visitas, para que un operador compare coches de un vistazo."
+    },
+    "tools": {
+      "caption": "Dos formas en que las tablas se adaptan a la tarea: una lista de concesionarios sugeridos para cada coche, frente a la cuenta atrás de la subasta, y un gestor de columnas para elegir qué muestra la tabla.",
+      "items": [
+        "Concesionarios sugeridos",
+        "Gestor de columnas"
+      ]
+    },
+    "users": {
+      "caption": "Personas como registros: empleados filtrados y ordenados por rol, y un perfil de concesionario cuya tarjeta de visita, identificación y documentos llevan cada uno su propia verificación.",
+      "items": [
+        "Empleados",
+        "Perfil de concesionario"
+      ]
+    },
+    "report": {
+      "caption": "Tres páginas del Informe de Inspección Avanzada: detalles exteriores y generales, detalles del interior y la vista de defectos con una leyenda para piezas repintadas, pintadas, originales y sin datos.",
+      "items": [
+        "Exterior y general",
+        "Interior",
+        "Vista de defectos"
+      ]
+    }
+  },
+  "process": {
+    "heading": "El flujo del operador, en el orden de la barra lateral",
+    "steps": [
+      {
+        "label": "Solicitud",
+        "note": "La solicitud de un vendedor se lista, se filtra, se comenta y se califica."
+      },
+      {
+        "label": "Inspección",
+        "note": "La inspección se revisa antes de que el coche avance."
+      },
+      {
+        "label": "Precio",
+        "note": "Precios objetivo, del vendedor, justo y del concesionario, uno junto a otro y con historial."
+      },
+      {
+        "label": "Subasta",
+        "note": "Subastas, inventarios y anuncios, con pujas y concesionarios sugeridos."
+      },
+      {
+        "label": "Liquidación",
+        "note": "Pagos y monederos en Finanzas."
+      }
+    ]
+  },
+  "decisions": {
+    "heading": "Cuatro decisiones que hacen manejable la consola",
+    "lede": "Deducidas de las pantallas; el archivo muestra lo que se construyó, no el debate que hubo detrás.",
+    "items": [
+      {
+        "title": "Una vista rápida en lugar de una página",
+        "why": "Un operador que trabaja una cola pierde el hilo cada vez que una fila abre una página nueva. La vista rápida muestra todo lo relativo a una solicitud sobre la lista y permite cambiar allí mismo su estado.",
+        "tradeoff": "El diálogo es denso: cuatro paneles en una sola vista."
+      },
+      {
+        "title": "Mostrar todos los precios a la vez",
+        "why": "Los precios objetivo, del vendedor, justo y del concesionario no suelen coincidir. Mostrar los cuatro, con un historial de quién cambió qué, hace visible la negociación y pone ante el operador la distancia que tiene que cerrar.",
+        "alternatives": "Un único campo de precio, que oculta el criterio del operador."
+      },
+      {
+        "title": "Separar lo que ve el concesionario de lo que el equipo se dice internamente",
+        "why": "Los comentarios del concesionario y la comunicación interna se mantienen en hilos distintos. Unos pueden compartirse; la otra puede ser franca, algo importante para un negocio que vende transparencia."
+      },
+      {
+        "title": "Dejar que el equipo dé forma a la tabla",
+        "why": "Filtros y ordenaciones permanecen visibles como chips que se pueden quitar, un gestor de columnas oculta lo que una tarea no necesita y las operaciones en grupo actúan sobre muchas filas a la vez. La tabla se adapta al trabajo, y no el trabajo a la tabla."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "La parte de Sina",
+    "intro": "Enumerado a partir del archivo del back office. Los archivos no registran el tamaño del equipo ni quién decidió qué, y una versión del informe lleva el nombre de otra persona, así que en ese caso la autoría es compartida.",
+    "own": [
+      "Arquitectura de la información: la barra lateral de siete secciones y sus subsecciones",
+      "La lista de solicitudes, la vista rápida y los cambios de estado en línea",
+      "Pantallas de precios, subastas, pujas y concesionarios sugeridos",
+      "Pantallas de usuarios, empleados, pagos y monederos",
+      "La maquetación del Informe de Inspección Avanzada"
+    ],
+    "collaborate": [
+      "Otra persona, acreditada en una versión del informe de inspección",
+      "Colegas de operaciones e ingeniería, sin nombre en los archivos"
+    ],
+    "note": "El menú lateral es el único conjunto de componentes creado localmente en este archivo; los diálogos, campos, paginación e iconos de las pantallas de la consola proceden de la biblioteca compartida de Carsparency."
+  },
+  "outcomes": {
+    "heading": "Lo que entrega el archivo",
+    "intro": "Recuentos del trabajo diseñado, no resultados. La consola nombra cuatro métricas (tasa de visita a puja, tasa de puja a adjudicación, tasa de cancelación y tasa de descuento), pero ningún archivo registra una medición.",
+    "delivered": [
+      {
+        "label": "pantallas de consola",
+        "context": "A 1440 px, entre solicitudes, comercio, coches, precios, usuarios y finanzas"
+      },
+      {
+        "label": "secciones de la barra lateral",
+        "context": "Ordenadas según cómo se mueve un coche por el negocio"
+      },
+      {
+        "label": "precios por coche",
+        "context": "Objetivo, del vendedor, justo y del concesionario, uno junto a otro"
+      }
+    ],
+    "shipped": [
+      "Lista de solicitudes y vista rápida",
+      "Cambios de estado en línea e hilos de comentarios",
+      "Cuatro precios con historial",
+      "Subastas, inventarios, pujas y concesionarios sugeridos",
+      "Registros de concesionarios, vendedores y empleados",
+      "Pagos, monederos y el informe de inspección"
+    ]
+  },
+  "lessons": {
+    "heading": "Lo que enseñó este trabajo",
+    "items": [
+      {
+        "title": "Las herramientas internas merecen la misma atención de diseño que el producto",
+        "body": "La consola es donde vive la definición real de éxito del negocio: sus únicas etiquetas de métricas están aquí, no en el sitio para el consumidor."
+      },
+      {
+        "title": "Mostrar cuatro precios es una decisión de producto",
+        "body": "La mayoría de las herramientas eligen un número y ocultan el resto, lo que vuelve invisible el criterio del operador. Poner los cuatro en pantalla convierte la fijación de precios en una conversación que deja registro."
+      },
+      {
+        "title": "Probar las pantallas densas con datos que no coinciden",
+        "body": "Todas las filas del archivo muestran la misma solicitud y todos los precios la misma cifra, así que una consola pensada para resolver desacuerdos nunca se dibujó con ninguno."
+      }
+    ]
+  }
+}

@@ -1,0 +1,180 @@
+{
+  "statement": "El lado profesional de un marketplace de coches en EAU: subastas cronometradas y, tras ellas, cinco etapas de la puja ganadora al traspaso de titularidad.",
+  "industry": "Marketplace de automóviles · B2B",
+  "team": "Diseñador de producto; los archivos no registran el tamaño ni los roles del equipo",
+  "heroCaption": "La app para concesionarios: la lista de subastas en directo filtrada por marca y año, la hoja de puja y los pedidos pendientes, cada uno con su paso dentro de la compra.",
+  "snapshot": {
+    "problem": "Un concesionario gana un coche que nunca ha tocado. Aún quedan el precio, el pago, los papeles, la entrega y el traspaso de titularidad, y cualquiera de ellos puede frenar la operación.",
+    "role": "Diseñador de producto de la plataforma para concesionarios: la app y el producto web de escritorio, desde la lista de subastas hasta el traspaso de titularidad.",
+    "result": "129 frames de app y 167 de escritorio que cubren todo el ciclo de compra. Los archivos no registran fecha de lanzamiento ni datos de uso."
+  },
+  "alt": {
+    "listApp": "App Carsparency Pro — la lista de subastas en directo filtrada por marca y año; cada tarjeta muestra una cuenta atrás, la puja actual y su Fair Market Value (valor justo de mercado)",
+    "bidApp": "App Carsparency Pro — la hoja para enviar una puja sobre la ficha de un coche",
+    "ordersApp": "App Carsparency Pro — pedidos pendientes; cada tarjeta lleva su paso numerado y la única acción que necesita",
+    "losing": "App Carsparency Pro — la ficha de un coche con la puja marcada como «Perdiendo» en rojo",
+    "winning": "App Carsparency Pro — la misma ficha con la puja marcada como «Ganando» en verde",
+    "proxy": "App Carsparency Pro — la hoja de puja proxy para fijar una puja máxima",
+    "auctionsWeb": "Web Carsparency Pro — la lista de subastas en escritorio con las pestañas «En directo», «Próximas» e «Inventario» y un panel de filtros",
+    "detailWeb": "Web Carsparency Pro — la tarjeta de precio de la ficha con la puja actual, el Fair Market Value, el tiempo restante y la opción de puja proxy o directa",
+    "ordersWeb": "Web Carsparency Pro — pedidos pendientes en escritorio, cada tarjeta etiquetada con su paso, por ejemplo «3 de 5, liquidación pendiente»",
+    "bandNegotiation": "Web Carsparency Pro — una tarjeta de precio en negociación con el vendedor, con la acción «Subir precio»",
+    "bandDelivery": "Web Carsparency Pro — la misma tarjeta de precio mientras la entrega del vehículo está pendiente",
+    "prepayment": "Web Carsparency Pro — el diálogo de prepago con el saldo pendiente, los fondos disponibles y el uso del monedero antes de pagar en línea",
+    "breakdown": "Web Carsparency Pro — el diálogo de desglose de precio con el precio neto, los descuentos, las retenciones y el importe final",
+    "carMap": "Carsparency Pro — un dibujo lineal despiezado de un coche con los paneles extendidos en plano y símbolos para abolladuras, arañazos y pintura"
+  },
+  "chapters": {
+    "context": {
+      "heading": "Una plataforma para concesionarios, diseñada a la vez como app y como web de escritorio",
+      "body": [
+        "Carsparency gestionaba un marketplace de coches de segunda mano en EAU: particulares publicaban su coche, un inspector registraba su estado y concesionarios verificados competían por él en subastas cronometradas. Pro es el lado del concesionario, el producto que usaban los compradores.",
+        "Su archivo de Figma reúne las dos mitades de ese producto. Cuatro páginas de app cubren subastas, pedidos, cuenta e inicio de sesión, y cuatro páginas web repiten las mismas áreas a ancho de escritorio. En total suman 129 frames de app y 167 de escritorio, en su mayoría estados de las mismas pantallas y no pantallas nuevas."
+      ]
+    },
+    "problem": {
+      "heading": "Ganar la subasta es la mitad de la compra, no el final",
+      "body": [
+        "Un concesionario puja por un coche que no ha visto, contra rivales que no ve, con una cuenta atrás en marcha. Las pantallas de subasta tienen que hacer que esa decisión sea rápida y defendible.",
+        "Después empieza lo difícil. Tras la adjudicación, al coche aún hay que fijarle precio, pagarlo por etapas, documentarlo, entregarlo y transferirlo legalmente. Ese trabajo se reparte entre el concesionario, el vendedor y el personal de Carsparency, y puede atascarse en cualquier paso. La mayoría de los flujos de marketplace terminan en la puja ganadora; este sigue adelante."
+      ]
+    },
+    "flow": {
+      "heading": "Un ciclo de vida, cinco etapas numeradas",
+      "customLabel": "Flujo",
+      "body": [
+        "El área más grande del archivo no es la subasta, sino Pedidos. Cada coche ganado pasa por «En negociación», «Pendiente» y «Adquirido», y ninguna tarjeta se limita a decir pendiente: indica en cuál de los cinco pasos está el pedido y qué viene después.",
+        "El estado ocupa el mismo lugar en cada tarjeta y cada ficha, como una banda de color con una única acción al lado, para que el concesionario vea siempre si el siguiente movimiento le toca a él."
+      ]
+    },
+    "solution": {
+      "heading": "Velocidad de subasta al frente, trámites visibles detrás",
+      "body": [
+        "La parte de subasta está pensada para comparar rápido. La cuenta atrás se vuelve roja en los últimos minutos, una etiqueta de color dice «Ganando» o «Perdiendo», y las pujas proxy y automáticas permiten al concesionario competir sin vigilar el reloj.",
+        "La parte de pedidos está pensada para generar confianza. El prepago muestra el saldo pendiente, los fondos disponibles y el monedero antes de cobrar nada. El desglose de precio detalla cada deducción, la lista de documentos nombra cada papel que requiere el traspaso, y cada paso tiene su propio estado de fallo (pago fallido, documento rechazado, pago en exceso) en lugar de un error genérico."
+      ],
+      "bullets": [
+        "Subastas: En directo, Próximas e Inventario, con filtros y ordenación",
+        "Pujas: puja, puja proxy, puja automática y compra inmediata, con mensajes de éxito y error",
+        "Pedidos: negociación, prepago, liquidación, justificante de pago, entrega y traspaso de titularidad",
+        "Cuenta: monedero, cuentas bancarias en revisión, documentos, notificaciones y ayuda"
+      ]
+    },
+    "ecosystem": {
+      "heading": "La última parada de un coche que empezó en el móvil del vendedor",
+      "customLabel": "Ecosistema",
+      "body": [
+        "Todo lo que un concesionario lee en Pro se produjo antes, en etapas previas. El vendedor describió el coche en el asistente web, un inspector lo verificó en la app de inspección y los operadores le pusieron precio e invitaron a concesionarios desde el back office. Pro es donde ese expediente se encuentra con un comprador.",
+        "Las piezas compartidas se ven en todos los archivos: el mismo expediente del coche (rango de kilometraje, especificación GCC, titular, historial de mantenimiento), los mismos grados de estado, el mismo vocabulario de precios (Fair Market Value aquí, Fair en el back office) y la misma biblioteca de componentes por debajo."
+      ]
+    }
+  },
+  "figures": {
+    "auctions": {
+      "caption": "La lista de subastas en escritorio: pestañas «En directo», «Próximas» e «Inventario», un panel de filtros por precio, kilometraje, año, marca y distancia y, en cada tarjeta, la puja actual frente al Fair Market Value (valor justo de mercado)."
+    },
+    "bidStates": {
+      "caption": "La tarjeta de puja en tres estados: perdiendo, ganando y fijando una puja proxy. La línea del Fair Market Value se mantiene bajo la puja en todos ellos.",
+      "items": ["Perdiendo", "Ganando", "Puja proxy"]
+    },
+    "orders": {
+      "caption": "Pedidos pendientes en escritorio. La franja bajo cada tarjeta lleva el número y el nombre del paso, por ejemplo «3 de 5, liquidación pendiente», y el botón de encima es la única acción que ese paso necesita."
+    },
+    "detail": {
+      "caption": "La ficha del coche en escritorio. La tarjeta de precio reúne la puja actual con el Fair Market Value, el tiempo restante y dos formas de pujar: proxy o directa."
+    },
+    "bands": {
+      "caption": "La misma tarjeta de precio en dos etapas. Solo cambian la banda de estado y la acción: en negociación con el vendedor, con «Subir precio», y después pendiente de entrega del vehículo.",
+      "items": ["En negociación", "Entrega pendiente"]
+    },
+    "payments": {
+      "caption": "Prepago y desglose de precio, recortados de los diálogos de escritorio: saldo pendiente frente a fondos disponibles y, después, precio neto, descuentos y retenciones antes del importe final.",
+      "items": ["Prepago", "Desglose de precio"]
+    },
+    "carMap": {
+      "caption": "El mapa despiezado del coche dibujado en el archivo de Pro: techo, capó, puertas y parachoques extendidos en plano, con símbolos para abolladuras, arañazos y pintura. El mismo dibujo reaparece en la página de defectos del informe de inspección."
+    }
+  },
+  "process": {
+    "heading": "El ciclo de compra tal como lo organiza el archivo",
+    "steps": [
+      { "label": "Pujar", "note": "Listas en directo, próximas e inventario; puja, puja proxy, puja automática o compra inmediata; estados ganando y perdiendo." },
+      { "label": "Negociar", "note": "Si el vendedor rechaza la oferta, mejorarla o aceptar el precio del vendedor." },
+      { "label": "Prepagar", "note": "Pagar desde el monedero o en línea, viendo primero los fondos disponibles." },
+      { "label": "Liquidar", "note": "Desglose de precio, liquidación final y justificante de pago, con estados de rechazo y pago en exceso." },
+      { "label": "Traspasar", "note": "Entrega del vehículo pendiente, después a la espera del traspaso de titularidad y, por último, adquirido." }
+    ]
+  },
+  "decisions": {
+    "heading": "Cuatro decisiones que definen la jornada del concesionario",
+    "lede": "Estas decisiones se ven en los frames. El archivo no recoge el razonamiento, así que los motivos siguientes se deducen de cómo están construidas las pantallas.",
+    "items": [
+      {
+        "title": "Mostrar el Fair Market Value bajo cada puja",
+        "why": "Un concesionario que puja contrarreloj necesita un punto de referencia que no sean los demás postores. Mostrar la valoración de la plataforma junto a la puja actual, en la lista y en la ficha, convierte cada puja en una comparación y no en una conjetura.",
+        "tradeoff": "Expone la valoración al debate: una puja muy por encima del Fair Market Value invita a preguntar por qué."
+      },
+      {
+        "title": "Numerar los pasos tras la adjudicación",
+        "why": "«Pendiente» no le dice al concesionario qué hacer. «Paso 1 de 5, prepago pendiente» le dice dónde está, cuánto falta y a quién le toca mover.",
+        "alternatives": "Un único estado «en curso» o una página aparte con una línea de tiempo."
+      },
+      {
+        "title": "Una sola plantilla de ficha para todo el ciclo",
+        "why": "La página del coche desde la que el concesionario pujó es la misma en la que después sigue la entrega. Solo cambian la banda de estado y su única acción, así que no hay nada que volver a aprender entre etapas.",
+        "tradeoff": "La página sigue siendo larga: el informe de inspección queda bajo la tarjeta de precio en todas las etapas."
+      },
+      {
+        "title": "Mostrar el coste de ganar antes de pedirlo",
+        "why": "El desglose separa el precio neto de compra, los descuentos y las retenciones, y la hoja de puja añade el transporte y la garantía ampliada para el comprador, de modo que el concesionario ve el coste final puesto en destino y no solo el precio de adjudicación."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "La parte de Sina",
+    "intro": "Extraído del archivo de Pro. Los archivos no registran el tamaño del equipo ni quién decidió qué, así que esto es el trabajo que contiene el archivo, no una atribución de autoría exclusiva.",
+    "own": [
+      "Navegación y estructura de la app y del producto web de escritorio",
+      "La lista de subastas, los filtros y los estados de puja, puja proxy y puja automática",
+      "El ciclo del pedido: estados de negociación, pago, liquidación, entrega y traspaso de titularidad",
+      "Flujos de cuenta, monedero, cuenta bancaria y documentos con sus estados de revisión",
+      "El mapa despiezado del coche para localizar daños"
+    ],
+    "collaborate": ["Compañeros de ingeniería y operaciones, sin nombre en los archivos"],
+    "note": "El archivo también conserva una página Updates y pruebas de tarjeta numeradas (de Test 2 a Test 7), señal de que la tarjeta de subasta se iteró en lugar de dibujarse de una vez."
+  },
+  "outcomes": {
+    "heading": "Lo que entrega el archivo",
+    "intro": "Recuentos de frames diseñados, no resultados. Los archivos de Carsparency no registran fecha de lanzamiento, datos de uso ni cifras de conversión.",
+    "delivered": [
+      { "label": "frames de app", "context": "Cuatro páginas de app: Subastas, Mis coches, Cuenta, e Inicio de sesión y onboarding" },
+      { "label": "frames de escritorio", "context": "Cuatro páginas web que repiten las mismas áreas a 1440 px" },
+      { "label": "etapas numeradas del pedido", "context": "Del prepago al justificante de pago, cada una con su propio estado y su acción" }
+    ],
+    "shipped": [
+      "Lista de subastas, filtros y ordenación",
+      "Puja, puja proxy, puja automática y compra inmediata",
+      "Negociación y contraofertas",
+      "Prepago, liquidación y justificante de pago",
+      "Seguimiento de la entrega y del traspaso de titularidad",
+      "Monedero, cuentas bancarias y documentos"
+    ]
+  },
+  "lessons": {
+    "heading": "Lo que enseñó este trabajo",
+    "items": [
+      {
+        "title": "Diseñar lo que viene después del éxito",
+        "body": "La puja ganadora es donde terminan la mayoría de los flujos de subasta. Aquí está más o menos a mitad de camino, y los frames posteriores (pagos, papeles, entrega) superan en número a las pantallas de subasta."
+      },
+      {
+        "title": "En un estado, los números valen más que los adjetivos",
+        "body": "«Paso 3 de 5, liquidación pendiente» responde a las tres preguntas de un concesionario: dónde estoy, cuánto falta y qué hago ahora. «Pendiente» por sí solo no responde a ninguna."
+      },
+      {
+        "title": "Los datos de relleno ocultan los casos difíciles",
+        "body": "Todas las tarjetas del archivo muestran el mismo coche y el mismo precio, así que el diseño nunca se pone a prueba con un título largo, un coche barato junto a uno caro o una puja muy por encima de su valoración."
+      }
+    ]
+  }
+}

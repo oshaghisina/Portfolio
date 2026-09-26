@@ -1,0 +1,210 @@
+{
+  "statement": "Eine Verkaufsstrecke, die den Preis zeigt, bevor sie Details abfragt, und Besitzer ihr Auto dann in sechzehn geführten Handyfotos selbst prüfen lässt.",
+  "industry": "Automobil-Marktplatz · Endkunden",
+  "team": "Produktdesigner; Teamgröße und Rollen sind in den Dateien nicht festgehalten",
+  "heroCaption": "Der Verkaufsassistent auf dem Smartphone: die Wahl der Marke, die erste Preisschätzung mit ihrer Gültigkeit und der Start der geführten Selbstinspektion.",
+  "snapshot": {
+    "problem": "Der Verkäufer will eine Zahl, der Marktplatz braucht eine detaillierte, bebilderte Akte. Wer zuerst die Akte verlangt, verliert den Verkäufer, bevor er sieht, warum sie wichtig ist.",
+    "role": "Produktdesigner auf der Verkäuferseite: der dreistufige Assistent, die Preisschätzungen, die Fragen zum Fahrzeug und die geführte Selbstinspektion, mobil und auf dem Desktop.",
+    "result": "114 Mobile-Frames und 112 Desktop-Frames. Die Dateien enthalten weder ein Launch-Datum noch Funnel-Daten."
+  },
+  "alt": {
+    "homeFold": "Carsparency Web — die Startseite für Verkäufer auf dem Desktop, mit einer Bewertungsbox für Kennzeichen, VIN oder Marke und Modell",
+    "brand": "Carsparency Web — Schritt eins des Verkaufsassistenten auf dem Smartphone: die Automarke aus den Top-Marken oder der vollständigen Liste wählen",
+    "before": "Carsparency Web — der erste geschätzte Preis in Dirham mit seiner Gültigkeitsdauer, angezeigt, bevor die Fahrzeugdetails abgefragt werden",
+    "after": "Carsparency Web — erneut der geschätzte Preis nach den Fahrzeugdetails, die dreistufige Fortschrittsanzeige bis Schritt zwei abgeschlossen",
+    "finance": "Carsparency Web — die Finanzierungsfrage mit drei Wegen, einen offenen Kredit zu klären",
+    "welcome": "Carsparency Web — der Begrüßungsbildschirm der Selbstinspektion für das Auto des Verkäufers",
+    "position": "Carsparency Web — ein Tutorial-Bildschirm der Selbstinspektion: das Auto innerhalb der Hilfslinien positionieren, dann die Kamera aktivieren",
+    "review": "Carsparency Web — die Fotoübersicht, gruppiert nach Außenansicht, Rädern, Reifenprofil, Innenraum, Zustand und Schäden sowie Servicehistorie",
+    "checklist": "Carsparency Web — die Zustands-Checkliste mit Fragen zu Kratzern, Dellen, Lack, Windschutzscheibe, Ausstattung und Warnleuchten",
+    "damage": "Carsparency Web — die Schadensmarkierung: Fahrzeugseite und Schadensgröße wählen"
+  },
+  "chapters": {
+    "context": {
+      "heading": "Wo jedes Auto auf dem Marktplatz beginnt",
+      "body": [
+        "Carsparency kaufte Autos von Privatbesitzern in den VAE und verkaufte sie per Auktion an Händler. Die Website ist die Seite des Besitzers: Auto eingeben, Preis erhalten, Details und Fotos ergänzen und den Rest Carsparency überlassen.",
+        "Ihre Figma-Datei umfasst 114 Mobile-Frames und 112 Desktop-Frames aus einer ersten Iteration, einem Benchmark eines bestehenden Verkaufsablaufs und den späteren VAE-Seiten: Preise in Dirham, Telefonnummern mit +971 und eine Frage zur GCC-Spezifikation."
+      ]
+    },
+    "problem": {
+      "heading": "Der Verkäufer will eine Zahl, der Marktplatz ein Dossier",
+      "body": [
+        "Alles Weitere (die Inspektion, die Preisfindung durch das Operations-Team, das Gebot des Händlers) hängt von einer detaillierten und ehrlichen Beschreibung des Autos ab. Wer über eine Suche kommt, will etwas viel Einfacheres wissen: Was ist mein Auto wert?",
+        "Wer zuerst das Dossier verlangt, verliert die meisten Verkäufer, bevor sie eine Zahl sehen. Wer die Zahl zeigt und nichts fragt, liefert eine Zahl ohne viel Aussagekraft. Der Ablauf musste sich jede Frage verdienen."
+      ]
+    },
+    "flow": {
+      "heading": "Drei Schritte, der Preis mittendrin",
+      "customLabel": "Ablauf",
+      "body": [
+        "Der Assistent besteht aus Fahrzeuginfo, Fahrzeugdetails und Selbstinspektion. Die Fahrzeuginfo identifiziert das Auto per Antippen (Marke, Modell, Baujahr, Ausstattungslinie, Karosserieform, Kilometerbereich und Farbe) und verifiziert eine Telefonnummer. Danach sieht der Verkäufer einen geschätzten Preis, gültig bis zu einem festen Zeitpunkt, noch vor jeder schwierigeren Frage.",
+        "Die Fahrzeugdetails umfassen sieben Fragen (Eigentumsnachweis, Finanzierung, Zustand, Garantie, Servicehistorie, Warnleuchten und Standort) und enden erneut mit der Schätzung. Die Selbstinspektion folgt erst, wenn der Verkäufer einen Preis hat, den es sich zu sichern lohnt."
+      ]
+    },
+    "solution": {
+      "heading": "Jede Frage verdient sich ihren Platz",
+      "body": [
+        "Zwei Fortschrittsebenen halten den langen Ablauf übersichtlich: drei nummerierte Schritte am oberen Rand und eine Reihe von Chips für die Fragen innerhalb des aktuellen Schritts. Die Identität des Autos baut sich mit jeder Antwort im Header auf, von der Marke allein bis zu Marke, Modell, Baujahr, Ausstattungslinie und Karosserieform.",
+        "Schwierige Fragen bringen einen Ausweg mit. Die Finanzierungsfrage endet nicht beim Ja: Sie bietet „Ich löse den Kredit selbst ab“, „Carsparency mit der Ablösung beauftragen“ oder „Der Kredit ist abgelöst, aber noch nicht aktualisiert“. Die Selbstinspektion bereitet den Verkäufer vor, bevor sich die Kamera öffnet (genug Licht, ein sauberes Auto, Abstand halten, das Handy drehen, das Auto innerhalb der Hilfslinien positionieren), und verlangt dann sechzehn benannte Blickwinkel."
+      ],
+      "bullets": [
+        "Einstieg über Kennzeichen, VIN oder Marke und Modell",
+        "Fahrzeugidentifikation per Antippen, mit Marken- und Modellsuche",
+        "Schätzung vor und nach den Fahrzeugdetails, jeweils mit Gültigkeitszeit",
+        "Geführte Fotoaufnahme mit Schadensort, Schadensgröße und Qualitätsbeispielen"
+      ]
+    },
+    "ecosystem": {
+      "heading": "Die Antworten des Verkäufers werden zur Checkliste des Inspektors",
+      "customLabel": "Ökosystem",
+      "body": [
+        "Die Fragen, die der Verkäufer hier beantwortet (eingetragener Halter, Finanzierung, Garantie, Servicehistorie, Warnleuchten, GCC-Spezifikation), sind dieselben, die der Inspektor vor Ort überprüft und die der Inspektionsbericht ausweist. Die Website erfasst die Angabe; die Inspektion prüft sie.",
+        "Die Schätzung ist die verkäuferseitige Ansicht derselben Bewertung, die Händler in Pro als Fair Market Value und das Operations-Team im Backoffice als Fair sehen. Die Website nutzt das helle Theme der Bibliothek, die anderen drei Produkte ihr dunkles."
+      ]
+    }
+  },
+  "figures": {
+    "home": {
+      "caption": "Die Desktop-Startseite beginnt mit der Bewertungsbox: Als Erstes wählt der Verkäufer, wie er das Auto identifiziert (Kennzeichen, VIN oder Marke und Modell)."
+    },
+    "estimates": {
+      "caption": "Die Schätzung erscheint zweimal: einmal nach der Fahrzeuginfo und der Telefonprüfung, vor allen schwierigeren Fragen, und erneut nach den Fahrzeugdetails. Beide nennen den Zeitpunkt, bis zu dem der Preis gilt.",
+      "items": [
+        "Vor den Fahrzeugdetails",
+        "Nach den Fahrzeugdetails"
+      ]
+    },
+    "guidance": {
+      "caption": "Zwei Momente, in denen der Ablauf hilft, statt zu fragen: Ein offener Kredit wird zu drei Wegen nach vorn, und die Kamera öffnet sich erst, wenn der Verkäufer weiß, wie er das Auto ins Bild setzt.",
+      "items": [
+        "Finanzierung, mit Auswegen",
+        "Bildausschnitt vor der Kamera"
+      ]
+    },
+    "review": {
+      "caption": "Die Fotoübersicht, ausgelegt für den Browser auf Tablet oder Desktop.",
+      "annotations": [
+        "Fotos so gruppiert, wie ein Käufer ein Auto liest: außen, Räder, Reifenprofil, innen, Schäden, Servicehistorie",
+        "Jeder Platz ist nach seinem Blickwinkel benannt, damit nichts mehrdeutig bleibt",
+        "Die Zahl der benötigten Fotos wird gleich zu Beginn genannt",
+        "Speichern und später fertigstellen, denn kaum ein Verkäufer hat alle sechzehn Fotos auf einmal"
+      ]
+    },
+    "damage": {
+      "caption": "Schäden in den Worten des Verkäufers, aber strukturiert: eine Checkliste von Problemarten mit Beispielen, dann für jeden Schaden die Fahrzeugseite und eine Größenklasse.",
+      "items": [
+        "Zustands-Checkliste",
+        "Ort und Größe"
+      ]
+    }
+  },
+  "process": {
+    "heading": "Der Verkaufsassistent in der Reihenfolge der Datei",
+    "steps": [
+      {
+        "label": "Fahrzeuginfo",
+        "note": "Marke, Modell, Baujahr, Ausstattungslinie, Karosserieform, Kilometerbereich, Farbe, dann Telefonverifizierung."
+      },
+      {
+        "label": "Schätzung",
+        "note": "Ein erster Preis mit Gültigkeitszeit, bevor Schwierigeres gefragt wird."
+      },
+      {
+        "label": "Fahrzeugdetails",
+        "note": "Eigentum, Finanzierung, Zustand, Garantie, Servicehistorie, Warnleuchten, Standort."
+      },
+      {
+        "label": "Neue Schätzung",
+        "note": "Erneut der Preis, jetzt auf Basis der Details."
+      },
+      {
+        "label": "Selbstinspektion",
+        "note": "Ein kurzes Tutorial, sechzehn geführte Blickwinkel, dann Schäden und Überprüfung."
+      }
+    ]
+  },
+  "decisions": {
+    "heading": "Vier Entscheidungen hinter dem Verkaufsablauf",
+    "lede": "Abgeleitet aus den Frames und ihrer Reihenfolge; die Begründungen hält die Datei nicht fest.",
+    "items": [
+      {
+        "title": "Preis vor Fragen",
+        "why": "Die Schätzung erscheint nach der reinen Tipp-Eingabe der Fahrzeuginfo und einer Telefonprüfung, aber vor den sieben Detailfragen. Der Verkäufer bekommt früh, weswegen er gekommen ist, und jede weitere Frage wirkt wie eine Verfeinerung seines Preises statt wie ein Wegezoll.",
+        "tradeoff": "Die erste Zahl ist gröber, und die zweite kann von ihr abweichen."
+      },
+      {
+        "title": "Dem Preis ein Ablaufdatum geben",
+        "why": "Jede Schätzung sagt, wann sie abläuft. So bleibt ein Marktpreis ehrlich darin, eine Momentaufnahme zu sein, und der Verkäufer hat einen Grund, jetzt weiterzumachen.",
+        "alternatives": "Eine unbefristete Schätzung, der ein sich wandelnder Markt stillschweigend widersprechen würde."
+      },
+      {
+        "title": "Hindernisse in Wege verwandeln",
+        "why": "Ein noch finanziertes Auto ist ein häufiger Grund, warum ein Verkauf ins Stocken gerät. Statt eines Ja, das den Ablauf beendet, bietet die Frage drei Wege, den Kredit zu klären, darunter die Übergabe an Carsparency."
+      },
+      {
+        "title": "Die Aufnahme erklären, bevor sie entsteht",
+        "why": "Fotos von Verkäufern sind das schwächste Glied jeder Ferninspektion. Ein kurzes Tutorial, benannte Blickwinkel sowie gute und schlechte Beispiele machen die Fotos des Verkäufers als Beleg brauchbar."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "Sinas Anteil",
+    "intro": "Aufgeführt anhand der Web-Datei. Die Dateien halten weder die Teamgröße fest noch, wer was entschieden hat; dies ist also die Arbeit in der Datei, kein Anspruch auf alleinige Urheberschaft.",
+    "own": [
+      "Der dreistufige Verkaufsassistent und seine zweistufige Fortschrittsanzeige",
+      "Die Schätzungsbildschirme vor und nach den Fahrzeugdetails",
+      "Die Fragen zu den Fahrzeugdetails und ihre verzweigten Antworten",
+      "Die geführte Selbstinspektion: Tutorial, benannte Blickwinkel, Schäden und Überprüfung",
+      "Unterstützende Seiten auf Desktop und Mobilgeräten: Konto, Servicehistorie, Hilfe und Fehler"
+    ],
+    "collaborate": [
+      "Kolleginnen und Kollegen aus Engineering und Operations, in den Dateien nicht namentlich genannt"
+    ],
+    "note": "Die Datei enthält einen Benchmark eines bestehenden Verkaufsablaufs und eine erste Iteration der Seiten; die Seiten für Assistent und Selbstinspektion sind die spätere, für die VAE lokalisierte Version."
+  },
+  "outcomes": {
+    "heading": "Was die Datei liefert",
+    "intro": "Anzahlen gestalteter Frames, keine Ergebnisse. Die Marketingseiten enthalten Bewertungs- und Händlerzahlen, die Platzhaltertext sind; deshalb wird hier keine davon wiederholt.",
+    "delivered": [
+      {
+        "label": "Mobile-Frames",
+        "context": "Der Assistent, die Selbstinspektion und unterstützende Seiten"
+      },
+      {
+        "label": "Desktop-Frames",
+        "context": "Dieselbe Strecke und dieselben Seiten bei 1,440 px"
+      },
+      {
+        "label": "geführte Fotowinkel",
+        "context": "Jeder benannt, mit einem Tutorial, bevor sich die Kamera öffnet"
+      }
+    ],
+    "shipped": [
+      "Bewertungseinstieg über Kennzeichen, VIN oder Marke und Modell",
+      "Dreistufiger Verkaufsassistent",
+      "Schätzungen vor und nach den Fahrzeugdetails",
+      "Fragen zu Finanzierung, Eigentum und Zustand mit Verzweigungen",
+      "Geführte Selbstinspektion und Fotoübersicht",
+      "Seiten für Konto, Servicehistorie, Hilfe und Fehler"
+    ]
+  },
+  "lessons": {
+    "heading": "Was diese Arbeit gelehrt hat",
+    "items": [
+      {
+        "title": "Erst geben, dann mehr verlangen",
+        "body": "Die Schätzung mitten im Ablauf zu platzieren, verändert die Bedeutung der folgenden Fragen: Sie verfeinern etwas, das der Verkäufer bereits in der Hand hält."
+      },
+      {
+        "title": "Ein Benchmark ist ein Ausgangspunkt, kein Design",
+        "body": "Die erste Iteration folgte eng einem bestehenden Verkaufsservice, und Benchmark-Frames liegen noch immer neben dem Design. Erst in den späteren Seiten wurde der Ablauf für die VAE gestaltet: Preise in Dirham, +971-Nummern und eine Frage zur GCC-Spezifikation."
+      },
+      {
+        "title": "Belege aus der Ferne sind eine Frage der Anleitung",
+        "body": "Die Qualität der Verkäuferfotos hängt weniger vom Aufnahmebildschirm ab als vom Tutorial davor."
+      }
+    ]
+  }
+}

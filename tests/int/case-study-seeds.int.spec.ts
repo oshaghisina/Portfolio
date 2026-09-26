@@ -215,6 +215,33 @@ describe('every case study agrees with its archive row', () => {
  * never be uploaded and the strings that must never be written, in any locale or alt text — the
  * reasons are in each module's header and in its Docs README.
  */
+/**
+ * The five Carsparency studies share one gate (`carsparency/shared.ts`): the report cover (an
+ * inspector's name and a phone number), the dealer landing page (benchmark copy and press logos) and
+ * the payment and document dialogs (a bank-statement placeholder) and the uncropped dealer profile (a
+ * photographic portrait of unknown origin) are never uploaded; no private
+ * Figma link, no Khodro45 lineage (a separate employer), and no benchmark or placeholder leftover
+ * — US listings, UK services, review and dealer counts — is repeated as fact.
+ */
+const CARSPARENCY_GATE = {
+  files: [/car-report\/cover/, /dealer-landing/, /proof-over-payment/, /car-documents/, /negotiation-detail-desktop/, /title-transfer-desktop/, /console\/user-detail/],
+  text: [
+    /figma\.com/i,
+    /\(Copy\)/i,
+    // The brand, not the word: «خودرو» alone is simply Persian for "car".
+    /khodro|خودرو\s?(45|۴۵)/i,
+    /Austin/i,
+    /Wells Fargo/i,
+    /Motorway/i,
+    /ULEZ/i,
+    /Trustpilot/i,
+    /Morteza|مرتضی/i,
+    /504829786/,
+    /17[,٬.]?168|۱۷[٬,]?۱۶۸/,
+    /24[,٬.]?718/,
+  ],
+}
+
 const GATES: Record<string, { files: RegExp[]; text: RegExp[] }> = {
   faymen: {
     // Home, search and cart carry a live coupon and a sales number; contact carries phones and the
@@ -234,6 +261,12 @@ const GATES: Record<string, { files: RegExp[]; text: RegExp[] }> = {
     files: [/home/, /about/, /music/, /teach/, /road/, /looking/, /icon|logo/, /books(?!-fa-fold)/, /contact-(fa|en)-full/, /contact\/(fa|en)\//],
     text: [/1359|1980|۱۳۵۹|۱۹۸۰/, /Khuzestan|خوزستان/i, /Shooshtari|شوشتری|شوشتري/i, /\bbrother|برادر|hermano|Bruder|frère|兄弟/i, /arash@/i, /ADVBROZ/i, /git\.arashrezvani/i, /dossier/i, /\bborn\b|متولد|nacido|geboren|年生まれ|テヘラン生まれ/i, /Farvardin|فروردین/i],
   },
+  marqevon: {
+    // The home page below its hero (market prices), the two empty frames, the logo files and the
+    // stock-photo pages; only the type crops in `crops/` are uploaded.
+    files: [/pages\//, /rtl\//, /mobile\//, /templates\//, /icon|logo/],
+    text: [/Platts/i, /AAIDL|PJAA|AAZB/, /194\.59/, /OFAC/i, /sanction|sancion|Sanktion|تحریم|العقوبات|制裁/i, /jurisdiction|juridiction|jurisdicci|Gerichtsstand|管轄/i, /Vitol|Trafigura|Gunvor|Mercuria|Glencore/i, /\.example\b/i, /Inquery|همبرگری|نمی‌خواهیم/],
+  },
   'biomaze-website-education-panel': {
     // Brand Brief Tier-1: never the unverified “first player” market claim, in any locale.
     files: [],
@@ -246,6 +279,31 @@ const GATES: Record<string, { files: RegExp[]; text: RegExp[] }> = {
       /erster player|offiziellen bildungssystem/i,
       /premier (acteur|joueur).{0,40}(éducation|educatif)/i,
       /第一人者|公式教育/,
+    ],
+  },
+  'carsparency-pro': CARSPARENCY_GATE,
+  'carsparency-back-office': CARSPARENCY_GATE,
+  'carsparency-inspection': CARSPARENCY_GATE,
+  'carsparency-web': CARSPARENCY_GATE,
+  'carsparency-design-system': CARSPARENCY_GATE,
+  yaravan: {
+    // Product name only (2026-09-26): only redacted crops are uploaded — never the confidential
+    // charter, the competitor or portrait slides, the imported icons, or a raw screenshot or board.
+    files: [/^(?!crops\/)/, /charter/, /market-analysis\/(03|09|14)/, /product-report\/23/, /icons/, /about/, /slide-00/, /edit-view/, /ROLE-001/],
+    text: [
+      /Mobile\s?140|موبایل\s?۱۴۰|موبايل/i,
+      /(?<![\d۰-۹])(140|۱۴۰)(?![\d۰-۹])/,
+      /Golzar|گلزار/i,
+      /Hamid|حمید|حميد/i,
+      /Bahaeddin|بهاالدین|بهاءالدین|baha sharif/i,
+      /Teamyar|تیم‌یار|تیمیار|تیم یار/i,
+      /Gohar|گوهر/i,
+      /زرین صنعت/,
+      /Digikala|دیجی‌کالا|دیجیکالا|ديجي/i,
+      /staging\.yaravan|yaravan\.ir/i,
+      /18[- ]?month|۱۸ ?ماه|18 meses|18 Monate|18 mois|18か月|18 شهر/i,
+      /250[,٬.]?000|۲۵۰[٬,]?۰۰۰/,
+      /Mamali|Archer/i,
     ],
   },
 }

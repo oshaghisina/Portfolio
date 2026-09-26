@@ -1,0 +1,188 @@
+{
+  "statement": "Une bibliothèque, quatre produits : douze gammes de couleur, une matrice d’états par contrôle et des composants partagés, du vendeur au concessionnaire.",
+  "industry": "Place de marché automobile · systèmes de design",
+  "team": "Designer produit ; la paternité de la bibliothèque au-delà des fichiers de Sina n’est pas documentée",
+  "heroCaption": "La planche des champs de formulaire : chaque type de champ dans chaque état, dessiné pour le thème clair et le thème sombre, côte à côte.",
+  "snapshot": {
+    "problem": "Quatre produits pour quatre publics (vendeurs, inspecteurs, opérateurs et concessionnaires) devaient se lire comme une seule entreprise, en deux thèmes, sans quatre copies de chaque bouton.",
+    "role": "Designer produit : gammes de couleur, échelle typographique, jeux de composants avec leurs matrices d’états, et les planches qui les documentent.",
+    "result": "15 jeux de composants totalisant 265 variantes, 12 gammes de couleur, et la preuve que les quatre fichiers produit consomment la même bibliothèque."
+  },
+  "alt": {
+    "formFields": "Système de design Carsparency — la planche des champs de formulaire : types de champ par état, en clair et en sombre",
+    "colors": "Système de design Carsparency — la planche des couleurs : vert primaire, gris et autres gammes de 900 à 50, avec 500 marqué comme palier principal",
+    "buttons": "Système de design Carsparency — la matrice des boutons : pleins et contour, primaires et gris, en trois tailles et cinq états",
+    "fonts": "Système de design Carsparency — la planche typographique : cinq graisses, du Black au Semibold oblique",
+    "dark": "Application d’inspection Carsparency en thème sombre, construite avec la bibliothèque partagée",
+    "light": "Assistant vendeur du site Carsparency en thème clair, construit avec la même bibliothèque"
+  },
+  "chapters": {
+    "context": {
+      "heading": "Quatre produits, un langage visuel",
+      "body": [
+        "Carsparency exploitait quatre surfaces produit : un site pour les vendeurs, une application terrain pour les inspecteurs, un back-office pour les équipes internes et une plateforme pour les concessionnaires. Chacune a son propre fichier Figma, et toutes les quatre reposent sur une même bibliothèque partagée.",
+        "Le fichier du système de design documente cette bibliothèque sur onze planches (couleur, typographie, boutons, champs de formulaire, interrupteurs, fils d’Ariane, pagination, toasts, modales, en-tête et pied de page, petits composants) et une page d’icônes."
+      ]
+    },
+    "problem": {
+      "heading": "Quatre publics, deux thèmes, un seul jeu de pièces",
+      "body": [
+        "Les quatre produits ne se ressemblent pas, et c’est voulu. Le site vendeur est clair et aéré, tandis que l’application d’inspection, le back-office et la plateforme concessionnaires sont sombres et denses. Un vendeur comme un concessionnaire doit pourtant reconnaître la même entreprise.",
+        "Sans bibliothèque partagée, chaque fichier redessinerait ses propres boutons et champs, et les quatre produits divergeraient, écran après écran."
+      ]
+    },
+    "structure": {
+      "heading": "Des gammes aux composants, des composants aux produits",
+      "customLabel": "Structure",
+      "body": [
+        "La couleur s’organise en douze gammes (vert primaire, gris, bleu, vert, rouge, orange, violet, corail, bleu-violet, jaune-orangé, marine et un bleu cyan). Chacune va de 900 à 50, la gamme grise se prolonge jusqu’au blanc, et le palier 500 est marqué comme valeur principale. Le primaire de marque, #00B86B, est le 500 de la gamme verte.",
+        "Les composants sont construits en jeux dont les variantes couvrent à la fois le type, la taille et l’état. Le jeu de boutons compte à lui seul 90 variantes : plein et contour, primaire et gris, trois tailles, et les états par défaut, survol, pressé, désactivé et chargement."
+      ]
+    },
+    "solution": {
+      "heading": "Un état pour chaque contrôle, un thème pour chaque produit",
+      "body": [
+        "Chaque composant interactif est dessiné dans tous les états qu’il peut prendre, pas seulement au repos. La planche des champs de formulaire décline les états par défaut, avec icône, coché, erreur, survol et liste déroulante, sélectionnés ou non, en clair et en sombre, pour qu’un développeur n’ait jamais à deviner l’aspect d’une erreur en thème sombre.",
+        "Les mêmes gammes servent les deux thèmes. Le site utilise les extrémités claires de la gamme grise pour les surfaces, les produits sombres son extrémité sombre, et le vert primaire reste la couleur d’action constante dans les deux."
+      ],
+      "bullets": [
+        "Boutons : 90 variantes",
+        "Champ de texte : 42 variantes",
+        "Interrupteurs et sélecteurs : 30 variantes",
+        "Segments, pagination, fils d’Ariane, en-tête, pied de page, toasts et modales"
+      ]
+    },
+    "ecosystem": {
+      "heading": "La preuve qu’il a servi, pas seulement été dessiné",
+      "customLabel": "Écosystème",
+      "body": [
+        "La preuve la plus solide d’un système de design se trouve dans les fichiers qui le consomment. Les frames des fichiers Pro, Back-office, Inspection et Web tirent toutes leurs couleurs des mêmes styles publiés (les gammes du vert primaire et du gris) plutôt que de copies locales.",
+        "Leurs composants viennent aussi de la même bibliothèque. Champs de texte, modales, pagination, fils d’Ariane, boutons et icônes système des fichiers produit sont des instances de composants de la bibliothèque, jusqu’à un jeu d’interrupteurs dont le nom mal orthographié est identique dans la bibliothèque et dans l’application d’inspection."
+      ]
+    }
+  },
+  "figures": {
+    "colors": {
+      "caption": "La planche des couleurs : douze gammes de 900 à 50, la gamme grise se prolongeant jusqu’au blanc, et le palier 500 de chacune marqué comme valeur principale."
+    },
+    "buttons": {
+      "caption": "La matrice des boutons. Les lignes sont le type et la taille, les colonnes l’état : une combinaison manquante apparaîtrait comme un vide."
+    },
+    "fonts": {
+      "caption": "La planche typographique : cinq graisses, du Black à 900 jusqu’à un Semibold oblique, chacune sur la même phrase d’exemple."
+    },
+    "themes": {
+      "caption": "Une bibliothèque, deux thèmes : l’application d’inspection en sombre et l’assistant vendeur en clair, qui partagent le vert primaire, la gamme grise et les mêmes composants de champ et de bouton.",
+      "items": [
+        "Sombre : application d’inspection",
+        "Clair : assistant vendeur"
+      ]
+    }
+  },
+  "process": {
+    "heading": "Comment la bibliothèque s’organise en couches",
+    "steps": [
+      {
+        "label": "Couleur",
+        "note": "Douze gammes, de 900 à 50, publiées comme styles de couleur partagés."
+      },
+      {
+        "label": "Typographie",
+        "note": "Cinq graisses sur un même exemple, du Black au Semibold oblique."
+      },
+      {
+        "label": "Contrôles",
+        "note": "Boutons, champs, interrupteurs et segments avec des matrices d’états complètes."
+      },
+      {
+        "label": "Modèles",
+        "note": "Toasts, modales, fils d’Ariane, pagination, en-tête et pied de page."
+      },
+      {
+        "label": "Produits",
+        "note": "Consommée par les fichiers Pro, Back-office, Inspection et Web."
+      }
+    ]
+  },
+  "decisions": {
+    "heading": "Quatre décisions qui font tenir la bibliothèque",
+    "lede": "Tirées des planches et de la façon dont les fichiers produit les utilisent.",
+    "items": [
+      {
+        "title": "Des gammes, pas une palette",
+        "why": "Chaque couleur se décline en dix paliers avec une valeur principale marquée. Les écrans sombres et denses ont besoin de plusieurs nuances proches pour les surfaces, les bordures et le texte, et les gammes les fournissent sans inventer de nouvelles couleurs.",
+        "tradeoff": "Douze gammes, c’est plus de couleur que quatre produits n’en exigent strictement."
+      },
+      {
+        "title": "Dessiner chaque état",
+        "why": "Boutons et champs sont documentés comme des matrices de type, de taille et d’état. Survol, pressé, désactivé, chargement et erreur sont conçus, au lieu d’être laissés à l’appréciation de qui les implémente."
+      },
+      {
+        "title": "Publier, pas copier",
+        "why": "Couleurs et composants arrivent dans les fichiers produit sous forme de styles et d’instances de la bibliothèque, non de copies collées : une modification de la bibliothèque peut ainsi atteindre les quatre produits."
+      },
+      {
+        "title": "Un seul jeu de gammes pour deux thèmes",
+        "why": "Le site vendeur clair et les outils professionnels sombres puisent dans les mêmes gammes par leurs extrémités opposées, ce qui garde la marque cohérente tout en donnant à chaque public la densité dont il a besoin."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "La part de Sina",
+    "intro": "Établi à partir du fichier du système de design. Les fichiers n’indiquent pas qui d’autre a travaillé sur la bibliothèque, et ses styles de couleur sont publiés depuis un fichier de bibliothèque extérieur à cet ensemble : il ne s’agit donc pas d’une revendication de paternité exclusive.",
+    "own": [
+      "Les gammes de couleur et leur planche de documentation",
+      "La planche typographique",
+      "Les jeux de composants et leurs matrices d’états : boutons, champs, interrupteurs, segments, pagination et fils d’Ariane",
+      "Les modèles : toasts, modales, en-tête et pied de page",
+      "L’application de la bibliothèque dans les quatre fichiers produit"
+    ],
+    "collaborate": [
+      "Des collègues de l’ingénierie, non nommés dans les fichiers"
+    ],
+    "note": "Les planches portent la mention Version 0.0.1 : une version précoce de la bibliothèque, pas une version aboutie."
+  },
+  "outcomes": {
+    "heading": "Ce que livre le fichier",
+    "intro": "Des décomptes de travail conçu, pas des résultats. Rien n’indique si l’ingénierie a repris la bibliothèque dans le code.",
+    "delivered": [
+      {
+        "label": "variantes de composants",
+        "context": "Réparties sur 15 jeux de composants"
+      },
+      {
+        "label": "gammes de couleur",
+        "context": "Chacune de 900 à 50, avec un palier principal marqué"
+      },
+      {
+        "label": "fichiers produit qui la consomment",
+        "context": "Pro, Back-office, Inspection et Web"
+      }
+    ],
+    "shipped": [
+      "Gammes de couleur",
+      "Échelle typographique",
+      "Boutons et champs avec matrices d’états",
+      "Interrupteurs, segments, pagination et fils d’Ariane",
+      "Toasts, modales, en-tête et pied de page",
+      "Page d’icônes"
+    ]
+  },
+  "lessons": {
+    "heading": "Ce que ce travail a appris",
+    "items": [
+      {
+        "title": "L’adoption est la seule preuve qui compte",
+        "body": "Une bibliothèque mérite son nom quand d’autres fichiers la consomment. Ici, la preuve se trouve dans les calques mêmes des fichiers produit, pas dans les planches."
+      },
+      {
+        "title": "Les états sont la partie coûteuse",
+        "body": "Les composants au repos se dessinent vite. Les 265 variantes sont surtout des états, et c’est là que se joue réellement la cohérence entre quatre produits."
+      },
+      {
+        "title": "Les noms voyagent avec les composants",
+        "body": "Un nom de composant mal orthographié survit dans chaque produit qui l’utilise : mieux vaut soigner le nommage avant de publier."
+      }
+    ]
+  }
+}

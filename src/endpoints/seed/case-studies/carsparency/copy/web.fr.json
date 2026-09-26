@@ -1,0 +1,210 @@
+{
+  "statement": "Un parcours vendeur qui affiche un prix avant de demander des détails, puis laisse le propriétaire inspecter sa voiture au smartphone en seize photos guidées.",
+  "industry": "Marketplace automobile · grand public",
+  "team": "Designer produit ; la taille et les rôles de l'équipe ne figurent pas dans les fichiers",
+  "heroCaption": "L'assistant vendeur sur smartphone : le choix de la marque, la première estimation de prix avec sa durée de validité et le début de l'auto-inspection guidée.",
+  "snapshot": {
+    "problem": "Le vendeur veut un chiffre, la marketplace a besoin d'un dossier détaillé et photographié. Demander le dossier d'abord, c'est perdre le vendeur avant qu'il ne comprenne pourquoi il compte.",
+    "role": "Designer produit côté vendeur : l'assistant en trois étapes, les estimations de prix, les questions sur le véhicule et l'auto-inspection guidée, sur mobile et sur desktop.",
+    "result": "114 écrans mobiles et 112 écrans desktop. Les fichiers ne mentionnent ni date de lancement ni données de funnel."
+  },
+  "alt": {
+    "homeFold": "Carsparency Web — la page d'accueil vendeur sur desktop, avec un module d'estimation par plaque d'immatriculation, VIN ou marque et modèle",
+    "brand": "Carsparency Web — première étape de l'assistant vendeur sur mobile : choisir la marque de la voiture parmi les plus populaires ou dans la liste complète",
+    "before": "Carsparency Web — le premier prix estimé en dirhams avec sa durée de validité, affiché avant les questions sur le véhicule",
+    "after": "Carsparency Web — le prix estimé à nouveau après les détails du véhicule, la progression en trois étapes complétée jusqu'à l'étape deux",
+    "finance": "Carsparency Web — la question du financement, avec trois façons de régler un prêt en cours",
+    "welcome": "Carsparency Web — l'écran d'accueil de l'auto-inspection de la voiture du vendeur",
+    "position": "Carsparency Web — un écran du tutoriel d'auto-inspection : placer la voiture dans les repères, puis activer la caméra",
+    "review": "Carsparency Web — le tableau de revue des photos, regroupées en extérieur, roues, bandes de roulement, intérieur, état et dommages, et historique d'entretien",
+    "checklist": "Carsparency Web — la checklist d'état, qui porte sur les rayures, les bosses, la peinture, le pare-brise, les équipements et les voyants d'alerte",
+    "damage": "Carsparency Web — le localisateur de dommages : choisir le côté de la voiture et la taille du dommage"
+  },
+  "chapters": {
+    "context": {
+      "heading": "Là où commence chaque voiture de la marketplace",
+      "body": [
+        "Carsparency achetait des voitures à des particuliers aux Émirats arabes unis et les revendait aux enchères à des négociants. Le site web est le côté du propriétaire : saisir la voiture, obtenir un prix, ajouter les détails et les photos, et confier le reste à Carsparency.",
+        "Son fichier Figma compte 114 écrans mobiles et 112 écrans desktop, répartis entre une première itération, un benchmark d'un parcours vendeur existant et les pages ultérieures adaptées aux Émirats : prix en dirhams, numéros en +971 et une question sur la spécification GCC."
+      ]
+    },
+    "problem": {
+      "heading": "Le vendeur veut un chiffre ; la marketplace, un dossier",
+      "body": [
+        "Tout ce qui suit (l'inspection, la tarification par les opérateurs, l'offre du négociant) repose sur une description détaillée et honnête de la voiture. Un vendeur qui arrive d'un moteur de recherche veut quelque chose de bien plus simple : combien vaut ma voiture ?",
+        "Demandez d'abord le dossier, et la plupart des vendeurs partent avant d'avoir vu un chiffre. Montrez le chiffre sans rien demander, et ce chiffre ne veut pas dire grand-chose. Le parcours devait mériter chaque question."
+      ]
+    },
+    "flow": {
+      "heading": "Trois étapes, avec le prix au milieu",
+      "customLabel": "Parcours",
+      "body": [
+        "L'assistant enchaîne Infos véhicule, Détails du véhicule et Auto-inspection. Infos véhicule identifie la voiture en quelques touchers (marque, modèle, année, finition, carrosserie, tranche de kilométrage et couleur) et vérifie un numéro de téléphone. Le vendeur voit ensuite un prix estimé, valable jusqu'à une heure donnée, avant toute question plus difficile.",
+        "Détails du véhicule pose sept questions (titre de propriété, financement, état, garantie, historique d'entretien, voyants d'alerte et localisation) et se termine à nouveau par l'estimation. L'auto-inspection ne vient qu'une fois que le vendeur a un prix qui mérite d'être préservé."
+      ]
+    },
+    "solution": {
+      "heading": "Chaque question mérite sa place",
+      "body": [
+        "Deux niveaux de progression gardent le long parcours lisible : trois étapes numérotées en haut, et une rangée de chips pour les questions de l'étape en cours. L'identité de la voiture se construit dans l'en-tête au fil des réponses, de la marque seule jusqu'à la marque, le modèle, l'année, la finition et la carrosserie.",
+        "Les questions difficiles viennent avec une issue. Le financement ne s'arrête pas au oui : il propose « Je vais solder le prêt », « Demander à Carsparency de solder le prêt » ou « Le prêt est soldé mais pas encore mis à jour ». L'auto-inspection prépare le vendeur avant l'ouverture de la caméra (assez de lumière, une voiture propre, prendre du recul, tourner le téléphone, placer la voiture dans les repères), puis demande seize angles nommés."
+      ],
+      "bullets": [
+        "Entrée par plaque d'immatriculation, VIN ou marque et modèle",
+        "Identification du véhicule au toucher, avec recherche par marque et modèle",
+        "Estimation avant et après les détails du véhicule, chacune avec sa durée de validité",
+        "Prise de vue guidée avec emplacement et taille des dommages, et exemples de qualité"
+      ]
+    },
+    "ecosystem": {
+      "heading": "Les réponses du vendeur deviennent la checklist de l'inspecteur",
+      "customLabel": "Écosystème",
+      "body": [
+        "Les questions auxquelles le vendeur répond ici (titulaire du titre, financement, garantie, historique d'entretien, voyants d'alerte, spécification GCC) sont celles que l'inspecteur vérifie sur le terrain et que le rapport d'inspection imprime. Le site recueille la déclaration ; l'inspection la vérifie.",
+        "L'estimation est la face visible, côté vendeur, de la même valorisation que les négociants voient comme Fair Market Value dans Pro et les opérateurs comme Fair dans le back-office. Le site utilise le thème clair de la bibliothèque, là où les trois autres produits utilisent son thème sombre."
+      ]
+    }
+  },
+  "figures": {
+    "home": {
+      "caption": "La page d'accueil desktop s'ouvre sur le module d'estimation : avant toute chose, le vendeur choisit comment identifier la voiture (plaque d'immatriculation, VIN, ou marque et modèle)."
+    },
+    "estimates": {
+      "caption": "L'estimation apparaît deux fois : une première fois après les infos du véhicule et la vérification du téléphone, avant les questions plus difficiles, puis après les détails du véhicule. Les deux indiquent jusqu'à quand le prix est valable.",
+      "items": [
+        "Avant les détails du véhicule",
+        "Après les détails du véhicule"
+      ]
+    },
+    "guidance": {
+      "caption": "Deux moments où le parcours aide au lieu de demander : un prêt en cours se transforme en trois pistes, et la caméra ne s'ouvre qu'une fois que le vendeur sait comment cadrer la voiture.",
+      "items": [
+        "Financement, avec des issues",
+        "Cadrage avant la caméra"
+      ]
+    },
+    "review": {
+      "caption": "Le tableau de revue des photos, dimensionné pour un navigateur de tablette ou d'ordinateur.",
+      "annotations": [
+        "Photos regroupées comme un acheteur lit une voiture : extérieur, roues, bandes de roulement, intérieur, dommages, historique d'entretien",
+        "Chaque emplacement porte le nom de son angle, pour lever toute ambiguïté",
+        "Le nombre de photos requises est annoncé d'emblée",
+        "Enregistrer et terminer plus tard, car un vendeur a rarement ses seize photos d'un coup"
+      ]
+    },
+    "damage": {
+      "caption": "Les dommages dans les mots du vendeur, mais structurés : une checklist de types de problèmes avec exemples, puis le côté de la voiture et une tranche de taille pour chacun.",
+      "items": [
+        "Checklist d'état",
+        "Emplacement et taille"
+      ]
+    }
+  },
+  "process": {
+    "heading": "L'assistant vendeur, dans l'ordre du fichier",
+    "steps": [
+      {
+        "label": "Infos véhicule",
+        "note": "Marque, modèle, année, finition, carrosserie, tranche de kilométrage, couleur, puis vérification du téléphone."
+      },
+      {
+        "label": "Estimation",
+        "note": "Un premier prix avec sa durée de validité, avant toute question plus difficile."
+      },
+      {
+        "label": "Détails du véhicule",
+        "note": "Titre, financement, état, garantie, historique d'entretien, voyants d'alerte, localisation."
+      },
+      {
+        "label": "Nouvelle estimation",
+        "note": "Le prix à nouveau, désormais éclairé par les détails."
+      },
+      {
+        "label": "Auto-inspection",
+        "note": "Un court tutoriel, seize angles guidés, puis dommages et revue."
+      }
+    ]
+  },
+  "decisions": {
+    "heading": "Quatre décisions derrière le parcours vendeur",
+    "lede": "Déduites des écrans et de leur ordre ; le fichier ne consigne pas le raisonnement.",
+    "items": [
+      {
+        "title": "Le prix avant les questions",
+        "why": "L'estimation apparaît après les infos du véhicule, saisies uniquement au toucher, et une vérification du téléphone, mais avant les sept questions de détail. Le vendeur obtient tôt ce qu'il est venu chercher, et chaque question suivante se lit comme un affinement de son prix plutôt que comme un péage.",
+        "tradeoff": "Le premier chiffre est plus approximatif, et le second peut le contredire."
+      },
+      {
+        "title": "Donner une date d'expiration au prix",
+        "why": "Chaque estimation indique quand elle expire. Un prix de marché reste ainsi honnête sur le fait qu'il n'est qu'un instantané, et le vendeur a une raison de continuer tout de suite.",
+        "alternatives": "Une estimation sans échéance, qu'un marché en mouvement contredirait en silence."
+      },
+      {
+        "title": "Transformer les blocages en chemins",
+        "why": "Une voiture encore sous financement est une raison fréquente de vente bloquée. Au lieu d'un oui qui met fin au parcours, la question propose trois façons de régler le prêt, dont celle de le confier à Carsparency."
+      },
+      {
+        "title": "Expliquer la prise de vue avant de la faire",
+        "why": "Les photos des vendeurs sont le maillon faible de toute inspection à distance. Un court tutoriel, des angles nommés et des exemples réussis ou ratés rendent les photos du vendeur exploitables comme preuves."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "La part de Sina",
+    "intro": "Établie à partir du fichier Web. Les fichiers ne consignent ni la taille de l'équipe ni qui a décidé quoi : il s'agit donc du travail présent dans le fichier, pas d'une revendication de paternité exclusive.",
+    "own": [
+      "L'assistant vendeur en trois étapes et sa progression à deux niveaux",
+      "Les écrans d'estimation avant et après les détails du véhicule",
+      "Les questions sur le véhicule et leurs réponses à embranchements",
+      "L'auto-inspection guidée : tutoriel, angles nommés, dommages et revue",
+      "Pages annexes sur desktop et mobile : compte, historique d'entretien, aide et erreurs"
+    ],
+    "collaborate": [
+      "Collègues de l'ingénierie et des opérations, non nommés dans les fichiers"
+    ],
+    "note": "Le fichier conserve un benchmark d'un parcours vendeur existant et une première itération des pages ; les pages de l'assistant et de l'auto-inspection sont la version ultérieure, localisée pour les Émirats."
+  },
+  "outcomes": {
+    "heading": "Ce que livre le fichier",
+    "intro": "Des nombres d'écrans conçus, pas des résultats. Les pages marketing affichent des chiffres d'avis et de négociants qui sont des textes provisoires ; aucun n'est donc repris ici.",
+    "delivered": [
+      {
+        "label": "écrans mobiles",
+        "context": "L'assistant, l'auto-inspection et les pages annexes"
+      },
+      {
+        "label": "écrans desktop",
+        "context": "Le même parcours et les mêmes pages en 1,440 px"
+      },
+      {
+        "label": "angles de prise de vue guidés",
+        "context": "Chacun nommé, avec un tutoriel avant l'ouverture de la caméra"
+      }
+    ],
+    "shipped": [
+      "Estimation par plaque, VIN ou marque et modèle",
+      "Assistant vendeur en trois étapes",
+      "Estimations avant et après les détails du véhicule",
+      "Questions de financement, de titre et d'état avec embranchements",
+      "Auto-inspection guidée et revue des photos",
+      "Pages compte, historique d'entretien, aide et erreurs"
+    ]
+  },
+  "lessons": {
+    "heading": "Ce que ce travail a appris",
+    "items": [
+      {
+        "title": "Donner à l'utilisateur avant de lui demander plus",
+        "body": "Placer l'estimation au milieu du parcours change le sens des questions qui la suivent : elles affinent quelque chose que le vendeur possède déjà."
+      },
+      {
+        "title": "Un benchmark est un point de départ, pas un design",
+        "body": "La première itération suivait de près un service de vente existant, et des écrans du benchmark figurent toujours à côté du design. C'est dans les pages ultérieures que le parcours a été conçu pour les Émirats : prix en dirhams, numéros en +971 et une question sur la spécification GCC."
+      },
+      {
+        "title": "La preuve à distance est une affaire de pédagogie",
+        "body": "La qualité des photos du vendeur dépend moins de l'écran de capture que du tutoriel qui le précède."
+      }
+    ]
+  }
+}

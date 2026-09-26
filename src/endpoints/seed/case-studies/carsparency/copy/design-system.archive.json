@@ -1,0 +1,26 @@
+{
+  "fa": {
+    "title": "دیزاین سیستم Carsparency — یک کتابخانه زیر چهار محصول",
+    "summary": "کتابخانهٔ مشترکی که زیر Pro، بک‌آفیس، کارشناسی و وب قرار دارد: دوازده طیف رنگی، بورد تایپوگرافی با پنج وزن و ۱۵ مجموعهٔ کامپوننت با ۲۶۵ واریانت، که هر چهار فایل محصول در یک تم روشن و یک تم تیره از آن استفاده می‌کنند."
+  },
+  "ar": {
+    "title": "نظام التصميم في Carsparency — مكتبة واحدة تحت أربعة منتجات",
+    "summary": "المكتبة المشتركة التي تقوم عليها Pro ولوحة الإدارة والفحص والموقع: اثنا عشر تدرّجًا لونيًا، ولوحة خطوط بخمسة أوزان، و15 مجموعة مكوّنات تضم 265 متغيّرًا، تستخدمها ملفات المنتجات الأربعة كلها بسمة فاتحة وأخرى داكنة."
+  },
+  "es": {
+    "title": "Sistema de diseño de Carsparency — una biblioteca bajo cuatro productos",
+    "summary": "La biblioteca compartida bajo Pro, Back Office, Inspección y Web: doce rampas de color, un tablero tipográfico de cinco pesos y 15 conjuntos de componentes con 265 variantes, que consumen los cuatro archivos de producto en un tema claro y uno oscuro."
+  },
+  "de": {
+    "title": "Carsparency-Designsystem — eine Bibliothek unter vier Produkten",
+    "summary": "Die gemeinsame Bibliothek unter Pro, Backoffice, Prüfung und Web: zwölf Farbskalen, ein Typo-Board mit fünf Schnitten und 15 Komponentensets mit 265 Varianten, genutzt von allen vier Produktdateien in einem hellen und einem dunklen Theme."
+  },
+  "fr": {
+    "title": "Système de design Carsparency — une bibliothèque sous quatre produits",
+    "summary": "La bibliothèque partagée sous Pro, Back-office, Inspection et Web : douze gammes de couleur, une planche typographique à cinq graisses et 15 jeux de composants totalisant 265 variantes, consommés par les quatre fichiers produit en thème clair et en thème sombre."
+  },
+  "ja": {
+    "title": "Carsparencyデザインシステム — 4つのプロダクトを支えるひとつのライブラリ",
+    "summary": "Pro、バックオフィス、検査、ウェブを支える共有ライブラリ。12のカラーランプ、5ウェイトのタイプボード、265のバリアントを持つ15のコンポーネントセットを、4つのプロダクトファイルすべてがライトとダークの2テーマで利用している。"
+  }
+}

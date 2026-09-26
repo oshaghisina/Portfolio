@@ -1,0 +1,188 @@
+{
+  "statement": "Una biblioteca, cuatro productos: doce rampas de color, una matriz de estados por control y componentes para concesionario, operador, inspector y vendedor.",
+  "industry": "Marketplace de automóviles · sistemas de diseño",
+  "team": "Diseñador de producto; no consta la autoría de la biblioteca más allá de los archivos de Sina",
+  "heroCaption": "El tablero de campos de formulario: cada tipo de campo en cada estado, dibujado para el tema claro y el oscuro, uno junto al otro.",
+  "snapshot": {
+    "problem": "Cuatro productos para cuatro públicos (vendedores, inspectores, operadores y concesionarios) debían leerse como una sola empresa, en dos temas, sin cuatro copias de cada botón.",
+    "role": "Diseñador de producto: rampas de color, escala tipográfica, conjuntos de componentes con sus matrices de estados y los tableros que los documentan.",
+    "result": "15 conjuntos de componentes con 265 variantes, 12 rampas de color y la evidencia de que los cuatro archivos de producto consumen la misma biblioteca."
+  },
+  "alt": {
+    "formFields": "Sistema de diseño de Carsparency — tablero de campos de formulario: tipos de campo por estado, en claro y en oscuro",
+    "colors": "Sistema de diseño de Carsparency — tablero de color: verde primario, gris y otras rampas de 900 a 50, con el 500 marcado como paso principal",
+    "buttons": "Sistema de diseño de Carsparency — matriz de botones: sólidos y de contorno, primarios y grises, en tres tamaños y cinco estados",
+    "fonts": "Sistema de diseño de Carsparency — tablero tipográfico: cinco pesos, de black a semibold oblicua",
+    "dark": "App de inspección de Carsparency en tema oscuro, construida con la biblioteca compartida",
+    "light": "Asistente de venta de la web de Carsparency en tema claro, construido con la misma biblioteca"
+  },
+  "chapters": {
+    "context": {
+      "heading": "Cuatro productos, un lenguaje visual",
+      "body": [
+        "Carsparency tenía cuatro superficies de producto: una web para vendedores, una app de campo para inspectores, un back office para el personal y una plataforma para concesionarios. Cada una tiene su propio archivo de Figma y las cuatro se construyen sobre una misma biblioteca compartida.",
+        "El archivo del sistema de diseño documenta esa biblioteca en once tableros (color, tipografía, botones, campos de formulario, interruptores, migas de pan, paginación, toasts, modales, cabecera y pie, y componentes menores) y una página de iconos."
+      ]
+    },
+    "problem": {
+      "heading": "Cuatro públicos, dos temas, un solo juego de piezas",
+      "body": [
+        "Los cuatro productos no se parecen, y es a propósito. La web de vendedores es clara y abierta; la app de inspección, el back office y la plataforma de concesionarios son oscuros y densos. Aun así, un vendedor y un concesionario deben reconocer la misma empresa.",
+        "Sin una biblioteca compartida, cada archivo redibujaría sus propios botones y campos, y los cuatro productos se irían separando pantalla a pantalla."
+      ]
+    },
+    "structure": {
+      "heading": "De las rampas a los componentes, y de ahí a los productos",
+      "customLabel": "Estructura",
+      "body": [
+        "El color se organiza en doce rampas (verde primario, gris, azul, verde, rojo, naranja, morado, coral, azul violáceo, amarillo anaranjado, azul marino y un azul cian). Cada una va de 900 a 50, la gris continúa hasta el blanco y el paso 500 se marca como valor principal. El primario de marca, #00B86B, es el 500 de la rampa verde.",
+        "Los componentes se construyen como conjuntos cuyas variantes cubren a la vez tipo, tamaño y estado. Solo el conjunto de botones reúne 90 variantes: sólido y de contorno, primario y gris, tres tamaños y los estados por defecto, hover, pulsado, deshabilitado y cargando."
+      ]
+    },
+    "solution": {
+      "heading": "Un estado para cada control, un tema para cada producto",
+      "body": [
+        "Cada componente interactivo se dibuja en todos los estados posibles, no solo en reposo. El tablero de campos de formulario recorre los estados por defecto, con icono, marcado, error, hover y desplegable, seleccionados y sin seleccionar, en claro y en oscuro, para que ningún desarrollador tenga que adivinar cómo se ve un error en el tema oscuro.",
+        "Las mismas rampas sirven a ambos temas. La web usa los extremos claros de la rampa gris como superficies y los productos oscuros usan el extremo oscuro, con el verde primario como color de acción constante en los dos."
+      ],
+      "bullets": [
+        "Botones: 90 variantes",
+        "Campo de texto: 42 variantes",
+        "Interruptores y selectores: 30 variantes",
+        "Segmentos, paginación, migas de pan, cabecera, pie, toasts y modales"
+      ]
+    },
+    "ecosystem": {
+      "heading": "La prueba de que se usó, no solo de que se dibujó",
+      "customLabel": "Ecosistema",
+      "body": [
+        "La prueba más sólida de un sistema de diseño está en los archivos que lo consumen. Los frames de los archivos Pro, Back Office, Inspección y Web toman sus colores de los mismos estilos publicados (las rampas del verde primario y del gris), no de copias locales.",
+        "Sus componentes también vienen de la misma biblioteca. Los campos de texto, modales, paginación, migas de pan, botones e iconos de sistema de los archivos de producto son instancias de componentes de la biblioteca, hasta el punto de que un conjunto de interruptores lleva el mismo nombre mal escrito en la biblioteca y en la app de inspección."
+      ]
+    }
+  },
+  "figures": {
+    "colors": {
+      "caption": "El tablero de color: doce rampas de 900 a 50, con la gris continuando hasta el blanco y el paso 500 de cada una marcado como valor principal."
+    },
+    "buttons": {
+      "caption": "La matriz de botones. Las filas son tipo y tamaño y las columnas, estado, de modo que una combinación ausente se vería como un hueco."
+    },
+    "fonts": {
+      "caption": "El tablero tipográfico: cinco pesos, de black en 900 a una semibold oblicua, cada uno sobre la misma frase de muestra."
+    },
+    "themes": {
+      "caption": "Una biblioteca, dos temas: la app de inspección en oscuro y el asistente de venta en claro, que comparten el verde primario, la rampa gris y los mismos componentes de campo y botón.",
+      "items": [
+        "Oscuro: app de inspección",
+        "Claro: asistente de venta"
+      ]
+    }
+  },
+  "process": {
+    "heading": "Cómo se organiza la biblioteca en capas",
+    "steps": [
+      {
+        "label": "Color",
+        "note": "Doce rampas, de 900 a 50, publicadas como estilos de color compartidos."
+      },
+      {
+        "label": "Tipografía",
+        "note": "Cinco pesos sobre una misma muestra, de black a semibold oblicua."
+      },
+      {
+        "label": "Controles",
+        "note": "Botones, campos, interruptores y segmentos con matrices de estados completas."
+      },
+      {
+        "label": "Patrones",
+        "note": "Toasts, modales, migas de pan, paginación, cabecera y pie."
+      },
+      {
+        "label": "Productos",
+        "note": "Los consumen los archivos Pro, Back Office, Inspección y Web."
+      }
+    ]
+  },
+  "decisions": {
+    "heading": "Cuatro decisiones que sostienen la biblioteca",
+    "lede": "Leídas en los tableros y en cómo los usan los archivos de producto.",
+    "items": [
+      {
+        "title": "Rampas, no una paleta",
+        "why": "Cada color llega en diez pasos con un valor principal marcado. Las pantallas oscuras y densas necesitan varios tonos cercanos para superficies, bordes y texto, y las rampas los ofrecen sin inventar colores nuevos.",
+        "tradeoff": "Doce rampas son más color del que cuatro productos necesitan en sentido estricto."
+      },
+      {
+        "title": "Dibujar cada estado",
+        "why": "Botones y campos se documentan como matrices de tipo, tamaño y estado. Hover, pulsado, deshabilitado, cargando y error están diseñados, no quedan a criterio de quien los implemente."
+      },
+      {
+        "title": "Publicar, no copiar",
+        "why": "Los colores y componentes llegan a los archivos de producto como estilos e instancias de la biblioteca, no como copias pegadas, así que un cambio en la biblioteca puede llegar a los cuatro productos."
+      },
+      {
+        "title": "Un juego de rampas para dos temas",
+        "why": "La web clara de vendedores y las herramientas profesionales oscuras toman las mismas rampas desde extremos opuestos, lo que mantiene la marca coherente y da a cada público la densidad que necesita."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "La parte de Sina",
+    "intro": "Según el archivo del sistema de diseño. Los archivos no registran quién más trabajó en la biblioteca, y sus estilos de color se publican desde un archivo de biblioteca ajeno a este conjunto, así que esto no pretende ser una autoría exclusiva.",
+    "own": [
+      "Las rampas de color y su tablero de documentación",
+      "El tablero tipográfico",
+      "Conjuntos de componentes con sus matrices de estados: botones, campos, interruptores, segmentos, paginación y migas de pan",
+      "Patrones: toasts, modales, cabecera y pie",
+      "La aplicación de la biblioteca en los cuatro archivos de producto"
+    ],
+    "collaborate": [
+      "Colegas de ingeniería, sin nombre en los archivos"
+    ],
+    "note": "Los tableros están marcados como Version 0.0.1: una versión temprana de la biblioteca, no una terminada."
+  },
+  "outcomes": {
+    "heading": "Lo que entrega el archivo",
+    "intro": "Recuentos de trabajo diseñado, no resultados. No consta si ingeniería llegó a usar la biblioteca en código.",
+    "delivered": [
+      {
+        "label": "variantes de componentes",
+        "context": "En 15 conjuntos de componentes"
+      },
+      {
+        "label": "rampas de color",
+        "context": "Cada una de 900 a 50, con un paso principal marcado"
+      },
+      {
+        "label": "archivos de producto que la consumen",
+        "context": "Pro, Back Office, Inspección y Web"
+      }
+    ],
+    "shipped": [
+      "Rampas de color",
+      "Escala tipográfica",
+      "Botones y campos con matrices de estados",
+      "Interruptores, segmentos, paginación y migas de pan",
+      "Toasts, modales, cabecera y pie",
+      "Página de iconos"
+    ]
+  },
+  "lessons": {
+    "heading": "Lo que enseñó este trabajo",
+    "items": [
+      {
+        "title": "La adopción es la única prueba que cuenta",
+        "body": "Una biblioteca se gana el nombre cuando otros archivos la consumen. Aquí la prueba está en las propias capas de los archivos de producto, no en los tableros."
+      },
+      {
+        "title": "Los estados son la parte cara",
+        "body": "Los componentes en reposo se dibujan rápido. Las 265 variantes son sobre todo estados, y es ahí donde de verdad se decide la coherencia entre cuatro productos."
+      },
+      {
+        "title": "Los nombres viajan con los componentes",
+        "body": "Un nombre de componente mal escrito sobrevive en cada producto que lo usa; por eso conviene acertar con los nombres antes de publicar."
+      }
+    ]
+  }
+}

@@ -146,25 +146,25 @@ export const PROJECT_SEED: ProjectSeedRow[] = [
   },
   {
     slug: 'carsparency-pro',
-    title: 'Carsparency Pro — the dealer app rebuilt for an English-speaking market',
+    title: 'Carsparency Pro — the dealer platform, from bid to title transfer',
     summary:
-      'The buy-side app rebuilt in English on a dark green system: live and upcoming auctions, a panel-by-panel damage report inside a 5,779px car detail, win and lose bid states, and a Fair Market Value on every card — the direct descendant of Khodro45\u2019s fair-price anchor.',
+      'The buy side of a UAE car marketplace, designed as an app and a desktop site: timed auctions with Fair Market Value under every bid, then a five-stage order path through negotiation, payment, delivery and title transfer.',
     company: CARSPARENCY,
     role: CARSPARENCY_ROLE,
     kind: ['product'],
     order: 20,
     status: 'published',
     cover: {
-      path: 'Docs/Experience/Carsparency-Khodro45/carsparency-pro/assets/auction-list.png',
+      path: 'Docs/Experience/Carsparency-Khodro45/carsparency-pro/assets/app/auction-list-cover.png',
       name: 'carsparency-pro--auction-list.png',
-      alt: 'Carsparency Pro — the auction list on the dark green system, each card showing the current bid against its Fair Market Value',
+      alt: 'Carsparency Pro app — the live auction list filtered by make and year, each card showing a countdown, the current bid and its Fair Market Value',
     },
   },
   {
     slug: 'carsparency-back-office',
     title: 'Carsparency Back Office — the operator console behind the marketplace',
     summary:
-      'The internal console the marketplace actually runs on: 68 desktop screens across a seven-section sidebar, a four-way price model — target, seller, fair, dealer — that makes the pricing negotiation visible, and threaded internal and dealer comment histories.',
+      'The staff console behind the marketplace: 68 desktop screens across a seven-section sidebar, a request quick view with comment and price history, four prices side by side (target, seller, fair and dealer) and the printable inspection report.',
     company: CARSPARENCY,
     role: CARSPARENCY_ROLE,
     kind: ['product', 'data'],
@@ -173,55 +173,55 @@ export const PROJECT_SEED: ProjectSeedRow[] = [
     cover: {
       path: 'Docs/Experience/Carsparency-Khodro45/carsparency-back-office/assets/back-office-list.png',
       name: 'carsparency-back-office--list.png',
-      alt: 'Carsparency Back Office — the operator list view: a dense table of cars in negotiation beside the seven-section sidebar',
+      alt: 'Carsparency Back Office — the requests table beside a seven-section sidebar, with filter, search, group operation and create-request controls',
     },
   },
   {
     slug: 'carsparency-inspection',
     title: 'Carsparency Inspection — turning a physical survey into a structured record',
     summary:
-      'The field tool that produces the evidence the whole marketplace trades on: 25 mobile screens and 22 reusable inspection components covering a nine-area vehicle survey, ownership and title questions, and a resumable workflow — the source of the condition data the dealer app prints.',
+      'The field tool that produces the evidence the marketplace trades on: a queue of cars, a car-details wizard, ten survey areas with pass or fail for each part, and defects recorded with their own photos — the source of the condition data dealers read.',
     company: CARSPARENCY,
     role: CARSPARENCY_ROLE,
     kind: ['product'],
     order: 22,
     status: 'published',
     cover: {
-      path: 'Docs/Experience/Carsparency-Khodro45/carsparency-inspection/assets/inspection-sections.png',
+      path: 'Docs/Experience/Carsparency-Khodro45/carsparency-inspection/assets/2x/car-picture-cover.png',
       name: 'carsparency-inspection--sections.png',
-      alt: 'Carsparency Inspection — the nine-area vehicle survey on mobile, each area showing its completion state',
+      alt: 'Carsparency Inspection — the car pictures page, a grid of photo slots each named for a wheel or corner of the car',
     },
   },
   {
     slug: 'carsparency-web',
-    title: 'Carsparency Web — the seller\u2019s side, built responsively from a benchmark',
+    title: 'Carsparency Web — a seller journey that prices the car first',
     summary:
-      'The consumer-facing seller journey designed desktop and mobile in parallel — 42 screens at 1440px and 38 at 375px — openly modelled on Motorway, with a licence-plate-first valuation entry, a four-promise value proposition, a four-step explainer and a multi-section car profile builder.',
+      'The private seller’s side, on mobile and desktop: a three-step wizard that shows an estimated price before the detailed questions, turns blockers such as an outstanding loan into choices, and guides a self-inspection in sixteen photos.',
     company: CARSPARENCY,
     role: CARSPARENCY_ROLE,
     kind: ['product', 'growth'],
     order: 23,
     status: 'published',
     cover: {
-      path: 'Docs/Experience/Carsparency-Khodro45/carsparency-web/assets/home-desktop.png',
+      path: 'Docs/Experience/Carsparency-Khodro45/carsparency-web/assets/site/home-fold.png',
       name: 'carsparency-web--home-desktop.png',
-      alt: 'Carsparency Web — the seller home page on desktop, opening on the licence-plate valuation entry',
+      alt: 'Carsparency Web — the seller home page on desktop, with a valuation box offering licence plate, VIN or make and model',
     },
   },
   {
     slug: 'carsparency-design-system',
-    title: 'Carsparency design system — twelve ramps, five weights and a borrowed vocabulary',
+    title: 'Carsparency design system — one library under four products',
     summary:
-      'The shared foundation under Pro, Back Office, Inspection and Web: 12 colour ramps of 10 steps published as Figma variables, a five-weight type scale, a full button state matrix, eleven component boards and an icon library of 11,326 nodes.',
+      'The shared library under Pro, Back Office, Inspection and Web: twelve colour ramps, a five-weight type board and 15 component sets holding 265 variants, consumed by all four product files in a light and a dark theme.',
     company: CARSPARENCY,
     role: CARSPARENCY_ROLE,
     kind: ['systems'],
     order: 24,
     status: 'published',
     cover: {
-      path: 'Docs/Experience/Carsparency-Khodro45/carsparency-design-system/assets/color-ramps.png',
+      path: 'Docs/Experience/Carsparency-Khodro45/carsparency-design-system/assets/site/color-ramps.png',
       name: 'carsparency-design-system--color-ramps.png',
-      alt: 'Carsparency design system — the twelve colour ramps, ten steps each, published as Figma variables',
+      alt: 'Carsparency design system — the colour board: primary green, gray and further ramps from 900 to 50, with 500 marked as the main step',
     },
   },
 
@@ -550,9 +550,10 @@ export const PROJECT_SEED: ProjectSeedRow[] = [
     status: 'published',
     period: { start: '2026-07-01T00:00:00.000Z' },
     cover: {
-      path: 'Docs/Experience/Projects/yaravan/assets/userpanel/desktop/01-desk.png',
+      // The case study's crop of the same screen, without the dev-mode badge.
+      path: 'Docs/Experience/Projects/yaravan/assets/crops/cover.png',
       name: 'yaravan--userpanel-desk.png',
-      alt: 'Yaravan — the customer panel desk on desktop in Persian, listing registered products and their warranty state',
+      alt: 'Yaravan — the customer panel home on desktop in Persian: active warranties, open requests and a button to register a repair',
     },
   },
   {

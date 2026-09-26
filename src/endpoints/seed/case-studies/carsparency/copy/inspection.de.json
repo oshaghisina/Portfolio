@@ -1,0 +1,203 @@
+{
+  "statement": "Ein mobiles Tool, das den Rundgang ums Auto in strukturierte Belege verwandelt: zehn Prüfbereiche, Mängel mit Fotos und ein Protokoll als Basis des Marktes.",
+  "industry": "Automobil-Marktplatz · Außendienst",
+  "team": "Produktdesigner; die Zahl der Prüfer und das weitere Team sind in den Dateien nicht festgehalten",
+  "heroCaption": "Die App der Prüfer: das Prüf-Dashboard mit bestandenen und nicht bestandenen Punkten je Bereich, die Prüfwarteschlange und die Checkliste für Reifen und Karosserie.",
+  "snapshot": {
+    "problem": "Händler bieten auf Autos, die sie nie zu Gesicht bekommen – die Inspektion ist also der Beleg, auf dem das Produkt beruht. Aus einem physischen, wechselhaften Rundgang musste ein einheitliches Protokoll werden.",
+    "role": "Produktdesigner der Inspektions-App: Warteschlange, Fahrzeugdaten-Assistent, Checklisten je Bereich, Mängelerfassung und Fotoaufnahme.",
+    "result": "27 mobile Frames und drei lokale Komponentensets. Die Dateien enthalten keine Angaben zu Praxiseinsatz, Zahl der Prüfer oder Zeitaufwand."
+  },
+  "alt": {
+    "dashboard": "Carsparency Inspection — das Prüf-Dashboard: Dokumente, Fahrzeuginformationen, Bilder und Videos sowie zehn Bereiche, jeweils mit der Zahl nicht bestandener und bestandener Punkte",
+    "list": "Carsparency Inspection — die Prüfwarteschlange mit den Tabs Alle, In Bearbeitung und Geprüft sowie Autos, die zum Start oder zur Fortsetzung bereitstehen",
+    "tireBody": "Carsparency Inspection — die Checkliste für Reifen und Karosserie mit Bestanden oder Nicht bestanden je Teil und Mängelschaltern mit Beschreibungen und Fotos",
+    "wizard1": "Carsparency Inspection — der Fahrzeugdaten-Assistent, Schritt eins: Kilometerbereich, Fahrzeughalter, GCC-Spezifikation und Farbe",
+    "wizard2": "Carsparency Inspection — derselbe Assistent mit einer unbeantworteten Frage zum Halter, rot umrandet",
+    "pictures": "Carsparency Inspection — die Seite mit den Fahrzeugfotos, ein Raster aus Fotoplätzen, die jeweils nach einem Rad oder einer Ecke des Autos benannt sind",
+    "takePicture": "Carsparency Inspection — das Upload-Sheet mit Galerie oder Kamera, das danach zum nächsten benannten Blickwinkel weitergeht",
+    "reportDefects": "Carsparency-Prüfbericht — die Mängelseite auf einer Explosionsdarstellung des Autos, mit Legende für nachlackierte, lackierte, originale und nicht verfügbare Teile"
+  },
+  "chapters": {
+    "context": {
+      "heading": "Der Beleg hinter jedem Gebot",
+      "body": [
+        "Auf Carsparency kauft ein Händler ein Auto, ohne es zu sehen. Vertrauen schenkt er stattdessen der Inspektion: dem Protokoll eines Carsparency-Prüfers zum Zustand des Autos, das auf jeder Detailseite der Händler-App erscheint und in dem Bericht, den das Unternehmen übergibt.",
+        "Erstellt wird dieses Protokoll in der Inspektions-App. Ihre Datei umfasst 27 mobile Frames, drei lokale Komponentensets und eine Benchmark-Seite einer anderen Inspektions-App, die als Referenz aufbewahrt wurde."
+      ]
+    },
+    "problem": {
+      "heading": "Ein Rundgang ums Auto folgt keiner festen Ordnung",
+      "body": [
+        "Ein Prüfer arbeitet im Stehen neben dem Auto, auf dem Smartphone, und kein Auto gleicht dem anderen: Die Ausstattung unterscheidet sich, und ein Firmenwagen hat einen anderen Halter als ein Privatwagen. Trotzdem muss das Ergebnis von Auto zu Auto vergleichbar sein.",
+        "Die Designaufgabe: eine Struktur vorgeben, der der Prüfer in beliebiger Reihenfolge folgen kann – ohne ihn tippen zu lassen, was er antippen kann, und ohne dass ein ausgelassener Bereich unbemerkt durchrutscht."
+      ]
+    },
+    "flow": {
+      "heading": "Von der Warteschlange zum vollständigen Protokoll",
+      "customLabel": "Ablauf",
+      "body": [
+        "Der Prüfer startet in einer Warteschlange, aufgeteilt in Alle, In Bearbeitung und Geprüft. Jede Karte zeigt, ob das Auto zum Start bereitsteht oder schon halb erledigt ist, sodass unterbrochene Inspektionen mit Fortsetzen wieder aufgenommen statt neu begonnen werden.",
+        "Ein kurzer Assistent erfasst zuerst die Identität des Autos. Dann öffnet ein Dashboard die zehn Prüfbereiche als Kacheln, jede mit der Zahl nicht bestandener und bestandener Prüfpunkte, dazu ein Balken für die Restzeit und unten eine einzige Aktion: Inspektion abschließen."
+      ]
+    },
+    "solution": {
+      "heading": "Das Normale antippen, das Abweichende dokumentieren",
+      "body": [
+        "Innerhalb eines Bereichs ist jedes Teil eine Zeile mit einem Button für Bestanden und einem für Nicht bestanden. Wird kein Mangel gemeldet, wird ein Standardwert erfasst – so verwendet der Prüfer seine Zeit nur auf Ausnahmen.",
+        "Ein Mangel öffnet eigene Bedienelemente, je einen Schalter für Hagelschaden, lackiert, teilweise nachlackiert, Delle, Kratzer und ersetzt, und jeder aktivierte Schalter verlangt eine Beschreibung und eigene Fotos. Bilder werden in benannten Plätzen aufgenommen (Felge vorn Fahrerseite, hintere Ecke Beifahrerseite und so weiter), damit der Fotosatz vollständig und vergleichbar ist statt einer bloßen Kamerarolle."
+      ],
+      "bullets": [
+        "Warteschlange: alle, in Bearbeitung und geprüft, mit Suche und Leerzuständen",
+        "Fahrzeugdaten: Kilometerbereich, Fahrzeughalter, GCC-Spezifikation, Farbe, Schlüssel und Standort",
+        "Zehn Bereiche: Karosserie, Getriebe, Motor, Fahrgestell, Fahrwerk und Bremsen, Reifen, Innenraum und Elektrik, Klimaanlage, Glas und Spiegel, Ausstattung",
+        "Belege: Fotos je Mangel, benannte Fotoplätze, Bilder und Videos"
+      ]
+    },
+    "ecosystem": {
+      "heading": "Die Inspektion wird zum Bericht, der Bericht zum Inserat",
+      "customLabel": "Ökosystem",
+      "body": [
+        "Die Inspektion steht zwischen der eigenen Darstellung des Verkäufers und dem Gebot des Händlers. Der Verkäufer beantwortet im Web dieselben Fragen (Halter, Finanzierung, Garantie, Wartungshistorie), und die App des Prüfers verifiziert sie vor Ort.",
+        "Was der Prüfer erfasst, fließt zweifach weiter: in den erweiterten Prüfbericht, dessen Mängelseite dieselbe Explosionsdarstellung des Autos nutzt wie die Händler-App, und in die Zustandsabschnitte, die Händler in Pro lesen, bevor sie bieten."
+      ]
+    }
+  },
+  "figures": {
+    "wizard": {
+      "caption": "Der Fahrzeugdaten-Assistent. Jeder Schritt nennt den nächsten Abschnitt, und eine unbeantwortete Frage wird direkt an ihrer Stelle markiert statt in einem Banner gemeldet.",
+      "items": [
+        "Schritt eins, Basisdaten",
+        "Eine unbeantwortete Frage, markiert"
+      ]
+    },
+    "checklist": {
+      "caption": "Die Checkliste für Reifen und Karosserie, die zentrale Interaktion der App.",
+      "annotations": [
+        "Optionale Ausstattung ist ein Schalter, keine Frage",
+        "Bestanden oder nicht bestanden je Teil, mit einem Tippen",
+        "Der Standardwert gilt, solange kein Mangel gemeldet wird",
+        "Jede Mangelart wird einzeln aktiviert",
+        "Jeder Mangel bekommt eine eigene Beschreibung und eigene Fotos",
+        "Die Restzeit bleibt sichtbar; der Bereich wird mit einer Aktion abgeschlossen"
+      ]
+    },
+    "photos": {
+      "caption": "Belege in benannten Plätzen: Jedes Bild gehört zu einem Blickwinkel des Autos, und das Upload-Sheet springt direkt zum nächsten.",
+      "items": [
+        "Benannte Fotoplätze",
+        "Galerie oder Kamera"
+      ]
+    },
+    "report": {
+      "caption": "Wo die Inspektion landet: die Mängelseite des erweiterten Prüfberichts, gezeichnet auf derselben Explosionsdarstellung des Autos wie in der Händler-App."
+    }
+  },
+  "process": {
+    "heading": "Eine Inspektion, wie die App sie ordnet",
+    "steps": [
+      {
+        "label": "Übernehmen",
+        "note": "Ein Auto aus der Warteschlange wählen oder ein begonnenes fortsetzen."
+      },
+      {
+        "label": "Identifizieren",
+        "note": "Kilometerbereich, Fahrzeughalter, GCC-Spezifikation, Farbe, Schlüssel, Standort."
+      },
+      {
+        "label": "Prüfen",
+        "note": "Zehn Bereiche, jeder eine Checkliste von Teilen mit Bestanden oder Nicht bestanden."
+      },
+      {
+        "label": "Belegen",
+        "note": "Fotos und Beschreibungen der Mängel, dann der benannte Fotosatz."
+      },
+      {
+        "label": "Abschließen",
+        "note": "Die Inspektion schließen, sobald alle Bereiche erledigt sind."
+      }
+    ]
+  },
+  "decisions": {
+    "heading": "Vier Entscheidungen, die die Arbeit aufs Smartphone bringen",
+    "lede": "Aus den Frames abgeleitet; die Datei zeigt die Entscheidungen, nicht die Diskussion dahinter.",
+    "items": [
+      {
+        "title": "Ein Dashboard aus Bereichen statt eines langen Formulars",
+        "why": "Ein Prüfer geht nicht in fester Reihenfolge um ein Auto. Zehn Kacheln mit jeweils eigenen Zahlen für nicht bestanden und bestanden lassen ihn in beliebiger Reihenfolge arbeiten und auf einen Blick sehen, was noch fehlt.",
+        "alternatives": "Ein einziges Scroll-Formular, das jede Änderung der Reihenfolge bestraft."
+      },
+      {
+        "title": "Ausnahmen erfassen, nicht alles",
+        "why": "Jedes Teil hat einen Standardwert, der gilt, solange kein Mangel gemeldet wird. Die meisten Teile der meisten Autos sind in Ordnung, also fließt die Zeit des Prüfers in die, bei denen es nicht so ist.",
+        "tradeoff": "Ein nachlässiger Prüfer kann ein Teil durchwinken, ohne hinzusehen; die Zahlen je Bereich machen das im Nachhinein sichtbar, statt es zu verhindern."
+      },
+      {
+        "title": "Jeder Mangel bringt seinen eigenen Beleg mit",
+        "why": "Ein Kratzer ohne Foto ist eine Meinung. Jede Mangelart öffnet eigene Felder für Beschreibung und Fotos, damit der Bericht, den ein Händler liest, ein Beleg ist und keine Checkliste."
+      },
+      {
+        "title": "Unterbrechungen unschädlich machen",
+        "why": "Karten in der Warteschlange zeigen In Bearbeitung und Fortsetzen, und das Dashboard hält einen Restzeitbalken im Blick. Eine Inspektion, die für einen Anruf unterbrochen wird, geht dort weiter, wo sie aufgehört hat."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "Sinas Anteil",
+    "intro": "Zusammengestellt aus der Inspection-Datei. Die Dateien halten weder die Teamgröße fest noch, wer was entschieden hat; dies ist also die Arbeit in der Datei, kein Anspruch auf alleinige Urheberschaft.",
+    "own": [
+      "Die Prüfwarteschlange mit ihren Zuständen und der Suche",
+      "Der Fahrzeugdaten-Assistent und seine Validierung",
+      "Das Dashboard mit zehn Bereichen und die Checklisten je Bereich",
+      "Mängelerfassung mit Fotos und Beschreibung je Mangel",
+      "Fotoaufnahme nach benannten Blickwinkeln"
+    ],
+    "collaborate": [
+      "Kolleginnen und Kollegen aus Inspektion und Operations, in den Dateien nicht namentlich genannt"
+    ],
+    "note": "Neben der ersten Version des Assistenten liegt in der Datei eine zweite (Version 1 und Version 2); der Schritt zu den Fahrzeugdaten wurde also iteriert."
+  },
+  "outcomes": {
+    "heading": "Was die Datei liefert",
+    "intro": "Zahlen zur gestalteten Arbeit, keine Ergebnisse. Der Profilscreen zeigt Zahlen für geprüfte, abgelehnte und geplante Autos sowie eine Durchschnittszeit, doch das sind Platzhalterwerte, keine erfassten Daten.",
+    "delivered": [
+      {
+        "label": "mobile Frames",
+        "context": "Warteschlange, Assistent, Dashboard, Checklisten, Fotos, Anmeldung und Profil"
+      },
+      {
+        "label": "Prüfbereiche",
+        "context": "Von der Karosserie bis zu Glas und Spiegeln, jeweils mit Zahlen für bestanden und nicht bestanden"
+      },
+      {
+        "label": "Mangelarten je Teil",
+        "context": "Hagelschaden, lackiert, teilweise nachlackiert, Delle, Kratzer und ersetzt"
+      }
+    ],
+    "shipped": [
+      "Prüfwarteschlange und Suche",
+      "Fahrzeugdaten-Assistent",
+      "Prüf-Dashboard mit zehn Bereichen",
+      "Teile-Checklisten mit Mängelerfassung",
+      "Fotoaufnahme in benannten Plätzen",
+      "Tracking von Abschluss und Restzeit"
+    ]
+  },
+  "lessons": {
+    "heading": "Was diese Arbeit gelehrt hat",
+    "items": [
+      {
+        "title": "Erst Struktur macht Felddaten vergleichbar",
+        "body": "Der Wert einer Inspektion liegt darin, dass sich zwei Autos vergleichen lassen. Benannte Fotoplätze, feste Bereiche und feste Mangelarten leisten dafür mehr als noch so viel Freitext."
+      },
+      {
+        "title": "Für die Ausnahme gestalten",
+        "body": "Ein Standardwert je Teil hält den Normalfall bei einem Tippen und spart die Aufmerksamkeit des Prüfers für die Teile, die sie brauchen."
+      },
+      {
+        "title": "Ein Werkzeug, das im Stehen genutzt wird, muss Unterbrechungen verkraften",
+        "body": "Fortsetzbare Inspektionen und ein sichtbarer Zeitbalken zählen im Außeneinsatz so viel wie jeder einzelne Screen."
+      }
+    ]
+  }
+}

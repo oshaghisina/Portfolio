@@ -1,0 +1,180 @@
+{
+  "statement": "The dealer side of a UAE car marketplace: timed auctions up front, and a five-stage path from winning bid to title transfer behind them.",
+  "industry": "Automotive marketplace · B2B",
+  "team": "Product designer; team size and roles are not recorded in the files",
+  "heroCaption": "The dealer app: the live auction list filtered by make and year, the bid sheet, and pending orders that each show their step in the purchase.",
+  "snapshot": {
+    "problem": "A dealer wins a car they have never touched. Price, payment, papers, delivery and title transfer still have to happen, and any of them can stall the trade.",
+    "role": "Product designer on the dealer platform: the app and the desktop web product, from the auction list to title transfer.",
+    "result": "129 app frames and 167 desktop frames covering the whole buy-side lifecycle. The files record no launch date or usage data."
+  },
+  "alt": {
+    "listApp": "Carsparency Pro app — the live auction list filtered by make and year, each card showing a countdown, the current bid and its Fair Market Value",
+    "bidApp": "Carsparency Pro app — the submit-bid sheet over a car's detail page",
+    "ordersApp": "Carsparency Pro app — pending orders, each card carrying its numbered step and the one action it needs",
+    "losing": "Carsparency Pro app — a car detail with the bid marked Losing in red",
+    "winning": "Carsparency Pro app — the same car detail with the bid marked Winning in green",
+    "proxy": "Carsparency Pro app — the proxy-bid sheet for setting a maximum bid",
+    "auctionsWeb": "Carsparency Pro web — the desktop auction list with Live, Upcoming and Inventory tabs and a filter panel",
+    "detailWeb": "Carsparency Pro web — the car detail's price card with current bid, Fair Market Value, remaining time and proxy or direct bid",
+    "ordersWeb": "Carsparency Pro web — pending orders on desktop, each card labelled with its step, such as 3 of 5, pending settlement",
+    "bandNegotiation": "Carsparency Pro web — a price card in negotiation with the seller, with an Increase Price action",
+    "bandDelivery": "Carsparency Pro web — the same price card while the vehicle delivery is pending",
+    "prepayment": "Carsparency Pro web — the pre-payment dialog showing balance due, funds available and wallet use before paying online",
+    "breakdown": "Carsparency Pro web — the price breakdown dialog listing net price, discounts, withholdings and the final amount",
+    "carMap": "Carsparency Pro — an exploded line drawing of a car with the panels laid flat and damage glyphs for dents, scratches and paintwork"
+  },
+  "chapters": {
+    "context": {
+      "heading": "A dealer platform, designed as an app and a desktop site at once",
+      "body": [
+        "Carsparency ran a used-car marketplace in the UAE: private sellers listed a car, an inspector recorded its condition, and verified dealers competed for it in timed auctions. Pro is the dealer side, the product the buyers used.",
+        "Its Figma file holds both halves of that product. Four app pages cover auctions, orders, account and sign-in, and four web pages repeat the same areas at desktop width. Together they hold 129 app frames and 167 desktop frames, most of them states of the same screens rather than new screens."
+      ]
+    },
+    "problem": {
+      "heading": "Winning the auction is the middle of the purchase, not the end",
+      "body": [
+        "A dealer bids on a car they have not seen, against rivals they cannot see, with a countdown running. The auction screens have to make that decision quick and defensible.",
+        "Then the harder part starts. After the hammer the car still has to be priced, paid for in stages, documented, delivered and legally transferred. That work runs between the dealer, the seller and Carsparency's staff, and it can stall at any step. Most marketplace flows stop at the winning bid; this one keeps going."
+      ]
+    },
+    "flow": {
+      "heading": "One lifecycle, five numbered stages",
+      "customLabel": "Flow",
+      "body": [
+        "The largest area of the file is not the auction but Orders. Every won car moves through In Negotiation, Pending and Procured, and a card never just says pending: it says which of five steps the order is on and what comes next.",
+        "The status sits in the same place on every card and every detail page, as a coloured band with a single action beside it, so the dealer can always see whether the next move is theirs."
+      ]
+    },
+    "solution": {
+      "heading": "Auction speed up front, visible paperwork behind it",
+      "body": [
+        "The auction side is built for fast comparison. The countdown turns red in the last minutes, a coloured pill says Winning or Losing, and proxy and automatic bids let a dealer compete without watching the clock.",
+        "The order side is built for trust. Pre-payment shows the balance due, the funds available and the wallet before anything is charged. The price breakdown itemises every deduction, the document list names each paper the transfer needs, and each step has its own failure state (payment failed, upload rejected, over-payment) instead of a generic error."
+      ],
+      "bullets": [
+        "Auctions: Live, Upcoming and Inventory, with filters and sorting",
+        "Bidding: bid, proxy bid, automatic bid and buy it now, with success and error messages",
+        "Orders: negotiation, pre-payment, settlement, proof of payment, delivery and title transfer",
+        "Account: wallet, bank accounts under review, documents, notifications and help"
+      ]
+    },
+    "ecosystem": {
+      "heading": "The last stop for a car that started on the seller's phone",
+      "customLabel": "Ecosystem",
+      "body": [
+        "Everything a dealer reads in Pro was produced upstream. The seller described the car in the web wizard, an inspector verified it in the inspection app, and operators priced it and invited dealers from the back office. Pro is where that record meets a buyer.",
+        "The shared pieces are visible across the files: the same car record (mileage band, GCC specification, title holder, service history), the same condition grades, the same price vocabulary (Fair Market Value here, Fair in the back office) and the same component library underneath."
+      ]
+    }
+  },
+  "figures": {
+    "auctions": {
+      "caption": "The desktop auction list: Live, Upcoming and Inventory tabs, a filter panel for price, mileage, year, make and distance, and on every card the current bid set against Fair Market Value."
+    },
+    "bidStates": {
+      "caption": "The bid card in three states: losing, winning, and a proxy bid being set. The Fair Market Value line stays under the bid in all of them.",
+      "items": ["Losing", "Winning", "Proxy bid"]
+    },
+    "orders": {
+      "caption": "Pending orders on desktop. The strip under each card carries the step number and its name, such as 3 of 5, pending settlement, and the button above it is the one action that step needs."
+    },
+    "detail": {
+      "caption": "The car detail on desktop. The price card pairs the current bid with Fair Market Value, the remaining time and two ways to bid: proxy or direct."
+    },
+    "bands": {
+      "caption": "The same price card at two stages. Only the status band and the action change: in negotiation with the seller, with Increase Price, then pending vehicle delivery.",
+      "items": ["In negotiation", "Pending delivery"]
+    },
+    "payments": {
+      "caption": "Pre-payment and price breakdown, cropped from the desktop dialogs: balance due against funds available, then net price, discounts and withholdings before the final amount.",
+      "items": ["Pre-payment", "Price breakdown"]
+    },
+    "carMap": {
+      "caption": "The exploded car map drawn in the Pro file: roof, bonnet, doors and bumpers laid flat, with glyphs for dents, scratches and paintwork. The same drawing returns on the defects page of the inspection report."
+    }
+  },
+  "process": {
+    "heading": "The buy-side lifecycle as the file lays it out",
+    "steps": [
+      { "label": "Bid", "note": "Live, upcoming and inventory lists; bid, proxy bid, automatic bid or buy it now; winning and losing states." },
+      { "label": "Negotiate", "note": "If the seller declines, raise the offer or accept the seller's price." },
+      { "label": "Pre-pay", "note": "Pay from the wallet or online, with the funds available shown first." },
+      { "label": "Settle", "note": "Price breakdown, final settlement and proof of payment, with rejected and over-payment states." },
+      { "label": "Transfer", "note": "Pending vehicle delivery, then waiting on title transfer, then procured." }
+    ]
+  },
+  "decisions": {
+    "heading": "Four decisions that shape the dealer's day",
+    "lede": "These choices are visible in the frames. The file does not record the reasoning, so the reasons below are read from how the screens are built.",
+    "items": [
+      {
+        "title": "Print Fair Market Value under every bid",
+        "why": "A dealer bidding against a clock needs a reference point that is not the other bidders. Showing the platform's valuation next to the current bid, on the list and on the detail page, turns each bid into a comparison rather than a guess.",
+        "tradeoff": "It opens the valuation to argument: a bid far above Fair Market Value invites the question why."
+      },
+      {
+        "title": "Number the steps after the hammer",
+        "why": "Pending tells a dealer nothing about what to do. Step 1 of 5, pending pre-payment, tells them where they are, how much is left and whose move it is.",
+        "alternatives": "A single in-progress state, or a separate timeline page."
+      },
+      {
+        "title": "One detail template for the whole lifecycle",
+        "why": "The car page a dealer bid from is the page they later track delivery on. Only the status band and its single action change, so nothing has to be relearned between stages.",
+        "tradeoff": "The page stays long: the inspection report sits below the price card at every stage."
+      },
+      {
+        "title": "Show the cost of winning before asking for it",
+        "why": "The price breakdown separates net purchase price, discounts and withholdings, and the bid sheet adds transport and extended buyer assurance, so the dealer sees the landed cost rather than the hammer price."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "Sina's part",
+    "intro": "Listed from the Pro file. The files do not record team size or who decided what, so this is the work in the file, not a claim of sole authorship.",
+    "own": [
+      "Navigation and structure for the app and the desktop web product",
+      "The auction list, filters, and the bid, proxy and automatic-bid states",
+      "The order lifecycle: negotiation, payment, settlement, delivery and title-transfer states",
+      "Account, wallet, bank-account and document flows with their review states",
+      "The exploded car map used to locate damage"
+    ],
+    "collaborate": ["Engineering and operations colleagues, not named in the files"],
+    "note": "The file also keeps an Updates page and numbered card tests (Test 2 to Test 7), evidence that the auction card was iterated rather than drawn once."
+  },
+  "outcomes": {
+    "heading": "What the file delivers",
+    "intro": "Counts of designed frames, not results. No launch date, usage or conversion figure is recorded in the Carsparency files.",
+    "delivered": [
+      { "label": "app frames", "context": "Four app pages: Auctions, My Cars, Account, and Login and Onboarding" },
+      { "label": "desktop frames", "context": "Four web pages repeating the same areas at 1,440 px" },
+      { "label": "numbered order stages", "context": "From pre-payment to proof of payment, each with its own status and action" }
+    ],
+    "shipped": [
+      "Auction list, filters and sorting",
+      "Bid, proxy bid, automatic bid and buy it now",
+      "Negotiation and counter-offers",
+      "Pre-payment, settlement and proof of payment",
+      "Delivery and title-transfer tracking",
+      "Wallet, bank accounts and documents"
+    ]
+  },
+  "lessons": {
+    "heading": "What this work taught",
+    "items": [
+      {
+        "title": "Design the part after the success state",
+        "body": "The winning bid is where most auction flows end. Here it is roughly the midpoint, and the frames after it (payments, papers, delivery) outnumber the auction screens."
+      },
+      {
+        "title": "Numbers beat adjectives in a status",
+        "body": "Step 3 of 5, pending settlement, answers the three questions a dealer has: where am I, how much is left, and what do I do next. Pending on its own answers none of them."
+      },
+      {
+        "title": "Placeholder data hides the hard cases",
+        "body": "Every card in the file shows the same car and the same price, so the layout is never tested against a long title, a cheap car beside an expensive one, or a bid far above its valuation."
+      }
+    ]
+  }
+}

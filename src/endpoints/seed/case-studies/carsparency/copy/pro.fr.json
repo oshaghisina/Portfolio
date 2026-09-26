@@ -1,0 +1,180 @@
+{
+  "statement": "Le côté négociant d'une place de marché automobile aux EAU : enchères chronométrées en façade, puis cinq étapes de l'offre gagnante au transfert de propriété.",
+  "industry": "Place de marché automobile · B2B",
+  "team": "Designer produit ; la taille et les rôles de l'équipe ne sont pas consignés dans les fichiers",
+  "heroCaption": "L'app négociant : la liste des enchères en cours filtrée par marque et année, le formulaire d'offre et les commandes en attente, chacune indiquant son étape dans l'achat.",
+  "snapshot": {
+    "problem": "Un négociant remporte une voiture qu'il n'a jamais touchée. Le prix, le paiement, les papiers, la livraison et le transfert de propriété restent à régler, et chacun peut bloquer la transaction.",
+    "role": "Designer produit de la plateforme négociants : l'app et le produit web desktop, de la liste des enchères au transfert de propriété.",
+    "result": "129 frames d'app et 167 frames desktop couvrant tout le cycle d'achat. Les fichiers ne consignent ni date de lancement ni données d'usage."
+  },
+  "alt": {
+    "listApp": "App Carsparency Pro — la liste des enchères en cours filtrée par marque et année ; chaque carte affiche un compte à rebours, l'offre actuelle et sa Fair Market Value (juste valeur marchande)",
+    "bidApp": "App Carsparency Pro — le formulaire d'envoi d'offre affiché par-dessus la fiche d'une voiture",
+    "ordersApp": "App Carsparency Pro — les commandes en attente, chaque carte portant son étape numérotée et l'unique action qu'elle requiert",
+    "losing": "App Carsparency Pro — la fiche d'une voiture avec l'offre marquée « Dépassée » en rouge",
+    "winning": "App Carsparency Pro — la même fiche avec l'offre marquée « En tête » en vert",
+    "proxy": "App Carsparency Pro — le formulaire d'offre proxy pour fixer une offre maximale",
+    "auctionsWeb": "Web Carsparency Pro — la liste des enchères sur desktop avec les onglets « En cours », « À venir » et « Stock » et un panneau de filtres",
+    "detailWeb": "Web Carsparency Pro — la carte de prix de la fiche avec l'offre actuelle, la Fair Market Value, le temps restant et l'offre proxy ou directe",
+    "ordersWeb": "Web Carsparency Pro — les commandes en attente sur desktop, chaque carte étiquetée avec son étape, par exemple « 3 sur 5, règlement en attente »",
+    "bandNegotiation": "Web Carsparency Pro — une carte de prix en négociation avec le vendeur, avec l'action « Augmenter le prix »",
+    "bandDelivery": "Web Carsparency Pro — la même carte de prix pendant que la livraison du véhicule est en attente",
+    "prepayment": "Web Carsparency Pro — la fenêtre d'acompte indiquant le solde dû, les fonds disponibles et l'utilisation du portefeuille avant le paiement en ligne",
+    "breakdown": "Web Carsparency Pro — la fenêtre de détail du prix listant le prix net, les remises, les retenues et le montant final",
+    "carMap": "Carsparency Pro — un dessin au trait éclaté d'une voiture, panneaux mis à plat, avec des pictogrammes pour les bosses, les rayures et la peinture"
+  },
+  "chapters": {
+    "context": {
+      "heading": "Une plateforme négociants, conçue à la fois comme app et comme site desktop",
+      "body": [
+        "Carsparency exploitait une place de marché de voitures d'occasion aux EAU : des particuliers mettaient leur voiture en vente, un inspecteur en consignait l'état et des négociants vérifiés se la disputaient lors d'enchères chronométrées. Pro est le côté négociant, le produit qu'utilisaient les acheteurs.",
+        "Son fichier Figma réunit les deux moitiés de ce produit. Quatre pages d'app couvrent les enchères, les commandes, le compte et la connexion, et quatre pages web reprennent les mêmes espaces en largeur desktop. Ensemble, elles comptent 129 frames d'app et 167 frames desktop, pour la plupart des états des mêmes écrans plutôt que de nouveaux écrans."
+      ]
+    },
+    "problem": {
+      "heading": "Remporter l'enchère, c'est le milieu de l'achat, pas la fin",
+      "body": [
+        "Un négociant enchérit sur une voiture qu'il n'a pas vue, face à des concurrents qu'il ne voit pas, pendant qu'un compte à rebours défile. Les écrans d'enchères doivent rendre cette décision rapide et défendable.",
+        "Puis commence la partie la plus difficile. Après l'adjudication, il reste à fixer le prix de la voiture, à la payer en plusieurs fois, à la documenter, à la livrer et à en transférer légalement la propriété. Ce travail se joue entre le négociant, le vendeur et les équipes de Carsparency, et peut se bloquer à chaque étape. La plupart des parcours de place de marché s'arrêtent à l'offre gagnante ; celui-ci continue."
+      ]
+    },
+    "flow": {
+      "heading": "Un cycle de vie, cinq étapes numérotées",
+      "customLabel": "Parcours",
+      "body": [
+        "La plus grande partie du fichier n'est pas l'enchère mais les Commandes. Chaque voiture remportée passe par « En négociation », « En attente » et « Acquise », et aucune carte ne se contente de dire « en attente » : elle indique à laquelle des cinq étapes se trouve la commande et ce qui vient ensuite.",
+        "Le statut occupe la même place sur chaque carte et chaque fiche, sous forme de bandeau coloré accompagné d'une seule action, pour que le négociant voie toujours si c'est à lui de jouer."
+      ]
+    },
+    "solution": {
+      "heading": "La vitesse des enchères devant, les démarches visibles derrière",
+      "body": [
+        "Le côté enchères est conçu pour comparer vite. Le compte à rebours passe au rouge dans les dernières minutes, une pastille colorée indique « En tête » ou « Dépassée », et les offres proxy et automatiques permettent au négociant de rester en course sans surveiller l'horloge.",
+        "Le côté commandes est conçu pour la confiance. L'acompte affiche le solde dû, les fonds disponibles et le portefeuille avant tout débit. Le détail du prix ventile chaque déduction, la liste des documents nomme chaque pièce nécessaire au transfert, et chaque étape a son propre état d'échec (paiement refusé, document rejeté, paiement excédentaire) plutôt qu'une erreur générique."
+      ],
+      "bullets": [
+        "Enchères : En cours, À venir et Stock, avec filtres et tri",
+        "Offres : offre, offre proxy, offre automatique et achat immédiat, avec messages de succès et d'erreur",
+        "Commandes : négociation, acompte, règlement, justificatif de paiement, livraison et transfert de propriété",
+        "Compte : portefeuille, comptes bancaires en cours de vérification, documents, notifications et aide"
+      ]
+    },
+    "ecosystem": {
+      "heading": "Le dernier arrêt d'une voiture partie du téléphone du vendeur",
+      "customLabel": "Écosystème",
+      "body": [
+        "Tout ce qu'un négociant lit dans Pro a été produit en amont. Le vendeur a décrit la voiture dans l'assistant web, un inspecteur l'a vérifiée dans l'app d'inspection, et les opérateurs en ont fixé le prix et ont invité des négociants depuis le back-office. Pro est l'endroit où ce dossier rencontre un acheteur.",
+        "Les éléments partagés se retrouvent d'un fichier à l'autre : la même fiche véhicule (tranche de kilométrage, spécification GCC, titulaire du titre de propriété, historique d'entretien), les mêmes notes d'état, le même vocabulaire de prix (Fair Market Value ici, Fair dans le back-office) et, en dessous, la même bibliothèque de composants."
+      ]
+    }
+  },
+  "figures": {
+    "auctions": {
+      "caption": "La liste des enchères sur desktop : onglets « En cours », « À venir » et « Stock », panneau de filtres par prix, kilométrage, année, marque et distance, et sur chaque carte l'offre actuelle face à la Fair Market Value (juste valeur marchande)."
+    },
+    "bidStates": {
+      "caption": "La carte d'offre dans trois états : dépassée, en tête, et pendant le réglage d'une offre proxy. La ligne Fair Market Value reste sous l'offre dans tous les cas.",
+      "items": ["Dépassée", "En tête", "Offre proxy"]
+    },
+    "orders": {
+      "caption": "Les commandes en attente sur desktop. La bande sous chaque carte porte le numéro et le nom de l'étape, par exemple « 3 sur 5, règlement en attente », et le bouton au-dessus est l'unique action que requiert cette étape."
+    },
+    "detail": {
+      "caption": "La fiche véhicule sur desktop. La carte de prix associe l'offre actuelle à la Fair Market Value, au temps restant et à deux façons d'enchérir : proxy ou directe."
+    },
+    "bands": {
+      "caption": "La même carte de prix à deux étapes. Seuls le bandeau de statut et l'action changent : en négociation avec le vendeur, avec « Augmenter le prix », puis livraison du véhicule en attente.",
+      "items": ["En négociation", "Livraison en attente"]
+    },
+    "payments": {
+      "caption": "Acompte et détail du prix, recadrés depuis les fenêtres desktop : solde dû face aux fonds disponibles, puis prix net, remises et retenues avant le montant final.",
+      "items": ["Acompte", "Détail du prix"]
+    },
+    "carMap": {
+      "caption": "La carte éclatée de la voiture dessinée dans le fichier Pro : toit, capot, portières et pare-chocs mis à plat, avec des pictogrammes pour les bosses, les rayures et la peinture. Le même dessin revient sur la page des défauts du rapport d'inspection."
+    }
+  },
+  "process": {
+    "heading": "Le cycle d'achat tel que le fichier l'organise",
+    "steps": [
+      { "label": "Enchérir", "note": "Listes en cours, à venir et stock ; offre, offre proxy, offre automatique ou achat immédiat ; états en tête et dépassée." },
+      { "label": "Négocier", "note": "Si le vendeur refuse, relever l'offre ou accepter son prix." },
+      { "label": "Verser l'acompte", "note": "Payer depuis le portefeuille ou en ligne, avec les fonds disponibles affichés d'abord." },
+      { "label": "Régler", "note": "Détail du prix, règlement final et justificatif de paiement, avec les états rejeté et paiement excédentaire." },
+      { "label": "Transférer", "note": "Livraison du véhicule en attente, puis attente du transfert de propriété, puis acquise." }
+    ]
+  },
+  "decisions": {
+    "heading": "Quatre décisions qui façonnent la journée du négociant",
+    "lede": "Ces choix sont visibles dans les frames. Le fichier ne consigne pas le raisonnement ; les raisons ci-dessous sont donc déduites de la façon dont les écrans sont construits.",
+    "items": [
+      {
+        "title": "Afficher la Fair Market Value sous chaque offre",
+        "why": "Un négociant qui enchérit contre la montre a besoin d'un repère qui ne vienne pas des autres enchérisseurs. Afficher l'estimation de la plateforme à côté de l'offre actuelle, dans la liste comme sur la fiche, transforme chaque offre en comparaison plutôt qu'en pari.",
+        "tradeoff": "L'estimation s'expose à la discussion : une offre très au-dessus de la Fair Market Value invite à demander pourquoi."
+      },
+      {
+        "title": "Numéroter les étapes après l'adjudication",
+        "why": "« En attente » ne dit rien au négociant sur ce qu'il doit faire. « Étape 1 sur 5, acompte en attente » lui dit où il en est, ce qu'il reste à faire et à qui c'est le tour.",
+        "alternatives": "Un état unique « en cours », ou une page de chronologie séparée."
+      },
+      {
+        "title": "Un seul gabarit de fiche pour tout le cycle",
+        "why": "La page depuis laquelle le négociant a enchéri est celle où il suit ensuite la livraison. Seuls le bandeau de statut et son unique action changent : rien n'est à réapprendre d'une étape à l'autre.",
+        "tradeoff": "La page reste longue : le rapport d'inspection se trouve sous la carte de prix à chaque étape."
+      },
+      {
+        "title": "Montrer le coût de la victoire avant de le demander",
+        "why": "Le détail du prix sépare prix d'achat net, remises et retenues, et le formulaire d'offre ajoute le transport et la garantie acheteur étendue, pour que le négociant voie le coût de revient réel et non le seul prix d'adjudication."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "La part de Sina",
+    "intro": "Relevé dans le fichier Pro. Les fichiers ne consignent ni la taille de l'équipe ni qui a décidé quoi : il s'agit donc du travail présent dans le fichier, pas d'une revendication de paternité exclusive.",
+    "own": [
+      "Navigation et structure de l'app et du produit web desktop",
+      "La liste des enchères, les filtres et les états d'offre, d'offre proxy et d'offre automatique",
+      "Le cycle de la commande : états de négociation, paiement, règlement, livraison et transfert de propriété",
+      "Les parcours compte, portefeuille, compte bancaire et documents, avec leurs états de vérification",
+      "La carte éclatée de la voiture pour localiser les dommages"
+    ],
+    "collaborate": ["Des collègues de l'ingénierie et des opérations, non nommés dans les fichiers"],
+    "note": "Le fichier conserve aussi une page Updates et des tests de carte numérotés (Test 2 à Test 7), preuve que la carte d'enchère a été itérée plutôt que dessinée d'un seul jet."
+  },
+  "outcomes": {
+    "heading": "Ce que livre le fichier",
+    "intro": "Des nombres de frames conçues, pas des résultats. Aucune date de lancement, donnée d'usage ou taux de conversion n'est consigné dans les fichiers Carsparency.",
+    "delivered": [
+      { "label": "frames d'app", "context": "Quatre pages d'app : Enchères, Mes voitures, Compte, et Connexion et onboarding" },
+      { "label": "frames desktop", "context": "Quatre pages web qui reprennent les mêmes espaces en 1 440 px" },
+      { "label": "étapes de commande numérotées", "context": "De l'acompte au justificatif de paiement, chacune avec son statut et son action" }
+    ],
+    "shipped": [
+      "Liste des enchères, filtres et tri",
+      "Offre, offre proxy, offre automatique et achat immédiat",
+      "Négociation et contre-offres",
+      "Acompte, règlement et justificatif de paiement",
+      "Suivi de la livraison et du transfert de propriété",
+      "Portefeuille, comptes bancaires et documents"
+    ]
+  },
+  "lessons": {
+    "heading": "Ce que ce travail a appris",
+    "items": [
+      {
+        "title": "Concevoir ce qui suit l'état de réussite",
+        "body": "L'offre gagnante est l'endroit où s'arrêtent la plupart des parcours d'enchères. Ici, elle se situe à peu près à mi-chemin, et les frames qui suivent (paiements, papiers, livraison) sont plus nombreuses que les écrans d'enchères."
+      },
+      {
+        "title": "Dans un statut, les chiffres valent mieux que les adjectifs",
+        "body": "« Étape 3 sur 5, règlement en attente » répond aux trois questions d'un négociant : où en suis-je, que reste-t-il, et que dois-je faire ensuite ? « En attente » seul ne répond à aucune."
+      },
+      {
+        "title": "Les données fictives masquent les cas difficiles",
+        "body": "Chaque carte du fichier montre la même voiture au même prix, si bien que la mise en page n'est jamais éprouvée face à un titre long, une voiture bon marché à côté d'une voiture chère, ou une offre très au-dessus de son estimation."
+      }
+    ]
+  }
+}

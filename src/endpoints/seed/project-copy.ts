@@ -241,162 +241,162 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
   },
   'carsparency-pro': {
     fa: {
-      title: 'Carsparency Pro — اپلیکیشن نمایشگاه‌داران برای بازار انگلیسی‌زبان',
+      title: 'Carsparency Pro — پلتفرم نمایشگاه‌داران، از پیشنهاد تا انتقال سند',
       summary:
-        'اپلیکیشن سمت خریدار را با هویت بصری سبز تیره برای بازار انگلیسی‌زبان بازسازی کردم. مزایده‌های جاری و آینده، گزارش خسارت هر قطعه در صفحه‌ای ۵۷۷۹ پیکسلی، وضعیت برد و باخت پیشنهاد و ارزش منصفانهٔ بازار روی هر کارت، بخش‌های اصلی آن‌اند. معیار قیمت منصفانه از Khodro45 به این محصول منتقل شد.',
+        'بخش خرید یک بازار آنلاین خودرو در امارات، طراحی‌شده به‌صورت اپ و سایت دسکتاپ: مزایده‌های زمان‌دار با ارزش منصفانهٔ بازار (Fair Market Value) زیر هر پیشنهاد، و سپس مسیری پنج‌مرحله‌ای برای سفارش، از مذاکره و پرداخت تا تحویل و انتقال سند.',
     },
     ar: {
-      title: 'Carsparency Pro — تطبيق التجّار معادًا بناؤه لسوق ناطق بالإنجليزية',
+      title: 'Carsparency Pro — منصة التجار، من العرض حتى نقل الملكية',
       summary:
-        'تطبيق جانب الشراء معادًا بناؤه بالإنجليزية على نظام أخضر داكن: مزادات جارية وقادمة، وتقرير أضرار قطعة بقطعة داخل صفحة تفاصيل بارتفاع 5779 بكسل، وحالات ربح وخسارة المزايدة، و«القيمة السوقية العادلة» على كل بطاقة — الوريث المباشر لمرتكز السعر العادل في خودرو45.',
+        'جانب الشراء في سوق سيارات إماراتي، صُمّم تطبيقًا وموقعًا لسطح المكتب: مزادات موقوتة تُظهر القيمة السوقية العادلة (Fair Market Value) تحت كل عرض، ثم مسار طلب من خمس مراحل يمر بالتفاوض والدفع والتسليم ونقل الملكية.',
     },
     es: {
-      title: 'Carsparency Pro — la app de concesionarios, rehecha para un mercado anglófono',
+      title: 'Carsparency Pro — la plataforma para concesionarios, de la puja al traspaso de titularidad',
       summary:
-        'La app del lado comprador rehecha en inglés sobre un sistema verde oscuro: subastas en curso y próximas, un informe de daños panel por panel dentro de una ficha de 5.779 px, estados de puja ganada y perdida, y un Fair Market Value en cada tarjeta, heredero directo del ancla de precio justo de Khodro45.',
+        'El lado comprador de un marketplace de coches en EAU, diseñado como app y como web de escritorio: subastas cronometradas con el Fair Market Value bajo cada puja y, después, un recorrido de pedido en cinco etapas por la negociación, el pago, la entrega y el traspaso de titularidad.',
     },
     de: {
-      title: 'Carsparency Pro — die Händler-App, neu gebaut für einen englischsprachigen Markt',
+      title: 'Carsparency Pro — die Händlerplattform, vom Gebot bis zur Eigentumsübertragung',
       summary:
-        'Die Käuferseite, auf einem dunkelgrünen System in Englisch neu gebaut: laufende und kommende Auktionen, ein Schadensbericht Teil für Teil in einer 5.779 px hohen Detailseite, Gewinn- und Verlust-Zustände des Gebots und ein Fair Market Value auf jeder Karte — direkter Nachfahre von Khodro45s Fair-Price-Anker.',
+        'Die Einkaufsseite eines Automarktplatzes in den VAE, gestaltet als App und Desktop-Website: zeitlich begrenzte Auktionen mit dem Fair Market Value unter jedem Gebot, danach ein fünfstufiger Auftragsweg über Verhandlung, Zahlung, Lieferung und Eigentumsübertragung.',
     },
     fr: {
-      title: 'Carsparency Pro — l’app concessionnaires, refaite pour un marché anglophone',
+      title: 'Carsparency Pro — la plateforme négociants, de l\'offre au transfert de propriété',
       summary:
-        'L’application côté acheteur refaite en anglais sur un système vert sombre : enchères en cours et à venir, rapport de dommages panneau par panneau dans une fiche de 5 779 px, états d’enchère gagnée et perdue, et une Fair Market Value sur chaque carte — héritière directe de l’ancrage au prix juste de Khodro45.',
+        'Le côté achat d\'une place de marché automobile aux EAU, conçu comme app et comme site desktop : des enchères chronométrées avec la Fair Market Value sous chaque offre, puis un parcours de commande en cinq étapes, de la négociation au paiement, à la livraison et au transfert de propriété.',
     },
     ja: {
-      title: 'Carsparency Pro — 英語圏市場向けに作り直したディーラーアプリ',
+      title: 'Carsparency Pro — 入札から名義変更までのディーラー向けプラットフォーム',
       summary:
-        'ダークグリーンのシステム上に英語で作り直した購入側アプリ。進行中および今後のオークション、高さ5,779pxの車両詳細に収めたパネル単位のダメージレポート、入札の勝敗ステート、そして全カードに表示されるFair Market Value — Khodro45のフェアプライス基準を直接受け継いだもの。',
+        'UAEの自動車マーケットプレイスの購入側を、アプリとデスクトップサイトとして設計。すべての入札の下にFair Market Value（適正市場価格）を示す時間制オークションと、交渉、支払い、納車、名義変更へと続く5段階の注文フロー。',
     },
   },
   'carsparency-back-office': {
     fa: {
-      title: 'پنل عملیاتی Carsparency — کنسول پشت بازارگاه',
+      title: 'بک‌آفیس Carsparency — کنسول اپراتور در پشت بازار آنلاین',
       summary:
-        'کنسول داخلی بازارگاه با ۶۸ صفحهٔ دسکتاپ و هفت بخش اصلی. چهار قیمتِ هدف، فروشنده، منصفانه و نمایشگاه‌دار را کنار هم نشان می‌دهد تا مذاکرهٔ قیمت روشن باشد؛ سابقهٔ گفت‌وگوهای داخلی و گفت‌وگو با نمایشگاه‌دار هم در آن ثبت می‌شود.',
+        'کنسول کارکنان در پشت بازار آنلاین: ۶۸ صفحهٔ دسکتاپ با نوار کناری هفت‌بخشی، نمای سریع درخواست با تاریخچهٔ کامنت و قیمت، چهار قیمت کنار هم (هدف، فروشنده، منصفانه و نمایشگاه‌دار) و گزارش کارشناسی قابل چاپ.',
     },
     ar: {
-      title: 'Carsparency Back Office — لوحة المشغّل خلف السوق',
+      title: 'المكتب الخلفي لـ Carsparency — لوحة المشغّلين خلف السوق الإلكترونية',
       summary:
-        'اللوحة الداخلية التي يدور عليها السوق فعليًا: 68 شاشة سطح مكتب عبر شريط جانبي من سبعة أقسام، ونموذج سعر رباعي — المستهدف والبائع والعادل والتاجر — يجعل التفاوض على السعر مرئيًا، وسجلّا محادثات داخلي ومع التاجر.',
+        'لوحة الموظفين خلف السوق: 68 شاشة مكتبية عبر شريط جانبي من سبعة أقسام، وعرض سريع للطلب مع سجل التعليقات والأسعار، وأربعة أسعار جنبًا إلى جنب (المستهدف والبائع والعادل والتاجر)، وتقرير الفحص القابل للطباعة.',
     },
     es: {
-      title: 'Carsparency Back Office — la consola de operaciones detrás del marketplace',
+      title: 'Back office de Carsparency — la consola de operaciones detrás del marketplace',
       summary:
-        'La consola interna sobre la que funciona realmente el marketplace: 68 pantallas de escritorio en una barra lateral de siete secciones, un modelo de precio a cuatro bandas —objetivo, vendedor, justo, concesionario— que hace visible la negociación, e historiales de comentarios internos y con el concesionario.',
+        'La consola del equipo detrás del marketplace: 68 pantallas de escritorio con una barra lateral de siete secciones, una vista rápida de solicitudes con historial de comentarios y precios, cuatro precios uno junto a otro (objetivo, del vendedor, justo y del concesionario) y el informe de inspección imprimible.',
     },
     de: {
       title: 'Carsparency Back Office — die Operator-Konsole hinter dem Marktplatz',
       summary:
-        'Die interne Konsole, auf der der Marktplatz tatsächlich läuft: 68 Desktop-Screens in einer Sidebar mit sieben Bereichen, ein vierteiliges Preismodell — Ziel, Verkäufer, Fair, Händler —, das die Preisverhandlung sichtbar macht, und zwei Kommentarverläufe, intern und mit dem Händler.',
+        'Die interne Konsole hinter dem Marktplatz: 68 Desktop-Screens mit einer Seitenleiste aus sieben Bereichen, eine Schnellansicht für Anfragen mit Kommentar- und Preisverlauf, vier Preise nebeneinander (Ziel-, Verkäufer-, fairer und Händlerpreis) und der druckbare Inspektionsbericht.',
     },
     fr: {
-      title: 'Carsparency Back Office — la console opérateur derrière la place de marché',
+      title: 'Back-office Carsparency — la console opérateur derrière la place de marché',
       summary:
-        'La console interne sur laquelle la place de marché tourne réellement : 68 écrans desktop dans une barre latérale de sept sections, un modèle de prix à quatre entrées — cible, vendeur, juste, concessionnaire — qui rend la négociation visible, et deux fils de commentaires, interne et avec le concessionnaire.',
+        'La console interne derrière la place de marché : 68 écrans desktop organisés par une barre latérale en sept sections, une vue rapide des demandes avec historique des commentaires et des prix, quatre prix côte à côte (cible, vendeur, juste et marchand) et le rapport d’inspection imprimable.',
     },
     ja: {
-      title: 'Carsparency Back Office — マーケットプレイスを支えるオペレーターコンソール',
+      title: 'Carsparencyバックオフィス — マーケットプレイスを支えるオペレーターコンソール',
       summary:
-        'マーケットプレイスが実際に動く内部コンソール。7セクションのサイドバーにまたがる68のデスクトップ画面、価格交渉を可視化する4系統の価格モデル（ターゲット／売り手／フェア／ディーラー）、そして社内とディーラー双方のコメント履歴。',
+        'マーケットプレイスの裏側を担うスタッフ用コンソール。7セクションのサイドバーにまたがる68のデスクトップ画面、コメント履歴と価格履歴を備えた依頼のクイックビュー、目標・売り手・適正・ディーラーの四つの価格の並列表示、そして印刷可能な検査レポート。',
     },
   },
   'carsparency-inspection': {
     fa: {
-      title: 'بازرسی Carsparency — ثبت ساختاریافتهٔ وضعیت خودرو',
+      title: 'Carsparency Inspection — تبدیل بازدیدی فیزیکی به سابقه‌ای ساختاریافته',
       summary:
-        'ابزار بازرسی میدانی با ۲۵ صفحهٔ موبایل و ۲۲ جزء قابل استفادهٔ دوباره. معاینهٔ نُه‌بخشی خودرو، پرسش‌های مالکیت و مدارک، و امکان ادامه‌دادن کار نیمه‌تمام را پوشش می‌دهد. دادهٔ وضعیت خودرو از اینجا به اپلیکیشن نمایشگاه‌داران می‌رسد.',
+        'ابزار میدانی‌ای که مدرکِ مبنای معاملات بازار را می‌سازد: صفی از خودروها، ویزارد مشخصات خودرو، ده بخش کارشناسی با قبول یا رد برای هر قطعه، و ایرادهایی که با عکس‌های خودشان ثبت می‌شوند — سرچشمهٔ داده‌های وضعیت خودرو که نمایشگاه‌دارها می‌خوانند.',
     },
     ar: {
-      title: 'Carsparency Inspection — تحويل الفحص المادي إلى سجل منظّم',
+      title: 'Carsparency Inspection — تحويل المعاينة الفعلية إلى سجلّ منظَّم',
       summary:
-        'الأداة الميدانية التي تنتج الدليل الذي يتداوله السوق كله: 25 شاشة للهاتف و22 مكوّن فحص قابلًا لإعادة الاستخدام تغطي فحصًا للسيارة من تسعة أقسام، وأسئلة الملكية وسند التسجيل، وسير عمل يمكن استئنافه — مصدر بيانات الحالة التي يعرضها تطبيق التجّار.',
+        'الأداة الميدانية التي تُنتج الأدلة التي يقوم عليها التداول في السوق: قائمة بالسيارات، ومعالج لتفاصيل السيارة، وعشرة مجالات فحص مع نجاح أو إخفاق لكل قطعة، وعيوب تُسجَّل بصورها الخاصة — مصدر بيانات الحالة التي يقرؤها التجّار.',
     },
     es: {
       title: 'Carsparency Inspection — convertir una revisión física en un registro estructurado',
       summary:
-        'La herramienta de campo que produce la evidencia con la que comercia todo el marketplace: 25 pantallas móviles y 22 componentes de inspección reutilizables que cubren una revisión del vehículo en nueve áreas, las preguntas de propiedad y titularidad, y un flujo que se puede retomar: el origen de los datos de estado que imprime la app de concesionarios.',
+        'La herramienta de campo que produce la evidencia sobre la que opera el marketplace: una cola de coches, un asistente de datos del coche, diez áreas de inspección con aprobado o rechazado para cada pieza y defectos registrados con sus propias fotos — la fuente de los datos de estado que leen los concesionarios.',
     },
     de: {
-      title: 'Carsparency Inspection — eine physische Begutachtung in einen strukturierten Befund verwandeln',
+      title: 'Carsparency Inspection — aus einer physischen Begutachtung wird ein strukturiertes Protokoll',
       summary:
-        'Das Feldwerkzeug, das den Nachweis erzeugt, mit dem der ganze Marktplatz handelt: 25 Mobile-Screens und 22 wiederverwendbare Inspektionsbausteine für eine Fahrzeugbegutachtung in neun Bereichen, die Fragen zu Eigentum und Fahrzeugbrief und ein wiederaufnehmbarer Ablauf — die Quelle der Zustandsdaten, die die Händler-App ausgibt.',
+        'Das Außendienst-Tool, das die Belege liefert, auf denen der Marktplatz handelt: eine Warteschlange von Autos, ein Fahrzeugdaten-Assistent, zehn Prüfbereiche mit Bestanden oder Nicht bestanden für jedes Teil und Mängel mit eigenen Fotos — die Quelle der Zustandsdaten, die Händler lesen.',
     },
     fr: {
-      title: 'Carsparency Inspection — transformer une expertise physique en dossier structuré',
+      title: 'Carsparency Inspection — transformer un examen physique en dossier structuré',
       summary:
-        'L’outil de terrain qui produit la preuve sur laquelle toute la place de marché échange : 25 écrans mobiles et 22 composants d’inspection réutilisables couvrant une expertise du véhicule en neuf zones, les questions de propriété et de carte grise, et un flux que l’on peut reprendre — la source des données d’état qu’imprime l’app concessionnaires.',
+        'L’outil de terrain qui produit les preuves sur lesquelles repose le marché : une file de voitures, un assistant de saisie du véhicule, dix zones d’inspection avec conforme ou non conforme pour chaque pièce, et des défauts enregistrés avec leurs propres photos — la source des données d’état que lisent les marchands.',
     },
     ja: {
-      title: 'Carsparency Inspection — 現車確認を構造化された記録に変える',
+      title: 'Carsparency Inspection — 物理的な車両確認を構造化された記録へ',
       summary:
-        'マーケットプレイス全体が取引する「証拠」を生み出す現場ツール。9領域の車両点検、所有権と登録書類の設問、そして中断して再開できるワークフローを、25のモバイル画面と22の再利用可能な点検コンポーネントで構成 — ディーラーアプリが表示するコンディションデータの出どころ。',
+        'マーケットプレイスの取引を支える証拠を生み出す現場ツール。車両のキュー、車両情報ウィザード、部位ごとに合格・不合格を付ける10の検査エリア、そして専用の写真とともに記録される不具合。ディーラーが読む車両状態データの源泉。',
     },
   },
   'carsparency-web': {
     fa: {
-      title: 'وب‌سایت Carsparency — مسیر فروشنده در دسکتاپ و موبایل',
+      title: 'Carsparency Web — مسیر فروشنده‌ای که اول قیمت خودرو را اعلام می‌کند',
       summary:
-        'مسیر فروشنده را برای دسکتاپ و موبایل، بر پایهٔ الگوی Motorway، طراحی کردم: ۴۲ صفحه در عرض ۱۴۴۰ و ۳۸ صفحه در عرض ۳۷۵ پیکسل. ورود با پلاک، چهار مزیت اصلی، توضیح فرایند در چهار گام و ساخت پروفایل خودرو در چند بخش را شامل می‌شود.',
+        'سمت فروشندهٔ شخصی، در موبایل و دسکتاپ: ویزاردی سه‌مرحله‌ای که پیش از پرسش‌های جزئی قیمتی تخمینی نشان می‌دهد، مانع‌هایی مانند وام باقی‌مانده را به گزینه تبدیل می‌کند و فروشنده را در خودبازرسی با شانزده عکس هدایت می‌کند.',
     },
     ar: {
-      title: 'Carsparency Web — جانب البائع، مبنيًّا بشكل متجاوب انطلاقًا من مرجع',
+      title: 'Carsparency Web — رحلة بائع تبدأ بتسعير السيارة',
       summary:
-        'رحلة البائع على الويب، مصمّمة لسطح المكتب والهاتف بالتوازي — 42 شاشة عند 1440 بكسل و38 عند 375 — مبنية صراحةً على نموذج Motorway، بمدخل تقييم يبدأ من لوحة الترخيص، وأربعة وعود قيمة، وشرح من أربع خطوات، ومُنشئ ملف للسيارة متعدّد الأقسام.',
+        'جانب البائع الفرد، على الجوال وسطح المكتب: معالج من ثلاث خطوات يعرض سعرًا تقديريًا قبل الأسئلة التفصيلية، ويحوّل العوائق مثل القرض القائم إلى خيارات، ويرشد البائع إلى فحص ذاتي عبر ست عشرة صورة.',
     },
     es: {
-      title: 'Carsparency Web — el lado del vendedor, construido responsive a partir de un referente',
+      title: 'Carsparency Web — un recorrido de venta que pone precio al coche primero',
       summary:
-        'El recorrido del vendedor diseñado en paralelo para escritorio y móvil —42 pantallas a 1440 px y 38 a 375— abiertamente modelado sobre Motorway, con una entrada de tasación que empieza por la matrícula, cuatro promesas de valor, un explicador en cuatro pasos y un constructor de ficha del coche en varias secciones.',
+        'El lado del vendedor particular, en móvil y escritorio: un asistente de tres pasos que muestra un precio estimado antes de las preguntas detalladas, convierte obstáculos como un préstamo pendiente en opciones y guía una autoinspección en dieciséis fotos.',
     },
     de: {
-      title: 'Carsparency Web — die Verkäuferseite, responsiv nach einem Vorbild gebaut',
+      title: 'Carsparency Web — eine Verkaufsstrecke, die zuerst den Preis nennt',
       summary:
-        'Die Verkäuferstrecke, parallel für Desktop und Mobile entworfen — 42 Screens bei 1440 px und 38 bei 375 —, offen am Modell von Motorway gebaut, mit einem Bewertungseinstieg über das Kennzeichen, vier Wertversprechen, einer Erklärung in vier Schritten und einem mehrteiligen Fahrzeugprofil-Builder.',
+        'Die Seite privater Verkäufer, mobil und auf dem Desktop: ein dreistufiger Assistent, der vor den Detailfragen einen Schätzpreis zeigt, Hindernisse wie einen offenen Kredit in Wahlmöglichkeiten verwandelt und durch eine Selbstinspektion in sechzehn Fotos führt.',
     },
     fr: {
-      title: 'Carsparency Web — le côté vendeur, construit en responsive à partir d’un modèle',
+      title: 'Carsparency Web — un parcours vendeur qui estime d\'abord la voiture',
       summary:
-        'Le parcours vendeur conçu en parallèle pour desktop et mobile — 42 écrans en 1440 px et 38 en 375 —, ouvertement bâti sur le modèle de Motorway, avec une entrée d’estimation par la plaque d’immatriculation, quatre promesses de valeur, une explication en quatre étapes et un constructeur de profil véhicule en plusieurs sections.',
+        'Le côté du vendeur particulier, sur mobile et desktop : un assistant en trois étapes qui affiche un prix estimé avant les questions détaillées, transforme les blocages comme un prêt en cours en choix, et guide une auto-inspection en seize photos.',
     },
     ja: {
-      title: 'Carsparency Web — ベンチマークから起こした、売り手側のレスポンシブサイト',
+      title: 'Carsparency Web — まず車の価格を示す売却体験',
       summary:
-        'デスクトップとモバイルを並行して設計した売り手の導線 — 1440pxで42画面、375pxで38画面。Motorwayのモデルを明示的に下敷きにし、ナンバープレートから始まる査定入力、4つの価値の約束、4ステップの説明、そして複数セクションからなる車両プロフィールビルダーを備える。',
+        '個人の売り手側を、モバイルとデスクトップで。詳細な質問の前に査定価格を示す3ステップのウィザードが、残っているローンなどの障害を選択肢に変え、16枚の写真によるセルフ点検へと導く。',
     },
   },
   'carsparency-design-system': {
     fa: {
-      title: 'سیستم طراحی Carsparency — پایهٔ مشترک چهار محصول',
+      title: 'دیزاین سیستم Carsparency — یک کتابخانه زیر چهار محصول',
       summary:
-        'پایهٔ مشترک اپلیکیشن نمایشگاه‌داران، پنل عملیاتی، ابزار بازرسی و وب‌سایت: ۱۲ طیف رنگ ده‌پله‌ای در متغیرهای Figma، پنج وزن تایپ، حالت‌های کامل دکمه، ۱۱ صفحهٔ اجزا و کتابخانهٔ آیکون با ۱۱٬۳۲۶ گره.',
+        'کتابخانهٔ مشترکی که زیر Pro، بک‌آفیس، کارشناسی و وب قرار دارد: دوازده طیف رنگی، بورد تایپوگرافی با پنج وزن و ۱۵ مجموعهٔ کامپوننت با ۲۶۵ واریانت، که هر چهار فایل محصول در یک تم روشن و یک تم تیره از آن استفاده می‌کنند.',
     },
     ar: {
-      title: 'نظام تصميم Carsparency — اثنا عشر تدرّجًا وخمسة أوزان ومفردات مستعارة',
+      title: 'نظام التصميم في Carsparency — مكتبة واحدة تحت أربعة منتجات',
       summary:
-        'الأساس المشترك تحت Pro وBack Office وInspection وWeb: ‏12 تدرّجًا لونيًا من عشر درجات منشورة كمتغيّرات في فيغما، وسلّم طباعي بخمسة أوزان، ومصفوفة كاملة لحالات الأزرار، وأحد عشر لوحًا للمكوّنات، ومكتبة أيقونات من 11٬326 عقدة.',
+        'المكتبة المشتركة التي تقوم عليها Pro ولوحة الإدارة والفحص والموقع: اثنا عشر تدرّجًا لونيًا، ولوحة خطوط بخمسة أوزان، و15 مجموعة مكوّنات تضم 265 متغيّرًا، تستخدمها ملفات المنتجات الأربعة كلها بسمة فاتحة وأخرى داكنة.',
     },
     es: {
-      title: 'Sistema de diseño Carsparency — doce rampas, cinco pesos y un vocabulario prestado',
+      title: 'Sistema de diseño de Carsparency — una biblioteca bajo cuatro productos',
       summary:
-        'La base compartida bajo Pro, Back Office, Inspection y Web: 12 rampas de color de 10 pasos publicadas como variables de Figma, una escala tipográfica de cinco pesos, una matriz completa de estados de botón, once tableros de componentes y una librería de iconos de 11.326 nodos.',
+        'La biblioteca compartida bajo Pro, Back Office, Inspección y Web: doce rampas de color, un tablero tipográfico de cinco pesos y 15 conjuntos de componentes con 265 variantes, que consumen los cuatro archivos de producto en un tema claro y uno oscuro.',
     },
     de: {
-      title: 'Carsparency Design System — zwölf Farbrampen, fünf Schnitte und ein geliehenes Vokabular',
+      title: 'Carsparency-Designsystem — eine Bibliothek unter vier Produkten',
       summary:
-        'Das gemeinsame Fundament unter Pro, Back Office, Inspection und Web: 12 zehnstufige Farbrampen als Figma-Variablen veröffentlicht, eine Typoskala mit fünf Schnitten, eine vollständige Matrix der Button-Zustände, elf Komponenten-Boards und eine Icon-Bibliothek aus 11.326 Knoten.',
+        'Die gemeinsame Bibliothek unter Pro, Backoffice, Prüfung und Web: zwölf Farbskalen, ein Typo-Board mit fünf Schnitten und 15 Komponentensets mit 265 Varianten, genutzt von allen vier Produktdateien in einem hellen und einem dunklen Theme.',
     },
     fr: {
-      title: 'Design system Carsparency — douze rampes, cinq graisses et un vocabulaire emprunté',
+      title: 'Système de design Carsparency — une bibliothèque sous quatre produits',
       summary:
-        'La fondation partagée sous Pro, Back Office, Inspection et Web : 12 rampes de couleur de 10 paliers publiées en variables Figma, une échelle typographique à cinq graisses, une matrice complète des états de bouton, onze planches de composants et une bibliothèque d’icônes de 11 326 nœuds.',
+        'La bibliothèque partagée sous Pro, Back-office, Inspection et Web : douze gammes de couleur, une planche typographique à cinq graisses et 15 jeux de composants totalisant 265 variantes, consommés par les quatre fichiers produit en thème clair et en thème sombre.',
     },
     ja: {
-      title: 'Carsparency デザインシステム — 12のカラーランプ、5つのウェイト、借りてきた語彙',
+      title: 'Carsparencyデザインシステム — 4つのプロダクトを支えるひとつのライブラリ',
       summary:
-        'Pro、Back Office、Inspection、Webを支える共通基盤。Figma変数として公開した10段階×12本のカラーランプ、5ウェイトのタイプスケール、ボタン状態の完全なマトリクス、11枚のコンポーネントボード、そして11,326ノードのアイコンライブラリ。',
+        'Pro、バックオフィス、検査、ウェブを支える共有ライブラリ。12のカラーランプ、5ウェイトのタイプボード、265のバリアントを持つ15のコンポーネントセットを、4つのプロダクトファイルすべてがライトとダークの2テーマで利用している。',
     },
   },
 

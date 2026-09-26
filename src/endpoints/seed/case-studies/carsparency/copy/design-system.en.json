@@ -1,0 +1,188 @@
+{
+  "statement": "One library under four products: twelve colour ramps, a state matrix for each control, and components every Carsparency surface consumes.",
+  "industry": "Automotive marketplace · design systems",
+  "team": "Product designer; authorship of the library beyond Sina's files is not recorded",
+  "heroCaption": "The form-field board: every input type in every state, drawn for the light theme and the dark theme side by side.",
+  "snapshot": {
+    "problem": "Four products for four audiences (sellers, inspectors, operators and dealers) had to read as one company, in two themes, without four copies of every button.",
+    "role": "Product designer: colour ramps, type scale, component sets with their state matrices, and the boards that document them.",
+    "result": "15 component sets holding 265 variants, 12 colour ramps, and evidence that all four product files consume the same library."
+  },
+  "alt": {
+    "formFields": "Carsparency design system — the form-field board: input types by state, in light and dark",
+    "colors": "Carsparency design system — the colour board: primary green, gray and further ramps from 900 to 50, with 500 marked as the main step",
+    "buttons": "Carsparency design system — the button matrix: solid and outline, primary and gray, in three sizes and five states",
+    "fonts": "Carsparency design system — the type board: five weights from black to semi-bold oblique",
+    "dark": "Carsparency Inspection app in the dark theme, built from the shared library",
+    "light": "Carsparency Web seller wizard in the light theme, built from the same library"
+  },
+  "chapters": {
+    "context": {
+      "heading": "Four products, one visual language",
+      "body": [
+        "Carsparency ran four product surfaces: a website for sellers, a field app for inspectors, a back office for staff and a platform for dealers. Each has its own Figma file, and all four are built on one shared library.",
+        "The design-system file documents that library in eleven boards (colour, type, buttons, form fields, toggles, breadcrumbs, pagination, toasts, modals, header and footer, and small components) and an icon page."
+      ]
+    },
+    "problem": {
+      "heading": "Four audiences, two themes, one set of parts",
+      "body": [
+        "The four products do not look alike on purpose. The seller site is light and open, while the inspection app, the back office and the dealer platform are dark and dense. A seller and a dealer should still recognise the same company.",
+        "Without a shared library, each file would redraw its own buttons and inputs, and the four products would drift apart one screen at a time."
+      ]
+    },
+    "structure": {
+      "heading": "From ramps to components to products",
+      "customLabel": "Structure",
+      "body": [
+        "Colour is organised as twelve ramps (primary green, gray, blue, green, red, orange, purple, coral, blue-purple, yellow-orange, navy and a cyan blue). Each runs from 900 to 50, the gray ramp continues to white, and the 500 step is marked as the main value. The brand primary, #00B86B, is the 500 of the green ramp.",
+        "Components are built as sets whose variants cover type, size and state together. The button set alone holds 90 variants: solid and outline, primary and gray, three sizes, and default, hover, pressed, disabled and loading states."
+      ]
+    },
+    "solution": {
+      "heading": "A state for every control, a theme for every product",
+      "body": [
+        "Every interactive component is drawn in every state it can be in, not only its resting look. The form-field board runs default, with icon, checked, error, hover and dropdown states across selected and unselected, for light and dark, so a developer never has to guess what an error looks like in the dark theme.",
+        "The same ramps serve both themes. The website uses the light ends of the gray ramp as surfaces and the dark products use the dark end, with primary green as the constant action colour in both."
+      ],
+      "bullets": [
+        "Buttons: 90 variants",
+        "Text input: 42 variants",
+        "Toggles and selectors: 30 variants",
+        "Segments, pagination, breadcrumbs, header, footer, toasts and modals"
+      ]
+    },
+    "ecosystem": {
+      "heading": "The evidence that it was used, not just drawn",
+      "customLabel": "Ecosystem",
+      "body": [
+        "The strongest evidence for a design system is in the files that consume it. Frames in the Pro, Back Office, Inspection and Web files all take their colours from the same published styles (the primary green and gray ramps) rather than local copies.",
+        "Their components come from the same library too. Text inputs, modals, pagination, breadcrumbs, buttons and system icons in the product files are instances of library components, down to a toggle set whose misspelled name is identical in the library and in the inspection app."
+      ]
+    }
+  },
+  "figures": {
+    "colors": {
+      "caption": "The colour board: twelve ramps from 900 to 50, with the gray ramp running on to white and the 500 step of each marked as its main value."
+    },
+    "buttons": {
+      "caption": "The button matrix. Rows are type and size, columns are state, so a missing combination would be visible as a gap."
+    },
+    "fonts": {
+      "caption": "The type board: five weights, from black at 900 to a semi-bold oblique, each set on the same sample sentence."
+    },
+    "themes": {
+      "caption": "One library, two themes: the inspection app in dark and the seller wizard in light, sharing the green primary, the gray ramp and the same input and button components.",
+      "items": [
+        "Dark: inspection app",
+        "Light: seller wizard"
+      ]
+    }
+  },
+  "process": {
+    "heading": "How the library is layered",
+    "steps": [
+      {
+        "label": "Colour",
+        "note": "Twelve ramps, 900 to 50, published as shared colour styles."
+      },
+      {
+        "label": "Type",
+        "note": "Five weights on one sample, from black to semi-bold oblique."
+      },
+      {
+        "label": "Controls",
+        "note": "Buttons, inputs, toggles and segments with full state matrices."
+      },
+      {
+        "label": "Patterns",
+        "note": "Toasts, modals, breadcrumbs, pagination, header and footer."
+      },
+      {
+        "label": "Products",
+        "note": "Consumed by the Pro, Back Office, Inspection and Web files."
+      }
+    ]
+  },
+  "decisions": {
+    "heading": "Four decisions that make the library hold",
+    "lede": "Read from the boards and from how the product files use them.",
+    "items": [
+      {
+        "title": "Ramps, not a palette",
+        "why": "Each colour comes as ten steps with a marked main value. Dense dark screens need several nearby shades for surfaces, borders and text, and ramps provide them without inventing new colours.",
+        "tradeoff": "Twelve ramps is more colour than four products strictly need."
+      },
+      {
+        "title": "Draw every state",
+        "why": "Buttons and inputs are documented as matrices of type, size and state. Hover, pressed, disabled, loading and error are designed rather than left to whoever builds them."
+      },
+      {
+        "title": "Publish, don't copy",
+        "why": "The colours and components reach the product files as library styles and instances, not pasted copies, so a change in the library can reach all four products."
+      },
+      {
+        "title": "One set of ramps for two themes",
+        "why": "The light seller site and the dark professional tools draw on the same ramps from opposite ends, which keeps the brand consistent while letting each audience get the density it needs."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "Sina's part",
+    "intro": "Listed from the design-system file. The files do not record who else worked on the library, and its colour styles are published from a library file outside this set, so this is not a claim of sole authorship.",
+    "own": [
+      "The colour ramps and their documentation board",
+      "The type board",
+      "Component sets with their state matrices: buttons, inputs, toggles, segments, pagination and breadcrumbs",
+      "Patterns: toasts, modals, header and footer",
+      "Applying the library across the four product files"
+    ],
+    "collaborate": [
+      "Engineering colleagues, not named in the files"
+    ],
+    "note": "The boards are marked Version 0.0.1, an early version of the library rather than a finished one."
+  },
+  "outcomes": {
+    "heading": "What the file delivers",
+    "intro": "Counts of designed work, not results. Whether engineering consumed the library as code is not recorded.",
+    "delivered": [
+      {
+        "label": "component variants",
+        "context": "Across 15 component sets"
+      },
+      {
+        "label": "colour ramps",
+        "context": "Each from 900 to 50, with a marked main step"
+      },
+      {
+        "label": "product files consuming it",
+        "context": "Pro, Back Office, Inspection and Web"
+      }
+    ],
+    "shipped": [
+      "Colour ramps",
+      "Type scale",
+      "Buttons and inputs with state matrices",
+      "Toggles, segments, pagination and breadcrumbs",
+      "Toasts, modals, header and footer",
+      "Icon page"
+    ]
+  },
+  "lessons": {
+    "heading": "What this work taught",
+    "items": [
+      {
+        "title": "Adoption is the only proof that counts",
+        "body": "A library earns the name when other files consume it. Here the evidence is in the product files' own layers, not in the boards."
+      },
+      {
+        "title": "States are the expensive part",
+        "body": "Resting components are quick to draw. The 265 variants are mostly states, and that is where consistency between four products is actually decided."
+      },
+      {
+        "title": "Names travel with components",
+        "body": "A misspelled component name survives into every product that uses it, which makes naming worth getting right before publishing."
+      }
+    ]
+  }
+}

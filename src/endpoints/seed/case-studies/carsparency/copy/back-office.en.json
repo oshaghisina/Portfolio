@@ -1,0 +1,218 @@
+{
+  "statement": "The staff console between a seller's request and a dealer's bid: requests, inspection, pricing, auctions and payments in one dense, dark desktop tool.",
+  "industry": "Automotive marketplace · internal tools",
+  "team": "Product designer; the operator team's size and roles are not recorded in the files",
+  "heroCaption": "The request quick view: contact and car details, comment history, price history and a condition-graded valuation in one dialog over the list.",
+  "snapshot": {
+    "problem": "Every car passes through staff hands: requests to qualify, inspections to review, four prices to reconcile, dealers to invite and payments to confirm, all at list volume.",
+    "role": "Product designer on the operator console: information architecture, the request pipeline, pricing, auctions, users and finance, plus the inspection report.",
+    "result": "68 console frames and a four-page inspection report. The console names four conversion metrics but records no readings of them."
+  },
+  "alt": {
+    "list": "Carsparency Back Office — the requests table beside a seven-section sidebar, with filter, search, group operation and create-request controls",
+    "quickView": "Carsparency Back Office — the request quick view open over the requests list",
+    "quickCrop": "Carsparency Back Office — the quick view up close: request details, comment history, price history and valuations by condition",
+    "auctions": "Carsparency Back Office — the auctions table with last, first, target and fair prices, bids and views for each car",
+    "suggested": "Carsparency Back Office — the suggested-dealer dialog listing dealers to invite for a BMW X4",
+    "columns": "Carsparency Back Office — the column manager dialog with a toggle for each table column",
+    "employees": "Carsparency Back Office — the employee list with role and name filters and active sort chips",
+    "dealer": "Carsparency Back Office — a dealer's profile form with business card, identification and document checks",
+    "report2": "Carsparency inspection report — page two, exterior and general details of the car",
+    "report3": "Carsparency inspection report — page three, interior details",
+    "report4": "Carsparency inspection report — page four, the car defects view on an exploded car map"
+  },
+  "chapters": {
+    "context": {
+      "heading": "The marketplace is run by people, and this is their desk",
+      "body": [
+        "Carsparency was not self-service classifieds. Between a seller entering a car and a dealer winning it sat a staff-run pipeline: requests were qualified, cars inspected and priced, dealers invited, auctions run and payments confirmed. The back office is where that work happens.",
+        "It is the largest desktop surface in the set: 68 frames at 1,440 px behind a seven-section sidebar (Requests, Trade, Cars, Car Price, Users, Finance and Setting), plus the inspection report the operation hands to buyers."
+      ]
+    },
+    "problem": {
+      "heading": "Four prices, two conversations and a queue that never empties",
+      "body": [
+        "A car has several prices at once: what the business is aiming for, what the seller wants, what the valuation says and what dealers bid. Someone has to see all of them to close the gap.",
+        "The reasons a price moved live in conversations: some with the dealer, some internal. And requests arrive faster than they can be opened one page at a time, so the console has to let staff act from the list."
+      ]
+    },
+    "flow": {
+      "heading": "From request to settled trade",
+      "customLabel": "Flow",
+      "body": [
+        "The sidebar follows the order in which a car moves. A request enters under Requests, becomes a car under Cars, gets priced under Car Price, is sold under Trade (auctions, inventory and listings) and is paid for under Finance. Users holds the three kinds of people involved: dealers, sellers and employees.",
+        "A request's status can be changed from the list itself, to Auction, Cancel auction or Review inspection, so moving a car forward does not mean leaving the queue."
+      ]
+    },
+    "solution": {
+      "heading": "Act from the list, open the page only when you must",
+      "body": [
+        "The quick view is the centre of the console. From any row, one dialog shows the request strip (contact, phone, car, status, reason, last editor, city, created), the comment history, the price history and a valuation for each condition grade: Like New, Good, Poor condition and Very poor.",
+        "Around it, the tables are built to be shaped by the people using them: filter and sort chips that stay visible, a column manager to show or hide columns, group operations for bulk changes, and a suggested-dealer list for each car with a live countdown to the auction's end."
+      ],
+      "bullets": [
+        "Requests: list, filter, quick view, inline status change, comments",
+        "Trade: auctions, inventories and car listings, each with bids and suggested dealers",
+        "Cars and Car Price: make, model, trim, year and options; four-way pricing with history",
+        "Users and Finance: dealers, sellers and employees; payments and wallet histories"
+      ]
+    },
+    "ecosystem": {
+      "heading": "The console turns an inspection into something a dealer can trust",
+      "customLabel": "Ecosystem",
+      "body": [
+        "The back office sits in the middle of the chain. It receives what the seller declared on the web and what the inspector recorded in the field, and it sends priced cars out to dealers in Pro. Its Fair price is the same figure dealers see as Fair Market Value.",
+        "The same file holds the Advanced Inspection Report, a printable record of the car: exterior, general and interior details with verification marks, then a defects page drawn on the exploded car map that also appears in the Pro file, with signature fields for dealer and buyer."
+      ]
+    }
+  },
+  "figures": {
+    "list": {
+      "caption": "The requests table, the console's landing view.",
+      "annotations": [
+        "Seven sections in the order a car moves: Requests, Trade, Cars, Car Price, Users, Finance, Setting",
+        "Search scoped to the current table",
+        "Group operation for bulk changes",
+        "Staff can originate requests as well as process them",
+        "Per-row actions: comment, inspect, edit, more",
+        "Status and last editor on every row"
+      ]
+    },
+    "quick": {
+      "caption": "The quick view up close. Dealer comments and internal notes run as separate threads, the price history records each change with its author, and the valuation column prices the car for four condition grades."
+    },
+    "auctions": {
+      "caption": "Auctions as a table rather than cards: each row carries last, first, target and fair prices next to bid and view counts, so an operator can compare cars at a glance."
+    },
+    "tools": {
+      "caption": "Two ways the tables bend to the task: a suggested-dealer list for each car, shown against the auction countdown, and a column manager for choosing what the table shows.",
+      "items": [
+        "Suggested dealers",
+        "Column manager"
+      ]
+    },
+    "users": {
+      "caption": "People as records: employees filtered and sorted by role, and a dealer profile whose business card, identification and documents each carry their own check.",
+      "items": [
+        "Employees",
+        "Dealer profile"
+      ]
+    },
+    "report": {
+      "caption": "Three pages of the Advanced Inspection Report: exterior and general details, interior details, and the defects view with a legend for repainted, painted, original and not-available panels.",
+      "items": [
+        "Exterior and general",
+        "Interior",
+        "Defects view"
+      ]
+    }
+  },
+  "process": {
+    "heading": "The operator's pipeline, as the sidebar orders it",
+    "steps": [
+      {
+        "label": "Request",
+        "note": "A seller's request is listed, filtered, commented on and qualified."
+      },
+      {
+        "label": "Inspect",
+        "note": "The inspection is reviewed before the car moves on."
+      },
+      {
+        "label": "Price",
+        "note": "Target, seller, fair and dealer prices side by side, with history."
+      },
+      {
+        "label": "Auction",
+        "note": "Auctions, inventories and listings, with bids and suggested dealers."
+      },
+      {
+        "label": "Settle",
+        "note": "Payments and wallets under Finance."
+      }
+    ]
+  },
+  "decisions": {
+    "heading": "Four decisions that make the console workable",
+    "lede": "Read from the frames; the file shows what was built, not the debate behind it.",
+    "items": [
+      {
+        "title": "A quick view instead of a page",
+        "why": "An operator working a queue loses their place every time a row opens a new page. The quick view shows everything about a request over the list and lets its status change there.",
+        "tradeoff": "The dialog is dense, with four panels in one view."
+      },
+      {
+        "title": "Show every price at once",
+        "why": "Target, seller, fair and dealer prices usually disagree. Showing all four, with a history of who changed what, makes the negotiation visible and gives the operator the gap they are closing.",
+        "alternatives": "A single price field, which hides the operator's judgement."
+      },
+      {
+        "title": "Separate what the dealer can see from what staff say to each other",
+        "why": "Dealer comments and internal communication are kept as distinct threads. One can be shared; the other can be candid, which matters for a business that sells on transparency."
+      },
+      {
+        "title": "Let staff shape the table",
+        "why": "Filters and sorts stay visible as removable chips, a column manager hides what a task does not need, and group operations act on many rows at once. The table adapts to the job rather than the job to the table."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "Sina's part",
+    "intro": "Listed from the Back Office file. The files do not record team size or who decided what, and one version of the report is labelled with another person's name, so authorship there is shared.",
+    "own": [
+      "Information architecture: the seven-section sidebar and its sub-sections",
+      "The request list, quick view and inline status changes",
+      "Pricing, auction, bid and suggested-dealer screens",
+      "User, employee, payment and wallet screens",
+      "The Advanced Inspection Report layout"
+    ],
+    "collaborate": [
+      "A colleague credited on one version of the inspection report",
+      "Operations and engineering colleagues, not named in the files"
+    ],
+    "note": "The side menu is the one component set built locally in this file; the dialogs, inputs, pagination and icons in the console frames come from the shared Carsparency library."
+  },
+  "outcomes": {
+    "heading": "What the file delivers",
+    "intro": "Counts of designed work, not results. The console names four metrics (view-to-bid rate, bid-to-win rate, cancel rate and discount rate) but no file records a reading.",
+    "delivered": [
+      {
+        "label": "console frames",
+        "context": "At 1,440 px, across requests, trade, cars, pricing, users and finance"
+      },
+      {
+        "label": "sidebar sections",
+        "context": "Ordered the way a car moves through the business"
+      },
+      {
+        "label": "prices per car",
+        "context": "Target, seller, fair and dealer, shown side by side"
+      }
+    ],
+    "shipped": [
+      "Requests list and quick view",
+      "Inline status changes and comment threads",
+      "Four-way pricing with history",
+      "Auctions, inventories, bids and suggested dealers",
+      "Dealer, seller and employee records",
+      "Payments, wallets and the inspection report"
+    ]
+  },
+  "lessons": {
+    "heading": "What this work taught",
+    "items": [
+      {
+        "title": "Internal tools deserve the same design attention as the product",
+        "body": "The console is where the business's real definition of success lives: its only metrics labels are here, not on the consumer site."
+      },
+      {
+        "title": "Showing four prices is a product decision",
+        "body": "Most tools pick one number and hide the rest, which makes the operator's judgement invisible. Putting all four on screen turns pricing into a conversation with a record."
+      },
+      {
+        "title": "Test dense screens with data that disagrees",
+        "body": "Every row in the file shows the same request and every price the same figure, so a console built to resolve disagreement was never drawn with any."
+      }
+    ]
+  }
+}

@@ -1,0 +1,180 @@
+{
+  "statement": "Die Händlerseite eines Automarktplatzes in den VAE: vorne Auktionen mit Countdown, dahinter fünf Stufen vom Zuschlag bis zur Eigentumsübertragung.",
+  "industry": "Automobil-Marktplatz · B2B",
+  "team": "Produktdesigner; Teamgröße und Rollen sind in den Dateien nicht festgehalten",
+  "heroCaption": "Die Händler-App: die Liste laufender Auktionen, gefiltert nach Marke und Baujahr, das Gebotsformular und offene Aufträge, die jeweils ihren Schritt im Kaufprozess zeigen.",
+  "snapshot": {
+    "problem": "Ein Händler ersteigert ein Auto, das er nie angefasst hat. Preis, Zahlung, Papiere, Lieferung und Eigentumsübertragung stehen noch aus, und jeder dieser Schritte kann das Geschäft aufhalten.",
+    "role": "Produktdesigner der Händlerplattform: App und Desktop-Webprodukt, von der Auktionsliste bis zur Eigentumsübertragung.",
+    "result": "129 App-Frames und 167 Desktop-Frames für den gesamten Einkaufszyklus. Die Dateien nennen weder ein Launch-Datum noch Nutzungsdaten."
+  },
+  "alt": {
+    "listApp": "Carsparency Pro App — die Liste laufender Auktionen, gefiltert nach Marke und Baujahr; jede Karte zeigt einen Countdown, das aktuelle Gebot und dessen Fair Market Value (fairer Marktwert)",
+    "bidApp": "Carsparency Pro App — das Formular zur Gebotsabgabe über der Detailseite eines Autos",
+    "ordersApp": "Carsparency Pro App — offene Aufträge; jede Karte trägt ihren nummerierten Schritt und die eine Aktion, die er erfordert",
+    "losing": "Carsparency Pro App — Fahrzeugdetails mit einem rot als „Überboten“ markierten Gebot",
+    "winning": "Carsparency Pro App — dieselben Fahrzeugdetails mit einem grün als „Höchstgebot“ markierten Gebot",
+    "proxy": "Carsparency Pro App — das Formular für ein Proxy-Gebot, mit dem sich ein Maximalgebot festlegen lässt",
+    "auctionsWeb": "Carsparency Pro Web — die Desktop-Auktionsliste mit den Tabs „Live“, „Demnächst“ und „Bestand“ sowie einem Filterbereich",
+    "detailWeb": "Carsparency Pro Web — die Preiskarte der Fahrzeugdetails mit aktuellem Gebot, Fair Market Value, Restzeit sowie Proxy- oder Direktgebot",
+    "ordersWeb": "Carsparency Pro Web — offene Aufträge am Desktop, jede Karte mit ihrem Schritt beschriftet, etwa „3 von 5, Abrechnung ausstehend“",
+    "bandNegotiation": "Carsparency Pro Web — eine Preiskarte in Verhandlung mit dem Verkäufer, mit der Aktion „Preis erhöhen“",
+    "bandDelivery": "Carsparency Pro Web — dieselbe Preiskarte, während die Fahrzeuglieferung aussteht",
+    "prepayment": "Carsparency Pro Web — der Vorauszahlungsdialog mit fälligem Betrag, verfügbarem Guthaben und Wallet-Nutzung vor der Onlinezahlung",
+    "breakdown": "Carsparency Pro Web — der Dialog zur Preisaufschlüsselung mit Nettopreis, Rabatten, Einbehalten und Endbetrag",
+    "carMap": "Carsparency Pro — eine Explosionszeichnung eines Autos mit flach ausgelegten Karosserieteilen und Symbolen für Dellen, Kratzer und Lackschäden"
+  },
+  "chapters": {
+    "context": {
+      "heading": "Eine Händlerplattform, zugleich als App und als Desktop-Website gestaltet",
+      "body": [
+        "Carsparency betrieb einen Gebrauchtwagenmarktplatz in den VAE: Privatverkäufer stellten ein Auto ein, ein Gutachter erfasste seinen Zustand, und verifizierte Händler boten in zeitlich begrenzten Auktionen darauf. Pro ist die Händlerseite, das Produkt, mit dem die Käufer arbeiteten.",
+        "Die Figma-Datei enthält beide Hälften dieses Produkts. Vier App-Seiten decken Auktionen, Aufträge, Konto und Anmeldung ab, vier Web-Seiten wiederholen dieselben Bereiche in Desktop-Breite. Zusammen sind es 129 App-Frames und 167 Desktop-Frames, die meisten davon Zustände derselben Screens statt neuer Screens."
+      ]
+    },
+    "problem": {
+      "heading": "Der Zuschlag ist die Mitte des Kaufs, nicht sein Ende",
+      "body": [
+        "Ein Händler bietet auf ein Auto, das er nicht gesehen hat, gegen Konkurrenten, die er nicht sieht, während ein Countdown läuft. Die Auktionsscreens müssen diese Entscheidung schnell und begründbar machen.",
+        "Dann beginnt der schwierigere Teil. Nach dem Zuschlag muss das Auto noch bepreist, in Etappen bezahlt, dokumentiert, geliefert und rechtlich übertragen werden. Diese Arbeit verteilt sich auf Händler, Verkäufer und das Carsparency-Team und kann an jedem Schritt ins Stocken geraten. Die meisten Marktplatz-Flows enden beim Höchstgebot; dieser geht weiter."
+      ]
+    },
+    "flow": {
+      "heading": "Ein Lebenszyklus, fünf nummerierte Stufen",
+      "customLabel": "Ablauf",
+      "body": [
+        "Der größte Bereich der Datei ist nicht die Auktion, sondern „Aufträge“. Jedes ersteigerte Auto durchläuft „In Verhandlung“, „Ausstehend“ und „Erworben“, und keine Karte sagt nur „ausstehend“: Sie zeigt, bei welchem der fünf Schritte der Auftrag steht und was als Nächstes kommt.",
+        "Der Status sitzt auf jeder Karte und jeder Detailseite an derselben Stelle, als farbiges Band mit einer einzigen Aktion daneben, damit der Händler immer sieht, ob der nächste Zug bei ihm liegt."
+      ]
+    },
+    "solution": {
+      "heading": "Vorne Auktionstempo, dahinter sichtbarer Papierkram",
+      "body": [
+        "Die Auktionsseite ist auf schnelles Vergleichen ausgelegt. Der Countdown wird in den letzten Minuten rot, ein farbiges Label zeigt „Höchstgebot“ oder „Überboten“, und Proxy- sowie automatische Gebote lassen einen Händler mitbieten, ohne die Uhr im Blick behalten zu müssen.",
+        "Die Auftragsseite ist auf Vertrauen ausgelegt. Die Vorauszahlung zeigt fälligen Betrag, verfügbares Guthaben und Wallet, bevor etwas belastet wird. Die Preisaufschlüsselung listet jeden Abzug einzeln auf, die Dokumentenliste nennt jedes Papier, das die Übertragung braucht, und jeder Schritt hat einen eigenen Fehlerzustand (Zahlung fehlgeschlagen, Upload abgelehnt, Überzahlung) statt einer allgemeinen Fehlermeldung."
+      ],
+      "bullets": [
+        "Auktionen: Live, Demnächst und Bestand, mit Filtern und Sortierung",
+        "Bieten: Gebot, Proxy-Gebot, automatisches Gebot und Sofortkauf, mit Erfolgs- und Fehlermeldungen",
+        "Aufträge: Verhandlung, Vorauszahlung, Abrechnung, Zahlungsnachweis, Lieferung und Eigentumsübertragung",
+        "Konto: Wallet, Bankkonten in Prüfung, Dokumente, Benachrichtigungen und Hilfe"
+      ]
+    },
+    "ecosystem": {
+      "heading": "Die letzte Station eines Autos, dessen Weg auf dem Handy des Verkäufers begann",
+      "customLabel": "Ökosystem",
+      "body": [
+        "Alles, was ein Händler in Pro liest, ist vorher entstanden. Der Verkäufer beschrieb das Auto im Web-Assistenten, ein Gutachter prüfte es in der Inspektions-App, und das Operations-Team bepreiste es im Backoffice und lud Händler ein. Pro ist der Ort, an dem dieser Datensatz auf einen Käufer trifft.",
+        "Die gemeinsamen Bausteine sind über die Dateien hinweg sichtbar: derselbe Fahrzeugdatensatz (Kilometerband, GCC-Spezifikation, eingetragener Eigentümer, Wartungshistorie), dieselben Zustandsnoten, dasselbe Preisvokabular (hier Fair Market Value, im Backoffice Fair) und darunter dieselbe Komponentenbibliothek."
+      ]
+    }
+  },
+  "figures": {
+    "auctions": {
+      "caption": "Die Desktop-Auktionsliste: die Tabs „Live“, „Demnächst“ und „Bestand“, ein Filterbereich für Preis, Kilometerstand, Baujahr, Marke und Entfernung und auf jeder Karte das aktuelle Gebot im Vergleich zum Fair Market Value (fairer Marktwert)."
+    },
+    "bidStates": {
+      "caption": "Die Gebotskarte in drei Zuständen: überboten, Höchstgebot und beim Festlegen eines Proxy-Gebots. Die Zeile mit dem Fair Market Value bleibt in allen unter dem Gebot.",
+      "items": ["Überboten", "Höchstgebot", "Proxy-Gebot"]
+    },
+    "orders": {
+      "caption": "Offene Aufträge am Desktop. Der Streifen unter jeder Karte trägt Nummer und Namen des Schritts, etwa „3 von 5, Abrechnung ausstehend“, und der Button darüber ist die eine Aktion, die dieser Schritt verlangt."
+    },
+    "detail": {
+      "caption": "Die Fahrzeugdetails am Desktop. Die Preiskarte stellt das aktuelle Gebot neben den Fair Market Value, die Restzeit und zwei Wege zu bieten: per Proxy oder direkt."
+    },
+    "bands": {
+      "caption": "Dieselbe Preiskarte in zwei Stufen. Nur Statusband und Aktion ändern sich: in Verhandlung mit dem Verkäufer, mit „Preis erhöhen“, dann Fahrzeuglieferung ausstehend.",
+      "items": ["In Verhandlung", "Lieferung ausstehend"]
+    },
+    "payments": {
+      "caption": "Vorauszahlung und Preisaufschlüsselung, zugeschnitten aus den Desktop-Dialogen: fälliger Betrag gegenüber verfügbarem Guthaben, dann Nettopreis, Rabatte und Einbehalte vor dem Endbetrag.",
+      "items": ["Vorauszahlung", "Preisaufschlüsselung"]
+    },
+    "carMap": {
+      "caption": "Die Explosionskarte des Autos aus der Pro-Datei: Dach, Motorhaube, Türen und Stoßfänger flach ausgelegt, mit Symbolen für Dellen, Kratzer und Lackschäden. Dieselbe Zeichnung kehrt auf der Mängelseite des Inspektionsberichts wieder."
+    }
+  },
+  "process": {
+    "heading": "Der Einkaufszyklus, wie ihn die Datei anordnet",
+    "steps": [
+      { "label": "Bieten", "note": "Listen für Live, Demnächst und Bestand; Gebot, Proxy-Gebot, automatisches Gebot oder Sofortkauf; Zustände für Höchstgebot und überboten." },
+      { "label": "Verhandeln", "note": "Lehnt der Verkäufer ab, das Angebot erhöhen oder seinen Preis annehmen." },
+      { "label": "Vorauszahlen", "note": "Aus der Wallet oder online zahlen, wobei zuerst das verfügbare Guthaben angezeigt wird." },
+      { "label": "Abrechnen", "note": "Preisaufschlüsselung, Schlussabrechnung und Zahlungsnachweis, mit Zuständen für Ablehnung und Überzahlung." },
+      { "label": "Übertragen", "note": "Fahrzeuglieferung ausstehend, dann Warten auf die Eigentumsübertragung, dann erworben." }
+    ]
+  },
+  "decisions": {
+    "heading": "Vier Entscheidungen, die den Arbeitstag des Händlers prägen",
+    "lede": "Diese Entscheidungen sind in den Frames sichtbar. Die Datei hält die Begründung nicht fest; die folgenden Gründe sind daher aus dem Aufbau der Screens abgeleitet.",
+    "items": [
+      {
+        "title": "Den Fair Market Value unter jedes Gebot setzen",
+        "why": "Wer gegen die Uhr bietet, braucht einen Bezugspunkt, der nicht von den anderen Bietern stammt. Die Bewertung der Plattform neben dem aktuellen Gebot, in der Liste wie auf der Detailseite, macht aus jedem Gebot einen Vergleich statt einer Schätzung.",
+        "tradeoff": "Das macht die Bewertung angreifbar: Ein Gebot weit über dem Fair Market Value wirft die Frage nach dem Warum auf."
+      },
+      {
+        "title": "Die Schritte nach dem Zuschlag nummerieren",
+        "why": "„Ausstehend“ sagt einem Händler nicht, was zu tun ist. „Schritt 1 von 5, Vorauszahlung ausstehend“ sagt ihm, wo er steht, wie viel noch fehlt und wer am Zug ist.",
+        "alternatives": "Ein einziger Status „in Bearbeitung“ oder eine separate Timeline-Seite."
+      },
+      {
+        "title": "Eine Detailvorlage für den gesamten Lebenszyklus",
+        "why": "Die Fahrzeugseite, auf der ein Händler geboten hat, ist dieselbe, auf der er später die Lieferung verfolgt. Nur das Statusband und seine eine Aktion ändern sich, sodass zwischen den Stufen nichts neu gelernt werden muss.",
+        "tradeoff": "Die Seite bleibt lang: Der Inspektionsbericht steht in jeder Stufe unter der Preiskarte."
+      },
+      {
+        "title": "Die Kosten des Zuschlags zeigen, bevor sie fällig werden",
+        "why": "Die Preisaufschlüsselung trennt Nettokaufpreis, Rabatte und Einbehalte, und das Gebotsformular ergänzt Transport und erweiterten Käuferschutz, sodass der Händler die tatsächlichen Gesamtkosten sieht statt nur den Zuschlagspreis."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "Sinas Anteil",
+    "intro": "Aus der Pro-Datei zusammengestellt. Die Dateien halten weder die Teamgröße fest noch, wer was entschieden hat; dies ist also die Arbeit in der Datei, kein Anspruch auf alleinige Urheberschaft.",
+    "own": [
+      "Navigation und Struktur für App und Desktop-Webprodukt",
+      "Die Auktionsliste, Filter sowie die Zustände für Gebot, Proxy-Gebot und automatisches Gebot",
+      "Der Auftragszyklus: Zustände für Verhandlung, Zahlung, Abrechnung, Lieferung und Eigentumsübertragung",
+      "Konto-, Wallet-, Bankkonto- und Dokumenten-Flows mit ihren Prüfzuständen",
+      "Die Explosionskarte des Autos zur Lokalisierung von Schäden"
+    ],
+    "collaborate": ["Kolleginnen und Kollegen aus Engineering und Operations, in den Dateien nicht namentlich genannt"],
+    "note": "Die Datei enthält außerdem eine Updates-Seite und nummerierte Kartentests (Test 2 bis Test 7), ein Beleg dafür, dass die Auktionskarte iterativ entwickelt und nicht in einem Zug gezeichnet wurde."
+  },
+  "outcomes": {
+    "heading": "Was die Datei liefert",
+    "intro": "Anzahl gestalteter Frames, keine Ergebnisse. Launch-Datum, Nutzungs- oder Conversion-Zahlen sind in den Carsparency-Dateien nicht festgehalten.",
+    "delivered": [
+      { "label": "App-Frames", "context": "Vier App-Seiten: Auktionen, Meine Autos, Konto sowie Anmeldung und Onboarding" },
+      { "label": "Desktop-Frames", "context": "Vier Web-Seiten, die dieselben Bereiche bei 1.440 px wiederholen" },
+      { "label": "nummerierte Auftragsstufen", "context": "Von der Vorauszahlung bis zum Zahlungsnachweis, jede mit eigenem Status und eigener Aktion" }
+    ],
+    "shipped": [
+      "Auktionsliste, Filter und Sortierung",
+      "Gebot, Proxy-Gebot, automatisches Gebot und Sofortkauf",
+      "Verhandlung und Gegenangebote",
+      "Vorauszahlung, Abrechnung und Zahlungsnachweis",
+      "Verfolgung von Lieferung und Eigentumsübertragung",
+      "Wallet, Bankkonten und Dokumente"
+    ]
+  },
+  "lessons": {
+    "heading": "Was diese Arbeit gelehrt hat",
+    "items": [
+      {
+        "title": "Den Teil nach dem Erfolgszustand gestalten",
+        "body": "Mit dem Zuschlag enden die meisten Auktions-Flows. Hier liegt er ungefähr in der Mitte, und die Frames danach (Zahlungen, Papiere, Lieferung) sind zahlreicher als die Auktionsscreens."
+      },
+      {
+        "title": "Im Status schlagen Zahlen Adjektive",
+        "body": "„Schritt 3 von 5, Abrechnung ausstehend“ beantwortet die drei Fragen eines Händlers: Wo stehe ich, wie viel fehlt noch, und was tue ich als Nächstes? „Ausstehend“ allein beantwortet keine davon."
+      },
+      {
+        "title": "Platzhalterdaten verbergen die schwierigen Fälle",
+        "body": "Jede Karte in der Datei zeigt dasselbe Auto und denselben Preis, sodass das Layout nie mit einem langen Titel, einem günstigen Auto neben einem teuren oder einem Gebot weit über seiner Bewertung getestet wird."
+      }
+    ]
+  }
+}

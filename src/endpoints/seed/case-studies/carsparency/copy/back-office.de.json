@@ -1,0 +1,218 @@
+{
+  "statement": "Die interne Konsole zwischen Verkäuferanfrage und Händlergebot: Anfragen, Inspektion, Preise, Auktionen und Zahlungen in einem dichten, dunklen Desktop-Tool.",
+  "industry": "Automobil-Marktplatz · interne Tools",
+  "team": "Produktdesigner; Größe und Rollen des Operations-Teams sind in den Dateien nicht festgehalten",
+  "heroCaption": "Die Schnellansicht einer Anfrage: Kontakt- und Fahrzeugdaten, Kommentarverlauf, Preisverlauf und eine Bewertung nach Zustandsstufe, in einem Dialog über der Liste.",
+  "snapshot": {
+    "problem": "Jedes Auto geht durch die Hände des Teams: Anfragen qualifizieren, Inspektionen prüfen, vier Preise abgleichen, Händler einladen und Zahlungen bestätigen – und das im Umfang einer langen Liste.",
+    "role": "Produktdesigner der Operator-Konsole: Informationsarchitektur, die Anfrage-Pipeline, Preise, Auktionen, Nutzer und Finanzen sowie der Inspektionsbericht.",
+    "result": "68 Konsolen-Frames und ein vierseitiger Inspektionsbericht. Die Konsole benennt vier Conversion-Kennzahlen, hält aber keinen einzigen Messwert fest."
+  },
+  "alt": {
+    "list": "Carsparency Back Office — die Anfragentabelle neben einer Seitenleiste mit sieben Bereichen, mit Filter, Suche, Gruppenaktion und einer Schaltfläche zum Anlegen von Anfragen",
+    "quickView": "Carsparency Back Office — die Schnellansicht einer Anfrage, geöffnet über der Anfragenliste",
+    "quickCrop": "Carsparency Back Office — die Schnellansicht im Detail: Anfragedaten, Kommentarverlauf, Preisverlauf und Bewertungen nach Zustand",
+    "auctions": "Carsparency Back Office — die Auktionstabelle mit letztem, erstem, Ziel- und fairem Preis sowie Geboten und Aufrufen je Fahrzeug",
+    "suggested": "Carsparency Back Office — der Dialog mit vorgeschlagenen Händlern, die zu einem BMW X4 eingeladen werden können",
+    "columns": "Carsparency Back Office — der Spaltenmanager mit einem Schalter für jede Tabellenspalte",
+    "employees": "Carsparency Back Office — die Mitarbeiterliste mit Filtern nach Rolle und Name und aktiven Sortier-Chips",
+    "dealer": "Carsparency Back Office — das Profilformular eines Händlers mit Prüfungen für Visitenkarte, Ausweis und Dokumente",
+    "report2": "Carsparency-Inspektionsbericht — Seite zwei, Außen- und allgemeine Angaben zum Fahrzeug",
+    "report3": "Carsparency-Inspektionsbericht — Seite drei, Angaben zum Innenraum",
+    "report4": "Carsparency-Inspektionsbericht — Seite vier, die Mängelansicht auf einer Explosionszeichnung des Fahrzeugs"
+  },
+  "chapters": {
+    "context": {
+      "heading": "Den Marktplatz betreiben Menschen, und das ist ihr Schreibtisch",
+      "body": [
+        "Carsparency war kein Kleinanzeigenportal zur Selbstbedienung. Zwischen dem Moment, in dem ein Verkäufer ein Auto einstellte, und dem Zuschlag an einen Händler lag eine vom Team gesteuerte Pipeline: Anfragen wurden qualifiziert, Autos inspiziert und bepreist, Händler eingeladen, Auktionen durchgeführt und Zahlungen bestätigt. Das Back Office ist der Ort, an dem diese Arbeit geschieht.",
+        "Es ist die größte Desktop-Oberfläche im Set: 68 Frames mit 1.440 px hinter einer Seitenleiste mit sieben Bereichen – Anfragen (Requests), Handel (Trade), Fahrzeuge (Cars), Fahrzeugpreis (Car Price), Nutzer (Users), Finanzen (Finance) und Einstellungen (Setting) –, dazu der Inspektionsbericht, den das Operations-Team an Käufer übergibt."
+      ]
+    },
+    "problem": {
+      "heading": "Vier Preise, zwei Gespräche und eine Warteschlange, die nie leer wird",
+      "body": [
+        "Ein Auto hat mehrere Preise zugleich: den, den das Unternehmen anstrebt, den, den der Verkäufer will, den, den die Bewertung nennt, und den, den Händler bieten. Jemand muss sie alle sehen, um die Lücke zu schließen.",
+        "Warum sich ein Preis bewegt hat, steht in Gesprächen – teils mit dem Händler, teils intern. Und Anfragen kommen schneller herein, als man sie Seite für Seite öffnen kann; die Konsole muss es dem Team also erlauben, direkt aus der Liste zu handeln."
+      ]
+    },
+    "flow": {
+      "heading": "Von der Anfrage bis zum abgewickelten Geschäft",
+      "customLabel": "Ablauf",
+      "body": [
+        "Die Seitenleiste folgt der Reihenfolge, in der sich ein Auto bewegt. Eine Anfrage kommt unter Anfragen herein, wird unter Fahrzeuge zum Auto, erhält unter Fahrzeugpreis ihren Preis, wird unter Handel (Auktionen, Bestand und Inserate) verkauft und unter Finanzen bezahlt. Unter Nutzer finden sich die drei beteiligten Personengruppen: Händler, Verkäufer und Mitarbeiter.",
+        "Der Status einer Anfrage lässt sich direkt in der Liste ändern – auf Auktion, Auktion abbrechen oder Inspektion prüfen –, sodass ein Auto weiterzubringen nicht heißt, die Warteschlange zu verlassen."
+      ]
+    },
+    "solution": {
+      "heading": "In der Liste handeln, die Seite nur öffnen, wenn es sein muss",
+      "body": [
+        "Die Schnellansicht ist das Zentrum der Konsole. Aus jeder Zeile heraus zeigt ein einziger Dialog die Kopfleiste der Anfrage (Kontakt, Telefon, Auto, Status, Grund, zuletzt bearbeitet von, Stadt, erstellt am), den Kommentarverlauf, den Preisverlauf und eine Bewertung für jede Zustandsstufe: wie neu, gut, schlecht und sehr schlecht.",
+        "Darum herum sind die Tabellen so gebaut, dass ihre Nutzer sie formen können: Filter- und Sortier-Chips, die sichtbar bleiben, ein Spaltenmanager zum Ein- und Ausblenden von Spalten, Gruppenaktionen für Massenänderungen und für jedes Auto eine Liste vorgeschlagener Händler mit einem Live-Countdown bis zum Auktionsende."
+      ],
+      "bullets": [
+        "Anfragen: Liste, Filter, Schnellansicht, Statusänderung direkt in der Zeile, Kommentare",
+        "Handel: Auktionen, Bestände und Fahrzeuginserate, jeweils mit Geboten und vorgeschlagenen Händlern",
+        "Fahrzeuge und Fahrzeugpreis: Marke, Modell, Ausstattungslinie, Baujahr und Extras; vier Preise mit Verlauf",
+        "Nutzer und Finanzen: Händler, Verkäufer und Mitarbeiter; Zahlungen und Wallet-Verläufe"
+      ]
+    },
+    "ecosystem": {
+      "heading": "Die Konsole macht aus einer Inspektion etwas, dem ein Händler vertrauen kann",
+      "customLabel": "Ökosystem",
+      "body": [
+        "Das Back Office sitzt in der Mitte der Kette. Es empfängt, was der Verkäufer im Web angegeben und was der Inspektor vor Ort erfasst hat, und schickt bepreiste Autos an die Händler in Pro. Sein fairer Preis ist dieselbe Zahl, die Händler als Fair Market Value (fairen Marktwert) sehen.",
+        "Dieselbe Datei enthält den erweiterten Inspektionsbericht, ein druckbares Dokument zum Fahrzeug: Außen-, allgemeine und Innenraumangaben mit Prüfvermerken, danach eine Mängelseite auf der Explosionszeichnung des Fahrzeugs, die auch in der Pro-Datei vorkommt, mit Unterschriftsfeldern für Händler und Käufer."
+      ]
+    }
+  },
+  "figures": {
+    "list": {
+      "caption": "Die Anfragentabelle, die Startansicht der Konsole.",
+      "annotations": [
+        "Sieben Bereiche in der Reihenfolge, in der sich ein Auto bewegt: Anfragen, Handel, Fahrzeuge, Fahrzeugpreis, Nutzer, Finanzen, Einstellungen",
+        "Suche beschränkt auf die aktuelle Tabelle",
+        "Gruppenaktion für Massenänderungen",
+        "Das Team kann Anfragen anlegen, nicht nur bearbeiten",
+        "Aktionen je Zeile: kommentieren, inspizieren, bearbeiten, mehr",
+        "Status und letzte Bearbeitung in jeder Zeile"
+      ]
+    },
+    "quick": {
+      "caption": "Die Schnellansicht im Detail. Händlerkommentare und interne Notizen laufen in getrennten Threads, der Preisverlauf hält jede Änderung mit ihrem Urheber fest, und die Bewertungsspalte bepreist das Auto für vier Zustandsstufen."
+    },
+    "auctions": {
+      "caption": "Auktionen als Tabelle statt als Karten: Jede Zeile zeigt letzten, ersten, Ziel- und fairen Preis neben Gebots- und Aufrufzahlen, damit Operatoren Autos auf einen Blick vergleichen können."
+    },
+    "tools": {
+      "caption": "Zwei Wege, wie sich die Tabellen der Aufgabe anpassen: eine Liste vorgeschlagener Händler für jedes Auto, dem Auktions-Countdown gegenübergestellt, und ein Spaltenmanager, mit dem man wählt, was die Tabelle zeigt.",
+      "items": [
+        "Vorgeschlagene Händler",
+        "Spaltenmanager"
+      ]
+    },
+    "users": {
+      "caption": "Menschen als Datensätze: Mitarbeiter, nach Rolle gefiltert und sortiert, und ein Händlerprofil, bei dem Visitenkarte, Ausweis und Dokumente jeweils eine eigene Prüfung haben.",
+      "items": [
+        "Mitarbeiter",
+        "Händlerprofil"
+      ]
+    },
+    "report": {
+      "caption": "Drei Seiten des erweiterten Inspektionsberichts: Außen- und allgemeine Angaben, Innenraum und die Mängelansicht mit einer Legende für nachlackierte, lackierte, originale und nicht erfasste Teile.",
+      "items": [
+        "Außen und allgemein",
+        "Innenraum",
+        "Mängelansicht"
+      ]
+    }
+  },
+  "process": {
+    "heading": "Die Pipeline des Operators, wie die Seitenleiste sie ordnet",
+    "steps": [
+      {
+        "label": "Anfrage",
+        "note": "Die Anfrage eines Verkäufers wird gelistet, gefiltert, kommentiert und qualifiziert."
+      },
+      {
+        "label": "Inspektion",
+        "note": "Die Inspektion wird geprüft, bevor das Auto weitergeht."
+      },
+      {
+        "label": "Preis",
+        "note": "Ziel-, Verkäufer-, fairer und Händlerpreis nebeneinander, mit Verlauf."
+      },
+      {
+        "label": "Auktion",
+        "note": "Auktionen, Bestände und Inserate, mit Geboten und vorgeschlagenen Händlern."
+      },
+      {
+        "label": "Abwicklung",
+        "note": "Zahlungen und Wallets unter Finanzen."
+      }
+    ]
+  },
+  "decisions": {
+    "heading": "Vier Entscheidungen, die die Konsole handhabbar machen",
+    "lede": "Aus den Frames abgeleitet; die Datei zeigt, was gebaut wurde, nicht die Debatte dahinter.",
+    "items": [
+      {
+        "title": "Eine Schnellansicht statt einer eigenen Seite",
+        "why": "Wer eine Warteschlange abarbeitet, verliert jedes Mal den Faden, wenn eine Zeile eine neue Seite öffnet. Die Schnellansicht zeigt alles zu einer Anfrage über der Liste und lässt den Status gleich dort ändern.",
+        "tradeoff": "Der Dialog ist dicht: vier Panels in einer Ansicht."
+      },
+      {
+        "title": "Alle Preise auf einmal zeigen",
+        "why": "Ziel-, Verkäufer-, fairer und Händlerpreis weichen meist voneinander ab. Alle vier zu zeigen, mit einem Verlauf, wer was geändert hat, macht die Verhandlung sichtbar und zeigt dem Operator die Lücke, die er schließen muss.",
+        "alternatives": "Ein einzelnes Preisfeld, das das Urteil des Operators verbirgt."
+      },
+      {
+        "title": "Trennen, was der Händler sieht, und was das Team untereinander bespricht",
+        "why": "Händlerkommentare und interne Kommunikation werden als getrennte Threads geführt. Das eine kann geteilt werden, das andere darf offen sein – wichtig für ein Unternehmen, das mit Transparenz verkauft."
+      },
+      {
+        "title": "Das Team die Tabelle formen lassen",
+        "why": "Filter und Sortierungen bleiben als entfernbare Chips sichtbar, ein Spaltenmanager blendet aus, was eine Aufgabe nicht braucht, und Gruppenaktionen wirken auf viele Zeilen zugleich. Die Tabelle passt sich der Arbeit an, nicht die Arbeit der Tabelle."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "Sinas Anteil",
+    "intro": "Aus der Back-Office-Datei zusammengestellt. Die Dateien halten weder die Teamgröße fest noch, wer was entschieden hat, und eine Version des Berichts trägt den Namen einer anderen Person; die Urheberschaft ist dort also geteilt.",
+    "own": [
+      "Informationsarchitektur: die Seitenleiste mit sieben Bereichen und ihre Unterbereiche",
+      "Anfragenliste, Schnellansicht und Statusänderungen direkt in der Zeile",
+      "Screens für Preise, Auktionen, Gebote und vorgeschlagene Händler",
+      "Screens für Nutzer, Mitarbeiter, Zahlungen und Wallets",
+      "Das Layout des erweiterten Inspektionsberichts"
+    ],
+    "collaborate": [
+      "Eine weitere Person, die auf einer Version des Inspektionsberichts genannt ist",
+      "Kolleginnen und Kollegen aus Operations und Engineering, in den Dateien nicht namentlich genannt"
+    ],
+    "note": "Das Seitenmenü ist das einzige Komponentenset, das lokal in dieser Datei gebaut wurde; Dialoge, Eingabefelder, Paginierung und Icons in den Konsolen-Frames stammen aus der gemeinsamen Carsparency-Bibliothek."
+  },
+  "outcomes": {
+    "heading": "Was die Datei liefert",
+    "intro": "Zahlen zur gestalteten Arbeit, keine Ergebnisse. Die Konsole benennt vier Kennzahlen (Gebotsquote je Aufruf, Zuschlagsquote je Gebot, Stornoquote und Rabattquote), aber keine Datei hält einen Messwert fest.",
+    "delivered": [
+      {
+        "label": "Konsolen-Frames",
+        "context": "Mit 1.440 px, über Anfragen, Handel, Fahrzeuge, Preise, Nutzer und Finanzen"
+      },
+      {
+        "label": "Bereiche der Seitenleiste",
+        "context": "Geordnet nach dem Weg eines Autos durch das Unternehmen"
+      },
+      {
+        "label": "Preise pro Auto",
+        "context": "Ziel-, Verkäufer-, fairer und Händlerpreis nebeneinander"
+      }
+    ],
+    "shipped": [
+      "Anfragenliste und Schnellansicht",
+      "Statusänderungen in der Zeile und Kommentar-Threads",
+      "Vier Preise mit Verlauf",
+      "Auktionen, Bestände, Gebote und vorgeschlagene Händler",
+      "Datensätze für Händler, Verkäufer und Mitarbeiter",
+      "Zahlungen, Wallets und der Inspektionsbericht"
+    ]
+  },
+  "lessons": {
+    "heading": "Was diese Arbeit gelehrt hat",
+    "items": [
+      {
+        "title": "Interne Tools verdienen dieselbe Designsorgfalt wie das Produkt",
+        "body": "In der Konsole steckt die eigentliche Erfolgsdefinition des Unternehmens: Die einzigen Kennzahl-Labels stehen hier, nicht auf der Endkundenseite."
+      },
+      {
+        "title": "Vier Preise zu zeigen ist eine Produktentscheidung",
+        "body": "Die meisten Tools wählen eine Zahl und verstecken den Rest, wodurch das Urteil des Operators unsichtbar wird. Alle vier auf den Bildschirm zu bringen, macht aus der Preisfindung ein Gespräch mit Protokoll."
+      },
+      {
+        "title": "Dichte Screens mit widersprüchlichen Daten testen",
+        "body": "Jede Zeile in der Datei zeigt dieselbe Anfrage und jeder Preis dieselbe Zahl – eine Konsole, die Widersprüche auflösen soll, wurde also nie mit einem einzigen gezeichnet."
+      }
+    ]
+  }
+}

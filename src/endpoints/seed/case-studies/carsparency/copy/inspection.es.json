@@ -1,0 +1,203 @@
+{
+  "statement": "Una herramienta móvil que convierte la vuelta a un coche en evidencia estructurada: diez áreas, defectos con fotos y un registro que sostiene el marketplace.",
+  "industry": "Marketplace de automóviles · operaciones de campo",
+  "team": "Diseñador de producto; los archivos no registran el número de inspectores ni la composición del equipo",
+  "heroCaption": "La app del inspector: el panel de inspección con los recuentos de aprobados y rechazados por área, la cola de inspecciones y la lista de neumáticos y carrocería.",
+  "snapshot": {
+    "problem": "Los concesionarios pujan por coches que nunca ven, así que la inspección es la prueba sobre la que se sostiene el producto. Una revisión física y variable tenía que traducirse en un registro coherente.",
+    "role": "Diseñador de producto de la app de inspección: la cola, el asistente de datos del coche, las listas por área, el registro de defectos y la captura de fotos.",
+    "result": "27 pantallas móviles y tres conjuntos de componentes locales. Los archivos no registran uso en campo, número de inspectores ni datos de tiempos."
+  },
+  "alt": {
+    "dashboard": "Carsparency Inspection — el panel de inspección: documentos, información del coche, imágenes y vídeos, y diez áreas que muestran cada una sus recuentos de rechazados y aprobados",
+    "list": "Carsparency Inspection — la cola de inspecciones con las pestañas Todas, En curso e Inspeccionadas, y coches listos para empezar o continuar",
+    "tireBody": "Carsparency Inspection — la lista de neumáticos y carrocería, con aprobado o rechazado por pieza e interruptores de defecto con descripciones y fotos",
+    "wizard1": "Carsparency Inspection — el asistente de datos del coche, paso uno: franja de kilometraje, titular, especificación GCC y color",
+    "wizard2": "Carsparency Inspection — el mismo asistente, con la pregunta sin responder sobre la titularidad resaltada en rojo",
+    "pictures": "Carsparency Inspection — la página de fotos del coche, una cuadrícula de huecos que llevan cada uno el nombre de una rueda o una esquina del coche",
+    "takePicture": "Carsparency Inspection — la hoja de subida, que ofrece galería o cámara y después pasa al siguiente ángulo con nombre",
+    "reportDefects": "Informe de inspección de Carsparency — la página de defectos dibujada sobre un plano despiezado del coche, con leyenda para paneles repintados, pintados, originales y no disponibles"
+  },
+  "chapters": {
+    "context": {
+      "heading": "La prueba detrás de cada puja",
+      "body": [
+        "En Carsparency, un concesionario compra un coche sin verlo. En lo que confía, en su lugar, es en la inspección: el registro que un inspector de Carsparency hace del estado del coche, reproducido en cada página de detalle de la app para concesionarios y en el informe que entrega la empresa.",
+        "Ese registro se crea en la app de inspección. Su archivo reúne 27 pantallas móviles, tres conjuntos de componentes locales y una página de benchmark de otra app de inspección, guardada como referencia."
+      ]
+    },
+    "problem": {
+      "heading": "Una vuelta alrededor de un coche no llega en orden",
+      "body": [
+        "El inspector trabaja de pie junto al coche, con el móvil, y no hay dos coches iguales: el equipamiento varía y un coche de empresa tiene un titular distinto al de uno particular. Aun así, el resultado tiene que ser comparable de un coche a otro.",
+        "El problema de diseño es imponer una estructura que el inspector pueda seguir en cualquier orden, sin obligarle a escribir lo que puede resolver con un toque y sin dejar que un área omitida pase desapercibida."
+      ]
+    },
+    "flow": {
+      "heading": "De la cola a un registro completo",
+      "customLabel": "Flujo",
+      "body": [
+        "El inspector parte de una cola dividida en Todas, En curso e Inspeccionadas. Cada tarjeta indica si el coche está listo para empezar o ya a medias, de modo que las inspecciones interrumpidas se retoman con Continuar en lugar de empezar de cero.",
+        "Un asistente breve registra primero la identidad del coche. Después, un panel abre las diez áreas de inspección como mosaicos, cada uno con cuántas comprobaciones han fallado y cuántas han pasado, con una barra de tiempo restante y una única acción, Completar inspección, al pie."
+      ]
+    },
+    "solution": {
+      "heading": "Tocar lo normal, documentar lo que no lo es",
+      "body": [
+        "Dentro de un área, cada pieza es una fila con un botón de aprobado y otro de rechazado. Si no se informa de ningún defecto se registra un valor predeterminado, así que el inspector solo dedica tiempo a las excepciones.",
+        "Un defecto abre sus propios controles, un interruptor para cada tipo (daño por granizo, pintado, repintado parcial, abolladura, arañazo y sustituido), y cada uno que se activa pide una descripción y sus propias fotos. Las fotos se toman en huecos con nombre (llanta delantera del conductor, esquina trasera del pasajero, etc.), de modo que el conjunto es completo y comparable, no un carrete de cámara."
+      ],
+      "bullets": [
+        "Cola: todas, en curso e inspeccionadas, con búsqueda y estados vacíos",
+        "Datos del coche: franja de kilometraje, titular, especificación GCC, color, llaves y ubicación",
+        "Diez áreas: carrocería, transmisión, motor, chasis, suspensión y frenos, neumáticos, interior y sistema eléctrico, aire acondicionado, cristales y retrovisores, equipamiento",
+        "Evidencia: fotos por defecto, huecos de foto con nombre, imágenes y vídeos"
+      ]
+    },
+    "ecosystem": {
+      "heading": "La inspección se convierte en el informe, y el informe, en el anuncio",
+      "customLabel": "Ecosistema",
+      "body": [
+        "La inspección se sitúa entre la descripción que el vendedor hace de su coche y la puja del concesionario. El vendedor responde a las mismas preguntas en la web (titular, financiación, garantía, historial de mantenimiento) y la app del inspector las verifica sobre el terreno.",
+        "Lo que registra el inspector sale por dos vías: al Informe de Inspección Avanzada, cuya página de defectos usa el mismo plano despiezado del coche que la app para concesionarios, y a las secciones sobre el estado del coche que los concesionarios leen en Pro antes de pujar."
+      ]
+    }
+  },
+  "figures": {
+    "wizard": {
+      "caption": "El asistente de datos del coche. Cada paso anuncia la parte siguiente, y una pregunta sin responder se resalta en su sitio en lugar de avisarse en un banner.",
+      "items": [
+        "Paso uno, datos básicos",
+        "Una pregunta sin responder, señalada"
+      ]
+    },
+    "checklist": {
+      "caption": "La lista de neumáticos y carrocería, la interacción central de la app.",
+      "annotations": [
+        "El equipamiento opcional es un interruptor, no una pregunta",
+        "Aprobado o rechazado por pieza, con un solo toque",
+        "El valor predeterminado se mantiene salvo que se informe de un defecto",
+        "Cada tipo de defecto se activa por separado",
+        "Cada defecto lleva su propia descripción y sus propias fotos",
+        "El tiempo restante sigue a la vista; el área se cierra con una sola acción"
+      ]
+    },
+    "photos": {
+      "caption": "Evidencia en huecos con nombre: cada foto corresponde a un ángulo del coche, y la hoja de subida pasa directamente al siguiente.",
+      "items": [
+        "Huecos de foto con nombre",
+        "Galería o cámara"
+      ]
+    },
+    "report": {
+      "caption": "Donde termina la inspección: la página de defectos del Informe de Inspección Avanzada, dibujada sobre el mismo plano despiezado del coche que la app para concesionarios."
+    }
+  },
+  "process": {
+    "heading": "Una inspección, tal como la ordena la app",
+    "steps": [
+      {
+        "label": "Tomar",
+        "note": "Elegir un coche de la cola o continuar uno en curso."
+      },
+      {
+        "label": "Identificar",
+        "note": "Franja de kilometraje, titular, especificación GCC, color, llaves, ubicación."
+      },
+      {
+        "label": "Revisar",
+        "note": "Diez áreas, cada una con una lista de piezas que se aprueban o rechazan."
+      },
+      {
+        "label": "Documentar",
+        "note": "Fotos y descripciones de los defectos, y después el conjunto de fotos con nombre."
+      },
+      {
+        "label": "Completar",
+        "note": "Cerrar la inspección cuando todas las áreas estén hechas."
+      }
+    ]
+  },
+  "decisions": {
+    "heading": "Cuatro decisiones para que el trabajo quepa en un móvil",
+    "lede": "Deducidas de las pantallas; el archivo muestra las decisiones, no el debate que hubo detrás.",
+    "items": [
+      {
+        "title": "Un panel de áreas en lugar de un formulario largo",
+        "why": "Un inspector no recorre un coche en un orden fijo. Diez mosaicos, cada uno con sus propios recuentos de rechazados y aprobados, le permiten trabajar en cualquier orden y ver de un vistazo lo que falta.",
+        "alternatives": "Un único formulario con desplazamiento, que penaliza cualquier cambio de orden."
+      },
+      {
+        "title": "Registrar las excepciones, no todo",
+        "why": "Cada pieza tiene un valor predeterminado que se mantiene salvo que se informe de un defecto. La mayoría de las piezas de la mayoría de los coches están bien, así que el tiempo del inspector se dedica a las que no lo están.",
+        "tradeoff": "Un inspector descuidado puede aprobar una pieza sin mirarla; los recuentos por área lo hacen visible después, en lugar de impedirlo."
+      },
+      {
+        "title": "Cada defecto lleva su propia prueba",
+        "why": "Un arañazo sin foto es una opinión. Cada tipo de defecto abre sus propios campos de descripción y huecos de foto, así que el informe que lee el concesionario es evidencia y no una lista de casillas."
+      },
+      {
+        "title": "Que interrumpir no tenga coste",
+        "why": "Las tarjetas de la cola muestran En curso y Continuar, y el panel mantiene a la vista una barra de tiempo restante. Una inspección que se detiene por una llamada se retoma donde se quedó."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "La parte de Sina",
+    "intro": "Extraído del archivo Inspection. Los archivos no registran el tamaño del equipo ni quién decidió qué, así que esto es el trabajo que contiene el archivo, no una reivindicación de autoría exclusiva.",
+    "own": [
+      "La cola de inspecciones, con sus estados y su búsqueda",
+      "El asistente de datos del coche y su validación",
+      "El panel de diez áreas y las listas por área",
+      "El registro de defectos, con fotos y descripción para cada uno",
+      "La captura de fotos por ángulos con nombre"
+    ],
+    "collaborate": [
+      "Compañeros de inspección y operaciones, no nombrados en los archivos"
+    ],
+    "note": "En el archivo hay una segunda versión del asistente junto a la primera (Version 1 y Version 2), así que el paso de datos del coche pasó por varias iteraciones."
+  },
+  "outcomes": {
+    "heading": "Lo que entrega el archivo",
+    "intro": "Recuentos de trabajo diseñado, no resultados. La pantalla de perfil muestra recuentos de coches inspeccionados, rechazados y programados y un tiempo medio, pero son valores de relleno, no datos registrados.",
+    "delivered": [
+      {
+        "label": "pantallas móviles",
+        "context": "Cola, asistente, panel, listas de comprobación, fotos, inicio de sesión y perfil"
+      },
+      {
+        "label": "áreas de inspección",
+        "context": "De la carrocería a los cristales y retrovisores, cada una con recuentos de aprobados y rechazados"
+      },
+      {
+        "label": "tipos de defecto por pieza",
+        "context": "Daño por granizo, pintado, repintado parcial, abolladura, arañazo y sustituido"
+      }
+    ],
+    "shipped": [
+      "Cola de inspecciones y búsqueda",
+      "Asistente de datos del coche",
+      "Panel de inspección de diez áreas",
+      "Listas de piezas con registro de defectos",
+      "Captura de fotos con nombre",
+      "Seguimiento de la finalización y del tiempo restante"
+    ]
+  },
+  "lessons": {
+    "heading": "Lo que enseñó este trabajo",
+    "items": [
+      {
+        "title": "La estructura es lo que hace comparables los datos de campo",
+        "body": "El valor de una inspección está en que permite comparar dos coches. Los huecos con nombre, las áreas fijas y los tipos de defecto fijos aportan más a eso que cualquier cantidad de texto libre."
+      },
+      {
+        "title": "Diseñar para la excepción",
+        "body": "Un valor predeterminado por pieza reduce el caso habitual a un toque y reserva la atención del inspector para las piezas que la necesitan."
+      },
+      {
+        "title": "Una herramienta que se usa de pie tiene que resistir las interrupciones",
+        "body": "Las inspecciones reanudables y una barra de tiempo visible importan sobre el terreno tanto como cualquier pantalla concreta."
+      }
+    ]
+  }
+}
