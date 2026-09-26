@@ -10,8 +10,8 @@ import { resolveCompany, type CompanyMark, type CompanyMarkFit } from './company
  * `aria-hidden` and a screen reader announces the name exactly once.
  *
  * Plain `<img>`, not `next/image`: `images.localPatterns` in next.config.ts only permits
- * `/api/media/file/**`. Greyscale at rest; brand colour only on light-mode `group-hover`.
- * Dark mode stays mono (opacity rises on hover). Never mirror in RTL — brand marks are not
+ * `/api/media/file/**`. Greyscale at rest in both themes; native brand colour on cell
+ * `group-hover` / `group-focus-within`. Never mirror in RTL — brand marks are not
  * directional UI.
  */
 
@@ -24,7 +24,7 @@ const FIT: Record<CompanyMarkFit, string> = {
 }
 
 const REST =
-  'grayscale opacity-70 transition-[filter,opacity] duration-(--duration-fast) motion-reduce:transition-none group-hover:grayscale-0 group-hover:opacity-100 dark:group-hover:grayscale'
+  'grayscale opacity-70 transition-[filter,opacity] duration-(--duration-fast) motion-reduce:transition-none group-hover:grayscale-0 group-hover:opacity-100 group-focus-within:grayscale-0 group-focus-within:opacity-100'
 
 export interface CompanyLogoProps {
   className?: string
@@ -33,7 +33,10 @@ export interface CompanyLogoProps {
 
 function markTreatment(mark: CompanyMark): string {
   const onLight = mark.onLight === 'invert' ? 'invert dark:invert-0' : ''
-  const onDark = mark.onDark === 'invert' ? 'dark:invert' : ''
+  const onDark =
+    mark.onDark === 'invert'
+      ? 'dark:invert dark:group-hover:invert-0 dark:group-focus-within:invert-0'
+      : ''
   return cn(onLight, onDark)
 }
 

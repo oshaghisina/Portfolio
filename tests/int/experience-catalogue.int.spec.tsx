@@ -144,4 +144,43 @@ describe('ExperienceCatalogueBlock', () => {
     expect(imgs).toHaveLength(1)
     expect(imgs[0]!.getAttribute('src')).toBe('/company-logos/khodro45.png')
   })
+
+  it('reveals native brand colour on cell hover in both themes', () => {
+    const { container, rerender } = render(
+      <ExperienceCatalogueBlock
+        items={[
+          {
+            index: 'A2',
+            name: 'Digikala',
+            role: 'Designer',
+            companyKey: 'digikala',
+          },
+        ]}
+        sectionHeader={{ tag: 'Experience', lead: "Where I've", tail: 'worked' }}
+      />,
+    )
+    let img = container.querySelector('img')!
+    expect(img.className).toContain('group-hover:grayscale-0')
+    expect(img.className).toContain('group-focus-within:grayscale-0')
+    expect(img.className).not.toContain('dark:group-hover:grayscale')
+
+    rerender(
+      <ExperienceCatalogueBlock
+        items={[
+          {
+            index: 'A4',
+            name: 'Khodro45',
+            role: 'Designer',
+            companyKey: 'khodro45',
+          },
+        ]}
+        sectionHeader={{ tag: 'Experience', lead: "Where I've", tail: 'worked' }}
+      />,
+    )
+    img = container.querySelector('img')!
+    expect(img.className).toContain('dark:invert')
+    expect(img.className).toContain('dark:group-hover:invert-0')
+    expect(img.className).toContain('dark:group-focus-within:invert-0')
+    expect(img.className).not.toContain('dark:group-hover:grayscale')
+  })
 })

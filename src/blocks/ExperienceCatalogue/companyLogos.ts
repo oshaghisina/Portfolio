@@ -13,8 +13,9 @@
  * from Docs/Experience assets. Docs/ is gitignored, so nothing here hotlinks or imports from
  * there at runtime. Provenance (source URL + confidence) is recorded per mark below.
  *
- * Colour strategy lives in `CompanyLogo.tsx`: greyscale at rest; brand colour only on light-mode
- * hover. `onLight` / `onDark` here only flip lightness for marks that vanish on their paper.
+ * Colour strategy lives in `CompanyLogo.tsx`: greyscale at rest; native brand colour on cell
+ * hover / focus-within in both themes. `onLight` / `onDark` here only flip lightness for marks
+ * that vanish on their paper (cleared again when colour reveals).
  */
 
 export type CompanyMarkFit = 'lockup' | 'tile' | 'wordmark'
@@ -25,7 +26,7 @@ export type CompanyMark = {
   height: number
   /** How the mark should sit in the shared logo frame. */
   fit: CompanyMarkFit
-  /** Lightness flip on dark paper. Safe under greyscale because hue is already gone. */
+  /** Lightness flip on dark paper at rest; cleared on hover/focus-within so brand hue returns. */
   onDark: CompanyMarkTreatment
   /**
    * Lightness flip on light paper. Allowed only on marks with no hue (Hadish white, Fibona
