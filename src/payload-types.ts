@@ -1556,13 +1556,12 @@ export interface WorkflowStagesBlock {
          * Stable id — sets the render order and the index code
          */
         key:
+          | 'knowledgeResearch'
           | 'designPrototyping'
-          | 'aiAgents'
           | 'buildDelivery'
-          | 'dataIntelligence'
-          | 'growthMeasurement'
+          | 'aiAgents'
           | 'infraOperations'
-          | 'knowledgeResearch';
+          | 'growthMeasurement';
         /**
          * Shown above the matrix, e.g. "Design & Creative Production"
          */
@@ -1573,49 +1572,49 @@ export interface WorkflowStagesBlock {
                * Resolves to a brand mark and its canonical product name (toolLogos.ts).
                */
               toolKey:
+                | 'chatgpt'
+                | 'claude'
+                | 'gemini'
+                | 'grok'
+                | 'obsidian'
                 | 'figma'
                 | 'sketch'
                 | 'afterEffects'
                 | 'mediaEncoder'
                 | 'higgsfield'
-                | 'chatgpt'
-                | 'claude'
-                | 'gemini'
-                | 'grok'
+                | 'cursor'
+                | 'antigravity'
+                | 'vscode'
                 | 'codex'
+                | 'nextjs'
+                | 'payloadCms'
+                | 'supabase'
+                | 'threejs'
+                | 'motion'
+                | 'gsap'
                 | 'hermes'
                 | 'grokBot'
                 | 'openclaw'
                 | 'openrouter'
                 | 'langchain'
                 | 'typesafeAi'
-                | 'cursor'
-                | 'antigravity'
-                | 'vscode'
-                | 'payloadCms'
-                | 'nextjs'
-                | 'threejs'
-                | 'motion'
-                | 'gsap'
-                | 'docker'
-                | 'ga4'
-                | 'amplitude'
-                | 'heap'
-                | 'fullstory'
-                | 'clarity'
-                | 'hotjar'
-                | 'umami'
-                | 'googleTagManager'
-                | 'googleAds'
-                | 'googleSearchConsole'
-                | 'supabase'
-                | 'vercel'
-                | 'coolify'
                 | 'github'
                 | 'gitlab'
                 | 'gitea'
+                | 'docker'
+                | 'vercel'
+                | 'coolify'
                 | 'sentry'
-                | 'obsidian';
+                | 'ga4'
+                | 'googleTagManager'
+                | 'amplitude'
+                | 'heap'
+                | 'umami'
+                | 'fullstory'
+                | 'clarity'
+                | 'hotjar'
+                | 'googleSearchConsole'
+                | 'googleAds';
               id?: string | null;
             }[]
           | null;

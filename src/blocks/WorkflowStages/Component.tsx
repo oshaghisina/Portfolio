@@ -29,7 +29,7 @@ const lgToolCols = (count: number) =>
 const fillSpan = (count: number, cols: number) => (cols - (count % cols)) % cols
 
 /**
- * TOOLS / STACK — the working stack as one section-owned paper surface: seven categories, each a
+ * TOOLS / STACK — the working stack as one section-owned paper surface: six categories, each a
  * tiny index code, a label and a single continuous ruled matrix of real brand marks.
  *
  * Ruled-matrix idiom (see ExperienceGrid): the grid parent paints every separator via `gap-px`
@@ -72,7 +72,7 @@ export const WorkflowStagesBlock: React.FC<WorkflowStagesProps> = ({
   className,
   sectionHeader,
 }) => {
-  // Canonical order by key rather than admin row order, so the 01–07 index codes can never be
+  // Canonical order by key rather than admin row order, so the 01–06 index codes can never be
   // scrambled by a drag in the CMS. Categories with no resolvable tool are dropped so a matrix
   // is never empty.
   const rows = (categories ?? [])

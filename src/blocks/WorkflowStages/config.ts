@@ -5,9 +5,9 @@ import { sectionHeader } from '@/fields/sectionHeader'
 import { CATEGORY_OPTIONS, TOOL_LOGOS, TOOL_OPTIONS } from './toolLogos'
 
 /**
- * TOOLS / STACK — the working stack as categorised brand marks: research, design, build,
- * measurement, knowledge and the infrastructure it runs on, read as one connected stack rather
- * than a shelf of separate toolkits.
+ * TOOLS / STACK — the working stack as categorised brand marks, grouped by what each tool is used
+ * for: think, design, build, automate, ship and measure, read as one connected stack rather than
+ * a shelf of separate toolkits.
  *
  * The slug stays `workflowStages` so the existing homepage layout records survive; only the
  * field list changed (it previously modelled stage → comma-separated tool names).

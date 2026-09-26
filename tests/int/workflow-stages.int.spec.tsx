@@ -29,7 +29,7 @@ describe('WorkflowStagesBlock links', () => {
         categories={[
           {
             key: 'designPrototyping',
-            title: 'Design & Creative Production',
+            title: 'Design & Creative',
             tools: [{ toolKey: 'figma' }, { toolKey: 'sketch' }],
           },
         ]}

@@ -122,7 +122,20 @@ export const buildToolsStackBlock = (copy: HomeCopy): NonNullable<PageLayout>[nu
   blockName: 'Tools / Stack',
   blockType: 'workflowStages',
   sectionHeader: copy.tools.header,
+  // One axis — what each tool is used for — in the order the work runs (see `CATEGORY_KEYS`).
   categories: [
+    {
+      key: 'knowledgeResearch',
+      title: copy.tools.categories.knowledgeResearch,
+      // The four assistants as a set, then the notes they feed.
+      tools: [
+        { toolKey: 'chatgpt' },
+        { toolKey: 'claude' },
+        { toolKey: 'gemini' },
+        { toolKey: 'grok' },
+        { toolKey: 'obsidian' },
+      ],
+    },
     {
       key: 'designPrototyping',
       title: copy.tools.categories.designPrototyping,
@@ -136,16 +149,28 @@ export const buildToolsStackBlock = (copy: HomeCopy): NonNullable<PageLayout>[nu
       ],
     },
     {
+      key: 'buildDelivery',
+      title: copy.tools.categories.buildDelivery,
+      // Where the code gets written, then the app stack, then the 3D and motion libraries. At
+      // `lg` ten lands as two rows of five, and at `sm` the first row is exactly the four editors.
+      tools: [
+        { toolKey: 'cursor' },
+        { toolKey: 'antigravity' },
+        { toolKey: 'vscode' },
+        { toolKey: 'codex' },
+        { toolKey: 'nextjs' },
+        { toolKey: 'payloadCms' },
+        { toolKey: 'supabase' },
+        { toolKey: 'threejs' },
+        { toolKey: 'motion' },
+        { toolKey: 'gsap' },
+      ],
+    },
+    {
       key: 'aiAgents',
       title: copy.tools.categories.aiAgents,
-      // Assistants, then the agents, then the plumbing they all run through. At `lg` this lands
-      // as two rows of six, and the break falls exactly between the agents and the plumbing.
+      // The agents, then the plumbing they run through.
       tools: [
-        { toolKey: 'chatgpt' },
-        { toolKey: 'claude' },
-        { toolKey: 'gemini' },
-        { toolKey: 'grok' },
-        { toolKey: 'codex' },
         { toolKey: 'hermes' },
         { toolKey: 'grokBot' },
         { toolKey: 'openclaw' },
@@ -155,62 +180,36 @@ export const buildToolsStackBlock = (copy: HomeCopy): NonNullable<PageLayout>[nu
       ],
     },
     {
-      key: 'buildDelivery',
-      title: copy.tools.categories.buildDelivery,
-      // Editors, then the app stack, then the 3D and motion libraries, then shipping. At `lg`
-      // nine lands as rows of five and four, and the break falls between Next.js and Three.js.
+      key: 'infraOperations',
+      title: copy.tools.categories.infraOperations,
+      // The three git platforms as one run, then containers and hosting, then what watches it all.
       tools: [
-        { toolKey: 'cursor' },
-        { toolKey: 'antigravity' },
-        { toolKey: 'vscode' },
-        { toolKey: 'payloadCms' },
-        { toolKey: 'nextjs' },
-        { toolKey: 'threejs' },
-        { toolKey: 'motion' },
-        { toolKey: 'gsap' },
+        { toolKey: 'github' },
+        { toolKey: 'gitlab' },
+        { toolKey: 'gitea' },
         { toolKey: 'docker' },
-      ],
-    },
-    {
-      key: 'dataIntelligence',
-      title: copy.tools.categories.dataIntelligence,
-      tools: [
-        { toolKey: 'ga4' },
-        { toolKey: 'amplitude' },
-        { toolKey: 'heap' },
-        { toolKey: 'fullstory' },
-        { toolKey: 'clarity' },
-        { toolKey: 'hotjar' },
-        { toolKey: 'umami' },
+        { toolKey: 'vercel' },
+        { toolKey: 'coolify' },
+        { toolKey: 'sentry' },
       ],
     },
     {
       key: 'growthMeasurement',
       title: copy.tools.categories.growthMeasurement,
+      // Two rows of five at `lg`: the numbers (analytics and the tags that feed them), then the
+      // behaviour (replays and heatmaps), then search and paid acquisition.
       tools: [
+        { toolKey: 'ga4' },
         { toolKey: 'googleTagManager' },
-        { toolKey: 'googleAds' },
+        { toolKey: 'amplitude' },
+        { toolKey: 'heap' },
+        { toolKey: 'umami' },
+        { toolKey: 'fullstory' },
+        { toolKey: 'clarity' },
+        { toolKey: 'hotjar' },
         { toolKey: 'googleSearchConsole' },
+        { toolKey: 'googleAds' },
       ],
-    },
-    {
-      key: 'infraOperations',
-      title: copy.tools.categories.infraOperations,
-      // Data and hosting, then the three git platforms as one run, then what watches it all.
-      tools: [
-        { toolKey: 'supabase' },
-        { toolKey: 'vercel' },
-        { toolKey: 'coolify' },
-        { toolKey: 'github' },
-        { toolKey: 'gitlab' },
-        { toolKey: 'gitea' },
-        { toolKey: 'sentry' },
-      ],
-    },
-    {
-      key: 'knowledgeResearch',
-      title: copy.tools.categories.knowledgeResearch,
-      tools: [{ toolKey: 'obsidian' }],
     },
   ],
 })

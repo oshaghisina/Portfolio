@@ -51,6 +51,7 @@ describe('Positioning language', () => {
     homeCopy.en.meta.description,
     homeCopy.en.hero.heading,
     homeCopy.en.hero.lede,
+    homeCopy.en.tools.header.lede,
     navCopy.en.footer.description,
     navCopy.en.footer.about.text,
     aboutGlobalEn.headline,
