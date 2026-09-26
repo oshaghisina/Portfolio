@@ -108,7 +108,7 @@ Without it, sitemap generation falls back to `https://example.com`. Local `publi
 
 **Retired URLs:** Payload `redirects` rows for `RETIRED_PROJECT_SLUGS` → `/work` (seeded by `seed:projects` / `seed:seo-sync`).
 
-Production is moving to Coolify on the VPS. GitHub Actions ([`.github/workflows/image.yml`](.github/workflows/image.yml)) builds the `Dockerfile` into `ghcr.io/oshaghisina/portfolio` on every push to `main`, and Coolify runs that image. Content changes need no deploy, because every route renders dynamically. The runbook (Mongo restore, Arvan Object Storage / `pnpm migrate:media-urls`, Cloudflare Tunnel for `.com` / D-036, SEO sync) is the local `Docs/Deploy.md` when present.
+Production is moving to Coolify on a fresh server (`SERVER_HOST` in the local `.env`). GitHub Actions ([`.github/workflows/image.yml`](.github/workflows/image.yml)) builds the `Dockerfile` into `ghcr.io/oshaghisina/portfolio` on every push to `main`, and Coolify runs that image. Content changes need no deploy, because every route renders dynamically. The runbook (Mongo restore, Arvan Object Storage / `pnpm migrate:media-urls`, Cloudflare Tunnel for `.com` / D-036, SEO sync) is the local `Docs/Deploy.md` when present.
 
 ## Admin
 

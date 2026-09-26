@@ -6,7 +6,7 @@ Start with `.claude/skills/payload/SKILL.md` for a quick reference, then see `.c
 ## Production (local Docs)
 
 Ops for the live VPS live in `Docs/Deploy.md` (gitignored with the rest of `Docs/`). Production is
-moving to Coolify: `.github/workflows/image.yml` builds the `Dockerfile` into GHCR and Coolify runs
+moving to Coolify on a fresh server (`SERVER_HOST` in `.env`, D-046): `.github/workflows/image.yml` builds the `Dockerfile` into GHCR and Coolify runs
 it; the old `pnpm deploy:prod` / compose stack was removed 2026-09-26. Do not seed on the server;
 see that runbook for Mongo restore, SEO DB sync from the laptop (`pnpm seed:seo-sync`, D-037), Arvan Object Storage
 (D-034), WireGuard constraints, Cloudflare Tunnel (D-036), Payload MCP / Cursor (`POST /api/mcp`,
