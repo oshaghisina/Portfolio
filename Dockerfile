@@ -1,9 +1,7 @@
 # syntax=docker/dockerfile:1
 #
-# One authoritative production build. `scripts/deploy.sh` runs this on the Mac (linux/amd64) and ships
-# only the layers the server does not already hold; the server never installs or compiles.
-# Layers are ordered rarely-changing → often-changing so unchanged ones keep their digest between
-# releases (with `rewrite-timestamp=true` on the exporter).
+# One authoritative production build (linux/amd64), run by `.github/workflows/image.yml`. Layers are
+# ordered rarely-changing → often-changing so unchanged ones keep their digest between releases.
 
 FROM node:22.17.0-alpine AS base
 RUN apk add --no-cache libc6-compat

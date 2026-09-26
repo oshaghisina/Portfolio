@@ -15,10 +15,6 @@ tests
 *.md
 !README.md
 .dockerignore
-docker-compose.yml
-docker-compose.prod.yml
-Caddyfile
-scripts/deploy.sh
 *.tsbuildinfo
 .probe.mts
 .shots.mts
@@ -27,4 +23,3 @@ scripts/deploy.sh
 coverage
 *.log
 .DS_Store
-scripts/deploy*

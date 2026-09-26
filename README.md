@@ -16,14 +16,14 @@ Started from the [Payload Website Template](https://github.com/payloadcms/payloa
 
 ```bash
 cp .env.example .env
-docker compose up -d mongo
+docker run -d --name portfolio-mongo -p 127.0.0.1:27017:27017 -v portfolio-mongo:/data/db mongo:8.2.12
 pnpm install
 pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000). Create an admin user on first visit, then use the admin Seed button (or the `pnpm seed:*` scripts below) to load content.
 
-Local Mongo defaults are in `.env.example` / `docker-compose.yml` (dev compose only).
+Any MongoDB 8 reachable at `DATABASE_URL` works; the container above matches the `.env.example` default. It has no auth, so keep it bound to loopback. It is pinned because MongoDB 8.3+ refuses to start on Linux kernels 6.19–7.0.13, which includes Docker Desktop's VM (SERVER-121912).
 
 ## Collections & globals
 
@@ -108,7 +108,7 @@ Without it, sitemap generation falls back to `https://example.com`. Local `publi
 
 **Retired URLs:** Payload `redirects` rows for `RETIRED_PROJECT_SLUGS` → `/work` (seeded by `seed:projects` / `seed:seo-sync`).
 
-Code releases go through `pnpm deploy:prod`: it validates the committed tree, builds the image once, and sends only the image layers the server doesn't already have (`--dry-run`, `--rollback`). Content changes need no deploy, because every route renders dynamically. The runbook (Caddy, Mongo restore, Arvan Object Storage / `pnpm migrate:media-urls`, Cloudflare Tunnel for `.com` / D-036, SEO sync, rollback) is the local `Docs/Deploy.md` when present.
+Production is moving to Coolify on the VPS. GitHub Actions ([`.github/workflows/image.yml`](.github/workflows/image.yml)) builds the `Dockerfile` into `ghcr.io/oshaghisina/portfolio` on every push to `main`, and Coolify runs that image. Content changes need no deploy, because every route renders dynamically. The runbook (Mongo restore, Arvan Object Storage / `pnpm migrate:media-urls`, Cloudflare Tunnel for `.com` / D-036, SEO sync) is the local `Docs/Deploy.md` when present.
 
 ## Admin
 

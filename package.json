@@ -7,7 +7,6 @@
   "scripts": {
     "build": "cross-env NODE_OPTIONS=--no-deprecation next build",
     "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
-    "deploy:prod": "bash scripts/deploy.sh",
     "dev:prod": "cross-env NODE_OPTIONS=--no-deprecation rm -rf .next && pnpm build && pnpm start",
     "docs:benchmark": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/docs/benchmark.ts",
     "docs:check": "pnpm docs:index --check && pnpm tokens:build --check && pnpm docs:validate",
