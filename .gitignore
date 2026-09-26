@@ -34,6 +34,9 @@ tsconfig.tsbuildinfo
 # /design is dynamic (it awaits searchParams) so it is not prerendered. What such a clone
 # cannot do is `pnpm tokens:build`, seed, or open /design — all three read Docs/ from disk.
 Docs/
+!Docs/
+Docs/*
+!Docs/CASE_STUDY_ROADMAP.md
 
 # Legacy SQLite database from before the MongoDB migration (37b1539)
 portfolio.db

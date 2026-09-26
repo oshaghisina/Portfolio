@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "Payload": {
+      "type": "http",
+      "url": "${env:PAYLOAD_MCP_URL}",
+      "headers": {
+        "Authorization": "Bearer ${env:PAYLOAD_API_KEY}"
+      }
+    }
+  }
+}

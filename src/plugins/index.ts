@@ -1,4 +1,5 @@
 import { formBuilderPlugin } from '@payloadcms/plugin-form-builder'
+import { mcpPlugin } from '@payloadcms/plugin-mcp'
 import { nestedDocsPlugin } from '@payloadcms/plugin-nested-docs'
 import { redirectsPlugin } from '@payloadcms/plugin-redirects'
 import { seoPlugin } from '@payloadcms/plugin-seo'
@@ -115,6 +116,31 @@ export const plugins: Plugin[] = [
       region: process.env.S3_REGION || 'ir-thr-at1',
       endpoint: process.env.S3_ENDPOINT,
       forcePathStyle: true,
+    },
+  }),
+  mcpPlugin({
+    overrideApiKeyCollection: (collection) => {
+      collection.access = {
+        create: ({ req }) => Boolean(req.user),
+        delete: ({ req }) => Boolean(req.user),
+        read: ({ req }) => Boolean(req.user),
+        unlock: ({ req }) => Boolean(req.user),
+        update: ({ req }) => Boolean(req.user),
+      }
+      return collection
+    },
+    collections: {
+      pages: { enabled: true, description: 'Marketing / content pages.' },
+      posts: { enabled: true, description: 'Blog posts.' },
+      projects: { enabled: true, description: 'Portfolio projects.' },
+      experiences: { enabled: true, description: 'Work experience catalogue.' },
+      media: { enabled: true, description: 'Uploads / images.' },
+      categories: { enabled: true, description: 'Taxonomy for posts.' },
+    },
+    globals: {
+      header: { enabled: true },
+      footer: { enabled: true },
+      about: { enabled: true },
     },
   }),
 ]

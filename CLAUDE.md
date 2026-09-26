@@ -6,9 +6,17 @@ Start with `.claude/skills/payload/SKILL.md` for a quick reference, then see `.c
 ## Production (local Docs)
 
 Ops for the live VPS live in `Docs/Deploy.md` (gitignored with the rest of `Docs/`). Redeploy
-with `./scripts/deploy.sh`. Do not seed on the server; see that runbook for Mongo restore,
-Arvan Object Storage (D-034), WireGuard constraints, and the HTTPS DNS-01 follow-up
-(D-027…D-030 in `Docs/Decisions.md`).
+with `./scripts/deploy.sh` / `pnpm deploy:prod`. Do not seed on the server; see that runbook for
+Mongo restore, SEO DB sync from the laptop (`pnpm seed:seo-sync`, D-037), Arvan Object Storage
+(D-034), WireGuard constraints, Cloudflare Tunnel (D-036), Payload MCP / Cursor (`POST /api/mcp`,
+D-039), and the HTTPS DNS-01 follow-up (D-027…D-030 in `Docs/Decisions.md`).
+
+## Payload MCP
+
+Plugin `@payloadcms/plugin-mcp@3.90.1` is registered in `src/plugins/index.ts`. Endpoint:
+`POST /api/mcp` with `Authorization: Bearer <key>` from Admin → **MCP → API Keys**. Cursor reads
+`PAYLOAD_MCP_URL` + `PAYLOAD_API_KEY` via `.cursor/mcp.json`. Do not use the Users REST “API” tab
+URL as the MCP endpoint. Details: `README.md` (Admin → Payload MCP) and `Docs/Deploy.md`.
 
 <!-- BEGIN:nextjs-agent-rules -->
 
