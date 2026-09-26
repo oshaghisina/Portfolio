@@ -1,0 +1,355 @@
+{
+  "statement": "Aus einem Redesign-Auftrag wurde eine Strategie: zwanzig Fragen für jede Abteilung, Tiefeninterviews mit Lehrkräften, eine einzige Roadmap.",
+  "industry": "Edtech · Live-Sprachunterricht online",
+  "team": "Ein zweiköpfiges Produktteam, dazu acht Abteilungen und die Abteilung Pädagogik",
+  "heroCaption": "Die erste Folie der Präsentation zum Plan: ein integrierter Strategiemechanismus für die Plattform OTeacher.",
+  "snapshot": {
+    "problem": "OTeacher wollte ein Redesign, doch die Teams teilten weder Ziele noch einen Entscheidungsweg noch ein gemeinsames Bild von Lehrkräften, Lernenden oder Markt.",
+    "role": "Im Produktteam, gemeinsam mit dem Produktmanagement: der Vierwochenplan, die Fragelisten für acht Abteilungen, die Interviews mit Lehrkräften, die Personas und die Strategiepräsentation.",
+    "result": "Ein gemeinsamer Plan: eine Markenpositionierung, ein Ziel für den operativen Gewinn und eine Roadmap mit sechzehn Punkten in drei Horizonten. Was danach geschah, geht aus der Datei nicht hervor."
+  },
+  "alt": {
+    "cover": "Präsentation zum Plan von OTeacher, Titelfolie – „Ein integrierter Strategiemechanismus für die Plattform OTeacher“ neben dem OTeacher-Logo",
+    "concerns": "Präsentation zum Plan von OTeacher – sieben nummerierte Anliegen und Erwartungen, von gemeinsamen Zielen und einem Entscheidungsweg bis zu einer einheitlichen Markenidentität",
+    "plan01": "Präsentation zum Plan, Folie 1 – der Titel: ein integrierter Strategiemechanismus für die Plattform OTeacher",
+    "plan02": "Präsentation zum Plan, Folie 2 – sieben Anliegen und Erwartungen",
+    "plan03": "Präsentation zum Plan, Folie 3 – ein Kalender über vier Wochen mit fünfzehn Arbeitsergebnissen, ab dem 6. Shahrivar",
+    "plan04": "Präsentation zum Plan, Folie 4 – erste Woche: kurzfristige Ziele, eine Präsentation für die Stakeholder, Geschäfts- und Produktkarten, die Aufgaben jedes Teams",
+    "plan05": "Präsentation zum Plan, Folie 5 – zweite Woche: Interviews und Meetings planen, dokumentieren, bei den Teams nachhaken",
+    "plan06": "Präsentation zum Plan, Folie 6 – dritte Woche: Persona-Analyse, ein Marktanalyse-Dokument und die Methode für die Roadmap",
+    "plan07": "Präsentation zum Plan, Folie 7 – vierte Woche, Teil eins: eine Story, um die Stakeholder auf eine Linie zu bringen, Persona-Karten und Ziele",
+    "plan08": "Präsentation zum Plan, Folie 8 – vierte Woche, Teil zwei: KPIs und Kennzahlen sowie ein Strategiedokument für sechs Monate",
+    "plan09": "Präsentation zum Plan, Folie 9 – warum ein Marktanalyse-Dokument: den Markt kennen, Chancen und Risiken erkennen, eine Wettbewerbsposition festlegen",
+    "plan10": "Präsentation zum Plan, Folie 10 – die Erstellung des Marktanalyse-Dokuments, Schritte 1 bis 10",
+    "plan11": "Präsentation zum Plan, Folie 11 – die Erstellung des Marktanalyse-Dokuments, Schritte 11 bis 19",
+    "survey1": "Frageliste für das Produktteam – zwanzig nummerierte Fragen auf Persisch unter dem OTeacher-Logo",
+    "survey2": "Frageliste für das Marketingteam – zwanzig nummerierte Fragen auf Persisch",
+    "survey3": "Frageliste für das Team Pädagogik und Lehrkräfte – zwanzig nummerierte Fragen auf Persisch",
+    "survey4": "Frageliste für das Supportteam – zwanzig nummerierte Fragen auf Persisch",
+    "survey5": "Frageliste für das Technikteam – zwanzig nummerierte Fragen auf Persisch",
+    "survey6": "Frageliste für das Finanzteam – zwanzig nummerierte Fragen auf Persisch",
+    "survey7": "Frageliste für die Geschäftsführung – zwanzig nummerierte Fragen auf Persisch",
+    "survey8": "Frageliste für das Operations-Team – zwanzig nummerierte Fragen auf Persisch",
+    "market01": "Präsentation zur Marktforschung, Folie 1 – der Titel: das Marktforschungs- und Marketingprojekt von OTeacher",
+    "market02": "Präsentation zur Marktforschung, Folie 2 – ein Zitat: Die Grundlage der Strategie ist die Kultur der Organisation",
+    "market03": "Präsentation zur Marktforschung, Folie 3 – der Ansatz in vier Spalten: explorativ, lösungsorientiert, operativ und partizipativ",
+    "market04": "Präsentation zur Marktforschung, Folie 4 – Mehrwert auf der Plattform: schneller, einfacher, vielfältiger, günstiger, intelligenter, lohnender",
+    "market05": "Präsentation zur Marktforschung, Folie 5 – Fragen an jede Stakeholder-Gruppe: Lehrkräfte, die Plattform und Lernende",
+    "market06": "Präsentation zur Marktforschung, Folie 6 – ein Zitat: Entgangener Gewinn ist Verlust",
+    "market07": "Präsentation zur Marktforschung, Folie 7 – das Ziel operativer Gewinn, aufgeteilt in höhere Einnahmen und niedrigere Kosten",
+    "market08": "Präsentation zur Marktforschung, Folie 8 – sechs Szenarien zum Finden und Testen, von Stammkunden bis zu Nutzern, die OTeacher nicht mehr umgehen",
+    "market09": "Präsentation zur Marktforschung, Folie 9 – entscheiden, was zu tun ist, auf einer Nutzen-Aufwand-Matrix",
+    "interviews": "Fünf Fotos von Interviewrunden mit Lehrkräften von OTeacher an einem Besprechungstisch aus Marmor",
+    "teacherConclusions": "Folie – sieben Schlussfolgerungen aus den Personas der Lehrkräfte",
+    "learnerConclusions": "Folie – sieben Schlussfolgerungen aus den Personas der Lernenden",
+    "brandPosition": "Folie – die Markenpositionierung im Zeitverlauf: eine Option unter mehreren, dann die erste Wahl online, dann ein ernstzunehmender Akteur im gesamten Markt",
+    "roadmap": "Der Weg von OTeacher – die Roadmap in drei Horizonten: Herbst 1402, Winter 1402 und später",
+    "fall": "Roadmap, Herbst 1402 – Gruppenkurse, Spezialkurse, Matching nach Niveau, ein Messenger und eine Unterrichtsplattform",
+    "winter": "Roadmap, Winter 1402 – eine Roadmap für Lernende, eine Analyse der Deviseneinnahmen, Angebote für Organisationen, Werkzeuge für den Unterricht und die Analyse eines neuen Markts",
+    "future": "Roadmap, später – ein Shop, aufgezeichnete Kurse, Deviseneinnahmen und ein Produkt für einen neuen Markt als MVPs, Finanzen und ein Ticketmanager",
+    "draft01": "Strategieentwurf, Folie 1 – der Titel: kurz- und langfristige Strategie",
+    "draft02": "Strategieentwurf, Folie 2 – Kultur isst Strategie zum Frühstück",
+    "draft03": "Strategieentwurf, Folie 3 – die Mission: Sprache darf die Verbindung zur Welt nicht länger behindern",
+    "draft04": "Strategieentwurf, Folie 4 – entgangener Gewinn ist Verlust",
+    "draft05": "Strategieentwurf, Folie 5 – die Markenpositionierung im Zeitverlauf",
+    "draft06": "Strategieentwurf, Folie 6 – übergeordnete Ziele als sechs Szenarien zum Testen",
+    "draft07": "Strategieentwurf, Folie 7 – das Ziel operativer Gewinn, als Einnahmen- und Kostenszenarien",
+    "draft08": "Strategieentwurf, Folie 8 – Personas: die Menschen, die die Strategie betrifft",
+    "draft09": "Strategieentwurf, Folie 9 – Stakeholder und Mehrwert: Lehrkräfte und Plattform erzielen Einnahmen, Lernende lernen eine Sprache",
+    "draft10": "Strategieentwurf, Folie 10 – sieben Schlussfolgerungen aus den Personas der Lehrkräfte",
+    "draft11": "Strategieentwurf, Folie 11 – sieben Schlussfolgerungen aus den Personas der Lernenden",
+    "educationUnit": "Folie – die fünf Maßnahmen der Abteilung Pädagogik, von einem Supervisionsteam erfahrener Lehrkräfte bis zu Fachkursen"
+  },
+  "chapters": {
+    "context": {
+      "heading": "Eine Online-Sprachschule, die ein Redesign wollte",
+      "body": [
+        "OTeacher ist eine iranische Plattform für Live-Sprachunterricht online: Lernende wählen eine Lehrkraft, testen oft eine erste Stunde und buchen dann Unterricht. Die Website ging 2017 online und wurde zweimal neu gebaut; im Winter 1401, Anfang 2023, bekam das Unternehmen eine neue Geschäftsführung und ein neues Führungsteam.",
+        "Sina kam als Produktdesigner ins Produktteam und arbeitete eng mit dem Produktmanagement zusammen; der Auftrag war ein Redesign. Bald zeigte sich eine größere Lücke. Die Teams teilten keine Ziele, und der Führung fehlte ein klares Bild davon, was von jedem Team zu verlangen war, um Ergebnisse voranzubringen."
+      ]
+    },
+    "problem": {
+      "heading": "Sieben Anliegen vor dem ersten Screen",
+      "body": [
+        "Also begann die Arbeit mit einem Plan, und dieser Plan benannte zuerst, was dem Unternehmen fehlte – in Form von sieben Anliegen und Erwartungen:"
+      ],
+      "bullets": [
+        "Große, übergeordnete Ziele und ein Weg, wie sie jede Ebene der Organisation und des Produkts erreichen",
+        "Sinnvolle Verbindungen zwischen den Teams und dem Produkt, gestützt auf das, worüber sich alle Stakeholder einig sind",
+        "Ein Mechanismus für Entscheidungen",
+        "Erfahrung, die bewahrt und aufgeschrieben wird, damit sie zum eigenen Wissen der Organisation wird",
+        "Ein gemeinsames Verständnis der Leistungen, die OTeacher anbietet",
+        "Ein gemeinsames Verständnis von Zielgruppe, Nutzern und Markt",
+        "Eine einheitliche Markenidentität an jedem Punkt, an dem Lernende und Lehrkräfte ihr begegnen"
+      ],
+      "insight": "Fünf der sieben verlangen dasselbe: ein Bild, das alle teilen."
+    },
+    "surveys": {
+      "heading": "Zwanzig Fragen für jede Abteilung",
+      "body": [
+        "Jede Abteilung bekam ihre eigene Liste: zwanzig nummerierte Fragen unter einer einzigen Anweisung. Jede Frage beantworten und sagen, welchen Wert ihr Ergebnis für jeden Stakeholder schaffen würde – für die Lernenden, die Lehrkräfte und die Plattform.",
+        "Die Listen gingen an Produkt, Marketing, Pädagogik und Lehrkräfte, Support, das Technikteam, Finanzen, Geschäftsführung und Operations. Jede ist als erstes Dokument der Marktanalyse überschrieben – des Dokuments, das für die dritte Woche geplant war. Einige der Fragen:"
+      ],
+      "bullets": [
+        "Produkt: Welche Ideen haben Sie, um das Produkt zu verbessern? Wie nutzen Sie Probleme und Feedback der Lernenden, um es zu verbessern?",
+        "Marketing: Wie würden Sie den Zielmarkt definieren und erreichen? Wie könnten mehr Kunden zu Lernenden werden?",
+        "Pädagogik und Lehrkräfte: Wie können Sie Lehrkräften helfen, bessere Lehrkompetenzen aufzubauen? Wie nutzen Sie das Feedback der Lernenden, um den Unterricht zu verbessern?",
+        "Support: Wie können Sie die Zeit verkürzen, bis Tickets und Nachrichten von Lernenden beantwortet sind?",
+        "Technikteam: Wie bleibt die Plattform auch unter hoher Last stabil und schnell?",
+        "Finanzen: Was würde die Kosten des Projekts senken?",
+        "Geschäftsführung: Wie ließen sich Konflikte und das Miteinander zwischen den Teams besser steuern?",
+        "Operations: Was würde die täglichen Abläufe des Projekts effizienter machen?"
+      ],
+      "insight": "Jede Antwort musste nennen, wer gewinnt: die Lernenden, die Lehrkräfte oder die Plattform."
+    },
+    "market": {
+      "heading": "Ein Marktforschungsprojekt rund um dieselben drei Stakeholder",
+      "customLabel": "Marktforschung",
+      "body": [
+        "Eine zweite Präsentation steckte den Rahmen für die Marktforschung ab. Darin verbinden sich vier Arbeitsweisen – explorativ, lösungsorientiert, operativ und partizipativ –, und der Mehrwert auf der Plattform wird in sechs Worten definiert, die für Lehrkräfte und Lernende gleichermaßen gelten: schneller, einfacher, vielfältiger, günstiger, intelligenter und lohnender.",
+        "Dann folgen Fragen an jede Stakeholder-Gruppe. Wie können Lehrkräfte wirkungsvoller unterrichten und mehr gute Lernende erreichen? Wie kann die Plattform mehr Lernende mit Lehrkräften zusammenbringen und sie halten? Wie bekommen Lernende mehr Möglichkeiten zu bezahlen?",
+        "Das Ziel ist der operative Gewinn; „entgangener Gewinn ist Verlust“, heißt es auf einer Folie. Einnahmenszenarien (mehr Käufe, schnellere Käufe, mehr Käufer, wiederkehrende Käufer) und Kostenszenarien (ein besseres Nutzungserlebnis, Nutzer halten, verhindern, dass Nutzer OTeacher umgehen) werden zuerst getestet und dann auf einer Nutzen-Aufwand-Matrix bewertet, bevor irgendetwas umgesetzt wird. Das Marktanalyse-Dokument selbst war in neunzehn Schritten geplant, von Bedürfnissen und Wettbewerbern bis zu Umfragen, Interviews und Gesprächen mit Lehrkräften und Lernenden."
+      ]
+    },
+    "interviews": {
+      "heading": "Tiefeninterviews mit Lehrkräften",
+      "body": [
+        "Die Interviews des Plans fanden nicht nur mit dem eigenen Personal statt. Sina und das Team setzten sich mit Lehrkräften zu langen, offenen Interviews zusammen, teils zu mehreren an einem Tisch, über ihren Unterricht, ihr Einkommen und die Werkzeuge, mit denen sie unterrichten.",
+        "Die Interviews wurden in einer einheitlichen Vorlage festgehalten: eine Empathiekarte dazu, was die Person denkt, fühlt, tut und sagt, und ein Profil mit Leitspruch, Zielen, Sorgen, Erwartungen an OTeacher, Hürden sowie der eigenen Art zu lernen und zu unterrichten. Für Lernende galt dieselbe Vorlage.",
+        "Das Ergebnis waren neun Personas auf vierzehn Boards: drei Lehrkräfte und sechs Lernende."
+      ]
+    },
+    "personas": {
+      "heading": "Zwei Seiten, zwei Beschwerden",
+      "customLabel": "Personas",
+      "body": [
+        "Die Präsentation fasst die Persona der Lehrkräfte in einem Satz zusammen: „Die Lernenden zahlen nicht!“ Lehrkräfte forderten bessere Werkzeuge für den Unterricht und mehr Einkommen. Sie wollten, dass die besten Lehrkräfte herausstechen – mit Abzeichen für erfahrene und leitende Lehrkräfte und einer höheren Hürde für neue –, dazu fairere Regeln für Absagen mit einer Strafe für Lernende, die nicht zum Unterricht erscheinen. Den Verlust von Lernenden schrieben sie dem Tool für den Videounterricht zu, und sie sorgten sich um Lernende, die abspringen.",
+        "Die Persona der Lernenden sagt: „Was ist denn mit unserem Kurs passiert?!“ Eine gute, passende Lehrkraft zu finden, war schwer und ungewiss. Frühere Misserfolge machten Lernende vorsichtig, es gab keinen klaren Lernpfad, und die Plattform selbst war ohne verlässliche Verbindung zur Lehrkraft das größte Hindernis. Lernende fürchteten, die investierte Zeit und das bezahlte Geld zu verlieren."
+      ],
+      "insight": "Beide Seiten zeigten auf dieselben zwei Dinge: den Unterricht selbst und die Frage, welche Lehrkraft die richtige ist."
+    },
+    "strategy": {
+      "heading": "Eine Positionierung, ein Ziel und eine Roadmap in drei Horizonten",
+      "body": [
+        "Die Strategiepräsentation verortet die Marke auf einer Linie: heute eine Option unter mehreren, um online eine Sprache zu lernen; in der zweiten Jahreshälfte die erste Wahl; langfristig ein ernstzunehmender, einflussreicher Akteur im gesamten Markt für Sprachenlernen. Das Ziel dahinter ist der operative Gewinn.",
+        "Die Roadmap begann mit den Haftnotizen aus dem Produktmanagement und wurde in drei Horizonte gegliedert. Herbst 1402: eine Unterrichtsplattform, ein Messenger, Matching nach Niveau, Spezialkurse und Gruppenkurse. Winter 1402: bessere Werkzeuge für den Unterricht, eine Roadmap für Lernende, Angebote für Organisationen und zwei Analysen, zu Deviseneinnahmen und zu einem neuen Markt. Später: ein Shop, aufgezeichnete Kurse, Finanzen, ein Ticketmanager sowie MVPs zu Deviseneinnahmen und zu einem Produkt für einen neuen Markt.",
+        "Neben die Interviews gelegt, beantworten die ersten beiden Horizonte die lautesten Beschwerden: eine Unterrichtsplattform und ein Messenger für die abgerissene Verbindung zur Lehrkraft, Matching nach Niveau für Lernende, die nicht die richtige Lehrkraft finden, eine Roadmap für Lernende gegen den fehlenden Lernpfad und bessere Werkzeuge für Lehrkräfte."
+      ],
+      "insight": "Die zwei größten Wetten, Deviseneinnahmen und ein neuer Markt, kommen als Analysen auf die Roadmap und kehren später als MVPs zurück."
+    },
+    "education": {
+      "heading": "Lehrkräfte wollten Unterschiede sichtbar machen",
+      "customLabel": "Abteilung Pädagogik",
+      "body": [
+        "Parallel zur Produktarbeit stellt die Präsentation eine neue Abteilung Pädagogik vor, die mehrere Wünsche der Lehrkräfte aufgreift. Ihre fünf Maßnahmen: die Abteilung aufbauen, um Zufriedenheit und Unterrichtsqualität zu steigern; ein Supervisionsteam aus aktiven, erfahrenen Lehrkräften bilden; Standards, Unterrichtsprozesse und Interviews entwerfen; alle Lehrkräfte interviewen und in Gruppen einteilen; und Fachkurse durchführen, um die Fähigkeiten der Lehrkräfte zu stärken."
+      ]
+    }
+  },
+  "figures": {
+    "concerns": {
+      "caption": "Sieben Anliegen und Erwartungen: Hier beginnt der Plan."
+    },
+    "plan": {
+      "caption": "Die Präsentation zum Plan, Folie für Folie. Jede Folie lässt sich zum Lesen öffnen.",
+      "items": [
+        "Titel",
+        "Anliegen und Erwartungen",
+        "Vierwochenkalender",
+        "Erste Woche",
+        "Zweite Woche",
+        "Dritte Woche",
+        "Vierte Woche, Teil eins",
+        "Vierte Woche, Teil zwei",
+        "Warum ein Marktanalyse-Dokument",
+        "Marktanalyse, Schritte 1–10",
+        "Marktanalyse, Schritte 11–19"
+      ]
+    },
+    "surveys": {
+      "caption": "Eine Frageliste pro Abteilung, je zwanzig Fragen. Jede Liste lässt sich öffnen und auf Persisch lesen.",
+      "items": [
+        "Produkt",
+        "Marketing",
+        "Pädagogik und Lehrkräfte",
+        "Support",
+        "Technikteam",
+        "Finanzen",
+        "Geschäftsführung",
+        "Operations"
+      ]
+    },
+    "market": {
+      "caption": "Die Präsentation zum Marktforschungsprojekt, Folie für Folie.",
+      "items": [
+        "Titel",
+        "Kultur zuerst",
+        "Ansatz",
+        "Mehrwert für beide Seiten",
+        "Stakeholder und Mehrwert",
+        "Entgangener Gewinn ist Verlust",
+        "Ziel: operativer Gewinn",
+        "Szenarien finden und testen",
+        "Entscheiden, was zu tun ist"
+      ]
+    },
+    "interviews": {
+      "caption": "Tiefeninterviews mit Lehrkräften, wie die Strategiepräsentation sie zeigt."
+    },
+    "conclusions": {
+      "caption": "Was die Personas ergaben.",
+      "items": [
+        "Lehrkräfte: sieben Erwartungen an die Plattform.",
+        "Lernende: sieben Befunde zum Online-Lernen."
+      ]
+    },
+    "position": {
+      "caption": "Die Markenpositionierung im Zeitverlauf: eine Option unter mehreren, dann die erste Wahl online, dann ein ernstzunehmender Akteur im gesamten Markt."
+    },
+    "roadmap": {
+      "caption": "Der Weg von OTeacher: die Roadmap in drei Horizonten, in der präsentierten Fassung."
+    },
+    "horizons": {
+      "caption": "Die drei Horizonte, eine Folie pro Horizont.",
+      "items": [
+        "Herbst 1402",
+        "Winter 1402",
+        "Später"
+      ]
+    },
+    "draft": {
+      "caption": "Die Strategiepräsentation im ersten Entwurf, auf derselben Seite. Ausgelassen: eine Schätzung der Marktgröße, eine unfertige SWOT-Vorlage und der Roadmap-Entwurf aus dem Produktmanagement auf Haftnotizen.",
+      "items": [
+        "Titel",
+        "Kultur isst Strategie zum Frühstück",
+        "Die Sprachbarriere abbauen",
+        "Entgangener Gewinn ist Verlust",
+        "Markenpositionierung",
+        "Übergeordnete Ziele",
+        "Ziel: operativer Gewinn",
+        "Personas",
+        "Stakeholder und Mehrwert",
+        "Personas der Lehrkräfte: Schlussfolgerungen",
+        "Personas der Lernenden: Schlussfolgerungen"
+      ]
+    },
+    "education": {
+      "caption": "Die fünf Maßnahmen der Abteilung Pädagogik."
+    }
+  },
+  "process": {
+    "heading": "Vier Wochen, fünfzehn Arbeitsergebnisse",
+    "steps": [
+      {
+        "label": "Ziele und Rollen",
+        "note": "Kurzfristige Ziele, eine Präsentation für die Stakeholder, Geschäfts- und Produktkarten und die Aufgaben jedes Teams"
+      },
+      {
+        "label": "Interviews",
+        "note": "Interviews und Meetings planen, jedes davon dokumentieren und bei den Teams nachhaken"
+      },
+      {
+        "label": "Personas und Markt",
+        "note": "Persona-Analyse, ein Marktanalyse-Dokument und die Methode für die Roadmap"
+      },
+      {
+        "label": "Story und Ziele",
+        "note": "Eine Story, die die Stakeholder auf eine Linie bringt, Persona-Karten und SMART-Ziele"
+      },
+      {
+        "label": "Kennzahlen und Plan",
+        "note": "KPIs und Kennzahlen sowie ein Strategiedokument für sechs Monate"
+      }
+    ]
+  },
+  "decisions": {
+    "heading": "Fünf Entscheidungen hinter dem Plan",
+    "lede": "Die Präsentationen und Boards machen diese Entscheidungen sichtbar.",
+    "items": [
+      {
+        "title": "Jede Abteilung befragen, bevor gestaltet wird",
+        "why": "Der Auftrag war ein Redesign, doch die Teams teilten weder Ziele noch einen Entscheidungsweg. Zuerst zu gestalten hätte bedeutet, für die Produktsicht eines einzigen Teams zu gestalten.",
+        "tradeoff": "Die ersten zwei Wochen gingen in Ziele, Rollen und Interviews statt ins Produkt."
+      },
+      {
+        "title": "Ein Format für acht Abteilungen",
+        "why": "Jede Liste beginnt mit derselben Anweisung: antworten und sagen, was das Ergebnis für Lernende, Lehrkräfte und die Plattform schafft. So ließen sich die Antworten aus den Finanzen und aus der Pädagogik an denselben drei Stakeholdern messen.",
+        "tradeoff": "Ein einheitliches Format passt zu manchen Teams besser als zu anderen; die Liste für Operations wiederholt sich, um auf zwanzig zu kommen."
+      },
+      {
+        "title": "Lehrkräfte ausführlich interviewen",
+        "why": "Lehrkräfte sind eine Seite des Marktplatzes. Das Gespräch mit ihnen machte aus allgemeinen Beschwerden konkrete Wünsche: Abzeichen für erfahrene Lehrkräfte, eine höhere Hürde für neue, fairere Regeln für Absagen.",
+        "tradeoff": "Drei Personas stehen für alle Lehrkräfte der Plattform.",
+        "evidence": "Die Persona-Boards der Lehrkräfte und die Folie mit den daraus gezogenen Schlussfolgerungen."
+      },
+      {
+        "title": "Den operativen Gewinn zum Ziel machen",
+        "why": "„Entgangener Gewinn ist Verlust“ gibt den Maßstab vor. Jede Idee wird zu einem Einnahmen- oder Kostenszenario, wird getestet und auf einer Nutzen-Aufwand-Matrix bewertet, bevor jemand handelt.",
+        "tradeoff": "Arbeit an der Unterrichtsqualität muss sich über Einnahmen begründen lassen, um auf die Liste zu kommen."
+      },
+      {
+        "title": "Eine neue Einnahmequelle prüfen, bevor man sie baut",
+        "why": "Deviseneinnahmen und ein neuer Markt erscheinen jeweils zweimal auf der Roadmap: als Analyse im Winter 1402 und erst später als MVP.",
+        "tradeoff": "Die größten Wetten warten mindestens zwei Horizonte."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "Sinas Anteil",
+    "intro": "Sina arbeitete im Produktteam von OTeacher mit der Person im Produktmanagement zusammen. Die Strategiedatei ist Sinas Arbeit: der Plan, die Fragelisten, die Präsentationen und die Persona-Boards.",
+    "own": [
+      "Der vierwöchige Strategieplan und die Präsentation dazu",
+      "Die Fragelisten für acht Abteilungen",
+      "Die Präsentation zum Marktforschungsprojekt",
+      "Die Empathiekarte, die Persona-Vorlage und die Persona-Boards",
+      "Die Strategiepräsentation, die Markenpositionierung, Ziel und Roadmap darlegt"
+    ],
+    "collaborate": [
+      "Die Person im Produktmanagement, im gesamten Prozess, einschließlich des ersten Roadmap-Entwurfs",
+      "Die Abteilungen, die die Fragelisten beantworteten",
+      "Die interviewten Lehrkräfte und Lernenden sowie die Abteilung Pädagogik"
+    ],
+    "note": "Folien zur Firmengeschichte, zum Team und zu einer Schätzung der Marktgröße, eine unfertige SWOT-Vorlage und ein Roadmap-Entwurf auf Haftnotizen werden nicht gezeigt, ebenso wenig die Persona-Boards, die die Namen der Interviewten tragen."
+  },
+  "outcomes": {
+    "heading": "Ein Plan, den das ganze Unternehmen lesen konnte",
+    "intro": "Die Datei hält den Prozess und die Ergebnisse fest, nicht, was das Unternehmen danach damit machte. Nutzungszahlen gibt es daher keine.",
+    "delivered": [
+      {
+        "label": "Abteilungen, jede mit eigener Frageliste",
+        "context": "Produkt, Marketing, Pädagogik, Support, Technik, Finanzen, Geschäftsführung und Operations, je zwanzig Fragen"
+      },
+      {
+        "label": "Personas für beide Seiten des Marktplatzes",
+        "context": "Drei Lehrkräfte und sechs Lernende auf vierzehn Boards"
+      },
+      {
+        "label": "Roadmap-Punkte in drei Horizonten",
+        "context": "Fünf für Herbst 1402, fünf für Winter 1402 und sechs für später"
+      }
+    ],
+    "shipped": [
+      "Ein vierwöchiger Strategieplan mit Präsentation",
+      "Fragelisten für acht Abteilungen",
+      "Eine Präsentation zum Marktforschungsprojekt",
+      "Tiefeninterviews mit Lehrkräften und neun Personas von Lehrkräften und Lernenden",
+      "Eine Markenpositionierung, ein Ziel für den operativen Gewinn und eine Roadmap in drei Horizonten"
+    ]
+  },
+  "lessons": {
+    "heading": "Was ich ändern würde",
+    "items": [
+      {
+        "title": "Die Fragen auf jedes Team zuschneiden",
+        "body": "Jede Abteilung bekam dasselbe Format mit zwanzig Zeilen, und den späteren Listen merkt man das an: Die Liste für Operations wiederholt dieselben wenigen Fragen, um ihre zwanzig Zeilen zu füllen, und auch die Geschäftsführung wiederholt sich. Acht oder zehn Fragen, eigens für jedes Team geschrieben, hätten mit weniger mehr gefragt."
+      },
+      {
+        "title": "Jedem Horizont Verantwortliche und eine Messgröße geben",
+        "body": "Woche vier sah Ziele, KPIs und Kennzahlen vor, doch die Roadmap-Folien listen die Punkte nach Jahreszeit auf, ohne Verantwortliche oder Zielwert. Eine Roadmap, die das ganze Unternehmen liest, sollte zu jedem Punkt nennen, wer verantwortlich ist und woran der Erfolg gemessen wird."
+      },
+      {
+        "title": "Sagen, für wie viele Menschen jede Persona steht",
+        "body": "Die Personas sind fertige Boards, und nichts darauf zeigt, wie viele Interviews hinter jeder stecken. Eine Zeile pro Persona mit der Zahl der Befragten und dem Zeitpunkt der Interviews würde es Lesenden erlauben, ihr Gewicht einzuschätzen."
+      }
+    ]
+  }
+}

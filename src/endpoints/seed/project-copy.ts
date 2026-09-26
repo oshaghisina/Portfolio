@@ -881,32 +881,32 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
     fa: {
       title: 'استراتژی محصول و نقشهٔ راه',
       summary:
-        'بر اساس جایگاه برند و سابقهٔ سرمایه‌گذاری و عرضهٔ اوتیچر، نقشهٔ راهی مرحله‌بندی‌شده برای محصول تدوین کردم.',
+        'فرایند چهارهفته‌ای استراتژی: بیست سؤال برای هر یک از هشت واحد، مصاحبه‌های عمیق با اساتید، نُه پرسونا، و جایگاه برند و نقشهٔ راهی در سه افق که از دل همین‌ها بیرون آمد.',
     },
     ar: {
       title: 'استراتيجية المنتج وخارطة الطريق',
       summary:
-        'ترجمتُ تحليل تموضع العلامة إلى خارطة طريق منتج مرحلية لأوتيتشر، في إطار تاريخ التمويل والإطلاق لدى الشركة.',
+        'عملية لوضع الاستراتيجية على مدى أربعة أسابيع: عشرون سؤالًا لكلٍّ من ثمانية أقسام، ومقابلات معمّقة مع المعلّمين، وتسع شخصيات للمستخدمين، ومنها خرجت مكانة العلامة وخارطة طريق على ثلاث مراحل.',
     },
     es: {
       title: 'Estrategia de producto y hoja de ruta',
       summary:
-        'Traduje el análisis de posicionamiento de marca en una hoja de ruta de producto por fases para OTeacher, enmarcada en el historial de financiación y lanzamientos de la empresa.',
+        'Un proceso de estrategia de cuatro semanas: veinte preguntas para cada uno de los ocho departamentos, entrevistas a fondo con el profesorado, nueve personas de usuario, y el posicionamiento de marca y la hoja de ruta en tres horizontes que surgieron de todo ello.',
     },
     de: {
       title: 'Produktstrategie & Roadmap',
       summary:
-        'Die Markenpositionierungsanalyse in eine phasenweise Produkt-Roadmap für OTeacher übersetzt, eingeordnet in die Finanzierungs- und Launch-Historie des Unternehmens.',
+        'Ein vierwöchiger Strategieprozess: zwanzig Fragen für jede der acht Abteilungen, Tiefeninterviews mit Lehrkräften, neun Personas sowie die Markenpositionierung und die Roadmap in drei Horizonten, die daraus entstanden.',
     },
     fr: {
       title: 'Stratégie produit et feuille de route',
       summary:
-        'J’ai traduit l’analyse de positionnement de marque en une feuille de route produit par phases pour OTeacher, replacée dans l’historique de financement et de lancement de l’entreprise.',
+        'Un processus stratégique de quatre semaines : vingt questions pour chacun des huit départements, des entretiens approfondis avec le corps enseignant, neuf personas, puis le positionnement de marque et la feuille de route sur trois horizons qui en sont issus.',
     },
     ja: {
       title: 'プロダクト戦略とロードマップ',
       summary:
-        'ブランドポジショニングの分析を、OTeacherの段階的なプロダクトロードマップに落とし込んだ。同社の資金調達とローンチの経緯を踏まえて構成。',
+        '4週間の戦略づくり：8つの部門それぞれへの20の質問、講師へのデプスインタビュー、9人のペルソナ、そしてそこから生まれたブランドのポジションと3つの時期のロードマップ。',
     },
   },
   'oteacher-panel-redesign': {

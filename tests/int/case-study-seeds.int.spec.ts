@@ -385,6 +385,26 @@ const GATES: Record<string, { files: RegExp[]; text: RegExp[] }> = {
       /مطب|پزشک|doctor|Arzt|médecin|médico|医師/i,
     ],
   },
+  'oteacher-product-roadmap': {
+    // Only `study/`: the Questions page's four rows, the event deck's roadmap, brand-position and
+    // education slides, and the interview photographs Sina chose (frame 102). Never the market-size
+    // slide (revenue estimates), the SWOT slide (a template about another company), the
+    // teacher-interview spreadsheet slide, the persona boards (interviewees' names), the team,
+    // board and timeline slides (staff and investors) or the roadmap's sticky-note draft (the
+    // product manager's stickies, each signed with their name). No person is named. The names
+    // themselves are not listed here, since this repository is public; the study's local `SCAN.md`
+    // (Docs, not committed) records them.
+    files: [/^(?!study\/)/, /market-size|swot|147-|persona\/|team|timeline|path|roadmap-draft/i],
+    text: [
+      /Airbnb/i,
+      /billion|میلیارد|مليار|Milliard|milliard|mil millones|億/i,
+      /toman|تومان|トマン/i,
+      /Skyroom|اسکای ?روم|سكاي ?روم|スカイルーム/i,
+      /DALL/i,
+      /figma\.com/i,
+      /@|gmail/i,
+    ],
+  },
   'biomaze-website-education-panel': {
     // Brand Brief Tier-1: never the unverified “first player” market claim, in any locale.
     files: [],

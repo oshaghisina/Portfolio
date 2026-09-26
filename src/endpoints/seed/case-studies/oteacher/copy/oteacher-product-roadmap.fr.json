@@ -1,0 +1,355 @@
+{
+  "statement": "Une demande de refonte devenue stratégie : vingt questions par département, des entretiens de fond avec les professeurs, une seule feuille de route.",
+  "industry": "Edtech · cours de langues en ligne et en direct",
+  "team": "Un pôle produit de deux personnes, avec huit départements et le pôle pédagogique",
+  "heroCaption": "La diapositive d’ouverture de la présentation du plan : un mécanisme de stratégie intégrée pour la plateforme OTeacher.",
+  "snapshot": {
+    "problem": "OTeacher demandait une refonte, mais ses équipes ne partageaient ni objectifs, ni façon de décider, ni vision commune des professeurs, des apprenants ou du marché.",
+    "role": "Au sein du pôle produit, avec la personne responsable du produit : le plan sur quatre semaines, les listes de questions pour huit départements, les entretiens avec les professeurs, les personas et la présentation de la stratégie.",
+    "result": "Un plan commun : un positionnement de marque, un objectif de bénéfice d’exploitation et une feuille de route de seize éléments sur trois horizons. Le fichier ne dit pas ce qui s’est passé ensuite."
+  },
+  "alt": {
+    "cover": "Présentation du plan d’OTeacher, diapositive de titre — « Un mécanisme de stratégie intégrée pour la plateforme OTeacher » à côté du logo OTeacher",
+    "concerns": "Présentation du plan d’OTeacher — sept préoccupations et attentes numérotées, des objectifs partagés et d’un mode de décision jusqu’à une identité de marque unique",
+    "plan01": "Présentation du plan, diapositive 1 — le titre : un mécanisme de stratégie intégrée pour la plateforme OTeacher",
+    "plan02": "Présentation du plan, diapositive 2 — sept préoccupations et attentes",
+    "plan03": "Présentation du plan, diapositive 3 — un calendrier de quatre semaines et quinze livrables, à partir du 6 Shahrivar",
+    "plan04": "Présentation du plan, diapositive 4 — première semaine : objectifs à court terme, une présentation pour les parties prenantes, cartographies métier et produit, missions de chaque équipe",
+    "plan05": "Présentation du plan, diapositive 5 — deuxième semaine : planifier les entretiens et les réunions, les documenter, assurer le suivi avec les équipes",
+    "plan06": "Présentation du plan, diapositive 6 — troisième semaine : analyse des personas, un document d’analyse de marché et la méthode de la feuille de route",
+    "plan07": "Présentation du plan, diapositive 7 — quatrième semaine, première partie : un récit pour aligner les parties prenantes, des cartes de personas et des objectifs",
+    "plan08": "Présentation du plan, diapositive 8 — quatrième semaine, seconde partie : KPI et métriques, et un document de stratégie à six mois",
+    "plan09": "Présentation du plan, diapositive 9 — pourquoi un document d’analyse de marché : connaître le marché, repérer les opportunités et les menaces, définir une position concurrentielle",
+    "plan10": "Présentation du plan, diapositive 10 — l’élaboration du document d’analyse de marché, étapes 1 à 10",
+    "plan11": "Présentation du plan, diapositive 11 — l’élaboration du document d’analyse de marché, étapes 11 à 19",
+    "survey1": "Liste de questions pour l’équipe produit — vingt questions numérotées en persan sous le logo OTeacher",
+    "survey2": "Liste de questions pour l’équipe marketing — vingt questions numérotées en persan",
+    "survey3": "Liste de questions pour l’équipe pédagogie et professeurs — vingt questions numérotées en persan",
+    "survey4": "Liste de questions pour l’équipe support — vingt questions numérotées en persan",
+    "survey5": "Liste de questions pour l’équipe technique — vingt questions numérotées en persan",
+    "survey6": "Liste de questions pour l’équipe finance — vingt questions numérotées en persan",
+    "survey7": "Liste de questions pour l’équipe de direction — vingt questions numérotées en persan",
+    "survey8": "Liste de questions pour l’équipe des opérations — vingt questions numérotées en persan",
+    "market01": "Présentation de l’étude de marché, diapositive 1 — le titre : le projet d’étude de marché et de marketing d’OTeacher",
+    "market02": "Présentation de l’étude de marché, diapositive 2 — une citation : le socle de la stratégie, c’est la culture de l’organisation",
+    "market03": "Présentation de l’étude de marché, diapositive 3 — l’approche en quatre colonnes : exploratoire, orientée solutions, opérationnelle et participative",
+    "market04": "Présentation de l’étude de marché, diapositive 4 — la valeur sur la plateforme : plus rapide, plus simple, plus varié, moins cher, plus intelligent, plus intéressant",
+    "market05": "Présentation de l’étude de marché, diapositive 5 — des questions pour chaque partie prenante : les professeurs, la plateforme et les apprenants",
+    "market06": "Présentation de l’étude de marché, diapositive 6 — une citation : tout bénéfice non réalisé est une perte",
+    "market07": "Présentation de l’étude de marché, diapositive 7 — l’objectif de bénéfice d’exploitation, décliné en hausse des revenus et baisse des coûts",
+    "market08": "Présentation de l’étude de marché, diapositive 8 — six scénarios à découvrir et à tester, des clients qui reviennent jusqu’à empêcher les utilisateurs de contourner OTeacher",
+    "market09": "Présentation de l’étude de marché, diapositive 9 — décider des actions à mener, sur une grille gain-effort",
+    "interviews": "Cinq photos de séances d’entretien avec des professeurs d’OTeacher autour d’une table de réunion en marbre",
+    "teacherConclusions": "Diapositive — sept conclusions tirées des personas professeurs",
+    "learnerConclusions": "Diapositive — sept conclusions tirées des personas apprenants",
+    "brandPosition": "Diapositive — le positionnement de marque dans le temps : une option parmi d’autres, puis le premier choix en ligne, puis un acteur sérieux sur l’ensemble du marché",
+    "roadmap": "Le chemin d’OTeacher — la feuille de route sur trois horizons : automne 1402, hiver 1402 et plus tard",
+    "fall": "Feuille de route, automne 1402 — cours collectifs, cours spécialisés, appariement par niveau, une messagerie et une plateforme de cours",
+    "winter": "Feuille de route, hiver 1402 — une feuille de route pour l’apprenant, l’analyse des revenus en devises, des services aux organisations, des outils pédagogiques et l’analyse d’un nouveau marché",
+    "future": "Feuille de route, plus tard — une boutique, des cours enregistrés, les revenus en devises et un produit pour un nouveau marché en MVP, les finances et un gestionnaire de tickets",
+    "draft01": "Brouillon de la stratégie, diapositive 1 — le titre : stratégie à court et à long terme",
+    "draft02": "Brouillon de la stratégie, diapositive 2 — la culture mange la stratégie au petit-déjeuner",
+    "draft03": "Brouillon de la stratégie, diapositive 3 — la mission : que la langue ne soit plus un obstacle pour communiquer avec le monde",
+    "draft04": "Brouillon de la stratégie, diapositive 4 — tout bénéfice non réalisé est une perte",
+    "draft05": "Brouillon de la stratégie, diapositive 5 — le positionnement de marque dans le temps",
+    "draft06": "Brouillon de la stratégie, diapositive 6 — les objectifs généraux, sous forme de six scénarios à tester",
+    "draft07": "Brouillon de la stratégie, diapositive 7 — l’objectif de bénéfice d’exploitation, en scénarios de revenus et de coûts",
+    "draft08": "Brouillon de la stratégie, diapositive 8 — les personas : les personnes que la stratégie concerne",
+    "draft09": "Brouillon de la stratégie, diapositive 9 — parties prenantes et valeur : les professeurs et la plateforme en tirent un revenu, les apprenants apprennent une langue",
+    "draft10": "Brouillon de la stratégie, diapositive 10 — sept conclusions tirées des personas professeurs",
+    "draft11": "Brouillon de la stratégie, diapositive 11 — sept conclusions tirées des personas apprenants",
+    "educationUnit": "Diapositive — les cinq actions du pôle pédagogique, d’une équipe de supervision de professeurs expérimentés jusqu’aux formations spécialisées"
+  },
+  "chapters": {
+    "context": {
+      "heading": "Une école de langues en ligne qui demandait une refonte",
+      "body": [
+        "OTeacher est une plateforme iranienne de cours de langues en ligne et en direct : les apprenants choisissent un professeur, testent souvent une première séance, puis réservent des cours. Le site a été lancé en 2017 puis reconstruit deux fois, et à l’hiver 1401, début 2023, l’entreprise a renouvelé sa direction et son équipe exécutive.",
+        "Sina a rejoint le pôle produit comme designer produit, aux côtés de la personne en charge du produit, et la demande portait sur une refonte. Le travail a vite révélé un manque plus large. Les équipes ne partageaient pas d’objectifs, et la direction n’avait pas d’idée claire des demandes à adresser à chaque équipe pour faire avancer les résultats."
+      ]
+    },
+    "problem": {
+      "heading": "Sept préoccupations avant le moindre écran",
+      "body": [
+        "Le travail a donc commencé par un plan, et ce plan s’ouvrait en nommant ce qui manquait à l’entreprise, sous forme de sept préoccupations et attentes :"
+      ],
+      "bullets": [
+        "De grands objectifs d’ensemble, et un moyen pour qu’ils irriguent chaque niveau de l’organisation et du produit",
+        "Des liens porteurs de sens entre les équipes et le produit, fondés sur un accord entre toutes les parties prenantes",
+        "Un mécanisme de prise de décision",
+        "Une expérience conservée et mise par écrit, pour devenir un savoir propre à l’organisation",
+        "Une compréhension commune des services qu’offre OTeacher",
+        "Une compréhension commune de son public, de ses utilisateurs et de son marché",
+        "Une identité de marque unique à chaque point de contact avec les apprenants et les professeurs"
+      ],
+      "insight": "Cinq des sept demandent la même chose : une vision que tout le monde partage."
+    },
+    "surveys": {
+      "heading": "Vingt questions pour chaque département",
+      "body": [
+        "Chaque département a reçu sa propre liste : vingt questions numérotées, sous une même consigne. Répondre à chaque question et dire quelle valeur son résultat créerait pour chaque partie prenante : l’apprenant, le professeur et la plateforme.",
+        "Les listes sont allées au produit, au marketing, à la pédagogie et aux professeurs, au support, à l’équipe technique, à la finance, à la direction et aux opérations. Chacune se présente comme un premier document de l’analyse de marché, le document prévu pour la troisième semaine. Quelques-unes des questions :"
+      ],
+      "bullets": [
+        "Produit : Quelles idées avez-vous pour améliorer le produit ? Comment utilisez-vous les problèmes et les retours des apprenants pour l’améliorer ?",
+        "Marketing : Comment définiriez-vous le marché cible, et comment l’atteindriez-vous ? Comment davantage de clients pourraient-ils devenir apprenants ?",
+        "Pédagogie et professeurs : Comment pouvez-vous aider les professeurs à développer de meilleures compétences pédagogiques ? Comment utilisez-vous les retours des apprenants pour améliorer les cours ?",
+        "Support : Comment pouvez-vous réduire le temps de réponse aux tickets et aux messages des apprenants ?",
+        "Équipe technique : Comment garder la plateforme stable et rapide sous une forte charge ?",
+        "Finance : Qu’est-ce qui permettrait de réduire les coûts du projet ?",
+        "Direction : Comment mieux gérer les conflits et les relations entre les équipes ?",
+        "Opérations : Qu’est-ce qui rendrait les processus quotidiens du projet plus efficaces ?"
+      ],
+      "insight": "Chaque réponse devait dire qui y gagne : l’apprenant, le professeur ou la plateforme."
+    },
+    "market": {
+      "heading": "Une étude de marché autour des trois mêmes parties prenantes",
+      "customLabel": "Étude de marché",
+      "body": [
+        "Une deuxième présentation cadrait l’étude de marché. Quatre modes de travail s’y combinent (exploratoire, orienté solutions, opérationnel et participatif), et la valeur sur la plateforme y est définie en six mots qui valent autant pour les professeurs que pour les apprenants : plus rapide, plus simple, plus varié, moins cher, plus intelligent et plus intéressant.",
+        "Viennent ensuite des questions pour chaque partie prenante. Comment les professeurs peuvent-ils enseigner plus efficacement et toucher davantage de bons apprenants ? Comment faire pour que la plateforme mette plus d’apprenants en relation avec les professeurs, et les garde ? Comment les apprenants peuvent-ils disposer de plus de moyens de paiement ?",
+        "Son objectif est le bénéfice d’exploitation ; comme le dit une diapositive, « tout bénéfice non réalisé est une perte ». Les scénarios de revenus (plus d’achats, des achats plus rapides, plus d’acheteurs, des acheteurs qui reviennent) et de coûts (une meilleure expérience, la fidélisation des utilisateurs, empêcher les utilisateurs de contourner OTeacher) sont d’abord testés, puis évalués sur une grille gain-effort avant toute action. Le document d’analyse de marché était, pour sa part, prévu en dix-neuf étapes, des besoins et des concurrents jusqu’aux enquêtes, aux entretiens et aux échanges avec les professeurs et les apprenants."
+      ]
+    },
+    "interviews": {
+      "heading": "Entretiens approfondis avec les professeurs",
+      "body": [
+        "Les entretiens du plan ne se limitaient pas au personnel. Sina et l’équipe ont rencontré des professeurs pour de longs entretiens ouverts, parfois à plusieurs autour d’une même table, sur leurs cours, leurs revenus et les outils avec lesquels ils enseignent.",
+        "Les entretiens ont été consignés dans un même modèle : une carte d’empathie de ce que la personne pense, ressent, fait et dit, et un profil avec une formule fétiche, des objectifs, des inquiétudes, les attentes envers OTeacher, les freins, et la façon d’apprendre et d’enseigner. Le même modèle a servi pour les apprenants.",
+        "Le résultat : neuf personas sur quatorze planches, trois professeurs et six apprenants."
+      ]
+    },
+    "personas": {
+      "heading": "Deux côtés, deux plaintes",
+      "customLabel": "Personas",
+      "body": [
+        "La présentation résume le persona professeur par « Les élèves ne paient pas ! » Les professeurs demandaient de meilleurs outils pédagogiques et plus de revenus. Ils voulaient voir les meilleurs professeurs se distinguer (avec des labels pour les professeurs expérimentés et les superviseurs, et des critères plus stricts pour les nouveaux) et obtenir des règles d’annulation plus justes, avec une pénalité pour les apprenants qui manquent un cours. Ils imputaient la perte d’apprenants à l’outil de classe virtuelle et s’inquiétaient des abandons.",
+        "Le persona apprenant, c’est « Qu’est-ce qui est arrivé à notre cours ?! » Trouver un bon professeur adapté était difficile et incertain. Les échecs passés rendaient les apprenants méfiants, aucun parcours d’apprentissage clair ne se dessinait, et la plateforme même, faute de lien fiable avec le professeur, était le principal obstacle. Les apprenants avaient peur de perdre le temps et l’argent investis."
+      ],
+      "insight": "Les deux côtés pointaient les deux mêmes choses : le cours proprement dit, et savoir quel professeur est le bon."
+    },
+    "strategy": {
+      "heading": "Un positionnement, un objectif et une feuille de route sur trois horizons",
+      "body": [
+        "La présentation de la stratégie place la marque sur une ligne : aujourd’hui, une option parmi d’autres pour apprendre une langue en ligne ; au second semestre, le premier choix ; à long terme, un acteur sérieux et influent sur l’ensemble du marché de l’apprentissage des langues. L’objectif sous-jacent est le bénéfice d’exploitation.",
+        "La feuille de route est née des post-it de la personne en charge du produit, puis a été organisée en trois horizons. Automne 1402 : une plateforme de cours, une messagerie, un appariement par niveau, des cours spécialisés et des cours collectifs. Hiver 1402 : de meilleurs outils pédagogiques, une feuille de route pour l’apprenant, des services aux organisations, et deux analyses, des revenus en devises et d’un nouveau marché. Plus tard : une boutique, des cours enregistrés, les finances, un gestionnaire de tickets, et des MVP pour les revenus en devises et pour un produit destiné à un nouveau marché.",
+        "Mis en regard des entretiens, les deux premiers horizons répondent aux plaintes les plus fortes : une plateforme de cours et une messagerie pour le lien rompu avec le professeur, un appariement par niveau pour les apprenants qui ne trouvent pas le bon professeur, une feuille de route pour l’apprenant face à l’absence de parcours, et de meilleurs outils pour les professeurs."
+      ],
+      "insight": "Les deux plus gros paris, les revenus en devises et un nouveau marché, entrent dans la feuille de route comme analyses et reviennent plus tard comme MVP."
+    },
+    "education": {
+      "heading": "Les professeurs voulaient qu’on les distingue",
+      "customLabel": "Pôle pédagogique",
+      "body": [
+        "En parallèle du travail produit, la présentation expose un nouveau pôle pédagogique, qui répond à plusieurs demandes des professeurs. Ses cinq actions : créer le pôle pour améliorer la satisfaction et la qualité de l’enseignement ; constituer une équipe de supervision de professeurs actifs et expérimentés ; concevoir les standards, les processus pédagogiques et les entretiens ; faire passer un entretien à chaque professeur et les répartir en groupes ; et organiser des formations spécialisées pour renforcer les compétences des professeurs."
+      ]
+    }
+  },
+  "figures": {
+    "concerns": {
+      "caption": "Sept préoccupations et attentes : le point de départ du plan."
+    },
+    "plan": {
+      "caption": "La présentation du plan, diapositive par diapositive. Ouvrez une diapositive pour la lire.",
+      "items": [
+        "Titre",
+        "Préoccupations et attentes",
+        "Calendrier sur quatre semaines",
+        "Première semaine",
+        "Deuxième semaine",
+        "Troisième semaine",
+        "Quatrième semaine, première partie",
+        "Quatrième semaine, seconde partie",
+        "Pourquoi un document d’analyse de marché",
+        "Analyse de marché, étapes 1 à 10",
+        "Analyse de marché, étapes 11 à 19"
+      ]
+    },
+    "surveys": {
+      "caption": "Une liste de questions par département, vingt questions chacune. Ouvrez une liste pour la lire en persan.",
+      "items": [
+        "Produit",
+        "Marketing",
+        "Pédagogie et professeurs",
+        "Support",
+        "Équipe technique",
+        "Finance",
+        "Direction",
+        "Opérations"
+      ]
+    },
+    "market": {
+      "caption": "La présentation du projet d’étude de marché, diapositive par diapositive.",
+      "items": [
+        "Titre",
+        "La culture d’abord",
+        "Approche",
+        "De la valeur pour les deux côtés",
+        "Parties prenantes et valeur",
+        "Tout bénéfice non réalisé est une perte",
+        "Objectif : bénéfice d’exploitation",
+        "Découvrir et tester des scénarios",
+        "Décider des actions"
+      ]
+    },
+    "interviews": {
+      "caption": "Les entretiens approfondis avec les professeurs, tels que les montre la présentation de la stratégie."
+    },
+    "conclusions": {
+      "caption": "Ce que les personas ont fait ressortir.",
+      "items": [
+        "Professeurs : sept attentes envers la plateforme.",
+        "Apprenants : sept constats sur l’apprentissage en ligne."
+      ]
+    },
+    "position": {
+      "caption": "Le positionnement de marque dans le temps : une option parmi d’autres, puis le premier choix en ligne, puis un acteur sérieux sur l’ensemble du marché."
+    },
+    "roadmap": {
+      "caption": "Le chemin d’OTeacher : la feuille de route sur trois horizons, dans la version présentée."
+    },
+    "horizons": {
+      "caption": "Les trois horizons, une diapositive chacun.",
+      "items": [
+        "Automne 1402",
+        "Hiver 1402",
+        "Plus tard"
+      ]
+    },
+    "draft": {
+      "caption": "La présentation de la stratégie dans sa première version, sur la même page. Ne sont pas repris : une estimation de la taille du marché, un modèle SWOT inachevé et le brouillon de la feuille de route sur post-it, réalisé par la personne responsable du produit.",
+      "items": [
+        "Titre",
+        "La culture mange la stratégie au petit-déjeuner",
+        "Lever la barrière de la langue",
+        "Tout bénéfice non réalisé est une perte",
+        "Positionnement de marque",
+        "Objectifs généraux",
+        "Objectif : bénéfice d’exploitation",
+        "Personas",
+        "Parties prenantes et valeur",
+        "Personas professeurs : conclusions",
+        "Personas apprenants : conclusions"
+      ]
+    },
+    "education": {
+      "caption": "Les cinq actions du pôle pédagogique."
+    }
+  },
+  "process": {
+    "heading": "Quatre semaines, quinze livrables",
+    "steps": [
+      {
+        "label": "Objectifs et rôles",
+        "note": "Objectifs à court terme, une présentation pour les parties prenantes, des cartographies métier et produit, et les missions de chaque équipe"
+      },
+      {
+        "label": "Entretiens",
+        "note": "Planifier les entretiens et les réunions, documenter chacun d’eux et assurer le suivi avec les équipes"
+      },
+      {
+        "label": "Personas et marché",
+        "note": "Analyse des personas, un document d’analyse de marché et la méthode de la feuille de route"
+      },
+      {
+        "label": "Récit et objectifs",
+        "note": "Un récit qui aligne les parties prenantes, des cartes de personas et des objectifs SMART"
+      },
+      {
+        "label": "Métriques et plan",
+        "note": "KPI et métriques, et un document de stratégie à six mois"
+      }
+    ]
+  },
+  "decisions": {
+    "heading": "Cinq décisions derrière le plan",
+    "lede": "Les présentations et les planches rendent ces choix visibles.",
+    "items": [
+      {
+        "title": "Interroger chaque département avant de concevoir",
+        "why": "La demande portait sur une refonte, mais les équipes ne partageaient ni objectifs ni façon de décider. Concevoir d’abord serait revenu à concevoir pour la vision du produit d’une seule équipe.",
+        "tradeoff": "Les deux premières semaines ont été consacrées aux objectifs, aux rôles et aux entretiens plutôt qu’au produit."
+      },
+      {
+        "title": "Un même format pour huit départements",
+        "why": "Chaque liste s’ouvre sur la même consigne : répondre, et dire ce que le résultat crée pour l’apprenant, le professeur et la plateforme. Les réponses de la finance et de la pédagogie pouvaient ainsi se lire au regard des trois mêmes parties prenantes.",
+        "tradeoff": "Un format unique convient mieux à certaines équipes qu’à d’autres ; la liste des opérations se répète pour arriver à vingt."
+      },
+      {
+        "title": "Interroger les professeurs en profondeur",
+        "why": "Les professeurs sont l’un des deux côtés de la place de marché. Passer du temps avec eux a transformé des plaintes générales en demandes précises : des labels pour les professeurs expérimentés, des critères plus stricts pour les nouveaux, des règles d’annulation plus justes.",
+        "tradeoff": "Trois personas professeurs représentent tous les professeurs de la plateforme.",
+        "evidence": "Les planches des personas professeurs et la diapositive des conclusions qui en sont tirées."
+      },
+      {
+        "title": "Faire du bénéfice d’exploitation l’objectif",
+        "why": "« Tout bénéfice non réalisé est une perte » fixe le critère. Chaque idée devient un scénario de revenus ou de coûts, est testée, puis évaluée sur une grille gain-effort avant que quiconque n’agisse.",
+        "tradeoff": "Le travail sur la qualité de l’enseignement doit se justifier en termes de revenus pour entrer dans la liste."
+      },
+      {
+        "title": "Étudier une nouvelle source de revenus avant de la construire",
+        "why": "Les revenus en devises et un nouveau marché apparaissent chacun deux fois dans la feuille de route : comme analyse à l’hiver 1402, et seulement plus tard comme MVP.",
+        "tradeoff": "Les plus gros paris attendent au moins deux horizons."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "La part de Sina",
+    "intro": "Sina travaillait au sein du pôle produit d’OTeacher avec la personne responsable du produit. Le fichier de stratégie est le travail de Sina : le plan, les listes de questions, les présentations et les planches de personas.",
+    "own": [
+      "Le plan stratégique sur quatre semaines et la présentation qui l’expose",
+      "Les listes de questions pour huit départements",
+      "La présentation du projet d’étude de marché",
+      "La carte d’empathie, le modèle de persona et les planches de personas",
+      "La présentation de la stratégie, qui expose le positionnement de marque, l’objectif et la feuille de route"
+    ],
+    "collaborate": [
+      "La personne responsable du produit, tout au long du processus, y compris pour le premier brouillon de la feuille de route",
+      "Les départements, qui ont répondu aux listes de questions",
+      "Les professeurs et les apprenants interrogés, et le pôle pédagogique"
+    ],
+    "note": "Les diapositives sur l’historique de l’entreprise, son équipe et une estimation de la taille du marché, un modèle SWOT inachevé et un brouillon de la feuille de route sur post-it ne sont pas montrés, pas plus que les planches de personas, qui portent les noms des personnes interrogées."
+  },
+  "outcomes": {
+    "heading": "Un plan lisible par toute l’entreprise",
+    "intro": "Le fichier documente le processus et ses résultats, pas ce que l’entreprise en a fait ensuite : aucun chiffre d’usage ne figure donc ici.",
+    "delivered": [
+      {
+        "label": "départements, chacun avec sa liste de questions",
+        "context": "Produit, marketing, pédagogie, support, technique, finance, direction et opérations, vingt questions chacun"
+      },
+      {
+        "label": "personas, pour les deux côtés de la place de marché",
+        "context": "Trois professeurs et six apprenants, sur quatorze planches"
+      },
+      {
+        "label": "éléments de feuille de route sur trois horizons",
+        "context": "Cinq pour l’automne 1402, cinq pour l’hiver 1402 et six pour plus tard"
+      }
+    ],
+    "shipped": [
+      "Un plan stratégique sur quatre semaines et sa présentation",
+      "Des listes de questions pour huit départements",
+      "Une présentation du projet d’étude de marché",
+      "Des entretiens approfondis avec les professeurs, et neuf personas de professeurs et d’apprenants",
+      "Un positionnement de marque, un objectif de bénéfice d’exploitation et une feuille de route sur trois horizons"
+    ]
+  },
+  "lessons": {
+    "heading": "Ce que je changerais",
+    "items": [
+      {
+        "title": "Adapter les questions à chaque équipe",
+        "body": "Tous les départements ont reçu le même format de vingt lignes, et les dernières listes s’en ressentent : celle des opérations reprend sans cesse les mêmes questions pour remplir ses vingt lignes, et celle de la direction se répète aussi. Huit ou dix questions écrites pour chaque équipe auraient permis de demander plus avec moins."
+      },
+      {
+        "title": "Donner à chaque horizon une personne responsable et une mesure",
+        "body": "La quatrième semaine prévoyait des objectifs, des KPI et des métriques, mais les diapositives de la feuille de route listent les éléments par saison, sans responsable ni cible. Une feuille de route que toute l’entreprise lit devrait dire qui porte chaque élément et comment chacun sera évalué."
+      },
+      {
+        "title": "Dire combien de personnes chaque persona représente",
+        "body": "Les personas sont des planches abouties, et rien n’y indique combien d’entretiens se trouvent derrière chacun. Une ligne par persona, avec le nombre de personnes et la date des entretiens, permettrait au lecteur d’en mesurer le poids."
+      }
+    ]
+  }
+}

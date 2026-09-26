@@ -1,0 +1,355 @@
+{
+  "statement": "Un encargo de rediseño que se convirtió en estrategia: veinte preguntas por departamento, entrevistas a fondo con profesores, una sola hoja de ruta.",
+  "industry": "Edtech · clases de idiomas en línea y en directo",
+  "team": "Una unidad de producto de dos personas, con ocho departamentos y la unidad de educación",
+  "heroCaption": "La diapositiva inicial de la presentación del plan: un mecanismo de estrategia integrada para la plataforma OTeacher.",
+  "snapshot": {
+    "problem": "OTeacher pidió un rediseño, pero sus equipos no compartían objetivos, ni una forma de decidir, ni una imagen común de los profesores, los alumnos o el mercado.",
+    "role": "En la unidad de producto, junto a quien gestionaba el producto: el plan de cuatro semanas, las listas de preguntas para ocho departamentos, las entrevistas con profesores, las personas y la presentación de la estrategia.",
+    "result": "Un plan compartido: un posicionamiento de marca, un objetivo de beneficio operativo y una hoja de ruta de dieciséis elementos en tres horizontes. El archivo no recoge qué pasó después."
+  },
+  "alt": {
+    "cover": "Presentación del plan de OTeacher, diapositiva de título — «Un mecanismo de estrategia integrada para la plataforma OTeacher» junto al logotipo de OTeacher",
+    "concerns": "Presentación del plan de OTeacher — siete preocupaciones y expectativas numeradas, de los objetivos compartidos y una forma de decidir a una identidad de marca única",
+    "plan01": "Presentación del plan, diapositiva 1 — el título: un mecanismo de estrategia integrada para la plataforma OTeacher",
+    "plan02": "Presentación del plan, diapositiva 2 — siete preocupaciones y expectativas",
+    "plan03": "Presentación del plan, diapositiva 3 — un calendario de cuatro semanas con quince entregables, a partir del 6 de Shahrivar",
+    "plan04": "Presentación del plan, diapositiva 4 — primera semana: objetivos a corto plazo, una presentación para las partes interesadas, mapas de negocio y de producto, las responsabilidades de cada equipo",
+    "plan05": "Presentación del plan, diapositiva 5 — segunda semana: planificar las entrevistas y reuniones, documentarlas, hacer seguimiento con los equipos",
+    "plan06": "Presentación del plan, diapositiva 6 — tercera semana: análisis de personas, un documento de análisis de mercado y el método para la hoja de ruta",
+    "plan07": "Presentación del plan, diapositiva 7 — cuarta semana, primera parte: un relato para alinear a las partes interesadas, mapas de personas y objetivos",
+    "plan08": "Presentación del plan, diapositiva 8 — cuarta semana, segunda parte: KPI y métricas, y un documento de estrategia a seis meses",
+    "plan09": "Presentación del plan, diapositiva 9 — por qué un documento de análisis de mercado: conocer el mercado, detectar oportunidades y amenazas, fijar una posición competitiva",
+    "plan10": "Presentación del plan, diapositiva 10 — la elaboración del documento de análisis de mercado, pasos 1 a 10",
+    "plan11": "Presentación del plan, diapositiva 11 — la elaboración del documento de análisis de mercado, pasos 11 a 19",
+    "survey1": "Lista de preguntas para el equipo de producto — veinte preguntas numeradas en persa bajo el logotipo de OTeacher",
+    "survey2": "Lista de preguntas para el equipo de marketing — veinte preguntas numeradas en persa",
+    "survey3": "Lista de preguntas para el equipo de educación y profesores — veinte preguntas numeradas en persa",
+    "survey4": "Lista de preguntas para el equipo de soporte — veinte preguntas numeradas en persa",
+    "survey5": "Lista de preguntas para el equipo técnico — veinte preguntas numeradas en persa",
+    "survey6": "Lista de preguntas para el equipo de finanzas — veinte preguntas numeradas en persa",
+    "survey7": "Lista de preguntas para el equipo de dirección — veinte preguntas numeradas en persa",
+    "survey8": "Lista de preguntas para el equipo de operaciones — veinte preguntas numeradas en persa",
+    "market01": "Presentación del estudio de mercado, diapositiva 1 — el título: el proyecto de estudio de mercado y marketing de OTeacher",
+    "market02": "Presentación del estudio de mercado, diapositiva 2 — una cita: la base de la estrategia es la cultura de la organización",
+    "market03": "Presentación del estudio de mercado, diapositiva 3 — el enfoque en cuatro columnas: exploratorio, orientado a soluciones, operativo y participativo",
+    "market04": "Presentación del estudio de mercado, diapositiva 4 — el valor en la plataforma: más rápido, más sencillo, más variado, más barato, más inteligente, más valioso",
+    "market05": "Presentación del estudio de mercado, diapositiva 5 — preguntas para cada parte interesada: los profesores, la plataforma y los alumnos",
+    "market06": "Presentación del estudio de mercado, diapositiva 6 — una cita: el beneficio que no se obtiene es una pérdida",
+    "market07": "Presentación del estudio de mercado, diapositiva 7 — el objetivo de beneficio operativo, dividido en aumentar los ingresos y reducir los costes",
+    "market08": "Presentación del estudio de mercado, diapositiva 8 — seis escenarios que descubrir y poner a prueba, desde los clientes que repiten hasta evitar que los usuarios se salten a OTeacher",
+    "market09": "Presentación del estudio de mercado, diapositiva 9 — decidir qué hacer, en una matriz de retorno y esfuerzo",
+    "interviews": "Cinco fotografías de sesiones de entrevista con profesores de OTeacher alrededor de una mesa de reuniones de mármol",
+    "teacherConclusions": "Diapositiva — siete conclusiones extraídas de las personas de profesor",
+    "learnerConclusions": "Diapositiva — siete conclusiones extraídas de las personas de alumno",
+    "brandPosition": "Diapositiva — el posicionamiento de marca a lo largo del tiempo: una opción entre varias, luego la primera opción en línea y después un actor serio en todo el mercado",
+    "roadmap": "El camino de OTeacher — la hoja de ruta en tres horizontes: otoño de 1402, invierno de 1402 y más adelante",
+    "fall": "Hoja de ruta, otoño de 1402 — clases en grupo, cursos especializados, emparejamiento por nivel, mensajería y una plataforma de clases",
+    "winter": "Hoja de ruta, invierno de 1402 — una hoja de ruta para el alumno, el análisis de los ingresos en divisas, servicios para organizaciones, herramientas de enseñanza y el análisis de un mercado nuevo",
+    "future": "Hoja de ruta, más adelante — una tienda, cursos grabados, los ingresos en divisas y un producto para un mercado nuevo como MVP, finanzas y un gestor de tickets",
+    "draft01": "Borrador de la estrategia, diapositiva 1 — el título: estrategia a corto y largo plazo",
+    "draft02": "Borrador de la estrategia, diapositiva 2 — la cultura se come a la estrategia para desayunar",
+    "draft03": "Borrador de la estrategia, diapositiva 3 — la misión: que el idioma deje de ser una barrera para conectar con el mundo",
+    "draft04": "Borrador de la estrategia, diapositiva 4 — el beneficio que no se obtiene es una pérdida",
+    "draft05": "Borrador de la estrategia, diapositiva 5 — el posicionamiento de marca a lo largo del tiempo",
+    "draft06": "Borrador de la estrategia, diapositiva 6 — los objetivos generales como seis escenarios que poner a prueba",
+    "draft07": "Borrador de la estrategia, diapositiva 7 — el objetivo de beneficio operativo, en escenarios de ingresos y de costes",
+    "draft08": "Borrador de la estrategia, diapositiva 8 — personas: la gente a la que afecta la estrategia",
+    "draft09": "Borrador de la estrategia, diapositiva 9 — partes interesadas y valor: los profesores y la plataforma obtienen ingresos, los alumnos aprenden un idioma",
+    "draft10": "Borrador de la estrategia, diapositiva 10 — siete conclusiones de las personas de profesor",
+    "draft11": "Borrador de la estrategia, diapositiva 11 — siete conclusiones de las personas de alumno",
+    "educationUnit": "Diapositiva — las cinco acciones de la unidad de educación, desde un equipo de supervisión de profesores con experiencia hasta clases especializadas"
+  },
+  "chapters": {
+    "context": {
+      "heading": "Una escuela de idiomas en línea que pidió un rediseño",
+      "body": [
+        "OTeacher es una plataforma iraní de clases de idiomas en línea y en directo: los alumnos eligen un profesor, a menudo prueban una primera sesión y luego reservan clases. El sitio se lanzó en 2017 y se rehízo dos veces, y en el invierno de 1401, a principios de 2023, la empresa cambió de dirección y de equipo ejecutivo.",
+        "Sina se incorporó a la unidad de producto como diseñador de producto, junto a la persona responsable de producto, y el encargo era un rediseño. Pronto salió a la luz una carencia mayor. Los equipos no compartían objetivos, y la dirección no sabía con claridad qué pedir a cada equipo para que los resultados avanzaran."
+      ]
+    },
+    "problem": {
+      "heading": "Siete preocupaciones antes de cualquier pantalla",
+      "body": [
+        "Así que el trabajo empezó con un plan, y el plan arrancaba nombrando lo que le faltaba a la empresa, en forma de siete preocupaciones y expectativas:"
+      ],
+      "bullets": [
+        "Objetivos grandes y generales, y una forma de que lleguen a todas las capas de la organización y del producto",
+        "Vínculos con sentido entre los equipos y el producto, basados en lo que acuerdan todas las partes interesadas",
+        "Un mecanismo para tomar decisiones",
+        "Experiencia que se guarda y se pone por escrito, para que pase a ser conocimiento propio de la organización",
+        "Una comprensión compartida de los servicios que ofrece OTeacher",
+        "Una comprensión compartida de su público, sus usuarios y su mercado",
+        "Una única identidad de marca en cada punto de contacto con alumnos y profesores"
+      ],
+      "insight": "Cinco de las siete piden lo mismo: una imagen que todos compartan."
+    },
+    "surveys": {
+      "heading": "Veinte preguntas para cada departamento",
+      "body": [
+        "Cada departamento recibió su propia lista: veinte preguntas numeradas bajo una misma instrucción. Responder a cada pregunta e indicar qué generaría su resultado para cada parte interesada: el alumno, el profesor y la plataforma.",
+        "Las listas fueron a producto, marketing, educación y profesores, soporte, el equipo técnico, finanzas, dirección y operaciones. Cada una figura como un primer documento del análisis de mercado, el previsto para la tercera semana. Algunas de las preguntas:"
+      ],
+      "bullets": [
+        "Producto: ¿Qué ideas tiene para mejorar el producto? ¿Cómo usa los problemas y los comentarios de los alumnos para mejorarlo?",
+        "Marketing: ¿Cómo definiría el mercado objetivo y cómo lo alcanzaría? ¿Cómo podrían más clientes convertirse en alumnos?",
+        "Educación y profesores: ¿Cómo puede ayudar a los profesores a mejorar sus habilidades docentes? ¿Cómo usa los comentarios de los alumnos para mejorar las lecciones?",
+        "Soporte: ¿Cómo puede reducir el tiempo de respuesta a los tickets y mensajes de los alumnos?",
+        "Equipo técnico: ¿Cómo puede la plataforma mantenerse estable y rápida con mucha carga?",
+        "Finanzas: ¿Qué reduciría los costes del proyecto?",
+        "Dirección: ¿Cómo se podrían gestionar mejor los conflictos y las relaciones entre equipos?",
+        "Operaciones: ¿Qué haría más eficientes los procesos diarios del proyecto?"
+      ],
+      "insight": "Cada respuesta debía decir quién sale ganando: el alumno, el profesor o la plataforma."
+    },
+    "market": {
+      "heading": "Un estudio de mercado en torno a las mismas tres partes interesadas",
+      "customLabel": "Estudio de mercado",
+      "body": [
+        "Una segunda presentación daba forma al estudio de mercado. Combina cuatro modos de trabajo (exploratorio, orientado a soluciones, operativo y participativo) y define el valor en la plataforma con seis palabras que sirven por igual para profesores y alumnos: más rápido, más sencillo, más variado, más barato, más inteligente y más valioso.",
+        "Después plantea preguntas a cada parte interesada. ¿Cómo pueden los profesores enseñar con más eficacia y llegar a más y mejores alumnos? ¿Cómo puede la plataforma conectar a más alumnos con profesores y retenerlos? ¿Cómo pueden los alumnos tener más formas de pago?",
+        "Su objetivo es el beneficio operativo; como dice una diapositiva, «el beneficio que no se obtiene es una pérdida». Los escenarios de ingresos (más compras, compras más rápidas, más compradores, compradores que vuelven) y los de costes (una mejor experiencia, retener a los usuarios, evitar que se salten a OTeacher) primero se ponen a prueba y luego se valoran en una matriz de retorno y esfuerzo antes de hacer nada. El propio documento de análisis de mercado se planificó en diecinueve pasos, de las necesidades y la competencia a las encuestas, las entrevistas y las conversaciones con profesores y alumnos."
+      ]
+    },
+    "interviews": {
+      "heading": "Entrevistas a fondo con profesores",
+      "body": [
+        "Las entrevistas del plan no fueron solo con el personal. Sina y el equipo se sentaron con profesores para mantener entrevistas largas y abiertas, a veces con varios alrededor de una misma mesa, sobre sus clases, sus ingresos y las herramientas con las que enseñan.",
+        "Las entrevistas se documentaron con una misma plantilla: un mapa de empatía con lo que la persona piensa, siente, hace y dice, y un perfil con una frase típica, objetivos, preocupaciones, expectativas sobre OTeacher, frenos y forma de aprender y de enseñar. Con los alumnos se usó la misma plantilla.",
+        "El resultado fueron nueve personas en catorce fichas: tres de profesor y seis de alumno."
+      ]
+    },
+    "personas": {
+      "heading": "Dos lados, dos quejas",
+      "customLabel": "Personas",
+      "body": [
+        "La presentación resume la persona de profesor en «¡Los alumnos no pagan!». Los profesores pedían mejores herramientas para enseñar y más ingresos. Querían que los mejores profesores destacaran —con distintivos para los que tienen experiencia y para los supervisores, y un listón más alto para los nuevos— y pedían normas de cancelación más justas, con una penalización para los alumnos que faltan a clase. Achacaban la pérdida de alumnos a la herramienta de videoclases y les preocupaban los alumnos que abandonan.",
+        "La persona de alumno es «¡¿Qué ha pasado con nuestra clase?!». Encontrar un buen profesor que encajara era difícil e incierto. Los fracasos anteriores volvían recelosos a los alumnos, no había un itinerario de aprendizaje claro y la propia plataforma, sin una línea fiable con el profesor, era la principal barrera. Los alumnos temían perder el tiempo y el dinero que habían invertido."
+      ],
+      "insight": "Los dos lados señalaban las mismas dos cosas: la propia clase y saber qué profesor es el adecuado."
+    },
+    "strategy": {
+      "heading": "Un posicionamiento, un objetivo y una hoja de ruta en tres horizontes",
+      "body": [
+        "La presentación de la estrategia sitúa la marca en una línea: hoy, una opción entre varias para aprender un idioma en línea; en la segunda mitad del año, la primera opción; a largo plazo, un actor serio e influyente en todo el mercado del aprendizaje de idiomas. El objetivo de fondo es el beneficio operativo.",
+        "La hoja de ruta nació de las notas adhesivas de quien gestionaba el producto y se ordenó en tres horizontes. Otoño de 1402: una plataforma de clases, mensajería, emparejamiento por nivel, cursos especializados y clases en grupo. Invierno de 1402: mejores herramientas de enseñanza, una hoja de ruta para el alumno, servicios para organizaciones y dos análisis, de los ingresos en divisas y de un mercado nuevo. Más adelante: una tienda, cursos grabados, finanzas, un gestor de tickets y, como MVP, los ingresos en divisas y un producto para un mercado nuevo.",
+        "Leídos junto a las entrevistas, los dos primeros horizontes responden a las quejas más insistentes: una plataforma de clases y mensajería para la línea rota con el profesor, emparejamiento por nivel para los alumnos que no encuentran al profesor adecuado, una hoja de ruta para el alumno ante la falta de itinerario, y mejores herramientas para los profesores."
+      ],
+      "insight": "Las dos mayores apuestas, los ingresos en divisas y un mercado nuevo, entran en la hoja de ruta como análisis y vuelven más adelante como MVP."
+    },
+    "education": {
+      "heading": "Los profesores pedían que se notara la diferencia",
+      "customLabel": "Unidad de educación",
+      "body": [
+        "Junto al trabajo de producto, la presentación plantea una nueva unidad de educación que responde a varias peticiones de los profesores. Sus cinco acciones: crear la unidad para aumentar la satisfacción y la calidad de la enseñanza; formar un equipo de supervisión con profesores activos y con experiencia; diseñar los estándares, los procesos docentes y las entrevistas; entrevistar a todos los profesores y agruparlos; e impartir clases especializadas para mejorar las habilidades de los profesores."
+      ]
+    }
+  },
+  "figures": {
+    "concerns": {
+      "caption": "Siete preocupaciones y expectativas: el punto de partida del plan."
+    },
+    "plan": {
+      "caption": "La presentación del plan, diapositiva a diapositiva. Abra una diapositiva para leerla.",
+      "items": [
+        "Título",
+        "Preocupaciones y expectativas",
+        "Calendario de cuatro semanas",
+        "Primera semana",
+        "Segunda semana",
+        "Tercera semana",
+        "Cuarta semana, primera parte",
+        "Cuarta semana, segunda parte",
+        "Por qué un documento de análisis de mercado",
+        "Análisis de mercado, pasos 1 a 10",
+        "Análisis de mercado, pasos 11 a 19"
+      ]
+    },
+    "surveys": {
+      "caption": "Una lista de preguntas por departamento, veinte preguntas cada una. Abra una lista para leerla en persa.",
+      "items": [
+        "Producto",
+        "Marketing",
+        "Educación y profesores",
+        "Soporte",
+        "Equipo técnico",
+        "Finanzas",
+        "Dirección",
+        "Operaciones"
+      ]
+    },
+    "market": {
+      "caption": "La presentación del proyecto de estudio de mercado, diapositiva a diapositiva.",
+      "items": [
+        "Título",
+        "Primero, la cultura",
+        "Enfoque",
+        "Valor para ambos lados",
+        "Partes interesadas y valor",
+        "El beneficio no obtenido es una pérdida",
+        "Objetivo: beneficio operativo",
+        "Descubrir y poner a prueba escenarios",
+        "Decidir qué hacer"
+      ]
+    },
+    "interviews": {
+      "caption": "Entrevistas a fondo con profesores, tal como las muestra la presentación de la estrategia."
+    },
+    "conclusions": {
+      "caption": "Lo que se sacó en claro de las personas.",
+      "items": [
+        "Profesores: siete expectativas sobre la plataforma.",
+        "Alumnos: siete hallazgos sobre aprender en línea."
+      ]
+    },
+    "position": {
+      "caption": "El posicionamiento de marca a lo largo del tiempo: una opción entre varias, luego la primera opción en línea y después un actor serio en todo el mercado."
+    },
+    "roadmap": {
+      "caption": "El camino de OTeacher: la hoja de ruta en tres horizontes, tal como se presentó."
+    },
+    "horizons": {
+      "caption": "Los tres horizontes, una diapositiva para cada uno.",
+      "items": [
+        "Otoño 1402",
+        "Invierno 1402",
+        "Más adelante"
+      ]
+    },
+    "draft": {
+      "caption": "La presentación de la estrategia en su primer borrador, en la misma página. Quedan fuera una estimación del tamaño del mercado, una plantilla DAFO sin terminar y el borrador de la hoja de ruta en notas adhesivas que hizo la persona responsable de producto.",
+      "items": [
+        "Título",
+        "La cultura se come a la estrategia para desayunar",
+        "Eliminar la barrera del idioma",
+        "El beneficio no obtenido es una pérdida",
+        "Posicionamiento de marca",
+        "Objetivos generales",
+        "Objetivo: beneficio operativo",
+        "Personas",
+        "Partes interesadas y valor",
+        "Personas de profesor: conclusiones",
+        "Personas de alumno: conclusiones"
+      ]
+    },
+    "education": {
+      "caption": "Las cinco acciones de la unidad de educación."
+    }
+  },
+  "process": {
+    "heading": "Cuatro semanas, quince entregables",
+    "steps": [
+      {
+        "label": "Objetivos y roles",
+        "note": "Objetivos a corto plazo, una presentación para las partes interesadas, mapas de negocio y de producto, y las responsabilidades de cada equipo"
+      },
+      {
+        "label": "Entrevistas",
+        "note": "Planificar las entrevistas y reuniones, documentar cada una y hacer seguimiento con los equipos"
+      },
+      {
+        "label": "Personas y mercado",
+        "note": "Análisis de personas, un documento de análisis de mercado y el método para la hoja de ruta"
+      },
+      {
+        "label": "Relato y objetivos",
+        "note": "Un relato que alinea a las partes interesadas, mapas de personas y objetivos SMART"
+      },
+      {
+        "label": "Métricas y plan",
+        "note": "KPI y métricas, y un documento de estrategia a seis meses"
+      }
+    ]
+  },
+  "decisions": {
+    "heading": "Cinco decisiones detrás del plan",
+    "lede": "Las presentaciones y las fichas dejan ver estas decisiones.",
+    "items": [
+      {
+        "title": "Preguntar a cada departamento antes de diseñar",
+        "why": "El encargo era un rediseño, pero los equipos no compartían objetivos ni una forma de decidir. Diseñar primero habría supuesto diseñar según la visión que un solo equipo tenía del producto.",
+        "tradeoff": "Las dos primeras semanas se dedicaron a objetivos, roles y entrevistas, no al producto."
+      },
+      {
+        "title": "Un mismo formato para ocho departamentos",
+        "why": "Todas las listas empiezan con la misma instrucción: responder y decir qué genera el resultado para el alumno, el profesor y la plataforma. Así, las respuestas de finanzas y las de educación podían leerse frente a las mismas tres partes interesadas.",
+        "tradeoff": "Un solo formato encaja mejor con unos equipos que con otros; la lista de operaciones se repite para llegar a veinte."
+      },
+      {
+        "title": "Entrevistar a fondo a los profesores",
+        "why": "Los profesores son uno de los dos lados del marketplace. Sentarse con ellos convirtió quejas generales en peticiones concretas: distintivos para los profesores con experiencia, un listón más alto para los nuevos, normas de cancelación más justas.",
+        "tradeoff": "Tres personas de profesor representan a todos los profesores de la plataforma.",
+        "evidence": "Las fichas de persona de los profesores y la diapositiva con las conclusiones extraídas de ellas."
+      },
+      {
+        "title": "Hacer del beneficio operativo el objetivo",
+        "why": "«El beneficio que no se obtiene es una pérdida» fija el criterio. Cada idea se convierte en un escenario de ingresos o de costes, se pone a prueba y se valora en una matriz de retorno y esfuerzo antes de que nadie actúe.",
+        "tradeoff": "El trabajo sobre la calidad de la enseñanza tiene que justificarse en términos de ingresos para entrar en la lista."
+      },
+      {
+        "title": "Estudiar una nueva fuente de ingresos antes de construirla",
+        "why": "Los ingresos en divisas y un mercado nuevo aparecen dos veces cada uno en la hoja de ruta: como análisis en el invierno de 1402 y, solo más adelante, como MVP.",
+        "tradeoff": "Las mayores apuestas esperan al menos dos horizontes."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "La parte de Sina",
+    "intro": "Sina trabajó en la unidad de producto de OTeacher con la persona responsable de producto. El archivo de estrategia es obra de Sina: el plan, las listas de preguntas, las presentaciones y las fichas de persona.",
+    "own": [
+      "El plan estratégico de cuatro semanas y la presentación que lo expone",
+      "Las listas de preguntas para ocho departamentos",
+      "La presentación del proyecto de estudio de mercado",
+      "El mapa de empatía, la plantilla de persona y las fichas de persona",
+      "La presentación de la estrategia, que expone el posicionamiento de marca, el objetivo y la hoja de ruta"
+    ],
+    "collaborate": [
+      "La persona responsable de producto, durante todo el proceso, incluido el primer borrador de la hoja de ruta",
+      "Los departamentos, que respondieron a las listas de preguntas",
+      "Los profesores y alumnos entrevistados, y la unidad de educación"
+    ],
+    "note": "Se omiten las diapositivas sobre la historia de la empresa, su equipo y una estimación del tamaño del mercado, una plantilla DAFO sin terminar y un borrador de la hoja de ruta en notas adhesivas, y también las fichas de persona, que llevan los nombres de los entrevistados."
+  },
+  "outcomes": {
+    "heading": "Un plan que toda la empresa podía leer",
+    "intro": "El archivo recoge el proceso y lo que produjo, no lo que la empresa hizo después con ello, así que aquí no hay cifras de uso.",
+    "delivered": [
+      {
+        "label": "departamentos, cada uno con su lista de preguntas",
+        "context": "Producto, marketing, educación, soporte, técnico, finanzas, dirección y operaciones, veinte preguntas cada uno"
+      },
+      {
+        "label": "personas de usuario, de los dos lados del marketplace",
+        "context": "Tres de profesor y seis de alumno, en catorce fichas"
+      },
+      {
+        "label": "elementos de la hoja de ruta en tres horizontes",
+        "context": "Cinco para el otoño de 1402, cinco para el invierno de 1402 y seis para más adelante"
+      }
+    ],
+    "shipped": [
+      "Un plan estratégico de cuatro semanas y su presentación",
+      "Listas de preguntas para ocho departamentos",
+      "Una presentación del proyecto de estudio de mercado",
+      "Entrevistas a fondo con profesores y nueve personas, de profesor y de alumno",
+      "Un posicionamiento de marca, un objetivo de beneficio operativo y una hoja de ruta en tres horizontes"
+    ]
+  },
+  "lessons": {
+    "heading": "Lo que cambiaría",
+    "items": [
+      {
+        "title": "Adaptar las preguntas a cada equipo",
+        "body": "Todos los departamentos recibieron el mismo formato de veinte líneas, y las últimas listas se resienten: operaciones repite unas pocas preguntas una y otra vez para llenar sus veinte líneas, y dirección también se repite. Ocho o diez preguntas escritas para cada equipo habrían preguntado más con menos."
+      },
+      {
+        "title": "Dar a cada horizonte una persona responsable y una medida",
+        "body": "La cuarta semana preveía objetivos, KPI y métricas, pero las diapositivas de la hoja de ruta enumeran los elementos por estación, sin responsable ni meta. Una hoja de ruta que lee toda la empresa debería decir quién se encarga de cada elemento y cómo se evaluará."
+      },
+      {
+        "title": "Indicar cuántos entrevistados hay detrás de cada persona",
+        "body": "Las personas son fichas terminadas, y nada en ellas dice cuántas entrevistas hay detrás de cada una. Una línea por persona, con el número de entrevistados y la fecha de las entrevistas, permitiría al lector darle su justo peso."
+      }
+    ]
+  }
+}

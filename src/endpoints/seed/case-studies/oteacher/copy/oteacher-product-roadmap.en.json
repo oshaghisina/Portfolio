@@ -1,0 +1,355 @@
+{
+  "statement": "A redesign request that became a strategy: twenty questions for every department, deep interviews with teachers, one roadmap.",
+  "industry": "Edtech · live online language classes",
+  "team": "A two-person product unit, with eight departments and the education unit",
+  "heroCaption": "The opening slide of the strategy presentation: an integrated strategy mechanism for the OTeacher platform.",
+  "snapshot": {
+    "problem": "OTeacher asked for a redesign, but its teams shared no goals, no way to decide and no common picture of teachers, learners or the market.",
+    "role": "In the product unit, with the product manager: the four-week plan, the question lists for eight departments, the teacher interviews, the personas and the strategy deck.",
+    "result": "One shared plan: a brand position, an operating-profit goal and a sixteen-item roadmap in three horizons. The file does not record what happened next."
+  },
+  "alt": {
+    "cover": "OTeacher strategy presentation, title slide — “An integrated strategy mechanism for the OTeacher platform” beside the OTeacher logo",
+    "concerns": "OTeacher strategy presentation — seven numbered concerns and expectations, from shared goals and a way to decide to one brand identity",
+    "plan01": "Strategy presentation, slide 1 — the title: an integrated strategy mechanism for the OTeacher platform",
+    "plan02": "Strategy presentation, slide 2 — seven concerns and expectations",
+    "plan03": "Strategy presentation, slide 3 — a four-week calendar of fifteen deliverables, starting on 6 Shahrivar",
+    "plan04": "Strategy presentation, slide 4 — week one: short-term goals, a presentation for stakeholders, business and product maps, each team’s duties",
+    "plan05": "Strategy presentation, slide 5 — week two: plan the interviews and meetings, write them up, follow up with the teams",
+    "plan06": "Strategy presentation, slide 6 — week three: persona analysis, a market-analysis document and the method for the roadmap",
+    "plan07": "Strategy presentation, slide 7 — week four, part one: a story to align stakeholders, persona maps and objectives",
+    "plan08": "Strategy presentation, slide 8 — week four, part two: KPIs and metrics, and a six-month strategy document",
+    "plan09": "Strategy presentation, slide 9 — why a market-analysis document: know the market, find opportunities and threats, set a competitive position",
+    "plan10": "Strategy presentation, slide 10 — building the market-analysis document, steps 1 to 10",
+    "plan11": "Strategy presentation, slide 11 — building the market-analysis document, steps 11 to 19",
+    "survey1": "Question list for the product team — twenty numbered questions in Persian under the OTeacher logo",
+    "survey2": "Question list for the marketing team — twenty numbered questions in Persian",
+    "survey3": "Question list for the education and teachers team — twenty numbered questions in Persian",
+    "survey4": "Question list for the support team — twenty numbered questions in Persian",
+    "survey5": "Question list for the technical team — twenty numbered questions in Persian",
+    "survey6": "Question list for the finance team — twenty numbered questions in Persian",
+    "survey7": "Question list for the management team — twenty numbered questions in Persian",
+    "survey8": "Question list for the operations team — twenty numbered questions in Persian",
+    "market01": "Market-research deck, slide 1 — the title: OTeacher’s market research and marketing project",
+    "market02": "Market-research deck, slide 2 — a quote: the ground of strategy is the organisation’s culture",
+    "market03": "Market-research deck, slide 3 — the approach in four columns: exploratory, solution-led, operational and participatory",
+    "market04": "Market-research deck, slide 4 — value on the platform: faster, simpler, more varied, cheaper, smarter, more worthwhile",
+    "market05": "Market-research deck, slide 5 — questions for each stakeholder: teachers, the platform and learners",
+    "market06": "Market-research deck, slide 6 — a quote: unrealised profit is a loss",
+    "market07": "Market-research deck, slide 7 — the goal of operating profit, split into raising revenue and cutting cost",
+    "market08": "Market-research deck, slide 8 — six scenarios to find and test, from returning customers to stopping users going around OTeacher",
+    "market09": "Market-research deck, slide 9 — deciding what to do, on a reward-and-effort grid",
+    "interviews": "Five photographs of interview sessions with OTeacher teachers around a marble meeting table",
+    "teacherConclusions": "Slide — seven conclusions drawn from the teacher personas",
+    "learnerConclusions": "Slide — seven conclusions drawn from the learner personas",
+    "brandPosition": "Slide — brand position over time: one option among several, then the first choice online, then a serious player in the whole market",
+    "roadmap": "OTeacher’s path — the roadmap in three horizons: fall 1402, winter 1402 and later",
+    "fall": "Roadmap, fall 1402 — group classes, specialist courses, a matchmaking level, a messenger and a class platform",
+    "winter": "Roadmap, winter 1402 — a learner roadmap, foreign-currency income analysis, services for organisations, teaching tools and a new-market analysis",
+    "future": "Roadmap, later — a shop, recorded courses, foreign-currency income and a new-market product as MVPs, finance and a ticket manager",
+    "draft01": "Strategy draft, slide 1 — the title: short- and long-term strategy",
+    "draft02": "Strategy draft, slide 2 — culture eats strategy for breakfast",
+    "draft03": "Strategy draft, slide 3 — the mission: removing language as a barrier to connecting with the world",
+    "draft04": "Strategy draft, slide 4 — unrealised profit is a loss",
+    "draft05": "Strategy draft, slide 5 — brand position over time",
+    "draft06": "Strategy draft, slide 6 — overall goals as six scenarios to test",
+    "draft07": "Strategy draft, slide 7 — the goal of operating profit, as revenue and cost scenarios",
+    "draft08": "Strategy draft, slide 8 — personas: the people the strategy affects",
+    "draft09": "Strategy draft, slide 9 — stakeholders and value: teachers and the platform earn income, learners learn a language",
+    "draft10": "Strategy draft, slide 10 — seven conclusions from the teacher personas",
+    "draft11": "Strategy draft, slide 11 — seven conclusions from the learner personas",
+    "educationUnit": "Slide — the education unit’s five actions, from a supervisory team of experienced teachers to specialist classes"
+  },
+  "chapters": {
+    "context": {
+      "heading": "An online language school that asked for a redesign",
+      "body": [
+        "OTeacher is an Iranian platform for live online language classes: learners choose a teacher, often try a first session, then book classes. The site went live in 2017 and was rebuilt twice, and in the winter of 1401, early 2023, the company changed its management and executive team.",
+        "Sina joined the product unit as its product designer, working with the product manager, and the brief was a redesign. It soon showed a larger gap. The teams did not share goals, and leadership had no clear picture of what to ask of each team to move an outcome forward."
+      ]
+    },
+    "problem": {
+      "heading": "Seven concerns before any screen",
+      "body": [
+        "So the work started with a plan, and the plan opened by naming what the company lacked, as seven concerns and expectations:"
+      ],
+      "bullets": [
+        "Big, overall goals, and a way for them to reach every layer of the organisation and the product",
+        "Meaningful links between the teams and the product, built on what all stakeholders agree",
+        "A mechanism for making decisions",
+        "Experience that is kept and written down, so it becomes the organisation’s own knowledge",
+        "One shared understanding of the services OTeacher offers",
+        "One shared understanding of its audience, its users and its market",
+        "One brand identity at every point where learners and teachers meet it"
+      ],
+      "insight": "Five of the seven ask for the same thing: one picture that everyone shares."
+    },
+    "surveys": {
+      "heading": "Twenty questions for every department",
+      "body": [
+        "Each department got its own list: twenty numbered questions under one instruction. Answer each question, and say what its result would create for each stakeholder: the learner, the teacher and the platform.",
+        "The lists went to product, marketing, education and teachers, support, the technical team, finance, management and operations. Each is titled as a first document of the market analysis, the document planned for week three. Some of the questions:"
+      ],
+      "bullets": [
+        "Product: What ideas do you have for improving the product? How do you use learners’ problems and feedback to improve it?",
+        "Marketing: How would you define the target market and reach it? How could more customers become learners?",
+        "Education and teachers: How can you help teachers build better teaching skills? How do you use learners’ feedback to improve the lessons?",
+        "Support: How can you cut the time it takes to answer learners’ tickets and messages?",
+        "Technical team: How can the platform stay stable and fast under heavy load?",
+        "Finance: What would reduce the project’s costs?",
+        "Management: How could conflicts and dealings between teams be managed better?",
+        "Operations: What would make the project’s day-to-day processes more efficient?"
+      ],
+      "insight": "Every answer had to name who gains: the learner, the teacher or the platform."
+    },
+    "market": {
+      "heading": "A market-research project around the same three stakeholders",
+      "customLabel": "Market research",
+      "body": [
+        "A second deck framed the market research. It mixes four modes of work, exploratory, solution-led, operational and participatory, and it defines value on the platform in six words that apply to teachers and learners alike: faster, simpler, more varied, cheaper, smarter and more worthwhile.",
+        "It then asks questions of each stakeholder. How can teachers teach more effectively and reach more good learners? How can the platform connect more learners to teachers, and keep them? How can learners get more ways to pay?",
+        "Its goal is operating profit; “unrealised profit is a loss,” as one slide puts it. Revenue scenarios (more purchases, faster purchases, more buyers, buyers who come back) and cost scenarios (a better experience, keeping users, stopping users from going around OTeacher) are tested first, then costed on a reward-and-effort grid before anything is done. The market-analysis document itself was planned in nineteen steps, from needs and competitors to surveys, interviews and talking with teachers and learners."
+      ]
+    },
+    "interviews": {
+      "heading": "Deep interviews with teachers",
+      "body": [
+        "The plan’s interviews were not only with staff. Sina and the team sat down with teachers for long, open interviews, several of them around one table, about their classes, their income and the tools they teach with.",
+        "The interviews were written up on one template: an empathy map of what the person thinks, feels, does and says, and a profile with a catchphrase, goals, worries, what they expect from OTeacher, what holds them back, and how they learn and teach. Learners went through the same template.",
+        "The result was nine personas on fourteen boards: three teachers and six learners."
+      ]
+    },
+    "personas": {
+      "heading": "Two sides, two complaints",
+      "customLabel": "Personas",
+      "body": [
+        "The deck sums up the teacher persona as “Learners don’t pay!” Teachers asked for better teaching tools and more income. They wanted the best teachers to stand out, with labels for experienced and supervising teachers and a stricter bar for new ones, and fairer cancellation rules, with a penalty for learners who miss class. They blamed lost learners on the video-class tool, and worried about learners who quit.",
+        "The learner persona is “What happened to our class?!” Finding a good teacher who fits was hard and uncertain. Past failures made learners wary, there was no clear learning path, and the platform itself, with no reliable line to the teacher, was the main barrier. Learners were afraid of losing the time and money they had paid."
+      ],
+      "insight": "Both sides pointed at the same two things: the class itself, and knowing which teacher is right."
+    },
+    "strategy": {
+      "heading": "A position, one goal and a roadmap in three horizons",
+      "body": [
+        "The strategy deck places the brand on a line: today, one option among several for learning a language online; in the second half of the year, the first choice; in the long run, a serious, influential player in the whole language-learning market. The goal under it is operating profit.",
+        "The roadmap began as the product manager’s sticky notes and was set out in three horizons. Fall 1402: a class platform, a messenger, a matchmaking level, specialist courses and group classes. Winter 1402: better teaching tools, a learner roadmap, services for organisations, and two analyses, of foreign-currency income and of a new market. Later: a shop, recorded courses, finance, a ticket manager, and MVPs of foreign-currency income and a new-market product.",
+        "Set beside the interviews, the first two horizons answer the loudest complaints: a class platform and a messenger for the broken line to the teacher, a matchmaking level for learners who cannot find the right teacher, a learner roadmap for the missing path, and better tools for teachers."
+      ],
+      "insight": "The two biggest bets, foreign-currency income and a new market, enter the roadmap as analyses and come back later as MVPs."
+    },
+    "education": {
+      "heading": "Teachers asked to be told apart",
+      "customLabel": "Education unit",
+      "body": [
+        "Alongside the product work, the deck presents a new education unit, and it answers several of the teachers’ asks. Its five actions: set up the unit to raise satisfaction and the quality of teaching; form a supervisory team of active, experienced teachers; design the standards, the teaching processes and the interviews; interview every teacher and group them; and run specialist classes to raise teachers’ skills."
+      ]
+    }
+  },
+  "figures": {
+    "concerns": {
+      "caption": "Seven concerns and expectations: where the plan starts."
+    },
+    "plan": {
+      "caption": "The strategy presentation, slide by slide. Open a slide to read it.",
+      "items": [
+        "Title",
+        "Concerns and expectations",
+        "Four-week calendar",
+        "Week one",
+        "Week two",
+        "Week three",
+        "Week four, part one",
+        "Week four, part two",
+        "Why a market-analysis document",
+        "Market analysis, steps 1–10",
+        "Market analysis, steps 11–19"
+      ]
+    },
+    "surveys": {
+      "caption": "One question list per department, twenty questions each. Open a list to read it in Persian.",
+      "items": [
+        "Product",
+        "Marketing",
+        "Education and teachers",
+        "Support",
+        "Technical team",
+        "Finance",
+        "Management",
+        "Operations"
+      ]
+    },
+    "market": {
+      "caption": "The market-research project deck, slide by slide.",
+      "items": [
+        "Title",
+        "Culture comes first",
+        "Approach",
+        "Value for both sides",
+        "Stakeholders and value",
+        "Unrealised profit is a loss",
+        "Goal: operating profit",
+        "Finding and testing scenarios",
+        "Deciding what to do"
+      ]
+    },
+    "interviews": {
+      "caption": "Deep interviews with teachers, as the strategy deck shows them."
+    },
+    "conclusions": {
+      "caption": "What the personas added up to.",
+      "items": [
+        "Teachers: seven expectations of the platform.",
+        "Learners: seven findings about learning online."
+      ]
+    },
+    "position": {
+      "caption": "Brand position over time: one option among several, then the first choice online, then a serious player in the whole market."
+    },
+    "roadmap": {
+      "caption": "OTeacher’s path: the roadmap in three horizons, as presented."
+    },
+    "horizons": {
+      "caption": "The three horizons, one slide each.",
+      "items": [
+        "Fall 1402",
+        "Winter 1402",
+        "Later"
+      ]
+    },
+    "draft": {
+      "caption": "The strategy deck as first drafted on the same page. Left out: a market-size estimate, an unfinished SWOT template and the product manager’s sticky-note draft of the roadmap.",
+      "items": [
+        "Title",
+        "Culture eats strategy for breakfast",
+        "Removing the language barrier",
+        "Unrealised profit is a loss",
+        "Brand position",
+        "Overall goals",
+        "Goal: operating profit",
+        "Personas",
+        "Stakeholders and value",
+        "Teacher personas: conclusions",
+        "Learner personas: conclusions"
+      ]
+    },
+    "education": {
+      "caption": "The education unit’s five actions."
+    }
+  },
+  "process": {
+    "heading": "Four weeks, fifteen deliverables",
+    "steps": [
+      {
+        "label": "Goals and roles",
+        "note": "Short-term goals, a presentation for stakeholders, business and product maps, and each team’s duties"
+      },
+      {
+        "label": "Interviews",
+        "note": "Plan the interviews and meetings, write each one up, and follow up with the teams"
+      },
+      {
+        "label": "Personas and market",
+        "note": "Persona analysis, a market-analysis document and the method for the roadmap"
+      },
+      {
+        "label": "Story and objectives",
+        "note": "A story that aligns stakeholders, persona maps and SMART objectives"
+      },
+      {
+        "label": "Metrics and plan",
+        "note": "KPIs and metrics, and a six-month strategy document"
+      }
+    ]
+  },
+  "decisions": {
+    "heading": "Five decisions behind the plan",
+    "lede": "The decks and boards make these choices visible.",
+    "items": [
+      {
+        "title": "Ask every department before designing",
+        "why": "The request was a redesign, but the teams did not share goals or a way to decide. Designing first would have meant designing for one team’s view of the product.",
+        "tradeoff": "The first two weeks went on goals, roles and interviews rather than on the product."
+      },
+      {
+        "title": "One format for eight departments",
+        "why": "Every list opens with the same instruction: answer, and say what the result creates for the learner, the teacher and the platform. Answers from finance and from education could then be read against the same three stakeholders.",
+        "tradeoff": "One format fits some teams better than others; the operations list repeats itself to reach twenty."
+      },
+      {
+        "title": "Interview teachers in depth",
+        "why": "Teachers are one side of the marketplace. Sitting with them turned general complaints into specific asks: labels for experienced teachers, a stricter bar for new ones, fairer cancellation rules.",
+        "tradeoff": "Three teacher personas stand for every teacher on the platform.",
+        "evidence": "The teacher persona boards and the slide of conclusions drawn from them."
+      },
+      {
+        "title": "Make operating profit the goal",
+        "why": "“Unrealised profit is a loss” sets the test. Each idea becomes a revenue or cost scenario, is tested, and is costed on a reward-and-effort grid before anyone acts.",
+        "tradeoff": "Work on teaching quality has to make its case in revenue terms to get onto the list."
+      },
+      {
+        "title": "Study a new source of revenue before building it",
+        "why": "Foreign-currency income and a new market each appear twice on the roadmap: as an analysis in winter 1402, and only later as an MVP.",
+        "tradeoff": "The biggest bets wait at least two horizons."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "Sina’s part",
+    "intro": "Sina worked in OTeacher’s product unit with the product manager. The strategy file is Sina’s: the plan, the question lists, the decks and the persona boards.",
+    "own": [
+      "The four-week strategy plan and the presentation that sets it out",
+      "The question lists for eight departments",
+      "The market-research project deck",
+      "The empathy map, the persona template and the persona boards",
+      "The strategy deck that sets out the brand position, the goal and the roadmap"
+    ],
+    "collaborate": [
+      "The product manager, throughout the process, including the first draft of the roadmap",
+      "The departments, who answered the question lists",
+      "The teachers and learners who were interviewed, and the education unit"
+    ],
+    "note": "Slides on the company’s history, its team and a market-size estimate, an unfinished SWOT template and a sticky-note draft of the roadmap are left out, as are the persona boards, which carry the names of the people interviewed."
+  },
+  "outcomes": {
+    "heading": "A plan the whole company could read",
+    "intro": "The file records the process and what it produced, not what the company did with it afterwards, so there are no usage numbers here.",
+    "delivered": [
+      {
+        "label": "departments, each with a question list",
+        "context": "Product, marketing, education, support, technical, finance, management and operations, twenty questions each"
+      },
+      {
+        "label": "personas, for both sides of the marketplace",
+        "context": "Three teachers and six learners, on fourteen boards"
+      },
+      {
+        "label": "roadmap items in three horizons",
+        "context": "Five for fall 1402, five for winter 1402 and six for later"
+      }
+    ],
+    "shipped": [
+      "A four-week strategy plan and its presentation",
+      "Question lists for eight departments",
+      "A market-research project deck",
+      "Deep interviews with teachers, and nine personas of teachers and learners",
+      "A brand position, an operating-profit goal and a three-horizon roadmap"
+    ]
+  },
+  "lessons": {
+    "heading": "What I’d change",
+    "items": [
+      {
+        "title": "Fit the questions to the team",
+        "body": "Every department got the same twenty-line format, and the later lists show the strain: operations repeats the same few questions to fill its twenty lines, and management repeats itself too. Eight or ten questions written for each team would have asked more with less."
+      },
+      {
+        "title": "Give every horizon an owner and a measure",
+        "body": "Week four planned objectives, KPIs and metrics, yet the roadmap slides list items by season with no owner or target. A roadmap the whole company reads should say who carries each item and how it will be judged."
+      },
+      {
+        "title": "Say how many people each persona stands for",
+        "body": "The personas are finished boards, and nothing on them says how many interviews are behind each one. A line per persona, with the number of people and when they were interviewed, would let a reader weigh it."
+      }
+    ]
+  }
+}

@@ -309,12 +309,18 @@ export const PROJECT_SEED: ProjectSeedRow[] = [
     slug: 'oteacher-product-roadmap',
     title: 'Product strategy & roadmap',
     summary:
-      "Brand-positioning analysis translated into a phased product roadmap for OTeacher, framed against the company's funding and launch history.",
+      'A four-week strategy process: twenty questions for each of eight departments, deep interviews with teachers, nine personas, and the brand position and three-horizon roadmap that came out of them.',
     company: OTEACHER,
     role: 'Product manager & designer',
     kind: ['research'],
     order: 51,
     status: 'published',
+    // The case study's (2026-09-26): the strategy presentation's title slide, from the Questions page.
+    cover: {
+      path: 'Docs/Experience/OTeacher/product-roadmap-and-strategy/assets/study/full/hero-title.png',
+      name: 'oteacher-product-roadmap--cover.png',
+      alt: 'OTeacher strategy presentation, title slide — “An integrated strategy mechanism for the OTeacher platform” beside the OTeacher logo',
+    },
   },
   {
     slug: 'oteacher-panel-redesign',

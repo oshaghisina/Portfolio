@@ -120,6 +120,14 @@ import {
   ndLocalizedFields,
 } from './nim-dang'
 import {
+  OTE_ASSETS,
+  OTE_COVER_KEY,
+  OTE_MEDIA,
+  OTE_SHARED_FIELDS,
+  OTE_SLUG,
+  oteLocalizedFields,
+} from './oteacher/study'
+import {
   RP1_ASSETS,
   RP1_MEDIA,
   RP1_SHARED_FIELDS,
@@ -386,6 +394,18 @@ export const CASE_STUDIES: CaseStudySeedConfig<any, any>[] = [
     createFields: { kind: ['product', 'systems'], order: 108, coverMediaKey: MKB_COVER_KEY },
     sharedFields: MKB_SHARED_FIELDS,
     localizedFields: mkbLocalizedFields,
+  },
+  // OTeacher's strategy process: an existing archive row (order 51) that had no cover until now.
+  {
+    label: 'OTeacher strategy',
+    slug: OTE_SLUG,
+    assetsDir: OTE_ASSETS,
+    media: OTE_MEDIA,
+    seedLocales: LOCALES,
+    createFields: { kind: ['research'], order: 51, coverMediaKey: OTE_COVER_KEY },
+    replaceCover: true,
+    sharedFields: OTE_SHARED_FIELDS,
+    localizedFields: oteLocalizedFields,
   },
 ]
 
