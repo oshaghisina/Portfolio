@@ -3,8 +3,8 @@ import type { Block } from 'payload'
 import { sectionHeader } from '@/fields/sectionHeader'
 
 /**
- * The body of the `/work` page: intro (rendered as the page `h1`), the featured projects, and a
- * numbered index of every published project. Holds no project copy of its own — everything comes
+ * The body of the `/work` page: a compact intro and a searchable gallery/list of every published
+ * project. Holds no project copy of its own — everything comes
  * from the `projects` collection (D-021), so Home, `/work` and `/work/<slug>` agree by construction.
  */
 export const ProjectArchive: Block = {

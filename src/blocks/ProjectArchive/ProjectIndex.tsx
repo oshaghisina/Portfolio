@@ -1,16 +1,17 @@
 'use client'
 
-import { ArrowRight, ArrowUpRight } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, LayoutGrid, List, Search, X } from 'lucide-react'
 import Link from 'next/link'
-import React, { useMemo, useState } from 'react'
+import React, { useId, useMemo, useState } from 'react'
 
 import { kindLabel, PROJECT_KINDS, type ProjectKind } from '@/collections/Projects/kinds'
-import { SectionHeader } from '@/components/SectionHeader'
 import type { Locale } from '@/utilities/locale'
-import { pluralCopy, uiCopy } from '@/utilities/uiCopy'
+import { uiCopy } from '@/utilities/uiCopy'
 import { cn } from '@/utilities/ui'
 
-import type { IndexRow } from './rows'
+import { ArchivePreview } from './ArchivePreview'
+import { archiveCopy } from './copy'
+import { companyKey, matchesProject, type IndexRow } from './rows'
 
 export interface ProjectIndexProps {
   rows: IndexRow[]
@@ -18,198 +19,206 @@ export interface ProjectIndexProps {
   className?: string
 }
 
-/** Desktop ledger: a narrow index column, the title carrying the weight, three metadata columns. */
-const LEDGER_GRID = 'lg:grid-cols-[2.75rem_minmax(0,5fr)_minmax(0,2fr)_minmax(0,2fr)_minmax(0,2fr)]'
-
-type Filter = ProjectKind | 'all'
-
-const RowShell: React.FC<{ row: IndexRow; children: React.ReactNode; newTabLabel: string }> = ({
+function CardShell({
+  row,
   children,
   newTabLabel,
-  row,
-}) => {
-  const className = 'block outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring'
-  if (!row.href) return <div>{children}</div>
-  return row.external ? (
-    <a className={className} href={row.href} rel="noopener noreferrer" target="_blank">
-      {children}
-      <span className="sr-only">{newTabLabel}</span>
-    </a>
-  ) : (
-    <Link className={className} href={row.href}>
+}: {
+  row: IndexRow
+  children: React.ReactNode
+  newTabLabel: string
+}) {
+  if (!row.href) return <article className="archive-card">{children}</article>
+  if (row.external)
+    return (
+      <a className="archive-card" href={row.href} rel="noopener noreferrer" target="_blank">
+        {children}
+        <span className="sr-only">{newTabLabel}</span>
+      </a>
+    )
+  return (
+    <Link className="archive-card" href={row.href} prefetch={false}>
       {children}
     </Link>
   )
 }
 
-/**
- * The complete archive as an editorial index, not a data table: hairline-separated rows, the
- * title carrying the weight, everything else tiny mono metadata. One single-select kind filter
- * (client state only — no URL, no search, no sort); filtered rows are hidden and keep their
- * numbers so the archive stays a fixed ledger. Rows link only where there is somewhere to go.
- */
-export const ProjectIndex: React.FC<ProjectIndexProps> = ({ className, locale, rows }) => {
+/** One DOM entry per project in either view; all published work is visible by default. */
+export function ProjectIndex({ className, locale, rows }: ProjectIndexProps) {
   const copy = uiCopy[locale]
-  const [active, setActive] = useState<Filter>('all')
+  const labels = archiveCopy[locale]
+  const id = useId()
+  const [kind, setKind] = useState<ProjectKind | 'all'>('all')
+  const [company, setCompany] = useState('')
+  const [query, setQuery] = useState('')
+  const [view, setView] = useState<'grid' | 'list'>('grid')
+  const number = (value: number) =>
+    new Intl.NumberFormat(locale === 'fa' ? 'fa-IR' : locale).format(value)
 
-  const filters = useMemo(() => {
-    const counts = new Map<ProjectKind, number>()
-    for (const row of rows) for (const kind of row.kinds) counts.set(kind.value, (counts.get(kind.value) ?? 0) + 1)
-    return PROJECT_KINDS.filter((kind) => counts.has(kind)).map((kind) => ({
-      value: kind as Filter,
-      label: kindLabel(kind, locale),
-      count: counts.get(kind) ?? 0,
-    }))
+  const companies = useMemo(() => {
+    const groups = new Map<string, { name: string; count: number }>()
+    for (const row of rows) {
+      const key = companyKey(row.company)
+      if (!key) continue
+      const group = groups.get(key)
+      groups.set(key, { name: group?.name ?? row.company.trim(), count: (group?.count ?? 0) + 1 })
+    }
+    return [...groups].sort((a, b) => a[1].name.localeCompare(b[1].name, locale))
   }, [locale, rows])
 
-  const matches = (row: IndexRow) => active === 'all' || row.kinds.some((kind) => kind.value === active)
-  const visible = rows.filter(matches).length
-  const showFilter = filters.length > 1
-
-  // A heading replaces repeated company names only for substantial consecutive runs. When a
-  // filter hides the first row, move that run's heading to its first remaining row.
-  const groupedRows = new Set<string>()
-  const groupHeadings = new Map<string, { company: string; count: number }>()
-  for (let start = 0; start < rows.length; ) {
-    const company = rows[start].company.trim().toLocaleLowerCase(locale)
-    let end = start + 1
-    while (end < rows.length && rows[end].company.trim().toLocaleLowerCase(locale) === company) end++
-    if (company && end - start >= 3) {
-      const run = rows.slice(start, end)
-      const shown = run.filter(matches)
-      if (shown.length >= 2) {
-        shown.forEach((row) => groupedRows.add(row.id))
-        groupHeadings.set(shown[0].id, { company: rows[start].company, count: shown.length })
-      }
-    }
-    start = end
+  const filters = PROJECT_KINDS.filter((value) =>
+    rows.some((row) => row.kinds.some((item) => item.value === value)),
+  )
+  const visibleRows = rows.filter((row) => matchesProject(row, query, kind, company))
+  const filtered = kind !== 'all' || Boolean(company) || Boolean(query.trim())
+  const reset = () => {
+    setKind('all')
+    setCompany('')
+    setQuery('')
   }
 
   return (
-    <section aria-labelledby="project-index" className={cn('flex flex-col', className)}>
-      <SectionHeader
-        as="h2"
-        className="mb-8"
-        id="project-index"
-        lead={copy.workIndexTitle}
-        tag={copy.workArchiveTag}
-        tagTone="mono"
-      />
-
-      {showFilter ? (
-        <div className="flex flex-col gap-3 pb-4 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
-          <div aria-label={copy.workFilterLabel} className="flex flex-wrap gap-x-5 gap-y-3" role="group">
-            {[{ value: 'all' as Filter, label: copy.workFilterAll, count: rows.length }, ...filters].map((f) => {
-              const pressed = active === f.value
-              return (
-                <button
-                  aria-pressed={pressed}
-                  className={cn(
-                    'eyebrow inline-flex items-baseline gap-1.5 border-b pb-1 transition-colors duration-(--duration-fast)',
-                    'outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring',
-                    pressed ? 'border-brand text-foreground' : 'border-transparent text-ink-3 hover:text-foreground',
-                  )}
-                  key={f.value}
-                  onClick={() => setActive(f.value)}
-                  type="button"
-                >
-                  {f.label}
-                  <span className="index-code">{f.count}</span>
-                </button>
-              )
-            })}
-          </div>
-          <p aria-live="polite" className={cn('index-code shrink-0 text-ink-3', active === 'all' && 'sr-only')}>
-            {pluralCopy(locale, copy.workProjects, visible)}
-          </p>
+    <section aria-labelledby={`${id}-title`} className={cn('work-archive', className)}>
+      <div className="archive-heading" data-reveal-skip="">
+        <h2 className="text-h3 font-medium" id={`${id}-title`}>
+          {copy.workIndexTitle}
+        </h2>
+        <div aria-label={labels.view} className="archive-view-switch" role="group">
+          {(
+            [
+              { key: 'grid', label: labels.grid, Icon: LayoutGrid },
+              { key: 'list', label: labels.list, Icon: List },
+            ] as const
+          ).map(({ key, label, Icon }) => (
+            <button
+              aria-label={label}
+              aria-pressed={view === key}
+              key={key}
+              onClick={() => setView(key)}
+              title={label}
+              type="button"
+            >
+              <Icon aria-hidden="true" size={17} />
+            </button>
+          ))}
         </div>
-      ) : null}
+      </div>
 
-      <ol className="border-t border-line">
-        {rows.map((row) => {
-          const hidden = !matches(row)
-          const interactive = Boolean(row.href)
-          const grouped = groupedRows.has(row.id)
-          const where = [grouped ? null : row.company, row.year].filter(Boolean).join(' · ')
-          const nature = [row.kinds.map((k) => k.label).join(' · '), row.role].filter(Boolean).join(' — ')
-          const desktopRole = [grouped ? row.year : null, row.role].filter(Boolean).join(' · ')
-          const heading = groupHeadings.get(row.id)
+      <div className="archive-controls" data-reveal-skip="">
+        <div className="archive-search">
+          <Search aria-hidden="true" size={17} />
+          <label className="sr-only" htmlFor={`${id}-search`}>
+            {labels.search}
+          </label>
+          <input
+            autoComplete="off"
+            id={`${id}-search`}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder={labels.search}
+            type="search"
+            value={query}
+          />
+        </div>
+        <label className="archive-company">
+          <span className="sr-only">{labels.company}</span>
+          <select onChange={(event) => setCompany(event.target.value)} value={company}>
+            <option value="">{labels.allCompanies}</option>
+            {companies.map(([key, group]) => (
+              <option key={key} value={key}>
+                {group.name} ({number(group.count)})
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
 
-          return (
-            <li className={cn('group border-b border-line', hidden && 'hidden')} key={row.id}>
-              {heading ? (
-                <div className="flex items-baseline justify-between gap-4 border-b border-line bg-panel px-4 py-3">
-                  <span className="eyebrow text-foreground">{heading.company}</span>
-                  <span className="index-code text-ink-3">{heading.count}</span>
-                </div>
-              ) : null}
-              <RowShell newTabLabel={copy.opensInNewTab} row={row}>
-                <div className={cn('grid gap-y-2 py-4 lg:items-baseline lg:gap-x-6 lg:py-5', LEDGER_GRID)}>
-                  {/* Phone line 1 · desktop column 1 */}
-                  <div className="flex items-baseline gap-3">
-                    <span className="index-code">{row.index}</span>
-                    {where ? <span className="eyebrow text-ink-3 lg:hidden">{where}</span> : null}
-                  </div>
+      <div className="archive-filter-row" data-reveal-skip="">
+        <div aria-label={copy.workFilterLabel} className="archive-filters" role="group">
+          {(['all', ...filters] as const).map((value) => (
+            <button
+              aria-pressed={kind === value}
+              key={value}
+              onClick={() => setKind(value)}
+              type="button"
+            >
+              {value === 'all' ? copy.workFilterAll : kindLabel(value, locale)}
+              <span className="index-code">
+                {number(rows.filter((row) => matchesProject(row, query, value, company)).length)}
+              </span>
+            </button>
+          ))}
+        </div>
+        <div className="archive-results">
+          <p aria-live="polite" aria-atomic="true" className="text-caption text-ink-3">
+            {labels.results
+              .replace('{shown}', number(visibleRows.length))
+              .replace('{total}', number(rows.length))}
+          </p>
+          {filtered ? (
+            <button className="archive-reset text-caption" onClick={reset} type="button">
+              <X aria-hidden="true" size={14} />
+              {labels.clear}
+            </button>
+          ) : null}
+        </div>
+      </div>
 
-                  <h3
-                    className={cn(
-                      'text-h3 font-medium text-foreground transition-colors duration-(--duration-fast)',
-                      interactive && 'group-hover:text-brand',
-                      grouped && 'lg:col-span-2',
-                    )}
-                  >
-                    {row.title}
-                  </h3>
-
-                  {/* Phone line 3 · desktop columns 3–4 */}
-                  <span className="eyebrow text-ink-3 lg:hidden">{nature}</span>
-                  <span className="eyebrow hidden text-ink-3 lg:block">{row.kinds.map((k) => k.label).join(' · ')}</span>
-                  <span className="eyebrow hidden text-ink-3 lg:items-baseline lg:justify-between lg:gap-3 lg:flex">
-                    {desktopRole}
-                    {grouped && interactive ? (
-                      <span aria-hidden className="text-ink-3 transition-colors duration-(--duration-fast) group-hover:text-brand">
-                        {row.external ? (
-                          <ArrowUpRight className="size-3.5 rtl:-scale-x-100" />
-                        ) : (
-                          <ArrowRight className="size-3.5 rtl:-scale-x-100" />
-                        )}
-                      </span>
-                    ) : null}
-                  </span>
-
-                  {/* Desktop column 5: organisation (+ year) and the destination marker */}
-                  <span className={cn('hidden lg:items-baseline lg:justify-between lg:gap-3', grouped ? 'lg:hidden' : 'lg:flex')}>
-                    <span className="eyebrow text-ink-3">{where}</span>
-                    {interactive ? (
-                      <span
-                        aria-hidden
-                        className="text-ink-3 transition-[color,translate] duration-(--duration-fast) group-hover:text-brand group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5"
-                      >
-                        {row.external ? (
-                          <ArrowUpRight className="size-3.5 rtl:-scale-x-100" />
-                        ) : (
-                          <ArrowRight className="size-3.5 rtl:-scale-x-100" />
-                        )}
-                      </span>
-                    ) : null}
-                  </span>
-                  {interactive ? (
-                    <span className="eyebrow inline-flex items-center gap-1.5 text-foreground lg:hidden">
-                      {row.external ? copy.workLive : copy.workCaseStudy}
-                      {row.external ? (
-                        <ArrowUpRight aria-hidden className="size-3 rtl:-scale-x-100" />
-                      ) : (
-                        <ArrowRight aria-hidden className="size-3 rtl:-scale-x-100" />
-                      )}
+      <ol className="archive-projects" data-view={view}>
+        {visibleRows.map((row) => (
+          <li data-project-slug={row.slug} data-reveal-unit="" key={row.id}>
+            <CardShell newTabLabel={copy.opensInNewTab} row={row}>
+              <ArchivePreview row={row} />
+              <div className="archive-card-copy">
+                <div className="archive-card-meta text-caption text-ink-3">
+                  <span className="archive-row-index index-code">{row.index}</span>
+                  <bdi>{row.company}</bdi>
+                  {row.year ? (
+                    <span className="archive-year" dir="ltr">
+                      {row.year}
                     </span>
                   ) : null}
                 </div>
-              </RowShell>
-            </li>
-          )
-        })}
+                <h3 className="archive-card-title">{row.title}</h3>
+                <p className="archive-card-summary">{row.summary}</p>
+                <div className="archive-card-footer">
+                  <span className="archive-card-kinds text-caption text-ink-3">
+                    {row.kinds.map((item) => item.label).join(' / ')}
+                  </span>
+                  <span
+                    className={cn(
+                      'archive-card-destination text-caption',
+                      !row.href && 'text-ink-3',
+                    )}
+                  >
+                    {row.href
+                      ? row.external
+                        ? copy.workLive
+                        : copy.workCaseStudy
+                      : labels.archiveEntry}
+                    {row.href ? (
+                      row.external ? (
+                        <ArrowUpRight aria-hidden="true" size={15} className="rtl:-scale-x-100" />
+                      ) : (
+                        <ArrowRight aria-hidden="true" size={15} className="rtl:-scale-x-100" />
+                      )
+                    ) : null}
+                  </span>
+                </div>
+              </div>
+            </CardShell>
+          </li>
+        ))}
       </ol>
-      {!showFilter ? <p className="sr-only">{pluralCopy(locale, copy.workProjects, visible)}</p> : null}
+      {!visibleRows.length ? (
+        <div className="archive-empty" data-reveal-skip="">
+          <Search aria-hidden="true" size={28} />
+          <p>{labels.noResults}</p>
+          <button className="archive-reset" onClick={reset} type="button">
+            {labels.clear}
+            <ArrowRight aria-hidden="true" size={16} className="rtl:-scale-x-100" />
+          </button>
+        </div>
+      ) : null}
     </section>
   )
 }

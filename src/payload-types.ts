@@ -621,11 +621,11 @@ export interface Project {
     description?: string | null;
   };
   /**
-   * Show in the featured section at the top of /work (the first three by order).
+   * Editorial selection marker. The /work archive includes every published project, regardless of this setting.
    */
   featured?: boolean | null;
   /**
-   * Editorial order on /work — lower first. Featured projects use the same number.
+   * Editorial order in the /work gallery and list — lower first.
    */
   order: number;
   /**

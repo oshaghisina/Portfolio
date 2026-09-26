@@ -205,23 +205,25 @@ describe('ProjectIndex', () => {
     expect(items[1].querySelector('.index-code')!.textContent).toBe('02')
   })
 
-  it('moves a company heading to the first visible row of a filtered group', () => {
+  it('combines company and kind filters, retaining original project numbers', () => {
     const groupRows = toIndexRows(
       [
-        project({ id: 'a', kind: ['product'] }),
+        project({ id: 'a', kind: ['product'], company: 'Arvan Cloud' }),
         project({ id: 'b', kind: ['growth'] }),
         project({ id: 'c', kind: ['growth'] }),
       ],
       'en',
     )
     const { container } = render(<ProjectIndex locale="en" rows={groupRows} />)
+    fireEvent.change(screen.getByRole('combobox'), { target: { value: 'digikala' } })
     fireEvent.click(screen.getByRole('button', { name: /Growth/ }))
     const items = Array.from(container.querySelectorAll('ol > li'))
-    expect(items[0].classList.contains('hidden')).toBe(true)
-    expect(items[1].textContent).toContain('Digikala')
-    expect(items[1].textContent).toContain('02')
-    expect(screen.getByText('2 projects')).toBeTruthy()
+    expect(items).toHaveLength(2)
+    expect(items[0].textContent).toContain('Digikala')
+    expect(items[0].querySelector('.index-code')!.textContent).toBe('02')
+    expect(screen.getByText('2 of 3 projects')).toBeTruthy()
   })
+
 })
 
 describe('FeaturedProject / WorkIntro / SelectedWork', () => {

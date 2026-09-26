@@ -237,7 +237,7 @@ export const Projects: CollectionConfig<'projects'> = {
       name: 'featured',
       type: 'checkbox',
       admin: {
-        description: 'Show in the featured section at the top of /work (the first three by order).',
+        description: 'Editorial selection marker. The /work archive includes every published project, regardless of this setting.',
         position: 'sidebar',
       },
     },
@@ -248,7 +248,7 @@ export const Projects: CollectionConfig<'projects'> = {
       defaultValue: 50,
       admin: {
         description:
-          'Editorial order on /work — lower first. Featured projects use the same number.',
+          'Editorial order in the /work gallery and list — lower first.',
         position: 'sidebar',
         step: 1,
       },
