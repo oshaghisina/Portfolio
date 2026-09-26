@@ -153,8 +153,14 @@ export async function syncProjects({
     // `payload.delete`, not `db.deleteMany` — it also drops the document's versions and any
     // scheduled-publish job. `disableRevalidate` is mandatory: `revalidateDelete` calls
     // `revalidatePath`, which throws outside a Next request.
-    await payload.delete({ collection: 'projects', id: doc.id, depth: 0, context })
-    result.deleted.push(slug)
+    try {
+      await payload.delete({ collection: 'projects', id: doc.id, depth: 0, context })
+      result.deleted.push(slug)
+    } catch (error) {
+      // Idempotent against races / already-removed docs (common on a second prod sync).
+      if ((error as { status?: number } | null)?.status === 404) continue
+      throw error
+    }
   }
 
   // The guard `projects.ts` cannot make at import time without closing a module cycle.

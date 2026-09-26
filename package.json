@@ -25,6 +25,7 @@
     "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
     "postbuild": "next-sitemap --config next-sitemap.config.cjs",
     "seed:projects": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/seed/projects.ts",
+    "seed:seo-sync": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/seed/seo-sync.ts",
     "seed:experiences-sync": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/seed/experiences-sync.ts",
     "seed:experience": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/seed/experience.ts",
     "seed:experience-visuals": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/seed/experience-visuals.ts",
