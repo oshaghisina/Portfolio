@@ -1421,7 +1421,7 @@ export interface SelectedWorkBlock {
 export interface WorkMosaicBlock {
   sectionHeader?: SectionHeaderField;
   /**
-   * One tile per project, in reading order — drag to reorder. Size is a weight on a row: Wide fills a row, two halves (Large or Medium) fill a row, four quarters (Small) fill a row. Mix sizes so each row adds up, or the row will end in empty paper.
+   * One project per entry, in reading order. Wide is a full-width feature with image beside text; Large is a visual story; Medium and Small are compact project notes. The archive link has its own footer.
    */
   items: {
     /**
@@ -1429,11 +1429,11 @@ export interface WorkMosaicBlock {
      */
     project: string | Project;
     /**
-     * How much of a row this project claims, and how much it says.
+     * The emphasis this project receives; mobile always follows the same reading order.
      */
     size: 'wide' | 'large' | 'medium' | 'small';
     /**
-     * Optional. Overrides what this tile shows. Leave empty to use the project cover, then the first case-study hero visual, then the pending plate.
+     * Optional. Overrides what this tile shows. Leave empty to use the project cover, then the first case-study hero visual, then a typographic initial. Overrides are shown on their own.
      */
     mediaOverride?: (string | null) | Media;
     id?: string | null;

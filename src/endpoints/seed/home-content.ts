@@ -87,9 +87,8 @@ export const homeMetaDescription = homeCopy.en.meta.description
  * editorial composition, so it lives beside the layout rather than in `projects.ts` — the project
  * records say what the work is, this says how much of Home each one is worth.
  *
- * The rhythm opens on the two projects that have real media and decays into the index, and the
- * weights pack into exact rows: 6+6 · 12 · 6+3+3 · 3, with the closing index cell taking the
- * remaining columns. See `@/blocks/WorkMosaic/sizes` for the arithmetic.
+ * Two visual stories open the selection, followed by a wide feature and four compact notes.
+ * The archive has a separate full-width footer. CMS order remains the reading order.
  */
 export const HOME_MOSAIC: { slug: string; size: MosaicSize }[] = [
   { slug: 'vin-app', size: 'large' },

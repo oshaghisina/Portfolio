@@ -1,25 +1,12 @@
-/**
- * Work Mosaic (jsdom): the packing arithmetic that keeps the grid from opening a grey hole, and
- * the tile contracts — CMS order is DOM order, an unpublished project is dropped without leaving
- * the last row ragged, media resolves override → cover → hero → plate, and a tile links only
- * where there is somewhere to go.
- */
+/** Selection contracts: order, media evidence, destinations, and all existing CMS sizes. */
 import { cleanup, render, screen } from '@testing-library/react'
 import React from 'react'
 import { afterEach, describe, expect, it } from 'vitest'
 
 import { WorkMosaicBlock } from '@/blocks/WorkMosaic/Component'
 import { WorkMosaic } from '@/blocks/WorkMosaic/config'
-import {
-  MOSAIC,
-  MOSAIC_COLS,
-  MOSAIC_SIZES,
-  isMosaicSize,
-  tailSpan,
-  toMosaicSize,
-  type MosaicSize,
-  type MosaicTrack,
-} from '@/blocks/WorkMosaic/sizes'
+import { isMosaicSize, toMosaicSize, type MosaicSize } from '@/blocks/WorkMosaic/sizes'
+import { mosaicMedia } from '@/blocks/WorkMosaic/Cover'
 import { HOME_MOSAIC } from '@/endpoints/seed/home-content'
 import type { Media, Project } from '@/payload-types'
 import { uiCopy } from '@/utilities/uiCopy'
@@ -62,74 +49,50 @@ const tile = (size: MosaicSize, overrides: Partial<Project> = {}, extra = {}) =>
 
 const header = { tag: 'Work', lead: 'Selected', tail: 'work' }
 
-/**
- * Walks the sequence exactly as CSS grid auto-placement does — in order, wrapping when a tile
- * cannot fit the row — and reports how many cells are left unfilled. Zero means the mosaic is a
- * closed rectangle at that width.
- */
-const unfilledCells = (sizes: MosaicSize[], track: MosaicTrack): number => {
-  const cols = MOSAIC_COLS[track]
-  const weights = [...sizes.map((s) => MOSAIC[s].weight[track]), tailSpan(sizes, track)]
-  let used = 0
-  let holes = 0
-  for (const weight of weights) {
-    if (used + weight > cols) {
-      holes += cols - used
-      used = 0
-    }
-    used += weight
-    if (used === cols) used = 0
-  }
-  return holes + (used === 0 ? 0 : cols - used)
-}
-
-describe('mosaic geometry', () => {
-  it('gives every size a weight that divides its track, so a hole is never a sliver', () => {
-    for (const track of ['pair', 'lg'] as MosaicTrack[]) {
-      for (const size of MOSAIC_SIZES) {
-        expect(MOSAIC_COLS[track] % MOSAIC[size].weight[track]).toBe(0)
-      }
-    }
-  })
-
-  it('packs the seeded composition into closed rectangles at both widths', () => {
-    const seeded = HOME_MOSAIC.map(({ size }) => size)
-    expect(seeded).toHaveLength(7)
-    expect(tailSpan(seeded, 'lg')).toBe(9)
-    expect(tailSpan(seeded, 'pair')).toBe(1)
-    expect(unfilledCells(seeded, 'lg')).toBe(0)
-    expect(unfilledCells(seeded, 'pair')).toBe(0)
-  })
-
-  it('never lets the closing cell leave a ragged last row', () => {
-    const sequences: MosaicSize[][] = [
-      ['wide'],
-      ['small', 'small', 'small', 'large'],
-      ['large', 'large'],
-      ['small', 'wide', 'medium'],
-      ['medium', 'medium', 'medium'],
-    ]
-    for (const sizes of sequences) {
-      for (const track of ['pair', 'lg'] as MosaicTrack[]) {
-        const total = sizes.reduce((n, s) => n + MOSAIC[s].weight[track], 0) + tailSpan(sizes, track)
-        expect(total % MOSAIC_COLS[track]).toBe(0)
-      }
-    }
-  })
-
-  it('falls back to the smallest size for a value the schema no longer allows', () => {
-    expect(isMosaicSize('large')).toBe(true)
-    expect(isMosaicSize('enormous')).toBe(false)
+describe('selection emphasis', () => {
+  it('retains all seven seeded projects and accepts existing CMS size values', () => {
+    expect(HOME_MOSAIC).toHaveLength(7)
+    expect(new Set(HOME_MOSAIC.map((item) => item.slug)).size).toBe(7)
+    for (const item of HOME_MOSAIC) expect(isMosaicSize(item.size)).toBe(true)
     expect(toMosaicSize('enormous')).toBe('small')
     expect(toMosaicSize(undefined)).toBe('small')
   })
 })
 
 describe('mosaic tiles', () => {
+  it('uses distinct hero evidence beside the cover, while respecting explicit overrides', () => {
+    const cover = media({ id: 'cover' })
+    const secondary = media({
+      id: 'secondary',
+      url: '/api/media/file/secondary.png',
+      width: 390,
+      height: 860,
+    })
+    const doc = project({ cover, hero: { items: [{ media: cover }, { media: secondary }] } })
+    expect(mosaicMedia(doc)).toEqual({ lead: cover, companion: secondary })
+    const fullCover = media({ id: 'cover-full', url: '/api/media/file/cover-full.png' })
+    expect(
+      mosaicMedia(project({ cover, hero: { items: [{ media: fullCover }, { media: secondary }] } }))
+        .companion,
+    ).toBe(secondary)
+    expect(mosaicMedia(doc, secondary)).toEqual({ lead: secondary, companion: null })
+  })
+
+  it('keeps context visible for project notes without a public case study', () => {
+    const { container } = render(
+      <WorkMosaicBlock items={[tile('small')]} locale="en" sectionHeader={header} />,
+    )
+    expect(container.textContent).toContain('Vision, growth and dashboards.')
+    expect(container.querySelector('.work-story')?.tagName).toBe('ARTICLE')
+  })
+
   it('renders one cell per tile plus the closing index cell, in CMS order', () => {
     const { container } = render(
       <WorkMosaicBlock
-        items={[tile('large', { id: 'a', title: 'Alpha' }), tile('small', { id: 'b', title: 'Beta' })]}
+        items={[
+          tile('large', { id: 'a', title: 'Alpha' }),
+          tile('small', { id: 'b', title: 'Beta' }),
+        ]}
         locale="en"
         sectionHeader={header}
       />,
@@ -144,7 +107,7 @@ describe('mosaic tiles', () => {
     expect(container.textContent).toContain(uiCopy.en.workIndexTitle)
   })
 
-  it('drops a project unpublished in this locale and recomputes the closing span', () => {
+  it('drops a project unpublished in this locale and keeps the archive destination', () => {
     const { container } = render(
       <WorkMosaicBlock
         items={[
@@ -156,18 +119,21 @@ describe('mosaic tiles', () => {
       />,
     )
     expect(container.querySelectorAll('h3')).toHaveLength(1)
-    // One `small` survives, so the closing cell claims the other nine of twelve columns.
-    expect(container.querySelector<HTMLElement>('[style*="--tail-lg"]')!.style.getPropertyValue('--tail-lg')).toBe('9')
+    expect(container.querySelector('.work-selection-footer')?.getAttribute('href')).toBe('/fa/work')
   })
 
   it('renders nothing at all when no tile survives', () => {
     const { container } = render(
-      <WorkMosaicBlock items={[{ id: 't1', project: 'unpopulated-id', size: 'large' }]} locale="en" sectionHeader={header} />,
+      <WorkMosaicBlock
+        items={[{ id: 't1', project: 'unpopulated-id', size: 'large' }]}
+        locale="en"
+        sectionHeader={header}
+      />,
     )
     expect(container.textContent).toBe('')
   })
 
-  it('prefers the override, then the cover, then the hero, then the plate', () => {
+  it('prefers the override, then the cover, then the hero, then an honest type specimen', () => {
     const cover = media({ id: 'cover', url: '/api/media/file/cover.png' })
     const hero = media({ id: 'hero', url: '/api/media/file/hero.png' })
     const override = media({ id: 'override', url: '/api/media/file/override.png' })
@@ -175,7 +141,13 @@ describe('mosaic tiles', () => {
 
     const withOverride = render(
       <WorkMosaicBlock
-        items={[tile('large', { id: 'a', cover, hero: { items: [{ media: hero }] } }, { mediaOverride: override })]}
+        items={[
+          tile(
+            'large',
+            { id: 'a', cover, hero: { items: [{ media: hero }] } },
+            { mediaOverride: override },
+          ),
+        ]}
         locale="en"
         sectionHeader={header}
       />,
@@ -184,27 +156,42 @@ describe('mosaic tiles', () => {
     cleanup()
 
     const withCover = render(
-      <WorkMosaicBlock items={[tile('large', { id: 'a', cover, hero: { items: [{ media: hero }] } })]} locale="en" sectionHeader={header} />,
+      <WorkMosaicBlock
+        items={[tile('large', { id: 'a', cover, hero: { items: [{ media: hero }] } })]}
+        locale="en"
+        sectionHeader={header}
+      />,
     )
     expect(src(withCover.container)).toContain('cover.png')
     cleanup()
 
     const withHero = render(
-      <WorkMosaicBlock items={[tile('large', { id: 'a', hero: { items: [{ media: hero }] } })]} locale="en" sectionHeader={header} />,
+      <WorkMosaicBlock
+        items={[tile('large', { id: 'a', hero: { items: [{ media: hero }] } })]}
+        locale="en"
+        sectionHeader={header}
+      />,
     )
     expect(src(withHero.container)).toContain('hero.png')
     cleanup()
 
-    // No media at all: the deliberate pending plate, localised — never an English fallback.
-    const plate = render(<WorkMosaicBlock items={[tile('large', { id: 'a' })]} locale="fa" sectionHeader={header} />)
+    // Missing media contributes no invented screenshot or English placeholder.
+    const plate = render(
+      <WorkMosaicBlock items={[tile('large', { id: 'a' })]} locale="fa" sectionHeader={header} />,
+    )
     expect(plate.container.querySelector('img')).toBeNull()
-    expect(plate.container.textContent).toContain(uiCopy.fa.workMediaPending)
+    expect(plate.container.querySelector('.work-art-specimen')).toBeTruthy()
+    expect(plate.container.textContent).toContain('Digikala')
     expect(plate.container.textContent).not.toContain(uiCopy.en.workMediaPending)
   })
 
   it('links to a case study, out to a live URL, or nowhere at all', () => {
     const cased = render(
-      <WorkMosaicBlock items={[tile('large', { id: 'a', caseStudyStatus: 'published', slug: 'rp1-arena' })]} locale="fa" sectionHeader={header} />,
+      <WorkMosaicBlock
+        items={[tile('large', { id: 'a', caseStudyStatus: 'published', slug: 'rp1-arena' })]}
+        locale="fa"
+        sectionHeader={header}
+      />,
     )
     const internal = cased.container.querySelectorAll('a')[0]
     expect(internal.getAttribute('href')).toBe('/fa/work/rp1-arena')
@@ -212,7 +199,11 @@ describe('mosaic tiles', () => {
     cleanup()
 
     const live = render(
-      <WorkMosaicBlock items={[tile('large', { id: 'a', liveUrl: 'https://example.com' })]} locale="en" sectionHeader={header} />,
+      <WorkMosaicBlock
+        items={[tile('large', { id: 'a', liveUrl: 'https://example.com' })]}
+        locale="en"
+        sectionHeader={header}
+      />,
     )
     const external = live.container.querySelectorAll('a')[0]
     expect(external.getAttribute('target')).toBe('_blank')
@@ -220,25 +211,37 @@ describe('mosaic tiles', () => {
     cleanup()
 
     // Nothing to link to: an article, not a dead anchor. Only the closing index cell links.
-    const none = render(<WorkMosaicBlock items={[tile('large', { id: 'a' })]} locale="en" sectionHeader={header} />)
+    const none = render(
+      <WorkMosaicBlock items={[tile('large', { id: 'a' })]} locale="en" sectionHeader={header} />,
+    )
     expect(none.container.querySelectorAll('a')).toHaveLength(1)
     expect(none.container.querySelector('article')).toBeTruthy()
   })
 
   it('says less on a small tile than on a wide one', () => {
-    const wide = render(<WorkMosaicBlock items={[tile('wide', { id: 'a' })]} locale="en" sectionHeader={header} />)
+    const wide = render(
+      <WorkMosaicBlock items={[tile('wide', { id: 'a' })]} locale="en" sectionHeader={header} />,
+    )
     expect(wide.container.textContent).toContain('Vision, growth and dashboards.')
     expect(wide.container.textContent).toContain('Designer')
     cleanup()
 
-    const small = render(<WorkMosaicBlock items={[tile('small', { id: 'a' })]} locale="en" sectionHeader={header} />)
+    const small = render(
+      <WorkMosaicBlock
+        items={[tile('small', { id: 'a', caseStudyStatus: 'published' })]}
+        locale="en"
+        sectionHeader={header}
+      />,
+    )
     expect(small.container.textContent).not.toContain('Vision, growth and dashboards.')
     expect(small.container.textContent).not.toContain('Designer')
     expect(small.container.textContent).toContain('Digikala')
   })
 
   it('keeps the hero anchor and claims no empty viewport height', () => {
-    const { container } = render(<WorkMosaicBlock items={[tile('large', { id: 'a' })]} locale="en" sectionHeader={header} />)
+    const { container } = render(
+      <WorkMosaicBlock items={[tile('large', { id: 'a' })]} locale="en" sectionHeader={header} />,
+    )
     const section = container.querySelector('section')!
     expect(section.id).toBe('selected-work')
     expect([...section.classList].some((c) => c.startsWith('pb-'))).toBe(false)
@@ -252,7 +255,9 @@ describe('mosaic schema', () => {
 
   it('refuses the same project twice and allows everything else', () => {
     expect(validate([{ project: 'a' }, { project: 'b' }])).toBe(true)
-    expect(validate([{ project: { id: 'a' } }, { project: 'a' }])).toBe('Each project may appear once in the mosaic.')
+    expect(validate([{ project: { id: 'a' } }, { project: 'a' }])).toBe(
+      'Each project may appear once in the mosaic.',
+    )
     // Empty rows are `minRows`' business, not the duplicate check's.
     expect(validate([{ project: undefined }, { project: undefined }])).toBe(true)
     expect(validate(undefined)).toBe(true)

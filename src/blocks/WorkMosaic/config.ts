@@ -2,18 +2,7 @@ import type { Block } from 'payload'
 
 import { sectionHeader } from '@/fields/sectionHeader'
 
-/**
- * Work Mosaic: the homepage's project wall. One ruled grid whose cells are projects at four
- * editorial weights — not a card grid, not masonry. The block owns *how* the work appears here
- * (which projects, in what order, at what size); each project record owns *what* it is — title,
- * organisation, role, summary, cover — so Home and `/work` can never disagree (D-021).
- *
- * Row order is the visual order, and the DOM follows it exactly: no dense packing, no
- * reflowing behind the editor's back. Sizes are weights on a 12-column row, so a row fills when
- * its tiles add up — one wide, or two halves, or four quarters. A row that does not add up
- * leaves paper rather than a broken tile, and the closing index cell always squares off the last
- * row (see `sizes.ts`).
- */
+/** Curated stories in CMS order. Project records remain the source of facts and imagery. */
 export const WorkMosaic: Block = {
   slug: 'workMosaic',
   interfaceName: 'WorkMosaicBlock',
@@ -31,7 +20,7 @@ export const WorkMosaic: Block = {
         initCollapsed: true,
         components: { RowLabel: '@/blocks/WorkMosaic/RowLabel#RowLabel' },
         description:
-          'One tile per project, in reading order — drag to reorder. Size is a weight on a row: Wide fills a row, two halves (Large or Medium) fill a row, four quarters (Small) fill a row. Mix sizes so each row adds up, or the row will end in empty paper.',
+          'One project per entry, in reading order. Wide is a full-width feature with image beside text; Large is a visual story; Medium and Small are compact project notes. The archive link has its own footer.',
       },
       /**
        * The same project twice would read as an editing mistake and would also shift the packing
@@ -69,13 +58,14 @@ export const WorkMosaic: Block = {
           required: true,
           defaultValue: 'small',
           admin: {
-            description: 'How much of a row this project claims, and how much it says.',
+            description:
+              'The emphasis this project receives; mobile always follows the same reading order.',
           },
           options: [
-            { label: 'Wide — full row, banner media, summary', value: 'wide' },
-            { label: 'Large — half row, 4:3 media, summary', value: 'large' },
-            { label: 'Medium — half row, 16:9 media, no summary', value: 'medium' },
-            { label: 'Small — quarter row, square media, title only', value: 'small' },
+            { label: 'Wide — full row, image beside story', value: 'wide' },
+            { label: 'Large — half row, paired screens and story', value: 'large' },
+            { label: 'Medium — half row, project note with summary', value: 'medium' },
+            { label: 'Small — half row, compact project note', value: 'small' },
           ],
         },
         {
@@ -84,7 +74,7 @@ export const WorkMosaic: Block = {
           relationTo: 'media',
           admin: {
             description:
-              'Optional. Overrides what this tile shows. Leave empty to use the project cover, then the first case-study hero visual, then the pending plate.',
+              'Optional. Overrides what this tile shows. Leave empty to use the project cover, then the first case-study hero visual, then a typographic initial. Overrides are shown on their own.',
           },
         },
       ],

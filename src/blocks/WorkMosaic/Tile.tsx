@@ -1,66 +1,48 @@
 import { ArrowRight, ArrowUpRight } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
-
 import type { Project, WorkMosaicBlock } from '@/payload-types'
-
 import { kindLabels } from '@/collections/Projects/kinds'
-import { ProjectCover } from '@/components/ProjectCover'
-import { projectMedia } from '@/components/ProjectCover/media'
-import { projectLink, type ProjectLink } from '@/blocks/ProjectArchive/rows'
+import { projectLink, projectYear, type ProjectLink } from '@/blocks/ProjectArchive/rows'
 import type { Locale } from '@/utilities/locale'
 import { uiCopy } from '@/utilities/uiCopy'
 import { cn } from '@/utilities/ui'
-
-import { MOSAIC, type MosaicSize } from './sizes'
+import { MosaicCover } from './Cover'
+import { isFeaturedSize, type MosaicSize } from './sizes'
 
 export type MosaicItem = NonNullable<WorkMosaicBlock['items']>[number]
-
 export interface MosaicTileProps {
   project: Project
   size: MosaicSize
   mediaOverride?: MosaicItem['mediaOverride']
-  /** Position in the mosaic, zero-padded: "01". Latin ornament (DS-10). */
   index: string
   locale: Locale
   className?: string
 }
 
-/**
- * What this tile shows: an explicit override, else the project's own lead visual. Never the
- * media's aspect ratio — the slot's geometry comes from the size alone.
- */
-const tileMedia = (project: Project, override: MosaicItem['mediaOverride']) =>
-  override && typeof override === 'object' ? override : projectMedia(project)
-
-/** One link around the whole cell when the project leads somewhere; a plain article otherwise. */
+/** One focus stop per project, and no dead links for unpublished studies. */
 const Shell: React.FC<{
   link: ProjectLink | null
   className: string
   label: string
+  size: MosaicSize
+  slug: string
   children: React.ReactNode
-}> = ({ children, className, label, link }) => {
-  if (!link) return <article className={className}>{children}</article>
-  const focus =
-    'outline-none focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-ring'
+}> = ({ children, className, label, link, size, slug }) => {
+  const props = { className, 'data-size': size, 'data-project': slug, 'data-reveal-unit': '' }
+  if (!link) return <article {...props}>{children}</article>
   return link.external ? (
-    <a className={cn(className, focus)} href={link.href} rel="noopener noreferrer" target="_blank">
+    <a {...props} href={link.href} rel="noopener noreferrer" target="_blank">
       {children}
       <span className="sr-only">{label}</span>
     </a>
   ) : (
-    <Link className={cn(className, focus)} href={link.href}>
+    <Link {...props} href={link.href}>
       {children}
     </Link>
   )
 }
 
-/**
- * A cell in the mosaic, not a card. The parent grid rules every edge, so the tile carries only
- * the two hairlines it owns — its top and its inline-start — and no background, radius or shadow
- * of its own. Media runs to the cell's edges and meets those rules directly; only the text is
- * inset. Everything that varies by size comes from the `MOSAIC` table.
- */
 export const MosaicTile: React.FC<MosaicTileProps> = ({
   className,
   index,
@@ -70,71 +52,43 @@ export const MosaicTile: React.FC<MosaicTileProps> = ({
   size,
 }) => {
   const copy = uiCopy[locale]
-  const geometry = MOSAIC[size]
+  const featured = isFeaturedSize(size)
   const kinds = kindLabels(project.kind, locale)
   const link = projectLink(project, locale)
-
-  const meta = [
-    project.company,
-    geometry.showRole ? project.role : null,
-    ...(geometry.showKinds ? kinds : []),
-  ].filter(Boolean) as string[]
-
+  const year = projectYear(project.period, locale)
   const Arrow = link?.external ? ArrowUpRight : ArrowRight
-
   return (
     <Shell
-      className={cn(
-        'group relative flex min-w-0 flex-col border-t border-s border-line',
-        geometry.span,
-        className,
-      )}
+      className={cn('work-story', featured ? 'work-story-featured' : 'work-story-note', className)}
       label={copy.opensInNewTab}
       link={link}
+      size={size}
+      slug={project.slug}
     >
-      <ProjectCover
-        aspect={geometry.aspect}
-        bordered={false}
-        figure={geometry.plateDetail ? `Figure ${index}` : null}
-        kinds={geometry.plateDetail ? kinds : []}
-        pendingLabel={copy.workMediaPending}
-        resource={tileMedia(project, mediaOverride)}
-        size={geometry.imageSizes}
-      />
-      <div className={cn('flex min-w-0 flex-1 flex-col', geometry.pad, geometry.gap)}>
-        <div className="flex min-w-0 flex-col gap-2 sm:flex-row sm:items-baseline sm:gap-4">
-          <span className="index-code text-ink-3" dir="ltr">
+      <MosaicCover project={project} override={mediaOverride} featured={featured} />
+      <div className="work-story-copy">
+        <div className="work-story-meta">
+          <span className="index-code" dir="ltr">
             {index}
           </span>
-          <h3
-            className={cn(
-              'font-medium text-foreground transition-colors duration-(--duration-fast) group-hover:text-brand motion-reduce:transition-none',
-              geometry.title,
-            )}
-          >
-            {project.title}
-          </h3>
+          <span>{project.company}</span>
+          {year ? (
+            <span className="work-story-year" dir="auto">
+              {year}
+            </span>
+          ) : null}
         </div>
-        {meta.length ? (
-          <p className="eyebrow flex flex-wrap gap-x-3 gap-y-1 text-ink-3">
-            {meta.map((item, i) => (
-              <span key={i}>
-                {item}
-                {i < meta.length - 1 ? <span aria-hidden> ·</span> : null}
-              </span>
-            ))}
-          </p>
+        <h3 className="work-story-title">{project.title}</h3>
+        {kinds.length ? <p className="work-story-kinds">{kinds.join(' / ')}</p> : null}
+        {/* Notes without a public destination need enough context to stand on their own. */}
+        {featured || size === 'medium' || !link ? (
+          <p className="work-story-summary">{project.summary}</p>
         ) : null}
-        {geometry.summary ? <p className={geometry.summary}>{project.summary}</p> : null}
+        {featured && project.role ? <p className="work-story-role">{project.role}</p> : null}
         {link ? (
-          <span
-            className={cn(
-              'eyebrow mt-auto inline-flex items-center gap-2 pt-2 text-foreground transition-colors duration-(--duration-fast) group-hover:text-brand motion-reduce:transition-none',
-              !geometry.showCtaLabel && 'ms-auto',
-            )}
-          >
-            {geometry.showCtaLabel ? (link.external ? copy.workLive : copy.workCaseStudy) : null}
-            <Arrow aria-hidden className="size-3.5 rtl:-scale-x-100" />
+          <span className="work-story-cta">
+            <span>{link.external ? copy.workLive : copy.workCaseStudy}</span>
+            <Arrow aria-hidden className="size-4 rtl:-scale-x-100" />
           </span>
         ) : null}
       </div>
