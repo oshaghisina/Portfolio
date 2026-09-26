@@ -13,6 +13,7 @@ import { RenderCaseStudy } from '@/blocks/CaseStudy/RenderCaseStudy'
 import { CaseStudyHeader } from '@/components/CaseStudy/CaseStudyHeader'
 import { CaseStudyHero, hasHeroMedia } from '@/components/CaseStudy/CaseStudyHero'
 import { caseStudyCopy } from '@/components/CaseStudy/copy'
+import { MoreFrom, type MoreFromDoc } from '@/components/CaseStudy/MoreFrom'
 import { SectionIndex } from '@/components/CaseStudy/SectionIndex'
 import { Snapshot } from '@/components/CaseStudy/Snapshot'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
@@ -72,6 +73,7 @@ export default async function ProjectPage({ params: paramsPromise }: Args) {
   const copy = caseStudyCopy[locale]
   const chapters = buildChapters(sections, copy)
   const next = await queryNextProject({ current: project, locale })
+  const siblings = await querySiblingCaseStudies({ current: project, locale })
   const serverUrl = getServerSideURL()
   const caseStudyUrl = `${serverUrl}${localePath(locale, url)}`
   const workArchiveUrl = `${serverUrl}${localePath(locale, WORK_PATH)}`
@@ -119,6 +121,13 @@ export default async function ProjectPage({ params: paramsPromise }: Args) {
               sections={sections}
             />
           </div>
+          <MoreFrom
+            className="mt-section"
+            company={project.company}
+            copy={copy}
+            locale={locale}
+            projects={siblings}
+          />
           <NextProject
             className="mt-section"
             copy={copy}
@@ -212,5 +221,36 @@ const queryNextProject = cache(
 
     const wrap = await payload.find({ ...query, where: { and: [published, notSelf] } })
     return wrap.docs[0] ?? null
+  },
+)
+
+/**
+ * The same company's other public case studies in this locale, in archive order — the
+ * "More from …" ledger. `company` is a localized text field, so the match is per locale.
+ */
+const querySiblingCaseStudies = cache(
+  async ({ current, locale }: { current: Project; locale: Locale }): Promise<MoreFromDoc[]> => {
+    if (!current.company?.trim()) return []
+    const payload = await getPayload({ config: configPromise })
+    const { docs } = await payload.find({
+      collection: 'projects',
+      depth: 0,
+      draft: false,
+      fallbackLocale: false,
+      limit: 12,
+      locale,
+      overrideAccess: false,
+      pagination: false,
+      select: { slug: true, title: true, summary: true, statement: true },
+      sort: 'order',
+      where: {
+        and: [
+          { caseStudyStatus: { equals: 'published' } },
+          { company: { equals: current.company } },
+          { slug: { not_equals: current.slug } },
+        ],
+      },
+    })
+    return docs as MoreFromDoc[]
   },
 )

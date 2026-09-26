@@ -34,6 +34,8 @@ export interface CaseStudyCopy {
   loopsTo: string
   status: Record<ProjectStatus, string>
   nextProject: string
+  /** Heading of the sibling-case-study strip; `{company}` is replaced with the company name. */
+  moreFrom: string
   explore: string
   allWork: string
 }
@@ -80,6 +82,7 @@ export const caseStudyCopy: Record<Locale, CaseStudyCopy> = {
       concept: 'Concept',
     },
     nextProject: 'Next project',
+    moreFrom: 'More from {company}',
     explore: 'Read the case study',
     allWork: 'All work',
   },
@@ -120,6 +123,7 @@ export const caseStudyCopy: Record<Locale, CaseStudyCopy> = {
       concept: 'کانسپت',
     },
     nextProject: 'پروژهٔ بعدی',
+    moreFrom: 'کارهای دیگر در {company}',
     explore: 'خواندن مطالعهٔ موردی',
     allWork: 'همهٔ پروژه‌ها',
   },
@@ -155,6 +159,7 @@ export const caseStudyCopy: Record<Locale, CaseStudyCopy> = {
       concept: 'مفهوم',
     },
     nextProject: 'المشروع التالي',
+    moreFrom: 'المزيد من {company}',
     explore: 'قراءة دراسة الحالة',
     allWork: 'كل الأعمال',
   },
@@ -195,6 +200,7 @@ export const caseStudyCopy: Record<Locale, CaseStudyCopy> = {
       concept: 'Concepto',
     },
     nextProject: 'Siguiente proyecto',
+    moreFrom: 'Más de {company}',
     explore: 'Leer el caso de estudio',
     allWork: 'Todo el trabajo',
   },
@@ -235,6 +241,7 @@ export const caseStudyCopy: Record<Locale, CaseStudyCopy> = {
       concept: 'Konzept',
     },
     nextProject: 'Nächstes Projekt',
+    moreFrom: 'Mehr von {company}',
     explore: 'Fallstudie lesen',
     allWork: 'Alle Arbeiten',
   },
@@ -275,6 +282,7 @@ export const caseStudyCopy: Record<Locale, CaseStudyCopy> = {
       concept: 'Concept',
     },
     nextProject: 'Projet suivant',
+    moreFrom: 'Plus de {company}',
     explore: 'Lire l’étude de cas',
     allWork: 'Tous les projets',
   },
@@ -310,6 +318,7 @@ export const caseStudyCopy: Record<Locale, CaseStudyCopy> = {
       concept: 'コンセプト',
     },
     nextProject: '次のプロジェクト',
+    moreFrom: '{company} のほかの事例',
     explore: 'ケーススタディを読む',
     allWork: 'すべての作品',
   },
