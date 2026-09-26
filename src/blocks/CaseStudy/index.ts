@@ -11,7 +11,7 @@ import { CaseStudyOwnership } from './Ownership/config'
 import { CaseStudyProcess } from './Process/config'
 
 /**
- * The controlled case-study vocabulary (D-022, downloads D-047): nine semantic blocks, in the
+ * The controlled case-study vocabulary (D-022, downloads D-048): nine semantic blocks, in the
  * order an editor is most likely to reach for them. Narrative, ownership, decisions, outcomes and
  * lessons open numbered chapters; figures, process maps, findings and downloads are evidence
  * inside the current chapter.

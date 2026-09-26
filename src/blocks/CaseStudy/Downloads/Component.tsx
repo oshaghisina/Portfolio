@@ -33,8 +33,8 @@ export function fileSize(bytes: number | null | undefined, locale: Locale): stri
 
 /**
  * The chapter's working files as numbered hairline rows: what the file is and what is inside on
- * the start side, its format and size and a hairline download button on the end side. A row whose
- * upload is missing is skipped rather than rendered as a dead link.
+ * the start side, its format and size and a hairline download button on the end side, all on the
+ * title's baseline. A row whose upload is missing is skipped rather than rendered as a dead link.
  */
 export const DownloadsBlock: React.FC<DownloadsBlockProps> = ({ copy, heading, items, locale }) => {
   const rows = (items ?? []).flatMap((item) =>
@@ -54,7 +54,7 @@ export const DownloadsBlock: React.FC<DownloadsBlockProps> = ({ copy, heading, i
             .join(' · ')
           return (
             <li
-              className="grid gap-x-8 gap-y-4 border-t border-line py-6 md:grid-cols-[2.5rem_minmax(0,1fr)_auto] md:items-center"
+              className="grid gap-x-8 gap-y-4 border-t border-line py-6 md:grid-cols-[2.5rem_minmax(0,1fr)_auto] md:items-baseline"
               key={row.id ?? i}
             >
               <span aria-hidden className="hidden index-code md:block">
