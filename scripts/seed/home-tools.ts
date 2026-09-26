@@ -1,5 +1,5 @@
 /**
- * Replace the homepage Skills block in the current database without wiping anything:
+ * Replace the homepage TOOLS / STACK block in the current database without wiping anything:
  *   pnpm seed:home-tools
  * Additive and idempotent — the home page is matched by slug and only its `workflowStages`
  * block is rewritten. Hard-refresh `/` (or restart `pnpm dev`) afterwards; the script runs with

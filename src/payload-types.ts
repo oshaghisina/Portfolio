@@ -1548,86 +1548,74 @@ export interface TracksBlock {
 export interface WorkflowStagesBlock {
   sectionHeader?: SectionHeaderField;
   /**
-   * Rendered in the canonical order defined in capabilities.ts (01 Product → 07 AI). The two-digit index follows that order, not the row order here.
+   * Rendered in the canonical order defined in toolLogos.ts (01 Design & Creative Production → 07 Knowledge & Research). The two-digit index follows that order, not the row order here.
    */
-  capabilities?:
+  categories?:
     | {
         /**
          * Stable id — sets the render order and the index code
          */
-        key: 'product' | 'design' | 'research' | 'data' | 'growth' | 'delivery' | 'ai';
+        key:
+          | 'designPrototyping'
+          | 'aiAgents'
+          | 'buildDelivery'
+          | 'dataIntelligence'
+          | 'growthMeasurement'
+          | 'infraOperations'
+          | 'knowledgeResearch';
         /**
-         * Row label, e.g. "Product"
+         * Shown above the matrix, e.g. "Design & Creative Production"
          */
         title: string;
-        /**
-         * The practical contribution this capability makes, e.g. "Make complex products easier to use."
-         */
-        contribution?: string | null;
-        /**
-         * One skill per entry, e.g. "Strategy", "Discovery". Rendered as one line.
-         */
-        skills: string[];
-        /**
-         * Optional second line under the skills, e.g. the build note under Delivery.
-         */
-        note?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * Label for the tool row. "Selected" matters: the row is a sample, not the whole toolkit.
-   */
-  toolsLabel?: string | null;
-  /**
-   * Rendered in row order. Keep it short — this is a sample, not an inventory.
-   */
-  tools?:
-    | {
-        /**
-         * Resolves to a brand mark and its canonical product name (toolLogos.ts).
-         */
-        toolKey:
-          | 'figma'
-          | 'sketch'
-          | 'afterEffects'
-          | 'mediaEncoder'
-          | 'higgsfield'
-          | 'chatgpt'
-          | 'claude'
-          | 'gemini'
-          | 'grok'
-          | 'codex'
-          | 'hermes'
-          | 'grokBot'
-          | 'openclaw'
-          | 'openrouter'
-          | 'langchain'
-          | 'typesafeAi'
-          | 'cursor'
-          | 'antigravity'
-          | 'vscode'
-          | 'payloadCms'
-          | 'nextjs'
-          | 'docker'
-          | 'ga4'
-          | 'amplitude'
-          | 'heap'
-          | 'fullstory'
-          | 'clarity'
-          | 'hotjar'
-          | 'umami'
-          | 'googleTagManager'
-          | 'googleAds'
-          | 'googleSearchConsole'
-          | 'supabase'
-          | 'vercel'
-          | 'coolify'
-          | 'github'
-          | 'gitlab'
-          | 'gitea'
-          | 'sentry'
-          | 'obsidian';
+        tools?:
+          | {
+              /**
+               * Resolves to a brand mark and its canonical product name (toolLogos.ts).
+               */
+              toolKey:
+                | 'figma'
+                | 'sketch'
+                | 'afterEffects'
+                | 'mediaEncoder'
+                | 'higgsfield'
+                | 'chatgpt'
+                | 'claude'
+                | 'gemini'
+                | 'grok'
+                | 'codex'
+                | 'hermes'
+                | 'grokBot'
+                | 'openclaw'
+                | 'openrouter'
+                | 'langchain'
+                | 'typesafeAi'
+                | 'cursor'
+                | 'antigravity'
+                | 'vscode'
+                | 'payloadCms'
+                | 'nextjs'
+                | 'docker'
+                | 'ga4'
+                | 'amplitude'
+                | 'heap'
+                | 'fullstory'
+                | 'clarity'
+                | 'hotjar'
+                | 'umami'
+                | 'googleTagManager'
+                | 'googleAds'
+                | 'googleSearchConsole'
+                | 'supabase'
+                | 'vercel'
+                | 'coolify'
+                | 'github'
+                | 'gitlab'
+                | 'gitea'
+                | 'sentry'
+                | 'obsidian';
+              id?: string | null;
+            }[]
+          | null;
         id?: string | null;
       }[]
     | null;
@@ -2968,21 +2956,17 @@ export interface TracksBlockSelect<T extends boolean = true> {
  */
 export interface WorkflowStagesBlockSelect<T extends boolean = true> {
   sectionHeader?: T | SectionHeaderFieldSelect<T>;
-  capabilities?:
+  categories?:
     | T
     | {
         key?: T;
         title?: T;
-        contribution?: T;
-        skills?: T;
-        note?: T;
-        id?: T;
-      };
-  toolsLabel?: T;
-  tools?:
-    | T
-    | {
-        toolKey?: T;
+        tools?:
+          | T
+          | {
+              toolKey?: T;
+              id?: T;
+            };
         id?: T;
       };
   id?: T;

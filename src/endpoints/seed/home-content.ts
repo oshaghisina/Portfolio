@@ -4,8 +4,7 @@ import type { RequiredDataFromCollectionSlug } from 'payload'
 import type { Project } from '@/payload-types'
 
 import type { MosaicSize } from '@/blocks/WorkMosaic/sizes'
-import { CAPABILITY_KEYS, type CapabilityKey } from '@/blocks/WorkflowStages/capabilities'
-import type { ToolKey } from '@/blocks/WorkflowStages/toolLogos'
+import type { CategoryKey } from '@/blocks/WorkflowStages/toolLogos'
 import { STAGE_EVIDENCE_SLUGS, STAGE_KEYS, type StageKey } from '@/blocks/Workspace/stages'
 import { DEFAULT_LOCALE, dirFor, type Locale } from '@/utilities/locale'
 
@@ -39,8 +38,8 @@ type PageHero = RequiredDataFromCollectionSlug<'pages'>['hero']
  * marketing copy invented.
  *
  * V6 (D-043, after an outside review): the hero says what the work is in plain words instead of a
- * positioning line, and Tools / Stack became Skills — seven capability rows and a short row of
- * selected tools in place of a 40-logo matrix.
+ * positioning line. Tools / Stack briefly became a Skills list and was then restored to the
+ * categorised logo matrix at the owner's request.
  */
 
 /** Hrefs are structure, not copy: identical in every locale, so they never enter `HomeCopy`. */
@@ -108,42 +107,104 @@ export const HOME_MOSAIC: { slug: string; size: MosaicSize }[] = [
  * copy of its own (D-021).
  */
 /**
- * The tool row under the Skills list, in reading order: design, then data and growth, then
- * delivery, then the AI assistants — the same order as the capability rows above it. A sample,
- * not an inventory (D-043); every mark stays in `toolLogos.ts` for the day it is wanted again.
- */
-export const SELECTED_TOOLS: ToolKey[] = [
-  'figma',
-  'afterEffects',
-  'amplitude',
-  'ga4',
-  'hotjar',
-  'googleTagManager',
-  'github',
-  'cursor',
-  'claude',
-  'chatgpt',
-]
-
-/**
- * SKILLS (the `workflowStages` block). Exported on its own so the additive `seed:home-tools`
- * script and `buildHomeLayout` can never drift apart.
+ * TOOLS / STACK. Exported on its own so the additive `seed:home-tools` script and
+ * `buildHomeLayout` can never drift apart.
  *
  * `tag` is stored Title Case: the `eyebrow` utility uppercases it for Latin locales and leaves it
  * alone for fa/ar, where uppercase does not exist. Storing it pre-uppercased would break Persian.
- * Capability titles, skills, the Delivery note and the tool-row label are the localized leaves —
- * tool names are brand names and come from the shared resolver, never from content.
+ * Category titles are the only localized leaves here — tool names are brand names and come from
+ * the shared resolver, never from content.
  */
 export const buildToolsStackBlock = (copy: HomeCopy): NonNullable<PageLayout>[number] => ({
-  blockName: 'Skills',
+  blockName: 'Tools / Stack',
   blockType: 'workflowStages',
   sectionHeader: copy.tools.header,
-  capabilities: CAPABILITY_KEYS.map((key) => {
-    const { contribution, note, skills, title } = copy.tools.capabilities[key]
-    return { key, title, contribution, skills, ...(note ? { note } : {}) }
-  }),
-  toolsLabel: copy.tools.toolsLabel,
-  tools: SELECTED_TOOLS.map((toolKey) => ({ toolKey })),
+  categories: [
+    {
+      key: 'designPrototyping',
+      title: copy.tools.categories.designPrototyping,
+      // Interface design first, then the motion and encoding pair, then generative video.
+      tools: [
+        { toolKey: 'figma' },
+        { toolKey: 'sketch' },
+        { toolKey: 'afterEffects' },
+        { toolKey: 'mediaEncoder' },
+        { toolKey: 'higgsfield' },
+      ],
+    },
+    {
+      key: 'aiAgents',
+      title: copy.tools.categories.aiAgents,
+      // Assistants, then the agents, then the plumbing they all run through. At `lg` this lands
+      // as two rows of six, and the break falls exactly between the agents and the plumbing.
+      tools: [
+        { toolKey: 'chatgpt' },
+        { toolKey: 'claude' },
+        { toolKey: 'gemini' },
+        { toolKey: 'grok' },
+        { toolKey: 'codex' },
+        { toolKey: 'hermes' },
+        { toolKey: 'grokBot' },
+        { toolKey: 'openclaw' },
+        { toolKey: 'openrouter' },
+        { toolKey: 'langchain' },
+        { toolKey: 'typesafeAi' },
+      ],
+    },
+    {
+      key: 'buildDelivery',
+      title: copy.tools.categories.buildDelivery,
+      tools: [
+        { toolKey: 'cursor' },
+        { toolKey: 'antigravity' },
+        { toolKey: 'vscode' },
+        { toolKey: 'payloadCms' },
+        { toolKey: 'nextjs' },
+        { toolKey: 'docker' },
+      ],
+    },
+    {
+      key: 'dataIntelligence',
+      title: copy.tools.categories.dataIntelligence,
+      tools: [
+        { toolKey: 'ga4' },
+        { toolKey: 'amplitude' },
+        { toolKey: 'heap' },
+        { toolKey: 'fullstory' },
+        { toolKey: 'clarity' },
+        { toolKey: 'hotjar' },
+        { toolKey: 'umami' },
+      ],
+    },
+    {
+      key: 'growthMeasurement',
+      title: copy.tools.categories.growthMeasurement,
+      tools: [
+        { toolKey: 'googleTagManager' },
+        { toolKey: 'googleAds' },
+        { toolKey: 'googleSearchConsole' },
+      ],
+    },
+    {
+      key: 'infraOperations',
+      title: copy.tools.categories.infraOperations,
+      // Data and hosting, then the three git platforms as one run, then what watches it all.
+      tools: [
+        { toolKey: 'supabase' },
+        { toolKey: 'vercel' },
+        { toolKey: 'coolify' },
+        { toolKey: 'github' },
+        { toolKey: 'gitlab' },
+        { toolKey: 'gitea' },
+        { toolKey: 'sentry' },
+      ],
+    },
+    {
+      key: 'knowledgeResearch',
+      title: copy.tools.categories.knowledgeResearch,
+      tools: [{ toolKey: 'obsidian' }],
+    },
+  ],
 })
 
 /**
@@ -387,26 +448,15 @@ export const localizeHomeLayout = (
         }
       }
       case 'workflowStages':
-        // Keyed, not index-matched: capability order is editable in the CMS, and `key` is the
-        // stable identity the copy table is written against. `skills` is a localized list, so it
-        // is replaced whole; `note` is written as null where a row has none, so a locale cannot
-        // keep a note its copy no longer carries. `tools` passes through: brand names only.
+        // Keyed, not index-matched: category order is editable in the CMS, and `key` is the
+        // stable identity the copy table is written against.
         return {
           ...block,
           sectionHeader: { ...header, ...copy.tools.header },
-          capabilities: rows('capabilities').map((row) => {
-            const overlay = copy.tools.capabilities[row.key as CapabilityKey]
-            return overlay
-              ? {
-                  ...row,
-                  title: overlay.title,
-                  contribution: overlay.contribution,
-                  skills: overlay.skills,
-                  note: overlay.note ?? null,
-                }
-              : row
-          }),
-          toolsLabel: copy.tools.toolsLabel,
+          categories: rows('categories').map((row) => ({
+            ...row,
+            title: copy.tools.categories[row.key as CategoryKey] ?? row.title,
+          })),
         }
       case 'experienceCatalogue':
         return {

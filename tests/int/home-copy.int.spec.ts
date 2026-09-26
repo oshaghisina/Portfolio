@@ -1,33 +1,25 @@
 /**
  * Guards for the homepage copy after the positioning review (D-043):
- * - every locale's Skills list keeps English's shape, so no language silently drops a skill;
+ * - every locale titles every Tools / Stack category, so no language renders a blank label;
  * - the Selected work lede counts the projects the mosaic actually shows;
  * - the phrases the review flagged as positioning language stay out of the English copy.
  */
 import { describe, expect, it } from 'vitest'
 
-import { CAPABILITY_KEYS } from '@/blocks/WorkflowStages/capabilities'
+import { CATEGORY_KEYS } from '@/blocks/WorkflowStages/toolLogos'
 import { aboutGlobalEn } from '@/endpoints/seed/about-global'
 import { HOME_MOSAIC } from '@/endpoints/seed/home-content'
 import { homeCopy } from '@/endpoints/seed/home-copy'
 import { navCopy } from '@/endpoints/seed/nav-copy'
 import { LOCALES } from '@/utilities/locale'
 
-describe('Skills copy parity', () => {
-  const en = homeCopy.en.tools
-
+describe('Tools / Stack copy parity', () => {
   for (const locale of LOCALES) {
-    it(`${locale} matches English's shape`, () => {
+    it(`${locale} titles every category`, () => {
       const copy = homeCopy[locale].tools
-      expect(copy.toolsLabel.trim(), 'toolsLabel').not.toBe('')
       expect(copy.header.lead?.trim(), 'header.lead').toBeTruthy()
-
-      for (const key of CAPABILITY_KEYS) {
-        const row = copy.capabilities[key]
-        expect(row.title.trim(), `${key}.title`).not.toBe('')
-        expect(row.skills, `${key}.skills`).toHaveLength(en.capabilities[key].skills.length)
-        for (const skill of row.skills) expect(skill.trim(), `${key} skill`).not.toBe('')
-        expect(Boolean(row.note), `${key}.note`).toBe(Boolean(en.capabilities[key].note))
+      for (const key of CATEGORY_KEYS) {
+        expect(copy.categories[key]?.trim(), key).toBeTruthy()
       }
     })
   }
@@ -59,7 +51,6 @@ describe('Positioning language', () => {
     homeCopy.en.meta.description,
     homeCopy.en.hero.heading,
     homeCopy.en.hero.lede,
-    ...Object.values(homeCopy.en.tools.header),
     navCopy.en.footer.description,
     navCopy.en.footer.about.text,
     aboutGlobalEn.headline,

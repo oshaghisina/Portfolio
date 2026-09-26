@@ -1,5 +1,5 @@
 import { industryCountLabel } from '@/blocks/IndustryGrid/catalogue'
-import type { CapabilityKey } from '@/blocks/WorkflowStages/capabilities'
+import type { CategoryKey } from '@/blocks/WorkflowStages/toolLogos'
 import type { Locale } from '@/utilities/locale'
 
 /**
@@ -64,20 +64,7 @@ export interface HomeCopy {
    * spotlight heading, so that the two can never name it differently.
    */
   proof: { metrics: { value: string; caption: string }[] }
-  /**
-   * The Skills section (D-043): seven capability rows keyed by `CapabilityKey`, then one small
-   * "Selected tools" row. `skills` is a list per locale and must keep English's length and order
-   * (a parity test holds this); only Delivery carries a `note`. Tool names are brand names and
-   * live in `toolLogos.ts`, so the tool row contributes only its label here.
-   */
-  tools: {
-    header: SectionHeaderCopy
-    capabilities: Record<
-      CapabilityKey,
-      { title: string; contribution: string; skills: string[]; note?: string }
-    >
-    toolsLabel: string
-  }
+  tools: { header: SectionHeaderCopy; categories: Record<CategoryKey, string> }
   /** Eleven employers. `index` (A1–A11) is ornament and stays Latin; `name` takes each script's form. */
   experience: { header: SectionHeaderCopy; items: { name: string; role: string; blurb: string }[] }
   /** The project mosaic's opener. Tile order and sizes are structure, not copy — see `HOME_MOSAIC`. */
@@ -186,50 +173,20 @@ export const homeCopy: Record<Locale, HomeCopy> = {
     },
     tools: {
       header: {
-        tag: 'Skills',
-        lead: 'What I bring',
-        tail: 'to your team.',
-        lede: 'A mix of decision-making, hands-on design and technical work. I bring in what the problem needs.',
+        tag: 'Tools / Stack',
+        lead: 'The systems behind how I',
+        tail: 'think, design & ship.',
+        lede: 'Research, design, build, measurement, knowledge and the infrastructure it runs on — one connected stack, not a shelf of separate toolkits.',
       },
-      capabilities: {
-        product: {
-          contribution: 'Turn competing priorities into a clear direction.',
-          title: 'Product',
-          skills: ['Strategy', 'Discovery', 'Prioritisation', 'Roadmapping'],
-        },
-        design: {
-          contribution: 'Make complex products easier to use.',
-          title: 'Design',
-          skills: ['UX', 'UI', 'Interaction', 'Design systems', 'Prototyping'],
-        },
-        research: {
-          contribution: 'Find out what people actually need.',
-          title: 'Research',
-          skills: ['User research', 'Competitive analysis', 'Usability testing', 'Validation'],
-        },
-        data: {
-          contribution: 'Find the friction behind the numbers.',
-          title: 'Data',
-          skills: ['Analytics', 'Funnels', 'Behavioural data', 'Experimentation'],
-        },
-        growth: {
-          contribution: 'Help people find value and come back.',
-          title: 'Growth',
-          skills: ['Acquisition', 'Activation', 'Conversion', 'Retention'],
-        },
-        delivery: {
-          contribution: 'Carry the design through to release.',
-          title: 'Delivery',
-          skills: ['Design–engineering collaboration', 'QA', 'Launch', 'Iteration'],
-          note: 'I also build and ship products myself, including this site.',
-        },
-        ai: {
-          contribution: 'Build reusable workflows for repetitive work.',
-          title: 'AI',
-          skills: ['AI-assisted workflows', 'Agents', 'Automation', 'Rapid prototyping'],
-        },
+      categories: {
+        designPrototyping: 'Design & Creative Production',
+        aiAgents: 'AI & Agents',
+        buildDelivery: 'Build & Delivery',
+        dataIntelligence: 'Data & Product Intelligence',
+        growthMeasurement: 'Growth & Measurement',
+        infraOperations: 'Infrastructure & Operations',
+        knowledgeResearch: 'Knowledge & Research',
       },
-      toolsLabel: 'Selected tools',
     },
     experience: {
       header: {
@@ -420,50 +377,20 @@ export const homeCopy: Record<Locale, HomeCopy> = {
     },
     tools: {
       header: {
-        tag: 'مهارت‌ها',
-        lead: 'آنچه به تیم',
-        tail: 'اضافه می\u200cکنم.',
-        lede: 'ترکیبی از تصمیم\u200cگیری، طراحی و کار فنی؛ بسته به مسئله، هر کدام را وارد کار می\u200cکنم.',
+        tag: 'ابزارها و فناوری‌ها',
+        lead: 'ابزارهایی برای',
+        tail: 'فکرکردن، ساختن و سنجیدن',
+        lede: 'ابزارهای پژوهش، طراحی، ساخت و سنجش را در کنار دانش و زیرساخت لازم به کار می‌گیرم تا تصمیم‌ها به اجرا برسند.',
       },
-      capabilities: {
-        product: {
-          contribution: 'تبدیل اولویت\u200cهای پراکنده به مسیری روشن.',
-          title: 'محصول',
-          skills: ['استراتژی', 'شناخت مسئله', 'اولویت‌بندی', 'نقشهٔ راه'],
-        },
-        design: {
-          contribution: 'ساده\u200cکردن استفاده از محصول\u200cهای پیچیده.',
-          title: 'طراحی',
-          skills: ['UX', 'UI', 'طراحی تعامل', 'سیستم طراحی', 'نمونه‌سازی'],
-        },
-        research: {
-          contribution: 'شناخت چیزی که آدم\u200cها واقعاً نیاز دارند.',
-          title: 'پژوهش',
-          skills: ['پژوهش کاربر', 'تحلیل رقبا', 'تست کاربردپذیری', 'اعتبارسنجی'],
-        },
-        data: {
-          contribution: 'پیداکردن نقاط گیر، پشت عددها.',
-          title: 'داده',
-          skills: ['تحلیل داده', 'قیف تبدیل', 'دادهٔ رفتاری', 'آزمایش'],
-        },
-        growth: {
-          contribution: 'کمک به کاربر برای رسیدن به ارزش و بازگشت.',
-          title: 'رشد',
-          skills: ['جذب کاربر', 'فعال‌سازی', 'نرخ تبدیل', 'نگهداشت کاربر'],
-        },
-        delivery: {
-          contribution: 'همراهی با طرح تا رسیدن به نسخهٔ قابل\u200cاستفاده.',
-          title: 'اجرا',
-          skills: ['همکاری طراحی و مهندسی', 'QA', 'عرضه', 'بهبود تدریجی'],
-          note: 'محصول را خودم هم می‌سازم و منتشر می‌کنم، از جمله همین سایت.',
-        },
-        ai: {
-          contribution: 'ساخت گردش کار قابل\u200cاستفادهٔ مجدد برای کارهای تکراری.',
-          title: 'هوش مصنوعی',
-          skills: ['گردش کار با هوش مصنوعی', 'ایجنت‌ها', 'خودکارسازی', 'نمونه‌سازی سریع'],
-        },
+      categories: {
+        designPrototyping: 'طراحی و نمونه‌سازی',
+        aiAgents: 'هوش مصنوعی و عامل‌ها',
+        buildDelivery: 'ساخت و تحویل',
+        dataIntelligence: 'داده و تحلیل محصول',
+        growthMeasurement: 'رشد و سنجش',
+        infraOperations: 'زیرساخت و عملیات',
+        knowledgeResearch: 'دانش و پژوهش',
       },
-      toolsLabel: 'ابزارهای منتخب',
     },
     experience: {
       header: {
@@ -655,50 +582,20 @@ export const homeCopy: Record<Locale, HomeCopy> = {
     },
     tools: {
       header: {
-        tag: 'المهارات',
-        lead: 'ما أضيفه',
-        tail: 'إلى فريقك.',
-        lede: 'مزيج من اتخاذ القرار والتصميم العملي والعمل التقني. أستخدم ما تحتاجه المشكلة.',
+        tag: 'الأدوات / الحزمة',
+        lead: 'الأنظمة التي تقف خلف',
+        tail: 'تفكيري وتصميمي وشحني.',
+        lede: 'البحث والتصميم والبناء والقياس والمعرفة والبنية التحتية التي تعمل عليها — حزمة واحدة مترابطة، لا رفّاً من صناديق أدوات منفصلة.',
       },
-      capabilities: {
-        product: {
-          contribution: 'تحويل الأولويات المتنافسة إلى اتجاه واضح.',
-          title: 'المنتج',
-          skills: ['الاستراتيجية', 'الاستكشاف', 'تحديد الأولويات', 'خارطة الطريق'],
-        },
-        design: {
-          contribution: 'تسهيل استخدام المنتجات المعقدة.',
-          title: 'التصميم',
-          skills: ['UX', 'UI', 'تصميم التفاعل', 'أنظمة التصميم', 'النماذج الأولية'],
-        },
-        research: {
-          contribution: 'معرفة ما يحتاجه الناس فعلًا.',
-          title: 'البحث',
-          skills: ['أبحاث المستخدمين', 'تحليل المنافسين', 'اختبار قابلية الاستخدام', 'التحقق'],
-        },
-        data: {
-          contribution: 'كشف نقاط التعثر خلف الأرقام.',
-          title: 'البيانات',
-          skills: ['التحليلات', 'مسارات التحويل', 'البيانات السلوكية', 'التجريب'],
-        },
-        growth: {
-          contribution: 'مساعدة الناس على إيجاد القيمة والعودة.',
-          title: 'النمو',
-          skills: ['اكتساب المستخدمين', 'التفعيل', 'التحويل', 'الاحتفاظ بالمستخدمين'],
-        },
-        delivery: {
-          contribution: 'مرافقة التصميم حتى الإصدار.',
-          title: 'التسليم',
-          skills: ['التعاون بين التصميم والهندسة', 'ضمان الجودة', 'الإطلاق', 'التحسين المتكرر'],
-          note: 'أبني المنتجات وأطلقها بنفسي أيضًا، ومنها هذا الموقع.',
-        },
-        ai: {
-          contribution: 'بناء سير عمل قابل لإعادة الاستخدام للمهام المتكررة.',
-          title: 'الذكاء الاصطناعي',
-          skills: ['سير عمل بمساعدة الذكاء الاصطناعي', 'الوكلاء', 'الأتمتة', 'النمذجة السريعة'],
-        },
+      categories: {
+        designPrototyping: 'التصميم والإنتاج الإبداعي',
+        aiAgents: 'الذكاء الاصطناعي والوكلاء',
+        buildDelivery: 'البناء والتسليم',
+        dataIntelligence: 'البيانات وذكاء المنتج',
+        growthMeasurement: 'النمو والقياس',
+        infraOperations: 'البنية التحتية والتشغيل',
+        knowledgeResearch: 'المعرفة والبحث',
       },
-      toolsLabel: 'أدوات مختارة',
     },
     experience: {
       header: {
@@ -890,55 +787,20 @@ export const homeCopy: Record<Locale, HomeCopy> = {
     },
     tools: {
       header: {
-        tag: 'Habilidades',
-        lead: 'Lo que aporto',
-        tail: 'a tu equipo.',
-        lede: 'Una combinación de decisiones, diseño práctico y trabajo técnico. Aplico lo que el problema necesita.',
+        tag: 'Herramientas / Stack',
+        lead: 'Los sistemas detrás de cómo',
+        tail: 'pienso, diseño y lanzo.',
+        lede: 'Investigación, diseño, construcción, medición, conocimiento y la infraestructura sobre la que corre: un único stack conectado, no un estante de cajas de herramientas sueltas.',
       },
-      capabilities: {
-        product: {
-          contribution: 'Convertir prioridades en conflicto en una dirección clara.',
-          title: 'Producto',
-          skills: ['Estrategia', 'Discovery', 'Priorización', 'Hoja de ruta'],
-        },
-        design: {
-          contribution: 'Hacer más fáciles de usar los productos complejos.',
-          title: 'Diseño',
-          skills: ['UX', 'UI', 'Interacción', 'Sistemas de diseño', 'Prototipado'],
-        },
-        research: {
-          contribution: 'Descubrir lo que las personas realmente necesitan.',
-          title: 'Investigación',
-          skills: [
-            'Investigación de usuarios',
-            'Análisis competitivo',
-            'Pruebas de usabilidad',
-            'Validación',
-          ],
-        },
-        data: {
-          contribution: 'Encontrar la fricción detrás de los números.',
-          title: 'Datos',
-          skills: ['Analítica', 'Embudos', 'Datos de comportamiento', 'Experimentación'],
-        },
-        growth: {
-          contribution: 'Ayudar a las personas a encontrar valor y volver.',
-          title: 'Crecimiento',
-          skills: ['Adquisición', 'Activación', 'Conversión', 'Retención'],
-        },
-        delivery: {
-          contribution: 'Acompañar el diseño hasta el lanzamiento.',
-          title: 'Entrega',
-          skills: ['Colaboración entre diseño e ingeniería', 'QA', 'Lanzamiento', 'Iteración'],
-          note: 'También construyo y lanzo productos yo mismo, incluido este sitio.',
-        },
-        ai: {
-          contribution: 'Crear flujos reutilizables para el trabajo repetitivo.',
-          title: 'IA',
-          skills: ['Flujos de trabajo con IA', 'Agentes', 'Automatización', 'Prototipado rápido'],
-        },
+      categories: {
+        designPrototyping: 'Diseño y producción creativa',
+        aiAgents: 'IA y agentes',
+        buildDelivery: 'Construcción y entrega',
+        dataIntelligence: 'Datos e inteligencia de producto',
+        growthMeasurement: 'Crecimiento y medición',
+        infraOperations: 'Infraestructura y operaciones',
+        knowledgeResearch: 'Conocimiento e investigación',
       },
-      toolsLabel: 'Herramientas seleccionadas',
     },
     experience: {
       header: {
@@ -1131,50 +993,20 @@ export const homeCopy: Record<Locale, HomeCopy> = {
     },
     tools: {
       header: {
-        tag: 'Fähigkeiten',
-        lead: 'Was ich',
-        tail: 'ins Team einbringe.',
-        lede: 'Entscheidungen, praktische Gestaltung und technische Arbeit. Je nachdem, was das Problem verlangt.',
+        tag: 'Werkzeuge / Stack',
+        lead: 'Die Systeme hinter meinem',
+        tail: 'Denken, Gestalten und Ausliefern.',
+        lede: 'Recherche, Design, Build, Messung, Wissen und die Infrastruktur darunter – ein zusammenhängender Stack, kein Regal voller getrennter Werkzeugkästen.',
       },
-      capabilities: {
-        product: {
-          contribution: 'Aus konkurrierenden Prioritäten eine klare Richtung machen.',
-          title: 'Produkt',
-          skills: ['Strategie', 'Discovery', 'Priorisierung', 'Roadmapping'],
-        },
-        design: {
-          contribution: 'Komplexe Produkte einfacher bedienbar machen.',
-          title: 'Design',
-          skills: ['UX', 'UI', 'Interaktion', 'Designsysteme', 'Prototyping'],
-        },
-        research: {
-          contribution: 'Herausfinden, was Menschen wirklich brauchen.',
-          title: 'Research',
-          skills: ['Nutzerforschung', 'Wettbewerbsanalyse', 'Usability-Tests', 'Validierung'],
-        },
-        data: {
-          contribution: 'Die Reibung hinter den Zahlen finden.',
-          title: 'Daten',
-          skills: ['Analytics', 'Funnels', 'Verhaltensdaten', 'Experimente'],
-        },
-        growth: {
-          contribution: 'Menschen helfen, Nutzen zu finden und wiederzukommen.',
-          title: 'Growth',
-          skills: ['Akquise', 'Aktivierung', 'Conversion', 'Retention'],
-        },
-        delivery: {
-          contribution: 'Den Entwurf bis zur Veröffentlichung begleiten.',
-          title: 'Delivery',
-          skills: ['Zusammenarbeit von Design und Engineering', 'QA', 'Launch', 'Iteration'],
-          note: 'Ich baue und launche Produkte auch selbst, diese Website eingeschlossen.',
-        },
-        ai: {
-          contribution: 'Wiederverwendbare Abläufe für wiederkehrende Arbeit bauen.',
-          title: 'KI',
-          skills: ['KI-gestützte Workflows', 'Agenten', 'Automatisierung', 'Rapid Prototyping'],
-        },
+      categories: {
+        designPrototyping: 'Design & Kreativproduktion',
+        aiAgents: 'KI & Agenten',
+        buildDelivery: 'Build & Delivery',
+        dataIntelligence: 'Daten & Produktintelligenz',
+        growthMeasurement: 'Growth & Messung',
+        infraOperations: 'Infrastruktur & Betrieb',
+        knowledgeResearch: 'Wissen & Recherche',
       },
-      toolsLabel: 'Ausgewählte Werkzeuge',
     },
     experience: {
       header: {
@@ -1368,60 +1200,20 @@ export const homeCopy: Record<Locale, HomeCopy> = {
     },
     tools: {
       header: {
-        tag: 'Compétences',
-        lead: 'Ce que j’apporte',
-        tail: 'à votre équipe.',
-        lede: 'Des décisions, du design concret et du travail technique. Je mobilise ce que le problème demande.',
+        tag: 'Outils / Stack',
+        lead: 'Les systèmes derrière ma façon de',
+        tail: 'penser, concevoir et livrer.',
+        lede: 'Recherche, design, build, mesure, connaissance et l’infrastructure qui les fait tourner — une seule stack connectée, pas une étagère de boîtes à outils séparées.',
       },
-      capabilities: {
-        product: {
-          contribution: 'Donner une direction claire aux priorités concurrentes.',
-          title: 'Produit',
-          skills: ['Stratégie', 'Discovery', 'Priorisation', 'Feuille de route'],
-        },
-        design: {
-          contribution: 'Rendre les produits complexes plus faciles à utiliser.',
-          title: 'Design',
-          skills: ['UX', 'UI', 'Interaction', 'Design systems', 'Prototypage'],
-        },
-        research: {
-          contribution: 'Comprendre ce dont les gens ont vraiment besoin.',
-          title: 'Recherche',
-          skills: [
-            'Recherche utilisateur',
-            'Analyse concurrentielle',
-            'Tests d’utilisabilité',
-            'Validation',
-          ],
-        },
-        data: {
-          contribution: 'Trouver les points de friction derrière les chiffres.',
-          title: 'Données',
-          skills: [
-            'Analytics',
-            'Tunnels de conversion',
-            'Données comportementales',
-            'Expérimentation',
-          ],
-        },
-        growth: {
-          contribution: 'Aider les gens à trouver de la valeur et à revenir.',
-          title: 'Croissance',
-          skills: ['Acquisition', 'Activation', 'Conversion', 'Rétention'],
-        },
-        delivery: {
-          contribution: 'Accompagner le design jusqu’à sa mise en ligne.',
-          title: 'Livraison',
-          skills: ['Collaboration design–ingénierie', 'QA', 'Lancement', 'Itération'],
-          note: 'Je développe et lance aussi des produits moi-même, y compris ce site.',
-        },
-        ai: {
-          contribution: 'Créer des workflows réutilisables pour les tâches répétitives.',
-          title: 'IA',
-          skills: ['Workflows assistés par IA', 'Agents', 'Automatisation', 'Prototypage rapide'],
-        },
+      categories: {
+        designPrototyping: 'Design et production créative',
+        aiAgents: 'IA et agents',
+        buildDelivery: 'Build et livraison',
+        dataIntelligence: 'Données et intelligence produit',
+        growthMeasurement: 'Croissance et mesure',
+        infraOperations: 'Infrastructure et exploitation',
+        knowledgeResearch: 'Connaissance et recherche',
       },
-      toolsLabel: 'Outils sélectionnés',
     },
     experience: {
       header: {
@@ -1614,55 +1406,20 @@ export const homeCopy: Record<Locale, HomeCopy> = {
     },
     tools: {
       header: {
-        tag: 'スキル',
-        lead: 'チームに',
-        tail: '私が持ち込むもの。',
-        lede: '意思決定、実践的なデザイン、技術的な仕事。課題に必要な力を組み合わせます。',
+        tag: 'ツール / スタック',
+        lead: '考え、デザインし、',
+        tail: 'リリースするための仕組み。',
+        lede: 'リサーチ、デザイン、ビルド、計測、ナレッジ、そしてそれを動かすインフラ。別々の道具箱の寄せ集めではなく、ひとつにつながったスタック。',
       },
-      capabilities: {
-        product: {
-          contribution: '競合する優先事項から、明確な方向をつくる。',
-          title: 'プロダクト',
-          skills: ['戦略', 'ディスカバリー', '優先順位付け', 'ロードマップ'],
-        },
-        design: {
-          contribution: '複雑なプロダクトを使いやすくする。',
-          title: 'デザイン',
-          skills: ['UX', 'UI', 'インタラクション', 'デザインシステム', 'プロトタイピング'],
-        },
-        research: {
-          contribution: '人が本当に必要としているものを知る。',
-          title: 'リサーチ',
-          skills: ['ユーザーリサーチ', '競合分析', 'ユーザビリティテスト', '検証'],
-        },
-        data: {
-          contribution: '数字の裏にあるつまずきを見つける。',
-          title: 'データ',
-          skills: ['分析', 'ファネル', '行動データ', '実験'],
-        },
-        growth: {
-          contribution: '価値を見つけ、また使いたくなる体験を考える。',
-          title: 'グロース',
-          skills: ['獲得', 'アクティベーション', 'コンバージョン', 'リテンション'],
-        },
-        delivery: {
-          contribution: 'デザインをリリースまでつなぐ。',
-          title: 'デリバリー',
-          skills: ['デザインとエンジニアリングの協働', 'QA', 'ローンチ', '改善の反復'],
-          note: 'このサイトを含め、自分でプロダクトを実装してリリースすることもある。',
-        },
-        ai: {
-          contribution: '繰り返す仕事を、再利用できるワークフローにする。',
-          title: 'AI',
-          skills: [
-            'AIを活用したワークフロー',
-            'エージェント',
-            '自動化',
-            'ラピッドプロトタイピング',
-          ],
-        },
+      categories: {
+        designPrototyping: 'デザインとクリエイティブ制作',
+        aiAgents: 'AIとエージェント',
+        buildDelivery: 'ビルドとデリバリー',
+        dataIntelligence: 'データとプロダクトインテリジェンス',
+        growthMeasurement: 'グロースと計測',
+        infraOperations: 'インフラと運用',
+        knowledgeResearch: 'ナレッジとリサーチ',
       },
-      toolsLabel: '主なツール',
     },
     experience: {
       header: {
