@@ -14,6 +14,7 @@ import { CaseStudyHeader } from '@/components/CaseStudy/CaseStudyHeader'
 import { caseStudyCopy } from '@/components/CaseStudy/copy'
 import { PageFrame } from '@/components/PageFrame'
 import { PageOpener } from '@/components/PageOpener'
+import { PageSkeleton } from '@/components/PageSkeleton'
 import type { Project } from '@/payload-types'
 
 afterEach(cleanup)
@@ -51,6 +52,46 @@ describe('PageFrame (DS-11)', () => {
     const canvas = main.firstElementChild!
     expect(main.className.split(' ').some((c) => /^pb-/.test(c))).toBe(false)
     expect(canvas.className.split(' ')).toEqual(expect.arrayContaining(['pb-16', 'md:pb-24']))
+  })
+
+  it('only holds a viewport of height when asked, and lets the sheet stretch into it', () => {
+    const { container: plain } = render(<PageFrame>{null}</PageFrame>)
+    expect(plain.querySelector('main')!.className).not.toContain('100svh')
+
+    const { container } = render(<PageFrame fillViewport>{null}</PageFrame>)
+    const main = container.querySelector('main')!
+    expect(main.className.split(' ')).toEqual(
+      expect.arrayContaining(['min-h-[calc(100svh-3.5rem)]', 'xl:min-h-[calc(100svh-4rem)]']),
+    )
+    expect(main.firstElementChild!.className.split(' ')).toEqual(
+      expect.arrayContaining(['canvas', 'flex', 'flex-col']),
+    )
+  })
+})
+
+describe('PageSkeleton (loading state)', () => {
+  it('announces one status label and hides the placeholders', () => {
+    render(<PageSkeleton label="Loading" />)
+    const status = screen.getByRole('status')
+    expect(status.getAttribute('aria-busy')).toBe('true')
+    expect(status.textContent).toBe('Loading')
+    for (const child of Array.from(status.children).slice(1)) {
+      expect(child.getAttribute('aria-hidden')).toBe('true')
+    }
+  })
+
+  it('draws the opener at the real type roles and never gets scroll-revealed', () => {
+    const { container } = render(<PageSkeleton label="Loading" />)
+    expect(container.querySelector('.text-display')).not.toBeNull()
+    expect(container.querySelector('.text-lede')).not.toBeNull()
+    expect(container.querySelector('[role="status"]')!.hasAttribute('data-reveal-skip')).toBe(true)
+  })
+
+  it('grows its cover plate into the height the frame leaves', () => {
+    render(<PageSkeleton label="Loading" />)
+    const status = screen.getByRole('status')
+    expect(status.className.split(' ')).toEqual(expect.arrayContaining(['flex', 'flex-1', 'flex-col']))
+    expect(status.lastElementChild!.className.split(' ')).toContain('flex-1')
   })
 })
 

@@ -16,12 +16,26 @@ import { cn } from '@/utilities/ui'
 export interface PageFrameProps {
   children: React.ReactNode
   className?: string
+  /**
+   * Hold the sheet at least one viewport tall below the sticky header (`h-14`, `xl:h-16`) and
+   * let its children stretch into that height. The loading skeleton uses it so the footer stays
+   * below the fold until the page arrives.
+   */
+  fillViewport?: boolean
 }
 
-export const PageFrame: React.FC<PageFrameProps> = ({ children, className }) => (
+export const PageFrame: React.FC<PageFrameProps> = ({ children, className, fillViewport = false }) => (
   // `flex-1` on both: on a short page (a 404, an empty search) the sheet still reaches the
   // footer, so the rails never stop halfway down the viewport.
-  <main className={cn('ruled-paper flex flex-1 flex-col', className)}>
-    <RevealRoot className="canvas flex-1 pb-16 md:pb-24">{children}</RevealRoot>
+  <main
+    className={cn(
+      'ruled-paper flex flex-1 flex-col',
+      fillViewport && 'min-h-[calc(100svh-3.5rem)] xl:min-h-[calc(100svh-4rem)]',
+      className,
+    )}
+  >
+    <RevealRoot className={cn('canvas flex-1 pb-16 md:pb-24', fillViewport && 'flex flex-col')}>
+      {children}
+    </RevealRoot>
   </main>
 )
