@@ -6,6 +6,8 @@ import { Media } from '@/components/Media'
 import { isPortraitMedia, ProjectCover } from '@/components/ProjectCover'
 import { cn } from '@/utilities/ui'
 
+import { COVER_FOCUS } from './coverFocus'
+
 interface WorkCoverProps {
   resource?: MediaType | string | number | null
   slug: string
@@ -14,16 +16,6 @@ interface WorkCoverProps {
   kinds: string[]
   pendingLabel: string
   className?: string
-}
-
-/** The point of the source screen worth studying at cover scale. The complete screen remains beside it. */
-const DETAIL_POSITION: Record<string, string> = {
-  'vin-app': 'object-[center_30%]',
-  'rp1-arena': 'object-[center_72%]',
-  'digital-gold': 'object-[center_36%]',
-  'khodro45-dealer-app': 'object-[center_12%]',
-  faymen: 'object-[center_30%]',
-  'nim-dang': 'object-[center_40%]',
 }
 
 const GRID_STYLE = {
@@ -64,7 +56,7 @@ export const WorkCover: React.FC<WorkCoverProps> = ({
     )
   }
 
-  const focus = DETAIL_POSITION[slug] ?? 'object-center'
+  const focus = COVER_FOCUS[slug] ?? 'object-center'
   const detailSize = primary ? '(min-width: 768px) 35vw, 68vw' : '(min-width: 1024px) 27vw, 68vw'
   const overviewSize = primary ? '(min-width: 768px) 18vw, 25vw' : '(min-width: 1024px) 11vw, 25vw'
 

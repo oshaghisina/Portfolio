@@ -183,13 +183,11 @@
   inset-inline-start: 14px;
   color: var(--ink-3);
   font-size: 0.65rem;
+  text-shadow: 0 0 0.5rem var(--panel), 0 0 0.25rem var(--panel);
 }
 .archive-preview-media {
   position: absolute;
-  inset: 32px 18px 18px;
-}
-.archive-preview[data-portrait] .archive-preview-media {
-  inset-inline: 25%;
+  inset: 0;
 }
 .archive-preview-corner {
   position: absolute;
@@ -334,10 +332,7 @@
     border: 1px solid var(--line);
   }
   .archive-projects[data-view='list'] .archive-preview-media {
-    inset: 20px 8px 8px;
-  }
-  .archive-projects[data-view='list'] .archive-preview[data-portrait] .archive-preview-media {
-    inset-inline: 25%;
+    inset: 0;
   }
   .archive-projects[data-view='list'] .archive-specimen {
     inset: 20px 10px 10px;

@@ -94,6 +94,20 @@ describe('complete Work archive', () => {
     expect(container.querySelector('.archive-specimen')).toBeTruthy()
   })
 
+  it('fills the preview frame with object-cover instead of letterboxing', () => {
+    const tall: Media = {
+      ...media('phone'),
+      width: 390,
+      height: 844,
+    }
+    const [row] = toIndexRows([project(1, { slug: 'vin-app', cover: tall })], 'en')
+    const { container } = render(<ArchivePreview row={row} />)
+    const img = container.querySelector('img')!
+    expect(img.className).toContain('object-cover')
+    expect(img.className).not.toContain('object-contain')
+    expect(img.className).toContain('object-[center_30%]')
+  })
+
   it('uses cover then a populated hero and never invents an image', () => {
     const cover = media('cover'),
       hero = media('hero')
