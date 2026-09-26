@@ -14,8 +14,6 @@
     "compareTop": "CProperty — la página de comparación en el móvil: la dirección de una torre, sus cifras económicas y sus servicios",
     "propertyFold": "CProperty — la página del inmueble en escritorio: la galería, con el rango de precios y las cifras clave al lado, las pestañas, el resumen y los recuadros de información",
     "checklist": "CProperty — la parte superior de la página de un inmueble en el móvil, con marcadores numerados en el rango de precios y en tres filas de cifras",
-    "v1Pricing": "La versión anterior — una página de cuenta premium con las suscripciones Enhanced y Starter a 250 $ y 150 $ al año",
-    "v1Compare": "La versión anterior — una página de comparación que recoge, de tres inmuebles, superficie, habitaciones, estudio, espacio flex, trastero, aparcamiento, balcón, jardín, plantas y orientación",
     "compareDesktop": "CProperty — la página de comparación rediseñada: tres unidades con sus cifras económicas, sus servicios, lo esencial del día a día y de la vivienda, y un CProperty Rating",
     "filterAdvanced": "CProperty — la barra de filtros del listado de inmuebles con el panel «Advanced» abierto: tipo de inmueble, depósito máximo, fecha de finalización, dormitorios, baños, aparcamiento y trastero",
     "priceExpenses": "CProperty — la sección de precio y gastos: escenarios de hipoteca según el pago inicial, una cuadrícula de pagos mensuales por tipo de interés y los gastos que hay que pagar al cierre de la compra",
@@ -46,14 +44,14 @@
       "heading": "De folletos para agentes a comparaciones para compradores",
       "customLabel": "Giro",
       "body": [
-        "El archivo conserva una versión anterior en su propia página: 57 frames de otro producto, cuyos clientes eran agentes inmobiliarios. Una cuenta premium tenía dos niveles —Starter a 150 $ al año y Enhanced a 250 $, o 50 $ y 75 $ por tres meses— y daba acceso a todos los datos y precios de cada unidad, comparación lado a lado, favoritos guardados y, en Enhanced, folletos personalizados para presentar a clientes. Los agentes tenían un panel de control con un generador de propuestas: elegir unidades, una muestra de color y una de seis plantillas de folleto. Las promotoras tenían pantallas para añadir proyectos y marcar unidades como disponibles, reservadas o vendidas.",
+        "Una versión anterior del producto ocupa su propia página en el archivo: 57 frames que no son trabajo de Sina, por lo que aquí no se muestra ninguno. Sus clientes eran agentes inmobiliarios. Una cuenta premium de dos niveles daba acceso a los datos de cada unidad, a la comparación lado a lado y a folletos para presentar a clientes; los agentes tenían un panel de control con un generador de propuestas, y las promotoras publicaban sus propios proyectos y unidades.",
         "El rediseño le da la vuelta. Los paneles de control y los niveles desaparecen, explorar es gratis y la intención de compra llega por dos formularios: «Contact Sales Center», bajo la tabla de unidades, y «Get Exclusive Information», en las páginas del inmueble y de la promotora, que pregunta si quien escribe es agente inmobiliario o comprador. Los agentes siguen teniendo cabida, pero como leads y no como suscriptores. La idea central del generador de propuestas, poner unidades una junto a otra, sobrevive en la página de comparación, que ahora compara dinero en lugar de especificaciones."
       ]
     },
     "approach": {
       "heading": "El archivo registra el orden del trabajo",
       "body": [
-        "Los node IDs de Figma crecen a medida que se edita un archivo, así que la mediana de los IDs de cada frame ordena el trabajo. La versión anterior y la base del sistema de diseño llegaron primero, al crear el archivo. Después vinieron la página de inicio y la del inmueble; luego, casi a la vez, el listado de inmuebles con sus filtros y el flujo de inicio de sesión, y más tarde la página de la promotora. Las unidades, el detalle de la unidad y la comparación se dibujaron al final: la parte del producto con más decisiones.",
+        "Los node IDs de Figma crecen a medida que se edita un archivo, así que la mediana de los IDs de cada frame ordena el trabajo. La base del sistema de diseño llegó primero, al crear el archivo. Después vinieron la página de inicio y la del inmueble; luego, casi a la vez, el listado de inmuebles con sus filtros y el flujo de inicio de sesión, y más tarde la página de la promotora. Las unidades, el detalle de la unidad y la comparación se dibujaron al final: la parte del producto con más decisiones.",
         "Todos los flujos siguen la misma disposición: una tarjeta de título y, después, una columna por breakpoint (escritorio a 1440, tableta a 1028 y móvil a 360 o 393 píxeles), con una pantalla por estado. Una última pasada cambió el pie de página por uno nuevo en casi todas las pantallas de todas las páginas."
       ]
     },
@@ -109,15 +107,8 @@
         "El número de planos y el alquiler medio de la zona"
       ]
     },
-    "tiers": {
-      "caption": "La versión anterior vendía a los agentes inmobiliarios una cuenta premium en dos niveles."
-    },
-    "pivotCompare": {
-      "caption": "La misma página en las dos versiones: la comparación pasó de las especificaciones al dinero.",
-      "items": [
-        "La versión anterior: superficie, habitaciones, estudio, jardín y orientación.",
-        "El rediseño: primero lo económico, después servicios, lo esencial y una calificación."
-      ]
+    "comparePage": {
+      "caption": "La página de comparación: tres unidades lado a lado; primero lo económico, después servicios, lo esencial y una calificación."
     },
     "filters": {
       "caption": "La barra de filtros con «Advanced» abierto: las preguntas de inversión en la barra y las del hogar, dentro."
@@ -152,10 +143,6 @@
   "process": {
     "heading": "Los flujos, en el orden en que se dibujaron",
     "steps": [
-      {
-        "label": "La versión anterior",
-        "note": "57 frames, archivados en su propia página al crear el archivo"
-      },
       {
         "label": "Base del sistema",
         "note": "Color, tipografía, botones, cabecera y pie de página; los modales, formularios y toasts llegaron después"
@@ -231,7 +218,7 @@
     "collaborate": [
       "El cliente, cuyo brief describía el mercado ciudad por ciudad"
     ],
-    "note": "La versión anterior, guardada en el mismo archivo, se describe aquí, pero no se contabiliza."
+    "note": "La versión anterior, guardada en el mismo archivo, no es trabajo de Sina: se describe solo como contexto y no se muestra ninguna de sus pantallas."
   },
   "outcomes": {
     "heading": "Un registro de diseño, no un lanzamiento",

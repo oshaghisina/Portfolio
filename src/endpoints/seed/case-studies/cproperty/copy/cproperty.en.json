@@ -14,8 +14,6 @@
     "compareTop": "CProperty — the compare page on a phone: a tower’s address, its economics and its amenities",
     "propertyFold": "CProperty — the property page on desktop: the gallery, a price band and key figures beside it, the tabs, the overview and the info tiles",
     "checklist": "CProperty — the top of a property page on a phone, with numbered markers on the price band and on three rows of figures",
-    "v1Pricing": "The earlier version — a premium-account page with Enhanced and Starter subscriptions at $250 and $150 a year",
-    "v1Compare": "The earlier version — a comparison page listing three properties’ size, rooms, den, flex, storage, parking, balcony, garden, floors and facing",
     "compareDesktop": "CProperty — the redesigned compare page: three units with their economics, amenities, living and residence essentials and a CProperty Rating",
     "filterAdvanced": "CProperty — the property-list filter bar with the Advanced panel open: property type, maximum deposit, completion date, bedrooms, bathrooms, parking and storage",
     "priceExpenses": "CProperty — the price and expenses section: mortgage scenarios by down payment, a grid of monthly payments by interest rate, and the costs due at closing",
@@ -46,14 +44,14 @@
       "heading": "From brochures for realtors to comparisons for buyers",
       "customLabel": "Pivot",
       "body": [
-        "The file keeps an earlier version on its own page: 57 frames of a different product. It sold to realtors. A premium account came in two tiers — Starter at $150 a year and Enhanced at $250, or $50 and $75 for three months — and unlocked full data and pricing for each unit, side-by-side comparison, saved favourites and, on Enhanced, customised brochures for client presentations. Realtors had a dashboard with a proposal builder: pick units, a colour swatch and one of six brochure templates. Developers had screens to add projects and mark units available, reserved or sold out.",
+        "An earlier version of the product sits on its own page in the file: 57 frames that are not Sina’s work, so none of them are shown here. It sold to realtors. A premium account in two tiers unlocked unit data, side-by-side comparison and client brochures; realtors had a dashboard with a proposal builder, and developers listed their own projects and units.",
         "The redesign turns that around. The dashboards and tiers are gone, browsing is free, and intent arrives through two forms: Contact Sales Center under the unit table, and Get Exclusive Information on the property and developer pages, which asks whether the sender is a realtor or a buyer. Realtors are still served — as leads, not subscribers. The proposal builder’s core idea, putting units side by side, survives as the compare page, and it now compares money rather than specifications."
       ]
     },
     "approach": {
       "heading": "The file records its order of work",
       "body": [
-        "Figma node IDs grow as a file is edited, so each frame’s median ID orders the work. The earlier version and the design-system foundation arrived first, at set-up. Home and the property page followed, then the property list with its filters and the sign-in flow at about the same time, then the developer page. Units, unit details and compare were drawn last — the most decision-heavy part of the product.",
+        "Figma node IDs grow as a file is edited, so each frame’s median ID orders the work. The design-system foundation came first, at set-up. Home and the property page followed, then the property list with its filters and the sign-in flow at about the same time, then the developer page. Units, unit details and compare were drawn last — the most decision-heavy part of the product.",
         "Every flow is laid out the same way: a title card, then a column per breakpoint — desktop at 1,440, tablet at 1,028 and mobile at 360 or 393 — with one screen per state. A final pass swapped a new footer into nearly every screen on every page."
       ]
     },
@@ -109,15 +107,8 @@
         "The number of unit plans and the area’s average rent"
       ]
     },
-    "tiers": {
-      "caption": "The earlier version sold a premium account to realtors, in two tiers."
-    },
-    "pivotCompare": {
-      "caption": "The same page in both versions: the comparison moved from specifications to money.",
-      "items": [
-        "The earlier version: size, rooms, den, garden and facing.",
-        "The redesign: economics first, then amenities, essentials and a rating."
-      ]
+    "comparePage": {
+      "caption": "The compare page: three units side by side, economics first, then amenities, essentials and a rating."
     },
     "filters": {
       "caption": "The filter bar with Advanced open: the investment questions on the bar, the household ones inside."
@@ -152,10 +143,6 @@
   "process": {
     "heading": "Flows in the order they were drawn",
     "steps": [
-      {
-        "label": "The earlier version",
-        "note": "57 frames, archived on their own page at set-up"
-      },
       {
         "label": "System foundation",
         "note": "Colour, type, buttons, header and footer; modals, forms and toasts came later"
@@ -231,7 +218,7 @@
     "collaborate": [
       "The client, who briefed the market city by city"
     ],
-    "note": "The earlier version archived in the same file is described here, not counted."
+    "note": "The earlier version archived in the same file is not Sina’s work. It is described for context only, and none of its screens are shown."
   },
   "outcomes": {
     "heading": "A design record, not a launch",

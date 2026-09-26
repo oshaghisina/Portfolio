@@ -308,9 +308,12 @@ const GATES: Record<string, { files: RegExp[]; text: RegExp[] }> = {
     // copy, a portrait as placeholder realtor), the developer page (portrait, email, a placeholder
     // phone), sign-in states that show email addresses, the blog (another product's copy), desktop
     // footers, or the archived benchmark footer, market note and checkout. No design-system lineage,
-    // no benchmark leftover repeated as fact, no live link.
-    files: [/^(?!crops\/|2x\/components\/|design-system\/color\.png$)/, /home\//, /developer-page\//, /login-signup\//, /blog\//, /footer|motorway|lower-mainland|canada-map|checkout/],
+    // no benchmark leftover repeated as fact, no live link. The earlier version ("Wear House") is
+    // not Sina's work (2026-09-26): none of its frames or crops, and not its tier names or prices.
+    files: [/^(?!crops\/|2x\/components\/|design-system\/color\.png$)/, /home\//, /developer-page\//, /login-signup\//, /blog\//, /footer|motorway|lower-mainland|canada-map|checkout/, /wear-house\/|v1-/],
     text: [
+      /\bStarter\b|\bEnhanced\b/,
+      /\$\s?(150|250|50|75)\b|\b(150|250|50|75)\s?(\$|ドル|دولار)|(۱۵۰|۲۵۰|۵۰|۷۵)\sدلار/,
       /Motorway/i,
       /ULEZ/i,
       /Sell my van/i,

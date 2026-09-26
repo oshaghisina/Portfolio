@@ -14,8 +14,6 @@
     "compareTop": "CProperty — la page de comparaison sur smartphone : l’adresse d’une tour, ses données financières et ses équipements",
     "propertyFold": "CProperty — la page du bien sur desktop : la galerie, avec à côté la fourchette de prix et les chiffres clés, puis les onglets, la présentation et les tuiles d’information",
     "checklist": "CProperty — le haut d’une page de bien sur smartphone, avec des repères numérotés sur la fourchette de prix et sur trois rangées de chiffres",
-    "v1Pricing": "La version précédente — une page de compte premium avec les abonnements Enhanced et Starter à 250 $ et 150 $ par an",
-    "v1Compare": "La version précédente — une page de comparaison qui liste, pour trois biens, la surface, les pièces, le bureau, l’espace flex, le rangement, le stationnement, le balcon, le jardin, les étages et l’orientation",
     "compareDesktop": "CProperty — la page de comparaison repensée : trois logements avec leurs données financières, leurs équipements, l’essentiel du quotidien et du logement, et un CProperty Rating",
     "filterAdvanced": "CProperty — la barre de filtres de la liste des biens avec le panneau « Advanced » ouvert : type de bien, dépôt maximal, date d’achèvement, chambres, salles de bain, stationnement et rangement",
     "priceExpenses": "CProperty — la section prix et dépenses : scénarios de prêt hypothécaire selon l’apport initial, une grille de mensualités par taux d’intérêt et les frais dus à la conclusion de la vente",
@@ -46,14 +44,14 @@
       "heading": "Des brochures pour agents aux comparaisons pour acheteurs",
       "customLabel": "Virage",
       "body": [
-        "Le fichier conserve une version précédente sur sa propre page : 57 frames d’un autre produit, dont les clients étaient les agents immobiliers. Un compte premium existait en deux formules — Starter à 150 $ par an et Enhanced à 250 $, ou 50 $ et 75 $ pour trois mois — et débloquait les données complètes et les prix de chaque logement, la comparaison côte à côte, les favoris enregistrés et, avec Enhanced, des brochures personnalisées pour les présentations aux clients. Les agents disposaient d’un tableau de bord avec un générateur de propositions : choisir des logements, une pastille de couleur et l’un des six modèles de brochure. Les promoteurs avaient des écrans pour ajouter des projets et marquer les logements comme disponibles, réservés ou vendus.",
+        "Une version précédente du produit occupe sa propre page dans le fichier : 57 frames qui ne sont pas le travail de Sina, si bien qu’aucun n’est montré ici. Elle s’adressait aux agents immobiliers. Un compte premium en deux formules débloquait les données de chaque logement, la comparaison côte à côte et des brochures pour les présentations aux clients ; les agents disposaient d’un tableau de bord avec un générateur de propositions, et les promoteurs publiaient eux-mêmes leurs projets et leurs logements.",
         "La refonte inverse la logique. Les tableaux de bord et les formules disparaissent, la navigation est gratuite, et l’intention d’achat arrive par deux formulaires : « Contact Sales Center » sous le tableau des logements, et « Get Exclusive Information » sur les pages du bien et du promoteur, qui demande si l’expéditeur est agent immobilier ou acheteur. Les agents immobiliers ont toujours leur place, mais comme prospects, et non plus comme abonnés. L’idée centrale du générateur de propositions, mettre des logements côte à côte, survit dans la page de comparaison, qui compare désormais de l’argent plutôt que des caractéristiques techniques."
       ]
     },
     "approach": {
       "heading": "Le fichier consigne l’ordre du travail",
       "body": [
-        "Dans Figma, les node ID augmentent au fil des modifications d’un fichier : l’ID médian de chaque frame permet donc d’ordonner le travail. La version précédente et les fondations du design system sont arrivées en premier, à la création du fichier. L’accueil et la page du bien ont suivi, puis, à peu près en même temps, la liste des biens avec ses filtres et le parcours de connexion, puis la page du promoteur. Les logements, la fiche du logement et la comparaison ont été dessinés en dernier : c’est la partie du produit la plus chargée en décisions.",
+        "Dans Figma, les node ID augmentent au fil des modifications d’un fichier : l’ID médian de chaque frame permet donc d’ordonner le travail. Les fondations du design system sont arrivées en premier, à la création du fichier. L’accueil et la page du bien ont suivi, puis, à peu près en même temps, la liste des biens avec ses filtres et le parcours de connexion, puis la page du promoteur. Les logements, la fiche du logement et la comparaison ont été dessinés en dernier : c’est la partie du produit la plus chargée en décisions.",
         "Chaque parcours suit la même organisation : une carte titre, puis une colonne par breakpoint (desktop à 1440, tablette à 1028 et mobile à 360 ou 393 pixels), avec un écran par état. Une dernière passe a remplacé le pied de page par un nouveau sur presque tous les écrans de toutes les pages."
       ]
     },
@@ -109,15 +107,8 @@
         "Le nombre de plans et le loyer moyen du secteur"
       ]
     },
-    "tiers": {
-      "caption": "La version précédente vendait aux agents immobiliers un compte premium, en deux formules."
-    },
-    "pivotCompare": {
-      "caption": "La même page dans les deux versions : la comparaison est passée des caractéristiques techniques à l’argent.",
-      "items": [
-        "La version précédente : surface, pièces, bureau, jardin et orientation.",
-        "La refonte : d’abord les données financières, puis les équipements, l’essentiel et une note."
-      ]
+    "comparePage": {
+      "caption": "La page de comparaison : trois logements côte à côte, d’abord les données financières, puis les équipements, l’essentiel et une note."
     },
     "filters": {
       "caption": "La barre de filtres avec « Advanced » ouvert : les questions d’investissement sur la barre, celles du foyer à l’intérieur."
@@ -152,10 +143,6 @@
   "process": {
     "heading": "Les parcours dans l’ordre où ils ont été dessinés",
     "steps": [
-      {
-        "label": "La version précédente",
-        "note": "57 frames, archivées sur leur propre page à la création du fichier"
-      },
       {
         "label": "Fondations du système",
         "note": "Couleur, typographie, boutons, en-tête et pied de page ; modales, formulaires et toasts sont venus plus tard"
@@ -231,7 +218,7 @@
     "collaborate": [
       "Le client, dont le brief décrivait le marché ville par ville"
     ],
-    "note": "La version précédente, archivée dans le même fichier, est décrite ici, mais pas comptabilisée."
+    "note": "La version précédente, archivée dans le même fichier, n’est pas le travail de Sina : elle n’est décrite que pour le contexte, et aucun de ses écrans n’est montré."
   },
   "outcomes": {
     "heading": "Un design documenté, pas un lancement",

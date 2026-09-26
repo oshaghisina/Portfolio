@@ -26,8 +26,9 @@ import ja from './copy/cproperty.ja.json'
  * - No design-system lineage, and no benchmark or placeholder leftover repeated as fact.
  * - No launch claim, client, people, dates or live link: the file records none, and the domain no
  *   longer serves the product.
- * - The earlier version archived in the file is described as a product, not attributed to anyone
- *   and not critiqued in detail (README Q4).
+ * - The earlier version archived in the file (its "Wear House" page) is not Sina's work (Sina,
+ *   2026-09-26, README Q4). It is described in words for context and never shown: no frame of it,
+ *   or crop of one, is uploaded, and the process does not list it as a step.
  */
 const SLUG = 'cproperty'
 const ARCHIVE = archiveIdentity(SLUG)
@@ -40,8 +41,6 @@ const FILES = {
   compareTop: { file: 'crops/compare-mobile-top.png', name: 'cproperty--compare-mobile.png' },
   propertyFold: { file: 'crops/property-desktop-fold.png', name: 'cproperty--property-desktop.png' },
   checklist: { file: 'crops/property-mobile-annotated.png', name: 'cproperty--property-annotated.png' },
-  v1Pricing: { file: 'crops/v1-pricing-tiers.png', name: 'cproperty--earlier-pricing.png' },
-  v1Compare: { file: 'crops/v1-comparison.png', name: 'cproperty--earlier-comparison.png' },
   compareDesktop: { file: 'crops/compare-desktop.png', name: 'cproperty--compare-desktop.png' },
   filterAdvanced: { file: 'crops/filter-bar-advanced.png', name: 'cproperty--filter-advanced.png' },
   priceExpenses: { file: '2x/components/price-and-expenses.png', name: 'cproperty--price-and-expenses.png' },
@@ -70,10 +69,9 @@ const STUDY: CspStudy<Key> = {
     { type: 'narrative', key: 'problem', label: 'problem' },
     { type: 'figure', key: 'checklist', layout: 'annotated', treatment: 'screen', media: ['checklist'] },
     { type: 'narrative', key: 'pivot', label: 'custom' },
-    { type: 'figure', key: 'tiers', layout: 'full', treatment: 'plain', media: ['v1Pricing'] },
-    { type: 'figure', key: 'pivotCompare', layout: 'compare', treatment: 'plain', media: ['v1Compare', 'compareDesktop'] },
+    { type: 'figure', key: 'comparePage', layout: 'full', treatment: 'plain', media: ['compareDesktop'] },
     { type: 'narrative', key: 'approach', label: 'approach' },
-    { type: 'process', codes: ['V1', 'SYS', 'HOME', 'PROP', 'LIST', 'AUTH', 'DEV', 'UNIT'] },
+    { type: 'process', codes: ['SYS', 'HOME', 'PROP', 'LIST', 'AUTH', 'DEV', 'UNIT'] },
     { type: 'narrative', key: 'solution', label: 'solution' },
     { type: 'figure', key: 'filters', layout: 'full', treatment: 'plain', media: ['filterAdvanced'] },
     { type: 'figure', key: 'price', layout: 'full', treatment: 'plain', media: ['priceExpenses'] },

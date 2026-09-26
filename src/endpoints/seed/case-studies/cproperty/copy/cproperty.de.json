@@ -14,8 +14,6 @@
     "compareTop": "CProperty — die Vergleichsseite auf dem Smartphone: die Adresse eines Wohnturms, seine Finanzdaten und seine Ausstattung",
     "propertyFold": "CProperty — die Objektseite auf dem Desktop: die Galerie mit Preisspanne und Kennzahlen daneben, die Tabs, der Überblick und die Info-Kacheln",
     "checklist": "CProperty — der obere Teil einer Objektseite auf dem Smartphone, mit nummerierten Markierungen an der Preisspanne und an drei Reihen von Kennzahlen",
-    "v1Pricing": "Die frühere Version — eine Seite für Premium-Konten mit den Abos Enhanced und Starter für 250 $ bzw. 150 $ im Jahr",
-    "v1Compare": "Die frühere Version — eine Vergleichsseite, die für drei Objekte Größe, Zimmer, Arbeitszimmer, Flex-Raum, Abstellraum, Stellplatz, Balkon, Garten, Etagen und Ausrichtung auflistet",
     "compareDesktop": "CProperty — die überarbeitete Vergleichsseite: drei Einheiten mit Finanzdaten, Ausstattung, Alltags- und Wohnungsmerkmalen und einem CProperty Rating",
     "filterAdvanced": "CProperty — die Filterleiste der Objektliste mit geöffnetem Panel „Advanced“: Objekttyp, maximale Anzahlung, Fertigstellungstermin, Schlafzimmer, Badezimmer, Stellplätze und Abstellräume",
     "priceExpenses": "CProperty — der Bereich Preis und Kosten: Hypothekenszenarien nach Eigenanteil, ein Raster monatlicher Raten nach Zinssatz und die bei Kaufabschluss fälligen Kosten",
@@ -46,14 +44,14 @@
       "heading": "Von Broschüren für Makler zu Vergleichen für Käufer",
       "customLabel": "Kurswechsel",
       "body": [
-        "Die Datei bewahrt auf einer eigenen Seite eine frühere Version auf: 57 Frames eines anderen Produkts. Seine Kunden waren Makler. Ein Premium-Konto gab es in zwei Tarifen – Starter für 150 $ im Jahr und Enhanced für 250 $, oder 50 $ bzw. 75 $ für drei Monate. Es schaltete vollständige Daten und Preise zu jeder Einheit frei, dazu den direkten Vergleich, gespeicherte Favoriten und, bei Enhanced, individuelle Broschüren für Kundenpräsentationen. Makler hatten ein Dashboard mit einem Angebotsgenerator: Einheiten, ein Farbmuster und eine von sechs Broschürenvorlagen auswählen. Bauträger hatten Screens, um Projekte anzulegen und Einheiten als verfügbar, reserviert oder verkauft zu markieren.",
+        "Eine frühere Version des Produkts liegt auf einer eigenen Seite der Datei: 57 Frames, die nicht von Sina stammen; deshalb ist hier keiner davon zu sehen. Sie richtete sich an Makler. Ein Premium-Konto in zwei Tarifen schaltete Daten zu jeder Einheit, den direkten Vergleich und Broschüren für Kundenpräsentationen frei; Makler hatten ein Dashboard mit einem Angebotsgenerator, und Bauträger legten ihre Projekte und Einheiten selbst an.",
         "Das Redesign kehrt das um. Dashboards und Tarife sind verschwunden, das Stöbern ist kostenlos, und Kaufinteresse kommt über zwei Formulare herein: „Contact Sales Center“ unter der Tabelle der Einheiten und „Get Exclusive Information“ auf den Objekt- und Bauträgerseiten; dieses Formular fragt, ob der Absender Makler oder Käufer ist. Makler werden weiterhin bedient – als Leads, nicht als Abonnenten. Die Kernidee des Angebotsgenerators, Einheiten nebeneinanderzustellen, lebt in der Vergleichsseite weiter, und die vergleicht jetzt Geld statt technischer Daten."
       ]
     },
     "approach": {
       "heading": "Die Datei verrät die Reihenfolge der Arbeit",
       "body": [
-        "Node-IDs in Figma steigen, während eine Datei bearbeitet wird; die Median-ID jedes Frames bringt die Arbeit also in eine Reihenfolge. Die frühere Version und das Fundament des Design Systems kamen zuerst, beim Anlegen der Datei. Es folgten Startseite und Objektseite, dann etwa gleichzeitig die Objektliste mit ihren Filtern und der Anmelde-Flow, danach die Bauträgerseite. Einheiten, Detailansicht und Vergleich entstanden zuletzt – der Teil des Produkts, in dem die meisten Entscheidungen fallen.",
+        "Node-IDs in Figma steigen, während eine Datei bearbeitet wird; die Median-ID jedes Frames bringt die Arbeit also in eine Reihenfolge. Das Fundament des Design Systems kam zuerst, beim Anlegen der Datei. Es folgten Startseite und Objektseite, dann etwa gleichzeitig die Objektliste mit ihren Filtern und der Anmelde-Flow, danach die Bauträgerseite. Einheiten, Detailansicht und Vergleich entstanden zuletzt – der Teil des Produkts, in dem die meisten Entscheidungen fallen.",
         "Jeder Flow ist gleich aufgebaut: eine Titelkarte, dann eine Spalte pro Breakpoint (Desktop mit 1440, Tablet mit 1028 und Mobile mit 360 oder 393 Pixeln), mit einem Screen pro Zustand. In einem letzten Durchgang wurde der Footer in fast jedem Screen auf jeder Seite gegen einen neuen ausgetauscht."
       ]
     },
@@ -109,15 +107,8 @@
         "Die Zahl der Grundrisse und die Durchschnittsmiete in der Gegend"
       ]
     },
-    "tiers": {
-      "caption": "Die frühere Version verkaufte Maklern ein Premium-Konto in zwei Tarifen."
-    },
-    "pivotCompare": {
-      "caption": "Dieselbe Seite in beiden Versionen: Der Vergleich wanderte von technischen Daten zum Geld.",
-      "items": [
-        "Die frühere Version: Größe, Zimmer, Arbeitszimmer, Garten und Ausrichtung.",
-        "Das Redesign: zuerst die Finanzdaten, dann Ausstattung, Merkmale und ein Rating."
-      ]
+    "comparePage": {
+      "caption": "Die Vergleichsseite: drei Einheiten nebeneinander, zuerst die Finanzdaten, dann Ausstattung, Merkmale und ein Rating."
     },
     "filters": {
       "caption": "Die Filterleiste mit geöffnetem Panel „Advanced“: die Anlegerfragen auf der Leiste, die Fragen zum Haushalt dahinter."
@@ -152,10 +143,6 @@
   "process": {
     "heading": "Die Flows in der Reihenfolge ihrer Entstehung",
     "steps": [
-      {
-        "label": "Die frühere Version",
-        "note": "57 Frames, beim Anlegen der Datei auf einer eigenen Seite archiviert"
-      },
       {
         "label": "Fundament des Systems",
         "note": "Farbe, Typografie, Buttons, Header und Footer; Modals, Formulare und Toasts kamen später"
@@ -231,7 +218,7 @@
     "collaborate": [
       "Der Auftraggeber, dessen Briefing den Markt Stadt für Stadt beschrieb"
     ],
-    "note": "Die frühere Version, die in derselben Datei archiviert ist, wird hier beschrieben, aber nicht mitgezählt."
+    "note": "Die frühere Version, die in derselben Datei archiviert ist, stammt nicht von Sina. Sie wird hier nur als Kontext beschrieben, und keiner ihrer Screens wird gezeigt."
   },
   "outcomes": {
     "heading": "Eine Designdokumentation, kein Launch",
