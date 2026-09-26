@@ -14,7 +14,7 @@ import config from '../../src/payload.config'
 
 const payload = await getPayload({ config })
 
-async function pageId(slug: string): Promise<string | number> {
+async function pageId(slug: string): Promise<string> {
   const { docs } = await payload.find({
     collection: 'pages',
     depth: 0,
@@ -35,7 +35,7 @@ const [workId, aboutId, experienceId, contactId] = await Promise.all([
   pageId('contact'),
 ])
 
-const ref = (label: string, id: string | number) => ({
+const ref = (label: string, id: string) => ({
   link: {
     type: 'reference' as const,
     label,
