@@ -176,7 +176,12 @@ export const FigureBlock: React.FC<FigureBlockProps> = ({
       break
     case 'gallery':
       body = sameAspect(visuals) ? (
-        <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-6">
+        <div
+          className={cn(
+            'grid gap-3 md:grid-cols-3 md:gap-6',
+            visuals.length % 3 === 0 ? 'grid-cols-3' : 'grid-cols-2',
+          )}
+        >
           {visuals.map((item, i) => cell(item, i))}
         </div>
       ) : (

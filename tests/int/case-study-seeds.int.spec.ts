@@ -282,9 +282,16 @@ const GATES: Record<string, { files: RegExp[]; text: RegExp[] }> = {
     text: [/00223/, /0933|۰۹۳۳/, /برهان/, /خیابان پاسداران/, /91005453|۹۱۰۰۵۴۵۳/, /khodro|خودرو|carsparency|didestan|دیدستان/i, /V\.3\.1/],
   },
   'arash-rezvani': {
-    // Type only: the pages that carry his photographs, covers and posters, the full books page, and
-    // the contact page below the calendar (his address and handle).
-    files: [/home/, /about/, /music/, /teach/, /road/, /looking/, /icon|logo/, /books(?!-fa-fold)/, /contact-(fa|en)-full/, /contact\/(fa|en)\//],
+    // Screenshots are type only: never the pages that carry his photographs, covers and posters,
+    // the full books page, or the contact page below the calendar (his address and handle). The
+    // imagery chapter is Sina's generated work only — no crop of his own photographs, no cover.
+    // The live home page (2026-09-26) only in its hero, six-ways, map and notes sections.
+    files: [
+      /^(?!capture-2026-09\/|imagery\/(turnarounds|site|studies)\/|live-2026-09-26\/)/,
+      /^live-2026-09-26\/(?!(desktop|mobile)\/home-(en|fa)-(\d-)?(hero|masthead|ways|map|notes)\.(jpg|png)$)/,
+      /^capture-2026-09\/.*(home|about|music|teach|road|looking|icon|logo|books(?!-fa-fold)|contact-(fa|en)-full)/,
+      /bookshelves|pigeons|riders|eroded|translated|book-|cover|avatar|IMG_/i,
+    ],
     text: [/1359|1980|۱۳۵۹|۱۹۸۰/, /Khuzestan|خوزستان/i, /Shooshtari|شوشتری|شوشتري/i, /\bbrother|برادر|hermano|Bruder|frère|兄弟/i, /arash@/i, /ADVBROZ/i, /git\.arashrezvani/i, /dossier/i, /\bborn\b|متولد|nacido|geboren|年生まれ|テヘラン生まれ/i, /Farvardin|فروردین/i],
   },
   marqevon: {

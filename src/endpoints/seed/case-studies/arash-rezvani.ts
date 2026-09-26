@@ -3,6 +3,18 @@ import { dirFor, LOCALES, type Locale } from '@/utilities/locale'
 
 import type { MediaSpec } from '../media'
 import { archiveIdentity } from './archive'
+import {
+  ARR_IMAGERY_COPY,
+  ARR_LIVE_COPY,
+  ARR_LIVE_DESKTOP_HERO,
+  ARR_LIVE_DIR,
+  ARR_LIVE_LOWER,
+  ARR_LIVE_PHONE,
+  ARR_LIVE_WAYS,
+  ARR_SITE_IMAGES,
+  ARR_STUDIES,
+  ARR_TURNAROUNDS,
+} from './arash-rezvani-imagery'
 import { bullets, paragraph, prose } from './lexical'
 
 /**
@@ -11,9 +23,13 @@ import { bullets, paragraph, prose } from './lexical'
  * 2026-09-24 against the source repository and the live site.
  *
  * Publication gates (held here and in `tests/int/case-study-seeds.int.spec.ts`):
- * - Type only. The site's photographs, book covers and posters show Arash himself or his work, so
- *   no page that carries them is captured: no home, about, music, teach, road or looking page, and
- *   nothing below the books page's opening screen.
+ * - Screenshots are type only. The site's photographs, book covers and posters show Arash himself
+ *   or his work, so no page that carries them is captured: no home, about, music, teach, road or
+ *   looking page, and nothing below the books page's opening screen. The one exception is the home
+ *   page (`live-2026-09-26/`, Sina's call 2026-09-26): only its sections that carry type and the
+ *   generated images, never the books shelf or the songs row, with his family name hidden.
+ * - The imagery chapter shows only images Sina generated (`arash-rezvani-imagery.ts`, Sina's call
+ *   2026-09-26): never a crop of Arash's own photographs and never a book cover.
  * - No birth year or place, family origin or family members, and no contact address or handle.
  * - Every number is one the biography's sourced-numbers table states, as the site's own rule asks.
  * - His English biography has not been reviewed by him, so he is paraphrased, never quoted.
@@ -23,7 +39,8 @@ import { bullets, paragraph, prose } from './lexical'
  * layout, treatment) live in the builder and are identical in every locale.
  */
 export const ARR_SLUG = 'arash-rezvani'
-export const ARR_ASSETS = 'Docs/Experience/Projects/arash-rezvani/assets/capture-2026-09'
+export const ARR_ASSETS = 'Docs/Experience/Projects/arash-rezvani/assets'
+const CAPTURE_DIR = 'capture-2026-09'
 export const ARR_LOCALES = LOCALES
 
 const ARCHIVE = archiveIdentity(ARR_SLUG)
@@ -60,7 +77,12 @@ const MEDIA_FILES = {
   postsFa: { file: 'desktop/posts-fa-fold.png', name: 'arash-rezvani--desktop-journal.png' },
 } as const
 
-export type ArrMediaKey = keyof typeof MEDIA_FILES
+type CaptureKey = keyof typeof MEDIA_FILES
+/** Imagery is keyed by its path under `assets/imagery/`, without the extension. */
+type ImageryKey = `${'turnarounds' | 'site' | 'studies'}/${string}`
+/** Live home-page captures are keyed `live/<path under assets/live-…/>`, without the extension. */
+type LiveKey = `live/${string}`
+export type ArrMediaKey = CaptureKey | ImageryKey | LiveKey
 type ArrMediaIds = Partial<Record<ArrMediaKey, string>>
 type Sections = NonNullable<Project['sections']>
 
@@ -76,7 +98,7 @@ export interface ArrCopy {
   team: string
   heroCaption: string
   snapshot: { problem: string; role: string; result: string }
-  alt: Record<ArrMediaKey, string>
+  alt: Record<CaptureKey, string>
   context: { heading: string; body: Two; figureItems: Two; figureCaption: string }
   problem: { heading: string; body: Two; figureCaption: string }
   rule: { text: string; attribution: string; method: string }
@@ -1653,15 +1675,42 @@ const JA: ArrCopy = {
 
 const COPY: Record<Locale, ArrCopy> = { en: EN, fa: FA, ar: AR, es: ES, de: DE, fr: FR, ja: JA }
 
-export const ARR_MEDIA = Object.fromEntries(
-  (Object.keys(MEDIA_FILES) as ArrMediaKey[]).map((key) => [
-    key,
-    {
-      ...MEDIA_FILES[key],
-      alt: Object.fromEntries(LOCALES.map((locale) => [locale, COPY[locale].alt[key]])),
-    },
-  ]),
-) as Record<ArrMediaKey, MediaSpec>
+const imageryKey = (file: string) => file.replace(/\.jpg$/, '') as ImageryKey
+const liveKey = (file: string) => `live/${file.replace(/\.(jpg|png)$/, '')}` as LiveKey
+const LIVE_SPECS = [...ARR_LIVE_DESKTOP_HERO, ARR_LIVE_WAYS, ...ARR_LIVE_PHONE, ...ARR_LIVE_LOWER]
+
+export const ARR_MEDIA = {
+  ...Object.fromEntries(
+    (Object.keys(MEDIA_FILES) as CaptureKey[]).map((key) => [
+      key,
+      {
+        file: `${CAPTURE_DIR}/${MEDIA_FILES[key].file}`,
+        name: MEDIA_FILES[key].name,
+        alt: Object.fromEntries(LOCALES.map((locale) => [locale, COPY[locale].alt[key]])),
+      },
+    ]),
+  ),
+  ...Object.fromEntries(
+    [...ARR_TURNAROUNDS, ...ARR_SITE_IMAGES, ...ARR_STUDIES].map((spec) => [
+      imageryKey(spec.file),
+      {
+        file: `imagery/${spec.file}`,
+        name: `arash-rezvani--${imageryKey(spec.file).replace('/', '-')}.jpg`,
+        alt: spec.alt,
+      },
+    ]),
+  ),
+  ...Object.fromEntries(
+    LIVE_SPECS.map((spec) => [
+      liveKey(spec.file),
+      {
+        file: `${ARR_LIVE_DIR}/${spec.file}`,
+        name: `arash-rezvani--live-${spec.file.replace('/', '-')}`,
+        alt: spec.alt,
+      },
+    ]),
+  ),
+} as Record<ArrMediaKey, MediaSpec>
 
 const PROCESS_CODES: Five = ['BLD', 'BRND', 'LATT', 'URL', 'BOOK']
 const MEASURED_VALUES: Two = ['14', '307']
@@ -1670,7 +1719,15 @@ export function arrSections(locale: Locale, media: ArrMediaIds): Sections {
   const c = COPY[locale]
   const dir = dirFor(locale)
   const item = (key: ArrMediaKey, id: string, caption?: string) =>
-    media[key] ? [{ id, media: media[key]!, ...(caption ? { caption } : {}) }] : []
+    media[key] ? [{ id, media: media[key]!, caption: caption ?? '' }] : []
+  const img = ARR_IMAGERY_COPY[locale]
+  const gallery = (specs: { file: string }[], prefix: string) =>
+    specs.flatMap((spec, index) =>
+      item(imageryKey(spec.file), `${prefix}-${String(index + 1).padStart(2, '0')}`),
+    )
+  const live = ARR_LIVE_COPY[locale]
+  const liveItems = (specs: { file: string }[], prefix: string) =>
+    specs.flatMap((spec, index) => item(liveKey(spec.file), `${prefix}-${index + 1}`))
 
   return [
     {
@@ -1679,6 +1736,7 @@ export function arrSections(locale: Locale, media: ArrMediaIds): Sections {
       label: 'context',
       heading: c.context.heading,
       body: prose(dir, ...c.context.body.map((value) => paragraph(value, dir))),
+      insight: '',
     },
     {
       id: 'arr-s02',
@@ -1689,6 +1747,7 @@ export function arrSections(locale: Locale, media: ArrMediaIds): Sections {
         ...item('experienceEn', 'arr-f02-1', c.context.figureItems[0]),
         ...item('experienceFa', 'arr-f02-2', c.context.figureItems[1]),
       ],
+      annotations: [],
       caption: c.context.figureCaption,
     },
     {
@@ -1697,6 +1756,7 @@ export function arrSections(locale: Locale, media: ArrMediaIds): Sections {
       label: 'problem',
       heading: c.problem.heading,
       body: prose(dir, ...c.problem.body.map((value) => paragraph(value, dir))),
+      insight: '',
     },
     {
       id: 'arr-s04',
@@ -1712,6 +1772,7 @@ export function arrSections(locale: Locale, media: ArrMediaIds): Sections {
       layout: 'full',
       treatment: 'plain',
       items: item('booksFa', 'arr-f05-1'),
+      annotations: [],
       caption: c.problem.figureCaption,
     },
     {
@@ -1719,7 +1780,7 @@ export function arrSections(locale: Locale, media: ArrMediaIds): Sections {
       blockType: 'csOwnership',
       heading: c.ownership.heading,
       intro: c.ownership.intro,
-      own: c.ownership.own,
+      own: [...c.ownership.own, img.own],
       collaborate: c.ownership.collaborate,
       note: c.ownership.note,
     },
@@ -1756,6 +1817,69 @@ export function arrSections(locale: Locale, media: ArrMediaIds): Sections {
       caption: c.approach.figureCaption,
     },
     {
+      id: 'arr-s20',
+      blockType: 'csNarrative',
+      label: 'custom',
+      customLabel: img.label,
+      heading: img.heading,
+      body: prose(dir, ...img.body.map((value) => paragraph(value, dir))),
+      insight: img.insight,
+    },
+    {
+      id: 'arr-s24',
+      blockType: 'csFigure',
+      layout: 'split',
+      treatment: 'plain',
+      items: liveItems(ARR_LIVE_DESKTOP_HERO, 'arr-f24'),
+      annotations: [],
+      caption: live.heroCaption,
+    },
+    {
+      id: 'arr-s25',
+      blockType: 'csFigure',
+      layout: 'full',
+      treatment: 'plain',
+      items: liveItems([ARR_LIVE_WAYS], 'arr-f25'),
+      annotations: [],
+      caption: live.waysCaption,
+    },
+    {
+      id: 'arr-s26',
+      blockType: 'csFigure',
+      layout: 'sequence',
+      treatment: 'screen',
+      items: liveItems(ARR_LIVE_PHONE, 'arr-f26'),
+      annotations: [],
+      caption: live.phoneCaption,
+    },
+    {
+      id: 'arr-s21',
+      blockType: 'csFigure',
+      layout: 'gallery',
+      treatment: 'plain',
+      items: gallery(ARR_TURNAROUNDS, 'arr-f21'),
+      annotations: [],
+      caption: img.turnaroundsCaption,
+    },
+    {
+      id: 'arr-s22',
+      blockType: 'csFigure',
+      layout: 'gallery',
+      treatment: 'plain',
+      items: gallery(ARR_SITE_IMAGES, 'arr-f22'),
+      annotations: [],
+      caption: img.siteCaption,
+    },
+    {
+      id: 'arr-s23',
+      blockType: 'csFigure',
+      layout: 'gallery',
+      treatment: 'plain',
+      items: gallery(ARR_STUDIES, 'arr-f23'),
+      annotations: [],
+      caption: img.studiesCaption,
+    },
+    {
       id: 'arr-s10',
       blockType: 'csDecisions',
       heading: c.decisions.heading,
@@ -1766,12 +1890,8 @@ export function arrSections(locale: Locale, media: ArrMediaIds): Sections {
         why: decision.why,
         alternatives: decision.alternatives,
         tradeoff: decision.tradeoff,
-        ...(index === 1
-          ? {
-              evidence: c.decisions.hoursEvidence,
-              ...(media.hoursEn ? { media: media.hoursEn } : {}),
-            }
-          : {}),
+        evidence: index === 1 ? c.decisions.hoursEvidence : '',
+        ...(index === 1 && media.hoursEn ? { media: media.hoursEn } : {}),
       })),
     },
     {
@@ -1780,6 +1900,7 @@ export function arrSections(locale: Locale, media: ArrMediaIds): Sections {
       label: 'solution',
       heading: c.solution.heading,
       body: prose(dir, paragraph(c.solution.body, dir), bullets(c.solution.bullets, dir)),
+      insight: '',
     },
     {
       id: 'arr-s12',
@@ -1790,7 +1911,17 @@ export function arrSections(locale: Locale, media: ArrMediaIds): Sections {
         ...item('calendarFa', 'arr-f12-1', c.solution.figureItems[0]),
         ...item('postsFa', 'arr-f12-2', c.solution.figureItems[1]),
       ],
+      annotations: [],
       caption: c.solution.figureCaption,
+    },
+    {
+      id: 'arr-s27',
+      blockType: 'csFigure',
+      layout: 'split',
+      treatment: 'plain',
+      items: liveItems(ARR_LIVE_LOWER, 'arr-f27'),
+      annotations: [],
+      caption: live.lowerCaption,
     },
     {
       id: 'arr-s13',
