@@ -153,12 +153,17 @@ export const buildToolsStackBlock = (copy: HomeCopy): NonNullable<PageLayout>[nu
     {
       key: 'buildDelivery',
       title: copy.tools.categories.buildDelivery,
+      // Editors, then the app stack, then the 3D and motion libraries, then shipping. At `lg`
+      // nine lands as rows of five and four, and the break falls between Next.js and Three.js.
       tools: [
         { toolKey: 'cursor' },
         { toolKey: 'antigravity' },
         { toolKey: 'vscode' },
         { toolKey: 'payloadCms' },
         { toolKey: 'nextjs' },
+        { toolKey: 'threejs' },
+        { toolKey: 'motion' },
+        { toolKey: 'gsap' },
         { toolKey: 'docker' },
       ],
     },

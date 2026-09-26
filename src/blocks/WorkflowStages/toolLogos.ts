@@ -195,6 +195,28 @@ export const TOOL_LOGOS = {
     src: '/tool-logos/nextjs.svg',
     url: 'https://nextjs.org/',
   },
+  // The 3D and motion libraries the interfaces are built with. Three.js is Simple Icons' filled
+  // redraw of the project's own `files/icon.svg`: the original is a 4-unit stroke that thins to
+  // under a pixel at 40px. Flat black, so the silhouette treatment.
+  threejs: {
+    name: 'Three.js',
+    onDark: 'whiten',
+    src: '/tool-logos/threejs.svg',
+    url: 'https://threejs.org/',
+  },
+  // motion.dev's own favicon: a near-black tile with a white glyph, shipped the same in both
+  // themes. Left as is on dark paper, like the Adobe tiles, because inverting it would put a
+  // glaring white tile in the row.
+  motion: { name: 'Motion', onDark: 'none', src: '/tool-logos/motion.svg', url: 'https://motion.dev/' },
+  // Both files come straight from the official brand kit (gsap.com/brand): the wordmark in
+  // GSAP's ink #0E100F and its cream #FFFCE1 light-on-dark version.
+  gsap: {
+    name: 'GSAP',
+    onDark: 'asset',
+    src: '/tool-logos/gsap.svg',
+    srcDark: '/tool-logos/gsap-dark.svg',
+    url: 'https://gsap.com/',
+  },
   docker: { name: 'Docker', onDark: 'none', src: '/tool-logos/docker.svg', url: 'https://www.docker.com/' },
 
   // 04 · Data & Product Intelligence
