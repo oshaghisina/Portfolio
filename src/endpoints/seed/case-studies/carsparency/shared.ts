@@ -80,7 +80,8 @@ export type CspPlanEntry<K extends string> =
   | {
       type: 'figure'
       key: string
-      layout: 'full' | 'split' | 'sequence' | 'annotated' | 'compare'
+      /** `pages` takes one desktop capture per item, labelled by its caption — no phone or full-page pair. */
+      layout: 'full' | 'split' | 'sequence' | 'annotated' | 'compare' | 'pages'
       treatment: 'screen' | 'plain' | 'diagram'
       media: K[]
     }

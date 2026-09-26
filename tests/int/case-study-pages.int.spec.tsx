@@ -156,9 +156,14 @@ describe('FigureBlock pages (DS-25)', () => {
   })
 
   it('shows one plain index when no page has a phone capture', () => {
-    renderIndex(pages(4, false))
+    const { container } = renderIndex(pages(4, false))
     expect(screen.queryByRole('tablist')).toBeNull()
     expect(screen.queryByRole('navigation')).toBeNull()
     expect(tiles()).toHaveLength(4)
+
+    // With nothing to switch to, the viewer names the page alone, not its width.
+    fireEvent.click(tiles()[0]!)
+    const title = container.querySelector('dialog p')!
+    expect(title.textContent).toBe('Page 1')
   })
 })

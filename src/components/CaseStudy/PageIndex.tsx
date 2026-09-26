@@ -321,7 +321,9 @@ export const PageIndex: React.FC<PageIndexProps> = ({ copy, locale, pages }) => 
               </span>
               <p className="min-w-0 flex-1 truncate text-small text-foreground" id={titleId}>
                 {entry.label}
-                <span className="text-ink-3"> · {copy[view]}</span>
+                {/* Only worth saying when there is another width to switch to — a deck of slides
+                    or a set of boards has none. */}
+                {views.length > 1 ? <span className="text-ink-3"> · {copy[view]}</span> : null}
               </p>
               <button
                 aria-label={copy.previous}
