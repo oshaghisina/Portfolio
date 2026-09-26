@@ -19,25 +19,8 @@ import type { Locale } from '@/utilities/locale'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 
-export async function generateStaticParams() {
-  const payload = await getPayload({ config: configPromise })
-  const posts = await payload.find({
-    collection: 'posts',
-    draft: false,
-    limit: 1000,
-    overrideAccess: false,
-    pagination: false,
-    select: {
-      slug: true,
-    },
-  })
-
-  const params = posts.docs.map(({ slug }) => {
-    return { slug }
-  })
-
-  return params
-}
+// No generateStaticParams: getLocale() reads request headers, so the route renders per request
+// anyway, and listing slugs at build time only made `next build` depend on a database.
 
 type Args = {
   params: Promise<{

@@ -32,20 +32,8 @@ import { uiCopy } from '@/utilities/uiCopy'
 
 import PageClient from './page.client'
 
-export async function generateStaticParams() {
-  const payload = await getPayload({ config: configPromise })
-  const projects = await payload.find({
-    collection: 'projects',
-    draft: false,
-    limit: 1000,
-    overrideAccess: false,
-    pagination: false,
-    select: { slug: true },
-    where: { caseStudyStatus: { equals: 'published' } },
-  })
-
-  return projects.docs.map(({ slug }) => ({ slug }))
-}
+// No generateStaticParams: getLocale() reads request headers, so the route renders per request
+// anyway, and listing slugs at build time only made `next build` depend on a database.
 
 type Args = {
   params: Promise<{ slug?: string }>
