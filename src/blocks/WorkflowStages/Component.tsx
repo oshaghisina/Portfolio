@@ -29,20 +29,37 @@ const lgToolCols = (count: number) =>
 const fillSpan = (count: number, cols: number) => (cols - (count % cols)) % cols
 
 /**
+ * The rules one cell owns: inline-start unless it opens a row, top unless it sits in the first
+ * row. Columns differ per breakpoint, so each side is decided three times, range-bounded for the
+ * reason given on the filler (see the block comment).
+ */
+const cellRules = (index: number, cols: number) => [
+  index % 3 && 'max-sm:border-s',
+  index % 4 && 'sm:max-lg:border-s',
+  index % cols && 'lg:border-s',
+  index >= 3 && 'max-sm:border-t',
+  index >= 4 && 'sm:max-lg:border-t',
+  index >= cols && 'lg:border-t',
+]
+
+/**
  * TOOLS / STACK — the working stack as one section-owned paper surface: six categories, each a
  * tiny index code, a label and a single continuous ruled matrix of real brand marks.
  *
- * Ruled-matrix idiom (see ExperienceGrid): the grid parent paints every separator via `gap-px`
- * over a `bg-line` surface and every cell is `bg-paper`. Cells never carry a border, background,
- * radius or shadow of their own — there are no cards here and no gaps between cells.
+ * Every hairline is a real border, never the `gap-px`-over-`bg-line` idiom ExperienceGrid uses.
+ * Tool columns come out fractional (175.36px at 1440) and WebKit snaps each opaque cell to whole
+ * device pixels, so under page zoom a 1px gap between two cells closes and dividers vanish at
+ * random. A border width is snapped the other way: never below one device pixel. The cells stay
+ * chromeless otherwise — no background, radius or shadow, and no space between them.
  *
  * Separator ownership is split so a hairline can only ever be painted once:
  *   · the section wrapper owns the outer top and bottom rules, and nothing else;
  *   · each category but the first owns the single rule above it;
- *   · the matrices carry no `border-y` at all, only internal `gap-px` hairlines.
- * That last point is what lets the stacked grids read as one surface: a `gap-px` grid of
- * `bg-paper` cells has invisible outer edges, so a category's bottom edge can never double up
- * with the next one's top edge.
+ *   · the label owns the rule between it and its matrix;
+ *   · each cell owns its inline-start and top rule, skipped where it opens a row or sits in the
+ *     first row (see `cellRules`) — those edges follow from the index alone.
+ * No cell draws a rule on the matrix's outer edge, which is what lets the stacked grids read as
+ * one surface: a category's bottom edge can never double up with the next one's top edge.
  *
  * At `lg` the category label is a cell in a leading gutter column rather than a band above the
  * matrix, so a category costs one grid row instead of two — that alone is most of the section's
@@ -59,8 +76,9 @@ const fillSpan = (count: number, cols: number) => (cols - (count % cols)) % cols
  * A short last row is absorbed by the grid's own `::after`, never by stretching a cell, so every
  * mark in a category keeps the same width and the markup keeps exactly one element per tool. A
  * pseudo-element of a grid container is itself a grid item, so this costs no DOM and raises no
- * question about list semantics. It is `bg-paper` for the reason every cell is: `--line` is
- * 16%-alpha ink, so an *unfilled* grid area paints as a solid tinted block. `span 0` is invalid
+ * question about list semantics. It carries the rules a cell would — the one after the last mark
+ * and the one above the empty span, unless that span is the first row — so the row still reads
+ * closed. `span 0` is invalid
  * CSS — with a custom property it falls back to `auto`, which claims a whole cell and opens
  * exactly the band the filler exists to close — so a breakpoint whose rows come out full hides
  * the filler instead. Those hide classes are range-bounded (`max-sm:`, `sm:max-lg:`, `lg:`)
@@ -105,14 +123,14 @@ export const WorkflowStagesBlock: React.FC<WorkflowStagesProps> = ({
             <div
               data-reveal-group=""
               className={cn(
-                'grid gap-px bg-line lg:grid-cols-[11rem_minmax(0,1fr)]',
+                'grid lg:grid-cols-[11rem_minmax(0,1fr)]',
                 index > 0 && 'border-t border-line',
               )}
               key={category.id ?? category.key}
             >
               {/* Top-aligned rather than centred so the label's baseline sits with the first row
                   of marks, the way a row header does on a drawing sheet. */}
-              <div className="flex items-baseline gap-3 bg-paper px-3 py-3 lg:px-4 lg:py-5">
+              <div className="flex items-baseline gap-3 border-line px-3 py-3 max-lg:border-b lg:border-e lg:px-4 lg:py-5">
                 <span className="index-code" dir="ltr">
                   {String(index + 1).padStart(2, '0')}
                 </span>
@@ -122,16 +140,27 @@ export const WorkflowStagesBlock: React.FC<WorkflowStagesProps> = ({
               <ul
                 data-reveal-group=""
                 className={cn(
-                  'grid grid-cols-3 gap-px bg-line sm:grid-cols-4 lg:grid-cols-[repeat(var(--tool-cols),minmax(0,1fr))]',
+                  'grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-[repeat(var(--tool-cols),minmax(0,1fr))]',
                   (fillBase || fillSm || fillLg) && [
-                    'after:bg-paper',
+                    'after:border-s after:border-line',
                     fillBase
-                      ? 'after:[grid-column:span_var(--fill-base)]'
+                      ? [
+                          'after:[grid-column:span_var(--fill-base)]',
+                          count > 3 && 'max-sm:after:border-t',
+                        ]
                       : 'max-sm:after:hidden',
                     fillSm
-                      ? 'sm:after:[grid-column:span_var(--fill-sm)]'
+                      ? [
+                          'sm:after:[grid-column:span_var(--fill-sm)]',
+                          count > 4 && 'sm:max-lg:after:border-t',
+                        ]
                       : 'sm:max-lg:after:hidden',
-                    fillLg ? 'lg:after:[grid-column:span_var(--fill-lg)]' : 'lg:after:hidden',
+                    fillLg
+                      ? [
+                          'lg:after:[grid-column:span_var(--fill-lg)]',
+                          count > cols && 'lg:after:border-t',
+                        ]
+                      : 'lg:after:hidden',
                   ],
                 )}
                 style={
@@ -143,10 +172,13 @@ export const WorkflowStagesBlock: React.FC<WorkflowStagesProps> = ({
                   } as React.CSSProperties
                 }
               >
-                {tools.map((tool) => {
+                {tools.map((tool, toolIndex) => {
                   const entry = TOOL_LOGOS[tool.toolKey]
                   return (
-                    <li className="min-w-0 bg-paper" key={tool.id ?? tool.toolKey}>
+                    <li
+                      className={cn('min-w-0 border-line', cellRules(toolIndex, cols))}
+                      key={tool.id ?? tool.toolKey}
+                    >
                       {/* Full-cell external link: one hit target for logo + name. Grid cell stays
                           paper with no card chrome; focus inset matches WorkMosaic tiles. */}
                       <a
