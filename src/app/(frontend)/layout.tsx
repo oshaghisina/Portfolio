@@ -8,6 +8,7 @@ import localFont from 'next/font/local'
 import React from 'react'
 
 import { AdminBar } from '@/components/AdminBar'
+import { SignatureIntro, SignatureIntroScript } from '@/components/Signature/SignatureIntro'
 import { Footer } from '@/Footer/Component'
 import { Header } from '@/Header/Component'
 import { Providers } from '@/providers'
@@ -77,10 +78,13 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     >
       <head>
         <InitTheme />
+        {/* First-load intro; editors previewing a draft never get it. */}
+        {!isEnabled && <SignatureIntroScript />}
         <link href="/favicon.ico" rel="icon" sizes="32x32" />
         <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
       </head>
       <body>
+        {!isEnabled && <SignatureIntro />}
         <Providers>
           <AdminBar
             adminBarProps={{

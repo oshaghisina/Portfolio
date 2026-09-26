@@ -52,7 +52,8 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data, locale, readin
           className="shrink-0 text-foreground transition-opacity duration-(--duration-fast) ease-standard hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
           href={localePath(locale, '/')}
         >
-          <Signature className="h-9 xl:h-10" />
+          {/* The first-load intro docks its written name onto this mark. */}
+          <Signature className="h-9 xl:h-10" data-signature-anchor="" />
           <span className="sr-only">Sina Oshaghi</span>
         </Link>
         <HeaderNav data={data} locale={locale} logicalPath={logicalPath} readiness={readiness} />

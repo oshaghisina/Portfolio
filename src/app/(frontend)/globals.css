@@ -9,6 +9,7 @@
 @import '../../blocks/IndustryGrid/grid.css';
 @import '../../components/IntersectionDiagram/diagram.css';
 @import '../../providers/ScrollReveal/reveal.css';
+@import '../../components/Signature/signature.css';
 
 @plugin "@tailwindcss/typography";
 

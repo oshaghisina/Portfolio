@@ -1,0 +1,191 @@
+/* Sina's signature being written (SignatureDraw): the first-load intro and the loading mark.
+
+   One registered number, --signature-pen, runs from 0 to just past 1 across the write. Every
+   outline maps it onto its own window (--signature-from … --signature-to, set inline from
+   outline.ts) and draws that share of its dash, so the whole name keeps one clock: both sides of a
+   stroke leave the pen's start tip together, and a counter is drawn as the pen passes over it.
+   Each stroke's ink fades in as the pen leaves it (--signature-ink-at), then the outline fades, so
+   the finished mark matches the header's. --signature-erase fades the ink again, in writing order,
+   for the loop. Registered so they interpolate; without @property the name appears in one step. */
+@property --signature-pen {
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 0;
+}
+
+@property --signature-erase {
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 0;
+}
+
+.signature-draw {
+  /* Rendered width in px, unitless so the outline can divide by it: the traced line is sized
+     against it (1462 = viewBox width) to stay about 1.25 screen px at any size.
+     vector-effect: non-scaling-stroke would do that too, but Chromium then mis-scales
+     pathLength-normalised dashes. */
+  --signature-size: 240;
+  display: block;
+  width: calc(var(--signature-size) * 1px);
+  height: auto;
+  overflow: visible;
+}
+
+@media (min-width: 64rem) {
+  .signature-draw {
+    --signature-size: 280;
+  }
+}
+
+.signature-ink {
+  fill: currentColor;
+  opacity: calc(
+    clamp(0, (var(--signature-pen) - var(--signature-ink-at) + 0.02) / 0.12, 1) -
+      clamp(0, (var(--signature-erase) - var(--signature-ink-at) + 0.02) / 0.12, 1)
+  );
+}
+
+.signature-line {
+  /* How much of this line the pen has drawn, 0–1. */
+  --signature-drawn: clamp(
+    0,
+    (var(--signature-pen) - var(--signature-from)) / (var(--signature-to) - var(--signature-from)),
+    1
+  );
+  fill: none;
+  stroke: currentColor;
+  stroke-width: calc(1.25px * 1462 / var(--signature-size));
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  /* With pathLength="1": one dash as long as the line, then a longer gap, so a hidden line never
+     leaves a round-capped dot at either end. */
+  stroke-dasharray: 1px 2px;
+  stroke-dashoffset: calc((1 - var(--signature-drawn)) * 1px);
+  opacity: calc(1 - clamp(0, (var(--signature-pen) - 1) / 0.12, 1));
+}
+
+@keyframes signature-write {
+  from {
+    --signature-pen: 0;
+  }
+  to {
+    --signature-pen: 1.2;
+  }
+}
+
+/* Write, hold the finished mark, let the ink go in writing order, again. */
+@keyframes signature-loop {
+  0% {
+    --signature-pen: 0;
+    --signature-erase: 0;
+  }
+  46%,
+  62% {
+    --signature-pen: 1.15;
+    --signature-erase: 0;
+  }
+  96%,
+  100% {
+    --signature-pen: 1.15;
+    --signature-erase: 1.15;
+  }
+}
+
+@keyframes signature-breathe {
+  from {
+    opacity: 0.35;
+  }
+  to {
+    opacity: 0.8;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* From the moment the page is visible: <html> stays transparent until InitTheme sets data-theme
+     (globals.css), and a write started before that would be half over when the page appears. */
+  :root[data-theme] .signature-draw[data-mode='write'] {
+    animation: signature-write var(--signature-write-duration, 1.7s) linear both;
+  }
+
+  /* The delay keeps a fast navigation from flashing the first stroke. */
+  .signature-draw[data-mode='loop'] {
+    animation: signature-loop 2.8s linear 120ms infinite both;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* No writing: the finished mark, breathing while a page loads. */
+  .signature-draw {
+    --signature-pen: 1.2;
+  }
+
+  .signature-draw[data-mode='loop'] {
+    animation: signature-breathe 1.6s ease-in-out infinite alternate;
+  }
+}
+
+/* First-load intro (SignatureIntro): hidden unless the <head> script marked <html> for it. */
+.signature-intro {
+  display: none;
+}
+
+:root[data-signature-intro] .signature-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  touch-action: none;
+}
+
+/* Leaving: clicks and scrolls already reach the page while the curtain goes. */
+:root[data-signature-intro='dock'] .signature-intro,
+:root[data-signature-intro='skip'] .signature-intro {
+  pointer-events: none;
+}
+
+.signature-intro-curtain {
+  position: absolute;
+  inset: 0;
+  background-color: var(--paper);
+}
+
+.signature-intro-mark {
+  position: relative;
+  color: var(--ink);
+  /* The dock scales it onto the header mark's top-left corner. */
+  transform-origin: 0 0;
+}
+
+.signature-intro .signature-draw {
+  --signature-size: 272;
+}
+
+@media (min-width: 40rem) {
+  .signature-intro .signature-draw {
+    --signature-size: 416;
+  }
+}
+
+@media (min-width: 64rem) {
+  .signature-intro .signature-draw {
+    --signature-size: 544;
+  }
+}
+
+/* The header's mark waits under the curtain for the written one to land on it. */
+:root[data-signature-intro='play'] [data-signature-anchor],
+:root[data-signature-intro='dock'] [data-signature-anchor] {
+  opacity: 0;
+}
+
+/* The page opener writes its headline after the name, not unseen behind the curtain. */
+:root[data-signature-intro='play'] [data-hero-entrance] * {
+  animation-play-state: paused;
+}
+
+@media print {
+  :root[data-signature-intro] .signature-intro {
+    display: none;
+  }
+}
