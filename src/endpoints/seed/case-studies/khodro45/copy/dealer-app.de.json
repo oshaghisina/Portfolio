@@ -1,0 +1,336 @@
+{
+  "statement": "Eine Auktions-App für Händler, die Referenzpreis, Inspektionsbericht und sechsstufige Abwicklung bei jedem Schritt eines Gebrauchtwagenkaufs im Blick hält.",
+  "industry": "Automobil · B2B-Marktplatz",
+  "team": "Produktdesigner, in Zusammenarbeit mit Kolleginnen und Kollegen aus Produkt und Entwicklung",
+  "heroCaption": "Die Fahrzeugseite mit ihrem Preisblock, der Gebotsdialog und die von eins bis sechs nummerierte Auftragsliste: der Weg des Händlers von einem Preis bis zur Kennzeichenfreigabe.",
+  "snapshot": {
+    "problem": "Händler mussten Gebrauchtwagen, die sie nie gesehen hatten, bewerten, prüfen und bezahlen, und das in einem Markt, der von undurchsichtigen Preisen und persönlichem Vertrauen lebt.",
+    "role": "Produktdesigner für die gesamte Händler-App: Marktstruktur, Bieten, Zustände für Verhandlung und Abwicklung, der Flow zum Einstellen, Mitgliedschaften sowie ein helles und ein dunkles Theme auf Persisch.",
+    "result": "Version 3.1 der Händler-App, gezeichnet als 241 Smartphone-Screens in 43 Abschnitten, dazu ein Prototyp mit 24 Screens für Transaktionszustände."
+  },
+  "alt": {
+    "liveList": "Khodro45 Händler-App, Liste der Live-Auktion: Jede Fahrzeugkarte zeigt einen Countdown, den Status des eigenen Gebots und den fairen Marktpreis",
+    "marketList": "Khodro45 Händler-App, Liste des Showroom-Markts: Jede Karte zeigt das letzte Angebot, die Preisvorstellung des Verkäufers und wie nah das Geschäft ist",
+    "bazaarList": "Khodro45 Händler-App, Basar-Liste: Jede Karte zeigt die Restzeit, das Höchstgebot und den fairen Marktpreis",
+    "detailTop": "Khodro45 Fahrzeugseite: Fotos, der Preisblock mit Höchstgebot und fairem Marktpreis sowie die Tabs des Inspektionsberichts",
+    "reportFacts": "Khodro45 Inspektionsbericht, Fahrzeugdaten: Annahmenummer, Modellvariante, Kilometerstand, Getriebe, Ausstattung, Versicherung und technische Prüfbescheinigung",
+    "reportBody": "Khodro45 Inspektionsbericht, Karosserie und Reifen: eine Schadenskarte des Autos und Befunde am Fahrgestell, jeweils mit Einstufung und Foto",
+    "priceLive": "Khodro45 Preisblock in der Live-Auktion: Höchstgebot, fairer Marktpreis und Servicegebühr",
+    "priceMarket": "Khodro45 Preisblock im Showroom-Markt: letztes Angebot, Preisvorstellung des Verkäufers und Servicegebühr",
+    "listingStatus": "Khodro45 Inseratsstatus für ein eigenes Auto des Händlers: Aufrufe und Nachrichten insgesamt sowie ein Schalter, Aufrufe und Nachrichten für jede Plattform, auf der es inseriert ist",
+    "myCars": "Khodro45 Meine Autos: ein Preisdiagramm, darunter die Autos des Händlers mit Status wie „wartet auf Bestätigung“, „abgelehnt“ und „in der Auktion“",
+    "bidSheet": "Khodro45 Gebotsdialog über der Fahrzeugseite: aktueller Preis, fairer Marktpreis, ein Stepper für das Gebot und die Restzeit",
+    "autoBid": "Khodro45 Dialog für das automatische Gebot: aktueller Preis, Preisschritt und die Schrittweite des automatischen Gebots",
+    "guarantee": "Khodro45 Hinweis über der Fahrzeugseite: Khodro45 garantiert die Karosserieprüfung",
+    "addedFees": "Khodro45 Kostenübersicht: kommunale Gebühren, Transport, Eigentumsübertragung und Kennzeichenfreigabe, mit Gesamtsumme",
+    "ordersAll1": "Khodro45 Auftragsliste, erste Karten: bereit zur Verhandlung mit Countdown, in Verhandlung und in Nachverhandlung",
+    "ordersAll2": "Khodro45 Auftragsliste, weitere Karten: Angebot vom Verkäufer angenommen sowie ein Auftrag, der ein höheres Angebot braucht",
+    "ordersAll3": "Khodro45 Auftragsliste, letzte Karten: neues Angebot nötig, Kauf abgeschlossen und mangels Einigung storniert",
+    "notSettled1": "Khodro45 nicht abgewickelte Aufträge, Stufen eins bis drei: Unterlagen des Eigentümers, Anzahlung und Schlussabrechnung, jeweils mit ihrer Aktion",
+    "notSettled2": "Khodro45 nicht abgewickelte Aufträge, Stufen vier bis sechs: Bestätigung, Übergabe mit Vollmacht und der Beleg der Kennzeichenfreigabe",
+    "orderDetails": "Khodro45 Auftragsseite in Stufe eins von sechs: vereinbarter Preis, Anzahlung, die nächste Stufe und eine Sicherheit für die Kennzeichenfreigabe, die Khodro45 zurückzahlt",
+    "choosePrice": "Khodro45 Verhandlungsdialog: den Preis des Verkäufers annehmen oder beim eigenen bleiben, mit der Warnung, dass die Auktion für andere Bieter wieder geöffnet wird",
+    "priceLadder": "Khodro45 Dialog zum Erhöhen des Angebots: der Preis des Verkäufers, ein Stepper für ein neues Angebot und ein Kästchen, das vor dem Absenden anzukreuzen ist",
+    "playground": "Khodro45 Einstiegsboard des Prototyps: „Welcome to Design Play Ground“, die Wahl zwischen dunkel und hell, dann „Select Your Path“",
+    "addCar": "Khodro45 Formular zum Hinzufügen eines Autos im dunklen Theme, beim Schritt Marke, mit beliebten Marken und einer durchsuchbaren Liste",
+    "questions": "Khodro45 Fragen beim Hinzufügen eines Autos: Unfallhistorie, Karosserieschäden, mechanische Probleme und Zustand der Reifen",
+    "photoGuide": "Khodro45 Fotoanleitung: aus etwa zwei Metern Abstand fotografieren, damit das ganze Auto im Bild ist",
+    "bodyParts": "Khodro45 Selbstinspektion: eine Draufsicht des Autos und eine Liste der Karosserieteile, die sich als beschädigt markieren lassen",
+    "summary": "Khodro45 Inseratsübersicht, wartet auf Veröffentlichung: das Auto, sein Kennzeichen, die gegebenen Antworten und wie vollständig jeder Teil ist",
+    "identity": "Khodro45 Registrierungsdialog, der nach der Art der Tätigkeit fragt: Inhaber eines Autohauses, Vermittler oder Investor im Automobilbereich",
+    "tiers": "Khodro45 kostenpflichtige Mitgliedschaft: fünf Jahresstufen, jede mit einer Obergrenze für das gesamte Gebotsvolumen",
+    "loyalty": "Khodro45 Kundenclub: die aktuelle Stufe, der Fortschritt zur nächsten und die Prämien jeder Stufe",
+    "score": "Khodro45 Händler-Score: eine Bewertung auf einer Skala bis fünf, mit einem Balken für jede von fünf Leistungskennzahlen",
+    "superLight": "Khodro45 Service-Hub im hellen Theme: Kaufen und Verkaufen, dann Services rund um den Besitz wie Bußgelder, Steuer und Versicherung",
+    "superDark": "Khodro45 Service-Hub im dunklen Theme, mit denselben Services wie die helle Version"
+  },
+  "chapters": {
+    "context": {
+      "heading": "Die Händlerseite eines Gebrauchtwagenmarktplatzes",
+      "body": [
+        "Khodro45 ist ein iranischer Onlinemarktplatz für Gebrauchtwagen. Verkäufer stellen dort Autos ein; diese App ist die andere Seite, auf der der Handel sie kauft. Auf dem Splash-Screen steht „Dealer App V.3.1“, die Datei ist also eine Version eines laufenden Produkts und kein erstes Konzept.",
+        "Bei der Registrierung wählt ein neuer Nutzer eine von drei Tätigkeiten: Inhaber eines Autohauses, Vermittler oder Investor im Automobilbereich. Hinter dem Einstieg liegt ein Service-Hub, der über Kaufen und Verkaufen hinaus bis in den Besitz eines Autos reicht: Verkehrsbußgelder, Übertragungssteuer, Versicherung, Ersatzteile, Wartung, Inspektion und tagesaktuelle Preise."
+      ]
+    },
+    "problem": {
+      "heading": "Drei Fragen, die ein Händler nicht beantworten konnte",
+      "body": [
+        "Ein Händler, der ein Auto kauft, das er nicht gesehen hat, braucht drei Antworten: was es wert ist, in welchem Zustand es wirklich ist und wer das Geld hält, bis das Eigentum übergeht. Eine Kleinanzeige beantwortet keine davon.",
+        "Die Datei beantwortet jede mit einem Mechanismus: einem Referenzpreis neben jedem Angebot, einem Inspektionsbericht innerhalb der Fahrzeugseite und einer Abwicklung, die sechs nummerierte Stufen durchläuft, mit einer Sicherheit, die Khodro45 einbehält, bis die letzte erledigt ist."
+      ]
+    },
+    "markets": {
+      "heading": "Drei Märkte, eine Fahrzeugseite",
+      "customLabel": "Struktur",
+      "body": [
+        "Die App hat drei Marktlisten, gezeichnet als getrennte Abschnitte statt als eine Liste mit Filter: Live, die Live-Auktion; Markt, in den Tabs der App Showroom genannt; und Basar. Jede hat ihre eigene Version der Fahrzeugseite.",
+        "Sie unterscheiden sich darin, was neben dem Preis steht. Live-Karten zeigen das eigene Gebot des Händlers, ob es führt, zurückliegt oder verlängert wurde, und den fairen Marktpreis. Markt-Karten zeigen das letzte Angebot gegenüber der Preisvorstellung des Verkäufers und ein Label dafür, wie nah das Geschäft ist. Basar-Karten zeigen die Restzeit, das Höchstgebot und den fairen Marktpreis.",
+        "Die Fahrzeugseite behält diese Aufteilung bei. Live und Basar stellen das Höchstgebot dem fairen Marktpreis gegenüber; Markt stellt das letzte Angebot der Preisvorstellung des Verkäufers gegenüber."
+      ]
+    },
+    "solution": {
+      "heading": "Preis und Zustand im Moment der Entscheidung",
+      "body": [
+        "Die Fahrzeugseite ist ein einziger langer Scroll: Fotos, der Preisblock, dann der Inspektionsbericht. Der Bericht beginnt mit den Fahrzeugdaten (Annahmenummer, Modellvariante, Kilometerstand, Getriebe, Ausstattung, verbleibende Versicherung und eine technische Prüfbescheinigung) und bewertet jedes System auf einer Skala bis fünf.",
+        "Karosserie und Reifen bekommen eine Schadenskarte, die Teile farblich kennzeichnet: ersetzt oder komplett neu lackiert, verbeult oder zerkratzt. Befunde an Fahrgestell und Säulen stehen Teil für Teil in einer Liste, jeweils mit Einstufung und, wo ein Teil beanstandet wurde, mit Foto.",
+        "Geboten wird in einem Dialog über der Fahrzeugseite. Neben einem manuellen Gebot kann ein Händler ein automatisches Gebot mit eigener Schrittweite setzen. Eine Kostenübersicht listet auf, was im Preis nicht enthalten ist, und ein Hinweis stellt klar, dass Khodro45 die Karosserieprüfung garantiert."
+      ]
+    },
+    "settlement": {
+      "heading": "Sechs Stufen, jede mit eigener Uhr",
+      "customLabel": "Abwicklung",
+      "body": [
+        "Mit dem Zuschlag beginnt eine Abwicklung, die die Auftragsliste von eins bis sechs nummeriert: Die Unterlagen des Eigentümers werden geprüft, der Händler leistet eine Anzahlung, dann folgt die Schlussabrechnung, die Abrechnung wird bestätigt, das Auto wird mit einer Vollmacht übergeben, und das Kennzeichen wird freigegeben.",
+        "Jede Karte nennt ihre Stufe und die nächste, und die meisten tragen einen Countdown. Unterwegs wird eine Sicherheit für die Kennzeichenfreigabe einbehalten; laut Auftragsseite zahlt Khodro45 sie zurück, sobald die Freigabe erfasst ist.",
+        "Vor der Abwicklung steht die Verhandlung. Die Auftragsliste zeigt jeden Zustand, in dem sich ein Geschäft befinden kann: bereit zur Verhandlung, in Verhandlung, in Nachverhandlung, angenommen, höheres Angebot nötig, neues Angebot nötig, wartet auf Bestätigung, abgeschlossen und mangels Einigung storniert. Ein Prototyp mit 24 Screens führt einen Auftrag durch sie hindurch."
+      ]
+    },
+    "selling": {
+      "heading": "Der Händler als Verkäufer",
+      "customLabel": "Verkaufen",
+      "body": [
+        "Händler kaufen nicht nur, sie verkaufen auch. Ein Auto wird über ein Formular in Schritten hinzugefügt (Marke, Modell, Baujahr, Modellvariante, Kilometerstand, Farbe, Stadt, FIN und Kennzeichen), danach folgen Fragen zu Besitz und Zustand: ob es aus erster Hand ist, ob der Eigentumsnachweis auf den Händler lautet, ein Zweitschlüssel, Unfälle, Karosserieschäden, mechanische Probleme und Reifen.",
+        "Das Formular geht in eine Selbstinspektion über. Eine Fotoanleitung behandelt Licht, ein sauberes Auto, den Abstand und das Handy im Querformat. Die Upload-Screens verlangen jede Perspektive, ein 15-sekündiges Motorvideo mit Ton, Dokumente und Mängel, wobei beschädigte Teile auf einer Karte des Autos markiert werden.",
+        "Danach erscheint das Auto in der eigenen Liste des Händlers, wo sich Inserat und Auktion jeweils ein- und ausschalten lassen. Seine Seite zeigt Aufrufe und Nachrichten insgesamt und für jede Plattform, auf der es inseriert ist: Khodro45, Divar, Bama und Sheypoor."
+      ]
+    },
+    "business": {
+      "heading": "Für Zugang bezahlen oder über Volumen verdienen",
+      "customLabel": "Geschäftsmodell",
+      "body": [
+        "Die Datei enthält zwei Händlermitgliedschaften. Bei der einen muss ein Händler eines von fünf Jahresabonnements kaufen, bevor er die App nutzen kann, und jede Stufe begrenzt die Gesamtsumme seiner Gebote, von 500 Millionen Toman bis unbegrenzt.",
+        "Bei der anderen, einem Kundenclub, steigen Händler nach ihrem Handelsvolumen über zwölf Monate in höhere Stufen auf und erhalten Prämien: Guthaben bis zu 500 Millionen Toman, kostenlose Zustellung der Vollmacht und drei kostenlose Fahrzeugtransporte. Die Datei sagt nicht, ob das eine das andere ersetzt hat.",
+        "Neben beiden steht ein Händler-Score: eine Bewertung auf einer Skala bis fünf, monatlich aktualisiert aus Abwicklungstempo, Tempo der Kennzeichenfreigabe, Rücktritten, Stornierungen und der Zahl der Geschäfte in den letzten 100 Tagen."
+      ]
+    },
+    "method": {
+      "heading": "Als Flows getestet, in zwei Themes",
+      "customLabel": "Methode",
+      "body": [
+        "Fast jeder Abschnitt ist zweimal gezeichnet, einmal dunkel und einmal hell: 110 dunkle und 127 helle Screens über alle Abschnitte. Ein Einstiegsboard für den Prototyp mit dem Titel „Welcome to Design Play Ground“ lässt Testende zwischen dunkel und hell wählen und dann einen Weg durch die App.",
+        "Der Transaktionsstatus hat einen eigenen Prototyp. Seine 24 Screens führen einen Auftrag durch die Verhandlung, das Gegenangebot des Verkäufers und die Anzahlung, wo Countdowns und Strafen einen unklaren Zustand teuer machen."
+      ]
+    }
+  },
+  "figures": {
+    "entry": {
+      "caption": "Wen die App bedient und wo sie beginnt: die drei Tätigkeiten, die bei der Registrierung zur Wahl stehen, und der Service-Hub in beiden Themes.",
+      "items": [
+        "Registrierung: Autohausinhaber, Vermittler oder Investor",
+        "Service-Hub, hell",
+        "Service-Hub, dunkel"
+      ]
+    },
+    "markets": {
+      "caption": "Die drei Marktlisten. Die Tabs sind die der App: Live-Auktion, Showroom und Basar.",
+      "items": [
+        "Live: Status des eigenen Gebots und fairer Marktpreis",
+        "Markt: letztes Angebot, Preisvorstellung des Verkäufers und Abstand zum Abschluss",
+        "Basar: Restzeit, Höchstgebot und fairer Marktpreis"
+      ]
+    },
+    "price": {
+      "caption": "Der Preisblock desselben Autos in zwei Modi. Live stellt das Höchstgebot dem fairen Marktpreis gegenüber, Markt das letzte Angebot der Preisvorstellung des Verkäufers. Unter beiden steht die Servicegebühr.",
+      "items": [
+        "Live-Auktion",
+        "Showroom-Markt"
+      ]
+    },
+    "report": {
+      "caption": "Der Inspektionsbericht innerhalb der Fahrzeugseite: zuerst die Fahrzeugdaten, dann Karosserie und Reifen mit der Schadenskarte und die Befunde am Fahrgestell, Teil für Teil.",
+      "items": [
+        "Fahrzeugdaten",
+        "Karosserie, Reifen und Fahrgestell"
+      ]
+    },
+    "bidding": {
+      "caption": "Rund um das Gebot: ein automatisches Gebot mit eigener Schrittweite, die Garantie auf die Karosserieprüfung und die Kostenübersicht mit ihrer Gesamtsumme.",
+      "items": [
+        "Automatisches Gebot",
+        "Garantie auf die Inspektion",
+        "Kosten vor dem Gebot"
+      ]
+    },
+    "negotiation": {
+      "caption": "Die Verhandlung, wie der Prototyp sie zeichnet. Wer den Preis des Verkäufers ablehnt, öffnet die Auktion wieder für andere Bieter, und der Dialog sagt das, bevor der Händler absendet.",
+      "items": [
+        "Den Preis des Verkäufers annehmen oder beim eigenen bleiben",
+        "Das Angebot erhöhen, nachdem das Kästchen angekreuzt ist"
+      ]
+    },
+    "states": {
+      "caption": "Eine Auftragsliste mit jedem Zustand, in dem sich ein Geschäft befinden kann, jeder mit eigener Aktion und, wo Zeit zählt, mit Countdown.",
+      "items": [
+        "Bereit zur Verhandlung, in Verhandlung, in Nachverhandlung",
+        "Angenommen, höheres Angebot nötig",
+        "Neues Angebot nötig, abgeschlossen, storniert"
+      ]
+    },
+    "stages": {
+      "caption": "Die späteren Stufen in der Auftragsliste und die Auftragsseite in Stufe eins: die Beträge, die nächste Stufe und eine Sicherheit für die Kennzeichenfreigabe, die Khodro45 zurückzahlt.",
+      "items": [
+        "Stufen vier bis sechs",
+        "Auftragsseite, Stufe eins von sechs"
+      ]
+    },
+    "listing": {
+      "caption": "Ein Auto einstellen: das Formular in Schritten, die Fragen zu Besitz und Zustand, die Fotoanleitung und Schäden, Teil für Teil markiert.",
+      "items": [
+        "Zuerst die Marke, dann Modell, Baujahr und Variante",
+        "Besitz und Zustand",
+        "Fotoanleitung: das ganze Auto, aus etwa zwei Metern",
+        "Beschädigte Teile markieren"
+      ]
+    },
+    "published": {
+      "caption": "Nach dem Formular: eine Übersicht, die auf Veröffentlichung wartet, die eigenen Autos des Händlers mit ihrem Status und die Reichweite eines Autos auf jeder Plattform.",
+      "items": [
+        "Übersicht, wartet auf Veröffentlichung",
+        "Meine Autos: Schalter für Inserat und Auktion",
+        "Aufrufe und Nachrichten je Plattform"
+      ]
+    },
+    "membership": {
+      "caption": "Zwei Mitgliedschaften in einer Datei: fünf kostenpflichtige Jahresstufen mit Gebotsgrenzen und ein Kundenclub, der Volumen belohnt. Ob der Club die kostenpflichtigen Stufen ersetzt hat, ist nicht festgehalten.",
+      "items": [
+        "Bezahlter Zugang: fünf Jahresstufen",
+        "Kundenclub: Stufen und Prämien"
+      ]
+    },
+    "score": {
+      "caption": "Der Händler-Score: eine Bewertung auf einer Skala bis fünf, jeden Monat aktualisiert aus fünf Kennzahlen dafür, wie ein Händler abwickelt.",
+      "annotations": [
+        "Abwicklungstempo",
+        "Tempo der Kennzeichenfreigabe",
+        "Rücktritte von Geschäften",
+        "Stornierte Geschäfte",
+        "Anzahl der Geschäfte in den letzten 100 Tagen"
+      ]
+    },
+    "playground": {
+      "caption": "Das Einstiegsboard des Prototyps: eine Begrüßung, dunkel oder hell, dann die Wahl eines Wegs."
+    }
+  },
+  "process": {
+    "heading": "Die sechs Stufen der Abwicklung, wie die Auftragsliste sie nummeriert",
+    "steps": [
+      {
+        "label": "Unterlagen des Eigentümers",
+        "note": "Werden zuerst geprüft; bis dahin bleibt der Button für die Anzahlung deaktiviert."
+      },
+      {
+        "label": "Anzahlung",
+        "note": "Wird innerhalb eines Countdowns gezahlt, den die Karte anzeigt."
+      },
+      {
+        "label": "Schlussabrechnung",
+        "note": "Der Rest des Preises, mit eigener Frist."
+      },
+      {
+        "label": "Bestätigung",
+        "note": "Die Abrechnung wird bestätigt, bevor das Auto bewegt wird."
+      },
+      {
+        "label": "Übergabe",
+        "note": "Auto und Vollmacht werden übergeben; der Restbetrag laut Vertrag wird bezahlt."
+      },
+      {
+        "label": "Kennzeichenfreigabe",
+        "note": "Ein Beleg wird hochgeladen, und die Sicherheit wird zurückgezahlt."
+      }
+    ]
+  },
+  "decisions": {
+    "heading": "Entscheidungen, die die Datei sichtbar macht",
+    "lede": "Abgelesen an den Screens und ihren Zuständen, nicht an einer schriftlichen Begründung; eine solche enthält die Datei nicht.",
+    "items": [
+      {
+        "title": "Immer einen Referenzpreis zeigen",
+        "why": "Kein Angebot in der App steht für sich allein. Live und Basar stellen es einem fairen Marktpreis gegenüber, Markt der Preisvorstellung des Verkäufers, und der Gebotsdialog wiederholt den Referenzwert genau dort, wo der Händler eine Zahl eingibt.",
+        "tradeoff": "Der Referenzwert ändert sich mit dem Markt, also muss ein Händler wissen, an welcher Zahl er gemessen wird.",
+        "evidence": "Die Preisblöcke von Live und Markt sowie der Gebotsdialog."
+      },
+      {
+        "title": "Die Inspektion in die Fahrzeugseite holen",
+        "why": "Der Bericht ist eine Reihe von Tabs auf der Fahrzeugseite (Fahrzeugdaten, Karosserie und Reifen, Motor, Elektrik), kein separates Dokument. Eine Schadenskarte färbt die betroffenen Teile ein, und jedes beanstandete Teil hat ein Foto.",
+        "evidence": "Die Fahrzeugdaten sowie die Befunde zu Karosserie und Fahrgestell im Bericht."
+      },
+      {
+        "title": "Jeden Zustand benennen und ihm eine Uhr geben",
+        "why": "Ein Auftrag befindet sich immer in einem benannten Zustand, dessen nächster Schritt auf der Karte steht, und die meisten Zustände tragen einen Countdown. Die 3:14-Warnung sagt, wann ein Angebot automatisch zurückgezogen und eine Strafe fällig wird.",
+        "evidence": "Die Auftragsliste mit ihren Zuständen und die sechs nummerierten Stufen."
+      },
+      {
+        "title": "Warnen, bevor die Auktion wieder öffnet",
+        "why": "Wer in der Verhandlung den Preis des Verkäufers ablehnt und einen eigenen eingibt, öffnet die Auktion wieder für andere Bieter. Der Dialog sagt das ausdrücklich und lässt den Händler in einer Version vor dem Absenden ein Kästchen ankreuzen.",
+        "tradeoff": "Ein Schritt mehr in dem Moment, in dem ein Händler abschließen will.",
+        "evidence": "Die beiden Verhandlungsdialoge aus dem Prototyp."
+      },
+      {
+        "title": "Alle Kosten vor der Verpflichtung zeigen",
+        "why": "Die Servicegebühr steht im Preisblock, und eine Kostenübersicht listet den Rest auf (kommunale Gebühren, Transport, Eigentumsübertragung und Kennzeichenfreigabe), mit Gesamtsumme und vor jedem Gebot von der Fahrzeugseite aus erreichbar.",
+        "evidence": "Die Kostenübersicht neben dem Gebot."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "Sinas Anteil",
+    "intro": "Aus der Designdatei zusammengestellt. Sie hält nicht fest, wer sonst an der App gearbeitet oder wer was entschieden hat; dies ist also kein Anspruch auf alleinige Urheberschaft.",
+    "own": [
+      "Die Struktur der drei Marktmodi und ihrer Fahrzeugseiten",
+      "Der Preisblock und das Layout des Inspektionsberichts",
+      "Bieten, automatisches Bieten und die Kostenübersicht",
+      "Zustände für Verhandlung und Abwicklung sowie der Prototyp, der sie testet",
+      "Der Flow zum Einstellen mit Selbstinspektion",
+      "Mitgliedschaften, der Kundenclub und der Händler-Score",
+      "Helles und dunkles Theme, von rechts nach links auf Persisch"
+    ],
+    "collaborate": [
+      "Kolleginnen und Kollegen aus Produkt und Entwicklung, in der Datei nicht namentlich genannt"
+    ],
+    "note": "Der Platzhalternutzer trägt in der gesamten Datei Sinas eigenen Namen: ein Hinweis darauf, wessen Arbeitsdatei es war, nicht darauf, wer was entschieden hat."
+  },
+  "outcomes": {
+    "heading": "Was die Datei liefert",
+    "intro": "Zahlen zur gestalteten Arbeit, keine Ergebnisse. Die Datei hält keine Nutzungs-, Conversion- oder Transaktionszahlen fest.",
+    "delivered": [
+      {
+        "label": "Smartphone-Screens",
+        "context": "237 in den Abschnitten und 4 lose auf dem Canvas, etwa zur Hälfte dunkel und zur Hälfte hell"
+      },
+      {
+        "label": "Abschnitte auf dem Canvas",
+        "context": "Märkte, Fahrzeugseiten, Bieten, Aufträge, Einstellen, Geld, Identität und Einstieg"
+      },
+      {
+        "label": "Screens im Transaktionsprototyp",
+        "context": "Ein Auftrag, durch Verhandlung und Anzahlung geführt"
+      }
+    ],
+    "shipped": [
+      "Drei Marktmodi mit ihren Fahrzeugseiten",
+      "Der Inspektionsbericht innerhalb der Fahrzeugseite",
+      "Dialoge für Gebot, automatisches Gebot und Kosten",
+      "Verhandlung und die sechsstufige Abwicklung",
+      "Einstellen mit Selbstinspektion",
+      "Mitgliedschaften und der Händler-Score"
+    ]
+  },
+  "lessons": {
+    "heading": "Was diese Arbeit gelehrt hat",
+    "items": [
+      {
+        "title": "Ein Preis braucht einen Nachbarn",
+        "body": "Ein Gebot allein sagt wenig. Jeder Preis in der App steht neben einem anderen (fairer Preis, Preisvorstellung des Verkäufers oder letztes Angebot), sodass der Händler einen Abstand beurteilt statt einer Zahl."
+      },
+      {
+        "title": "In einer Transaktion sind die Zustände das Produkt",
+        "body": "Die meisten Screens nach einem Zuschlag sind dieselbe Karte in einem anderen Zustand. Jeden Zustand, seinen nächsten Schritt und seine Frist zu benennen, war die Designarbeit; das Layout ändert sich kaum."
+      },
+      {
+        "title": "Zugangsgebühren arbeiten gegen einen Marktplatz",
+        "body": "Eine Auktion braucht Beteiligung. Ein Abonnement, das das Bieten begrenzt, schränkt genau das ein, und ein Club, der Volumen belohnt, zieht in die andere Richtung. Dass die Datei beides enthält, macht den Zielkonflikt sichtbar."
+      }
+    ]
+  }
+}

@@ -1,9 +1,11 @@
-import type { Block } from 'payload'
+import type { Block, TextFieldSingleValidation } from 'payload'
+import { text } from 'payload/shared'
 
 /**
- * Process map — the project's actual sequence as nodes and lines (thin hairlines, mono codes),
+ * Process map — the project's actual sequence as nodes and lines (thin hairlines, mono markers),
  * never a generic double diamond. `loop` closes the last step back to the first for iterative
- * systems (retention loops, state machines).
+ * systems (retention loops, state machines). Nodes show the step's position unless `markers` opts
+ * into per-step codes; codes stored while the block shows numbers are kept but not rendered.
  */
 export const CaseStudyProcess: Block = {
   slug: 'csProcess',
@@ -19,7 +21,7 @@ export const CaseStudyProcess: Block = {
           localized: true,
           admin: {
             description: 'Optional short title, e.g. "Six passes, in order".',
-            width: '60%',
+            width: '50%',
           },
         },
         {
@@ -30,7 +32,20 @@ export const CaseStudyProcess: Block = {
             { label: 'Sequence — start to finish', value: 'process' },
             { label: 'Loop — the last step returns to the first', value: 'loop' },
           ],
-          admin: { width: '40%' },
+          admin: { width: '25%' },
+        },
+        {
+          name: 'markers',
+          type: 'select',
+          defaultValue: 'number',
+          options: [
+            { label: 'Numbers — 01, 02, 03', value: 'number' },
+            { label: 'Codes — one per step', value: 'code' },
+          ],
+          admin: {
+            description: 'Codes only when they say more than the order, e.g. L1–L4 for a loop.',
+            width: '25%',
+          },
         },
       ],
     },
@@ -47,10 +62,15 @@ export const CaseStudyProcess: Block = {
             {
               name: 'code',
               type: 'text',
-              required: true,
               maxLength: 4,
+              validate: ((value, options) =>
+                (options.blockData as { markers?: string } | undefined)?.markers === 'code' &&
+                !value?.trim()
+                  ? 'Add a code, or set the block to show numbers.'
+                  : text(value, options)) as TextFieldSingleValidation,
               admin: {
-                description: 'Latin code, e.g. "R1" — stays mono in every locale.',
+                condition: (_data, _siblingData, { blockData }) => blockData?.markers === 'code',
+                description: 'Latin code, e.g. "L1" — stays mono in every locale.',
                 width: '25%',
               },
             },

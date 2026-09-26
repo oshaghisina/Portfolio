@@ -55,6 +55,14 @@ import {
   cwebLocalizedFields,
 } from './carsparency/web'
 import {
+  CPROP_ASSETS,
+  CPROP_COVER_KEY,
+  CPROP_MEDIA,
+  CPROP_SHARED_FIELDS,
+  CPROP_SLUG,
+  cpropLocalizedFields,
+} from './cproperty/study'
+import {
   DG_ASSETS,
   DG_LOCALES,
   DG_MEDIA,
@@ -72,6 +80,7 @@ import {
 } from './faymen'
 import {
   K45_ASSETS,
+  K45_COVER_KEY,
   K45_LOCALES,
   K45_MEDIA,
   K45_SHARED_FIELDS,
@@ -113,6 +122,14 @@ import {
   YAR_SLUG,
   yarLocalizedFields,
 } from './yaravan'
+import {
+  YAP_ASSETS,
+  YAP_LOCALES,
+  YAP_MEDIA,
+  YAP_SHARED_FIELDS,
+  YAP_SLUG,
+  yapLocalizedFields,
+} from './yaravan-platform'
 
 /**
  * Every project with a full case study. Add one `CaseStudySeedConfig` entry per project — see
@@ -170,7 +187,7 @@ export const CASE_STUDIES: CaseStudySeedConfig<any, any>[] = [
       kind: ['product', 'systems'],
       order: 4,
       featured: true,
-      coverMediaKey: 'carListLive',
+      coverMediaKey: K45_COVER_KEY,
     },
     sharedFields: K45_SHARED_FIELDS,
     localizedFields: k45LocalizedFields,
@@ -228,17 +245,28 @@ export const CASE_STUDIES: CaseStudySeedConfig<any, any>[] = [
     sharedFields: MQV_SHARED_FIELDS,
     localizedFields: mqvLocalizedFields,
   },
+  // Yaravan is two studies (2026-09-26): the service design keeps /work/yaravan and links to the
+  // platform built on it. The split moved the archive cover from the panel home to a blueprint.
   {
-    label: 'Yaravan',
+    label: 'Yaravan service design',
     slug: YAR_SLUG,
     assetsDir: YAR_ASSETS,
     media: YAR_MEDIA,
     seedLocales: YAR_LOCALES,
-    createFields: { kind: ['product', 'systems', 'research'], order: 104, coverMediaKey: 'cover' },
-    // Same stored name as the archive cover: the badge-free crop replaces its bytes in place.
+    createFields: { kind: ['systems', 'research'], order: 104, coverMediaKey: 'cover' },
     replaceCover: true,
     sharedFields: YAR_SHARED_FIELDS,
     localizedFields: yarLocalizedFields,
+  },
+  {
+    label: 'Yaravan platform',
+    slug: YAP_SLUG,
+    assetsDir: YAP_ASSETS,
+    media: YAP_MEDIA,
+    seedLocales: YAP_LOCALES,
+    createFields: { kind: ['product'], order: 104.5, coverMediaKey: 'cover' },
+    sharedFields: YAP_SHARED_FIELDS,
+    localizedFields: yapLocalizedFields,
   },
   {
     label: 'Biomaze',
@@ -306,6 +334,18 @@ export const CASE_STUDIES: CaseStudySeedConfig<any, any>[] = [
     createFields: { kind: ['systems'], order: 24, coverMediaKey: CDS_COVER_KEY },
     sharedFields: CSP_SHARED_FIELDS,
     localizedFields: cdsLocalizedFields,
+  },
+  // CProperty: a new archive row (order 102), so the create path sets its cover; the Carsparency
+  // chapter grammar is reused, not its gate — the study has its own in the seeds spec.
+  {
+    label: 'CProperty',
+    slug: CPROP_SLUG,
+    assetsDir: CPROP_ASSETS,
+    media: CPROP_MEDIA,
+    seedLocales: LOCALES,
+    createFields: { kind: ['product'], order: 102, coverMediaKey: CPROP_COVER_KEY },
+    sharedFields: CPROP_SHARED_FIELDS,
+    localizedFields: cpropLocalizedFields,
   },
 ]
 

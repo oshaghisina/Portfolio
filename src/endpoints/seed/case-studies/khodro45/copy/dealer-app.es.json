@@ -1,0 +1,336 @@
+{
+  "statement": "App de subastas para concesionarios: precio de referencia, informe de inspección y liquidación en seis etapas, a la vista en cada paso de la compra de un usado.",
+  "industry": "Automoción · Marketplace B2B",
+  "team": "Diseñador de producto, junto a compañeros de producto y desarrollo",
+  "heroCaption": "La ficha del coche con su bloque de precio, la hoja de puja y la lista de pedidos numerada del uno al seis: el recorrido del concesionario desde un precio hasta la liberación de la matrícula.",
+  "snapshot": {
+    "problem": "Los concesionarios tenían que tasar, inspeccionar y pagar coches usados que no habían visto, en un mercado que funciona con precios opacos y confianza personal.",
+    "role": "Diseñador de producto de toda la app para concesionarios: la estructura de los mercados, las pujas, los estados de negociación y liquidación, el flujo de publicación, las membresías y los temas claro y oscuro en persa.",
+    "result": "La versión 3.1 de la app para concesionarios, dibujada en 241 pantallas de móvil repartidas en 43 secciones, con un prototipo de 24 pantallas para los estados de la transacción."
+  },
+  "alt": {
+    "liveList": "App para concesionarios de Khodro45, lista de subastas en directo: cada tarjeta muestra una cuenta atrás, el estado de la puja del concesionario y el precio justo de mercado",
+    "marketList": "App para concesionarios de Khodro45, lista del mercado de exposición: cada tarjeta muestra la última oferta, el precio que pide el vendedor y lo cerca que está el acuerdo",
+    "bazaarList": "App para concesionarios de Khodro45, lista del bazar: cada tarjeta muestra el tiempo restante, la puja más alta y el precio justo de mercado",
+    "detailTop": "Ficha de un coche en Khodro45: fotos, el bloque de precio con la puja más alta y el precio justo de mercado, y las pestañas del informe de inspección",
+    "reportFacts": "Informe de inspección de Khodro45, datos del coche: número de recepción, versión, kilometraje, caja de cambios, equipamiento, seguro y certificado de inspección técnica",
+    "reportBody": "Informe de inspección de Khodro45, carrocería y neumáticos: un mapa de daños del coche y los hallazgos del chasis, cada uno con un veredicto y una foto",
+    "priceLive": "Bloque de precio de Khodro45 en la subasta en directo: puja más alta, precio justo de mercado y comisión de servicio",
+    "priceMarket": "Bloque de precio de Khodro45 en el mercado de exposición: última oferta, precio que pide el vendedor y comisión de servicio",
+    "listingStatus": "Estado de publicación de un coche propio del concesionario en Khodro45: visitas y mensajes totales y, para cada plataforma en la que está publicado, un interruptor, visitas y mensajes",
+    "myCars": "Lista Mis coches de Khodro45: un gráfico de precios y, debajo, los coches del concesionario con estados como pendiente de aprobación, rechazado y en subasta",
+    "bidSheet": "Hoja de puja de Khodro45 sobre la ficha del coche: precio actual, precio justo de mercado, un selector numérico para la puja y el tiempo restante",
+    "autoBid": "Hoja de puja automática de Khodro45: precio actual, el incremento de precio y el incremento de la puja automática",
+    "guarantee": "Aviso de Khodro45 sobre la ficha del coche que indica que Khodro45 garantiza la inspección de la carrocería",
+    "addedFees": "Hoja de costes de Khodro45: tasas municipales, transporte, traspaso de titularidad y liberación de la matrícula, con un total",
+    "ordersAll1": "Lista de pedidos de Khodro45, primeras tarjetas: listo para negociar con una cuenta atrás, en negociación y en renegociación",
+    "ordersAll2": "Lista de pedidos de Khodro45, tarjetas siguientes: el vendedor aceptó la oferta, y un pedido que requiere una oferta más alta",
+    "ordersAll3": "Lista de pedidos de Khodro45, últimas tarjetas: requiere una oferta nueva, compra completada y cancelado por falta de acuerdo",
+    "notSettled1": "Pedidos sin liquidar de Khodro45, etapas uno a tres: documentos del propietario, anticipo y liquidación final, cada una con su acción",
+    "notSettled2": "Pedidos sin liquidar de Khodro45, etapas cuatro a seis: confirmación, entrega con poder notarial y el justificante de liberación de la matrícula",
+    "orderDetails": "Página de un pedido de Khodro45 en la etapa uno de seis: precio acordado, anticipo, la siguiente etapa y una garantía de liberación de matrícula que Khodro45 devuelve",
+    "choosePrice": "Hoja de negociación de Khodro45: aceptar el precio del vendedor o mantener el propio, con el aviso de que la subasta se reabre a otros postores",
+    "priceLadder": "Hoja de Khodro45 para subir la oferta: el precio del vendedor, un selector numérico para la nueva oferta y una casilla que marcar antes de enviar",
+    "playground": "Tablero de entrada al prototipo de Khodro45: Welcome to Design Play Ground, la elección entre oscuro y claro y, después, Select Your Path",
+    "addCar": "Formulario de Khodro45 para añadir un coche, en el tema oscuro y en el paso de la marca, con marcas populares y una lista con buscador",
+    "questions": "Preguntas de Khodro45 al añadir un coche: historial de accidentes, daños en la carrocería, problemas mecánicos y estado de los neumáticos",
+    "photoGuide": "Guía de fotos de Khodro45: disparar a unos dos metros para que el coche entero quede en el encuadre",
+    "bodyParts": "Autoinspección de Khodro45: un mapa del coche visto desde arriba y una lista de paneles que marcar como dañados",
+    "summary": "Resumen del anuncio en Khodro45, pendiente de publicación: el coche, su matrícula, las respuestas dadas y lo completa que está cada parte",
+    "identity": "Hoja de registro de Khodro45 que pregunta el tipo de actividad: propietario de concesionario, intermediario o inversor del sector del automóvil",
+    "tiers": "Membresía de pago de Khodro45: cinco niveles anuales, cada uno con un tope para el volumen total de pujas",
+    "loyalty": "Club de Clientes de Khodro45: el nivel actual, el progreso hacia el siguiente y las recompensas de cada nivel",
+    "score": "Puntuación del concesionario en Khodro45: una valoración sobre cinco con una barra para cada una de cinco medidas de rendimiento",
+    "superLight": "Centro de servicios de Khodro45 en el tema claro: compra y venta y, después, servicios para propietarios como multas, impuestos y seguro",
+    "superDark": "Centro de servicios de Khodro45 en el tema oscuro, con los mismos servicios que la versión clara"
+  },
+  "chapters": {
+    "context": {
+      "heading": "El lado profesional de un marketplace de coches usados",
+      "body": [
+        "Khodro45 es un marketplace iraní de coches usados en línea. Los vendedores publican allí sus coches; esta app es el otro lado, donde los profesionales del sector los compran. Su pantalla de inicio dice Dealer App V.3.1, así que el archivo es una versión de un producto en funcionamiento y no un primer concepto.",
+        "Al registrarse, la app pide al nuevo usuario que elija una de tres actividades: propietario de concesionario, intermediario o inversor del sector del automóvil. Detrás de la entrada hay un centro de servicios que va más allá de comprar y vender y llega a la tenencia de un coche: multas de tráfico, impuesto de transmisión, seguro, recambios, mantenimiento, inspección y precios del día."
+      ]
+    },
+    "problem": {
+      "heading": "Tres preguntas que un concesionario no podía responder",
+      "body": [
+        "Un concesionario que compra un coche que no ha visto necesita tres respuestas: cuánto vale, en qué estado está de verdad y quién custodia el dinero hasta que cambia la titularidad. Un anuncio clasificado no responde a ninguna.",
+        "El archivo responde a cada una con un mecanismo: un precio de referencia junto a cada oferta, un informe de inspección dentro de la ficha del coche y una liquidación que avanza por seis etapas numeradas, con una garantía que Khodro45 retiene hasta que se completa la última."
+      ]
+    },
+    "markets": {
+      "heading": "Tres mercados, una ficha de coche",
+      "customLabel": "Estructura",
+      "body": [
+        "La app tiene tres listas de mercado, dibujadas como secciones separadas y no como una sola lista con un filtro: «En directo», la subasta en directo; «Mercado», que las pestañas de la app llaman exposición; y «Bazar». Cada una tiene su propia versión de la ficha del coche.",
+        "Se diferencian en lo que acompaña al precio. Las tarjetas de «En directo» muestran la puja del propio concesionario (si va ganando, si va perdiendo o si se ha prorrogado) y el precio justo de mercado. Las de «Mercado» muestran la última oferta frente al precio que pide el vendedor y una etiqueta que indica lo cerca que está el acuerdo. Las de «Bazar» muestran el tiempo restante, la puja más alta y el precio justo de mercado.",
+        "La ficha del coche mantiene la misma división. «En directo» y «Bazar» enfrentan la puja más alta al precio justo de mercado; «Mercado» enfrenta la última oferta al precio que pide el vendedor."
+      ]
+    },
+    "solution": {
+      "heading": "Precio y estado en el momento del compromiso",
+      "body": [
+        "La ficha del coche es una sola página larga: fotos, el bloque de precio y, después, el informe de inspección. El informe se abre con los datos del coche (número de recepción, versión, kilometraje, caja de cambios, equipamiento, seguro restante y un certificado de inspección técnica) y puntúa cada sistema sobre cinco.",
+        "La carrocería y los neumáticos tienen un mapa de daños que marca con colores los paneles sustituidos o repintados por completo, abollados o rayados. Los hallazgos del chasis y los pilares se enumeran pieza por pieza, cada uno con un veredicto y, cuando una pieza no supera la revisión, una foto.",
+        "La puja se hace en una hoja sobre la ficha del coche. Además de la puja manual, el concesionario puede fijar una puja automática con su propio incremento. Una hoja de costes detalla lo que el precio no incluye, y un aviso indica que Khodro45 garantiza la inspección de la carrocería."
+      ]
+    },
+    "settlement": {
+      "heading": "Seis etapas, cada una con su reloj",
+      "customLabel": "Liquidación",
+      "body": [
+        "Ganar un coche pone en marcha una liquidación que la lista de pedidos numera del uno al seis: se verifican los documentos del propietario, el concesionario paga un anticipo, llega la liquidación final, se confirma la liquidación, el coche se entrega con un poder notarial y se libera la matrícula.",
+        "Cada tarjeta nombra su etapa y la siguiente, y la mayoría lleva una cuenta atrás. Por el camino se retiene una garantía por la liberación de la matrícula; la página del pedido indica que Khodro45 la devuelve una vez registrada la liberación.",
+        "Antes de la liquidación viene la negociación. La lista de pedidos muestra todos los estados en que puede estar un pedido: listo para negociar, en negociación, en renegociación, aceptado, requiere una oferta más alta, requiere una oferta nueva, pendiente de aprobación, completado y cancelado por falta de acuerdo. Un prototipo de 24 pantallas lleva un pedido a través de todos ellos."
+      ]
+    },
+    "selling": {
+      "heading": "El concesionario como vendedor",
+      "customLabel": "Venta",
+      "body": [
+        "Los concesionarios venden además de comprar. Un coche se añade mediante un formulario por pasos (marca, modelo, año, versión, kilometraje, color, ciudad, VIN y matrícula) y, después, preguntas sobre la propiedad y el estado: si es de primer propietario, si la tarjeta de propiedad está a nombre del concesionario, la llave de repuesto, los accidentes, los daños en la carrocería, los problemas mecánicos y los neumáticos.",
+        "El formulario da paso a una autoinspección. Una guía de fotos trata la luz, el coche limpio, la distancia y cómo sostener el móvil en horizontal. Las pantallas de subida piden cada ángulo, un vídeo del motor de 15 segundos con sonido, los documentos y los defectos, con los paneles dañados marcados en un mapa del coche.",
+        "Después, el coche aparece en la lista propia del concesionario, donde su anuncio y su subasta pueden activarse o desactivarse por separado. Su página muestra las visitas y los mensajes en total y en cada plataforma en la que está publicado: Khodro45, Divar, Bama y Sheypoor."
+      ]
+    },
+    "business": {
+      "heading": "Pagar por el acceso o ganar por volumen",
+      "customLabel": "Modelo de negocio",
+      "body": [
+        "El archivo conserva dos membresías para concesionarios. En una, el concesionario debe comprar una de cinco suscripciones anuales antes de usar la app, y cada nivel limita el total por el que puede pujar, desde 500 millones de toman hasta sin límite.",
+        "En la otra, un Club de Clientes, los concesionarios suben de nivel según su volumen de operaciones en doce meses y obtienen recompensas: crédito de hasta 500 millones de toman, entrega gratuita del poder notarial y tres transportes de coche gratuitos. El archivo no dice si una sustituyó a la otra.",
+        "Junto a ambas está la puntuación del concesionario: una valoración sobre cinco, actualizada cada mes a partir de la rapidez de liquidación, la rapidez de liberación de la matrícula, las retiradas, las anulaciones y el número de operaciones en los últimos 100 días."
+      ]
+    },
+    "method": {
+      "heading": "Probado como flujos, en dos temas",
+      "customLabel": "Método",
+      "body": [
+        "Casi todas las secciones están dibujadas dos veces, una en oscuro y otra en claro: 110 pantallas oscuras y 127 claras en el conjunto de secciones. Un tablero de entrada al prototipo, titulado Welcome to Design Play Ground, permite a quien lo prueba elegir oscuro o claro y, después, un recorrido por la app.",
+        "El estado de las transacciones tiene su propio prototipo. Sus 24 pantallas llevan un pedido por la negociación, la contraoferta del vendedor y el anticipo, donde las cuentas atrás y las penalizaciones hacen que un estado poco claro salga caro."
+      ]
+    }
+  },
+  "figures": {
+    "entry": {
+      "caption": "A quién sirve la app y dónde empieza: las tres actividades que se ofrecen al registrarse y el centro de servicios dibujado en los dos temas.",
+      "items": [
+        "Registro: propietario de concesionario, intermediario o inversor",
+        "Centro de servicios, claro",
+        "Centro de servicios, oscuro"
+      ]
+    },
+    "markets": {
+      "caption": "Las tres listas de mercado. Las pestañas son las de la propia app: subasta en directo, exposición y bazar.",
+      "items": [
+        "En directo: el estado de tu puja y el precio justo de mercado",
+        "Mercado: última oferta, precio del vendedor y distancia hasta el acuerdo",
+        "Bazar: tiempo restante, puja más alta y precio justo de mercado"
+      ]
+    },
+    "price": {
+      "caption": "El bloque de precio del mismo coche en dos modos. «En directo» enfrenta la puja más alta al precio justo de mercado; «Mercado» enfrenta la última oferta al precio que pide el vendedor. La comisión de servicio aparece debajo en ambos.",
+      "items": [
+        "Subasta en directo",
+        "Mercado de exposición"
+      ]
+    },
+    "report": {
+      "caption": "El informe de inspección dentro de la ficha del coche: primero los datos del coche y, después, la carrocería y los neumáticos con el mapa de daños y los hallazgos del chasis pieza por pieza.",
+      "items": [
+        "Datos del coche",
+        "Carrocería, neumáticos y chasis"
+      ]
+    },
+    "bidding": {
+      "caption": "Alrededor de la puja: una puja automática con su propio incremento, la garantía de la inspección de carrocería y la hoja de costes con su total.",
+      "items": [
+        "Puja automática",
+        "Garantía de inspección",
+        "Costes antes de pujar"
+      ]
+    },
+    "negotiation": {
+      "caption": "La negociación tal como la dibuja el prototipo. Rechazar el precio del vendedor reabre la subasta a otros postores, y la hoja lo advierte antes de que el concesionario envíe su oferta.",
+      "items": [
+        "Aceptar el precio del vendedor o mantener el propio",
+        "Subir la oferta, tras marcar la casilla"
+      ]
+    },
+    "states": {
+      "caption": "Una sola lista de pedidos que reúne todos los estados en que puede estar una operación, cada uno con su propia acción y, cuando el tiempo importa, una cuenta atrás.",
+      "items": [
+        "Listo para negociar, en negociación, en renegociación",
+        "Aceptado, requiere una oferta más alta",
+        "Requiere una oferta nueva, completado, cancelado"
+      ]
+    },
+    "stages": {
+      "caption": "Las etapas posteriores en la lista de pedidos y la página del pedido en la etapa uno: los importes, la siguiente etapa y una garantía de liberación de matrícula que Khodro45 devuelve.",
+      "items": [
+        "Etapas cuatro a seis",
+        "Página del pedido, etapa uno de seis"
+      ]
+    },
+    "listing": {
+      "caption": "Publicar un coche: el formulario por pasos, las preguntas sobre propiedad y estado, la guía de fotos y los daños marcados panel por panel.",
+      "items": [
+        "Primero la marca, después modelo, año y versión",
+        "Propiedad y estado",
+        "Guía de fotos: el coche entero, a unos dos metros",
+        "Marcar los paneles dañados"
+      ]
+    },
+    "published": {
+      "caption": "Después del formulario: un resumen pendiente de publicación, los coches propios del concesionario con sus estados y el alcance de un coche en cada plataforma.",
+      "items": [
+        "Resumen, pendiente de publicación",
+        "Mis coches: interruptores de anuncio y subasta",
+        "Visitas y mensajes por plataforma"
+      ]
+    },
+    "membership": {
+      "caption": "Dos membresías en un mismo archivo: cinco niveles anuales de pago con topes de puja y un Club de Clientes que premia el volumen. No consta si el club sustituyó a los niveles de pago.",
+      "items": [
+        "Acceso de pago: cinco niveles anuales",
+        "Club de Clientes: niveles y recompensas"
+      ]
+    },
+    "score": {
+      "caption": "La puntuación del concesionario: una valoración sobre cinco, actualizada cada mes a partir de cinco medidas de cómo liquida un concesionario.",
+      "annotations": [
+        "Rapidez de liquidación",
+        "Rapidez de liberación de matrícula",
+        "Retiradas de operaciones",
+        "Operaciones anuladas",
+        "Número de operaciones en los últimos 100 días"
+      ]
+    },
+    "playground": {
+      "caption": "El tablero de entrada al prototipo: una bienvenida, oscuro o claro y, después, la elección de un recorrido."
+    }
+  },
+  "process": {
+    "heading": "Las seis etapas de la liquidación, tal como las numera la lista de pedidos",
+    "steps": [
+      {
+        "label": "Documentos del propietario",
+        "note": "Se verifican primero; el botón del anticipo sigue desactivado hasta entonces."
+      },
+      {
+        "label": "Anticipo",
+        "note": "Se paga dentro de una cuenta atrás que muestra la tarjeta."
+      },
+      {
+        "label": "Liquidación final",
+        "note": "El resto del precio, con su propio reloj."
+      },
+      {
+        "label": "Confirmación",
+        "note": "La liquidación se confirma antes de que el coche se mueva."
+      },
+      {
+        "label": "Entrega",
+        "note": "El coche y un poder notarial cambian de manos; se paga el saldo del contrato."
+      },
+      {
+        "label": "Liberación de la matrícula",
+        "note": "Se sube un justificante y se devuelve la garantía."
+      }
+    ]
+  },
+  "decisions": {
+    "heading": "Decisiones que el archivo deja a la vista",
+    "lede": "Deducidas de las pantallas y sus estados, no de una justificación escrita; el archivo no tiene ninguna.",
+    "items": [
+      {
+        "title": "Mostrar siempre un precio de referencia",
+        "why": "En la app ninguna oferta aparece sola. «En directo» y «Bazar» la enfrentan a un precio justo de mercado, «Mercado» al precio que pide el vendedor, y la hoja de puja repite la referencia justo donde el concesionario escribe una cifra.",
+        "tradeoff": "La referencia cambia con el mercado, así que el concesionario tiene que saber con qué cifra se le está comparando.",
+        "evidence": "Los bloques de precio de «En directo» y «Mercado», y la hoja de puja."
+      },
+      {
+        "title": "Poner la inspección dentro de la ficha del coche",
+        "why": "El informe es un conjunto de pestañas en la ficha del coche (datos del coche, carrocería y neumáticos, motor, sistema eléctrico), no un documento aparte. Un mapa de daños colorea los paneles afectados, y cada pieza que no supera la revisión lleva una foto.",
+        "evidence": "Los datos del coche y los hallazgos de carrocería y chasis del informe."
+      },
+      {
+        "title": "Nombrar cada estado y darle un reloj",
+        "why": "Un pedido siempre está en un estado con nombre y con su siguiente paso escrito en la tarjeta, y la mayoría de los estados lleva una cuenta atrás. El aviso de 3:14 indica cuándo se retirará automáticamente una oferta y se aplicará una penalización.",
+        "evidence": "La lista de pedidos con sus estados y las seis etapas numeradas."
+      },
+      {
+        "title": "Avisar antes de reabrir la subasta",
+        "why": "En la negociación, rechazar el precio del vendedor e introducir el propio reabre la subasta a otros postores. La hoja lo dice con todas las letras y, en una de las versiones, pide al concesionario que marque una casilla antes de enviar.",
+        "tradeoff": "Un paso más justo cuando el concesionario intenta cerrar la operación.",
+        "evidence": "Las dos hojas de negociación del prototipo."
+      },
+      {
+        "title": "Mostrar todos los costes antes del compromiso",
+        "why": "La comisión de servicio está en el bloque de precio, y una hoja de costes enumera el resto (tasas municipales, transporte, traspaso de titularidad y liberación de la matrícula) con un total, accesible desde la ficha del coche antes de cualquier puja.",
+        "evidence": "La hoja de costes junto a la puja."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "La parte de Sina",
+    "intro": "Extraído del archivo de diseño. No registra quién más trabajó en la app ni quién decidió qué, así que esto no es una atribución de autoría exclusiva.",
+    "own": [
+      "La estructura de los tres modos de mercado y sus fichas de coche",
+      "El bloque de precio y la maquetación del informe de inspección",
+      "Las pujas, la puja automática y la hoja de costes",
+      "Los estados de negociación y liquidación, y el prototipo que los prueba",
+      "El flujo de publicación y autoinspección",
+      "Las membresías, el Club de Clientes y la puntuación del concesionario",
+      "Temas claro y oscuro, de derecha a izquierda en persa"
+    ],
+    "collaborate": [
+      "Compañeros de producto y desarrollo, sin nombre en el archivo"
+    ],
+    "note": "El usuario de ejemplo que aparece en todo el archivo lleva el nombre del propio Sina: una señal de quién trabajaba en ese archivo, no de quién decidió qué."
+  },
+  "outcomes": {
+    "heading": "Lo que entrega el archivo",
+    "intro": "Recuentos de trabajo diseñado, no resultados. El archivo no registra cifras de uso, conversión ni transacciones.",
+    "delivered": [
+      {
+        "label": "pantallas de móvil",
+        "context": "237 dentro de las secciones y 4 sueltas en el lienzo, aproximadamente la mitad oscuras y la mitad claras"
+      },
+      {
+        "label": "secciones del lienzo",
+        "context": "Mercados, fichas de coche, pujas, pedidos, publicación, dinero, identidad y entrada"
+      },
+      {
+        "label": "pantallas en el prototipo de transacciones",
+        "context": "Un pedido llevado a través de la negociación y el anticipo"
+      }
+    ],
+    "shipped": [
+      "Tres modos de mercado con sus fichas de coche",
+      "El informe de inspección dentro de la ficha del coche",
+      "Hojas de puja, puja automática y costes",
+      "La negociación y la liquidación en seis etapas",
+      "Publicación con autoinspección",
+      "Membresías y puntuación del concesionario"
+    ]
+  },
+  "lessons": {
+    "heading": "Lo que enseñó este trabajo",
+    "items": [
+      {
+        "title": "Un precio necesita un vecino",
+        "body": "Una puja sola significa poco. Cada precio de la app aparece junto a otro (el precio justo, el que pide el vendedor o la última oferta), así que el concesionario juzga una diferencia y no una cifra."
+      },
+      {
+        "title": "En una transacción, los estados son el producto",
+        "body": "La mayoría de las pantallas posteriores a ganar una subasta son la misma tarjeta en otro estado. El trabajo de diseño consistió en nombrar cada estado, su siguiente paso y su plazo; la maquetación apenas cambia."
+      },
+      {
+        "title": "Las cuotas de acceso juegan en contra de un marketplace",
+        "body": "Una subasta necesita participación. Una suscripción que limita las pujas restringe justo eso, y un club que premia el volumen empuja en sentido contrario. Mantener ambos en el archivo deja a la vista esa disyuntiva."
+      }
+    ]
+  }
+}

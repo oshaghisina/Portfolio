@@ -1,0 +1,279 @@
+{
+  "statement": "Presale-Wohnungen in Metro Vancouver, vergleichbar gemacht: datierter Anzahlungsplan, Vergleich pro Einheit und Plattform-Rating, für Käufer kostenlos.",
+  "industry": "Immobilien · Vorverkauf von Neubauwohnungen",
+  "team": "Eine einzige Figma-Datei: 76 Screens und eine Bibliothek mit 261 Komponenten",
+  "heroCaption": "Der Weg des Käufers auf dem Smartphone: Preisspanne und Kennzahlen eines Objekts, die Finanzdaten einer Einheit und drei Einheiten im Vergleich.",
+  "snapshot": {
+    "problem": "Wer im Vorverkauf kauft, verpflichtet sich zu einer gestaffelten Anzahlung, Jahre bevor es die Wohnung gibt, und die Zahlen, die darüber entscheiden, stehen selten nebeneinander.",
+    "role": "Produktdesigner für sieben responsive Flows, 76 Screens und ein Design System mit 261 Komponenten.",
+    "result": "Eine vollständige Designdokumentation der Käuferseite eines Presale-Marktes; einen Launch belegt die Datei nicht."
+  },
+  "alt": {
+    "cover": "CProperty auf dem Smartphone — eine Presale-Objektseite mit Preisspanne und Kacheln für Übergabejahr, Anzahlung, Investment-Rating, monatliche Rate, Grundrisstypen und Durchschnittsmiete",
+    "unitTop": "CProperty — die Detailansicht einer Einheit auf dem Smartphone: Preis, Übergabejahr, Projekt, Abtretungsgebühr, Hausgeld pro Quadratfuß, Eigenanteil und Grundriss",
+    "compareTop": "CProperty — die Vergleichsseite auf dem Smartphone: die Adresse eines Wohnturms, seine Finanzdaten und seine Ausstattung",
+    "propertyFold": "CProperty — die Objektseite auf dem Desktop: die Galerie mit Preisspanne und Kennzahlen daneben, die Tabs, der Überblick und die Info-Kacheln",
+    "checklist": "CProperty — der obere Teil einer Objektseite auf dem Smartphone, mit nummerierten Markierungen an der Preisspanne und an drei Reihen von Kennzahlen",
+    "v1Pricing": "Die frühere Version — eine Seite für Premium-Konten mit den Abos Enhanced und Starter für 250 $ bzw. 150 $ im Jahr",
+    "v1Compare": "Die frühere Version — eine Vergleichsseite, die für drei Objekte Größe, Zimmer, Arbeitszimmer, Flex-Raum, Abstellraum, Stellplatz, Balkon, Garten, Etagen und Ausrichtung auflistet",
+    "compareDesktop": "CProperty — die überarbeitete Vergleichsseite: drei Einheiten mit Finanzdaten, Ausstattung, Alltags- und Wohnungsmerkmalen und einem CProperty Rating",
+    "filterAdvanced": "CProperty — die Filterleiste der Objektliste mit geöffnetem Panel „Advanced“: Objekttyp, maximale Anzahlung, Fertigstellungstermin, Schlafzimmer, Badezimmer, Stellplätze und Abstellräume",
+    "priceExpenses": "CProperty — der Bereich Preis und Kosten: Hypothekenszenarien nach Eigenanteil, ein Raster monatlicher Raten nach Zinssatz und die bei Kaufabschluss fälligen Kosten",
+    "unitsTable": "CProperty — die Tabelle der Einheiten und Grundrisse auf dem Desktop, jede Zeile mit Favorit, „More“ und „Add to Compare“, darunter ein Kontaktformular",
+    "unitRating": "CProperty — die Detailansicht einer Einheit auf dem Smartphone: Schlafzimmer, Badezimmer, Balkon, Bauträger und ein CProperty Rating für Innengestaltung und Immobilienwert",
+    "exclusiveMobile": "CProperty — das Formular „Get Exclusive Information“ auf dem Smartphone, mit einem Schalter für Makler oder Käufer",
+    "statGrid": "CProperty — die Kennzahlen im Kopfbereich der Objektseite: eine Preisspanne und Kacheln, unter anderem mit einer Anzahlung von 30 %",
+    "depositStructure": "CProperty — die Anzahlungsstruktur: insgesamt 20 %, dargestellt als Teilzahlungen von 8 %, 4 %, 4 % und 2 % mit ihren Terminen",
+    "locationPanel": "CProperty — der geöffnete Standortfilter: fünfzehn Städte-Chips, in denen Coquitlam zweimal vorkommt",
+    "colorBoard": "CProperty Design System, Version 0.0.1 — das Farbboard mit Farbskalen in Braun, Creme, Blau, Grau, Grün und Rot"
+  },
+  "chapters": {
+    "context": {
+      "heading": "Die bewusste Wahl",
+      "body": [
+        "CProperty ist ein Marktplatz für Presale-Wohnungen im Lower Mainland von British Columbia – Eigentumswohnungen und Townhouses, die verkauft werden, bevor sie gebaut sind. Das C steht für „conscious“, also bewusst, und die Hero-Zeile greift das auf: „Choose Consciously, Invest Delightfully.“ Die Beispieladressen liegen im West End von Vancouver.",
+        "Das Briefing zum Markt liegt als Notiz in der Datei und geht Stadt für Stadt vor: Vancouver und die North Shore, die Tri-Cities, Burnaby, New Westminster, Surrey, Richmond, Langley und ein äußerer Ring bis Abbotsford und White Rock. Das Design ist eine Figma-Datei mit 13 Seiten: sieben Produkt-Flows (Startseite, Objekt, Bauträger, Objektliste, Einheiten und Grundrisse, Anmeldung und Blog), sechs davon in Desktop-, Tablet- und Mobile-Breite gezeichnet und der Blog für Desktop und Mobile, insgesamt 76 Screens, dazu ein Design System und ein Archiv mit einer früheren Version."
+      ]
+    },
+    "problem": {
+      "heading": "Eine Anzahlung auf ein Gebäude, das noch nicht steht",
+      "body": [
+        "Wer im Vorverkauf kauft, bindet Geld, Jahre bevor es etwas zu besichtigen gibt: eine Anzahlung, die während des Baus in Teilzahlungen fällig wird, eine Abtretungsgebühr, falls der Vertrag vor der Fertigstellung weiterverkauft werden muss, ein monatliches Hausgeld pro Quadratfuß und ein Übergabetermin, der Jahre entfernt liegt. Die Zahlen, die über den Kauf entscheiden, stehen meist an verschiedenen Stellen: in der Broschüre eines Bauträgers, in einem Verkaufsbüro, in einer Tabelle.",
+        "Die Aufgabe von CProperty ist es, sie nebeneinanderzustellen, erst für ein Projekt, dann über mehrere Einheiten hinweg, damit Käufer sehen, was eine Wohnung vor, während und nach dem Bau kostet."
+      ]
+    },
+    "pivot": {
+      "heading": "Von Broschüren für Makler zu Vergleichen für Käufer",
+      "customLabel": "Kurswechsel",
+      "body": [
+        "Die Datei bewahrt auf einer eigenen Seite eine frühere Version auf: 57 Frames eines anderen Produkts. Seine Kunden waren Makler. Ein Premium-Konto gab es in zwei Tarifen – Starter für 150 $ im Jahr und Enhanced für 250 $, oder 50 $ bzw. 75 $ für drei Monate. Es schaltete vollständige Daten und Preise zu jeder Einheit frei, dazu den direkten Vergleich, gespeicherte Favoriten und, bei Enhanced, individuelle Broschüren für Kundenpräsentationen. Makler hatten ein Dashboard mit einem Angebotsgenerator: Einheiten, ein Farbmuster und eine von sechs Broschürenvorlagen auswählen. Bauträger hatten Screens, um Projekte anzulegen und Einheiten als verfügbar, reserviert oder verkauft zu markieren.",
+        "Das Redesign kehrt das um. Dashboards und Tarife sind verschwunden, das Stöbern ist kostenlos, und Kaufinteresse kommt über zwei Formulare herein: „Contact Sales Center“ unter der Tabelle der Einheiten und „Get Exclusive Information“ auf den Objekt- und Bauträgerseiten; dieses Formular fragt, ob der Absender Makler oder Käufer ist. Makler werden weiterhin bedient – als Leads, nicht als Abonnenten. Die Kernidee des Angebotsgenerators, Einheiten nebeneinanderzustellen, lebt in der Vergleichsseite weiter, und die vergleicht jetzt Geld statt technischer Daten."
+      ]
+    },
+    "approach": {
+      "heading": "Die Datei verrät die Reihenfolge der Arbeit",
+      "body": [
+        "Node-IDs in Figma steigen, während eine Datei bearbeitet wird; die Median-ID jedes Frames bringt die Arbeit also in eine Reihenfolge. Die frühere Version und das Fundament des Design Systems kamen zuerst, beim Anlegen der Datei. Es folgten Startseite und Objektseite, dann etwa gleichzeitig die Objektliste mit ihren Filtern und der Anmelde-Flow, danach die Bauträgerseite. Einheiten, Detailansicht und Vergleich entstanden zuletzt – der Teil des Produkts, in dem die meisten Entscheidungen fallen.",
+        "Jeder Flow ist gleich aufgebaut: eine Titelkarte, dann eine Spalte pro Breakpoint (Desktop mit 1440, Tablet mit 1028 und Mobile mit 360 oder 393 Pixeln), mit einem Screen pro Zustand. In einem letzten Durchgang wurde der Footer in fast jedem Screen auf jeder Seite gegen einen neuen ausgetauscht."
+      ]
+    },
+    "solution": {
+      "heading": "Filter, die Anlegerfragen stellen",
+      "body": [
+        "Die Listenseite beginnt mit „Invest Delightfully with Selecting Project!“ und einer Filterleiste, die zuerst die Fragen eines Anlegers stellt: Standort, Übergabetermin, Investment-Rating, Anzahlung und Preis. Schlafzimmer, Badezimmer, Stellplätze, Abstellräume, Objekttyp, maximale Gesamtanzahlung und Fertigstellungstermin warten unter „Advanced“. Jeder der sechs Filter ist geöffnet gezeichnet: ein Raster aus Städte-Chips, ein Kalender, Schieberegler für Rating, Anzahlung und Preis sowie das Panel „Advanced“.",
+        "Die Objektseite liest sich wie eine Presale-Checkliste. Neben der Galerie stehen eine Preisspanne und sechs Kennzahlen: Übergabejahr, Anzahlung, Investment-Rating, monatliche Rate, Grundrisstypen und Durchschnittsmiete. Darunter führt die Seite vom Überblick bis zu Preis und Kosten. Dazwischen liegen Einheiten und Grundrisse, ein Anzahlungsplan aus datierten Teilzahlungen, Innen- und Außengestaltung mit Aufpreisen für Abstellraum und Stellplatz sowie ein Abschnitt zum Immobilienwert mit Diagrammen zur Nachbarschaft. Der Bereich Preis und Kosten zeigt Hypothekenszenarien nach Eigenanteil, monatliche Raten bei verschiedenen Zinssätzen und den Betrag, der bei Kaufabschluss fällig wird."
+      ]
+    },
+    "compare": {
+      "heading": "Einheiten vergleichen, nicht Gebäude",
+      "customLabel": "Vergleich",
+      "body": [
+        "Der Bereich Einheiten und Grundrisse ist eine Tabelle (Projekt, Grundriss, Schlafzimmer plus Flex-Raum, Standort, Größe, Preis) mit Favorit, „More“ und „Add to Compare“ in jeder Zeile und einem Formular „Contact Sales Center“ darunter. Die Detailansicht wiederholt die Finanzdaten für eine einzelne Einheit: Preis, Übergabetermin, Abtretungsgebühr, Hausgeld pro Quadratfuß, Eigenanteil und Grundriss.",
+        "Die Vergleichsseite stellt drei Einheiten in derselben Reihenfolge nebeneinander: zuerst die Finanzdaten (Gesamtpreis, Abtretungsgebühr, Hausgeld, Eigenanteil), dann Ausstattung, Alltagsmerkmale wie Stellplatz und E-Ladestation, Wohnungsmerkmale und ein CProperty Rating für Innengestaltung und Immobilienwert. Das Rating macht das Markenversprechen zu einem Datenfeld: Die Plattform bewertet die Wohnung selbst, nicht nur das Inserat."
+      ],
+      "insight": "Jede Einheit trägt ein CProperty Rating, also endet jeder Vergleich mit dem eigenen Urteil der Plattform."
+    },
+    "critique": {
+      "heading": "Vier Anzahlungen auf einer Seite",
+      "customLabel": "Kritik",
+      "body": [
+        "Das Beispielobjekt beantwortet die Frage „Wie viel zahle ich vor der Fertigstellung?“ auf vier verschiedene Arten. Der Kopfbereich nennt eine Anzahlung von 30 %. Der Infoblock nennt eine Gesamtanzahlung von 32.500 $ und einen Eigenanteil von 25 %. Der Anzahlungsplan nennt insgesamt 20 % – und seine Teilzahlungen von 8 %, 4 %, 4 % und 2 % ergeben zusammen 18 %.",
+        "Der Standortfilter hat eine Lücke derselben Art. Das Markt-Briefing nennt unter seinen Städten Langley, Burnaby, Coquitlam, Port Coquitlam und Port Moody; die fünfzehn Chips des Filters lassen Langley und Port Coquitlam weg und zeigen Coquitlam doppelt, während jede Beispieleinheit in der Desktop-Tabelle in Langley liegt. Der Filter der früheren Version hatte Langley, Port Coquitlam und Delta noch enthalten."
+      ],
+      "bullets": [
+        "Das Preis-Panel ist mit „Deposite“ beschriftet und übernimmt die Spanne des Anzahlungsreglers.",
+        "Der Übergabetermin wird aus den Tagen eines einzigen Monats gewählt, während die Übergabejahre in der Datei von 2024 bis 2026 reichen.",
+        "Prozentwerte stehen mit dem Zeichen voran (%30), und „Deposite“ ist durchgehend falsch geschrieben."
+      ],
+      "insight": "Die wichtigste Zahl der Seite ist die, die sie am wenigsten einheitlich angibt."
+    },
+    "system": {
+      "heading": "Ein 0.0.1-System in Braun und Creme",
+      "customLabel": "System",
+      "body": [
+        "Das Design System trägt auf elf Boards die Versionsangabe 0.0.1: Farbe, Typografie, Header und Footer, Buttons, Checkboxen und Radiobuttons, Toggles, Profil, Modal, Formularfelder, Breadcrumbs und Toasts. Es umfasst 13 Komponentensets mit 248 Varianten – allein 90 davon entfallen auf Buttons – und 67 Farbstile. Die Markenskalen sind ein Hauptbraun und ein Creme; Blau, Grau, Grün und Rot kennzeichnen Zustände. Eine Icon-Seite ergänzt 120 Icon-Sets in fünf Größen, dazu Boards mit Ausstattungs- und Orts-Icons.",
+        "Zwei Lücken zeigen, wo es stehen geblieben ist. Es gibt keine Variablen: Die einzige Variablensammlung ist leer, also ist jede Farbe ein Stil. Und das Typo-Board dokumentiert Poppins und Mazzard, während die meisten Screens in Hurme Geometric Sans 3 gesetzt sind, die nur in einem der 12 Textstile vorkommt."
+      ]
+    }
+  },
+  "figures": {
+    "fold": {
+      "caption": "Die Objektseite auf dem Desktop: die Galerie, daneben die Preisspanne und sechs Kennzahlen, darunter die Tabs und der Überblick."
+    },
+    "checklist": {
+      "caption": "Der obere Teil einer Objektseite auf dem Smartphone: die Preisspanne und die Zahlen, nach denen Presale-Käufer planen.",
+      "annotations": [
+        "Eine Preisspanne von der günstigsten bis zur teuersten Einheit statt eines einzigen Angebotspreises",
+        "Das Übergabejahr und die Anzahlung",
+        "Das Investment-Rating und die monatliche Rate",
+        "Die Zahl der Grundrisse und die Durchschnittsmiete in der Gegend"
+      ]
+    },
+    "tiers": {
+      "caption": "Die frühere Version verkaufte Maklern ein Premium-Konto in zwei Tarifen."
+    },
+    "pivotCompare": {
+      "caption": "Dieselbe Seite in beiden Versionen: Der Vergleich wanderte von technischen Daten zum Geld.",
+      "items": [
+        "Die frühere Version: Größe, Zimmer, Arbeitszimmer, Garten und Ausrichtung.",
+        "Das Redesign: zuerst die Finanzdaten, dann Ausstattung, Merkmale und ein Rating."
+      ]
+    },
+    "filters": {
+      "caption": "Die Filterleiste mit geöffnetem Panel „Advanced“: die Anlegerfragen auf der Leiste, die Fragen zum Haushalt dahinter."
+    },
+    "price": {
+      "caption": "Preis und Kosten: Szenarien nach Eigenanteil, ein Raster monatlicher Raten nach Zinssatz und der Betrag, der bei Kaufabschluss fällig wird. Die Zahlen in der Datei sind Platzhalter; das Design ist die Struktur."
+    },
+    "units": {
+      "caption": "Einheiten als Tabelle, mit „Add to Compare“ in jeder Zeile und dem Formular für das Verkaufsbüro darunter."
+    },
+    "leads": {
+      "caption": "Das eigene Rating einer Einheit und das Formular, das aus Interesse einen Lead macht.",
+      "items": [
+        "Detailansicht der Einheit: Wohnungsmerkmale und das CProperty Rating.",
+        "„Get Exclusive Information“ fragt, ob der Absender Makler oder Käufer ist."
+      ]
+    },
+    "deposits": {
+      "caption": "Zwei Antworten auf eine Frage, auf derselben Seite.",
+      "items": [
+        "Der Kopfbereich: eine Anzahlung von 30 %.",
+        "Der Zahlungsplan: insgesamt 20 %, in Teilzahlungen, die zusammen 18 % ergeben."
+      ]
+    },
+    "cities": {
+      "caption": "Fünfzehn Chips: kein Langley, kein Port Coquitlam und zweimal Coquitlam."
+    },
+    "color": {
+      "caption": "Das Farbboard: die Markenskalen in Braun und Creme über den Zustandsfarben, Version 0.0.1."
+    }
+  },
+  "process": {
+    "heading": "Die Flows in der Reihenfolge ihrer Entstehung",
+    "steps": [
+      {
+        "label": "Die frühere Version",
+        "note": "57 Frames, beim Anlegen der Datei auf einer eigenen Seite archiviert"
+      },
+      {
+        "label": "Fundament des Systems",
+        "note": "Farbe, Typografie, Buttons, Header und Footer; Modals, Formulare und Toasts kamen später"
+      },
+      {
+        "label": "Startseite",
+        "note": "Hero, Suche, neueste Projekte, Funktionsweise und FAQ"
+      },
+      {
+        "label": "Objektseite",
+        "note": "Zustände Standard, gescrollt und Lead-Formular in drei Breakpoints"
+      },
+      {
+        "label": "Objektliste",
+        "note": "Die Listenansicht und sechs Filterpanels, jedes geöffnet gezeichnet"
+      },
+      {
+        "label": "Anmeldung",
+        "note": "Sieben Zustände, vom Login bis zum Code per E-Mail"
+      },
+      {
+        "label": "Bauträgerseite",
+        "note": "Geschichte, Werte, Auszeichnungen und die Projekte des Bauträgers"
+      },
+      {
+        "label": "Einheiten und Vergleich",
+        "note": "Die Tabelle der Einheiten, die Detailansicht und der Dreiervergleich, zuletzt gezeichnet"
+      }
+    ]
+  },
+  "decisions": {
+    "heading": "Fünf Entscheidungen hinter dem Vergleich",
+    "lede": "Das Redesign beruht auf fünf Entscheidungen, die die Datei sichtbar macht.",
+    "items": [
+      {
+        "title": "Käufern die Zahlen kostenlos geben und Makler als Leads behandeln",
+        "why": "Die frühere Version verkaufte Maklern Daten zu Einheiten, direkte Vergleiche und Kundenbroschüren im Jahres- oder Dreimonatsabo. Das Redesign öffnet diese Zahlen für alle Besucher und leitet das Kaufinteresse über zwei Formulare, von denen eines fragt, ob der Absender Makler oder Käufer ist.",
+        "tradeoff": "Der Umsatz muss aus Leads statt aus Abos kommen, und die Datei hält kein Preismodell dafür fest."
+      },
+      {
+        "title": "Die Anzahlung als Zahlungsplan zeigen, nicht als einzelnen Prozentsatz",
+        "why": "Eine Presale-Anzahlung wird in datierten Teilzahlungen über die Bauzeit geleistet, und eine einzelne Zahl verschleiert, wann das Geld fällig ist. Die Objektseite zeigt sie als Kacheln, jede mit ihrem Anteil und ihrem Datum.",
+        "tradeoff": "Für jedes Projekt muss der Zahlungsplan eingepflegt werden, und die Summe muss mit dem Kopfbereich übereinstimmen – was sie auf der Beispielseite nicht tut."
+      },
+      {
+        "title": "Einheiten vergleichen, nicht Projekte",
+        "why": "Abtretungsgebühren, Hausgeld pro Quadratfuß und Aufpreise für Stellplatz oder E-Ladestation unterscheiden sich je nach Einheit und Grundriss. Deshalb steht „Add to Compare“ in jeder Zeile der Tabelle, und die Vergleichsseite stellt die Finanzdaten von drei Einheiten nebeneinander.",
+        "tradeoff": "Mehr Zeilen, die gepflegt werden müssen, und eine Vergleichsseite, die auf dem Smartphone lang wird."
+      },
+      {
+        "title": "Das eigene Rating der Plattform neben die Inseratsdaten stellen",
+        "why": "Das Markenversprechen, eine bewusste Wahl, wird zu einem Datenfeld: ein CProperty Rating für Innengestaltung und Immobilienwert bei jeder Einheit und in jedem Vergleich.",
+        "tradeoff": "Damit man einem Rating vertraut, braucht es eine veröffentlichte Methode; die Datei zeigt die Werte, nicht, wie sie zustande kommen."
+      },
+      {
+        "title": "Zuerst nach Anlegerfragen filtern",
+        "why": "Standort, Übergabetermin, Investment-Rating, Anzahlung und Preis stehen in der Leiste; Schlafzimmer, Badezimmer, Stellplätze und Abstellräume warten unter „Advanced“. Der Käufer, den diese Leiste vor Augen hat, entscheidet, wo er sein Geld anlegt, bevor er einen Grundriss wählt.",
+        "tradeoff": "Eine Familie, die nach der Zahl der Schlafzimmer sucht, muss erst „Advanced“ öffnen."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "Sinas Anteil",
+    "intro": "Aufgeführt anhand der Datei. Sie nennt kein Team und hält nicht fest, wer was entschieden hat; dies ist also die Arbeit in der Datei, kein Anspruch auf alleinige Urheberschaft.",
+    "own": [
+      "Die sieben Produkt-Flows, sechs davon in Desktop-, Tablet- und Mobile-Breite",
+      "Die Objektseite: Anzahlungsplan, Preis und Kosten sowie Immobilienwert",
+      "Die Filterleiste und ihre sechs geöffneten Zustände",
+      "Die Tabelle der Einheiten, die Detailansicht und der Dreiervergleich",
+      "Die Lead-Formulare und der Anmelde-Flow mit sieben Zuständen",
+      "Die Markenebene des Design Systems: die Farbskalen in Braun und Creme und 13 Komponentensets"
+    ],
+    "collaborate": [
+      "Der Auftraggeber, dessen Briefing den Markt Stadt für Stadt beschrieb"
+    ],
+    "note": "Die frühere Version, die in derselben Datei archiviert ist, wird hier beschrieben, aber nicht mitgezählt."
+  },
+  "outcomes": {
+    "heading": "Eine Designdokumentation, kein Launch",
+    "intro": "Nichts in der Datei belegt, dass CProperty an den Start ging, und es gibt keine Nutzungs- oder Lead-Zahlen zu berichten. Die Datei enthält ein vollständiges responsives Design für die Käuferseite eines Presale-Marktes.",
+    "delivered": [
+      {
+        "label": "Screens in sieben Flows",
+        "context": "Sechs Flows in Desktop-, Tablet- und Mobile-Breite; der Blog für Desktop und Mobile"
+      },
+      {
+        "label": "Design-System-Komponenten",
+        "context": "13 Sets und 248 Varianten, Version 0.0.1"
+      },
+      {
+        "label": "geöffnet gezeichnete Filterpanels",
+        "context": "Standort, Übergabetermin, Investment-Rating, Anzahlung, Preis und „Advanced“"
+      }
+    ],
+    "shipped": [
+      "Eine Objektseite mit Anzahlungsplan und Hypothekenszenarien",
+      "Eine Filterleiste mit sechs geöffneten Panels",
+      "Eine Tabelle der Einheiten, eine Detailansicht und ein Dreiervergleich",
+      "Lead-Formulare mit Schalter für Makler oder Käufer",
+      "Ein Anmelde-Flow mit sieben Zuständen",
+      "Eine Profilseite für Bauträger"
+    ]
+  },
+  "lessons": {
+    "heading": "Was ich ändern würde",
+    "items": [
+      {
+        "title": "Eine Zahl, eine Quelle",
+        "body": "Das Beispielobjekt gibt seine Anzahlung auf vier Arten an. Auf einer Presale-Seite ist die Anzahlung die Zahl, nach der Käufer planen; sie sollte einmal gespeichert und überall angezeigt werden, damit sich Kopfbereich und Zahlungsplan nicht widersprechen können."
+      },
+      {
+        "title": "Das Ergebnis mit dem Briefing abgleichen",
+        "body": "Das Markt-Briefing nannte jede Stadt und jedes Viertel; der Standortfilter ließ zwei davon weg und führte eine dritte doppelt. Den fertigen Filter Zeile für Zeile mit dem Briefing abzugleichen, hätte das in Minuten aufgedeckt."
+      },
+      {
+        "title": "Die Schrift dokumentieren, die wirklich im Einsatz ist",
+        "body": "Das Typo-Board nennt Poppins und Mazzard, während die meisten Screens in Hurme Geometric Sans 3 gesetzt sind, die in einem einzigen Textstil vorkommt. Ein Design System ist nur dann ein System, wenn es die Screens beschreibt, denen es dient."
+      }
+    ]
+  }
+}

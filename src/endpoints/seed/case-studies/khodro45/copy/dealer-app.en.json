@@ -1,0 +1,336 @@
+{
+  "statement": "A dealer auction app that keeps a reference price, the inspection report and a six-stage settlement in view at every step of a used-car deal.",
+  "industry": "Automotive · B2B marketplace",
+  "team": "Product designer, working alongside product and development colleagues",
+  "heroCaption": "The car page with its price block, the bid sheet, and the order list numbered one to six: the dealer's path from a price to a plate release.",
+  "snapshot": {
+    "problem": "Dealers had to price, inspect and pay for used cars they had not seen, in a market that runs on opaque prices and personal trust.",
+    "role": "Product designer across the dealer app: market structure, bidding, negotiation and settlement states, the listing flow, memberships, and light and dark themes in Persian.",
+    "result": "Version 3.1 of the dealer app drawn as 241 phone screens in 43 sections, with a 24-screen prototype for transaction states."
+  },
+  "alt": {
+    "liveList": "Khodro45 dealer app, live auction list: each car card shows a countdown, the dealer's bid status and the fair market price",
+    "marketList": "Khodro45 dealer app, showroom market list: each card shows the last offer, the seller's asking price and how close the deal is",
+    "bazaarList": "Khodro45 dealer app, bazaar list: each card shows the time left, the highest bid and the fair market price",
+    "detailTop": "Khodro45 car page: photos, the price block with the highest bid and fair market price, and the inspection report tabs",
+    "reportFacts": "Khodro45 inspection report, car facts: intake number, trim, mileage, gearbox, options, insurance and roadworthiness certificate",
+    "reportBody": "Khodro45 inspection report, body and tyres: a damage map of the car and chassis findings, each with a verdict and a photo",
+    "priceLive": "Khodro45 price block in the live auction: highest bid, fair market price and service fee",
+    "priceMarket": "Khodro45 price block in the showroom market: last offer, seller's asking price and service fee",
+    "listingStatus": "Khodro45 listing status for a dealer's own car: total views and messages, and a switch, views and messages for each platform it is listed on",
+    "myCars": "Khodro45 My cars list: a price chart, then the dealer's cars with statuses such as awaiting approval, rejected and in auction",
+    "bidSheet": "Khodro45 bid sheet over the car page: current price, fair market price, a stepper for the bid and the time left",
+    "autoBid": "Khodro45 automatic bid sheet: current price, the price step and the step for the automatic bid",
+    "guarantee": "Khodro45 notice over the car page stating that the body inspection is guaranteed by Khodro45",
+    "addedFees": "Khodro45 costs sheet: municipal charges, transport, title transfer and plate release, with a total",
+    "ordersAll1": "Khodro45 order list, first cards: ready to negotiate with a countdown, negotiating, and renegotiating",
+    "ordersAll2": "Khodro45 order list, further cards: the seller accepted the offer, and an order that needs a higher offer",
+    "ordersAll3": "Khodro45 order list, last cards: needs a new offer, purchase completed, and cancelled for lack of agreement",
+    "notSettled1": "Khodro45 unsettled orders, stages one to three: owner's documents, deposit and final settlement, each with its action",
+    "notSettled2": "Khodro45 unsettled orders, stages four to six: confirmation, handover with power of attorney, and the plate-release receipt",
+    "orderDetails": "Khodro45 order page at stage one of six: agreed price, deposit, the next stage and a plate-release guarantee paid back by Khodro45",
+    "choosePrice": "Khodro45 negotiation sheet: accept the seller's price or keep your own, with a warning that the auction reopens to other bidders",
+    "priceLadder": "Khodro45 raise-offer sheet: the seller's price, a stepper for a new offer and a box to tick before submitting",
+    "playground": "Khodro45 prototype entry board: Welcome to Design Play Ground, a choice of dark or light, then Select Your Path",
+    "addCar": "Khodro45 add-a-car form in the dark theme, on the brand step, with popular brands and a searchable list",
+    "questions": "Khodro45 add-a-car questions: accident history, body damage, mechanical problems and tyre condition",
+    "photoGuide": "Khodro45 photo guide: shoot from about two metres so the whole car is in frame",
+    "bodyParts": "Khodro45 self-inspection: a top-down map of the car and a list of panels to mark as damaged",
+    "summary": "Khodro45 listing summary awaiting publication: the car, its plate, the answers given and how complete each part is",
+    "identity": "Khodro45 sign-up sheet asking for the type of activity: dealership owner, broker or car-sector investor",
+    "tiers": "Khodro45 paid membership: five annual levels, each with a cap on total bidding volume",
+    "loyalty": "Khodro45 Customer Club: the current tier, progress toward the next, and the rewards of each tier",
+    "score": "Khodro45 dealer score: a rating out of five with a bar for each of five performance measures",
+    "superLight": "Khodro45 services hub in the light theme: buying and selling, then ownership services such as fines, tax and insurance",
+    "superDark": "Khodro45 services hub in the dark theme, with the same services as the light version"
+  },
+  "chapters": {
+    "context": {
+      "heading": "The trade side of a used-car marketplace",
+      "body": [
+        "Khodro45 is an Iranian online marketplace for used cars. Sellers list cars on it; this app is the other side, where the trade buys them. Its splash screen reads Dealer App V.3.1, so the file is a version of a working product rather than a first concept.",
+        "Sign-up asks a new user to choose one of three activities: dealership owner, broker or car-sector investor. Behind the entry sits a services hub that reaches past buying and selling into owning a car: traffic fines, transfer tax, insurance, parts, servicing, inspection and daily prices."
+      ]
+    },
+    "problem": {
+      "heading": "Three questions a dealer could not answer",
+      "body": [
+        "A dealer buying a car they have not seen needs three answers: what it is worth, what condition it is really in, and who holds the money until the title changes hands. A classified listing answers none of them.",
+        "The file answers each with a mechanism: a reference price beside every offer, an inspection report inside the car page, and a settlement that moves through six numbered stages, with a guarantee held by Khodro45 until the last one is done."
+      ]
+    },
+    "markets": {
+      "heading": "Three markets, one car page",
+      "customLabel": "Structure",
+      "body": [
+        "The app has three market lists, drawn as separate sections rather than one list with a filter: Live, the live auction; Market, which the app's tabs call the showroom; and Bazaar. Each has its own version of the car page.",
+        "They differ in what sits next to the price. Live cards show the dealer's own bid, whether it is winning, losing or extended, and the fair market price. Market cards show the last offer against the seller's asking price and a label for how close the deal is. Bazaar cards show the time left, the highest bid and the fair market price.",
+        "The car page keeps the same split. Live and Bazaar set the highest bid against the fair market price; Market sets the last offer against the seller's asking price."
+      ]
+    },
+    "solution": {
+      "heading": "Price and condition at the point of commitment",
+      "body": [
+        "The car page is one long scroll: photos, the price block, then the inspection report. The report opens on the car's facts (intake number, trim, mileage, gearbox, options, remaining insurance and a roadworthiness certificate) and scores each system out of five.",
+        "Body and tyres get a damage map that colour-codes panels replaced or fully repainted, dented, or scratched. Chassis and pillar findings are listed part by part, each with a verdict and, where a part has failed, a photo.",
+        "Bidding happens in a sheet over the car page. Beside a manual bid, a dealer can set an automatic bid with its own step. A costs sheet itemises what the price does not include, and a notice states that the body inspection is guaranteed by Khodro45."
+      ]
+    },
+    "settlement": {
+      "heading": "Six stages, each with a clock",
+      "customLabel": "Settlement",
+      "body": [
+        "Winning a car starts a settlement that the order list numbers from one to six: the owner's documents are verified, the dealer pays a deposit, then the final settlement, the settlement is confirmed, the car is handed over with a power of attorney, and the plate is released.",
+        "Each card names its stage and the next one, and most carry a countdown. A plate-release guarantee is held along the way; the order page states that Khodro45 pays it back once the release is recorded.",
+        "Before settlement comes negotiation. The order list shows every state a deal can be in: ready to negotiate, negotiating, renegotiating, accepted, needs a higher offer, needs a new offer, awaiting approval, completed, and cancelled for lack of agreement. A 24-screen prototype walks one order through them."
+      ]
+    },
+    "selling": {
+      "heading": "The dealer as a seller",
+      "customLabel": "Selling",
+      "body": [
+        "Dealers sell as well as buy. A car is added through a stepped form (brand, model, year, trim, mileage, colour, city, VIN and plate), then questions about ownership and condition: first owner or not, whether the ownership card is in the dealer's name, a spare key, accidents, body damage, mechanical problems and tyres.",
+        "The form hands over to a self-inspection. A photo guide covers light, a clean car, distance and holding the phone sideways. The upload screens ask for each angle, a 15-second engine video with sound, documents and defects, with damaged panels marked on a map of the car.",
+        "The car then appears in the dealer's own list, where its listing and its auction can each be switched on or off. Its page shows views and messages in total and for each platform it is listed on: Khodro45, Divar, Bama and Sheypoor."
+      ]
+    },
+    "business": {
+      "heading": "Paying for access, or earning by volume",
+      "customLabel": "Business model",
+      "body": [
+        "The file keeps two dealer memberships. In one, a dealer must buy one of five annual subscriptions before using the app, and each level caps the total they can bid on, from 500 million toman up to unlimited.",
+        "In the other, a Customer Club, dealers climb tiers by trading volume over twelve months and earn rewards: credit up to 500 million toman, free delivery of the power of attorney and three free car transports. The file does not say whether one replaced the other.",
+        "A dealer score sits beside both: a rating out of five, updated monthly from settlement speed, plate-release speed, withdrawals, cancellations and the number of deals in the last 100 days."
+      ]
+    },
+    "method": {
+      "heading": "Tested as flows, in two themes",
+      "customLabel": "Method",
+      "body": [
+        "Almost every section is drawn twice, once dark and once light: 110 dark and 127 light screens across the sections. A prototype entry board, titled Welcome to Design Play Ground, lets a tester choose dark or light and then a path through the app.",
+        "Transaction status has a prototype of its own. Its 24 screens take one order through negotiation, the seller's counter-offer and the deposit, where countdowns and penalties make an unclear state expensive."
+      ]
+    }
+  },
+  "figures": {
+    "entry": {
+      "caption": "Who the app serves and where it starts: the three activities offered at sign-up, and the services hub drawn in both themes.",
+      "items": [
+        "Sign-up: dealership owner, broker or investor",
+        "Services hub, light",
+        "Services hub, dark"
+      ]
+    },
+    "markets": {
+      "caption": "The three market lists. The tabs are the app's own: live auction, showroom and bazaar.",
+      "items": [
+        "Live: your bid's status and the fair market price",
+        "Market: last offer, seller's ask and distance to a deal",
+        "Bazaar: time left, highest bid and fair market price"
+      ]
+    },
+    "price": {
+      "caption": "The same car's price block in two modes. Live sets the highest bid against the fair market price; Market sets the last offer against the seller's asking price. The service fee sits under both.",
+      "items": [
+        "Live auction",
+        "Showroom market"
+      ]
+    },
+    "report": {
+      "caption": "The inspection report inside the car page: the car's facts first, then body and tyres with the damage map and the chassis findings part by part.",
+      "items": [
+        "Car facts",
+        "Body, tyres and chassis"
+      ]
+    },
+    "bidding": {
+      "caption": "Around the bid: an automatic bid with its own step, the body-inspection guarantee, and the costs sheet with its total.",
+      "items": [
+        "Automatic bid",
+        "Inspection guarantee",
+        "Costs before the bid"
+      ]
+    },
+    "negotiation": {
+      "caption": "Negotiation as the prototype draws it. Rejecting the seller's price reopens the auction to other bidders, and the sheet says so before the dealer submits.",
+      "items": [
+        "Accept the seller's price or keep your own",
+        "Raise the offer, after ticking the box"
+      ]
+    },
+    "states": {
+      "caption": "One order list holding every state a deal can be in, each with its own action and, where time matters, a countdown.",
+      "items": [
+        "Ready to negotiate, negotiating, renegotiating",
+        "Accepted, needs a higher offer",
+        "Needs a new offer, completed, cancelled"
+      ]
+    },
+    "stages": {
+      "caption": "The later stages on the order list, and the order page at stage one: the amounts, the next stage, and a plate-release guarantee that Khodro45 pays back.",
+      "items": [
+        "Stages four to six",
+        "Order page, stage one of six"
+      ]
+    },
+    "listing": {
+      "caption": "Listing a car: the stepped form, the questions about ownership and condition, the photo guide, and damage marked panel by panel.",
+      "items": [
+        "Brand first, then model, year and trim",
+        "Ownership and condition",
+        "Photo guide: the whole car, about two metres away",
+        "Mark the damaged panels"
+      ]
+    },
+    "published": {
+      "caption": "After the form: a summary awaiting publication, the dealer's own cars with their statuses, and one car's reach on each platform.",
+      "items": [
+        "Summary, awaiting publication",
+        "My cars: listing and auction switches",
+        "Views and messages per platform"
+      ]
+    },
+    "membership": {
+      "caption": "Two memberships in one file: five paid annual levels with bidding caps, and a Customer Club that rewards volume. Whether the club replaced the paid levels is not recorded.",
+      "items": [
+        "Paid access: five annual levels",
+        "Customer Club: tiers and rewards"
+      ]
+    },
+    "score": {
+      "caption": "The dealer score: a rating out of five, updated each month from five measures of how a dealer settles.",
+      "annotations": [
+        "Settlement speed",
+        "Plate-release speed",
+        "Withdrawals from deals",
+        "Cancelled deals",
+        "Number of deals in the last 100 days"
+      ]
+    },
+    "playground": {
+      "caption": "The prototype entry board: a welcome, dark or light, then a choice of path."
+    }
+  },
+  "process": {
+    "heading": "The six settlement stages, as the order list numbers them",
+    "steps": [
+      {
+        "label": "Owner's documents",
+        "note": "Verified first; the deposit button stays disabled until they are."
+      },
+      {
+        "label": "Deposit",
+        "note": "Paid within a countdown shown on the card."
+      },
+      {
+        "label": "Final settlement",
+        "note": "The rest of the price, on its own clock."
+      },
+      {
+        "label": "Confirmation",
+        "note": "The settlement is confirmed before the car moves."
+      },
+      {
+        "label": "Handover",
+        "note": "The car and a power of attorney change hands; the contract balance is paid."
+      },
+      {
+        "label": "Plate release",
+        "note": "A receipt is uploaded, and the guarantee is paid back."
+      }
+    ]
+  },
+  "decisions": {
+    "heading": "Decisions the file makes visible",
+    "lede": "Read from the screens and their states, not from a written rationale; the file has none.",
+    "items": [
+      {
+        "title": "Always show a reference price",
+        "why": "No offer in the app stands alone. Live and Bazaar set it against a fair market price, Market against the seller's asking price, and the bid sheet repeats the reference where the dealer types a number.",
+        "tradeoff": "The reference changes with the market, so a dealer has to know which number they are being measured against.",
+        "evidence": "The Live and Market price blocks, and the bid sheet."
+      },
+      {
+        "title": "Put the inspection inside the car page",
+        "why": "The report is a set of tabs on the car page (car facts, body and tyres, engine, electrical), not a separate document. A damage map colours the affected panels, and every failed part carries a photo.",
+        "evidence": "The car facts and the body and chassis findings of the report."
+      },
+      {
+        "title": "Name every state and give it a clock",
+        "why": "An order is always in a named state with its next step written on the card, and most states carry a countdown. The 3:14 warning says when an offer will be withdrawn automatically and a penalty applied.",
+        "evidence": "The order list with its states, and the six numbered stages."
+      },
+      {
+        "title": "Warn before reopening the auction",
+        "why": "In negotiation, rejecting the seller's price and entering your own reopens the auction to other bidders. The sheet says so in full and, in one version, asks the dealer to tick a box before submitting.",
+        "tradeoff": "One more step at the moment a dealer is trying to close.",
+        "evidence": "The two negotiation sheets from the prototype."
+      },
+      {
+        "title": "Show every cost before the commitment",
+        "why": "The service fee sits in the price block, and a costs sheet lists the rest (municipal charges, transport, title transfer and plate release) with a total, reachable from the car page before any bid.",
+        "evidence": "The costs sheet beside the bid."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "Sina's part",
+    "intro": "Listed from the design file. It does not record who else worked on the app or who decided what, so this is not a claim of sole authorship.",
+    "own": [
+      "The structure of the three market modes and their car pages",
+      "The price block and the layout of the inspection report",
+      "Bidding, automatic bidding and the costs sheet",
+      "Negotiation and settlement states, and the prototype that tests them",
+      "The listing and self-inspection flow",
+      "Memberships, the Customer Club and the dealer score",
+      "Light and dark themes, right to left in Persian"
+    ],
+    "collaborate": [
+      "Product and development colleagues, not named in the file"
+    ],
+    "note": "The placeholder user throughout the file carries Sina's own name: a sign of whose working file it was, not of who decided what."
+  },
+  "outcomes": {
+    "heading": "What the file delivers",
+    "intro": "Counts of designed work, not results. The file records no usage, conversion or transaction figures.",
+    "delivered": [
+      {
+        "label": "phone screens",
+        "context": "237 inside the sections and 4 loose on the canvas, roughly half dark and half light"
+      },
+      {
+        "label": "canvas sections",
+        "context": "Markets, car pages, bidding, orders, listing, money, identity and entry"
+      },
+      {
+        "label": "screens in the transaction prototype",
+        "context": "One order taken through negotiation and deposit"
+      }
+    ],
+    "shipped": [
+      "Three market modes with their car pages",
+      "The inspection report inside the car page",
+      "Bid, automatic bid and costs sheets",
+      "Negotiation and the six-stage settlement",
+      "Listing with self-inspection",
+      "Memberships and the dealer score"
+    ]
+  },
+  "lessons": {
+    "heading": "What this work taught",
+    "items": [
+      {
+        "title": "A price needs a neighbour",
+        "body": "A bid means little on its own. Every price in the app sits beside another one (fair price, seller's ask or last offer), so the dealer judges a gap rather than a figure."
+      },
+      {
+        "title": "In a transaction, the states are the product",
+        "body": "Most screens after a win are the same card in a different state. Naming each state, its next step and its deadline was the design work; the layout barely changes."
+      },
+      {
+        "title": "Access fees work against a marketplace",
+        "body": "An auction needs participation. A subscription that caps bidding limits exactly that, and a club that rewards volume pushes the other way. Keeping both in the file makes the trade-off visible."
+      }
+    ]
+  }
+}

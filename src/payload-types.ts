@@ -723,13 +723,13 @@ export interface CaseStudyNarrativeBlock {
  * via the `definition` "CaseStudyFigureBlock".
  */
 export interface CaseStudyFigureBlock {
-  layout: 'full' | 'split' | 'sequence' | 'annotated' | 'compare';
+  layout: 'full' | 'split' | 'sequence' | 'annotated' | 'compare' | 'gallery';
   /**
    * What the media is, not how big it should be.
    */
   treatment?: ('auto' | 'screen' | 'plain' | 'diagram') | null;
   /**
-   * Full / annotated: exactly one. Split / compare: exactly two. Sequence: two to four.
+   * Full / annotated: exactly one. Split / compare: exactly two. Sequence: two to four. Gallery: two to forty.
    */
   items?:
     | {
@@ -787,12 +787,16 @@ export interface CaseStudyProcessBlock {
    */
   heading?: string | null;
   kind?: ('process' | 'loop') | null;
+  /**
+   * Codes only when they say more than the order, e.g. L1–L4 for a loop.
+   */
+  markers?: ('number' | 'code') | null;
   steps?:
     | {
         /**
-         * Latin code, e.g. "R1" — stays mono in every locale.
+         * Latin code, e.g. "L1" — stays mono in every locale.
          */
-        code: string;
+        code?: string | null;
         label: string;
         /**
          * Optional technical annotation under the label.
@@ -3386,6 +3390,7 @@ export interface CaseStudyFindingBlockSelect<T extends boolean = true> {
 export interface CaseStudyProcessBlockSelect<T extends boolean = true> {
   heading?: T;
   kind?: T;
+  markers?: T;
   steps?:
     | T
     | {

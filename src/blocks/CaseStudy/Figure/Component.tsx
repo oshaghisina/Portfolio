@@ -28,6 +28,7 @@ const SIZES: Record<FigureLayout, string> = {
   sequence: '(min-width: 64rem) 20vw, 50vw',
   annotated: '(min-width: 64rem) 45vw, 100vw',
   compare: '(min-width: 48rem) 39vw, 100vw',
+  gallery: '(min-width: 64rem) 26vw, 50vw',
 }
 
 /** Literal class strings so the Tailwind scanner sees every count. */
@@ -38,6 +39,15 @@ const SEQUENCE_COLUMNS: Record<number, string> = {
 }
 
 const PLATE = 'border border-line bg-panel p-4 sm:p-8 lg:p-12'
+
+/** Same-aspect sets keep reading order in a grid; mixed aspects pack into columns without holes. */
+const sameAspect = (visuals: { media: unknown }[]) => {
+  const ratios = visuals.map(({ media }) => {
+    const { width, height } = (media ?? {}) as { width?: number | null; height?: number | null }
+    return width && height ? Math.round((width / height) * 100) : null
+  })
+  return ratios.every((ratio) => ratio !== null && ratio === ratios[0])
+}
 
 /**
  * DS-30 figure patterns. Every layout stacks or halves on phones (a pair stacks, a sequence goes
@@ -151,6 +161,17 @@ export const FigureBlock: React.FC<FigureBlockProps> = ({
                 </span>,
               ),
             )}
+        </div>
+      )
+      break
+    case 'gallery':
+      body = sameAspect(visuals) ? (
+        <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-6">
+          {visuals.map((item, i) => cell(item, i))}
+        </div>
+      ) : (
+        <div className="columns-2 gap-3 md:columns-3 md:gap-6">
+          {visuals.map((item, i) => cell(item, i, undefined, 'mb-3 break-inside-avoid md:mb-6'))}
         </div>
       )
       break

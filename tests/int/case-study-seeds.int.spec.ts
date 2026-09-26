@@ -242,6 +242,32 @@ const CARSPARENCY_GATE = {
   ],
 }
 
+/**
+ * Yaravan's two studies (service design and platform, split 2026-09-26) share one gate: product
+ * name only, and only redacted crops — never an invoice, extension or warranty screen (prices,
+ * extension terms).
+ */
+const YARAVAN_GATE = {
+  // Product name only (2026-09-26): only redacted crops are uploaded — never the confidential
+  // charter, the competitor or portrait slides, the imported icons, or a raw screenshot or board.
+  files: [/^(?!crops\/)/, /invoice|extension|warrant/, /charter/, /market-analysis\/(03|09|14)/, /product-report\/23/, /icons/, /about/, /slide-00/, /edit-view/, /ROLE-001/],
+  text: [
+    /Mobile\s?140|موبایل\s?۱۴۰|موبايل/i,
+    /(?<![\d۰-۹])(140|۱۴۰)(?![\d۰-۹])/,
+    /Golzar|گلزار/i,
+    /Hamid|حمید|حميد/i,
+    /Bahaeddin|بهاالدین|بهاءالدین|baha sharif/i,
+    /Teamyar|تیم‌یار|تیمیار|تیم یار/i,
+    /Gohar|گوهر/i,
+    /زرین صنعت/,
+    /Digikala|دیجی‌کالا|دیجیکالا|ديجي/i,
+    /staging\.yaravan|yaravan\.ir/i,
+    /18[- ]?month|۱۸ ?ماه|18 meses|18 Monate|18 mois|18か月|18 شهر/i,
+    /250[,٬.]?000|۲۵۰[٬,]?۰۰۰/,
+    /Mamali|Archer/i,
+  ],
+}
+
 const GATES: Record<string, { files: RegExp[]; text: RegExp[] }> = {
   faymen: {
     // Home, search and cart carry a live coupon and a sales number; contact carries phones and the
@@ -267,6 +293,32 @@ const GATES: Record<string, { files: RegExp[]; text: RegExp[] }> = {
     files: [/pages\//, /rtl\//, /mobile\//, /templates\//, /icon|logo/],
     text: [/Platts/i, /AAIDL|PJAA|AAZB/, /194\.59/, /OFAC/i, /sanction|sancion|Sanktion|تحریم|العقوبات|制裁/i, /jurisdiction|juridiction|jurisdicci|Gerichtsstand|管轄/i, /Vitol|Trafigura|Gunvor|Mercuria|Glencore/i, /\.example\b/i, /Inquery|همبرگری|نمی‌خواهیم/],
   },
+  cproperty: {
+    // Only derived exports: never the home page (press logos, sample-sale cards, borrowed marketing
+    // copy, a portrait as placeholder realtor), the developer page (portrait, email, a placeholder
+    // phone), sign-in states that show email addresses, the blog (another product's copy), desktop
+    // footers, or the archived benchmark footer, market note and checkout. No design-system lineage,
+    // no benchmark leftover repeated as fact, no live link.
+    files: [/^(?!crops\/|2x\/components\/|design-system\/color\.png$)/, /home\//, /developer-page\//, /login-signup\//, /blog\//, /footer|motorway|lower-mainland|canada-map|checkout/],
+    text: [
+      /Motorway/i,
+      /ULEZ/i,
+      /Sell my van/i,
+      /Everlodge|Airbnb/i,
+      /Vauxhall/i,
+      /£/,
+      /\bAED\b/,
+      /BBC|Daily Mail|Guardian/i,
+      /carsparency|کارسپرنسی|khodro|خودرو\s?(45|۴۵)/i,
+      /Propertyeers|Online Ltd/i,
+      /Milford/i,
+      /Blue Yonder/i,
+      /@|gmail/i,
+      /21443214321/,
+      /figma\.com/i,
+      /cproperty\.ca/i,
+    ],
+  },
   'biomaze-website-education-panel': {
     // Brand Brief Tier-1: never the unverified “first player” market claim, in any locale.
     files: [],
@@ -281,31 +333,37 @@ const GATES: Record<string, { files: RegExp[]; text: RegExp[] }> = {
       /第一人者|公式教育/,
     ],
   },
+  'khodro45-dealer-app': {
+    // Rebuilt 2026-09-26 from 2× crops only. Never the order page below its financial block (a
+    // seller's name, national ID, card number and IBAN, and a delivery address), the profile, bank
+    // or login screens (IDs, card and phone numbers), or a raw export; the avatar photo is blanked.
+    // No Carsparency lineage (a separate employer), no company registration numbers, and none of the
+    // superseded counts.
+    files: [/_raw2x\//, /_prev1x\//, /profile\//, /register-login/, /kyc/, /onboarding/],
+    text: [
+      /figma\.com/i,
+      /\(Copy\)/i,
+      /carsparency|کارسپرنسی|كارسبرنسي/i,
+      /Pedram|پدرام/i,
+      /سود ?بخش/,
+      /1360893409|۱۳۶۰۸۹۳۴۰۹/,
+      /5022|۵۰۲۲/,
+      /0933|۰۹۳۳/,
+      /Jannat|جنت ?آباد/i,
+      /526336|۵۲۶۳۳۶/,
+      /14007593370|۱۴۰۰۷۵۹۳۳۷۰/,
+      /Jahangiri|جهانگیری/i,
+      /Didestan|دیدستان/i,
+      /28[- ]?(frame|screen)|۲۸ ?(فریم|صفحه)/i,
+    ],
+  },
   'carsparency-pro': CARSPARENCY_GATE,
   'carsparency-back-office': CARSPARENCY_GATE,
   'carsparency-inspection': CARSPARENCY_GATE,
   'carsparency-web': CARSPARENCY_GATE,
   'carsparency-design-system': CARSPARENCY_GATE,
-  yaravan: {
-    // Product name only (2026-09-26): only redacted crops are uploaded — never the confidential
-    // charter, the competitor or portrait slides, the imported icons, or a raw screenshot or board.
-    files: [/^(?!crops\/)/, /charter/, /market-analysis\/(03|09|14)/, /product-report\/23/, /icons/, /about/, /slide-00/, /edit-view/, /ROLE-001/],
-    text: [
-      /Mobile\s?140|موبایل\s?۱۴۰|موبايل/i,
-      /(?<![\d۰-۹])(140|۱۴۰)(?![\d۰-۹])/,
-      /Golzar|گلزار/i,
-      /Hamid|حمید|حميد/i,
-      /Bahaeddin|بهاالدین|بهاءالدین|baha sharif/i,
-      /Teamyar|تیم‌یار|تیمیار|تیم یار/i,
-      /Gohar|گوهر/i,
-      /زرین صنعت/,
-      /Digikala|دیجی‌کالا|دیجیکالا|ديجي/i,
-      /staging\.yaravan|yaravan\.ir/i,
-      /18[- ]?month|۱۸ ?ماه|18 meses|18 Monate|18 mois|18か月|18 شهر/i,
-      /250[,٬.]?000|۲۵۰[٬,]?۰۰۰/,
-      /Mamali|Archer/i,
-    ],
-  },
+  yaravan: YARAVAN_GATE,
+  'yaravan-platform': YARAVAN_GATE,
 }
 
 /**

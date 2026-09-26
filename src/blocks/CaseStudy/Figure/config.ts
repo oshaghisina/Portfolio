@@ -3,10 +3,10 @@ import type { Block } from 'payload'
 /**
  * DS-30 figure patterns. Editors pick a *pattern*, never a size: `full` (one visual), `split`
  * (two related visuals), `sequence` (2–4 states of a flow), `annotated` (one visual + a numbered
- * key), `compare` (before / after). `treatment` says what the media *is*; the page decides how
+ * key), `compare` (before / after), `gallery` (a body of work, 2–40 visuals in columns). `treatment` says what the media *is*; the page decides how
  * to frame it — portrait phone captures are framed as screens, diagrams sit on the drafting plate.
  */
-export const FIGURE_LAYOUTS = ['full', 'split', 'sequence', 'annotated', 'compare'] as const
+export const FIGURE_LAYOUTS = ['full', 'split', 'sequence', 'annotated', 'compare', 'gallery'] as const
 export type FigureLayout = (typeof FIGURE_LAYOUTS)[number]
 
 export const FIGURE_TREATMENTS = ['auto', 'screen', 'plain', 'diagram'] as const
@@ -19,6 +19,7 @@ export const FIGURE_ITEM_COUNT: Record<FigureLayout, { min: number; max: number 
   sequence: { min: 2, max: 4 },
   annotated: { min: 1, max: 1 },
   compare: { min: 2, max: 2 },
+  gallery: { min: 2, max: 40 },
 }
 
 export const CaseStudyFigure: Block = {
@@ -40,6 +41,7 @@ export const CaseStudyFigure: Block = {
             { label: 'Sequence — 2–4 states of a flow', value: 'sequence' },
             { label: 'Annotated — one visual + numbered key', value: 'annotated' },
             { label: 'Compare — before / after', value: 'compare' },
+            { label: 'Gallery — a body of work, 2–40 visuals', value: 'gallery' },
           ],
           admin: { width: '50%' },
         },
@@ -61,11 +63,11 @@ export const CaseStudyFigure: Block = {
       name: 'items',
       type: 'array',
       minRows: 1,
-      maxRows: 4,
+      maxRows: 40,
       labels: { singular: 'Visual', plural: 'Visuals' },
       admin: {
         description:
-          'Full / annotated: exactly one. Split / compare: exactly two. Sequence: two to four.',
+          'Full / annotated: exactly one. Split / compare: exactly two. Sequence: two to four. Gallery: two to forty.',
       },
       validate: (
         value: unknown,

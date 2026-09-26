@@ -1,0 +1,279 @@
+{
+  "statement": "Vivienda en preventa en Metro Vancouver, ahora comparable: depósitos con fecha, comparación unidad por unidad y calificación propia, gratis para el comprador.",
+  "industry": "Inmobiliaria · vivienda en preventa",
+  "team": "Un único archivo de Figma: 76 pantallas y una biblioteca de 261 componentes",
+  "heroCaption": "El recorrido del comprador en el móvil: el rango de precios y las cifras clave de un inmueble, los números de una unidad y tres unidades comparadas.",
+  "snapshot": {
+    "problem": "Quien compra en preventa se compromete con un depósito escalonado años antes de que exista la vivienda, y las cifras que deciden la compra rara vez aparecen juntas.",
+    "role": "Diseñador de producto de siete flujos responsive, 76 pantallas y un sistema de diseño de 261 componentes.",
+    "result": "Un diseño completo y documentado del lado del comprador en un mercado de preventa, sin pruebas de lanzamiento en el archivo."
+  },
+  "alt": {
+    "cover": "CProperty en el móvil — la página de un inmueble en preventa, con un rango de precios y recuadros de año de entrega, depósito, puntuación de inversión, pago mensual, tipos de plano y alquiler medio",
+    "unitTop": "CProperty — el detalle de una unidad en el móvil: precio, año de entrega, proyecto, tarifa de cesión, cuota de mantenimiento por pie cuadrado, pago inicial y plano",
+    "compareTop": "CProperty — la página de comparación en el móvil: la dirección de una torre, sus cifras económicas y sus servicios",
+    "propertyFold": "CProperty — la página del inmueble en escritorio: la galería, con el rango de precios y las cifras clave al lado, las pestañas, el resumen y los recuadros de información",
+    "checklist": "CProperty — la parte superior de la página de un inmueble en el móvil, con marcadores numerados en el rango de precios y en tres filas de cifras",
+    "v1Pricing": "La versión anterior — una página de cuenta premium con las suscripciones Enhanced y Starter a 250 $ y 150 $ al año",
+    "v1Compare": "La versión anterior — una página de comparación que recoge, de tres inmuebles, superficie, habitaciones, estudio, espacio flex, trastero, aparcamiento, balcón, jardín, plantas y orientación",
+    "compareDesktop": "CProperty — la página de comparación rediseñada: tres unidades con sus cifras económicas, sus servicios, lo esencial del día a día y de la vivienda, y un CProperty Rating",
+    "filterAdvanced": "CProperty — la barra de filtros del listado de inmuebles con el panel «Advanced» abierto: tipo de inmueble, depósito máximo, fecha de finalización, dormitorios, baños, aparcamiento y trastero",
+    "priceExpenses": "CProperty — la sección de precio y gastos: escenarios de hipoteca según el pago inicial, una cuadrícula de pagos mensuales por tipo de interés y los gastos que hay que pagar al cierre de la compra",
+    "unitsTable": "CProperty — la tabla de unidades y planos en escritorio, con favorito, «More» y «Add to Compare» en cada fila, sobre un formulario de contacto",
+    "unitRating": "CProperty — el detalle de una unidad en el móvil: dormitorios, baños, balcón, promotora y un CProperty Rating de diseño interior y valor de la vivienda",
+    "exclusiveMobile": "CProperty — el formulario «Get Exclusive Information» en el móvil, con un selector de agente inmobiliario o comprador",
+    "statGrid": "CProperty — las cifras de cabecera de la página del inmueble: un rango de precios y recuadros, entre ellos un depósito del 30 %",
+    "depositStructure": "CProperty — la estructura del depósito: un 20 % en total, dibujado como plazos del 8 %, 4 %, 4 % y 2 % con sus fechas",
+    "locationPanel": "CProperty — el filtro de ubicación abierto: quince chips de ciudades, con Coquitlam dos veces",
+    "colorBoard": "Sistema de diseño de CProperty, versión 0.0.1 — el tablero de color con escalas de marrón, crema, azul, gris, verde y rojo"
+  },
+  "chapters": {
+    "context": {
+      "heading": "Una elección consciente",
+      "body": [
+        "CProperty es un marketplace de vivienda en preventa —apartamentos y casas adosadas que se venden antes de construirse— en el Lower Mainland de la Columbia Británica. La C es de «conscious», consciente, y el titular principal lo repite: «Choose Consciously, Invest Delightfully.» Las direcciones de ejemplo están en el West End de Vancouver.",
+        "El brief del mercado, una nota que sigue en el archivo, lo recorre ciudad por ciudad: Vancouver y el North Shore, las Tri-Cities, Burnaby, New Westminster, Surrey, Richmond, Langley y un anillo exterior que llega hasta Abbotsford y White Rock. El diseño es un archivo de Figma de 13 páginas: siete flujos de producto (inicio, inmueble, promotora, listado de inmuebles, unidades y planos, inicio de sesión y blog), seis de ellos dibujados en anchos de escritorio, tableta y móvil, y el blog en escritorio y móvil, 76 pantallas en total, además de un sistema de diseño y una versión anterior archivada."
+      ]
+    },
+    "problem": {
+      "heading": "Un depósito por un edificio que aún no está construido",
+      "body": [
+        "Quien compra en preventa compromete dinero años antes de que haya nada que visitar: un depósito que se paga a plazos durante la obra, una tarifa de cesión si necesita vender el contrato antes de que termine la construcción, una cuota mensual de mantenimiento por pie cuadrado y una fecha de entrega a años vista. Las cifras que deciden la compra suelen estar en sitios distintos: el folleto de una promotora, una oficina de ventas, una hoja de cálculo.",
+        "La tarea de CProperty es ponerlas una junto a otra, primero para un proyecto y después entre unidades, para que el comprador vea cuánto cuesta una vivienda antes, durante y después de construirse."
+      ]
+    },
+    "pivot": {
+      "heading": "De folletos para agentes a comparaciones para compradores",
+      "customLabel": "Giro",
+      "body": [
+        "El archivo conserva una versión anterior en su propia página: 57 frames de otro producto, cuyos clientes eran agentes inmobiliarios. Una cuenta premium tenía dos niveles —Starter a 150 $ al año y Enhanced a 250 $, o 50 $ y 75 $ por tres meses— y daba acceso a todos los datos y precios de cada unidad, comparación lado a lado, favoritos guardados y, en Enhanced, folletos personalizados para presentar a clientes. Los agentes tenían un panel de control con un generador de propuestas: elegir unidades, una muestra de color y una de seis plantillas de folleto. Las promotoras tenían pantallas para añadir proyectos y marcar unidades como disponibles, reservadas o vendidas.",
+        "El rediseño le da la vuelta. Los paneles de control y los niveles desaparecen, explorar es gratis y la intención de compra llega por dos formularios: «Contact Sales Center», bajo la tabla de unidades, y «Get Exclusive Information», en las páginas del inmueble y de la promotora, que pregunta si quien escribe es agente inmobiliario o comprador. Los agentes siguen teniendo cabida, pero como leads y no como suscriptores. La idea central del generador de propuestas, poner unidades una junto a otra, sobrevive en la página de comparación, que ahora compara dinero en lugar de especificaciones."
+      ]
+    },
+    "approach": {
+      "heading": "El archivo registra el orden del trabajo",
+      "body": [
+        "Los node IDs de Figma crecen a medida que se edita un archivo, así que la mediana de los IDs de cada frame ordena el trabajo. La versión anterior y la base del sistema de diseño llegaron primero, al crear el archivo. Después vinieron la página de inicio y la del inmueble; luego, casi a la vez, el listado de inmuebles con sus filtros y el flujo de inicio de sesión, y más tarde la página de la promotora. Las unidades, el detalle de la unidad y la comparación se dibujaron al final: la parte del producto con más decisiones.",
+        "Todos los flujos siguen la misma disposición: una tarjeta de título y, después, una columna por breakpoint (escritorio a 1440, tableta a 1028 y móvil a 360 o 393 píxeles), con una pantalla por estado. Una última pasada cambió el pie de página por uno nuevo en casi todas las pantallas de todas las páginas."
+      ]
+    },
+    "solution": {
+      "heading": "Filtros que hacen preguntas de inversor",
+      "body": [
+        "La página del listado se abre con «Invest Delightfully with Selecting Project!» y una barra de filtros que plantea primero las preguntas de un inversor: ubicación, fecha de entrega, puntuación de inversión, depósito y precio. Dormitorios, baños, aparcamiento, trastero, tipo de inmueble, depósito total máximo y fecha de finalización esperan en «Advanced». Cada uno de los seis filtros está dibujado abierto: una cuadrícula de chips de ciudades, un calendario, controles deslizantes de puntuación, depósito y precio, y el panel avanzado.",
+        "La página del inmueble se lee como una lista de comprobación de la preventa. Junto a la galería hay un rango de precios y seis cifras: año de entrega, depósito, puntuación de inversión, pago mensual, tipos de plano y alquiler medio. Debajo, la página va del resumen a precio y gastos, pasando por unidades y planos, un calendario del depósito dibujado como plazos con fecha, diseño interior y exterior con extras de trastero y aparcamiento con su precio, y una sección de valor de la vivienda con gráficos del barrio. La sección de precio y gastos reúne escenarios de hipoteca según el pago inicial, pagos mensuales con distintos tipos de interés y el dinero que hay que pagar al cierre de la compra."
+      ]
+    },
+    "compare": {
+      "heading": "Comparar unidades, no edificios",
+      "customLabel": "Comparación",
+      "body": [
+        "La sección de unidades y planos es una tabla (proyecto, plano, dormitorios más espacio flex, ubicación, superficie, precio) con favorito, «More» y «Add to Compare» en cada fila, y un formulario «Contact Sales Center» debajo. El detalle de la unidad repite las cifras económicas de una sola unidad: precio, fecha de entrega, tarifa de cesión, cuota de mantenimiento por pie cuadrado, pago inicial y plano.",
+        "La página de comparación alinea tres unidades en el mismo orden: primero lo económico (total, tarifa de cesión, mantenimiento, pago inicial), después los servicios; lo esencial del día a día, como el aparcamiento y la carga de vehículos eléctricos; lo esencial de la vivienda, y un CProperty Rating de diseño interior y valor de la vivienda. La calificación convierte la promesa de la marca en un campo: la plataforma califica la vivienda, no solo el anuncio."
+      ],
+      "insight": "Cada unidad lleva un CProperty Rating, así que cada comparación termina con el juicio propio de la plataforma."
+    },
+    "critique": {
+      "heading": "Cuatro depósitos en una página",
+      "customLabel": "Crítica",
+      "body": [
+        "El inmueble de ejemplo responde de cuatro maneras distintas a «¿cuánto pago antes de que terminen las obras?». La cabecera habla de un depósito del 30 %. El bloque de información, de un depósito total de 32 500 $ y un pago inicial del 25 %. El calendario del depósito habla de un 20 % en total, y sus plazos —8 %, 4 %, 4 % y 2 %— suman un 18 %.",
+        "El filtro de ubicación tiene el mismo tipo de hueco. El brief del mercado incluye entre sus ciudades Langley, Burnaby, Coquitlam, Port Coquitlam y Port Moody; los quince chips del filtro omiten Langley y Port Coquitlam y muestran Coquitlam dos veces, mientras que todas las unidades de ejemplo de la tabla de escritorio están en Langley. El filtro de la versión anterior sí incluía Langley, Port Coquitlam y Delta."
+      ],
+      "bullets": [
+        "El panel de precio lleva la etiqueta «Deposite» y reutiliza el rango del control deslizante del depósito.",
+        "La fecha de entrega se elige entre los días de un solo mes, mientras que los años de entrega del archivo van de 2024 a 2026.",
+        "Los porcentajes llevan el signo delante (%30), y «Deposite» está mal escrito en todo el archivo."
+      ],
+      "insight": "La cifra más importante de la página es la que indica de forma menos coherente."
+    },
+    "system": {
+      "heading": "Un sistema 0.0.1 en marrón y crema",
+      "customLabel": "Sistema",
+      "body": [
+        "El sistema de diseño lleva la etiqueta de versión 0.0.1 en once tableros: color, tipografía, cabecera y pie de página, botones, casillas y botones de opción, interruptores, perfil, modal, campos de formulario, migas de pan y toasts. Reúne 13 conjuntos de componentes con 248 variantes —solo los botones suman 90— y 67 estilos de color. Las escalas de marca son un marrón principal y un crema; el azul, el gris, el verde y el rojo marcan los estados. Una página de iconos añade 120 conjuntos de iconos en cinco tamaños, con tableros de iconos de servicios y de lugares.",
+        "Dos carencias muestran dónde se detuvo. No hay variables: la única colección de variables está vacía, así que cada color es un estilo. Y el tablero tipográfico documenta Poppins y Mazzard, mientras que la mayoría de las pantallas usan Hurme Geometric Sans 3, que solo aparece en uno de los 12 estilos de texto."
+      ]
+    }
+  },
+  "figures": {
+    "fold": {
+      "caption": "La página del inmueble en escritorio: la galería, con el rango de precios y seis cifras al lado, y después las pestañas y el resumen."
+    },
+    "checklist": {
+      "caption": "La parte superior de la página de un inmueble en el móvil: el rango de precios y las cifras con las que planifica quien compra en preventa.",
+      "annotations": [
+        "Un rango de precios, de la unidad más barata a la más cara, en lugar de un único precio de venta",
+        "El año de entrega y el depósito",
+        "La puntuación de inversión y el pago mensual",
+        "El número de planos y el alquiler medio de la zona"
+      ]
+    },
+    "tiers": {
+      "caption": "La versión anterior vendía a los agentes inmobiliarios una cuenta premium en dos niveles."
+    },
+    "pivotCompare": {
+      "caption": "La misma página en las dos versiones: la comparación pasó de las especificaciones al dinero.",
+      "items": [
+        "La versión anterior: superficie, habitaciones, estudio, jardín y orientación.",
+        "El rediseño: primero lo económico, después servicios, lo esencial y una calificación."
+      ]
+    },
+    "filters": {
+      "caption": "La barra de filtros con «Advanced» abierto: las preguntas de inversión en la barra y las del hogar, dentro."
+    },
+    "price": {
+      "caption": "Precio y gastos: escenarios según el pago inicial, una cuadrícula de pagos mensuales por tipo de interés y el dinero que hay que pagar al cierre. Las cifras del archivo son provisionales; el diseño es la estructura."
+    },
+    "units": {
+      "caption": "Las unidades como tabla, con «Add to Compare» en cada fila y el formulario de la oficina de ventas debajo."
+    },
+    "leads": {
+      "caption": "La calificación propia de una unidad y el formulario que convierte el interés en un lead.",
+      "items": [
+        "Detalle de la unidad: lo esencial de la vivienda y el CProperty Rating.",
+        "«Get Exclusive Information» pregunta si quien escribe es agente inmobiliario o comprador."
+      ]
+    },
+    "deposits": {
+      "caption": "Dos respuestas a una misma pregunta, en la misma página.",
+      "items": [
+        "La cabecera: un depósito del 30 %.",
+        "El calendario: un 20 % en total, en plazos que suman un 18 %."
+      ]
+    },
+    "cities": {
+      "caption": "Quince chips: ni Langley ni Port Coquitlam, y Coquitlam dos veces."
+    },
+    "color": {
+      "caption": "El tablero de color: las escalas de marca, marrón y crema, sobre los colores de estado, versión 0.0.1."
+    }
+  },
+  "process": {
+    "heading": "Los flujos, en el orden en que se dibujaron",
+    "steps": [
+      {
+        "label": "La versión anterior",
+        "note": "57 frames, archivados en su propia página al crear el archivo"
+      },
+      {
+        "label": "Base del sistema",
+        "note": "Color, tipografía, botones, cabecera y pie de página; los modales, formularios y toasts llegaron después"
+      },
+      {
+        "label": "Inicio",
+        "note": "Hero, búsqueda, últimos proyectos, cómo funciona y preguntas frecuentes"
+      },
+      {
+        "label": "Página del inmueble",
+        "note": "Estados por defecto, con scroll y con formulario de contacto, en tres breakpoints"
+      },
+      {
+        "label": "Listado de inmuebles",
+        "note": "La vista de lista y seis paneles de filtro, cada uno dibujado abierto"
+      },
+      {
+        "label": "Inicio de sesión",
+        "note": "Siete estados, del acceso a un código enviado por correo electrónico"
+      },
+      {
+        "label": "Página de la promotora",
+        "note": "Historia, valores, premios y los proyectos de la promotora"
+      },
+      {
+        "label": "Unidades y comparación",
+        "note": "La tabla de unidades, el detalle de la unidad y la comparación de tres, dibujados al final"
+      }
+    ]
+  },
+  "decisions": {
+    "heading": "Cinco decisiones detrás de la comparación",
+    "lede": "El rediseño se apoya en cinco decisiones que el archivo deja a la vista.",
+    "items": [
+      {
+        "title": "Dar las cifras gratis al comprador y tratar a los agentes como leads",
+        "why": "La versión anterior vendía a los agentes inmobiliarios datos de las unidades, comparación lado a lado y folletos para clientes, con planes anuales o trimestrales. El rediseño abre esas cifras a todos los visitantes y canaliza la intención de compra a través de dos formularios, uno de los cuales pregunta si quien escribe es agente inmobiliario o comprador.",
+        "tradeoff": "Los ingresos tienen que venir de los leads y no de las suscripciones, y el archivo no recoge ningún modelo para ponerles precio."
+      },
+      {
+        "title": "Mostrar el depósito como calendario, no como un único porcentaje",
+        "why": "El depósito de una preventa se paga en plazos con fecha a lo largo de la obra, y una sola cifra oculta cuándo hay que pagar. La página del inmueble lo dibuja como recuadros, cada uno con su parte y su fecha.",
+        "tradeoff": "Hay que introducir el calendario de cada proyecto, y el total tiene que coincidir con la cabecera, cosa que en la página de ejemplo no ocurre."
+      },
+      {
+        "title": "Comparar unidades, no proyectos",
+        "why": "Las tarifas de cesión, la cuota de mantenimiento por pie cuadrado y los extras de aparcamiento o de carga de vehículos eléctricos varían según la unidad y el plano, así que «Add to Compare» está en cada fila de unidad y la página de comparación alinea las cifras económicas de tres unidades.",
+        "tradeoff": "Más filas que mantener y una página de comparación que se alarga en el móvil."
+      },
+      {
+        "title": "Poner la calificación propia de la plataforma junto a los datos del anuncio",
+        "why": "La promesa de la marca, una elección consciente, se convierte en un campo: un CProperty Rating de diseño interior y valor de la vivienda en cada unidad y en cada comparación.",
+        "tradeoff": "Para inspirar confianza, una calificación necesita un método publicado; el archivo muestra las puntuaciones, no cómo se obtienen."
+      },
+      {
+        "title": "Filtrar primero por preguntas de inversión",
+        "why": "Ubicación, fecha de entrega, puntuación de inversión, depósito y precio están en la barra; dormitorios, baños, aparcamiento y trastero esperan en «Advanced». El comprador que imagina esta barra decide dónde poner su dinero antes de elegir un plano.",
+        "tradeoff": "Una familia que busca por número de dormitorios tiene que abrir antes «Advanced»."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "La parte de Sina",
+    "intro": "Según el archivo. No nombra a ningún equipo ni registra quién decidió qué, así que esto es el trabajo que contiene el archivo, no una afirmación de autoría exclusiva.",
+    "own": [
+      "Los siete flujos de producto, seis de ellos en anchos de escritorio, tableta y móvil",
+      "La página del inmueble: el calendario del depósito, precio y gastos, y valor de la vivienda",
+      "La barra de filtros y sus seis estados abiertos",
+      "La tabla de unidades, el detalle de la unidad y la comparación de tres",
+      "Los formularios de captación de leads y el flujo de inicio de sesión de siete estados",
+      "La capa de marca del sistema de diseño: las escalas marrón y crema y 13 conjuntos de componentes"
+    ],
+    "collaborate": [
+      "El cliente, cuyo brief describía el mercado ciudad por ciudad"
+    ],
+    "note": "La versión anterior, guardada en el mismo archivo, se describe aquí, pero no se contabiliza."
+  },
+  "outcomes": {
+    "heading": "Un registro de diseño, no un lanzamiento",
+    "intro": "Nada en el archivo indica que CProperty llegara a lanzarse, y no hay cifras de uso ni de leads que presentar. Lo que contiene es un diseño responsive completo para el lado del comprador de un mercado de preventa.",
+    "delivered": [
+      {
+        "label": "pantallas en siete flujos",
+        "context": "Seis en anchos de escritorio, tableta y móvil; el blog, en escritorio y móvil"
+      },
+      {
+        "label": "componentes del sistema de diseño",
+        "context": "13 conjuntos y 248 variantes, versión 0.0.1"
+      },
+      {
+        "label": "paneles de filtro dibujados abiertos",
+        "context": "Ubicación, fecha de entrega, puntuación de inversión, depósito, precio y «Advanced»"
+      }
+    ],
+    "shipped": [
+      "Una página de inmueble con calendario del depósito y escenarios de hipoteca",
+      "Una barra de filtros con seis paneles abiertos",
+      "Una tabla de unidades, el detalle de la unidad y una comparación de tres",
+      "Formularios de captación de leads con selector de agente inmobiliario o comprador",
+      "Un flujo de inicio de sesión de siete estados",
+      "Una página de perfil de la promotora"
+    ]
+  },
+  "lessons": {
+    "heading": "Lo que cambiaría",
+    "items": [
+      {
+        "title": "Una cifra, una fuente",
+        "body": "El inmueble de ejemplo indica su depósito de cuatro maneras. En una página de preventa, el depósito es la cifra con la que planifica el comprador; debería guardarse una sola vez y mostrarse en todas partes, para que la cabecera y el calendario no puedan contradecirse."
+      },
+      {
+        "title": "Contrastar el resultado con el brief",
+        "body": "El brief del mercado nombraba cada ciudad y cada barrio; el filtro de ubicación omitió dos y duplicó una tercera. Comparar el filtro terminado con el brief, línea por línea, lo habría detectado en minutos."
+      },
+      {
+        "title": "Documentar la tipografía que de verdad se usa",
+        "body": "El tablero tipográfico declara Poppins y Mazzard, mientras que la mayoría de las pantallas usan Hurme Geometric Sans 3, que aparece en un único estilo de texto. Un sistema de diseño solo es un sistema si describe las pantallas a las que sirve."
+      }
+    ]
+  }
+}

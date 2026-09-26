@@ -44,6 +44,7 @@ const CARSPARENCY_ROLE = 'Product designer'
 const TAHA_GASHT = 'Taha Gasht'
 const INDEPENDENT = 'Independent'
 const YARAVAN_ROLE = 'Product designer, PM & builder'
+const YARAVAN_SERVICE_ROLE = 'Service designer & process architect'
 
 export const PROJECT_SEED: ProjectSeedRow[] = [
   // ── Featured (order 1–6) ──────────────────────────────────────────────────────────────
@@ -131,7 +132,7 @@ export const PROJECT_SEED: ProjectSeedRow[] = [
     slug: 'khodro45-dealer-app',
     title: 'Khodro45 dealer app — a timed auction market for Iranian car dealers',
     summary:
-      'The B2B side of Iran\u2019s Khodro45 marketplace: 241 screens across three parallel market modes, a fair-price-guided bidding system, a six-step escrowed settlement pipeline, two generations of dealer monetisation, and a 28-frame prototype built to test the transaction state machine.',
+      'The B2B side of Iran\u2019s Khodro45 marketplace: 241 screens across three market modes, an inspection report inside every car page, a six-stage settlement, a listing flow with self-inspection, two dealer memberships and a 24-screen prototype for transaction states.',
     company: KHODRO45,
     role: CARSPARENCY_ROLE,
     kind: ['product', 'systems'],
@@ -141,7 +142,7 @@ export const PROJECT_SEED: ProjectSeedRow[] = [
     cover: {
       path: 'Docs/Experience/Carsparency-Khodro45/khodro45-dealer-app/assets/car-list/car-list-live.png',
       name: 'khodro45-dealer-app--car-list-live.png',
-      alt: 'Khodro45 dealer app — the live auction list in Persian, each car card carrying its countdown, current bid and fair-price guide',
+      alt: 'Khodro45 dealer app, live auction list: each car card shows a countdown, the dealer\u2019s bid status and the fair market price',
     },
   },
   {
@@ -463,6 +464,24 @@ export const PROJECT_SEED: ProjectSeedRow[] = [
     },
   },
   {
+    slug: 'cproperty',
+    title: 'CProperty — presale homes for Metro Vancouver, made comparable',
+    summary:
+      'A buyer-facing marketplace for presale condos and townhouses in Vancouver’s Lower Mainland: 76 responsive screens that set the deposit schedule, assignment fees and unit-by-unit costs side by side, replacing an earlier version that sold data to realtors.',
+    company: INDEPENDENT,
+    role: 'Product designer',
+    kind: ['product'],
+    order: 102,
+    status: 'published',
+    // No period: the file records no dates (README Q2). A phone crop of the property page, cut
+    // above its map thumbnail (a map of Germany, not British Columbia).
+    cover: {
+      path: 'Docs/Experience/Projects/cproperty/assets/crops/cover.png',
+      name: 'cproperty--cover.png',
+      alt: 'CProperty on a phone — a presale property page with a price band and tiles for delivery year, deposit, investment rate, monthly payment, plan types and average rent',
+    },
+  },
+  {
     slug: 'faymen',
     title: 'Fayman — Persian RTL menswear storefront',
     summary:
@@ -538,19 +557,38 @@ export const PROJECT_SEED: ProjectSeedRow[] = [
       alt: 'Nim Dang — the trading hall seller list, where only peer resales carry a low, fair or high price gauge',
     },
   },
+  // Yaravan is two case studies since 2026-09-26: the service design keeps /work/yaravan, the
+  // platform built on it is /work/yaravan-platform. Order 104.5 keeps the pair adjacent.
   {
     slug: 'yaravan',
-    title: 'Yaravan — an after-sales brand that publishes its own open questions',
+    title: 'Yaravan — service design for an after-sales operation nobody had written down',
     summary:
-      'An independent Persian warranty brand built as a full platform on top of an after-sales operation nobody had ever written down — a process architecture, a role and responsibility model, and a product where every unapproved claim ships as a visible open question instead of a confident sentence.',
+      'The service design behind a warranty brand: 22 after-sales processes drawn at six levels, from a macro map down to work instructions, only as far as the evidence allowed — with every gap marked, counted and owned instead of filled.',
     company: INDEPENDENT,
-    role: YARAVAN_ROLE,
-    kind: ['product', 'systems', 'research'],
+    role: YARAVAN_SERVICE_ROLE,
+    kind: ['systems', 'research'],
     order: 104,
     status: 'published',
     period: { start: '2026-07-01T00:00:00.000Z' },
     cover: {
-      // The case study's crop of the same screen, without the dev-mode badge.
+      path: 'Docs/Experience/Projects/yaravan/assets/crops/service-cover.png',
+      name: 'yaravan--service-blueprint-cover.png',
+      alt: 'Yaravan — the service blueprint for warranty activation in Persian: customer actions, touchpoints and the lines of interaction and visibility',
+    },
+  },
+  {
+    slug: 'yaravan-platform',
+    title: 'Yaravan — a warranty platform that shows its open questions',
+    summary:
+      'A Persian warranty platform — public site, customer panel and staff panel — built on an operation still being defined, where every fact nobody had approved ships as a visible, owned open item instead of a confident sentence.',
+    company: INDEPENDENT,
+    role: YARAVAN_ROLE,
+    kind: ['product'],
+    order: 104.5,
+    status: 'published',
+    period: { start: '2026-07-01T00:00:00.000Z' },
+    cover: {
+      // The case study's crop of the customer panel home, without the dev-mode badge.
       path: 'Docs/Experience/Projects/yaravan/assets/crops/cover.png',
       name: 'yaravan--userpanel-desk.png',
       alt: 'Yaravan — the customer panel home on desktop in Persian: active warranties, open requests and a button to register a repair',

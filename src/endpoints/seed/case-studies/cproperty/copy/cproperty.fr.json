@@ -1,0 +1,279 @@
+{
+  "statement": "Logements sur plan à Metro Vancouver, rendus comparables : échéancier du dépôt, comparaison par logement et note de la plateforme, gratuits pour l’acheteur.",
+  "industry": "Immobilier · logements vendus sur plan",
+  "team": "Un seul fichier Figma : 76 écrans et une bibliothèque de 261 composants",
+  "heroCaption": "Le parcours de l’acheteur sur smartphone : la fourchette de prix et les chiffres clés d’un bien, les données financières d’un logement, et trois logements comparés.",
+  "snapshot": {
+    "problem": "Un acheteur sur plan s’engage sur un dépôt échelonné des années avant que le logement n’existe, et les chiffres qui décident de l’achat sont rarement côte à côte.",
+    "role": "Designer produit sur sept parcours responsive, 76 écrans et un design system de 261 composants.",
+    "result": "Un design complet et documenté du côté acheteur d’un marché de la vente sur plan, sans aucune trace de lancement dans le fichier."
+  },
+  "alt": {
+    "cover": "CProperty sur smartphone — la page d’un bien vendu sur plan, avec une fourchette de prix et des tuiles pour l’année de livraison, le dépôt, la note d’investissement, la mensualité, les types de plans et le loyer moyen",
+    "unitTop": "CProperty — la fiche d’un logement sur smartphone : prix, année de livraison, projet, frais de cession, charges par pied carré, apport initial et plan",
+    "compareTop": "CProperty — la page de comparaison sur smartphone : l’adresse d’une tour, ses données financières et ses équipements",
+    "propertyFold": "CProperty — la page du bien sur desktop : la galerie, avec à côté la fourchette de prix et les chiffres clés, puis les onglets, la présentation et les tuiles d’information",
+    "checklist": "CProperty — le haut d’une page de bien sur smartphone, avec des repères numérotés sur la fourchette de prix et sur trois rangées de chiffres",
+    "v1Pricing": "La version précédente — une page de compte premium avec les abonnements Enhanced et Starter à 250 $ et 150 $ par an",
+    "v1Compare": "La version précédente — une page de comparaison qui liste, pour trois biens, la surface, les pièces, le bureau, l’espace flex, le rangement, le stationnement, le balcon, le jardin, les étages et l’orientation",
+    "compareDesktop": "CProperty — la page de comparaison repensée : trois logements avec leurs données financières, leurs équipements, l’essentiel du quotidien et du logement, et un CProperty Rating",
+    "filterAdvanced": "CProperty — la barre de filtres de la liste des biens avec le panneau « Advanced » ouvert : type de bien, dépôt maximal, date d’achèvement, chambres, salles de bain, stationnement et rangement",
+    "priceExpenses": "CProperty — la section prix et dépenses : scénarios de prêt hypothécaire selon l’apport initial, une grille de mensualités par taux d’intérêt et les frais dus à la conclusion de la vente",
+    "unitsTable": "CProperty — le tableau des logements et des plans sur desktop, chaque ligne avec un favori, « More » et « Add to Compare », au-dessus d’un formulaire de contact",
+    "unitRating": "CProperty — la fiche d’un logement sur smartphone : chambres, salles de bain, balcon, promoteur et un CProperty Rating pour le design intérieur et la valeur du bien",
+    "exclusiveMobile": "CProperty — le formulaire « Get Exclusive Information » sur smartphone, avec un interrupteur agent immobilier ou acheteur",
+    "statGrid": "CProperty — les chiffres en tête de la page du bien : une fourchette de prix et des tuiles, dont un dépôt de 30 %",
+    "depositStructure": "CProperty — la structure du dépôt : 20 % au total, dessinés en versements de 8 %, 4 %, 4 % et 2 % avec leurs dates",
+    "locationPanel": "CProperty — le filtre de localisation ouvert : quinze chips de villes, dont Coquitlam en double",
+    "colorBoard": "Design system CProperty, version 0.0.1 — la planche des couleurs avec des gammes brun, crème, bleu, gris, vert et rouge"
+  },
+  "chapters": {
+    "context": {
+      "heading": "Un choix conscient",
+      "body": [
+        "CProperty est une marketplace de logements vendus sur plan (appartements et maisons de ville commercialisés avant d’être construits) dans le Lower Mainland, en Colombie-Britannique. Le C signifie « conscious » (conscient), et la phrase d’accroche le répète : « Choose Consciously, Invest Delightfully. » Les adresses d’exemple se trouvent dans le West End de Vancouver.",
+        "Le brief du marché, une note conservée dans le fichier, le décrit ville par ville : Vancouver et le North Shore, les Tri-Cities, Burnaby, New Westminster, Surrey, Richmond, Langley et une couronne extérieure qui va jusqu’à Abbotsford et White Rock. Le design tient dans un fichier Figma de 13 pages : sept parcours produit (accueil, bien, promoteur, liste des biens, logements et plans, connexion et blog), dont six dessinés en largeur desktop, tablette et mobile, et le blog en desktop et mobile, soit 76 écrans au total, plus un design system et l’archive d’une version précédente."
+      ]
+    },
+    "problem": {
+      "heading": "Un dépôt pour un immeuble qui n’est pas encore construit",
+      "body": [
+        "Un acheteur sur plan engage de l’argent des années avant qu’il y ait quoi que ce soit à visiter : un dépôt versé en plusieurs fois pendant la construction, des frais de cession s’il doit revendre son contrat avant l’achèvement, des charges mensuelles par pied carré et une date de livraison dans plusieurs années. Les chiffres qui décident de l’achat se trouvent généralement à des endroits différents : la brochure d’un promoteur, un bureau des ventes, un tableur.",
+        "Le rôle de CProperty est de les mettre côte à côte, pour un projet puis d’un logement à l’autre, afin que l’acheteur voie ce que coûte un logement avant, pendant et après sa construction."
+      ]
+    },
+    "pivot": {
+      "heading": "Des brochures pour agents aux comparaisons pour acheteurs",
+      "customLabel": "Virage",
+      "body": [
+        "Le fichier conserve une version précédente sur sa propre page : 57 frames d’un autre produit, dont les clients étaient les agents immobiliers. Un compte premium existait en deux formules — Starter à 150 $ par an et Enhanced à 250 $, ou 50 $ et 75 $ pour trois mois — et débloquait les données complètes et les prix de chaque logement, la comparaison côte à côte, les favoris enregistrés et, avec Enhanced, des brochures personnalisées pour les présentations aux clients. Les agents disposaient d’un tableau de bord avec un générateur de propositions : choisir des logements, une pastille de couleur et l’un des six modèles de brochure. Les promoteurs avaient des écrans pour ajouter des projets et marquer les logements comme disponibles, réservés ou vendus.",
+        "La refonte inverse la logique. Les tableaux de bord et les formules disparaissent, la navigation est gratuite, et l’intention d’achat arrive par deux formulaires : « Contact Sales Center » sous le tableau des logements, et « Get Exclusive Information » sur les pages du bien et du promoteur, qui demande si l’expéditeur est agent immobilier ou acheteur. Les agents immobiliers ont toujours leur place, mais comme prospects, et non plus comme abonnés. L’idée centrale du générateur de propositions, mettre des logements côte à côte, survit dans la page de comparaison, qui compare désormais de l’argent plutôt que des caractéristiques techniques."
+      ]
+    },
+    "approach": {
+      "heading": "Le fichier consigne l’ordre du travail",
+      "body": [
+        "Dans Figma, les node ID augmentent au fil des modifications d’un fichier : l’ID médian de chaque frame permet donc d’ordonner le travail. La version précédente et les fondations du design system sont arrivées en premier, à la création du fichier. L’accueil et la page du bien ont suivi, puis, à peu près en même temps, la liste des biens avec ses filtres et le parcours de connexion, puis la page du promoteur. Les logements, la fiche du logement et la comparaison ont été dessinés en dernier : c’est la partie du produit la plus chargée en décisions.",
+        "Chaque parcours suit la même organisation : une carte titre, puis une colonne par breakpoint (desktop à 1440, tablette à 1028 et mobile à 360 ou 393 pixels), avec un écran par état. Une dernière passe a remplacé le pied de page par un nouveau sur presque tous les écrans de toutes les pages."
+      ]
+    },
+    "solution": {
+      "heading": "Des filtres qui posent des questions d’investisseur",
+      "body": [
+        "La page de liste s’ouvre sur « Invest Delightfully with Selecting Project! » et une barre de filtres qui pose d’abord les questions d’un investisseur : localisation, date de livraison, note d’investissement, dépôt et prix. Chambres, salles de bain, stationnement, rangement, type de bien, dépôt total maximal et date d’achèvement attendent sous « Advanced ». Chacun des six filtres est dessiné ouvert : une grille de chips de villes, un calendrier, des curseurs pour la note, le dépôt et le prix, et le panneau avancé.",
+        "La page du bien se lit comme une checklist de la vente sur plan. À côté de la galerie figurent une fourchette de prix et six chiffres : année de livraison, dépôt, note d’investissement, mensualité, types de plans et loyer moyen. En dessous, la page va de la présentation jusqu’au prix et aux dépenses, en passant par les logements et les plans, un échéancier du dépôt dessiné en versements datés, le design intérieur et extérieur avec des options payantes de rangement et de stationnement, et une section sur la valeur du bien avec des graphiques du quartier. La section prix et dépenses présente des scénarios de prêt selon l’apport initial, les mensualités selon différents taux d’intérêt et les sommes dues à la conclusion de la vente."
+      ]
+    },
+    "compare": {
+      "heading": "Comparer des logements, pas des immeubles",
+      "customLabel": "Comparaison",
+      "body": [
+        "La section logements et plans prend la forme d’un tableau (projet, plan, chambres plus espace flex, localisation, surface, prix) avec un favori, « More » et « Add to Compare » sur chaque ligne, et un formulaire « Contact Sales Center » en dessous. La fiche du logement reprend les données financières d’un seul logement : prix, date de livraison, frais de cession, charges par pied carré, apport initial et plan.",
+        "La page de comparaison aligne trois logements dans le même ordre : d’abord les données financières (total, frais de cession, charges, apport initial), puis les équipements, l’essentiel du quotidien comme le stationnement et la recharge des véhicules électriques, l’essentiel du logement, et un CProperty Rating pour le design intérieur et la valeur du bien. Cette note transforme la promesse de la marque en champ : la plateforme évalue le logement, pas seulement l’annonce."
+      ],
+      "insight": "Chaque logement porte un CProperty Rating : chaque comparaison se termine donc par le jugement propre de la plateforme."
+    },
+    "critique": {
+      "heading": "Quatre dépôts sur une même page",
+      "customLabel": "Critique",
+      "body": [
+        "Le bien d’exemple répond de quatre façons différentes à la question « combien vais-je payer avant l’achèvement ? ». L’en-tête annonce un dépôt de 30 %. Le bloc d’informations indique un dépôt total de 32 500 $ et un apport initial de 25 %. L’échéancier du dépôt annonce 20 % au total — et ses versements, 8 %, 4 %, 4 % et 2 %, totalisent 18 %.",
+        "Le filtre de localisation présente le même genre de lacune. Le brief du marché cite parmi ses villes Langley, Burnaby, Coquitlam, Port Coquitlam et Port Moody ; les quinze chips du filtre omettent Langley et Port Coquitlam et affichent Coquitlam deux fois, alors que tous les logements d’exemple du tableau desktop se trouvent à Langley. Le filtre de la version précédente comprenait Langley, Port Coquitlam et Delta."
+      ],
+      "bullets": [
+        "Le panneau du prix est intitulé « Deposite » et reprend la plage du curseur de dépôt.",
+        "La date de livraison se choisit parmi les jours d’un seul mois, alors que les années de livraison du fichier vont de 2024 à 2026.",
+        "Les pourcentages sont écrits avec le signe devant (%30), et « Deposite » est mal orthographié partout."
+      ],
+      "insight": "Le chiffre le plus important de la page est celui qu’elle énonce de la façon la moins cohérente."
+    },
+    "system": {
+      "heading": "Un système 0.0.1 en brun et crème",
+      "customLabel": "Système",
+      "body": [
+        "Le design system porte la mention version 0.0.1 sur onze planches : couleur, typographie, en-tête et pied de page, boutons, cases à cocher et boutons radio, interrupteurs, profil, modale, champs de formulaire, fil d’Ariane et toasts. Il contient 13 jeux de composants totalisant 248 variantes (les boutons à eux seuls en comptent 90) et 67 styles de couleur. Les gammes de la marque sont un brun principal et un crème ; le bleu, le gris, le vert et le rouge signalent les états. Une page d’icônes ajoute 120 jeux d’icônes en cinq tailles, avec des planches d’icônes d’équipements et de lieux.",
+        "Deux lacunes montrent où il s’est arrêté. Il n’y a pas de variables : l’unique collection de variables est vide, si bien que chaque couleur est un style. Et la planche typographique documente Poppins et Mazzard, alors que la plupart des écrans sont composés en Hurme Geometric Sans 3, qui n’apparaît que dans un seul des 12 styles de texte."
+      ]
+    }
+  },
+  "figures": {
+    "fold": {
+      "caption": "La page du bien sur desktop : la galerie, avec la fourchette de prix et six chiffres à côté, puis les onglets et la présentation."
+    },
+    "checklist": {
+      "caption": "Le haut d’une page de bien sur smartphone : la fourchette de prix et les chiffres autour desquels un acheteur sur plan s’organise.",
+      "annotations": [
+        "Une fourchette de prix, du logement le moins cher au plus cher, au lieu d’un prix de vente unique",
+        "L’année de livraison et le dépôt",
+        "La note d’investissement et la mensualité",
+        "Le nombre de plans et le loyer moyen du secteur"
+      ]
+    },
+    "tiers": {
+      "caption": "La version précédente vendait aux agents immobiliers un compte premium, en deux formules."
+    },
+    "pivotCompare": {
+      "caption": "La même page dans les deux versions : la comparaison est passée des caractéristiques techniques à l’argent.",
+      "items": [
+        "La version précédente : surface, pièces, bureau, jardin et orientation.",
+        "La refonte : d’abord les données financières, puis les équipements, l’essentiel et une note."
+      ]
+    },
+    "filters": {
+      "caption": "La barre de filtres avec « Advanced » ouvert : les questions d’investissement sur la barre, celles du foyer à l’intérieur."
+    },
+    "price": {
+      "caption": "Prix et dépenses : scénarios selon l’apport initial, une grille de mensualités par taux d’intérêt et les sommes dues à la conclusion de la vente. Les chiffres du fichier sont provisoires ; le design, c’est la structure."
+    },
+    "units": {
+      "caption": "Les logements sous forme de tableau, avec « Add to Compare » sur chaque ligne et le formulaire du bureau des ventes en dessous."
+    },
+    "leads": {
+      "caption": "La note propre à un logement, et le formulaire qui transforme l’intérêt en prospect.",
+      "items": [
+        "Fiche du logement : l’essentiel du logement et le CProperty Rating.",
+        "« Get Exclusive Information » demande si l’expéditeur est agent immobilier ou acheteur."
+      ]
+    },
+    "deposits": {
+      "caption": "Deux réponses à une même question, sur la même page.",
+      "items": [
+        "L’en-tête : un dépôt de 30 %.",
+        "L’échéancier : 20 % au total, en versements qui totalisent 18 %."
+      ]
+    },
+    "cities": {
+      "caption": "Quinze chips : pas de Langley, pas de Port Coquitlam, et Coquitlam deux fois."
+    },
+    "color": {
+      "caption": "La planche des couleurs : les gammes brun et crème de la marque au-dessus des couleurs d’état, version 0.0.1."
+    }
+  },
+  "process": {
+    "heading": "Les parcours dans l’ordre où ils ont été dessinés",
+    "steps": [
+      {
+        "label": "La version précédente",
+        "note": "57 frames, archivées sur leur propre page à la création du fichier"
+      },
+      {
+        "label": "Fondations du système",
+        "note": "Couleur, typographie, boutons, en-tête et pied de page ; modales, formulaires et toasts sont venus plus tard"
+      },
+      {
+        "label": "Accueil",
+        "note": "Hero, recherche, derniers projets, fonctionnement et FAQ"
+      },
+      {
+        "label": "Page du bien",
+        "note": "États par défaut, défilé et formulaire de contact, sur trois breakpoints"
+      },
+      {
+        "label": "Liste des biens",
+        "note": "La vue en liste et six panneaux de filtre, chacun dessiné ouvert"
+      },
+      {
+        "label": "Connexion",
+        "note": "Sept états, de l’identification au code envoyé par e-mail"
+      },
+      {
+        "label": "Page du promoteur",
+        "note": "Historique, valeurs, distinctions et projets du promoteur"
+      },
+      {
+        "label": "Logements et comparaison",
+        "note": "Le tableau des logements, la fiche du logement et la comparaison à trois, dessinés en dernier"
+      }
+    ]
+  },
+  "decisions": {
+    "heading": "Cinq décisions derrière la comparaison",
+    "lede": "La refonte repose sur cinq choix que le fichier rend visibles.",
+    "items": [
+      {
+        "title": "Donner les chiffres gratuitement aux acheteurs et traiter les agents comme des prospects",
+        "why": "La version précédente vendait aux agents immobiliers les données des logements, la comparaison côte à côte et des brochures pour leurs clients, en formule annuelle ou trimestrielle. La refonte ouvre ces chiffres à tous les visiteurs et fait passer l’intention d’achat par deux formulaires, dont l’un demande si l’expéditeur est agent immobilier ou acheteur.",
+        "tradeoff": "Les revenus doivent venir des prospects plutôt que des abonnements, et le fichier ne consigne aucun modèle pour les tarifer."
+      },
+      {
+        "title": "Présenter le dépôt comme un échéancier, pas comme un pourcentage unique",
+        "why": "Un dépôt sur plan se verse en tranches datées pendant la construction, et un chiffre unique masque le moment où l’argent est dû. La page du bien le dessine en tuiles, chacune avec sa part et sa date.",
+        "tradeoff": "Chaque projet exige la saisie de son échéancier, et le total doit concorder avec l’en-tête — ce qui, sur la page d’exemple, n’est pas le cas."
+      },
+      {
+        "title": "Comparer des logements, pas des projets",
+        "why": "Les frais de cession, les charges par pied carré et les options de stationnement ou de recharge électrique varient selon le logement et le plan : « Add to Compare » figure donc sur chaque ligne de logement, et la page de comparaison aligne les données financières de trois logements.",
+        "tradeoff": "Davantage de lignes à maintenir, et une page de comparaison qui s’allonge sur smartphone."
+      },
+      {
+        "title": "Placer la propre note de la plateforme à côté des données de l’annonce",
+        "why": "La promesse de la marque, un choix conscient, devient un champ : un CProperty Rating pour le design intérieur et la valeur du bien sur chaque logement et dans chaque comparaison.",
+        "tradeoff": "Pour inspirer confiance, une note a besoin d’une méthode publiée ; le fichier montre les notes, pas la façon dont elles sont établies."
+      },
+      {
+        "title": "Filtrer d’abord par questions d’investissement",
+        "why": "Localisation, date de livraison, note d’investissement, dépôt et prix figurent sur la barre ; chambres, salles de bain, stationnement et rangement attendent sous « Advanced ». L’acheteur qu’imagine cette barre décide où placer son argent avant de choisir un plan.",
+        "tradeoff": "Une famille qui cherche par nombre de chambres doit d’abord ouvrir « Advanced »."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "La part de Sina",
+    "intro": "Établie à partir du fichier. Il ne nomme aucune équipe et ne consigne pas qui a décidé quoi : il s’agit donc du travail présent dans le fichier, pas d’une revendication de paternité exclusive.",
+    "own": [
+      "Les sept parcours produit, dont six en largeur desktop, tablette et mobile",
+      "La page du bien : l’échéancier du dépôt, le prix et les dépenses, et la valeur du bien",
+      "La barre de filtres et ses six états ouverts",
+      "Le tableau des logements, la fiche du logement et la comparaison à trois",
+      "Les formulaires de captation de prospects et le parcours de connexion en sept états",
+      "La couche de marque du design system : les gammes brun et crème et 13 jeux de composants"
+    ],
+    "collaborate": [
+      "Le client, dont le brief décrivait le marché ville par ville"
+    ],
+    "note": "La version précédente, archivée dans le même fichier, est décrite ici, mais pas comptabilisée."
+  },
+  "outcomes": {
+    "heading": "Un design documenté, pas un lancement",
+    "intro": "Rien dans le fichier n’indique que CProperty a été lancé, et il n’y a ni chiffres d’usage ni chiffres de prospects à présenter. Ce qu’il contient, c’est un design responsive complet pour le côté acheteur d’un marché de la vente sur plan.",
+    "delivered": [
+      {
+        "label": "écrans sur sept parcours",
+        "context": "Six en largeur desktop, tablette et mobile ; le blog en desktop et mobile"
+      },
+      {
+        "label": "composants du design system",
+        "context": "13 jeux et 248 variantes, version 0.0.1"
+      },
+      {
+        "label": "panneaux de filtre dessinés ouverts",
+        "context": "Localisation, date de livraison, note d’investissement, dépôt, prix et « Advanced »"
+      }
+    ],
+    "shipped": [
+      "Une page de bien avec échéancier du dépôt et scénarios de prêt hypothécaire",
+      "Une barre de filtres avec six panneaux ouverts",
+      "Un tableau des logements, une fiche du logement et une comparaison à trois",
+      "Des formulaires de captation de prospects avec un choix agent immobilier ou acheteur",
+      "Un parcours de connexion en sept états",
+      "Une page de profil du promoteur"
+    ]
+  },
+  "lessons": {
+    "heading": "Ce que je changerais",
+    "items": [
+      {
+        "title": "Un chiffre, une source",
+        "body": "Le bien d’exemple indique son dépôt de quatre façons. Sur une page de vente sur plan, le dépôt est le chiffre autour duquel l’acheteur s’organise ; il devrait être stocké une seule fois et affiché partout, pour qu’un en-tête et un échéancier ne puissent pas se contredire."
+      },
+      {
+        "title": "Confronter le résultat au brief",
+        "body": "Le brief du marché nommait chaque ville et chaque quartier ; le filtre de localisation en a omis deux et en a doublé une troisième. Comparer le filtre terminé au brief, ligne par ligne, l’aurait révélé en quelques minutes."
+      },
+      {
+        "title": "Documenter la typographie réellement utilisée",
+        "body": "La planche typographique déclare Poppins et Mazzard, alors que la plupart des écrans sont composés en Hurme Geometric Sans 3, qui n’apparaît que dans un seul style de texte. Un design system n’est un système que s’il décrit les écrans qu’il sert."
+      }
+    ]
+  }
+}

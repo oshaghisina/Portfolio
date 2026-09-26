@@ -1,0 +1,279 @@
+{
+  "statement": "Presale homes in Metro Vancouver made comparable: a dated deposit schedule, unit-by-unit comparison and a platform rating, free to buyers.",
+  "industry": "Real estate · presale housing",
+  "team": "A single Figma file: 76 screens and a 261-component library",
+  "heroCaption": "The buyer’s path on a phone: a property’s price band and key figures, one unit’s economics, and three units compared.",
+  "snapshot": {
+    "problem": "A presale buyer commits a staged deposit years before the home exists, and the numbers that decide it are rarely side by side.",
+    "role": "Product designer across seven responsive flows, 76 screens and a 261-component design system.",
+    "result": "A complete design record for the buyer’s side of a presale market, with no launch evidence on file."
+  },
+  "alt": {
+    "cover": "CProperty on a phone — a presale property page with a price band and tiles for delivery year, deposit, investment rate, monthly payment, plan types and average rent",
+    "unitTop": "CProperty — unit details on a phone: price, delivery year, project, assignment fee, maintenance per square foot, down payment and plan",
+    "compareTop": "CProperty — the compare page on a phone: a tower’s address, its economics and its amenities",
+    "propertyFold": "CProperty — the property page on desktop: the gallery, a price band and key figures beside it, the tabs, the overview and the info tiles",
+    "checklist": "CProperty — the top of a property page on a phone, with numbered markers on the price band and on three rows of figures",
+    "v1Pricing": "The earlier version — a premium-account page with Enhanced and Starter subscriptions at $250 and $150 a year",
+    "v1Compare": "The earlier version — a comparison page listing three properties’ size, rooms, den, flex, storage, parking, balcony, garden, floors and facing",
+    "compareDesktop": "CProperty — the redesigned compare page: three units with their economics, amenities, living and residence essentials and a CProperty Rating",
+    "filterAdvanced": "CProperty — the property-list filter bar with the Advanced panel open: property type, maximum deposit, completion date, bedrooms, bathrooms, parking and storage",
+    "priceExpenses": "CProperty — the price and expenses section: mortgage scenarios by down payment, a grid of monthly payments by interest rate, and the costs due at closing",
+    "unitsTable": "CProperty — the units and floor plans table on desktop, each row with a favourite, More and Add to Compare, above a contact form",
+    "unitRating": "CProperty — unit details on a phone: bedrooms, bathrooms, balcony, developer and a CProperty Rating for interior design and house value",
+    "exclusiveMobile": "CProperty — the Get Exclusive Information form on a phone, with a switch for realtor or buyer",
+    "statGrid": "CProperty — the property page’s header figures: a price band and tiles including a 30% deposit",
+    "depositStructure": "CProperty — the deposit structure: 20% in total, drawn as instalments of 8%, 4%, 4% and 2% with their dates",
+    "locationPanel": "CProperty — the location filter open: fifteen city chips, with Coquitlam listed twice",
+    "colorBoard": "CProperty design system, version 0.0.1 — the colour board with brown, cream, blue, grey, green and red ramps"
+  },
+  "chapters": {
+    "context": {
+      "heading": "Conscious Choice",
+      "body": [
+        "CProperty is a marketplace for presale homes — condos and townhouses sold before they are built — in British Columbia’s Lower Mainland. The C stands for conscious, and the hero line repeats it: “Choose Consciously, Invest Delightfully.” The sample addresses sit in Vancouver’s West End.",
+        "The market was briefed city by city in a note that sits in the file: Vancouver and the North Shore, the Tri-Cities, Burnaby, New Westminster, Surrey, Richmond, Langley, and an outer ring out to Abbotsford and White Rock. The design is one Figma file of 13 pages: seven product flows — home, property, developer, property list, units and floor plans, sign-in and blog — six of them drawn at desktop, tablet and mobile width and the blog at desktop and mobile, 76 screens in all, plus a design system and an archive of an earlier version."
+      ]
+    },
+    "problem": {
+      "heading": "A deposit on a building that isn’t built yet",
+      "body": [
+        "A presale buyer commits money years before there is anything to walk through: a deposit paid in instalments during construction, an assignment fee if they need to sell the contract before completion, a monthly maintenance charge per square foot, and a delivery date years away. The numbers that decide the purchase usually live in different places — a developer’s brochure, a sales centre, a spreadsheet.",
+        "CProperty’s job is to put them side by side, for one project and then across units, so a buyer can see what a home costs before, during and after it is built."
+      ]
+    },
+    "pivot": {
+      "heading": "From brochures for realtors to comparisons for buyers",
+      "customLabel": "Pivot",
+      "body": [
+        "The file keeps an earlier version on its own page: 57 frames of a different product. It sold to realtors. A premium account came in two tiers — Starter at $150 a year and Enhanced at $250, or $50 and $75 for three months — and unlocked full data and pricing for each unit, side-by-side comparison, saved favourites and, on Enhanced, customised brochures for client presentations. Realtors had a dashboard with a proposal builder: pick units, a colour swatch and one of six brochure templates. Developers had screens to add projects and mark units available, reserved or sold out.",
+        "The redesign turns that around. The dashboards and tiers are gone, browsing is free, and intent arrives through two forms: Contact Sales Center under the unit table, and Get Exclusive Information on the property and developer pages, which asks whether the sender is a realtor or a buyer. Realtors are still served — as leads, not subscribers. The proposal builder’s core idea, putting units side by side, survives as the compare page, and it now compares money rather than specifications."
+      ]
+    },
+    "approach": {
+      "heading": "The file records its order of work",
+      "body": [
+        "Figma node IDs grow as a file is edited, so each frame’s median ID orders the work. The earlier version and the design-system foundation arrived first, at set-up. Home and the property page followed, then the property list with its filters and the sign-in flow at about the same time, then the developer page. Units, unit details and compare were drawn last — the most decision-heavy part of the product.",
+        "Every flow is laid out the same way: a title card, then a column per breakpoint — desktop at 1,440, tablet at 1,028 and mobile at 360 or 393 — with one screen per state. A final pass swapped a new footer into nearly every screen on every page."
+      ]
+    },
+    "solution": {
+      "heading": "Filters that ask investment questions",
+      "body": [
+        "The list page opens with “Invest Delightfully with Selecting Project!” and a filter bar that asks an investor’s questions first: location, delivery date, investment rate, deposit and price. Bedrooms, bathrooms, parking, storage, property type, maximum total deposit and completion date wait under Advanced. Each of the six filters is drawn open: a grid of city chips, a calendar, sliders for rate, deposit and price, and the advanced panel.",
+        "The property page reads like a presale checklist. Beside the gallery sit a price band and six figures — delivery year, deposit, investment rate, monthly payment, unit plan types and average rent. Below, the page runs from the overview through units and floor plans, a deposit schedule drawn as dated instalments, interior and exterior design with priced extras for storage and parking, and a house-value section with neighbourhood charts, to price and expenses: mortgage scenarios by down payment, monthly payments across interest rates, and the cash due at closing."
+      ]
+    },
+    "compare": {
+      "heading": "Compare units, not buildings",
+      "customLabel": "Compare",
+      "body": [
+        "Units and floor plans are a table — project, floor plan, bedrooms plus flex, location, size, price — with a favourite, More and Add to Compare on every row, and a Contact Sales Center form underneath. Unit details repeat the economics for a single unit: price, delivery date, assignment fee, maintenance per square foot, down payment and plan.",
+        "The compare page lines up three units in the same order: economics first — total, assignment fee, maintenance, down payment — then amenities, living essentials such as parking and EV charging, residence essentials, and a CProperty Rating for interior design and house value. The rating turns the brand’s promise into a field: the platform grades the home, not only the listing."
+      ],
+      "insight": "Every unit carries a CProperty Rating, so each comparison ends with the platform’s own judgement."
+    },
+    "critique": {
+      "heading": "Four deposits on one page",
+      "customLabel": "Critique",
+      "body": [
+        "The sample property answers “how much do I pay before completion?” four different ways. The header says a 30% deposit. The info block says a $32,500 total deposit and a 25% down payment. The deposit schedule says 20% in total — and its instalments, 8%, 4%, 4% and 2%, add up to 18%.",
+        "The location filter has the same kind of gap. The market brief lists Langley, Burnaby, Coquitlam, Port Coquitlam and Port Moody among its cities; the filter’s fifteen chips leave out Langley and Port Coquitlam and show Coquitlam twice, while every sample unit in the desktop table is in Langley. The earlier version’s filter had included Langley, Port Coquitlam and Delta."
+      ],
+      "bullets": [
+        "The price panel is labelled “Deposite” and reuses the deposit slider’s range.",
+        "Delivery date is picked from a single month of days, while the delivery years in the file run from 2024 to 2026.",
+        "Percentages are written with the sign first (%30), and “Deposite” is misspelt throughout."
+      ],
+      "insight": "The most important number on the page is the one it states least consistently."
+    },
+    "system": {
+      "heading": "A 0.0.1 system in brown and cream",
+      "customLabel": "System",
+      "body": [
+        "The design system is labelled version 0.0.1 across eleven boards: colour, typography, header and footer, buttons, checkboxes and radios, toggles, profile, modal, form fields, breadcrumbs and toasts. It holds 13 component sets with 248 variants — buttons alone account for 90 — and 67 colour styles. The brand ramps are a main brown and a cream; blue, grey, green and red carry state. An icon page adds 120 icon sets in five sizes, with boards of amenity and place icons.",
+        "Two gaps show where it stopped. There are no variables: the one variable collection is empty, so every colour is a style. And the type board documents Poppins and Mazzard, while most screens are set in Hurme Geometric Sans 3, which appears in only one of the 12 text styles."
+      ]
+    }
+  },
+  "figures": {
+    "fold": {
+      "caption": "The property page on desktop: the gallery, with the price band and six figures beside it, then the tabs and the overview."
+    },
+    "checklist": {
+      "caption": "The top of a property page on a phone: the price band and the figures a presale buyer plans around.",
+      "annotations": [
+        "A price band, from the cheapest unit to the dearest, instead of one asking price",
+        "The delivery year and the deposit",
+        "The investment rate and the monthly payment",
+        "The number of unit plans and the area’s average rent"
+      ]
+    },
+    "tiers": {
+      "caption": "The earlier version sold a premium account to realtors, in two tiers."
+    },
+    "pivotCompare": {
+      "caption": "The same page in both versions: the comparison moved from specifications to money.",
+      "items": [
+        "The earlier version: size, rooms, den, garden and facing.",
+        "The redesign: economics first, then amenities, essentials and a rating."
+      ]
+    },
+    "filters": {
+      "caption": "The filter bar with Advanced open: the investment questions on the bar, the household ones inside."
+    },
+    "price": {
+      "caption": "Price and expenses: down-payment scenarios, a grid of monthly payments by interest rate, and the cash due at closing. The figures in the file are placeholders; the structure is the design."
+    },
+    "units": {
+      "caption": "Units as a table, with Add to Compare on every row and the sales-centre form below."
+    },
+    "leads": {
+      "caption": "A unit’s own rating, and the form that turns interest into a lead.",
+      "items": [
+        "Unit details: residence essentials and the CProperty Rating.",
+        "Get Exclusive Information asks whether the sender is a realtor or a buyer."
+      ]
+    },
+    "deposits": {
+      "caption": "Two answers to one question, on the same page.",
+      "items": [
+        "The header: a 30% deposit.",
+        "The schedule: 20% in total, in instalments that add up to 18%."
+      ]
+    },
+    "cities": {
+      "caption": "Fifteen chips: no Langley, no Port Coquitlam, and Coquitlam twice."
+    },
+    "color": {
+      "caption": "The colour board: the brown and cream brand ramps above the state colours, version 0.0.1."
+    }
+  },
+  "process": {
+    "heading": "Flows in the order they were drawn",
+    "steps": [
+      {
+        "label": "The earlier version",
+        "note": "57 frames, archived on their own page at set-up"
+      },
+      {
+        "label": "System foundation",
+        "note": "Colour, type, buttons, header and footer; modals, forms and toasts came later"
+      },
+      {
+        "label": "Home",
+        "note": "Hero, search, latest projects, how it works and FAQ"
+      },
+      {
+        "label": "Property page",
+        "note": "Default, scrolled and lead-form states at three breakpoints"
+      },
+      {
+        "label": "Property list",
+        "note": "The list view and six filter panels, each drawn open"
+      },
+      {
+        "label": "Sign-in",
+        "note": "Seven states, from log-in to an emailed code"
+      },
+      {
+        "label": "Developer page",
+        "note": "History, values, awards and the developer’s projects"
+      },
+      {
+        "label": "Units and compare",
+        "note": "The unit table, unit details and the three-way compare, drawn last"
+      }
+    ]
+  },
+  "decisions": {
+    "heading": "Five decisions behind the comparison",
+    "lede": "The redesign rests on five choices the file makes visible.",
+    "items": [
+      {
+        "title": "Give buyers the numbers for free, and treat realtors as leads",
+        "why": "The earlier version sold unit data, side-by-side comparison and client brochures to realtors on annual or three-month plans. The redesign opens those numbers to every visitor and routes intent through two forms, one of which asks whether the sender is a realtor or a buyer.",
+        "tradeoff": "Revenue has to come from leads rather than subscriptions, and the file records no model for pricing them."
+      },
+      {
+        "title": "Show the deposit as a schedule, not a single percentage",
+        "why": "A presale deposit is paid in dated instalments over the build, and a single figure hides when the money is due. The property page draws it as tiles, each with its share and its date.",
+        "tradeoff": "Every project needs its schedule entered, and the total has to agree with the header — which, on the sample page, it doesn’t."
+      },
+      {
+        "title": "Compare units, not projects",
+        "why": "Assignment fees, maintenance per square foot, and parking or EV-charging extras differ by unit and plan, so Add to Compare sits on every unit row and the compare page lines up three units’ economics.",
+        "tradeoff": "More rows to maintain, and a compare page that grows long on a phone."
+      },
+      {
+        "title": "Put the platform’s own rating beside the listing data",
+        "why": "The brand’s promise — a conscious choice — becomes a field: a CProperty Rating for interior design and house value on every unit and in every comparison.",
+        "tradeoff": "A rating needs a published method to be trusted; the file shows the scores, not how they are made."
+      },
+      {
+        "title": "Filter by investment questions first",
+        "why": "Location, delivery date, investment rate, deposit and price sit on the bar; bedrooms, bathrooms, parking and storage wait under Advanced. The buyer this bar imagines is deciding where to put money before choosing a floor plan.",
+        "tradeoff": "A family searching by bedroom count has to open Advanced first."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "Sina’s part",
+    "intro": "Listed from the file. It names no team and records no one’s decisions, so this is the work in the file, not a claim of sole authorship.",
+    "own": [
+      "The seven product flows, six of them at desktop, tablet and mobile width",
+      "The property page: the deposit schedule, price and expenses, and house value",
+      "The filter bar and its six open states",
+      "The unit table, unit details and the three-way compare",
+      "The lead forms and the seven-state sign-in flow",
+      "The design system’s brand layer: the brown and cream ramps and 13 component sets"
+    ],
+    "collaborate": [
+      "The client, who briefed the market city by city"
+    ],
+    "note": "The earlier version archived in the same file is described here, not counted."
+  },
+  "outcomes": {
+    "heading": "A design record, not a launch",
+    "intro": "There is no evidence in the file that CProperty launched, and no usage or lead numbers to report. What it holds is a complete responsive design for the buyer’s side of a presale market.",
+    "delivered": [
+      {
+        "label": "screens across seven flows",
+        "context": "Six at desktop, tablet and mobile width; the blog at desktop and mobile"
+      },
+      {
+        "label": "design-system components",
+        "context": "13 sets and 248 variants, version 0.0.1"
+      },
+      {
+        "label": "filter panels drawn open",
+        "context": "Location, delivery date, investment rate, deposit, price and advanced"
+      }
+    ],
+    "shipped": [
+      "A property page with a deposit schedule and mortgage scenarios",
+      "A filter bar with six open panels",
+      "A unit table, unit details and a three-way compare",
+      "Lead forms with a realtor-or-buyer switch",
+      "A seven-state sign-in flow",
+      "A developer profile page"
+    ]
+  },
+  "lessons": {
+    "heading": "What I’d change",
+    "items": [
+      {
+        "title": "One number, one source",
+        "body": "The sample property states its deposit four ways. On a presale page the deposit is the number a buyer plans around; it should be stored once and rendered everywhere, so that a header and a schedule cannot disagree."
+      },
+      {
+        "title": "Check the build against the brief",
+        "body": "The market brief named every city and neighbourhood; the location filter dropped two of them and doubled a third. Comparing the finished filter against the brief, line by line, would have caught it in minutes."
+      },
+      {
+        "title": "Document the type you actually use",
+        "body": "The type board declares Poppins and Mazzard, while most screens are set in Hurme Geometric Sans 3, which appears in a single text style. A design system is only a system if it describes the screens it serves."
+      }
+    ]
+  }
+}

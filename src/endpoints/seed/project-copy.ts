@@ -131,6 +131,7 @@ export const projectRoleCopy: Record<ProjectLocale, Record<string, string>> = {
     'Design researcher & process architect': 'پژوهشگر طراحی و معمار فرایند',
     'UX researcher': 'پژوهشگر تجربهٔ کاربری',
     'Product designer, PM & builder': 'طراح محصول، مدیر محصول و سازنده',
+    'Service designer & process architect': 'طراح خدمت و معمار فرایند',
     'Campaign strategist & marketer': 'استراتژیست کمپین و بازاریاب',
   },
   ar: {
@@ -145,6 +146,7 @@ export const projectRoleCopy: Record<ProjectLocale, Record<string, string>> = {
     'Design researcher & process architect': 'باحث تصميم ومهندس عمليات',
     'UX researcher': 'باحث تجربة مستخدم',
     'Product designer, PM & builder': 'مصمم منتج ومدير منتج ومنفّذ',
+    'Service designer & process architect': 'مصمم خدمات ومهندس عمليات',
     'Campaign strategist & marketer': 'استراتيجي حملات ومسوّق',
   },
   es: {
@@ -159,6 +161,7 @@ export const projectRoleCopy: Record<ProjectLocale, Record<string, string>> = {
     'Design researcher & process architect': 'Investigador de diseño y arquitecto de procesos',
     'UX researcher': 'Investigador UX',
     'Product designer, PM & builder': 'Diseñador de producto, PM y desarrollador',
+    'Service designer & process architect': 'Diseñador de servicios y arquitecto de procesos',
     'Campaign strategist & marketer': 'Estratega de campañas y marketer',
   },
   de: {
@@ -173,6 +176,7 @@ export const projectRoleCopy: Record<ProjectLocale, Record<string, string>> = {
     'Design researcher & process architect': 'Design-Researcher & Prozessarchitekt',
     'UX researcher': 'UX-Researcher',
     'Product designer, PM & builder': 'Produktdesigner, PM & Umsetzer',
+    'Service designer & process architect': 'Service-Designer & Prozessarchitekt',
     'Campaign strategist & marketer': 'Kampagnenstratege & Marketer',
   },
   fr: {
@@ -187,6 +191,7 @@ export const projectRoleCopy: Record<ProjectLocale, Record<string, string>> = {
     'Design researcher & process architect': 'Chercheur en design et architecte de processus',
     'UX researcher': 'Chercheur UX',
     'Product designer, PM & builder': 'Designer produit, PM et développeur',
+    'Service designer & process architect': 'Designer de services et architecte de processus',
     'Campaign strategist & marketer': 'Stratège de campagne et marketeur',
   },
   ja: {
@@ -201,6 +206,7 @@ export const projectRoleCopy: Record<ProjectLocale, Record<string, string>> = {
     'Design researcher & process architect': 'デザインリサーチャー／プロセスアーキテクト',
     'UX researcher': 'UXリサーチャー',
     'Product designer, PM & builder': 'プロダクトデザイナー / PM / ビルダー',
+    'Service designer & process architect': 'サービスデザイナー／プロセスアーキテクト',
     'Campaign strategist & marketer': 'キャンペーンストラテジスト / マーケター',
   },
 }
@@ -211,32 +217,32 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
     fa: {
       title: 'اپلیکیشن نمایشگاه‌داران Khodro45 — مزایدهٔ زمان‌دار خودرو',
       summary:
-        'بخش B2B بازار Khodro45 را در ۲۴۱ صفحه و سه حالت بازار موازی طراحی کردم؛ از پیشنهاد قیمت بر پایهٔ ارزش منصفانه و تسویهٔ شش‌مرحله‌ای تا دو مدل درآمد از نمایشگاه‌داران. یک نمونهٔ تعاملی ۲۸ فریمی هم برای آزمودن وضعیت‌های معامله ساخته شد.',
+        'بخش B2B خودرو۴۵، بازار آنلاین خودرو در ایران: ۲۴۱ صفحه در سه حالت بازار، گزارش کارشناسی درون هر صفحهٔ خودرو، تسویه‌ای شش‌مرحله‌ای، جریان ثبت آگهی با خودکارشناسی، دو نوع عضویت برای نمایشگاه‌داران و پروتوتایپی با ۲۴ صفحه برای حالت‌های تراکنش.',
     },
     ar: {
       title: 'تطبيق تجّار خودرو45 — سوق مزادات موقوتة لتجّار السيارات في إيران',
       summary:
-        'الجانب B2B من سوق خودرو45: ‏241 شاشة عبر ثلاثة أنماط سوق متوازية، ونظام مزايدة يرتكز على السعر العادل، وخط تسوية من ست خطوات، وجيلان من نماذج تحقيق الدخل من التجّار، ونموذج تفاعلي من 28 إطارًا لاختبار آلة حالات الصفقة.',
+        'جانب التجار (B2B) من سوق خودرو45 الإيراني: 241 شاشة عبر ثلاثة أوضاع للسوق، وتقرير فحص داخل كل صفحة سيارة، وتسوية من ست مراحل، ومسار لعرض السيارات للبيع مع فحص ذاتي، ونوعان من عضوية التجار، ونموذج أولي من 24 شاشة لحالات المعاملات.',
     },
     es: {
       title: 'App de concesionarios Khodro45 — un mercado de subastas con temporizador',
       summary:
-        'El lado B2B del marketplace iraní Khodro45: 241 pantallas con tres modos de mercado en paralelo, un sistema de pujas guiado por precio justo, una liquidación con depósito en seis pasos, dos generaciones de monetización de concesionarios y un prototipo de 28 marcos para probar la máquina de estados de la transacción.',
+        'El lado B2B del marketplace iraní Khodro45: 241 pantallas en tres modos de mercado, un informe de inspección dentro de cada ficha de coche, una liquidación en seis etapas, un flujo de publicación con autoinspección, dos membresías para concesionarios y un prototipo de 24 pantallas para los estados de la transacción.',
     },
     de: {
       title: 'Khodro45 Händler-App — ein Auktionsmarkt auf Zeit für iranische Autohändler',
       summary:
-        'Die B2B-Seite des iranischen Marktplatzes Khodro45: 241 Screens über drei parallele Marktmodi, ein am Fair Price ausgerichtetes Bietsystem, eine sechsstufige Treuhand-Abwicklung, zwei Generationen Händler-Monetarisierung und ein 28-Frame-Prototyp, um die Zustandsmaschine der Transaktion zu testen.',
+        'Die B2B-Seite des iranischen Marktplatzes Khodro45: 241 Screens in drei Marktmodi, ein Inspektionsbericht in jeder Fahrzeugseite, eine sechsstufige Abwicklung, ein Flow zum Einstellen mit Selbstinspektion, zwei Händlermitgliedschaften und ein Prototyp mit 24 Screens für Transaktionszustände.',
     },
     fr: {
       title: 'Application concessionnaires Khodro45 — un marché aux enchères minuté',
       summary:
-        'Le versant B2B de la place de marché iranienne Khodro45 : 241 écrans sur trois modes de marché parallèles, un système d’enchères guidé par un prix juste, un règlement sous séquestre en six étapes, deux générations de monétisation des concessionnaires et un prototype de 28 frames pour éprouver la machine à états de la transaction.',
+        'Le côté B2B de la place de marché iranienne Khodro45 : 241 écrans répartis sur trois modes de marché, un rapport d\'inspection dans chaque fiche véhicule, un règlement en six étapes, un parcours de mise en vente avec auto-inspection, deux adhésions pour négociants et un prototype de 24 écrans pour les états de transaction.',
     },
     ja: {
       title: 'Khodro45 ディーラーアプリ — イラン自動車ディーラー向けの時限オークション市場',
       summary:
-        'イランのマーケットプレイスKhodro45のB2B側。3つの並行マーケットモードにまたがる241画面、フェアプライスに基づく入札システム、6段階のエスクロー決済、2世代にわたるディーラー収益化、そして取引のステートマシンを検証するための28フレームのプロトタイプ。',
+        'イランのマーケットプレイスKhodro45のB2B側。3つのマーケットモードにわたる241画面、すべての車両ページに組み込まれた検査レポート、6段階の精算、セルフ検査付きの出品フロー、2つのディーラー会員制度、そして取引状態のための24画面のプロトタイプ。',
     },
   },
   'carsparency-pro': {
@@ -469,34 +475,69 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
   },
   yaravan: {
     fa: {
-      title: 'یاراوان — پلتفرم خدمات پس از فروش و گارانتی',
+      title: 'یاراوان — طراحی خدمت برای عملیات پس از فروشی که هیچ‌کس مکتوبش نکرده بود',
       summary:
-        'برای یک برند مستقل گارانتی، فرایندهای مستندنشدهٔ خدمات پس از فروش و نقش‌ها و مسئولیت‌ها را صورت‌بندی کردم و بر پایهٔ آن‌ها پلتفرم را طراحی کردم. پرسش‌های بی‌پاسخ را هم به‌جای تبدیل‌کردن به ادعاهای قطعی، آشکار نگه داشتم.',
+        'طراحی خدمتی که یک برند گارانتی بر آن استوار است: ۲۲ فرایند پس از فروش در شش سطح، از نقشهٔ کلان تا دستورالعمل‌های کاری، فقط تا جایی ترسیم شد که شواهد اجازه می‌داد — و هر شکاف به‌جای پر شدن، علامت خورد، شمرده شد و صاحب پیدا کرد.',
     },
     ar: {
-      title: 'ياراوان — علامة خدمات ما بعد البيع التي تنشر أسئلتها المفتوحة',
+      title: 'ياراوان — تصميم خدمة لعمليات ما بعد البيع التي لم يدوّنها أحد',
       summary:
-        'علامة ضمان فارسية مستقلّة، بُنيت كمنصّة كاملة فوق عملية خدمات ما بعد بيع لم يوثّقها أحد من قبل — معمارية عمليات، ونموذج للأدوار والمسؤوليات، ومنتج يُنشَر فيه كل ادّعاء غير معتمَد كسؤال مفتوح ظاهر بدلًا من جملة واثقة.',
+        'تصميم الخدمة وراء علامة ضمان: 22 عملية لما بعد البيع مرسومة على ستة مستويات، من الخريطة الكلية نزولًا إلى تعليمات العمل، لا أبعد مما سمحت به الأدلة — وكل فجوة موسومة ومعدودة ولها مالك بدلًا من أن تُملأ.',
     },
     es: {
-      title: 'Yaravan — una marca de posventa que publica sus propias preguntas abiertas',
+      title:
+        'Yaravan — diseño de servicios para una operación de posventa que nadie había puesto por escrito',
       summary:
-        'Una marca persa independiente de garantías, construida como una plataforma completa sobre una operación de posventa que nadie había puesto por escrito: una arquitectura de procesos, un modelo de roles y responsabilidades, y un producto en el que toda afirmación no aprobada se publica como una pregunta abierta visible en lugar de una frase segura.',
+        'El diseño de servicios detrás de una marca de garantías: 22 procesos de posventa dibujados en seis niveles, desde un mapa macro hasta las instrucciones de trabajo, solo hasta donde lo permitía la evidencia — con cada hueco marcado, contado y con responsable en lugar de rellenado.',
     },
     de: {
-      title: 'Yaravan — eine After-Sales-Marke, die ihre eigenen offenen Fragen veröffentlicht',
+      title:
+        'Yaravan — Service-Design für einen Kundendienstbetrieb, den niemand aufgeschrieben hatte',
       summary:
-        'Eine unabhängige persische Garantiemarke, als vollständige Plattform auf einem After-Sales-Betrieb gebaut, den nie jemand aufgeschrieben hatte — eine Prozessarchitektur, ein Rollen- und Verantwortungsmodell und ein Produkt, in dem jede ungeprüfte Behauptung als sichtbare offene Frage erscheint statt als selbstsicherer Satz.',
+        'Das Service-Design hinter einer Garantiemarke: 22 Kundendienstprozesse, auf sechs Ebenen gezeichnet, von einer Makro-Landkarte bis hinunter zu Arbeitsanweisungen und nur so weit, wie die Nachweise es erlaubten — jede Lücke markiert, gezählt und mit Verantwortlichem versehen, statt gefüllt.',
     },
     fr: {
-      title: 'Yaravan — une marque d’après-vente qui publie ses propres questions ouvertes',
+      title:
+        'Yaravan — le design de services d’une opération d’après-vente que personne n’avait décrite',
       summary:
-        'Une marque de garantie persane indépendante, construite comme une plateforme complète par-dessus une activité d’après-vente que personne n’avait jamais mise par écrit — une architecture de processus, un modèle de rôles et de responsabilités, et un produit où toute affirmation non validée est publiée comme une question ouverte visible plutôt que comme une phrase assurée.',
+        'Le design de services derrière une marque de garantie : 22 processus d’après-vente dessinés sur six niveaux, d’une carte macro jusqu’aux instructions de travail, sans aller au-delà de ce que les preuves permettaient — chaque lacune étant signalée, comptée et dotée d’un responsable au lieu d’être comblée.',
     },
     ja: {
-      title: 'Yaravan — 自らの未解決の問いを公開するアフターサービスブランド',
+      title: 'Yaravan — 誰も書き留めてこなかったアフターサービス業務のサービスデザイン',
       summary:
-        '誰も文書化してこなかったアフターサービス業務の上に、完全なプラットフォームとして構築した独立系のペルシャ語保証ブランド。プロセスアーキテクチャ、役割と責任のモデル、そして未承認の主張を自信ありげな一文ではなく「見える未解決の問い」として出す製品。',
+        '保証ブランドを支えるサービスデザイン。22のアフターサービスのプロセスを、マクロマップから作業手順書まで6つの階層で、証拠が許す範囲でだけ描いた。空白は埋めずに、すべて明示し、数え、担当者を割り当てた。',
+    },
+  },
+  'yaravan-platform': {
+    fa: {
+      title: 'یاراوان — پلتفرم خدمات پس از فروش و گارانتی',
+      summary:
+        'پلتفرم گارانتی فارسی — سایت عمومی، پنل مشتری و پنل کارکنان — بر پایهٔ عملیاتی که هنوز در حال تعریف است، که در آن هر واقعیتی که هیچ‌کس تأییدش نکرده بود، به‌جای جمله‌ای از سر اطمینان، به شکل موردی باز، آشکار و صاحب‌دار منتشر می‌شود.',
+    },
+    ar: {
+      title: 'ياراوان — منصة ضمان تُظهر أسئلتها المفتوحة',
+      summary:
+        'منصة ضمان فارسية — موقع عام ولوحة للعملاء ولوحة للموظفين — بُنيت على تشغيلٍ لا يزال قيد التحديد، حيث تُعرض كل حقيقة لم يوافق عليها أحد بوصفها عنصرًا مفتوحًا ظاهرًا له مالك، بدلًا من جملة واثقة.',
+    },
+    es: {
+      title: 'Yaravan — una plataforma de garantías que muestra sus preguntas abiertas',
+      summary:
+        'Una plataforma de garantías en persa — sitio público, panel de clientes y panel del personal — construida sobre una operación que aún se está definiendo, donde cada dato que nadie había aprobado se publica como un elemento abierto, visible y con responsable, en lugar de una frase segura de sí misma.',
+    },
+    de: {
+      title: 'Yaravan — eine Garantieplattform, die ihre offenen Fragen zeigt',
+      summary:
+        'Eine persische Garantieplattform — öffentliche Website, Kundenbereich und Mitarbeiterbereich — auf einem Betrieb, der erst noch definiert wurde: Jede Tatsache, die niemand freigegeben hatte, wird als sichtbarer offener Punkt mit Verantwortlichem ausgeliefert statt als selbstsicherer Satz.',
+    },
+    fr: {
+      title: 'Yaravan — une plateforme de garantie qui montre ses questions ouvertes',
+      summary:
+        'Une plateforme de garantie en persan — site public, espace client et espace collaborateurs — bâtie sur une opération encore en cours de définition, où chaque fait que personne n’avait validé est livré sous la forme d’un élément ouvert visible, doté d’un responsable, au lieu d’une phrase assurée.',
+    },
+    ja: {
+      title: 'Yaravan — 未決の問いを隠さず示す保証プラットフォーム',
+      summary:
+        'ペルシア語の保証プラットフォーム — 公開サイト、カスタマーパネル、スタッフパネル。まだ定義の途中にある業務の上に築き、誰も承認していない事実はすべて、自信ありげな一文ではなく、担当者が明示された、目に見える未決項目として示される。',
     },
   },
   'digital-gold': {
@@ -1162,6 +1203,38 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
       title: 'Marqevon — 現物石油トレーダーのコーポレートサイト',
       summary:
         '現物の石油取引を行うプリンシパルのための7言語コーポレートサイト。取引相手が口に出さずに抱く問い——この会社は実在し、検証できるのか——を軸に設計した。',
+    },
+  },
+  cproperty: {
+    fa: {
+      title: 'CProperty — خانه‌های پیش‌فروش ونکوور بزرگ، قابل مقایسه با هم',
+      summary:
+        'مارکت‌پلیسی برای خریداران آپارتمان و تاون‌هاوس پیش‌فروش در لوئر مین‌لند ونکوور: ۷۶ صفحهٔ واکنش‌گرا که جدول پیش‌پرداخت، هزینهٔ واگذاری قرارداد و هزینه‌های هر واحد را کنار هم می‌گذارند. این طراحی جایگزین نسخهٔ قبلی‌ای است که داده را به مشاوران املاک می‌فروخت.',
+    },
+    ar: {
+      title: 'CProperty — مقارنة واضحة لمساكن البيع على المخطط في فانكوفر الكبرى',
+      summary:
+        'سوق إلكترونية تخدم المشترين، لشقق ومنازل متلاصقة تُباع على المخطط في منطقة لوار ماينلاند حول فانكوفر: 76 شاشة متجاوبة تضع جدول الدفعة المقدّمة ورسوم التنازل عن العقد وتكاليف كل وحدة جنبًا إلى جنب، وتحلّ محل نسخة سابقة كانت تبيع البيانات للوسطاء العقاريين.',
+    },
+    es: {
+      title: 'CProperty — vivienda en preventa en Metro Vancouver, ahora comparable',
+      summary:
+        'Un marketplace para compradores de apartamentos y casas adosadas en preventa en el Lower Mainland de Vancouver: 76 pantallas responsive que ponen lado a lado el calendario del depósito, las tarifas de cesión y los costes unidad por unidad, y que sustituyen a una versión anterior que vendía datos a agentes inmobiliarios.',
+    },
+    de: {
+      title: 'CProperty — Presale-Wohnungen in Metro Vancouver, vergleichbar gemacht',
+      summary:
+        'Ein Marktplatz für Käufer von Presale-Eigentumswohnungen und -Townhouses im Lower Mainland rund um Vancouver: 76 responsive Screens, die Anzahlungsplan, Abtretungsgebühren und Kosten Einheit für Einheit nebeneinanderstellen und eine frühere Version ablösen, die Daten an Makler verkaufte.',
+    },
+    fr: {
+      title: 'CProperty — les logements sur plan de Metro Vancouver, rendus comparables',
+      summary:
+        'Une marketplace pour les acheteurs d’appartements et de maisons de ville vendus sur plan dans le Lower Mainland, autour de Vancouver : 76 écrans responsive qui mettent côte à côte l’échéancier du dépôt, les frais de cession et les coûts logement par logement, en remplacement d’une version précédente qui vendait des données aux agents immobiliers.',
+    },
+    ja: {
+      title: 'CProperty — メトロバンクーバーのプレセール住宅を、比べられるものに',
+      summary:
+        'バンクーバー周辺のローワーメインランドで、プレセール（竣工前販売）のコンドミニアムやタウンハウスを探す買い手のためのマーケットプレイス。デポジット（手付金）のスケジュール、契約譲渡手数料、住戸ごとの費用を並べて示す76のレスポンシブ画面が、不動産エージェントにデータを販売していた以前のバージョンに取って代わった。',
     },
   },
   faymen: {

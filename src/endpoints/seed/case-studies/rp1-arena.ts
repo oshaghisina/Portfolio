@@ -940,6 +940,8 @@ export function rp1Sections(locale: Locale, media: Rp1MediaIds): Sections {
       id: 'rp1-s09',
       blockType: 'csProcess',
       kind: 'loop',
+      // L1–L4 name the loop's stages; every other process map shows plain step numbers.
+      markers: 'code',
       heading: l(
         L({
           en: 'The club retention loop',

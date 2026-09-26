@@ -8,63 +8,152 @@ import type { CaseStudyBlockContext } from '../types'
 
 export type ProcessBlockProps = CaseStudyProcessBlock & CaseStudyBlockContext
 
+type Step = NonNullable<CaseStudyProcessBlock['steps']>[number]
+
 /**
- * The project's own sequence as nodes and hairlines — mono codes in small circles, labels, a
- * technical note under each. A horizontal rail from `md`, a vertical one on phones (same nodes,
- * same connectors). `loop` closes the last step back to the first with a dashed return line.
- * Connectors use logical `start`/`end`, so the map mirrors under RTL while codes stay Latin.
+ * Columns per row: one row up to `oneRowMax` steps, then balanced rows of at most `rowMax`. From
+ * `lg` that is 5 / 4 (6 → 3 + 3, 7 → 4 + 3, 8 → 4 + 4); on the ~560–660px tablet rail 3 / 3
+ * (4 → 2 + 2, 5 → 3 + 2). A loop never wraps — its return arc spans a single row.
  */
-export const ProcessBlock: React.FC<ProcessBlockProps> = ({ copy, heading, kind, steps }) => {
+export function processColumns(
+  count: number,
+  kind: CaseStudyProcessBlock['kind'],
+  { oneRowMax, rowMax }: { oneRowMax: number; rowMax: number } = { oneRowMax: 5, rowMax: 4 },
+): number {
+  if (kind === 'loop' || count <= oneRowMax) return count
+  return Math.ceil(count / Math.ceil(count / rowMax))
+}
+
+const TABLET = { oneRowMax: 3, rowMax: 3 }
+
+/** What a node shows: its position (01, 02 …) unless the block opts into its own codes. */
+export function stepMarker(
+  step: Step,
+  index: number,
+  markers: CaseStudyProcessBlock['markers'],
+): string {
+  return markers === 'code' && step.code ? step.code : String(index + 1).padStart(2, '0')
+}
+
+/** A 10×6 open chevron pointing down; rotate it for the other directions. */
+const Arrowhead: React.FC<{ className?: string }> = ({ className }) => (
+  <svg
+    aria-hidden
+    className={cn('absolute h-1.5 w-2.5 text-ink-3', className)}
+    fill="none"
+    viewBox="0 0 10 6"
+  >
+    <path d="M1 .5 5 5 9 .5" stroke="currentColor" />
+  </svg>
+)
+
+/**
+ * The project's own sequence as nodes and hairlines — mono markers in small rings, labels, a
+ * technical note under each. A horizontal rail from `md` (wrapping past five steps, numbers keep
+ * the order), a vertical one on phones; each connector ends in an arrowhead short of the next node.
+ * The line runs behind the node, so a wider code pill never breaks it. `loop` draws a dashed
+ * return arc over the rail from the last node into the first (a dashed terminal row on phones).
+ * Connectors use logical `start`/`end`, so the map mirrors under RTL while markers stay Latin.
+ */
+export const ProcessBlock: React.FC<ProcessBlockProps> = ({
+  copy,
+  heading,
+  kind,
+  markers,
+  steps,
+}) => {
   const rows = steps ?? []
   if (!rows.length) return null
-  const first = rows[0]!
+  const loop = kind === 'loop'
+  const cols = processColumns(rows.length, kind)
+  const colsMd = processColumns(rows.length, kind, TABLET)
+  const returnsTo = (
+    <>
+      {copy.loopsTo}{' '}
+      <span className="index-code text-ink-2">{stepMarker(rows[0]!, 0, markers)}</span> ·{' '}
+      {rows[0]!.label}
+    </>
+  )
 
   return (
     <div>
       {heading ? (
         <h3 className="text-h3 font-medium text-balance text-foreground">{heading}</h3>
       ) : null}
-      <ol className={cn('flex flex-col gap-8 md:flex-row md:gap-0', heading && 'mt-8')}>
-        {rows.map((step, i) => {
-          const last = i === rows.length - 1
-          return (
-            <li
-              className="relative flex gap-4 md:flex-1 md:flex-col md:gap-3 md:pe-6"
-              key={step.id ?? i}
-            >
-              {!last ? (
-                <>
-                  <span
-                    aria-hidden
-                    className="absolute start-[1.125rem] top-9 -bottom-8 w-px bg-line md:hidden"
-                  />
-                  <span
-                    aria-hidden
-                    className="absolute top-[1.125rem] start-9 end-0 hidden h-px bg-line md:block"
-                  />
-                </>
-              ) : null}
-              <span className="index-code relative z-10 flex size-9 shrink-0 items-center justify-center rounded-full border border-line bg-background text-ink-2">
-                {step.code}
-              </span>
-              <div className="flex flex-col gap-1 pt-1.5 md:pt-0">
-                <span className="text-small font-medium text-foreground">{step.label}</span>
-                {step.note ? <span className="text-caption text-ink-3">{step.note}</span> : null}
-              </div>
-            </li>
-          )
-        })}
-      </ol>
-      {kind === 'loop' ? (
-        <p className="mt-6 flex items-center gap-3 eyebrow text-ink-3">
-          <span aria-hidden className="h-px w-10 border-t border-dashed border-line md:flex-1" />
-          <span>
-            <span aria-hidden className="me-1 inline-block rtl:-scale-x-100">
-              ↻
+      <div
+        className={cn('relative', heading && 'mt-8', loop && 'md:pt-12')}
+        style={{ '--process-cols': cols, '--process-cols-md': colsMd } as React.CSSProperties}
+      >
+        <ol className="flex flex-col gap-8 md:grid md:grid-cols-[repeat(var(--process-cols-md),minmax(0,1fr))] md:gap-x-0 md:gap-y-12 lg:grid-cols-[repeat(var(--process-cols),minmax(0,1fr))]">
+          {rows.map((step, i) => {
+            const last = i === rows.length - 1
+            // A row's last node gets no rail; the numbers carry the order onto the next row.
+            const rail = cn(
+              'hidden',
+              !last && (i + 1) % colsMd !== 0 && 'md:block',
+              last || (i + 1) % cols === 0 ? 'lg:hidden' : 'lg:block',
+            )
+            return (
+              <li className="relative flex gap-4 md:flex-col md:gap-3 md:pe-6" key={step.id ?? i}>
+                <span
+                  aria-hidden
+                  className={cn('absolute start-0 end-2 top-[1.125rem] h-px bg-line', rail)}
+                />
+                <Arrowhead
+                  className={cn(
+                    'end-[5px] top-[calc(1.125rem_-_3px)] -rotate-90 rtl:rotate-90',
+                    rail,
+                  )}
+                />
+                <div className="relative flex shrink-0 flex-col items-center md:items-start">
+                  {!last || loop ? (
+                    <>
+                      <span
+                        aria-hidden
+                        className={cn(
+                          'absolute inset-x-0 top-9 -bottom-6 mx-auto md:hidden',
+                          last ? 'w-0 border-s border-dashed border-ink-3/60' : 'w-px bg-line',
+                        )}
+                      />
+                      <Arrowhead className="inset-x-0 -bottom-6 mx-auto md:hidden" />
+                    </>
+                  ) : null}
+                  <span className="index-code relative z-10 flex h-9 min-w-9 items-center justify-center rounded-full border border-ink-3/60 bg-background px-2 text-ink-2">
+                    {/* cancel the trailing letter-spacing so the marker sits optically centred */}
+                    <span className="-me-(--text-eyebrow--letter-spacing)">
+                      {stepMarker(step, i, markers)}
+                    </span>
+                  </span>
+                </div>
+                <div className="flex flex-col gap-1 pt-1.5 md:pt-0">
+                  <span className="text-small font-medium text-foreground">{step.label}</span>
+                  {step.note ? <span className="text-caption text-ink-3">{step.note}</span> : null}
+                </div>
+              </li>
+            )
+          })}
+        </ol>
+        {loop ? (
+          // The return arc: leaves the last node, runs back over the rail and drops into the first.
+          // Its ends sit on the node centres (1.125rem into the first and last columns).
+          <p className="absolute start-[1.125rem] end-[calc(100%_/_var(--process-cols)_-_1.125rem)] top-4 hidden h-8 justify-center rounded-t-lg border-x border-t border-dashed border-ink-3/60 md:flex">
+            {/* centred on the dashed top edge by margin, not translate — the reveal animates translate */}
+            <span className="-mt-[0.5lh] self-start bg-background px-3 eyebrow text-ink-3">
+              {returnsTo}
             </span>
-            {copy.loopsTo} <span className="index-code text-ink-3">{first.code}</span> ·{' '}
-            {first.label}
+            <Arrowhead className="-start-[4.5px] bottom-0" />
+          </p>
+        ) : null}
+      </div>
+      {loop ? (
+        <p className="mt-8 flex items-center gap-4 md:hidden">
+          <span
+            aria-hidden
+            className="flex size-9 shrink-0 items-center justify-center rounded-full border border-dashed border-ink-3/60 text-ink-3"
+          >
+            <span className="rtl:-scale-x-100">↺</span>
           </span>
+          <span className="eyebrow text-ink-3">{returnsTo}</span>
         </p>
       ) : null}
     </div>

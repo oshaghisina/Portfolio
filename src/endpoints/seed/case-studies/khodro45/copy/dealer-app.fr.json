@@ -1,0 +1,336 @@
+{
+  "statement": "Une app d'enchères pour négociants : prix de référence, rapport d'inspection et règlement en six étapes restent en vue à chaque pas d'un achat d'occasion.",
+  "industry": "Automobile · Place de marché B2B",
+  "team": "Designer produit, aux côtés de collègues du produit et du développement",
+  "heroCaption": "La fiche véhicule avec son bloc prix, le panneau d'offre et la liste des commandes numérotée de un à six : le chemin du négociant, d'un prix jusqu'à la libération de la plaque.",
+  "snapshot": {
+    "problem": "Les négociants devaient évaluer, inspecter et payer des voitures d'occasion qu'ils n'avaient pas vues, sur un marché qui repose sur des prix opaques et sur la confiance entre personnes.",
+    "role": "Designer produit sur l'ensemble de l'app négociant : structure des marchés, enchères, états de négociation et de règlement, parcours de mise en vente, adhésions, et thèmes clair et sombre en persan.",
+    "result": "La version 3.1 de l'app négociant, dessinée en 241 écrans de téléphone répartis en 43 sections, avec un prototype de 24 écrans pour les états de transaction."
+  },
+  "alt": {
+    "liveList": "App négociant Khodro45, liste des enchères en direct : chaque carte affiche un compte à rebours, le statut de l'offre du négociant et le juste prix du marché",
+    "marketList": "App négociant Khodro45, liste du marché showroom : chaque carte affiche la dernière offre, le prix demandé par le vendeur et la distance qui reste jusqu'à l'accord",
+    "bazaarList": "App négociant Khodro45, liste du bazar : chaque carte affiche le temps restant, l'offre la plus haute et le juste prix du marché",
+    "detailTop": "Fiche véhicule Khodro45 : photos, bloc prix avec l'offre la plus haute et le juste prix du marché, et onglets du rapport d'inspection",
+    "reportFacts": "Rapport d'inspection Khodro45, données de la voiture : numéro d'admission, finition, kilométrage, boîte de vitesses, équipements, assurance et certificat de contrôle technique",
+    "reportBody": "Rapport d'inspection Khodro45, carrosserie et pneus : une carte des dommages de la voiture et les constats sur le châssis, chacun avec un verdict et une photo",
+    "priceLive": "Bloc prix Khodro45 dans l'enchère en direct : offre la plus haute, juste prix du marché et frais de service",
+    "priceMarket": "Bloc prix Khodro45 sur le marché showroom : dernière offre, prix demandé par le vendeur et frais de service",
+    "listingStatus": "Statut de mise en vente Khodro45 pour une voiture du négociant : total des vues et des messages, puis un interrupteur, les vues et les messages pour chaque plateforme où elle est publiée",
+    "myCars": "Liste « Mes voitures » de Khodro45 : un graphique de prix, puis les voitures du négociant avec des statuts comme en attente de validation, refusée et aux enchères",
+    "bidSheet": "Panneau d'offre Khodro45 sur la fiche véhicule : prix actuel, juste prix du marché, un sélecteur pas à pas pour l'offre et le temps restant",
+    "autoBid": "Panneau d'offre automatique Khodro45 : prix actuel, pas de prix et pas de l'offre automatique",
+    "guarantee": "Message Khodro45 sur la fiche véhicule indiquant que l'inspection de la carrosserie est garantie par Khodro45",
+    "addedFees": "Panneau des frais Khodro45 : taxes municipales, transport, transfert de propriété et libération de la plaque, avec un total",
+    "ordersAll1": "Liste des commandes Khodro45, premières cartes : prête à négocier avec un compte à rebours, en négociation et en renégociation",
+    "ordersAll2": "Liste des commandes Khodro45, cartes suivantes : le vendeur a accepté l'offre, et une commande qui demande une offre plus élevée",
+    "ordersAll3": "Liste des commandes Khodro45, dernières cartes : nouvelle offre requise, achat conclu, et annulée faute d'accord",
+    "notSettled1": "Commandes non réglées Khodro45, étapes un à trois : documents du propriétaire, acompte et règlement final, chacune avec son action",
+    "notSettled2": "Commandes non réglées Khodro45, étapes quatre à six : confirmation, remise avec procuration et reçu de libération de la plaque",
+    "orderDetails": "Page de commande Khodro45 à l'étape un sur six : prix convenu, acompte, étape suivante et une garantie de libération de plaque remboursée par Khodro45",
+    "choosePrice": "Panneau de négociation Khodro45 : accepter le prix du vendeur ou maintenir le sien, avec un avertissement indiquant que l'enchère est rouverte aux autres enchérisseurs",
+    "priceLadder": "Panneau Khodro45 pour relever l'offre : le prix du vendeur, un sélecteur pas à pas pour la nouvelle offre et une case à cocher avant l'envoi",
+    "playground": "Tableau d'entrée du prototype Khodro45 : « Welcome to Design Play Ground », le choix entre sombre et clair, puis « Select Your Path »",
+    "addCar": "Formulaire d'ajout de voiture Khodro45 en thème sombre, à l'étape de la marque, avec les marques populaires et une liste avec recherche",
+    "questions": "Questions d'ajout de voiture Khodro45 : antécédents d'accident, dommages de carrosserie, problèmes mécaniques et état des pneus",
+    "photoGuide": "Guide photo Khodro45 : prendre la photo à environ deux mètres pour que toute la voiture soit dans le cadre",
+    "bodyParts": "Auto-inspection Khodro45 : un plan de la voiture vue de dessus et une liste d'éléments à marquer comme endommagés",
+    "summary": "Récapitulatif de mise en vente Khodro45 en attente de publication : la voiture, sa plaque, les réponses données et le degré d'achèvement de chaque partie",
+    "identity": "Panneau d'inscription Khodro45 demandant le type d'activité : propriétaire de concession, courtier ou investisseur du secteur automobile",
+    "tiers": "Adhésion payante Khodro45 : cinq niveaux annuels, chacun avec un plafond sur le volume total des offres",
+    "loyalty": "Club clients Khodro45 : le niveau actuel, la progression vers le suivant et les récompenses de chaque niveau",
+    "score": "Score négociant Khodro45 : une note sur cinq avec une barre pour chacun des cinq indicateurs de performance",
+    "superLight": "Espace services Khodro45 en thème clair : achat et vente, puis services liés à la possession d'une voiture comme les amendes, les taxes et l'assurance",
+    "superDark": "Espace services Khodro45 en thème sombre, avec les mêmes services que la version claire"
+  },
+  "chapters": {
+    "context": {
+      "heading": "Le versant professionnel d'une place de marché de l'occasion",
+      "body": [
+        "Khodro45 est une place de marché iranienne en ligne pour les voitures d'occasion. Les vendeurs y mettent leurs voitures en vente ; cette app en est l'autre côté, celui où les professionnels les achètent. Son écran de démarrage affiche « Dealer App V.3.1 » : le fichier est donc une version d'un produit en service, pas un premier concept.",
+        "À l'inscription, un nouvel utilisateur choisit l'une de trois activités : propriétaire de concession, courtier ou investisseur du secteur automobile. Derrière cette entrée se trouve un espace services qui va au-delà de l'achat et de la vente, jusqu'à la possession d'une voiture : amendes de circulation, taxe de transfert, assurance, pièces, entretien, inspection et prix du jour."
+      ]
+    },
+    "problem": {
+      "heading": "Trois questions auxquelles un négociant ne pouvait pas répondre",
+      "body": [
+        "Un négociant qui achète une voiture sans l'avoir vue a besoin de trois réponses : ce qu'elle vaut, dans quel état elle est vraiment, et qui détient l'argent jusqu'à ce que la propriété change de mains. Une petite annonce ne répond à aucune.",
+        "Le fichier répond à chacune par un mécanisme : un prix de référence à côté de chaque offre, un rapport d'inspection dans la fiche véhicule, et un règlement qui avance en six étapes numérotées, avec une garantie détenue par Khodro45 jusqu'à ce que la dernière soit accomplie."
+      ]
+    },
+    "markets": {
+      "heading": "Trois marchés, une fiche véhicule",
+      "customLabel": "Structure",
+      "body": [
+        "L'app compte trois listes de marché, dessinées comme des sections distinctes plutôt que comme une seule liste avec un filtre : Direct, l'enchère en direct ; Marché, que les onglets de l'app appellent le showroom ; et Bazar. Chacune a sa propre version de la fiche véhicule.",
+        "Elles diffèrent par ce qui accompagne le prix. Les cartes Direct montrent l'offre du négociant, en indiquant si elle est en tête, dépassée ou prolongée, ainsi que le juste prix du marché. Les cartes Marché opposent la dernière offre au prix demandé par le vendeur, avec une étiquette qui dit à quel point l'accord est proche. Les cartes Bazar montrent le temps restant, l'offre la plus haute et le juste prix du marché.",
+        "La fiche véhicule garde la même répartition. Direct et Bazar opposent l'offre la plus haute au juste prix du marché ; Marché oppose la dernière offre au prix demandé par le vendeur."
+      ]
+    },
+    "solution": {
+      "heading": "Le prix et l'état au moment de s'engager",
+      "body": [
+        "La fiche véhicule se lit d'un seul défilement : les photos, le bloc prix, puis le rapport d'inspection. Le rapport s'ouvre sur les données de la voiture (numéro d'admission, finition, kilométrage, boîte de vitesses, équipements, assurance restante et certificat de contrôle technique) et note chaque système sur cinq.",
+        "La carrosserie et les pneus ont une carte des dommages qui code par couleur les éléments remplacés ou entièrement repeints, cabossés ou rayés. Les constats sur le châssis et les montants sont listés pièce par pièce, chacun avec un verdict et, lorsqu'une pièce est défaillante, une photo.",
+        "Les offres se font dans un panneau par-dessus la fiche véhicule. En plus de l'offre manuelle, le négociant peut régler une offre automatique avec son propre pas. Un panneau des frais détaille ce que le prix n'inclut pas, et un message indique que l'inspection de la carrosserie est garantie par Khodro45."
+      ]
+    },
+    "settlement": {
+      "heading": "Six étapes, chacune avec son compte à rebours",
+      "customLabel": "Règlement",
+      "body": [
+        "Remporter une voiture ouvre un règlement que la liste des commandes numérote de un à six : les documents du propriétaire sont vérifiés, le négociant verse un acompte, puis vient le règlement final, le règlement est confirmé, la voiture est remise avec une procuration, et la plaque est libérée.",
+        "Chaque carte nomme son étape et la suivante, et la plupart portent un compte à rebours. Une garantie de libération de plaque est retenue en cours de route ; la page de commande indique que Khodro45 la rembourse une fois la libération enregistrée.",
+        "Avant le règlement vient la négociation. La liste des commandes montre chaque état possible d'une transaction : prête à négocier, en négociation, en renégociation, acceptée, offre plus élevée requise, nouvelle offre requise, en attente de validation, conclue, et annulée faute d'accord. Un prototype de 24 écrans fait passer une commande par ces états."
+      ]
+    },
+    "selling": {
+      "heading": "Le négociant, vendeur à son tour",
+      "customLabel": "Vente",
+      "body": [
+        "Les négociants ne font pas qu'acheter : ils vendent aussi. Une voiture s'ajoute par un formulaire en étapes (marque, modèle, année, finition, kilométrage, couleur, ville, VIN et plaque), suivi de questions sur la propriété et l'état : premier propriétaire ou non, carte de propriété au nom du négociant ou non, double de clé, accidents, dommages de carrosserie, problèmes mécaniques et pneus.",
+        "Le formulaire passe ensuite le relais à une auto-inspection. Un guide photo aborde la lumière, une voiture propre, la distance et le téléphone tenu à l'horizontale. Les écrans d'envoi demandent chaque angle, une vidéo du moteur de 15 secondes avec le son, les documents et les défauts, les éléments endommagés étant marqués sur un plan de la voiture.",
+        "La voiture apparaît ensuite dans la liste du négociant, où sa mise en vente et son enchère peuvent chacune être activées ou désactivées. Sa page affiche les vues et les messages au total et pour chaque plateforme où elle est publiée : Khodro45, Divar, Bama et Sheypoor."
+      ]
+    },
+    "business": {
+      "heading": "Payer pour accéder, ou gagner au volume",
+      "customLabel": "Modèle économique",
+      "body": [
+        "Le fichier conserve deux adhésions pour les négociants. Dans l'une, le négociant doit acheter l'un de cinq abonnements annuels avant d'utiliser l'app, et chaque niveau plafonne le montant total sur lequel il peut enchérir, de 500 millions de toman jusqu'à un montant illimité.",
+        "Dans l'autre, un Club clients, les négociants gravissent des niveaux selon leur volume de transactions sur douze mois et gagnent des récompenses : un crédit allant jusqu'à 500 millions de toman, la livraison gratuite de la procuration et trois transports de voiture gratuits. Le fichier ne dit pas si l'une a remplacé l'autre.",
+        "Un score négociant s'ajoute aux deux : une note sur cinq, mise à jour chaque mois à partir de la vitesse de règlement, de la vitesse de libération de plaque, des désistements, des annulations et du nombre de transactions sur les 100 derniers jours."
+      ]
+    },
+    "method": {
+      "heading": "Testé en parcours, dans deux thèmes",
+      "customLabel": "Méthode",
+      "body": [
+        "Presque chaque section est dessinée deux fois, une fois en sombre et une fois en clair : 110 écrans sombres et 127 clairs sur l'ensemble des sections. Un tableau d'entrée du prototype, intitulé « Welcome to Design Play Ground », permet au testeur de choisir sombre ou clair, puis un chemin dans l'app.",
+        "L'état des transactions a son propre prototype. Ses 24 écrans font passer une commande par la négociation, la contre-offre du vendeur et l'acompte, là où les comptes à rebours et les pénalités rendent coûteux tout état ambigu."
+      ]
+    }
+  },
+  "figures": {
+    "entry": {
+      "caption": "À qui s'adresse l'app et où elle commence : les trois activités proposées à l'inscription, et l'espace services dessiné dans les deux thèmes.",
+      "items": [
+        "Inscription : propriétaire de concession, courtier ou investisseur",
+        "Espace services, clair",
+        "Espace services, sombre"
+      ]
+    },
+    "markets": {
+      "caption": "Les trois listes de marché. Les onglets sont ceux de l'app : enchère en direct, showroom et bazar.",
+      "items": [
+        "Direct : le statut de votre offre et le juste prix du marché",
+        "Marché : dernière offre, prix du vendeur et distance jusqu'à l'accord",
+        "Bazar : temps restant, offre la plus haute et juste prix du marché"
+      ]
+    },
+    "price": {
+      "caption": "Le bloc prix d'une même voiture dans deux modes. Direct oppose l'offre la plus haute au juste prix du marché ; Marché oppose la dernière offre au prix demandé par le vendeur. Les frais de service figurent sous les deux.",
+      "items": [
+        "Enchère en direct",
+        "Marché showroom"
+      ]
+    },
+    "report": {
+      "caption": "Le rapport d'inspection dans la fiche véhicule : d'abord les données de la voiture, puis la carrosserie et les pneus avec la carte des dommages, et les constats sur le châssis pièce par pièce.",
+      "items": [
+        "Données de la voiture",
+        "Carrosserie, pneus et châssis"
+      ]
+    },
+    "bidding": {
+      "caption": "Autour de l'offre : une offre automatique avec son propre pas, la garantie d'inspection de la carrosserie, et le panneau des frais avec son total.",
+      "items": [
+        "Offre automatique",
+        "Garantie d'inspection",
+        "Les frais avant l'offre"
+      ]
+    },
+    "negotiation": {
+      "caption": "La négociation telle que le prototype la dessine. Refuser le prix du vendeur rouvre l'enchère aux autres enchérisseurs, et le panneau le dit avant que le négociant n'envoie son offre.",
+      "items": [
+        "Accepter le prix du vendeur ou garder le sien",
+        "Relever l'offre, après avoir coché la case"
+      ]
+    },
+    "states": {
+      "caption": "Une seule liste de commandes qui réunit tous les états possibles d'une transaction, chacun avec sa propre action et, quand le temps compte, un compte à rebours.",
+      "items": [
+        "Prête à négocier, en négociation, en renégociation",
+        "Acceptée, offre plus élevée requise",
+        "Nouvelle offre requise, conclue, annulée"
+      ]
+    },
+    "stages": {
+      "caption": "Les dernières étapes dans la liste des commandes, et la page de commande à l'étape un : les montants, l'étape suivante et une garantie de libération de plaque que Khodro45 rembourse.",
+      "items": [
+        "Étapes quatre à six",
+        "Page de commande, étape un sur six"
+      ]
+    },
+    "listing": {
+      "caption": "Mettre une voiture en vente : le formulaire en étapes, les questions sur la propriété et l'état, le guide photo, et les dommages marqués élément par élément.",
+      "items": [
+        "La marque d'abord, puis le modèle, l'année et la finition",
+        "Propriété et état",
+        "Guide photo : toute la voiture, à environ deux mètres",
+        "Marquer les éléments endommagés"
+      ]
+    },
+    "published": {
+      "caption": "Après le formulaire : un récapitulatif en attente de publication, les voitures du négociant avec leurs statuts, et la portée d'une voiture sur chaque plateforme.",
+      "items": [
+        "Récapitulatif, en attente de publication",
+        "Mes voitures : interrupteurs de mise en vente et d'enchère",
+        "Vues et messages par plateforme"
+      ]
+    },
+    "membership": {
+      "caption": "Deux adhésions dans un même fichier : cinq niveaux annuels payants avec des plafonds d'enchères, et un Club clients qui récompense le volume. Le fichier ne consigne pas si le club a remplacé les niveaux payants.",
+      "items": [
+        "Accès payant : cinq niveaux annuels",
+        "Club clients : niveaux et récompenses"
+      ]
+    },
+    "score": {
+      "caption": "Le score négociant : une note sur cinq, mise à jour chaque mois à partir de cinq mesures de la façon dont un négociant règle ses transactions.",
+      "annotations": [
+        "Vitesse de règlement",
+        "Vitesse de libération de plaque",
+        "Désistements",
+        "Transactions annulées",
+        "Nombre de transactions sur les 100 derniers jours"
+      ]
+    },
+    "playground": {
+      "caption": "Le tableau d'entrée du prototype : un accueil, sombre ou clair, puis le choix d'un chemin."
+    }
+  },
+  "process": {
+    "heading": "Les six étapes du règlement, telles que la liste des commandes les numérote",
+    "steps": [
+      {
+        "label": "Documents du propriétaire",
+        "note": "Vérifiés en premier ; le bouton d'acompte reste désactivé tant qu'ils ne le sont pas."
+      },
+      {
+        "label": "Acompte",
+        "note": "Versé avant la fin d'un compte à rebours affiché sur la carte."
+      },
+      {
+        "label": "Règlement final",
+        "note": "Le reste du prix, avec son propre compte à rebours."
+      },
+      {
+        "label": "Confirmation",
+        "note": "Le règlement est confirmé avant que la voiture ne bouge."
+      },
+      {
+        "label": "Remise",
+        "note": "La voiture et une procuration changent de mains ; le solde du contrat est payé."
+      },
+      {
+        "label": "Libération de la plaque",
+        "note": "Un reçu est téléversé, et la garantie est remboursée."
+      }
+    ]
+  },
+  "decisions": {
+    "heading": "Les décisions que le fichier rend visibles",
+    "lede": "Lues à partir des écrans et de leurs états, pas d'une justification écrite : le fichier n'en contient aucune.",
+    "items": [
+      {
+        "title": "Toujours montrer un prix de référence",
+        "why": "Aucune offre de l'app n'est isolée. Direct et Bazar la confrontent au juste prix du marché, Marché au prix demandé par le vendeur, et le panneau d'offre rappelle la référence à l'endroit où le négociant saisit un montant.",
+        "tradeoff": "La référence évolue avec le marché : le négociant doit donc savoir à quel chiffre il est comparé.",
+        "evidence": "Les blocs prix Direct et Marché, et le panneau d'offre."
+      },
+      {
+        "title": "Placer l'inspection dans la fiche véhicule",
+        "why": "Le rapport est une série d'onglets de la fiche véhicule (données de la voiture, carrosserie et pneus, moteur, électricité), pas un document séparé. Une carte des dommages colore les éléments concernés, et chaque pièce défaillante porte une photo.",
+        "evidence": "Les données de la voiture et les constats sur la carrosserie et le châssis dans le rapport."
+      },
+      {
+        "title": "Nommer chaque état et lui donner un compte à rebours",
+        "why": "Une commande est toujours dans un état nommé, avec son étape suivante écrite sur la carte, et la plupart des états portent un compte à rebours. L'avertissement 3:14 indique quand une offre sera retirée automatiquement et une pénalité appliquée.",
+        "evidence": "La liste des commandes avec ses états, et les six étapes numérotées."
+      },
+      {
+        "title": "Prévenir avant de rouvrir l'enchère",
+        "why": "En négociation, refuser le prix du vendeur et saisir le sien rouvre l'enchère aux autres enchérisseurs. Le panneau l'explique en toutes lettres et, dans une version, demande au négociant de cocher une case avant d'envoyer.",
+        "tradeoff": "Une étape de plus au moment où le négociant cherche à conclure.",
+        "evidence": "Les deux panneaux de négociation du prototype."
+      },
+      {
+        "title": "Montrer chaque coût avant l'engagement",
+        "why": "Les frais de service figurent dans le bloc prix, et un panneau des frais liste le reste (taxes municipales, transport, transfert de propriété et libération de la plaque) avec un total, accessible depuis la fiche véhicule avant toute offre.",
+        "evidence": "Le panneau des frais à côté de l'offre."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "La part de Sina",
+    "intro": "Relevé dans le fichier de design. Il ne consigne ni qui d'autre a travaillé sur l'app ni qui a décidé quoi : il ne s'agit donc pas d'une revendication de paternité exclusive.",
+    "own": [
+      "La structure des trois modes de marché et de leurs fiches véhicule",
+      "Le bloc prix et la mise en page du rapport d'inspection",
+      "Les offres, l'offre automatique et le panneau des frais",
+      "Les états de négociation et de règlement, et le prototype qui les teste",
+      "Le parcours de mise en vente et d'auto-inspection",
+      "Les adhésions, le Club clients et le score négociant",
+      "Les thèmes clair et sombre, de droite à gauche en persan"
+    ],
+    "collaborate": [
+      "Des collègues du produit et du développement, non nommés dans le fichier"
+    ],
+    "note": "L'utilisateur fictif présent dans tout le fichier porte le nom de Sina : un indice sur le propriétaire de ce fichier de travail, pas sur qui a décidé quoi."
+  },
+  "outcomes": {
+    "heading": "Ce que livre le fichier",
+    "intro": "Des décomptes du travail conçu, pas des résultats. Le fichier ne consigne aucun chiffre d'usage, de conversion ou de transactions.",
+    "delivered": [
+      {
+        "label": "écrans de téléphone",
+        "context": "237 dans les sections et 4 isolés sur le canevas, à peu près moitié sombres, moitié clairs"
+      },
+      {
+        "label": "sections du canevas",
+        "context": "Marchés, fiches véhicule, offres, commandes, mise en vente, argent, identité et entrée"
+      },
+      {
+        "label": "écrans dans le prototype de transaction",
+        "context": "Une commande menée à travers la négociation et l'acompte"
+      }
+    ],
+    "shipped": [
+      "Trois modes de marché avec leurs fiches véhicule",
+      "Le rapport d'inspection dans la fiche véhicule",
+      "Panneaux d'offre, d'offre automatique et de frais",
+      "La négociation et le règlement en six étapes",
+      "La mise en vente avec auto-inspection",
+      "Les adhésions et le score négociant"
+    ]
+  },
+  "lessons": {
+    "heading": "Ce que ce travail a appris",
+    "items": [
+      {
+        "title": "Un prix a besoin d'un voisin",
+        "body": "Une offre seule ne dit pas grand-chose. Chaque prix de l'app se tient à côté d'un autre (juste prix, prix demandé par le vendeur ou dernière offre), si bien que le négociant juge un écart plutôt qu'un montant."
+      },
+      {
+        "title": "Dans une transaction, les états sont le produit",
+        "body": "La plupart des écrans qui suivent une victoire montrent la même carte dans un autre état. Nommer chaque état, son étape suivante et son échéance, c'était cela le travail de design ; la mise en page change à peine."
+      },
+      {
+        "title": "Les frais d'accès desservent une place de marché",
+        "body": "Une enchère a besoin de participants. Un abonnement qui plafonne les offres limite justement cela, et un club qui récompense le volume pousse dans l'autre sens. Garder les deux dans le fichier rend l'arbitrage visible."
+      }
+    ]
+  }
+}
