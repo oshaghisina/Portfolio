@@ -1,5 +1,5 @@
 import { industryCountLabel } from '@/blocks/IndustryGrid/catalogue'
-import type { CategoryKey } from '@/blocks/WorkflowStages/toolLogos'
+import type { CapabilityKey } from '@/blocks/WorkflowStages/capabilities'
 import type { Locale } from '@/utilities/locale'
 
 /**
@@ -52,7 +52,10 @@ export interface HomeCopy {
     }[]
   }
   /** Three tracks; `key` is shared. Only Product Design carries an `experience` value. */
-  tracks: { header: SectionHeaderCopy; items: { title: string; experience?: string; description: string }[] }
+  tracks: {
+    header: SectionHeaderCopy
+    items: { title: string; experience?: string; description: string }[]
+  }
   /**
    * Three metrics, rendered as the proof strip beneath the Experience section's capabilities.
    * `value` is localized because it is not a bare numeral — "10 yrs" carries a unit word.
@@ -61,7 +64,20 @@ export interface HomeCopy {
    * spotlight heading, so that the two can never name it differently.
    */
   proof: { metrics: { value: string; caption: string }[] }
-  tools: { header: SectionHeaderCopy; categories: Record<CategoryKey, string> }
+  /**
+   * The Skills section (D-043): seven capability rows keyed by `CapabilityKey`, then one small
+   * "Selected tools" row. `skills` is a list per locale and must keep English's length and order
+   * (a parity test holds this); only Delivery carries a `note`. Tool names are brand names and
+   * live in `toolLogos.ts`, so the tool row contributes only its label here.
+   */
+  tools: {
+    header: SectionHeaderCopy
+    capabilities: Record<
+      CapabilityKey,
+      { title: string; contribution: string; skills: string[]; note?: string }
+    >
+    toolsLabel: string
+  }
   /** Eleven employers. `index` (A1–A11) is ornament and stays Latin; `name` takes each script's form. */
   experience: { header: SectionHeaderCopy; items: { name: string; role: string; blurb: string }[] }
   /** The project mosaic's opener. Tile order and sizes are structure, not copy — see `HOME_MOSAIC`. */
@@ -73,13 +89,13 @@ export const homeCopy: Record<Locale, HomeCopy> = {
   en: {
     title: 'Home',
     meta: {
-      title: 'Sina Oshaghi — Product Designer & Manager',
+      title: 'Sina Oshaghi — Product Designer',
       description:
-        'Product designer and manager who also runs growth — from research to campaigns to the dashboards that prove it.',
+        'Product designer with ten years across fintech, cloud, automotive, edtech and media.',
     },
     hero: {
-      heading: 'Product designer who also runs growth',
-      lede: 'From research to campaigns to the dashboards that prove it — ten years across fintech, cloud, automotive, edtech and media.',
+      heading: 'Product designer working across product strategy, design, growth and AI',
+      lede: 'From defining the problem to designing, shipping and improving the product — ten years across fintech, cloud, automotive, edtech and media.',
       primaryLabel: 'Selected work',
       secondaryLabel: 'Email Sina',
     },
@@ -88,7 +104,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         tag: 'How I work',
         lead: 'How I',
         tail: 'work',
-        lede: 'I own the problem, not the brief — from the first vague ask to the numbers after launch.',
+        lede: 'I stay with a problem from the first vague ask to the numbers after launch.',
       },
       principle: 'Own the problem — at every stage',
       loopLabel: 'Evidence reopens the model',
@@ -106,7 +122,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
           statement: 'See the whole system first.',
           question: 'What system is this problem part of?',
           description:
-            'Actors, operations, money and data on one model — so the interface is the last thing drawn, not the first.',
+            'Actors, operations, money and data on one model, so the interface is drawn last.',
           output: 'System & service map',
         },
         {
@@ -130,7 +146,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
           statement: 'Let the numbers argue back.',
           question: 'What actually happened, and what does it change?',
           description:
-            'Instrumented from the spec, not bolted on. What the data shows updates the model — and the next decision.',
+            'Tracking is planned in the spec, before launch. What the data shows updates the model and the next decision.',
           output: 'Evidence → the next decision',
         },
       ],
@@ -152,7 +168,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         {
           title: 'AI Workflow',
           description:
-            'Day-to-day work runs through Cursor and Claude, plus the analytics stack — GA4, Amplitude, Search Console — that keeps decisions instrumented.',
+            'I use AI every day to explore more directions before committing to one, and to prototype and build faster.',
         },
         {
           title: 'Design Systems',
@@ -170,20 +186,50 @@ export const homeCopy: Record<Locale, HomeCopy> = {
     },
     tools: {
       header: {
-        tag: 'Tools / Stack',
-        lead: 'The systems behind how I',
-        tail: 'think, design & ship.',
-        lede: 'Research, design, build, measurement, knowledge and the infrastructure it runs on — one connected stack, not a shelf of separate toolkits.',
+        tag: 'Skills',
+        lead: 'What I bring',
+        tail: 'to your team.',
+        lede: 'A mix of decision-making, hands-on design and technical work. I bring in what the problem needs.',
       },
-      categories: {
-        designPrototyping: 'Design & Creative Production',
-        aiAgents: 'AI & Agents',
-        buildDelivery: 'Build & Delivery',
-        dataIntelligence: 'Data & Product Intelligence',
-        growthMeasurement: 'Growth & Measurement',
-        infraOperations: 'Infrastructure & Operations',
-        knowledgeResearch: 'Knowledge & Research',
+      capabilities: {
+        product: {
+          contribution: 'Turn competing priorities into a clear direction.',
+          title: 'Product',
+          skills: ['Strategy', 'Discovery', 'Prioritisation', 'Roadmapping'],
+        },
+        design: {
+          contribution: 'Make complex products easier to use.',
+          title: 'Design',
+          skills: ['UX', 'UI', 'Interaction', 'Design systems', 'Prototyping'],
+        },
+        research: {
+          contribution: 'Find out what people actually need.',
+          title: 'Research',
+          skills: ['User research', 'Competitive analysis', 'Usability testing', 'Validation'],
+        },
+        data: {
+          contribution: 'Find the friction behind the numbers.',
+          title: 'Data',
+          skills: ['Analytics', 'Funnels', 'Behavioural data', 'Experimentation'],
+        },
+        growth: {
+          contribution: 'Help people find value and come back.',
+          title: 'Growth',
+          skills: ['Acquisition', 'Activation', 'Conversion', 'Retention'],
+        },
+        delivery: {
+          contribution: 'Carry the design through to release.',
+          title: 'Delivery',
+          skills: ['Design–engineering collaboration', 'QA', 'Launch', 'Iteration'],
+          note: 'I also build and ship products myself, including this site.',
+        },
+        ai: {
+          contribution: 'Build reusable workflows for repetitive work.',
+          title: 'AI',
+          skills: ['AI-assisted workflows', 'Agents', 'Automation', 'Rapid prototyping'],
+        },
       },
+      toolsLabel: 'Selected tools',
     },
     experience: {
       header: {
@@ -226,22 +272,26 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         {
           name: 'Fibona',
           role: 'Product Manager · 2 yr',
-          blurb: 'Aligned stakeholders around a new brand identity, tagline and website from the ground up.',
+          blurb:
+            'Aligned stakeholders around a new brand identity, tagline and website from the ground up.',
         },
         {
           name: 'OTeacher',
           role: 'Product Manager & designer · 1 yr',
-          blurb: 'Turned educator and learner research into a validated teacher–student matchmaking roadmap.',
+          blurb:
+            'Turned educator and learner research into a validated teacher–student matchmaking roadmap.',
         },
         {
           name: 'Arvan Cloud',
           role: 'Product designer · 2 yr',
-          blurb: 'Redesigned the platform around the server metrics users actually needed, lifting NPS.',
+          blurb:
+            'Redesigned the platform around the server metrics users actually needed, lifting NPS.',
         },
         {
           name: 'Biomaze',
           role: 'Product Manager & designer · 3 yr',
-          blurb: 'Built the website, education panel and a design system so developers could ship fast.',
+          blurb:
+            'Built the website, education panel and a design system so developers could ship fast.',
         },
         {
           name: 'Didestan',
@@ -260,7 +310,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         tag: 'Work',
         lead: 'Selected',
         tail: 'work',
-        lede: 'Nine projects from the range — product, growth and research across eleven companies.',
+        lede: 'Seven projects from the range — product, growth and research across eleven companies.',
       },
     },
     contact: {
@@ -274,13 +324,12 @@ export const homeCopy: Record<Locale, HomeCopy> = {
   fa: {
     title: 'خانه',
     meta: {
-      title: 'سینا عشاقی — طراح و مدیر محصول',
-      description:
-        'طراحی و مدیریت محصول، همراه با اجرای رشد؛ از پژوهش و کمپین تا داشبوردهایی که نتیجه را می‌سنجند.',
+      title: 'سینا عشاقی — طراح محصول',
+      description: 'طراح محصول، با ده سال تجربه در فین‌تک، زیرساخت ابری، خودرو، آموزش و رسانه.',
     },
     hero: {
-      heading: 'طراح محصولی که رشد را هم پیش می‌برد',
-      lede: 'ده سال کار در فین‌تک، زیرساخت ابری، خودرو، آموزش و رسانه؛ از پژوهش و کمپین تا سنجش نتیجه با داده.',
+      heading: 'طراح محصولی که روی استراتژی محصول، طراحی، رشد و هوش مصنوعی کار می‌کند',
+      lede: 'مسئله را تعریف می‌کنم، محصول را طراحی و عرضه می‌کنم و بعد از عرضه هم بهبودش می‌دهم. ده سال در فین‌تک، زیرساخت ابری، خودرو، آموزش و رسانه کار کرده‌ام.',
       primaryLabel: 'پروژه‌های منتخب',
       secondaryLabel: 'تماس با من',
     },
@@ -353,7 +402,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         {
           title: 'جریان‌های کاری هوش مصنوعی',
           description:
-            'در کار روزمره از Cursor و Claude استفاده می‌کنم و با GA4، Amplitude و Search Console نتیجهٔ تصمیم‌ها را می‌سنجم.',
+            'هر روز با هوش مصنوعی کار می‌کنم. پیش از انتخاب یک مسیر، گزینه‌های بیشتری را بررسی می‌کنم و نمونه‌سازی و ساخت سریع‌تر پیش می‌رود.',
         },
         {
           title: 'سیستم‌های طراحی',
@@ -371,20 +420,50 @@ export const homeCopy: Record<Locale, HomeCopy> = {
     },
     tools: {
       header: {
-        tag: 'ابزارها و فناوری‌ها',
-        lead: 'ابزارهایی برای',
-        tail: 'فکرکردن، ساختن و سنجیدن',
-        lede: 'ابزارهای پژوهش، طراحی، ساخت و سنجش را در کنار دانش و زیرساخت لازم به کار می‌گیرم تا تصمیم‌ها به اجرا برسند.',
+        tag: 'مهارت‌ها',
+        lead: 'آنچه به تیم',
+        tail: 'اضافه می\u200cکنم.',
+        lede: 'ترکیبی از تصمیم\u200cگیری، طراحی و کار فنی؛ بسته به مسئله، هر کدام را وارد کار می\u200cکنم.',
       },
-      categories: {
-        designPrototyping: 'طراحی و نمونه‌سازی',
-        aiAgents: 'هوش مصنوعی و عامل‌ها',
-        buildDelivery: 'ساخت و تحویل',
-        dataIntelligence: 'داده و تحلیل محصول',
-        growthMeasurement: 'رشد و سنجش',
-        infraOperations: 'زیرساخت و عملیات',
-        knowledgeResearch: 'دانش و پژوهش',
+      capabilities: {
+        product: {
+          contribution: 'تبدیل اولویت\u200cهای پراکنده به مسیری روشن.',
+          title: 'محصول',
+          skills: ['استراتژی', 'شناخت مسئله', 'اولویت‌بندی', 'نقشهٔ راه'],
+        },
+        design: {
+          contribution: 'ساده\u200cکردن استفاده از محصول\u200cهای پیچیده.',
+          title: 'طراحی',
+          skills: ['UX', 'UI', 'طراحی تعامل', 'سیستم طراحی', 'نمونه‌سازی'],
+        },
+        research: {
+          contribution: 'شناخت چیزی که آدم\u200cها واقعاً نیاز دارند.',
+          title: 'پژوهش',
+          skills: ['پژوهش کاربر', 'تحلیل رقبا', 'تست کاربردپذیری', 'اعتبارسنجی'],
+        },
+        data: {
+          contribution: 'پیداکردن نقاط گیر، پشت عددها.',
+          title: 'داده',
+          skills: ['تحلیل داده', 'قیف تبدیل', 'دادهٔ رفتاری', 'آزمایش'],
+        },
+        growth: {
+          contribution: 'کمک به کاربر برای رسیدن به ارزش و بازگشت.',
+          title: 'رشد',
+          skills: ['جذب کاربر', 'فعال‌سازی', 'نرخ تبدیل', 'نگهداشت کاربر'],
+        },
+        delivery: {
+          contribution: 'همراهی با طرح تا رسیدن به نسخهٔ قابل\u200cاستفاده.',
+          title: 'اجرا',
+          skills: ['همکاری طراحی و مهندسی', 'QA', 'عرضه', 'بهبود تدریجی'],
+          note: 'محصول را خودم هم می‌سازم و منتشر می‌کنم، از جمله همین سایت.',
+        },
+        ai: {
+          contribution: 'ساخت گردش کار قابل\u200cاستفادهٔ مجدد برای کارهای تکراری.',
+          title: 'هوش مصنوعی',
+          skills: ['گردش کار با هوش مصنوعی', 'ایجنت‌ها', 'خودکارسازی', 'نمونه‌سازی سریع'],
+        },
       },
+      toolsLabel: 'ابزارهای منتخب',
     },
     experience: {
       header: {
@@ -403,7 +482,8 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         {
           name: 'دیجی‌کالا (طلای دیجیتال)',
           role: 'طراح، بازاریاب و توسعه‌دهندهٔ BI · ۲.۵ سال',
-          blurb: 'داشبوردهای BI را جایگزین صفحه‌گسترده‌های تیم کردم و کمپین‌هایی برای افزایش جذب و تعامل اجرا کردم.',
+          blurb:
+            'داشبوردهای BI را جایگزین صفحه‌گسترده‌های تیم کردم و کمپین‌هایی برای افزایش جذب و تعامل اجرا کردم.',
         },
         {
           name: 'Carsparency',
@@ -431,22 +511,26 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         {
           name: 'اوتیچر',
           role: 'مدیر محصول و طراح · ۱ سال',
-          blurb: 'با پژوهش دربارهٔ مدرس‌ها و زبان‌آموزان، نقشهٔ راهی اعتبارسنجی‌شده برای تطبیق آن‌ها تدوین کردم.',
+          blurb:
+            'با پژوهش دربارهٔ مدرس‌ها و زبان‌آموزان، نقشهٔ راهی اعتبارسنجی‌شده برای تطبیق آن‌ها تدوین کردم.',
         },
         {
           name: 'ابر آروان',
           role: 'طراح محصول · ۲ سال',
-          blurb: 'پلتفرم را بر اساس شاخص‌های سروریِ موردنیاز کاربران بازطراحی کردم؛ پس از آن NPS افزایش یافت.',
+          blurb:
+            'پلتفرم را بر اساس شاخص‌های سروریِ موردنیاز کاربران بازطراحی کردم؛ پس از آن NPS افزایش یافت.',
         },
         {
           name: 'بایومیز',
           role: 'مدیر محصول و طراح · ۳ سال',
-          blurb: 'وب‌سایت، پنل آموزش و سیستم طراحی را ساختم تا تیم توسعه بتواند سریع‌تر محصول را عرضه کند.',
+          blurb:
+            'وب‌سایت، پنل آموزش و سیستم طراحی را ساختم تا تیم توسعه بتواند سریع‌تر محصول را عرضه کند.',
         },
         {
           name: 'دیدستان',
           role: 'طراح UI/UX · ۸ ماه',
-          blurb: 'با تکیه بر پژوهش ناب UX، نمونهٔ اولیهٔ یک پلتفرم ویدئویی داده‌محور را طراحی کردم.',
+          blurb:
+            'با تکیه بر پژوهش ناب UX، نمونهٔ اولیهٔ یک پلتفرم ویدئویی داده‌محور را طراحی کردم.',
         },
         {
           name: 'A1Paradise',
@@ -460,7 +544,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         tag: 'پروژه‌ها',
         lead: 'پروژه‌های',
         tail: 'منتخب',
-        lede: 'نُه پروژه در حوزه‌های محصول، رشد و پژوهش، از میان تجربهٔ همکاری با یازده شرکت.',
+        lede: 'هفت پروژه در حوزه‌های محصول، رشد و پژوهش، از میان تجربهٔ همکاری با یازده شرکت.',
       },
     },
     contact: {
@@ -474,13 +558,13 @@ export const homeCopy: Record<Locale, HomeCopy> = {
   ar: {
     title: 'الرئيسية',
     meta: {
-      title: 'سينا أوشاقي — مصمم ومدير منتج',
+      title: 'سينا أوشاقي — مصمم منتج',
       description:
-        'مصمم ومدير منتج يقود النمو أيضًا — من البحث إلى الحملات إلى لوحات المعلومات التي تُثبت النتيجة.',
+        'مصمم منتج بخبرة عشر سنوات في التقنية المالية والسحابة والسيارات والتعليم والإعلام.',
     },
     hero: {
-      heading: 'مصمم منتج يقود النمو أيضًا',
-      lede: 'من البحث إلى الحملات إلى لوحات المعلومات التي تُثبت النتيجة — عشر سنوات في التقنية المالية والسحابة والسيارات والتعليم والإعلام.',
+      heading: 'مصمم منتج يعمل في استراتيجية المنتج والتصميم والنمو والذكاء الاصطناعي',
+      lede: 'من تحديد المشكلة إلى تصميم المنتج وإطلاقه وتحسينه — عشر سنوات في التقنية المالية والسحابة والسيارات والتعليم والإعلام.',
       primaryLabel: 'أعمال مختارة',
       secondaryLabel: 'راسل سينا',
     },
@@ -489,7 +573,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         tag: 'كيف أعمل',
         lead: 'كيف',
         tail: 'أعمل',
-        lede: 'أملك المشكلة، لا الموجز — من أول طلب غامض إلى الأرقام بعد الإطلاق.',
+        lede: 'أبقى مع المشكلة من أول طلب غامض حتى الأرقام بعد الإطلاق.',
       },
       principle: 'ملك المشكلة — في كل مرحلة',
       loopLabel: 'الأدلة تعيد فتح النموذج',
@@ -507,7 +591,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
           statement: 'انظر إلى النظام كله أولًا.',
           question: 'أي نظام هذه المشكلة جزء منه؟',
           description:
-            'الفاعلون والعمليات والمال والبيانات على نموذج واحد — حتى تكون الواجهة آخر ما يُرسم، لا أوله.',
+            'الفاعلون والعمليات والمال والبيانات على نموذج واحد، حتى تُرسم الواجهة في النهاية.',
           output: 'خريطة النظام والخدمة',
         },
         {
@@ -531,7 +615,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
           statement: 'دع الأرقام تجادل.',
           question: 'ماذا حدث فعليًا، وماذا يغيّر؟',
           description:
-            'مجهّز بالقياس من المواصفات، لا ملصوقًا لاحقًا. ما تظهره البيانات يحدّث النموذج — والقرار التالي.',
+            'يُخطَّط للقياس في المواصفات قبل الإطلاق. ما تُظهره البيانات يحدّث النموذج والقرار التالي.',
           output: 'الأدلة → القرار التالي',
         },
       ],
@@ -553,7 +637,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         {
           title: 'سير عمل الذكاء الاصطناعي',
           description:
-            'يمرّ العمل اليومي عبر Cursor وClaude، إلى جانب حزمة التحليلات — GA4 وAmplitude وSearch Console — التي تُبقي القرارات قابلة للقياس.',
+            'أستخدم الذكاء الاصطناعي يوميًا لاستكشاف اتجاهات أكثر قبل الالتزام بأحدها، ولتسريع النمذجة الأولية والبناء.',
         },
         {
           title: 'أنظمة التصميم',
@@ -571,20 +655,50 @@ export const homeCopy: Record<Locale, HomeCopy> = {
     },
     tools: {
       header: {
-        tag: 'الأدوات / الحزمة',
-        lead: 'الأنظمة التي تقف خلف',
-        tail: 'تفكيري وتصميمي وشحني.',
-        lede: 'البحث والتصميم والبناء والقياس والمعرفة والبنية التحتية التي تعمل عليها — حزمة واحدة مترابطة، لا رفّاً من صناديق أدوات منفصلة.',
+        tag: 'المهارات',
+        lead: 'ما أضيفه',
+        tail: 'إلى فريقك.',
+        lede: 'مزيج من اتخاذ القرار والتصميم العملي والعمل التقني. أستخدم ما تحتاجه المشكلة.',
       },
-      categories: {
-        designPrototyping: 'التصميم والإنتاج الإبداعي',
-        aiAgents: 'الذكاء الاصطناعي والوكلاء',
-        buildDelivery: 'البناء والتسليم',
-        dataIntelligence: 'البيانات وذكاء المنتج',
-        growthMeasurement: 'النمو والقياس',
-        infraOperations: 'البنية التحتية والتشغيل',
-        knowledgeResearch: 'المعرفة والبحث',
+      capabilities: {
+        product: {
+          contribution: 'تحويل الأولويات المتنافسة إلى اتجاه واضح.',
+          title: 'المنتج',
+          skills: ['الاستراتيجية', 'الاستكشاف', 'تحديد الأولويات', 'خارطة الطريق'],
+        },
+        design: {
+          contribution: 'تسهيل استخدام المنتجات المعقدة.',
+          title: 'التصميم',
+          skills: ['UX', 'UI', 'تصميم التفاعل', 'أنظمة التصميم', 'النماذج الأولية'],
+        },
+        research: {
+          contribution: 'معرفة ما يحتاجه الناس فعلًا.',
+          title: 'البحث',
+          skills: ['أبحاث المستخدمين', 'تحليل المنافسين', 'اختبار قابلية الاستخدام', 'التحقق'],
+        },
+        data: {
+          contribution: 'كشف نقاط التعثر خلف الأرقام.',
+          title: 'البيانات',
+          skills: ['التحليلات', 'مسارات التحويل', 'البيانات السلوكية', 'التجريب'],
+        },
+        growth: {
+          contribution: 'مساعدة الناس على إيجاد القيمة والعودة.',
+          title: 'النمو',
+          skills: ['اكتساب المستخدمين', 'التفعيل', 'التحويل', 'الاحتفاظ بالمستخدمين'],
+        },
+        delivery: {
+          contribution: 'مرافقة التصميم حتى الإصدار.',
+          title: 'التسليم',
+          skills: ['التعاون بين التصميم والهندسة', 'ضمان الجودة', 'الإطلاق', 'التحسين المتكرر'],
+          note: 'أبني المنتجات وأطلقها بنفسي أيضًا، ومنها هذا الموقع.',
+        },
+        ai: {
+          contribution: 'بناء سير عمل قابل لإعادة الاستخدام للمهام المتكررة.',
+          title: 'الذكاء الاصطناعي',
+          skills: ['سير عمل بمساعدة الذكاء الاصطناعي', 'الوكلاء', 'الأتمتة', 'النمذجة السريعة'],
+        },
       },
+      toolsLabel: 'أدوات مختارة',
     },
     experience: {
       header: {
@@ -603,7 +717,8 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         {
           name: 'ديجيكالا (الذهب الرقمي)',
           role: 'مصمم / مسوّق / مطوّر ذكاء أعمال · سنتان ونصف',
-          blurb: 'استبدلتُ الجداول بلوحات معلومات ذكاء الأعمال، وأدرتُ الحملات التي رفعت الاكتساب والتفاعل.',
+          blurb:
+            'استبدلتُ الجداول بلوحات معلومات ذكاء الأعمال، وأدرتُ الحملات التي رفعت الاكتساب والتفاعل.',
         },
         {
           name: 'Carsparency',
@@ -620,7 +735,8 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         {
           name: 'هديش مول',
           role: 'تسويق · سنة',
-          blurb: 'زدتُ إقبال الزوّار عبر الحملات وشراكات المؤثّرين، واقترحتُ تطبيقًا لإدارة المركز التجاري.',
+          blurb:
+            'زدتُ إقبال الزوّار عبر الحملات وشراكات المؤثّرين، واقترحتُ تطبيقًا لإدارة المركز التجاري.',
         },
         {
           name: 'فيبونا',
@@ -630,12 +746,14 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         {
           name: 'أوتيتشر',
           role: 'مدير منتج ومصمم · سنة',
-          blurb: 'حوّلتُ بحث المعلّمين والمتعلّمين إلى خارطة طريق مُتحقَّق منها لمطابقة المعلّم بالطالب.',
+          blurb:
+            'حوّلتُ بحث المعلّمين والمتعلّمين إلى خارطة طريق مُتحقَّق منها لمطابقة المعلّم بالطالب.',
         },
         {
           name: 'أروان كلاود',
           role: 'مصمم منتج · سنتان',
-          blurb: 'أعدتُ تصميم المنصّة حول مؤشّرات الخوادم التي احتاجها المستخدمون فعلًا، فارتفع مؤشّر NPS.',
+          blurb:
+            'أعدتُ تصميم المنصّة حول مؤشّرات الخوادم التي احتاجها المستخدمون فعلًا، فارتفع مؤشّر NPS.',
         },
         {
           name: 'بايوميز',
@@ -645,7 +763,8 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         {
           name: 'ديدستان',
           role: 'مصمم واجهات وتجربة · ثمانية أشهر',
-          blurb: 'صمّمتُ نموذجًا أوّليًا لمنصّة فيديو قائمة على البيانات انطلاقًا من بحث تجربة مستخدم مُقتصد.',
+          blurb:
+            'صمّمتُ نموذجًا أوّليًا لمنصّة فيديو قائمة على البيانات انطلاقًا من بحث تجربة مستخدم مُقتصد.',
         },
         {
           name: 'A1Paradise',
@@ -659,7 +778,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         tag: 'العمل',
         lead: 'أعمال',
         tail: 'مختارة',
-        lede: 'تسعة مشاريع من المدى — منتج ونمو وبحث عبر إحدى عشرة شركة.',
+        lede: 'سبعة مشاريع من المدى — منتج ونمو وبحث عبر إحدى عشرة شركة.',
       },
     },
     contact: {
@@ -673,13 +792,14 @@ export const homeCopy: Record<Locale, HomeCopy> = {
   es: {
     title: 'Inicio',
     meta: {
-      title: 'Sina Oshaghi — Diseñador y gestor de producto',
+      title: 'Sina Oshaghi — Diseñador de producto',
       description:
-        'Diseñador y gestor de producto que además lleva el crecimiento: de la investigación a las campañas y a los paneles que lo demuestran.',
+        'Diseñador de producto con diez años de experiencia en fintech, cloud, automoción, edtech y medios.',
     },
     hero: {
-      heading: 'Diseñador de producto que además lleva el crecimiento',
-      lede: 'De la investigación a las campañas y a los paneles que lo demuestran: diez años en fintech, cloud, automoción, edtech y medios.',
+      heading:
+        'Diseñador de producto que trabaja en estrategia de producto, diseño, crecimiento e IA',
+      lede: 'Desde definir el problema hasta diseñar, lanzar y mejorar el producto: diez años en fintech, cloud, automoción, edtech y medios.',
       primaryLabel: 'Trabajo seleccionado',
       secondaryLabel: 'Escribir a Sina',
     },
@@ -688,7 +808,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         tag: 'Cómo trabajo',
         lead: 'Cómo',
         tail: 'trabajo',
-        lede: 'Me hago cargo del problema, no del brief — desde la primera petición vaga hasta los números tras el lanzamiento.',
+        lede: 'Acompaño el problema desde la primera petición vaga hasta los números tras el lanzamiento.',
       },
       principle: 'Dueño del problema — en cada etapa',
       loopLabel: 'La evidencia reabre el modelo',
@@ -706,7 +826,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
           statement: 'Primero el sistema entero.',
           question: '¿De qué sistema forma parte este problema?',
           description:
-            'Actores, operaciones, dinero y datos en un solo modelo — para que la interfaz sea lo último que se dibuja, no lo primero.',
+            'Actores, operaciones, dinero y datos en un solo modelo, para que la interfaz se dibuje al final.',
           output: 'Mapa de sistema y servicio',
         },
         {
@@ -730,7 +850,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
           statement: 'Que los números respondan.',
           question: '¿Qué pasó de verdad, y qué cambia?',
           description:
-            'Instrumentado desde la especificación, no añadido después. Lo que muestran los datos actualiza el modelo — y la siguiente decisión.',
+            'La medición se planifica en la especificación, antes del lanzamiento. Lo que muestran los datos actualiza el modelo y la siguiente decisión.',
           output: 'Evidencia → la siguiente decisión',
         },
       ],
@@ -752,7 +872,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         {
           title: 'Flujo de trabajo con IA',
           description:
-            'El día a día pasa por Cursor y Claude, más el stack de analítica — GA4, Amplitude, Search Console — que mantiene las decisiones medidas.',
+            'Uso IA a diario para explorar más direcciones antes de decidirme por una, y para prototipar y construir más rápido.',
         },
         {
           title: 'Sistemas de diseño',
@@ -770,20 +890,55 @@ export const homeCopy: Record<Locale, HomeCopy> = {
     },
     tools: {
       header: {
-        tag: 'Herramientas / Stack',
-        lead: 'Los sistemas detrás de cómo',
-        tail: 'pienso, diseño y lanzo.',
-        lede: 'Investigación, diseño, construcción, medición, conocimiento y la infraestructura sobre la que corre: un único stack conectado, no un estante de cajas de herramientas sueltas.',
+        tag: 'Habilidades',
+        lead: 'Lo que aporto',
+        tail: 'a tu equipo.',
+        lede: 'Una combinación de decisiones, diseño práctico y trabajo técnico. Aplico lo que el problema necesita.',
       },
-      categories: {
-        designPrototyping: 'Diseño y producción creativa',
-        aiAgents: 'IA y agentes',
-        buildDelivery: 'Construcción y entrega',
-        dataIntelligence: 'Datos e inteligencia de producto',
-        growthMeasurement: 'Crecimiento y medición',
-        infraOperations: 'Infraestructura y operaciones',
-        knowledgeResearch: 'Conocimiento e investigación',
+      capabilities: {
+        product: {
+          contribution: 'Convertir prioridades en conflicto en una dirección clara.',
+          title: 'Producto',
+          skills: ['Estrategia', 'Discovery', 'Priorización', 'Hoja de ruta'],
+        },
+        design: {
+          contribution: 'Hacer más fáciles de usar los productos complejos.',
+          title: 'Diseño',
+          skills: ['UX', 'UI', 'Interacción', 'Sistemas de diseño', 'Prototipado'],
+        },
+        research: {
+          contribution: 'Descubrir lo que las personas realmente necesitan.',
+          title: 'Investigación',
+          skills: [
+            'Investigación de usuarios',
+            'Análisis competitivo',
+            'Pruebas de usabilidad',
+            'Validación',
+          ],
+        },
+        data: {
+          contribution: 'Encontrar la fricción detrás de los números.',
+          title: 'Datos',
+          skills: ['Analítica', 'Embudos', 'Datos de comportamiento', 'Experimentación'],
+        },
+        growth: {
+          contribution: 'Ayudar a las personas a encontrar valor y volver.',
+          title: 'Crecimiento',
+          skills: ['Adquisición', 'Activación', 'Conversión', 'Retención'],
+        },
+        delivery: {
+          contribution: 'Acompañar el diseño hasta el lanzamiento.',
+          title: 'Entrega',
+          skills: ['Colaboración entre diseño e ingeniería', 'QA', 'Lanzamiento', 'Iteración'],
+          note: 'También construyo y lanzo productos yo mismo, incluido este sitio.',
+        },
+        ai: {
+          contribution: 'Crear flujos reutilizables para el trabajo repetitivo.',
+          title: 'IA',
+          skills: ['Flujos de trabajo con IA', 'Agentes', 'Automatización', 'Prototipado rápido'],
+        },
       },
+      toolsLabel: 'Herramientas seleccionadas',
     },
     experience: {
       header: {
@@ -826,7 +981,8 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         {
           name: 'Fibona',
           role: 'Product Manager · 2 años',
-          blurb: 'Alineé a las partes interesadas en torno a una nueva identidad de marca, eslogan y web desde cero.',
+          blurb:
+            'Alineé a las partes interesadas en torno a una nueva identidad de marca, eslogan y web desde cero.',
         },
         {
           name: 'OTeacher',
@@ -849,7 +1005,8 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         {
           name: 'Didestan',
           role: 'Diseñador UI/UX · 8 meses',
-          blurb: 'Diseñé el prototipo de una plataforma de vídeo basada en datos a partir de investigación lean UX.',
+          blurb:
+            'Diseñé el prototipo de una plataforma de vídeo basada en datos a partir de investigación lean UX.',
         },
         {
           name: 'A1Paradise',
@@ -863,7 +1020,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         tag: 'Trabajo',
         lead: 'Trabajo',
         tail: 'seleccionado',
-        lede: 'Nueve proyectos del conjunto: producto, crecimiento e investigación en once empresas.',
+        lede: 'Siete proyectos del conjunto: producto, crecimiento e investigación en once empresas.',
       },
     },
     contact: {
@@ -877,13 +1034,13 @@ export const homeCopy: Record<Locale, HomeCopy> = {
   de: {
     title: 'Startseite',
     meta: {
-      title: 'Sina Oshaghi — Produktdesigner & Produktmanager',
+      title: 'Sina Oshaghi — Produktdesigner',
       description:
-        'Produktdesigner und Produktmanager, der auch Growth verantwortet – von der Recherche über Kampagnen bis zu den Dashboards, die es belegen.',
+        'Produktdesigner mit zehn Jahren Erfahrung in Fintech, Cloud, Automotive, Edtech und Medien.',
     },
     hero: {
-      heading: 'Produktdesigner, der auch Growth verantwortet',
-      lede: 'Von der Recherche über Kampagnen bis zu den Dashboards, die es belegen – zehn Jahre in Fintech, Cloud, Automotive, Edtech und Medien.',
+      heading: 'Produktdesigner für Produktstrategie, Design, Growth und KI',
+      lede: 'Ich definiere das Problem, gestalte und launche das Produkt und verbessere es danach weiter – zehn Jahre in Fintech, Cloud, Automotive, Edtech und Medien.',
       primaryLabel: 'Ausgewählte Arbeiten',
       secondaryLabel: 'Sina schreiben',
     },
@@ -892,7 +1049,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         tag: 'Wie ich arbeite',
         lead: 'Wie ich',
         tail: 'arbeite',
-        lede: 'Ich übernehme das Problem, nicht das Briefing — vom ersten vagen Auftrag bis zu den Zahlen nach dem Launch.',
+        lede: 'Ich bleibe an einem Problem dran, vom ersten vagen Auftrag bis zu den Zahlen nach dem Launch.',
       },
       principle: 'Das Problem übernehmen — in jeder Phase',
       loopLabel: 'Evidenz öffnet das Modell erneut',
@@ -910,7 +1067,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
           statement: 'Zuerst das ganze System sehen.',
           question: 'Zu welchem System gehört dieses Problem?',
           description:
-            'Akteure, Betrieb, Geld und Daten auf einem Modell — damit die Oberfläche zuletzt gezeichnet wird, nicht zuerst.',
+            'Akteure, Betrieb, Geld und Daten auf einem Modell, damit die Oberfläche zuletzt gezeichnet wird.',
           output: 'System- und Servicekarte',
         },
         {
@@ -934,7 +1091,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
           statement: 'Die Zahlen sollen antworten.',
           question: 'Was ist wirklich passiert, und was ändert es?',
           description:
-            'Aus der Spezifikation instrumentiert, nicht nachträglich angehängt. Was die Daten zeigen, aktualisiert das Modell — und die nächste Entscheidung.',
+            'Die Messung wird in der Spezifikation geplant, vor dem Launch. Was die Daten zeigen, aktualisiert das Modell und die nächste Entscheidung.',
           output: 'Evidenz → die nächste Entscheidung',
         },
       ],
@@ -956,7 +1113,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         {
           title: 'KI-Workflow',
           description:
-            'Die tägliche Arbeit läuft über Cursor und Claude, dazu der Analytics-Stack – GA4, Amplitude, Search Console – der Entscheidungen messbar hält.',
+            'Ich nutze KI täglich, um mehr Richtungen zu prüfen, bevor ich mich festlege, und um schneller zu prototypen und zu bauen.',
         },
         {
           title: 'Design-Systeme',
@@ -974,20 +1131,50 @@ export const homeCopy: Record<Locale, HomeCopy> = {
     },
     tools: {
       header: {
-        tag: 'Werkzeuge / Stack',
-        lead: 'Die Systeme hinter meinem',
-        tail: 'Denken, Gestalten und Ausliefern.',
-        lede: 'Recherche, Design, Build, Messung, Wissen und die Infrastruktur darunter – ein zusammenhängender Stack, kein Regal voller getrennter Werkzeugkästen.',
+        tag: 'Fähigkeiten',
+        lead: 'Was ich',
+        tail: 'ins Team einbringe.',
+        lede: 'Entscheidungen, praktische Gestaltung und technische Arbeit. Je nachdem, was das Problem verlangt.',
       },
-      categories: {
-        designPrototyping: 'Design & Kreativproduktion',
-        aiAgents: 'KI & Agenten',
-        buildDelivery: 'Build & Delivery',
-        dataIntelligence: 'Daten & Produktintelligenz',
-        growthMeasurement: 'Growth & Messung',
-        infraOperations: 'Infrastruktur & Betrieb',
-        knowledgeResearch: 'Wissen & Recherche',
+      capabilities: {
+        product: {
+          contribution: 'Aus konkurrierenden Prioritäten eine klare Richtung machen.',
+          title: 'Produkt',
+          skills: ['Strategie', 'Discovery', 'Priorisierung', 'Roadmapping'],
+        },
+        design: {
+          contribution: 'Komplexe Produkte einfacher bedienbar machen.',
+          title: 'Design',
+          skills: ['UX', 'UI', 'Interaktion', 'Designsysteme', 'Prototyping'],
+        },
+        research: {
+          contribution: 'Herausfinden, was Menschen wirklich brauchen.',
+          title: 'Research',
+          skills: ['Nutzerforschung', 'Wettbewerbsanalyse', 'Usability-Tests', 'Validierung'],
+        },
+        data: {
+          contribution: 'Die Reibung hinter den Zahlen finden.',
+          title: 'Daten',
+          skills: ['Analytics', 'Funnels', 'Verhaltensdaten', 'Experimente'],
+        },
+        growth: {
+          contribution: 'Menschen helfen, Nutzen zu finden und wiederzukommen.',
+          title: 'Growth',
+          skills: ['Akquise', 'Aktivierung', 'Conversion', 'Retention'],
+        },
+        delivery: {
+          contribution: 'Den Entwurf bis zur Veröffentlichung begleiten.',
+          title: 'Delivery',
+          skills: ['Zusammenarbeit von Design und Engineering', 'QA', 'Launch', 'Iteration'],
+          note: 'Ich baue und launche Produkte auch selbst, diese Website eingeschlossen.',
+        },
+        ai: {
+          contribution: 'Wiederverwendbare Abläufe für wiederkehrende Arbeit bauen.',
+          title: 'KI',
+          skills: ['KI-gestützte Workflows', 'Agenten', 'Automatisierung', 'Rapid Prototyping'],
+        },
       },
+      toolsLabel: 'Ausgewählte Werkzeuge',
     },
     experience: {
       header: {
@@ -1030,7 +1217,8 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         {
           name: 'Fibona',
           role: 'Product Manager · 2 Jahre',
-          blurb: 'Stakeholder um eine neue Markenidentität, Tagline und Website von Grund auf ausgerichtet.',
+          blurb:
+            'Stakeholder um eine neue Markenidentität, Tagline und Website von Grund auf ausgerichtet.',
         },
         {
           name: 'OTeacher',
@@ -1053,7 +1241,8 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         {
           name: 'Didestan',
           role: 'UI/UX-Designer · 8 Monate',
-          blurb: 'Aus schlanker UX-Recherche den Prototyp einer datengetriebenen Videoplattform gestaltet.',
+          blurb:
+            'Aus schlanker UX-Recherche den Prototyp einer datengetriebenen Videoplattform gestaltet.',
         },
         {
           name: 'A1Paradise',
@@ -1067,7 +1256,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         tag: 'Arbeit',
         lead: 'Ausgewählte',
         tail: 'Arbeiten',
-        lede: 'Neun Projekte aus der Bandbreite – Produkt, Growth und Research über elf Unternehmen.',
+        lede: 'Sieben Projekte aus der Bandbreite – Produkt, Growth und Research über elf Unternehmen.',
       },
     },
     contact: {
@@ -1081,13 +1270,13 @@ export const homeCopy: Record<Locale, HomeCopy> = {
   fr: {
     title: 'Accueil',
     meta: {
-      title: 'Sina Oshaghi — Designer et manager produit',
+      title: 'Sina Oshaghi — Designer produit',
       description:
-        'Designer et manager produit qui pilote aussi la croissance — de la recherche aux campagnes jusqu’aux tableaux de bord qui le prouvent.',
+        'Designer produit, dix ans d’expérience dans la fintech, le cloud, l’automobile, l’edtech et les médias.',
     },
     hero: {
-      heading: 'Designer produit qui pilote aussi la croissance',
-      lede: 'De la recherche aux campagnes jusqu’aux tableaux de bord qui le prouvent — dix ans dans la fintech, le cloud, l’automobile, l’edtech et les médias.',
+      heading: 'Designer produit, entre stratégie produit, design, croissance et IA',
+      lede: 'De la définition du problème à la conception, au lancement et à l’amélioration du produit — dix ans dans la fintech, le cloud, l’automobile, l’edtech et les médias.',
       primaryLabel: 'Travaux sélectionnés',
       secondaryLabel: 'Écrire à Sina',
     },
@@ -1096,7 +1285,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         tag: 'Comment je travaille',
         lead: 'Comment je',
         tail: 'travaille',
-        lede: 'Je m’approprie le problème, pas le brief — de la première demande floue aux chiffres après le lancement.',
+        lede: 'J’accompagne un problème de la première demande floue jusqu’aux chiffres après le lancement.',
       },
       principle: 'Propriétaire du problème — à chaque étape',
       loopLabel: 'Les preuves rouvrent le modèle',
@@ -1114,13 +1303,14 @@ export const homeCopy: Record<Locale, HomeCopy> = {
           statement: 'Voir d’abord tout le système.',
           question: 'De quel système ce problème fait-il partie ?',
           description:
-            'Acteurs, opérations, argent et données sur un seul modèle — pour que l’interface soit la dernière chose dessinée, pas la première.',
+            'Acteurs, opérations, argent et données sur un seul modèle, pour que l’interface soit dessinée en dernier.',
           output: 'Carte système et service',
         },
         {
           label: 'Décider',
           statement: 'Choisir, couper, écrire.',
-          question: 'Que construisons-nous, que coupons-nous, et comment saurons-nous que ça a marché ?',
+          question:
+            'Que construisons-nous, que coupons-nous, et comment saurons-nous que ça a marché ?',
           description:
             'Priorités, périmètre et exigences assez précises pour que design, ingénierie et opérations construisent sans deviner.',
           output: 'Exigences cadrées avec métriques',
@@ -1138,7 +1328,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
           statement: 'Que les chiffres répondent.',
           question: 'Qu’est-il vraiment arrivé, et qu’est-ce que ça change ?',
           description:
-            'Instrumenté dès la spécification, pas rajouté après. Ce que montrent les données met à jour le modèle — et la décision suivante.',
+            'La mesure est prévue dans la spécification, avant le lancement. Ce que montrent les données met à jour le modèle et la décision suivante.',
           output: 'Preuves → la décision suivante',
         },
       ],
@@ -1160,7 +1350,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         {
           title: 'Workflow IA',
           description:
-            'Le quotidien passe par Cursor et Claude, plus la stack analytique — GA4, Amplitude, Search Console — qui garde les décisions mesurées.',
+            'J’utilise l’IA au quotidien pour explorer plus de pistes avant d’en choisir une, et pour prototyper et construire plus vite.',
         },
         {
           title: 'Design systems',
@@ -1178,20 +1368,60 @@ export const homeCopy: Record<Locale, HomeCopy> = {
     },
     tools: {
       header: {
-        tag: 'Outils / Stack',
-        lead: 'Les systèmes derrière ma façon de',
-        tail: 'penser, concevoir et livrer.',
-        lede: 'Recherche, design, build, mesure, connaissance et l’infrastructure qui les fait tourner — une seule stack connectée, pas une étagère de boîtes à outils séparées.',
+        tag: 'Compétences',
+        lead: 'Ce que j’apporte',
+        tail: 'à votre équipe.',
+        lede: 'Des décisions, du design concret et du travail technique. Je mobilise ce que le problème demande.',
       },
-      categories: {
-        designPrototyping: 'Design et production créative',
-        aiAgents: 'IA et agents',
-        buildDelivery: 'Build et livraison',
-        dataIntelligence: 'Données et intelligence produit',
-        growthMeasurement: 'Croissance et mesure',
-        infraOperations: 'Infrastructure et exploitation',
-        knowledgeResearch: 'Connaissance et recherche',
+      capabilities: {
+        product: {
+          contribution: 'Donner une direction claire aux priorités concurrentes.',
+          title: 'Produit',
+          skills: ['Stratégie', 'Discovery', 'Priorisation', 'Feuille de route'],
+        },
+        design: {
+          contribution: 'Rendre les produits complexes plus faciles à utiliser.',
+          title: 'Design',
+          skills: ['UX', 'UI', 'Interaction', 'Design systems', 'Prototypage'],
+        },
+        research: {
+          contribution: 'Comprendre ce dont les gens ont vraiment besoin.',
+          title: 'Recherche',
+          skills: [
+            'Recherche utilisateur',
+            'Analyse concurrentielle',
+            'Tests d’utilisabilité',
+            'Validation',
+          ],
+        },
+        data: {
+          contribution: 'Trouver les points de friction derrière les chiffres.',
+          title: 'Données',
+          skills: [
+            'Analytics',
+            'Tunnels de conversion',
+            'Données comportementales',
+            'Expérimentation',
+          ],
+        },
+        growth: {
+          contribution: 'Aider les gens à trouver de la valeur et à revenir.',
+          title: 'Croissance',
+          skills: ['Acquisition', 'Activation', 'Conversion', 'Rétention'],
+        },
+        delivery: {
+          contribution: 'Accompagner le design jusqu’à sa mise en ligne.',
+          title: 'Livraison',
+          skills: ['Collaboration design–ingénierie', 'QA', 'Lancement', 'Itération'],
+          note: 'Je développe et lance aussi des produits moi-même, y compris ce site.',
+        },
+        ai: {
+          contribution: 'Créer des workflows réutilisables pour les tâches répétitives.',
+          title: 'IA',
+          skills: ['Workflows assistés par IA', 'Agents', 'Automatisation', 'Prototypage rapide'],
+        },
       },
+      toolsLabel: 'Outils sélectionnés',
     },
     experience: {
       header: {
@@ -1234,7 +1464,8 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         {
           name: 'Fibona',
           role: 'Product Manager · 2 ans',
-          blurb: 'J’ai aligné les parties prenantes autour d’une nouvelle identité de marque, d’une accroche et d’un site, partis de zéro.',
+          blurb:
+            'J’ai aligné les parties prenantes autour d’une nouvelle identité de marque, d’une accroche et d’un site, partis de zéro.',
         },
         {
           name: 'OTeacher',
@@ -1257,7 +1488,8 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         {
           name: 'Didestan',
           role: 'Designer UI/UX · 8 mois',
-          blurb: 'J’ai conçu le prototype d’une plateforme vidéo pilotée par les données, à partir d’une recherche lean UX.',
+          blurb:
+            'J’ai conçu le prototype d’une plateforme vidéo pilotée par les données, à partir d’une recherche lean UX.',
         },
         {
           name: 'A1Paradise',
@@ -1271,7 +1503,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         tag: 'Travail',
         lead: 'Travaux',
         tail: 'sélectionnés',
-        lede: 'Neuf projets parmi l’ensemble — produit, croissance et recherche dans onze entreprises.',
+        lede: 'Sept projets parmi l’ensemble — produit, croissance et recherche dans onze entreprises.',
       },
     },
     contact: {
@@ -1285,13 +1517,13 @@ export const homeCopy: Record<Locale, HomeCopy> = {
   ja: {
     title: 'ホーム',
     meta: {
-      title: 'Sina Oshaghi — プロダクトデザイナー／マネージャー',
+      title: 'Sina Oshaghi — プロダクトデザイナー',
       description:
-        'グロースも担うプロダクトデザイナー兼マネージャー。リサーチからキャンペーン、そしてそれを裏づけるダッシュボードまで。',
+        'フィンテック、クラウド、自動車、エドテック、メディアで10年の経験を持つプロダクトデザイナー。',
     },
     hero: {
-      heading: 'グロースも担うプロダクトデザイナー',
-      lede: 'リサーチからキャンペーン、そしてそれを裏づけるダッシュボードまで。フィンテック、クラウド、自動車、エドテック、メディアにわたる10年。',
+      heading: 'プロダクト戦略、デザイン、グロース、AIに取り組むプロダクトデザイナー',
+      lede: '課題の定義から、プロダクトのデザイン、リリース、改善まで。フィンテック、クラウド、自動車、エドテック、メディアにわたる10年。',
       primaryLabel: '主な仕事',
       secondaryLabel: 'Sinaにメール',
     },
@@ -1300,7 +1532,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         tag: '仕事の進め方',
         lead: '仕事の',
         tail: '進め方',
-        lede: 'ブリーフではなく問題を引き受ける — 最初の曖昧な依頼から、ローンチ後の数字まで。',
+        lede: '最初の曖昧な依頼から、ローンチ後の数字まで、ひとつの問題に向き合い続ける。',
       },
       principle: '問題を引き受ける — すべての段階で',
       loopLabel: '証拠がモデルを再び開く',
@@ -1318,7 +1550,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
           statement: 'まずシステム全体を見る。',
           question: 'この問題はどのシステムの一部か？',
           description:
-            'アクター、運用、お金、データを一つのモデルに — インターフェースは最初ではなく最後に描く。',
+            'アクター、運用、お金、データを一つのモデルにまとめ、インターフェースは最後に描く。',
           output: 'システム＆サービスマップ',
         },
         {
@@ -1342,7 +1574,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
           statement: '数字に反論させる。',
           question: '実際に何が起き、何が変わるか？',
           description:
-            '仕様から計測を仕込む。後付けではない。データが示すものがモデルを — そして次の決定を — 更新する。',
+            '計測はリリース前に仕様の段階で計画する。データが示すものが、モデルと次の決定を更新する。',
           output: '証拠 → 次の決定',
         },
       ],
@@ -1364,7 +1596,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         {
           title: 'AIワークフロー',
           description:
-            '日々の仕事はCursorとClaudeを通り、GA4・Amplitude・Search Consoleという分析スタックが意思決定を計測可能に保つ。',
+            '毎日AIを使い、ひとつに決める前により多くの方向性を検討し、プロトタイピングと実装を速めている。',
         },
         {
           title: 'デザインシステム',
@@ -1382,20 +1614,55 @@ export const homeCopy: Record<Locale, HomeCopy> = {
     },
     tools: {
       header: {
-        tag: 'ツール / スタック',
-        lead: '考え、デザインし、',
-        tail: 'リリースするための仕組み。',
-        lede: 'リサーチ、デザイン、ビルド、計測、ナレッジ、そしてそれを動かすインフラ。別々の道具箱の寄せ集めではなく、ひとつにつながったスタック。',
+        tag: 'スキル',
+        lead: 'チームに',
+        tail: '私が持ち込むもの。',
+        lede: '意思決定、実践的なデザイン、技術的な仕事。課題に必要な力を組み合わせます。',
       },
-      categories: {
-        designPrototyping: 'デザインとクリエイティブ制作',
-        aiAgents: 'AIとエージェント',
-        buildDelivery: 'ビルドとデリバリー',
-        dataIntelligence: 'データとプロダクトインテリジェンス',
-        growthMeasurement: 'グロースと計測',
-        infraOperations: 'インフラと運用',
-        knowledgeResearch: 'ナレッジとリサーチ',
+      capabilities: {
+        product: {
+          contribution: '競合する優先事項から、明確な方向をつくる。',
+          title: 'プロダクト',
+          skills: ['戦略', 'ディスカバリー', '優先順位付け', 'ロードマップ'],
+        },
+        design: {
+          contribution: '複雑なプロダクトを使いやすくする。',
+          title: 'デザイン',
+          skills: ['UX', 'UI', 'インタラクション', 'デザインシステム', 'プロトタイピング'],
+        },
+        research: {
+          contribution: '人が本当に必要としているものを知る。',
+          title: 'リサーチ',
+          skills: ['ユーザーリサーチ', '競合分析', 'ユーザビリティテスト', '検証'],
+        },
+        data: {
+          contribution: '数字の裏にあるつまずきを見つける。',
+          title: 'データ',
+          skills: ['分析', 'ファネル', '行動データ', '実験'],
+        },
+        growth: {
+          contribution: '価値を見つけ、また使いたくなる体験を考える。',
+          title: 'グロース',
+          skills: ['獲得', 'アクティベーション', 'コンバージョン', 'リテンション'],
+        },
+        delivery: {
+          contribution: 'デザインをリリースまでつなぐ。',
+          title: 'デリバリー',
+          skills: ['デザインとエンジニアリングの協働', 'QA', 'ローンチ', '改善の反復'],
+          note: 'このサイトを含め、自分でプロダクトを実装してリリースすることもある。',
+        },
+        ai: {
+          contribution: '繰り返す仕事を、再利用できるワークフローにする。',
+          title: 'AI',
+          skills: [
+            'AIを活用したワークフロー',
+            'エージェント',
+            '自動化',
+            'ラピッドプロトタイピング',
+          ],
+        },
       },
+      toolsLabel: '主なツール',
     },
     experience: {
       header: {
@@ -1414,7 +1681,8 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         {
           name: 'Digikala（Digital Gold）',
           role: 'デザイナー／マーケター／BI開発 · 2.5年',
-          blurb: 'スプレッドシートをBIダッシュボードに置き換え、獲得とエンゲージメントを伸ばしたキャンペーンを運用。',
+          blurb:
+            'スプレッドシートをBIダッシュボードに置き換え、獲得とエンゲージメントを伸ばしたキャンペーンを運用。',
         },
         {
           name: 'Carsparency',
@@ -1436,32 +1704,38 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         {
           name: 'Fibona',
           role: 'プロダクトマネージャー · 2年',
-          blurb: '新しいブランドアイデンティティ、タグライン、ウェブサイトをゼロから立ち上げ、関係者の合意を形成した。',
+          blurb:
+            '新しいブランドアイデンティティ、タグライン、ウェブサイトをゼロから立ち上げ、関係者の合意を形成した。',
         },
         {
           name: 'OTeacher',
           role: 'プロダクトマネージャー／デザイナー · 1年',
-          blurb: '教える側と学ぶ側へのリサーチを、検証済みの教師・生徒マッチングのロードマップに落とし込んだ。',
+          blurb:
+            '教える側と学ぶ側へのリサーチを、検証済みの教師・生徒マッチングのロードマップに落とし込んだ。',
         },
         {
           name: 'Arvan Cloud',
           role: 'プロダクトデザイナー · 2年',
-          blurb: 'ユーザーが実際に必要としていたサーバー指標を軸にプラットフォームを再設計し、NPSを改善した。',
+          blurb:
+            'ユーザーが実際に必要としていたサーバー指標を軸にプラットフォームを再設計し、NPSを改善した。',
         },
         {
           name: 'Biomaze',
           role: 'プロダクトマネージャー／デザイナー · 3年',
-          blurb: '開発者が速くリリースできるよう、ウェブサイト、教育パネル、デザインシステムを構築した。',
+          blurb:
+            '開発者が速くリリースできるよう、ウェブサイト、教育パネル、デザインシステムを構築した。',
         },
         {
           name: 'Didestan',
           role: 'UI/UXデザイナー · 8か月',
-          blurb: 'リーンUXリサーチから、データドリブンな動画プラットフォームのプロトタイプを設計した。',
+          blurb:
+            'リーンUXリサーチから、データドリブンな動画プラットフォームのプロトタイプを設計した。',
         },
         {
           name: 'A1Paradise',
           role: 'UI/UXデザイナー · 1.2年',
-          blurb: 'ゲーミフィケーションを取り入れたミニゲームと、デスクトップおよびB2Cの通話アプリを設計した。',
+          blurb:
+            'ゲーミフィケーションを取り入れたミニゲームと、デスクトップおよびB2Cの通話アプリを設計した。',
         },
       ],
     },
@@ -1470,7 +1744,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         tag: '仕事',
         lead: '主な',
         tail: '仕事',
-        lede: '幅広い仕事のなかから9つ。11社にわたるプロダクト、グロース、リサーチ。',
+        lede: '幅広い仕事のなかから7つ。11社にわたるプロダクト、グロース、リサーチ。',
       },
     },
     contact: {

@@ -11,11 +11,11 @@
  */
 export const aboutGlobalEn = {
   name: 'Sina Oshaghi',
-  headline: 'Product Designer & Manager',
+  headline: 'Product Designer',
   openTo: ['freelance' as const],
   tagline: 'Product, design and growth, end to end.',
   bioShort:
-    'Product designer and manager who also runs growth — from research to campaigns to the dashboards that prove it.',
+    'Product designer with ten years in fintech, cloud, automotive, edtech and media — product strategy, design, growth and AI.',
   links: [
     { platform: 'email' as const, url: 'mailto:sinaoshaghi@gmail.com' },
     { platform: 'linkedin' as const, url: 'https://ir.linkedin.com/in/sinaoshaghi' },
@@ -26,10 +26,10 @@ export const aboutGlobalEn = {
 
 export const aboutGlobalFa = {
   name: 'سینا عشاقی',
-  headline: 'طراح و مدیر محصول',
+  headline: 'طراح محصول',
   tagline: 'محصول، طراحی و رشد، از ابتدا تا انتها.',
   bioShort:
-    'طراح و مدیر محصول؛ از پژوهش و کمپین تا سنجش رشد و نتیجه با داده.',
+    'طراح محصول با ده سال تجربه در فین‌تک، زیرساخت ابری، خودرو، آموزش و رسانه. روی استراتژی محصول، طراحی، رشد و هوش مصنوعی کار می‌کنم.',
 }
 
 /** Idempotent media spec for the About opener portrait (`upsertMedia`). */

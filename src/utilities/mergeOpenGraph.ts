@@ -4,7 +4,7 @@ import { SITE_NAME } from './site'
 
 const defaultOpenGraph: Metadata['openGraph'] = {
   type: 'website',
-  description: 'Product, design, growth and AI systems — built as one connected practice.',
+  description: 'Product designer working across product strategy, design, growth and AI.',
   images: [
     {
       url: `${getServerSideURL()}/sina-oshaghi-OG.webp`,

@@ -14,6 +14,6 @@ test.describe('Frontend', () => {
     const heading = page.locator('h1').first()
     // Seeded EN hero from `src/endpoints/seed/home-copy.ts` — assert by content, not exact node
     // text, in case RichText / TwoTone splits the heading across children.
-    await expect(heading).toContainText('Product designer who also runs growth')
+    await expect(heading).toContainText('Product designer working across product strategy')
   })
 })

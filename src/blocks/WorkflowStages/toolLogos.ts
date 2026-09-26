@@ -1,8 +1,12 @@
 /**
- * The tool set behind the TOOLS / STACK section: stable `toolKey` → canonical product name →
- * local brand mark → official product URL. The `toolKey` select options in `config.ts`, the
- * `<img src>` in `ToolLogo.tsx`, the visible product name and the destination of each cell link
- * all read this one file, so the schema and the renderer cannot drift apart.
+ * The tool catalogue behind the Skills section's "Selected tools" row: stable `toolKey` → canonical
+ * product name → local brand mark → official product URL. The `toolKey` select options in
+ * `config.ts`, the `<img src>` in `ToolLogo.tsx`, the visible product name and the destination of
+ * each link all read this one file, so the schema and the renderer cannot drift apart.
+ *
+ * The catalogue is wider than the page on purpose: the section shows a short selection (see
+ * `SELECTED_TOOLS` in the seed), and the comments below group the marks by kind of tool, not by
+ * anything the page renders.
  *
  * Deliberately dependency-free — no React, no node built-ins and above all no `@/payload-types`.
  * `config.ts` imports this module, and that config is evaluated by the server, by the admin
@@ -51,7 +55,7 @@ export type ToolLogo = ToolLogoBase &
 
 /** Render order within a category comes from the CMS rows, not from this map. */
 export const TOOL_LOGOS = {
-  // 01 · Design & Creative Production
+  // Design & Creative Production
   figma: { name: 'Figma', onDark: 'none', src: '/tool-logos/figma.svg', url: 'https://www.figma.com/' },
   // No FigJam entry on purpose. Figma publishes no standalone FigJam symbol — not in its brand
   // kit, its static app icons or any catalogue — and FigJam is a surface of Figma rather than a
@@ -81,7 +85,7 @@ export const TOOL_LOGOS = {
     url: 'https://higgsfield.ai/',
   },
 
-  // 02 · AI & Agents
+  // AI & Agents
   chatgpt: {
     name: 'ChatGPT',
     onDark: 'asset',
@@ -160,7 +164,7 @@ export const TOOL_LOGOS = {
     url: 'https://typesafe.ai/',
   },
 
-  // 03 · Build & Delivery
+  // Build & Delivery
   cursor: {
     name: 'Cursor',
     onDark: 'asset',
@@ -197,7 +201,7 @@ export const TOOL_LOGOS = {
   },
   docker: { name: 'Docker', onDark: 'none', src: '/tool-logos/docker.svg', url: 'https://www.docker.com/' },
 
-  // 04 · Data & Product Intelligence
+  // Data & Product Intelligence
   ga4: {
     name: 'Google Analytics 4',
     onDark: 'none',
@@ -237,7 +241,7 @@ export const TOOL_LOGOS = {
   // Flat black, no internal contrast — the silhouette treatment, same as Sentry below.
   umami: { name: 'Umami', onDark: 'whiten', src: '/tool-logos/umami.svg', url: 'https://umami.is/' },
 
-  // 05 · Growth & Measurement
+  // Growth & Measurement
   googleTagManager: {
     name: 'Google Tag Manager',
     onDark: 'none',
@@ -257,7 +261,7 @@ export const TOOL_LOGOS = {
     url: 'https://search.google.com/search-console/about',
   },
 
-  // 06 · Infrastructure & Operations
+  // Infrastructure & Operations
   supabase: {
     name: 'Supabase',
     onDark: 'none',
@@ -282,7 +286,7 @@ export const TOOL_LOGOS = {
   // Flat #362D59 — unreadable on dark paper, and Sentry's own dark mark is white.
   sentry: { name: 'Sentry', onDark: 'whiten', src: '/tool-logos/sentry.svg', url: 'https://sentry.io/' },
 
-  // 07 · Knowledge & Research
+  // Knowledge & Research
   obsidian: {
     name: 'Obsidian',
     onDark: 'none',
@@ -303,43 +307,3 @@ export const isToolKey = (value: unknown): value is ToolKey =>
 
 export const resolveTool = (value: unknown): ToolLogo | undefined =>
   isToolKey(value) ? TOOL_LOGOS[value] : undefined
-
-/**
- * The seven categories, in the order they are rendered. The index code (01–07) comes from this
- * order, not from admin row order, so a drag in the CMS can never scramble the numbering.
- * `title` is content and lives in the CMS, localized; the labels below are admin-only.
- */
-export const CATEGORY_KEYS = [
-  'designPrototyping',
-  'aiAgents',
-  'buildDelivery',
-  'dataIntelligence',
-  'growthMeasurement',
-  'infraOperations',
-  'knowledgeResearch',
-] as const
-
-export type CategoryKey = (typeof CATEGORY_KEYS)[number]
-
-/**
- * `designPrototyping` is a historical key: the category widened to cover motion and encoding, and
- * renaming it would invalidate the stored select value on every existing row — the same trade the
- * block already makes by keeping its `workflowStages` slug. The label is what changed.
- */
-const CATEGORY_LABELS: Record<CategoryKey, string> = {
-  aiAgents: 'AI & Agents',
-  buildDelivery: 'Build & Delivery',
-  dataIntelligence: 'Data & Product Intelligence',
-  designPrototyping: 'Design & Creative Production',
-  growthMeasurement: 'Growth & Measurement',
-  infraOperations: 'Infrastructure & Operations',
-  knowledgeResearch: 'Knowledge & Research',
-}
-
-/**
- * Derived rather than hand-written, so a new key without a label is a compile error. The order is
- * the render order, which is also the order the two-digit index codes follow.
- */
-export const CATEGORY_OPTIONS: { label: string; value: CategoryKey }[] = CATEGORY_KEYS.map(
-  (value) => ({ label: CATEGORY_LABELS[value], value }),
-)

@@ -33,13 +33,13 @@ export const navCopy: Record<Locale, NavCopy> = {
   en: {
     header: { work: 'Work', about: 'About', experience: 'Experience', contact: 'Contact' },
     footer: {
-      description: 'Product, design, growth and AI systems — built as one connected practice.',
+      description: 'Product designer — product strategy, design, growth and AI.',
       pagesTitle: 'Explore',
       navLabel: 'Footer navigation',
       social: ['Email Sina', 'Sina on LinkedIn', 'Sina on Dribbble', 'Sina on Behance'],
       about: {
         title: 'Approach',
-        text: 'Turning ambiguous product and business problems into structured systems and shipped outcomes.',
+        text: 'I work from product definition and research through design, experiments and launch.',
         linkLabel: 'Experience',
       },
       contact: {
@@ -53,13 +53,13 @@ export const navCopy: Record<Locale, NavCopy> = {
   fa: {
     header: { work: 'پروژه‌ها', about: 'درباره', experience: 'تجربه', contact: 'تماس' },
     footer: {
-      description: 'محصول، طراحی، رشد و سیستم‌های هوش مصنوعی را در پیوند با هم پیش می‌برم.',
+      description: 'طراح محصول، با تمرکز بر استراتژی محصول، طراحی، رشد و هوش مصنوعی.',
       pagesTitle: 'صفحه‌ها',
       navLabel: 'پیوندهای پایین صفحه',
       social: ['ایمیل به سینا', 'سینا در لینکدین', 'سینا در دریبل', 'سینا در بی‌هنس'],
       about: {
         title: 'رویکرد',
-        text: 'مسئله‌های مبهم محصول و کسب‌وکار را به تصمیم‌های روشن، سیستم‌های کارآمد و محصول قابل ارائه تبدیل می‌کنم.',
+        text: 'از تعریف محصول و پژوهش شروع می‌کنم و کار را تا طراحی، آزمایش و عرضه پیش می‌برم.',
         linkLabel: 'تجربه',
       },
       contact: {
@@ -73,13 +73,13 @@ export const navCopy: Record<Locale, NavCopy> = {
   ar: {
     header: { work: 'العمل', about: 'نبذة', experience: 'الخبرة', contact: 'تواصل' },
     footer: {
-      description: 'المنتج والتصميم والنمو وأنظمة الذكاء الاصطناعي — ممارسة واحدة مترابطة.',
+      description: 'مصمم منتج — استراتيجية المنتج والتصميم والنمو والذكاء الاصطناعي.',
       pagesTitle: 'استكشف',
       navLabel: 'تنقّل التذييل',
       social: ['راسل سينا', 'سينا على لينكدإن', 'سينا على دريبل', 'سينا على بيهانس'],
       about: {
         title: 'المنهج',
-        text: 'تحويل مشكلات المنتج والأعمال الغامضة إلى أنظمة منظَّمة ونتائج تُشحن فعلًا.',
+        text: 'أعمل من تعريف المنتج والبحث، مرورًا بالتصميم والتجارب، حتى الإطلاق.',
         linkLabel: 'الخبرة',
       },
       contact: {
@@ -98,13 +98,13 @@ export const navCopy: Record<Locale, NavCopy> = {
       contact: 'Contacto',
     },
     footer: {
-      description: 'Producto, diseño, crecimiento y sistemas de IA: una sola práctica conectada.',
+      description: 'Diseñador de producto: estrategia de producto, diseño, crecimiento e IA.',
       pagesTitle: 'Explorar',
       navLabel: 'Navegación del pie de página',
       social: ['Escribir a Sina', 'Sina en LinkedIn', 'Sina en Dribbble', 'Sina en Behance'],
       about: {
         title: 'Enfoque',
-        text: 'Convertir problemas ambiguos de producto y negocio en sistemas estructurados y resultados lanzados.',
+        text: 'Trabajo desde la definición del producto y la investigación hasta el diseño, los experimentos y el lanzamiento.',
         linkLabel: 'Experiencia',
       },
       contact: {
@@ -123,13 +123,13 @@ export const navCopy: Record<Locale, NavCopy> = {
       contact: 'Kontakt',
     },
     footer: {
-      description: 'Produkt, Design, Growth und KI-Systeme – als eine zusammenhängende Praxis.',
+      description: 'Produktdesigner – Produktstrategie, Design, Growth und KI.',
       pagesTitle: 'Entdecken',
       navLabel: 'Fußzeilen-Navigation',
       social: ['Sina schreiben', 'Sina auf LinkedIn', 'Sina auf Dribbble', 'Sina auf Behance'],
       about: {
         title: 'Ansatz',
-        text: 'Mehrdeutige Produkt- und Geschäftsprobleme in strukturierte Systeme und ausgelieferte Ergebnisse überführen.',
+        text: 'Ich arbeite von der Produktdefinition und Recherche über Design und Experimente bis zum Launch.',
         linkLabel: 'Erfahrung',
       },
       contact: {
@@ -148,13 +148,13 @@ export const navCopy: Record<Locale, NavCopy> = {
       contact: 'Contact',
     },
     footer: {
-      description: 'Produit, design, croissance et systèmes IA — une seule pratique connectée.',
+      description: 'Designer produit — stratégie produit, design, croissance et IA.',
       pagesTitle: 'Explorer',
       navLabel: 'Navigation du pied de page',
       social: ['Écrire à Sina', 'Sina sur LinkedIn', 'Sina sur Dribbble', 'Sina sur Behance'],
       about: {
         title: 'Approche',
-        text: 'Transformer des problèmes produit et métier ambigus en systèmes structurés et en résultats livrés.',
+        text: 'Je travaille de la définition produit et de la recherche jusqu’au design, aux expérimentations et au lancement.',
         linkLabel: 'Expérience',
       },
       contact: {
@@ -168,13 +168,13 @@ export const navCopy: Record<Locale, NavCopy> = {
   ja: {
     header: { work: '仕事', about: '自己紹介', experience: '経歴', contact: 'お問い合わせ' },
     footer: {
-      description: 'プロダクト、デザイン、グロース、AIシステム。ひとつにつながった実践として。',
+      description: 'プロダクトデザイナー。プロダクト戦略、デザイン、グロース、AI。',
       pagesTitle: '見る',
       navLabel: 'フッターナビゲーション',
       social: ['Sinaにメール', 'LinkedInのSina', 'DribbbleのSina', 'BehanceのSina'],
       about: {
         title: 'アプローチ',
-        text: '曖昧なプロダクトとビジネスの課題を、構造化された仕組みと実際に出せる成果に変える。',
+        text: 'プロダクトの定義とリサーチから、デザイン、実験、ローンチまでを手がける。',
         linkLabel: '経歴',
       },
       contact: {

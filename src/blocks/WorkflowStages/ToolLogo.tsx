@@ -21,15 +21,23 @@ import { resolveTool } from './toolLogos'
  * brand and decorative art stays physical while only reading-flow elements mirror.
  */
 
-/** Fixed box, reserved even when no mark exists, so captions stay aligned across a row. */
-const BOX = 'size-8 shrink-0 sm:size-10'
+/**
+ * Fixed box, reserved even when no mark exists, so names stay aligned. `md` is the matrix cell
+ * size; `sm` sits inline beside a line of small text (the Skills section's tool row).
+ */
+const BOXES = {
+  md: 'size-8 shrink-0 sm:size-10',
+  sm: 'size-5 shrink-0',
+} as const
 
 export interface ToolLogoProps {
   className?: string
+  size?: keyof typeof BOXES
   toolKey: string
 }
 
-export const ToolLogo: React.FC<ToolLogoProps> = ({ className, toolKey }) => {
+export const ToolLogo: React.FC<ToolLogoProps> = ({ className, size = 'md', toolKey }) => {
+  const BOX = BOXES[size]
   const logo = resolveTool(toolKey)
 
   // Unknown key — stale data against a `toolKey` select that only offers resolver keys.

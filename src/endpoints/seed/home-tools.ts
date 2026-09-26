@@ -7,7 +7,7 @@ import { homeCopy } from './home-copy'
 import { seedHomeTranslations } from './translations/home'
 
 /**
- * Swap the homepage's `workflowStages` block for the current TOOLS / STACK content without
+ * Swap the homepage's `workflowStages` block for the current Skills content (D-043) without
  * touching anything else — additive and idempotent, so it can run against a live database
  * instead of the destructive full seed.
  *
@@ -17,9 +17,9 @@ import { seedHomeTranslations } from './translations/home'
  *
  * English only, then a re-run of the per-locale pass. Writing the swapped layout under another
  * locale would write *English* into that locale — `layout` is the whole array, so every leaf in
- * it lands as that locale's value. Adding or reordering a category also changes the shared rows
+ * it lands as that locale's value. Adding or reordering a capability also changes the shared rows
  * every locale is keyed to, so the six other languages have to be rewritten from `homeCopy`
- * afterwards or they would carry titles for categories that no longer exist.
+ * afterwards or they would carry titles for rows that no longer exist.
  *
  * No `next/cache` import anywhere under this directory — the module also runs outside Next, via
  * `pnpm seed:home-tools`, where that import would throw.
@@ -59,7 +59,7 @@ export async function seedHomeTools({ payload }: { payload: Payload }) {
     locale: DEFAULT_LOCALE,
   })
 
-  payload.logger.info(`— Homepage TOOLS / STACK block updated (page ${page.id})`)
+  payload.logger.info(`— Homepage Skills block updated (page ${page.id})`)
 
   // Re-apply every locale against the layout this just changed, so the other six languages
   // cannot be left keyed to category rows that moved.

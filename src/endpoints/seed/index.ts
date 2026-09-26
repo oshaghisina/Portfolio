@@ -32,6 +32,7 @@ import {
 import { home } from './home'
 import { HOME_MOSAIC } from './home-content'
 import { image1 } from './image-1'
+import { navCopy } from './nav-copy'
 import { image2 } from './image-2'
 import { imageHero1 } from './image-hero-1'
 import { post1 } from './post-1'
@@ -533,7 +534,9 @@ export const seed = async ({
     payload.updateGlobal({
       slug: 'footer',
       data: {
-        description: 'Product, design, growth and AI systems — built as one connected practice.',
+        // English footer words come from `navCopy` so the full seed and `seed:translations nav`
+        // can never write two different lines.
+        description: navCopy.en.footer.description,
         pagesTitle: 'Explore',
         navLabel: 'Footer navigation',
         navItems: [
@@ -595,7 +598,7 @@ export const seed = async ({
         ],
         about: {
           title: 'Approach',
-          text: 'Turning ambiguous product and business problems into structured systems and shipped outcomes.',
+          text: navCopy.en.footer.about.text,
           linkLabel: 'Experience',
           linkHref: `/${EXPERIENCE_SLUG}`,
         },
