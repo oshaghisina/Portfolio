@@ -3,7 +3,6 @@ import path from 'node:path'
 
 import type { CollectionSlug, GlobalSlug, Payload, PayloadRequest, File } from 'payload'
 
-import { COLLECTION_PATH_PREFIX } from '@/i18n/routes'
 import { DEFAULT_LOCALE, LOCALES } from '@/utilities/locale'
 
 import { about, localizeAboutLayoutFa } from './about-page'
@@ -499,13 +498,6 @@ export const seed = async ({
           },
           {
             link: {
-              type: 'custom',
-              label: 'Lab',
-              url: COLLECTION_PATH_PREFIX.posts,
-            },
-          },
-          {
-            link: {
               type: 'reference',
               label: 'About',
               reference: {
@@ -553,13 +545,6 @@ export const seed = async ({
                 relationTo: 'pages',
                 value: workPage.id,
               },
-            },
-          },
-          {
-            link: {
-              type: 'custom',
-              label: 'Lab',
-              url: COLLECTION_PATH_PREFIX.posts,
             },
           },
           {

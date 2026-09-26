@@ -15,7 +15,6 @@ const header = {
   id: 1,
   navItems: [
     { id: 'work', link: { type: 'custom', url: '/work', label: 'Work' } },
-    { id: 'lab', link: { type: 'custom', url: '/lab', label: 'Lab' } },
     { id: 'about', link: { type: 'custom', url: '/about', label: 'About' } },
     { id: 'experience', link: { type: 'custom', url: '/experience', label: 'Experience' } },
     { id: 'contact', link: { type: 'custom', url: '/contact', label: 'Contact' } },

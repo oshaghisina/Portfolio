@@ -11,12 +11,12 @@ import type { Locale } from '@/utilities/locale'
  *
  * Nav labels deliberately reuse wording already settled elsewhere so the site does not call the
  * same page two things: "Work" matches `workCopy[locale].title`, "Experience" matches
- * `workCopy[locale].cta.linkLabel` and the footer approach link, "Lab" matches
- * `uiCopy[locale].labArchiveTitle`, and "About" is the About page label.
+ * `workCopy[locale].cta.linkLabel` and the footer approach link, and "About" is the About page
+ * label. Lab is intentionally omitted from chrome (reachable at `/lab` by URL only).
  */
 
 export interface NavCopy {
-  header: { work: string; lab: string; about: string; experience: string; contact: string }
+  header: { work: string; about: string; experience: string; contact: string }
   footer: {
     description: string
     pagesTitle: string
@@ -31,7 +31,7 @@ export interface NavCopy {
 
 export const navCopy: Record<Locale, NavCopy> = {
   en: {
-    header: { work: 'Work', lab: 'Lab', about: 'About', experience: 'Experience', contact: 'Contact' },
+    header: { work: 'Work', about: 'About', experience: 'Experience', contact: 'Contact' },
     footer: {
       description: 'Product, design, growth and AI systems — built as one connected practice.',
       pagesTitle: 'Explore',
@@ -51,7 +51,7 @@ export const navCopy: Record<Locale, NavCopy> = {
   },
 
   fa: {
-    header: { work: 'پروژه‌ها', lab: 'آزمایشگاه', about: 'درباره', experience: 'تجربه', contact: 'تماس' },
+    header: { work: 'پروژه‌ها', about: 'درباره', experience: 'تجربه', contact: 'تماس' },
     footer: {
       description: 'محصول، طراحی، رشد و سیستم‌های هوش مصنوعی را در پیوند با هم پیش می‌برم.',
       pagesTitle: 'صفحه‌ها',
@@ -71,7 +71,7 @@ export const navCopy: Record<Locale, NavCopy> = {
   },
 
   ar: {
-    header: { work: 'العمل', lab: 'المختبر', about: 'نبذة', experience: 'الخبرة', contact: 'تواصل' },
+    header: { work: 'العمل', about: 'نبذة', experience: 'الخبرة', contact: 'تواصل' },
     footer: {
       description: 'المنتج والتصميم والنمو وأنظمة الذكاء الاصطناعي — ممارسة واحدة مترابطة.',
       pagesTitle: 'استكشف',
@@ -93,7 +93,6 @@ export const navCopy: Record<Locale, NavCopy> = {
   es: {
     header: {
       work: 'Trabajo',
-      lab: 'Laboratorio',
       about: 'Sobre mí',
       experience: 'Experiencia',
       contact: 'Contacto',
@@ -119,7 +118,6 @@ export const navCopy: Record<Locale, NavCopy> = {
   de: {
     header: {
       work: 'Arbeit',
-      lab: 'Labor',
       about: 'Über mich',
       experience: 'Erfahrung',
       contact: 'Kontakt',
@@ -145,7 +143,6 @@ export const navCopy: Record<Locale, NavCopy> = {
   fr: {
     header: {
       work: 'Travail',
-      lab: 'Laboratoire',
       about: 'À propos',
       experience: 'Expérience',
       contact: 'Contact',
@@ -169,7 +166,7 @@ export const navCopy: Record<Locale, NavCopy> = {
   },
 
   ja: {
-    header: { work: '仕事', lab: 'ラボ', about: '自己紹介', experience: '経歴', contact: 'お問い合わせ' },
+    header: { work: '仕事', about: '自己紹介', experience: '経歴', contact: 'お問い合わせ' },
     footer: {
       description: 'プロダクト、デザイン、グロース、AIシステム。ひとつにつながった実践として。',
       pagesTitle: '見る',

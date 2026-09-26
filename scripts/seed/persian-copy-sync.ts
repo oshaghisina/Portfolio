@@ -277,7 +277,7 @@ await addCollection('forms', formId, 'form/contact', {
 const header = asDoc(await payload.findGlobal({ slug: 'header', depth: 0, locale: 'en' }))
 const footer = asDoc(await payload.findGlobal({ slug: 'footer', depth: 0, locale: 'en' }))
 const headerLabels = Object.values(navCopy.fa.header)
-if ((header.navItems as unknown[]).length !== 5 || (footer.navItems as unknown[]).length !== 4) throw new Error('Unexpected navigation structure')
+if ((header.navItems as unknown[]).length !== 4 || (footer.navItems as unknown[]).length !== 3) throw new Error('Unexpected navigation structure')
 await addGlobal('header', {
   navItems: (header.navItems as Doc[]).map((row, i) => ({ ...row, link: { ...asDoc(row.link), label: headerLabels[i] } })),
 })

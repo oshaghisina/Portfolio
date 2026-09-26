@@ -25,11 +25,11 @@ export async function seedNavTranslations({ payload }: { payload: Payload }) {
   const socialRows = footer.social ?? []
 
   // Position-matched labels only work if the seeded shape is the one this copy was written for.
-  if (headerRows.length !== 5) {
-    throw new Error(`Expected 5 header nav items, found ${headerRows.length} — re-run the full seed.`)
+  if (headerRows.length !== 4) {
+    throw new Error(`Expected 4 header nav items, found ${headerRows.length} — re-run the full seed.`)
   }
-  if (footerRows.length !== 4) {
-    throw new Error(`Expected 4 footer nav items, found ${footerRows.length} — re-run the full seed.`)
+  if (footerRows.length !== 3) {
+    throw new Error(`Expected 3 footer nav items, found ${footerRows.length} — re-run the full seed.`)
   }
   if (socialRows.length !== 4) {
     throw new Error(`Expected 4 footer social links, found ${socialRows.length} — re-run the full seed.`)
@@ -37,8 +37,8 @@ export async function seedNavTranslations({ payload }: { payload: Payload }) {
 
   for (const locale of LOCALES) {
     const copy = navCopy[locale]
-    const headerLabels = [copy.header.work, copy.header.lab, copy.header.about, copy.header.experience, copy.header.contact]
-    const footerLabels = [copy.header.work, copy.header.lab, copy.header.about, copy.header.experience]
+    const headerLabels = [copy.header.work, copy.header.about, copy.header.experience, copy.header.contact]
+    const footerLabels = [copy.header.work, copy.header.about, copy.header.experience]
 
     await payload.updateGlobal({
       slug: 'header',
