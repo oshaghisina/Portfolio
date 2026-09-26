@@ -6,7 +6,8 @@ import path from 'path'
 import type { Locale } from '@/utilities/locale'
 
 export interface MediaSpec {
-  /** Path inside the project's `assets/` folder in Docs, e.g. `duel/duel-main.png`. */
+  /** Path inside the project's `assets/` folder in Docs, e.g. `duel/duel-main.png`; a working
+   *  file kept beside the README (a workbook) is reached with `../`. */
   file: string
   /** Stored filename — the idempotency key; reuse an existing upload with this name. */
   name: string
@@ -19,6 +20,7 @@ const MIME: Record<string, string> = {
   '.jpg': 'image/jpeg',
   '.jpeg': 'image/jpeg',
   '.webp': 'image/webp',
+  '.xlsx': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
 }
 
 /** Reads a real project asset from `Docs/` (dev only — `Docs/` is not deployed). */

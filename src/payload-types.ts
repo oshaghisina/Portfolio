@@ -602,6 +602,7 @@ export interface Project {
         | CaseStudyFigureBlock
         | CaseStudyFindingBlock
         | CaseStudyProcessBlock
+        | CaseStudyDownloadsBlock
         | CaseStudyOwnershipBlock
         | CaseStudyDecisionsBlock
         | CaseStudyOutcomesBlock
@@ -823,6 +824,36 @@ export interface CaseStudyProcessBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'csProcess';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CaseStudyDownloadsBlock".
+ */
+export interface CaseStudyDownloadsBlock {
+  /**
+   * Optional short title, e.g. "The two workbooks behind the roadmap".
+   */
+  heading?: string | null;
+  items?:
+    | {
+        /**
+         * The file itself. Its format and size are shown from the upload.
+         */
+        file: string | Media;
+        /**
+         * What the file is, e.g. "Problem inventory".
+         */
+        title: string;
+        /**
+         * One sentence on what is inside.
+         */
+        description?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'csDownloads';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -3305,6 +3336,7 @@ export interface ProjectsSelect<T extends boolean = true> {
         csFigure?: T | CaseStudyFigureBlockSelect<T>;
         csFinding?: T | CaseStudyFindingBlockSelect<T>;
         csProcess?: T | CaseStudyProcessBlockSelect<T>;
+        csDownloads?: T | CaseStudyDownloadsBlockSelect<T>;
         csOwnership?: T | CaseStudyOwnershipBlockSelect<T>;
         csDecisions?: T | CaseStudyDecisionsBlockSelect<T>;
         csOutcomes?: T | CaseStudyOutcomesBlockSelect<T>;
@@ -3417,6 +3449,23 @@ export interface CaseStudyProcessBlockSelect<T extends boolean = true> {
         code?: T;
         label?: T;
         note?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CaseStudyDownloadsBlock_select".
+ */
+export interface CaseStudyDownloadsBlockSelect<T extends boolean = true> {
+  heading?: T;
+  items?:
+    | T
+    | {
+        file?: T;
+        title?: T;
+        description?: T;
         id?: T;
       };
   id?: T;

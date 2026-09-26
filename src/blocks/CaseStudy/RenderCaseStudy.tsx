@@ -8,6 +8,7 @@ import { cn } from '@/utilities/ui'
 
 import { buildChapters, type CaseStudySection, type Chapter, figureNumbers } from './chapters'
 import { DecisionsBlock } from './Decisions/Component'
+import { DownloadsBlock } from './Downloads/Component'
 import { FigureBlock } from './Figure/Component'
 import { FindingBlock } from './Finding/Component'
 import { LessonsBlock } from './Lessons/Component'
@@ -45,6 +46,8 @@ function renderBlock(
       return <FindingBlock {...block} {...ctx} />
     case 'csProcess':
       return <ProcessBlock {...block} {...ctx} />
+    case 'csDownloads':
+      return <DownloadsBlock {...block} {...ctx} />
     case 'csOwnership':
       return <OwnershipBlock {...block} {...ctx} headingId={headingId} />
     case 'csDecisions':
@@ -60,8 +63,8 @@ function renderBlock(
 
 /**
  * The narrative: chapter-opening blocks become numbered `<section>`s with a tiny technical
- * kicker ("01 CONTEXT"); evidence blocks (figures, process maps, findings) follow inside the
- * chapter above them. Typed on `Project['sections']`, so an unknown block is a compile error.
+ * kicker ("01 CONTEXT"); evidence blocks (figures, process maps, findings, downloads) follow
+ * inside the chapter above them. Typed on `Project['sections']`, so an unknown block is a compile error.
  */
 export const RenderCaseStudy: React.FC<RenderCaseStudyProps> = ({
   className,

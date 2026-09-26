@@ -18,8 +18,8 @@ export interface Chapter {
 }
 
 /**
- * Which blocks open a numbered chapter. Figures, process maps and findings are evidence that
- * belongs to the chapter above them, so they never take a number of their own.
+ * Which blocks open a numbered chapter. Figures, process maps, findings and downloads are
+ * evidence that belongs to the chapter above them, so they never take a number of their own.
  */
 export function chapterKey(block: CaseStudySection): ChapterKey | null {
   switch (block.blockType) {

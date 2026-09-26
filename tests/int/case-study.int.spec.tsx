@@ -10,6 +10,7 @@ import { afterEach, beforeAll, describe, expect, it, vi } from 'vitest'
 
 import { buildChapters, figureNumbers } from '@/blocks/CaseStudy/chapters'
 import { DecisionsBlock } from '@/blocks/CaseStudy/Decisions/Component'
+import { DownloadsBlock, fileFormat, fileSize } from '@/blocks/CaseStudy/Downloads/Component'
 import { FigureBlock } from '@/blocks/CaseStudy/Figure/Component'
 import { OutcomesBlock } from '@/blocks/CaseStudy/Outcomes/Component'
 import { RenderCaseStudy } from '@/blocks/CaseStudy/RenderCaseStudy'
@@ -278,6 +279,74 @@ describe('OutcomesBlock', () => {
     expect(container.textContent).toContain('Delivered output · The scope doc')
     expect(container.textContent).toContain('Measured outcome · GA4, Q2')
     expect(container.textContent).toContain('What was delivered')
+  })
+})
+
+describe('DownloadsBlock', () => {
+  const workbook = media({
+    id: 'x1',
+    alt: 'A workbook',
+    url: '/media/vin-app--problem-inventory.xlsx',
+    filename: 'vin-app--problem-inventory.xlsx',
+    mimeType: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    filesize: 39_339,
+    width: null,
+    height: null,
+  })
+
+  it('offers each file with its format and size, and skips a row whose upload is missing', () => {
+    render(
+      <DownloadsBlock
+        blockType="csDownloads"
+        copy={en}
+        heading="The two workbooks"
+        items={[
+          { id: 'd1', file: workbook, title: 'Problem inventory', description: '57 problems.' },
+          { id: 'd2', file: 'an-unpopulated-id', title: 'Not uploaded' },
+        ]}
+        locale="en"
+      />,
+    )
+    const link = screen.getByRole('link', { name: 'Download Problem inventory' })
+    expect(link.getAttribute('href')).toBe('/media/vin-app--problem-inventory.xlsx')
+    expect(link.getAttribute('download')).toBe('vin-app--problem-inventory.xlsx')
+    expect(screen.getByText('XLSX · 39 kB')).toBeTruthy()
+    expect(screen.getAllByRole('listitem')).toHaveLength(1)
+    expect(screen.queryByText('Not uploaded')).toBeNull()
+  })
+
+  it('renders nothing when no file has an upload', () => {
+    const { container } = render(
+      <DownloadsBlock
+        blockType="csDownloads"
+        copy={en}
+        items={[{ id: 'd1', file: 'an-unpopulated-id', title: 'Not uploaded' }]}
+        locale="en"
+      />,
+    )
+    expect(container.innerHTML).toBe('')
+  })
+
+  it('labels the button and writes the size in the page language', () => {
+    render(
+      <DownloadsBlock
+        blockType="csDownloads"
+        copy={fa}
+        items={[{ id: 'd1', file: workbook, title: 'فهرست مسئله‌ها' }]}
+        locale="fa"
+      />,
+    )
+    expect(screen.getByRole('link').textContent).toContain('دانلود')
+    expect(screen.getByText('XLSX · ۳۹ kB')).toBeTruthy()
+  })
+
+  it('reads the format from the filename and rounds the size', () => {
+    expect(fileFormat('deck.final.PDF')).toBe('PDF')
+    expect(fileFormat('no-extension')).toBeNull()
+    expect(fileSize(20_068, 'en')).toBe('20 kB')
+    expect(fileSize(120, 'en')).toBe('1 kB')
+    expect(fileSize(2_450_000, 'en')).toBe('2.5 MB')
+    expect(fileSize(0, 'en')).toBeNull()
   })
 })
 

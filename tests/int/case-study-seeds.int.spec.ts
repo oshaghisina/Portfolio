@@ -36,7 +36,7 @@ const isRowArray = (value: unknown): value is Row[] =>
 const project = (row: Row, isBlock: boolean): Row => {
   const keys = isBlock
     ? ['blockType', 'id', 'layout', 'treatment', 'kind', ...(row.blockType === 'csNarrative' ? ['label'] : [])]
-    : ['id', 'code', 'value', 'kind', 'media', 'mobile', 'full', 'mobileFull']
+    : ['id', 'code', 'value', 'kind', 'media', 'mobile', 'full', 'mobileFull', 'file']
   const out: Row = {}
   for (const key of keys) if (key in row) out[key] = row[key]
   for (const [key, value] of Object.entries(row)) {
@@ -85,6 +85,13 @@ const blockProblems = (block: Row): string[] => {
     case 'csLessons':
       if (!within(rows('items').length, 2, 4)) problems.push(`${at}: ${rows('items').length} lessons`)
       for (const item of rows('items')) need(item.title, `lesson ${String(item.id)} title`)
+      break
+    case 'csDownloads':
+      if (!within(rows('items').length, 1, 6)) problems.push(`${at}: ${rows('items').length} files`)
+      for (const item of rows('items')) {
+        need(item.title, `file ${String(item.id)} title`)
+        if (!item.file) problems.push(`${at}: file ${String(item.id)} has no upload`)
+      }
       break
     case 'csFigure': {
       const range = FIGURE_ITEM_COUNT[block.layout as FigureLayout]

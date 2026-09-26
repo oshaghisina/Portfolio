@@ -290,6 +290,34 @@ export const VIN_MEDIA = {
       ja: 'ホストが店舗に送る「Be my sponsor」リクエスト：想定参加人数、希望日時、アクティビティの種類、協賛の種類、店舗が得る見返り、そしてSubmit Requestボタンの上の自由記述のアピール欄',
     }),
   },
+  // The two workbooks behind the roadmap chapter, offered as downloads. They sit beside the README
+  // rather than in `assets/`, as Sina handed them over.
+  problemInventory: {
+    file: '../VIN-problem-inventory.xlsx',
+    name: 'vin-app--problem-inventory.xlsx',
+    alt: L({
+      en: 'VIN problem inventory — an Excel workbook of 57 problems on eight sheets',
+      fa: 'فایل اکسل فهرست مسئله‌های وین: ۵۷ مسئله در هشت برگه',
+      ar: 'ملف Excel لفهرس مشكلات VIN: 57 مشكلة في ثماني أوراق',
+      de: 'VIN-Problem-Inventar — eine Excel-Arbeitsmappe mit 57 Problemen auf acht Blättern',
+      es: 'Inventario de problemas de VIN: un libro de Excel con 57 problemas en ocho hojas',
+      fr: 'Inventaire des problèmes de VIN : un classeur Excel de 57 problèmes sur huit feuilles',
+      ja: 'VINの課題インベントリ：8シートに57の課題をまとめたExcelワークブック',
+    }),
+  },
+  kpiStarterPack: {
+    file: '../vin-kpi-starter-pack.xlsx',
+    name: 'vin-app--kpi-starter-pack.xlsx',
+    alt: L({
+      en: 'VIN KPI starter pack — an Excel workbook of 20 KPIs on four sheets',
+      fa: 'فایل اکسل بستهٔ شروع KPI وین: ۲۰ شاخص در چهار برگه',
+      ar: 'ملف Excel لحزمة مؤشرات أداء VIN: 20 مؤشرًا في أربع أوراق',
+      de: 'VIN-KPI-Starterpaket — eine Excel-Arbeitsmappe mit 20 KPIs auf vier Blättern',
+      es: 'Paquete inicial de KPI de VIN: un libro de Excel con 20 KPI en cuatro hojas',
+      fr: 'Kit de démarrage KPI de VIN : un classeur Excel de 20 KPI sur quatre feuilles',
+      ja: 'VINのKPIスターターパック：4シートに20のKPIをまとめたExcelワークブック',
+    }),
+  },
 } satisfies Record<string, MediaSpec>
 
 export type VinMediaKey = keyof typeof VIN_MEDIA
@@ -426,10 +454,14 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
   const l = <T>(value: L<T>): T => value[locale]
   const dir = DIRECTION[locale]
   const p = (value: L) => paragraph(l(value), dir)
-  // A localized leaf inside an array is keyed by row position, so a row that used to carry a
-  // caption keeps it unless the seed writes one — pass NO_CAPTION to clear it.
+  // A localized leaf inside an array is keyed by row position: a row keeps what the row that used
+  // to sit at its index carried unless the seed writes that leaf (the roadmap chapter's insert gave
+  // vin-s07 the old vin-s09 insight). So optional leaves are written empty, never left out.
   const item = (key: VinMediaKey, id: string, caption?: L) =>
     media[key] ? [{ id, media: media[key]!, ...(caption ? { caption: l(caption) } : {}) }] : []
+  // A download row exists only once its upload does — the same rule `item` applies to figures.
+  const download = (key: VinMediaKey, id: string, title: L, description: L) =>
+    media[key] ? [{ id, file: media[key]!, title: l(title), description: l(description) }] : []
 
   return [
     {
@@ -510,6 +542,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           ja: 'VINプロダクトブリーフ',
         }),
       ),
+      method: '',
     },
     {
       id: 'vin-s03',
@@ -551,6 +584,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           }),
         ),
       ),
+      insight: '',
     },
     {
       id: 'vin-s04',
@@ -592,6 +626,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           }),
         ),
       ),
+      insight: '',
     },
     {
       id: 'vin-s05',
@@ -892,6 +927,254 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
         }),
       ),
     },
+    // How the roadmap was made — layers 02 and 03 above, opened up. Every number traces to the two
+    // workbooks, which the chapter then offers as downloads.
+    {
+      id: 'vin-s06b',
+      blockType: 'csNarrative',
+      label: 'custom',
+      customLabel: l(
+        L({
+          en: 'Roadmap',
+          fa: 'نقشهٔ راه',
+          ar: 'خارطة الطريق',
+          de: 'Roadmap',
+          es: 'Hoja de ruta',
+          fr: 'Feuille de route',
+          ja: 'ロードマップ',
+        }),
+      ),
+      heading: l(
+        L({
+          en: 'The roadmap started as a list of 57 problems.',
+          fa: 'نقشهٔ راه با فهرست ۵۷ مسئله شروع شد.',
+          ar: 'بدأت خارطة الطريق بقائمة من 57 مشكلة.',
+          de: 'Die Roadmap begann mit einer Liste von 57 Problemen.',
+          es: 'La hoja de ruta empezó como una lista de 57 problemas.',
+          fr: 'La feuille de route est partie d’une liste de 57 problèmes.',
+          ja: 'ロードマップは、57の課題のリストから始まった。',
+        }),
+      ),
+      body: prose(
+        dir,
+        p(
+          L({
+            en: "Before any sprint was planned, every problem the product would face went into one inventory: 57 in all, each tagged with where it sits — attendees, hosts, the platform or VIN's own model. Each problem lists the features that could solve it and a KPI with a target. Then it goes into one of five tiers by effort, from quick wins that take days to fundamental tensions that are managed, never solved.",
+            fa: 'پیش از برنامه‌ریزی اسپرینت‌ها، همهٔ مسئله‌هایی که محصول با آن‌ها روبه‌رو می‌شد در یک فهرست جمع شد: ۵۷ مسئله. برای هر مسئله مشخص است به شرکت‌کننده‌ها، میزبان‌ها، پلتفرم یا مدل خاص وین مربوط می‌شود. کنار هرکدام، قابلیت‌هایی که می‌توانند حلش کنند و یک KPI با عدد هدف آمده است. بعد هر مسئله بر اساس حجم کار در یکی از پنج سطح قرار گرفت؛ از کارهای سریعی که چند روز طول می‌کشند تا تنش‌های بنیادی که حل نمی‌شوند و فقط باید مدیریت شوند.',
+            ar: 'قبل التخطيط لأي سبرنت، جُمعت كل مشكلة قد يواجهها المنتج في قائمة واحدة: 57 مشكلة، لكلٍّ منها وسمٌ يحدد موقعها — الحضور، أو المضيفون، أو المنصّة، أو نموذج VIN نفسه. تسرد كل مشكلة الميزات التي قد تحلّها ومؤشر أداء بهدف محدد. ثم توضع في واحد من خمسة مستويات بحسب الجهد، من مكاسب سريعة تستغرق أيامًا إلى توترات جوهرية تُدار ولا تُحل.',
+            de: 'Bevor ein Sprint geplant wurde, kam jedes Problem, auf das das Produkt stoßen würde, in ein Inventar: 57 insgesamt, jedes danach markiert, wo es liegt — bei Teilnehmenden, Hosts, der Plattform oder VINs eigenem Modell. Zu jedem Problem gehören die Features, die es lösen könnten, und ein KPI mit Zielwert. Dann landet es nach Aufwand in einer von fünf Stufen, von Quick Wins, die Tage dauern, bis zu grundlegenden Spannungen, die man steuert und nie löst.',
+            es: 'Antes de planificar ningún sprint, cada problema al que se enfrentaría el producto entró en un inventario: 57 en total, cada uno etiquetado según dónde se sitúa — asistentes, anfitriones, la plataforma o el propio modelo de VIN. Cada problema recoge las funcionalidades que podrían resolverlo y un KPI con un objetivo. Después pasa a uno de cinco niveles según el esfuerzo, desde victorias rápidas que llevan días hasta tensiones de fondo que se gestionan y nunca se resuelven.',
+            fr: 'Avant de planifier le moindre sprint, chaque problème que le produit allait rencontrer est entré dans un inventaire : 57 au total, chacun classé selon l’endroit où il se situe — participants, organisateurs, plateforme ou modèle propre à VIN. Chaque problème indique les fonctionnalités qui pourraient le résoudre et un KPI avec une cible. Il est ensuite rangé dans l’un des cinq niveaux selon l’effort, des gains rapides qui prennent quelques jours aux tensions de fond, que l’on gère sans jamais les résoudre.',
+            ja: 'スプリントを計画する前に、プロダクトが直面しうる課題をすべてひとつのインベントリにまとめた。全部で57。それぞれに、参加者、ホスト、プラットフォーム、VIN独自のモデルのどこに属するかのタグを付けた。各課題には、解決につながる機能と、目標値つきのKPIを記している。そのうえで工数に応じて5つの段階に振り分けた。数日で終わるクイックウィンから、解決はできず管理し続けるしかない根本的な緊張関係までだ。',
+          }),
+        ),
+        p(
+          L({
+            en: 'The KPI pack defines those numbers once. Each of its 20 KPIs has a plain formula, the segments to cut it by and a tracking status: one north star, twelve drivers and seven guardrails that watch for damage from growth. Only six could be measured on day one. The order of work then came from the tiers, as the four phases below.',
+            fa: 'بستهٔ KPI این عددها را یک‌جا تعریف می‌کند. هرکدام از ۲۰ شاخص فرمولی ساده، بخش‌بندی‌های لازم برای تحلیل و وضعیت ردیابی دارد. یکی از آن‌ها شاخص اصلی است، دوازده شاخص آن را جلو می‌برند و هفت شاخص مراقب پیامدهای منفی رشد هستند. از روز اول فقط شش شاخص قابل اندازه‌گیری بود. ترتیب کار هم از همین سطح‌ها به دست آمد و در چهار مرحلهٔ زیر آمده است.',
+            ar: 'تعرّف حزمة المؤشرات هذه الأرقام مرة واحدة. لكل مؤشر من مؤشراتها العشرين صيغة واضحة، والشرائح التي يُقسَّم بحسبها، وحالة التتبّع: مؤشر شمالي واحد، واثنا عشر مؤشرًا دافعًا، وسبعة حواجز أمان ترصد الضرر الذي قد يسببه النمو. ستة منها فقط كانت قابلة للقياس من اليوم الأول. ثم جاء ترتيب العمل من المستويات، في المراحل الأربع أدناه.',
+            de: 'Das KPI-Paket definiert diese Zahlen einmal. Jeder der 20 KPIs hat eine einfache Formel, die Segmente, nach denen man ihn aufschlüsselt, und einen Tracking-Status: ein Nordstern, zwölf Treiber und sieben Leitplanken, die auf Schäden durch Wachstum achten. Nur sechs ließen sich ab dem ersten Tag messen. Die Reihenfolge der Arbeit ergab sich dann aus den Stufen, in den vier Phasen unten.',
+            es: 'El paquete de KPI define esas cifras una sola vez. Cada uno de sus 20 KPI tiene una fórmula sencilla, los segmentos por los que desglosarlo y un estado de seguimiento: una estrella polar, doce impulsores y siete salvaguardas que vigilan el daño que puede causar el crecimiento. Solo seis se podían medir desde el primer día. El orden del trabajo salió después de los niveles, en las cuatro fases de abajo.',
+            fr: 'Le kit de KPI définit ces chiffres une seule fois. Chacun de ses 20 KPI a une formule simple, les segments selon lesquels le ventiler et un statut de suivi : une étoile polaire, douze leviers et sept garde-fous qui surveillent les dégâts que la croissance peut causer. Seuls six étaient mesurables dès le premier jour. L’ordre du travail découle ensuite des niveaux, dans les quatre phases ci-dessous.',
+            ja: 'KPIパックは、それらの数字を一度だけ定義する。20のKPIそれぞれに、簡潔な計算式、分析の切り口となるセグメント、計測の準備状況がある。北極星指標が1つ、それを動かすドライバーが12、成長がもたらす害を見張るガードレールが7つ。初日から計測できたのは6つだけだった。作業の順番は段階から決まり、下の4つのフェーズになった。',
+          }),
+        ),
+      ),
+      insight: l(
+        L({
+          en: 'Each item on the roadmap is a problem with a number attached, so the team can tell when it is solved.',
+          fa: 'هر قدم نقشهٔ راه یک مسئله است با یک عدد مشخص؛ عددی که نشان می‌دهد مسئله حل شده است یا نه.',
+          ar: 'كل بند في خارطة الطريق مشكلةٌ مرتبطة برقم، ليعرف الفريق متى حُلّت.',
+          de: 'Jeder Punkt der Roadmap ist ein Problem mit einer Zahl daneben, damit das Team erkennt, wann es gelöst ist.',
+          es: 'Cada punto de la hoja de ruta es un problema con una cifra al lado, para que el equipo sepa cuándo está resuelto.',
+          fr: 'Chaque ligne de la feuille de route est un problème associé à un chiffre, pour que l’équipe sache quand il est résolu.',
+          ja: 'ロードマップの各項目は、数字と対になった課題だ。だからチームは、いつ解決したかがわかる。',
+        }),
+      ),
+    },
+    {
+      id: 'vin-s06c',
+      blockType: 'csProcess',
+      kind: 'process',
+      heading: l(
+        L({
+          en: "The order of work, from the inventory's summary sheet",
+          fa: 'ترتیب کار، بر اساس برگهٔ خلاصهٔ فهرست مسئله‌ها',
+          ar: 'ترتيب العمل، من ورقة الملخص في فهرس المشكلات',
+          de: 'Die Reihenfolge der Arbeit, aus dem Übersichtsblatt des Inventars',
+          es: 'El orden del trabajo, según la hoja de resumen del inventario',
+          fr: 'L’ordre du travail, d’après la feuille de synthèse de l’inventaire',
+          ja: 'インベントリのサマリーシートが示す作業の順番',
+        }),
+      ),
+      steps: [
+        {
+          id: 'vin-r01',
+          code: '01',
+          label: l(
+            L({
+              en: 'Sprints 1–2',
+              fa: 'اسپرینت ۱ و ۲',
+              ar: 'السبرنت 1–2',
+              de: 'Sprints 1–2',
+              es: 'Sprints 1–2',
+              fr: 'Sprints 1–2',
+              ja: 'スプリント1–2',
+            }),
+          ),
+          note: l(
+            L({
+              en: 'All eight quick wins: small fixes that remove obvious friction',
+              fa: 'هر هشت کار سریع: اصلاح‌های کوچکی که مانع‌های آشکار را برمی‌دارند',
+              ar: 'المكاسب السريعة الثمانية كلها: إصلاحات صغيرة تزيل العوائق الواضحة',
+              de: 'Alle acht Quick Wins: kleine Korrekturen, die offensichtliche Reibung entfernen',
+              es: 'Las ocho victorias rápidas: arreglos pequeños que quitan la fricción evidente',
+              fr: 'Les huit gains rapides : de petites corrections qui retirent les frictions évidentes',
+              ja: '8つのクイックウィンすべて：明らかな摩擦を取り除く小さな修正',
+            }),
+          ),
+        },
+        {
+          id: 'vin-r02',
+          code: '02',
+          label: l(
+            L({
+              en: 'Sprints 3–5',
+              fa: 'اسپرینت ۳ تا ۵',
+              ar: 'السبرنت 3–5',
+              de: 'Sprints 3–5',
+              es: 'Sprints 3–5',
+              fr: 'Sprints 3–5',
+              ja: 'スプリント3–5',
+            }),
+          ),
+          note: l(
+            L({
+              en: 'Connection logging, positioning and the first visit: what VIN is to a new user',
+              fa: 'ثبت ارتباط، جایگاه محصول و اولین ورود: اینکه وین برای کاربر تازه چیست',
+              ar: 'تسجيل التواصل، والتموضع، والزيارة الأولى: ما هو VIN للمستخدم الجديد',
+              de: 'Verbindungen protokollieren, Positionierung und der erste Besuch: was VIN für neue Nutzer ist',
+              es: 'Registro de conexiones, posicionamiento y la primera visita: qué es VIN para un usuario nuevo',
+              fr: 'Enregistrement des connexions, positionnement et première visite : ce qu’est VIN pour un nouvel utilisateur',
+              ja: 'つながりの記録、ポジショニング、初回訪問：新しいユーザーにとってVINとは何か',
+            }),
+          ),
+        },
+        {
+          id: 'vin-r03',
+          code: '03',
+          label: l(
+            L({
+              en: 'Sprints 6–10',
+              fa: 'اسپرینت ۶ تا ۱۰',
+              ar: 'السبرنت 6–10',
+              de: 'Sprints 6–10',
+              es: 'Sprints 6–10',
+              fr: 'Sprints 6–10',
+              ja: 'スプリント6–10',
+            }),
+          ),
+          note: l(
+            L({
+              en: 'No-shows, trust, social anxiety and host tools: what makes each meetup work',
+              fa: 'غیبت در دورهمی، اعتماد، اضطراب اجتماعی و ابزارهای میزبان: آنچه هر دورهمی را به نتیجه می‌رساند',
+              ar: 'الغياب، والثقة، والقلق الاجتماعي، وأدوات المضيف: ما يجعل كل لقاء ينجح',
+              de: 'No-Shows, Vertrauen, soziale Angst und Host-Werkzeuge: was jedes Meetup funktionieren lässt',
+              es: 'Ausencias, confianza, ansiedad social y herramientas del anfitrión: lo que hace que cada meetup funcione',
+              fr: 'Absences, confiance, anxiété sociale et outils de l’organisateur : ce qui fait fonctionner chaque meetup',
+              ja: 'ノーショー、信頼、社会的な不安、ホスト向けツール：各ミートアップを成り立たせるもの',
+            }),
+          ),
+        },
+        {
+          id: 'vin-r04',
+          code: '04',
+          label: l(
+            L({
+              en: 'Ongoing',
+              fa: 'مداوم',
+              ar: 'مستمر',
+              de: 'Laufend',
+              es: 'Continuo',
+              fr: 'En continu',
+              ja: '継続',
+            }),
+          ),
+          note: l(
+            L({
+              en: 'The very hard tier and the fundamental tensions, as the user base grows',
+              fa: 'سطح خیلی سخت و تنش‌های بنیادی، هم‌زمان با رشد کاربران',
+              ar: 'المستوى الأصعب والتوترات الجوهرية، مع نمو قاعدة المستخدمين',
+              de: 'Die sehr schwere Stufe und die grundlegenden Spannungen, während die Nutzerbasis wächst',
+              es: 'El nivel muy difícil y las tensiones de fondo, a medida que crece la base de usuarios',
+              fr: 'Le niveau très difficile et les tensions de fond, au fil de la croissance de la base d’utilisateurs',
+              ja: '非常に難しい段階と根本的な緊張関係。ユーザー基盤の成長に合わせて',
+            }),
+          ),
+        },
+      ],
+    },
+    {
+      id: 'vin-s06d',
+      blockType: 'csDownloads',
+      heading: l(
+        L({
+          en: 'The two workbooks behind the roadmap',
+          fa: 'دو فایل اکسل این نقشهٔ راه',
+          ar: 'الملفان وراء خارطة الطريق',
+          de: 'Die zwei Arbeitsmappen hinter der Roadmap',
+          es: 'Los dos libros de cálculo detrás de la hoja de ruta',
+          fr: 'Les deux classeurs derrière la feuille de route',
+          ja: 'ロードマップの元になった2つのワークブック',
+        }),
+      ),
+      items: [
+        ...download(
+          'problemInventory',
+          'vin-dl01',
+          L({
+            en: 'Problem inventory',
+            fa: 'فهرست مسئله‌ها',
+            ar: 'فهرس المشكلات',
+            de: 'Problem-Inventar',
+            es: 'Inventario de problemas',
+            fr: 'Inventaire des problèmes',
+            ja: '課題インベントリ',
+          }),
+          L({
+            en: '57 problems in five tiers, each with the features that could solve it and a KPI target. Eight sheets, ending in a summary with the order of work.',
+            fa: '۵۷ مسئله در پنج سطح، هرکدام با قابلیت‌های پیشنهادی و یک KPI با عدد هدف. فایل هشت برگه دارد و برگهٔ آخر، خلاصه و ترتیب کار است.',
+            ar: '57 مشكلة في خمسة مستويات، لكلٍّ منها الميزات التي قد تحلّها وهدف لمؤشر الأداء. ثماني أوراق، آخرها ملخص بترتيب العمل.',
+            de: '57 Probleme in fünf Stufen, jedes mit den Features, die es lösen könnten, und einem KPI-Ziel. Acht Blätter, am Ende eine Übersicht mit der Reihenfolge der Arbeit.',
+            es: '57 problemas en cinco niveles, cada uno con las funcionalidades que podrían resolverlo y un objetivo de KPI. Ocho hojas, que terminan en un resumen con el orden del trabajo.',
+            fr: '57 problèmes répartis en cinq niveaux, chacun avec les fonctionnalités qui pourraient le résoudre et une cible de KPI. Huit feuilles, dont la dernière résume l’ordre du travail.',
+            ja: '5段階に分けた57の課題。それぞれに解決につながる機能とKPIの目標値がある。全8シートで、最後のシートに作業の順番をまとめている。',
+          }),
+        ),
+        ...download(
+          'kpiStarterPack',
+          'vin-dl02',
+          L({
+            en: 'KPI starter pack',
+            fa: 'بستهٔ شروع KPI',
+            ar: 'حزمة البداية لمؤشرات الأداء',
+            de: 'KPI-Starterpaket',
+            es: 'Paquete inicial de KPI',
+            fr: 'Kit de démarrage KPI',
+            ja: 'KPIスターターパック',
+          }),
+          L({
+            en: '20 KPIs with formulas, segments and tracking status, plus templates for a dashboard, a metric tree, and baselines and targets.',
+            fa: '۲۰ شاخص با فرمول، بخش‌بندی و وضعیت ردیابی، به‌همراه قالب‌هایی برای داشبورد، درخت شاخص‌ها و مقدار پایه و هدف.',
+            ar: '20 مؤشرًا بصيغها وشرائحها وحالة تتبّعها، مع قوالب للوحة المتابعة، وشجرة المؤشرات، والقيم الأساسية والأهداف.',
+            de: '20 KPIs mit Formeln, Segmenten und Tracking-Status, dazu Vorlagen für ein Dashboard, einen Metrikbaum sowie Ausgangswerte und Ziele.',
+            es: '20 KPI con fórmulas, segmentos y estado de seguimiento, además de plantillas para un panel, un árbol de métricas y los valores de base y objetivos.',
+            fr: '20 KPI avec formules, segments et statut de suivi, plus des modèles pour un tableau de bord, un arbre de métriques, et les valeurs de référence et cibles.',
+            ja: '計算式、セグメント、計測状況つきの20のKPIに加え、ダッシュボード、メトリクスツリー、ベースラインと目標値のテンプレート。',
+          }),
+        ),
+      ],
+    },
     {
       id: 'vin-s07',
       blockType: 'csNarrative',
@@ -932,6 +1215,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           }),
         ),
       ),
+      insight: '',
     },
     {
       id: 'vin-s08',
@@ -1387,6 +1671,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           }),
         ),
       ),
+      insight: '',
     },
     {
       id: 'vin-s12',
@@ -1595,6 +1880,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           }),
         ),
       ),
+      insight: '',
     },
     {
       id: 'vin-s14',
@@ -1992,6 +2278,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           ],
         }),
       ),
+      heading: '',
     },
     {
       id: 'vin-s17',

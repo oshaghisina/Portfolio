@@ -48,6 +48,8 @@ export interface CaseStudyCopy {
   }
   /** "returns to" — the loop annotation of a process map. */
   loopsTo: string
+  /** The button on each file of a downloads block. */
+  download: string
   status: Record<ProjectStatus, string>
   nextProject: string
   /** Heading of the sibling-case-study strip; `{company}` is replaced with the company name. */
@@ -101,6 +103,7 @@ export const caseStudyCopy: Record<Locale, CaseStudyCopy> = {
       close: 'Close',
     },
     loopsTo: 'returns to',
+    download: 'Download',
     status: {
       shipped: 'Shipped',
       'in-progress': 'In progress',
@@ -153,6 +156,7 @@ export const caseStudyCopy: Record<Locale, CaseStudyCopy> = {
       close: 'بستن',
     },
     loopsTo: 'بازگشت به',
+    download: 'دانلود',
     status: {
       shipped: 'منتشرشده',
       'in-progress': 'در حال انجام',
@@ -200,6 +204,7 @@ export const caseStudyCopy: Record<Locale, CaseStudyCopy> = {
       close: 'إغلاق',
     },
     loopsTo: 'يعود إلى',
+    download: 'تنزيل',
     status: {
       shipped: 'أُطلق',
       'in-progress': 'قيد التنفيذ',
@@ -252,6 +257,7 @@ export const caseStudyCopy: Record<Locale, CaseStudyCopy> = {
       close: 'Cerrar',
     },
     loopsTo: 'vuelve a',
+    download: 'Descargar',
     status: {
       shipped: 'Lanzado',
       'in-progress': 'En curso',
@@ -304,6 +310,7 @@ export const caseStudyCopy: Record<Locale, CaseStudyCopy> = {
       close: 'Schließen',
     },
     loopsTo: 'zurück zu',
+    download: 'Herunterladen',
     status: {
       shipped: 'Veröffentlicht',
       'in-progress': 'In Arbeit',
@@ -356,6 +363,7 @@ export const caseStudyCopy: Record<Locale, CaseStudyCopy> = {
       close: 'Fermer',
     },
     loopsTo: 'revient à',
+    download: 'Télécharger',
     status: {
       shipped: 'Lancé',
       'in-progress': 'En cours',
@@ -403,6 +411,7 @@ export const caseStudyCopy: Record<Locale, CaseStudyCopy> = {
       close: '閉じる',
     },
     loopsTo: '戻る：',
+    download: 'ダウンロード',
     status: {
       shipped: 'リリース済み',
       'in-progress': '進行中',
