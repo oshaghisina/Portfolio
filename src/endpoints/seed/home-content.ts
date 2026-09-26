@@ -40,6 +40,10 @@ type PageHero = RequiredDataFromCollectionSlug<'pages'>['hero']
  * V6 (D-043, after an outside review): the hero says what the work is in plain words instead of a
  * positioning line. Tools / Stack briefly became a Skills list and was then restored to the
  * categorised logo matrix at the owner's request.
+ *
+ * V7 (owner's reorder): Where I've worked (with the Experience preview that backs its counts)
+ * follows Industries, and Selected work follows that preview, so the page reads where I worked →
+ * the work → what I focus on, before the tools and the method.
  */
 
 /** Hrefs are structure, not copy: identical in every locale, so they never enter `HomeCopy`. */
@@ -289,6 +293,40 @@ export const buildIndustryGridBlock = (
   industries: INDUSTRY_KEYS.map((key) => ({ key })),
 })
 
+/**
+ * The homepage's section order, one entry per block. `buildHomeLayout` writes its blocks in this
+ * order, and `orderHomeLayout` moves an already-stored layout into it.
+ */
+export const HOME_BLOCK_ORDER = [
+  'industryGrid',
+  'experienceCatalogue',
+  'experienceTeaser',
+  'workMosaic',
+  'tracks',
+  'workflowStages',
+  'workspace',
+  'cta',
+] as const
+
+/**
+ * Moves a stored homepage layout into `HOME_BLOCK_ORDER` without touching any block, so ids,
+ * nested row ids and relationships survive. Returns the same array when nothing moves. Throws
+ * unless every block type appears exactly once: guessing where an unknown block belongs could
+ * quietly reshuffle a page someone edited in the CMS.
+ */
+export const orderHomeLayout = (layout: NonNullable<PageLayout>): NonNullable<PageLayout> => {
+  const types = layout.map((block) => block.blockType)
+  const expected: readonly string[] = HOME_BLOCK_ORDER
+  if (
+    types.length !== expected.length ||
+    expected.some((type) => types.filter((t) => t === type).length !== 1)
+  ) {
+    throw new Error(`home layout: expected one each of ${expected.join(', ')}; got ${types.join(', ')}`)
+  }
+  if (types.every((type, i) => type === expected[i])) return layout
+  return expected.map((type) => layout.find((block) => block.blockType === type)!)
+}
+
 export const buildHomeLayout = ({
   locale,
   projects,
@@ -301,18 +339,6 @@ export const buildHomeLayout = ({
 
   return [
     buildIndustryGridBlock(locale),
-    {
-      blockName: 'Tracks',
-      blockType: 'tracks',
-      sectionHeader: copy.tracks.header,
-      tracks: copy.tracks.items.map((item, i) => ({
-        key: TRACK_KEYS[i]!,
-        title: item.title,
-        ...(item.experience ? { experience: item.experience } : {}),
-        description: item.description,
-      })),
-    },
-    buildToolsStackBlock(copy),
     {
       blockName: 'Experience',
       blockType: 'experienceCatalogue',
@@ -327,6 +353,18 @@ export const buildHomeLayout = ({
     },
     buildExperienceTeaserBlock(locale, teaserMetrics(copy)),
     buildWorkMosaicBlock(copy, projects),
+    {
+      blockName: 'Tracks',
+      blockType: 'tracks',
+      sectionHeader: copy.tracks.header,
+      tracks: copy.tracks.items.map((item, i) => ({
+        key: TRACK_KEYS[i]!,
+        title: item.title,
+        ...(item.experience ? { experience: item.experience } : {}),
+        description: item.description,
+      })),
+    },
+    buildToolsStackBlock(copy),
     {
       blockName: 'Workbench',
       blockType: 'workspace',

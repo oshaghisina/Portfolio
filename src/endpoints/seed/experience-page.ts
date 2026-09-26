@@ -208,8 +208,8 @@ async function syncHomeExperienceSection({ payload }: { payload: Payload }) {
   const withoutRetired = home.layout.filter(
     (row) => row.blockType !== 'metricsStrip' && row.blockType !== 'experienceTeaser',
   )
-  const at = withoutRetired.findIndex((row) => row.blockType === 'workMosaic')
-  const index = at === -1 ? withoutRetired.length : at
+  const at = withoutRetired.findIndex((row) => row.blockType === 'experienceCatalogue')
+  const index = at === -1 ? withoutRetired.length : at + 1
   const layout = [
     ...withoutRetired.slice(0, index),
     block,

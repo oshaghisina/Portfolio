@@ -15,8 +15,10 @@ import {
 import {
   buildHomeLayout,
   buildIndustryGridBlock,
+  HOME_BLOCK_ORDER,
   HOME_MOSAIC,
   localizeHomeLayout,
+  orderHomeLayout,
 } from '@/endpoints/seed/home-content'
 import { homeStatic } from '@/endpoints/seed/home-static'
 import { homeCopy } from '@/endpoints/seed/home-copy'
@@ -107,13 +109,29 @@ describe('Industry catalogue and rendering', () => {
       ...LOCALES.map((locale) => localizeHomeLayout(locale, layoutFor('en'))),
     ]
     for (const layout of layouts) {
-      expect(layout[0]!.blockType).toBe('industryGrid')
-      expect(layout.filter((block) => block.blockType === 'industryGrid')).toHaveLength(1)
-      const mosaic = layout.findIndex((block) => block.blockType === 'workMosaic')
-      const workspace = layout.findIndex((block) => block.blockType === 'workspace')
-      expect(mosaic).toBeGreaterThanOrEqual(0)
-      expect(workspace).toBe(mosaic + 1)
+      expect(layout.map((block) => block.blockType)).toEqual([...HOME_BLOCK_ORDER])
     }
+  })
+
+  it('moves a stored layout into the home order without touching any block', () => {
+    const current = layoutFor('en').map((block, index) => ({ ...block, id: `block-${index}` }))
+    const byType = (type: string) => current.find((block) => block.blockType === type)!
+    const stored = [
+      'industryGrid',
+      'tracks',
+      'workflowStages',
+      'experienceCatalogue',
+      'experienceTeaser',
+      'workMosaic',
+      'workspace',
+      'cta',
+    ].map(byType)
+    const ordered = orderHomeLayout(stored)
+    expect(ordered.map((block) => block.blockType)).toEqual([...HOME_BLOCK_ORDER])
+    for (const block of ordered) expect(block).toBe(byType(block.blockType))
+    expect(orderHomeLayout(ordered)).toBe(ordered)
+    expect(() => orderHomeLayout(stored.slice(1))).toThrow(/expected one each/)
+    expect(() => orderHomeLayout([...stored, byType('cta')])).toThrow(/expected one each/)
   })
 })
 
@@ -154,7 +172,7 @@ describe('Additive homepage update', () => {
     const layout = [...oldLayout('fa'), industry, { ...industry, id: 'duplicate' }]
     const next = upsertHomeIndustries(layout, 'fa')
     expect(next[0]).toEqual(industry)
-    expect(next[1]!.blockType).toBe('tracks')
+    expect(next[1]!.blockType).toBe('experienceCatalogue')
     expect(next.filter((block) => block.blockType === 'industryGrid')).toHaveLength(1)
   })
 

@@ -7,7 +7,7 @@ import { homeCopy } from './home-copy'
 
 /** Only the new block and the existing industry total change. All other localized leaves,
  * relationship ids, block ids and nested row ids round-trip unchanged. Industries always lead
- * the layout (after the hero); Workbench sits later, after Selected work. */
+ * the layout (after the hero); every other block keeps its place. */
 export function upsertHomeIndustries(
   layout: Page['layout'],
   locale: Locale,
