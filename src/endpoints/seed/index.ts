@@ -12,7 +12,13 @@ import {
   aboutMetaDescriptionFa,
   aboutMetaTitleFa,
 } from './about-page-content'
-import { aboutGlobalEn, aboutGlobalFa } from './about-global'
+import {
+  ABOUT_PORTRAIT_ASSETS_DIR,
+  ABOUT_PORTRAIT_MEDIA,
+  aboutGlobalEn,
+  aboutGlobalFa,
+} from './about-global'
+import { upsertMedia } from './media'
 import { seedCaseStudies } from './case-studies'
 import { contactForm as contactFormData } from './contact-form'
 import { contact as contactPageData } from './contact-page'
@@ -444,6 +450,18 @@ export const seed = async ({
     )
   }
 
+  payload.logger.info(`— Seeding the about portrait...`)
+
+  const portraitId = await upsertMedia(
+    payload,
+    path.resolve(process.cwd(), ABOUT_PORTRAIT_ASSETS_DIR),
+    {
+      file: ABOUT_PORTRAIT_MEDIA.file,
+      name: ABOUT_PORTRAIT_MEDIA.name,
+      alt: { ...ABOUT_PORTRAIT_MEDIA.alt },
+    },
+  )
+
   payload.logger.info(`— Seeding the about global...`)
 
   await payload.updateGlobal({
@@ -451,6 +469,7 @@ export const seed = async ({
     data: {
       ...aboutGlobalEn,
       resume: resumeDoc.id,
+      ...(portraitId ? { portrait: portraitId } : {}),
     },
     context: { disableRevalidate: true },
   })

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import type { Page } from '@/payload-types'
+import type { Media, Page } from '@/payload-types'
 import type { Locale } from '@/utilities/locale'
 
 import { AboutImpactHero } from '@/heros/AboutImpact'
@@ -21,14 +21,21 @@ const heroes = {
   mediumImpact: MediumImpactHero,
 }
 
-export const RenderHero: React.FC<Page['hero'] & { locale?: Locale }> = (props) => {
-  const { type } = props || {}
+export const RenderHero: React.FC<
+  Page['hero'] & { locale?: Locale; portrait?: Media | string | null }
+> = (props) => {
+  const { type, portrait, ...heroProps } = props
 
   if (!type || type === 'none') return null
+
+  // Portrait is identity data from the `about` global — only the About opener consumes it.
+  if (type === 'aboutImpact') {
+    return <AboutImpactHero {...heroProps} portrait={portrait} type={type} />
+  }
 
   const HeroToRender = heroes[type]
 
   if (!HeroToRender) return null
 
-  return <HeroToRender {...props} />
+  return <HeroToRender {...heroProps} type={type} />
 }

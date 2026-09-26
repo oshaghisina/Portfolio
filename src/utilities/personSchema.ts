@@ -1,4 +1,12 @@
-import type { About } from '@/payload-types'
+import type { About, Media } from '@/payload-types'
+
+const mediaUrl = (
+  serverUrl: string,
+  media: Media | string | number | null | undefined,
+): string | undefined => {
+  if (!media || typeof media !== 'object' || !media.url) return undefined
+  return /^https?:\/\//i.test(media.url) ? media.url : `${serverUrl}${media.url}`
+}
 
 /**
  * `Person` JSON-LD for the About page, built only from real `about` global fields — no
@@ -15,6 +23,7 @@ export function buildPersonJsonLd({
   if (!about?.name) return null
 
   const sameAs = (about.links ?? []).map((l) => l.url).filter((url): url is string => Boolean(url))
+  const image = mediaUrl(serverUrl, about.portrait)
 
   return {
     '@context': 'https://schema.org',
@@ -22,6 +31,7 @@ export function buildPersonJsonLd({
     name: about.name,
     url: serverUrl,
     ...(about.headline ? { jobTitle: about.headline } : {}),
+    ...(image ? { image } : {}),
     ...(sameAs.length ? { sameAs } : {}),
   }
 }

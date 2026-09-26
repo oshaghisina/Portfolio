@@ -6,8 +6,8 @@
  * drafted engagement agreements. Whether full-time, consulting or advisory also apply is still
  * the brief's Q3, so they stay off rather than being guessed.
  *
- * `basedIn`/`portrait` stay empty: still unconfirmed (brief Q2), and no appropriate editorial
- * portrait exists to use.
+ * `basedIn` stays empty (brief Q2 still unconfirmed). `portrait` is seeded from
+ * `Docs/About-Me/portrait.jpg` when that file is present (see seed index / about-portrait sync).
  */
 export const aboutGlobalEn = {
   name: 'Sina Oshaghi',
@@ -31,3 +31,15 @@ export const aboutGlobalFa = {
   bioShort:
     'طراح و مدیر محصول؛ از پژوهش و کمپین تا سنجش رشد و نتیجه با داده.',
 }
+
+/** Idempotent media spec for the About opener portrait (`upsertMedia`). */
+export const ABOUT_PORTRAIT_MEDIA = {
+  file: 'portrait.jpg',
+  name: 'sina-oshaghi-portrait.jpg',
+  alt: {
+    en: 'Sina Oshaghi',
+    fa: 'سینا عشاقی',
+  },
+} as const
+
+export const ABOUT_PORTRAIT_ASSETS_DIR = 'Docs/About-Me'

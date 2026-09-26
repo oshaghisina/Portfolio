@@ -33,6 +33,7 @@
     "seed:home-tools": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/seed/home-tools.ts",
     "seed:home-industries": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/seed/home-industries.ts",
     "seed:home-experience": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/seed/home-experience.ts",
+    "seed:about-portrait": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/seed/about-portrait.ts",
     "audit:translations": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/seed/audit-translations.ts",
     "seed:translations": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/seed/translations.ts",
     "reinstall": "cross-env NODE_OPTIONS=--no-deprecation rm -rf node_modules && rm pnpm-lock.yaml && pnpm --ignore-workspace install",

@@ -60,7 +60,10 @@ export const About: GlobalConfig = {
       name: 'portrait',
       type: 'upload',
       relationTo: 'media',
-      admin: { description: 'Optional. Leave empty unless a genuinely appropriate editorial portrait exists.' },
+      admin: {
+        description:
+          'Editorial portrait for the About opener aside. Leave empty to keep the intersection diagram.',
+      },
     },
     {
       name: 'resume',

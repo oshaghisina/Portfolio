@@ -91,11 +91,11 @@ export default async function Page({ params: paramsPromise }: Args) {
   const isHome = page.slug === 'home'
   const serverUrl = getServerSideURL()
 
-  // Person JSON-LD is About-only — no need to fetch the `about` global on every page.
-  const personJsonLd = isAbout
-    ? buildPersonJsonLd({ about: await getCachedGlobal('about', locale, 1)(), serverUrl })
-    : null
+  // About-only: Person JSON-LD and the opener portrait both read the `about` global once.
+  const about = isAbout ? await getCachedGlobal('about', locale, 1)() : null
+  const personJsonLd = about ? buildPersonJsonLd({ about, serverUrl }) : null
   const webSiteJsonLd = isHome ? buildWebSiteJsonLd({ locale, serverUrl }) : null
+  const portrait = about?.portrait ?? null
 
   // Every page opens flush against the header: the sheet and the header are both `.canvas`, so
   // with no gap between them the hairline rails run unbroken through the header's bottom border.
@@ -128,7 +128,7 @@ export default async function Page({ params: paramsPromise }: Args) {
           </ExperienceMotion>
         ) : (
           <>
-            <RenderHero {...hero} locale={locale} />
+            <RenderHero {...hero} locale={locale} portrait={isAbout ? portrait : undefined} />
             <RenderBlocks blocks={layout} locale={locale} />
           </>
         )}
