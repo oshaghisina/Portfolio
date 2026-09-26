@@ -1,29 +1,16 @@
-import clsx from 'clsx'
 import React from 'react'
 
-interface Props {
-  className?: string
-  loading?: 'lazy' | 'eager'
-  priority?: 'auto' | 'high' | 'low'
-}
+import { Signature } from '@/components/Signature'
 
-export const Logo = (props: Props) => {
-  const { loading: loadingFromProps, priority: priorityFromProps, className } = props
-
-  const loading = loadingFromProps || 'lazy'
-  const priority = priorityFromProps || 'low'
-
-  return (
-    /* eslint-disable @next/next/no-img-element */
-    <img
-      alt="Payload Logo"
-      width={193}
-      height={34}
-      loading={loading}
-      fetchPriority={priority}
-      decoding="async"
-      className={clsx('max-w-[9.375rem] w-full h-[34px]', className)}
-      src="https://raw.githubusercontent.com/payloadcms/payload/3.x/packages/ui/src/assets/payload-logo-light.svg"
-    />
-  )
-}
+/**
+ * The admin's login-screen logo (`admin.components.graphics.Logo`): Sina's signature in place of
+ * Payload's wordmark, on the login, create-first-user, forgot and reset screens.
+ *
+ * The admin doesn't load Tailwind, so size and colour are inline. `currentColor` follows the admin
+ * theme's text colour, the same token Payload's own logo fills with.
+ */
+export const Logo: React.FC = () => (
+  <div aria-label="Sina Oshaghi" role="img" style={{ color: 'var(--theme-elevation-1000)' }}>
+    <Signature style={{ height: '4.5rem', maxWidth: '100%' }} />
+  </div>
+)

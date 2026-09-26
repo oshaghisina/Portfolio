@@ -25,6 +25,7 @@ import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { LOCALES } from './utilities/locale'
 import { getAllowedOrigins } from './utilities/getURL'
+import { SITE_NAME } from './utilities/site'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -38,6 +39,26 @@ export default buildConfig({
       // The `BeforeDashboard` component renders the 'welcome' block that you see after logging into your admin panel.
       // Feel free to delete this at any time. Simply remove the line below.
       beforeDashboard: ['@/components/BeforeDashboard'],
+      // Sina's signature in place of Payload's logo (login screens) and mark (nav breadcrumb).
+      graphics: {
+        Icon: '@/components/Logo/Icon#Icon',
+        Logo: '@/components/Logo/Logo#Logo',
+      },
+    },
+    // Tab title, favicon and link preview: without these Payload brands the admin as its own.
+    meta: {
+      defaultOGImageType: 'off',
+      icons: [
+        { rel: 'icon', sizes: '32x32', url: '/favicon.ico' },
+        { rel: 'icon', type: 'image/svg+xml', url: '/favicon.svg' },
+      ],
+      openGraph: {
+        description: 'Admin for sinaoshaghi.com',
+        images: [{ height: 630, url: '/sina-oshaghi-OG.webp', width: 1200 }],
+        siteName: SITE_NAME,
+        title: SITE_NAME,
+      },
+      titleSuffix: `| ${SITE_NAME}`,
     },
     importMap: {
       baseDir: path.resolve(dirname),
