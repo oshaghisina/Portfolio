@@ -36,7 +36,7 @@ const isRowArray = (value: unknown): value is Row[] =>
 const project = (row: Row, isBlock: boolean): Row => {
   const keys = isBlock
     ? ['blockType', 'id', 'layout', 'treatment', 'kind', ...(row.blockType === 'csNarrative' ? ['label'] : [])]
-    : ['id', 'code', 'value', 'kind', 'media']
+    : ['id', 'code', 'value', 'kind', 'media', 'mobile', 'full', 'mobileFull']
   const out: Row = {}
   for (const key of keys) if (key in row) out[key] = row[key]
   for (const [key, value] of Object.entries(row)) {
@@ -288,9 +288,10 @@ const GATES: Record<string, { files: RegExp[]; text: RegExp[] }> = {
     text: [/1359|1980|۱۳۵۹|۱۹۸۰/, /Khuzestan|خوزستان/i, /Shooshtari|شوشتری|شوشتري/i, /\bbrother|برادر|hermano|Bruder|frère|兄弟/i, /arash@/i, /ADVBROZ/i, /git\.arashrezvani/i, /dossier/i, /\bborn\b|متولد|nacido|geboren|年生まれ|テヘラン生まれ/i, /Farvardin|فروردین/i],
   },
   marqevon: {
-    // The home page below its hero (market prices), the two empty frames, the logo files and the
-    // stock-photo pages; only the type crops in `crops/` are uploaded.
-    files: [/pages\//, /rtl\//, /mobile\//, /templates\//, /icon|logo/],
+    // Type crops (`crops/`) and, since 2026-09-26 (Sina's call), the `pages` index (`gallery/`):
+    // every page exported from the 2026-09-26 capture, the home page's market prices masked in the
+    // page before capture. Never a raw capture — the 2026-09-22 set shows the prices — or the logos.
+    files: [/^(?!crops\/|gallery\/)/, /icon|logo/],
     text: [/Platts/i, /AAIDL|PJAA|AAZB/, /194\.59/, /OFAC/i, /sanction|sancion|Sanktion|تحریم|العقوبات|制裁/i, /jurisdiction|juridiction|jurisdicci|Gerichtsstand|管轄/i, /Vitol|Trafigura|Gunvor|Mercuria|Glencore/i, /\.example\b/i, /Inquery|همبرگری|نمی‌خواهیم/],
   },
   cproperty: {

@@ -3,10 +3,20 @@ import type { Block } from 'payload'
 /**
  * DS-30 figure patterns. Editors pick a *pattern*, never a size: `full` (one visual), `split`
  * (two related visuals), `sequence` (2–4 states of a flow), `annotated` (one visual + a numbered
- * key), `compare` (before / after), `gallery` (a body of work, 2–40 visuals in columns). `treatment` says what the media *is*; the page decides how
- * to frame it — portrait phone captures are framed as screens, diagrams sit on the drafting plate.
+ * key), `compare` (before / after), `gallery` (a body of work, 2–40 visuals in columns), `pages`
+ * (every page of a site, one row per page: its first screen at desktop and phone width, the whole
+ * page on click — DS-25). `treatment` says what the media *is*; the page decides how to frame it —
+ * portrait phone captures are framed as screens, diagrams sit on the drafting plate.
  */
-export const FIGURE_LAYOUTS = ['full', 'split', 'sequence', 'annotated', 'compare', 'gallery'] as const
+export const FIGURE_LAYOUTS = [
+  'full',
+  'split',
+  'sequence',
+  'annotated',
+  'compare',
+  'gallery',
+  'pages',
+] as const
 export type FigureLayout = (typeof FIGURE_LAYOUTS)[number]
 
 export const FIGURE_TREATMENTS = ['auto', 'screen', 'plain', 'diagram'] as const
@@ -20,7 +30,15 @@ export const FIGURE_ITEM_COUNT: Record<FigureLayout, { min: number; max: number 
   annotated: { min: 1, max: 1 },
   compare: { min: 2, max: 2 },
   gallery: { min: 2, max: 40 },
+  pages: { min: 2, max: 40 },
 }
+
+/** Only a `pages` figure pairs each page with its phone capture and full-page captures. */
+const onlyForPages = (
+  _data: unknown,
+  _siblingData: unknown,
+  { blockData }: { blockData?: unknown },
+) => (blockData as { layout?: FigureLayout } | undefined)?.layout === 'pages'
 
 export const CaseStudyFigure: Block = {
   slug: 'csFigure',
@@ -42,6 +60,7 @@ export const CaseStudyFigure: Block = {
             { label: 'Annotated — one visual + numbered key', value: 'annotated' },
             { label: 'Compare — before / after', value: 'compare' },
             { label: 'Gallery — a body of work, 2–40 visuals', value: 'gallery' },
+            { label: 'Pages — every page, desktop + phone, whole page on click', value: 'pages' },
           ],
           admin: { width: '50%' },
         },
@@ -67,7 +86,7 @@ export const CaseStudyFigure: Block = {
       labels: { singular: 'Visual', plural: 'Visuals' },
       admin: {
         description:
-          'Full / annotated: exactly one. Split / compare: exactly two. Sequence: two to four. Gallery: two to forty.',
+          'Full / annotated: exactly one. Split / compare: exactly two. Sequence: two to four. Gallery: two to forty. Pages: one row per page, two to forty.',
       },
       validate: (
         value: unknown,
@@ -85,14 +104,55 @@ export const CaseStudyFigure: Block = {
         return true
       },
       fields: [
-        { name: 'media', type: 'upload', relationTo: 'media', required: true },
+        {
+          name: 'media',
+          type: 'upload',
+          relationTo: 'media',
+          required: true,
+          admin: { description: 'Pages: the first screen at desktop width.' },
+        },
+        {
+          type: 'row',
+          fields: [
+            {
+              name: 'mobile',
+              type: 'upload',
+              relationTo: 'media',
+              admin: {
+                condition: onlyForPages,
+                description: 'The first screen on a phone.',
+                width: '33%',
+              },
+            },
+            {
+              name: 'full',
+              type: 'upload',
+              relationTo: 'media',
+              admin: {
+                condition: onlyForPages,
+                description: 'The whole page at desktop width, opened on click.',
+                width: '33%',
+              },
+            },
+            {
+              name: 'mobileFull',
+              type: 'upload',
+              relationTo: 'media',
+              admin: {
+                condition: onlyForPages,
+                description: 'The whole page on a phone, opened on click.',
+                width: '33%',
+              },
+            },
+          ],
+        },
         {
           name: 'caption',
           type: 'text',
           localized: true,
           admin: {
             description:
-              'Optional per-visual note; keep the explanation in the figure caption below.',
+              'Optional per-visual note; keep the explanation in the figure caption below. Pages: the page’s name.',
           },
         },
       ],

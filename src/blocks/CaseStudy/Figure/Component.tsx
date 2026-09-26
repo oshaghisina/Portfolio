@@ -3,6 +3,7 @@ import React from 'react'
 import type { CaseStudyFigureBlock } from '@/payload-types'
 
 import { FigureMedia, resolveTreatment } from '@/components/CaseStudy/FigureMedia'
+import { PageIndex, type PageEntry, type PageShot } from '@/components/CaseStudy/PageIndex'
 import { isPortraitMedia } from '@/components/ProjectCover'
 import { PLATE_STYLE, pad } from '@/components/CaseStudy/plate'
 import { cn } from '@/utilities/ui'
@@ -29,6 +30,14 @@ const SIZES: Record<FigureLayout, string> = {
   annotated: '(min-width: 64rem) 45vw, 100vw',
   compare: '(min-width: 48rem) 39vw, 100vw',
   gallery: '(min-width: 64rem) 26vw, 50vw',
+  pages: '(min-width: 64rem) 20vw, 50vw',
+}
+
+/** The few fields the client-side page index needs — never a whole media document. */
+const pageShot = (resource: unknown): PageShot | undefined => {
+  if (!resource || typeof resource !== 'object') return undefined
+  const { alt, height, id, mimeType, updatedAt, url, width } = resource as PageShot
+  return url ? { alt, height, id, mimeType, updatedAt, url, width } : undefined
 }
 
 /** Literal class strings so the Tailwind scanner sees every count. */
@@ -60,6 +69,7 @@ export const FigureBlock: React.FC<FigureBlockProps> = ({
   copy,
   items,
   layout,
+  locale,
   number,
   treatment,
 }) => {
@@ -173,6 +183,28 @@ export const FigureBlock: React.FC<FigureBlockProps> = ({
         <div className="columns-2 gap-3 md:columns-3 md:gap-6">
           {visuals.map((item, i) => cell(item, i, undefined, 'mb-3 break-inside-avoid md:mb-6'))}
         </div>
+      )
+      break
+    case 'pages':
+      body = (
+        <PageIndex
+          copy={copy.pages}
+          locale={locale}
+          pages={visuals.flatMap((item, i): PageEntry[] => {
+            const desktop = pageShot(item.media)
+            if (!desktop) return []
+            return [
+              {
+                id: item.id ?? String(i),
+                label: item.caption || pad(i + 1),
+                desktop,
+                mobile: pageShot(item.mobile),
+                desktopFull: pageShot(item.full),
+                mobileFull: pageShot(item.mobileFull),
+              },
+            ]
+          })}
+        />
       )
       break
     default:

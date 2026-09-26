@@ -18,6 +18,9 @@ import { paragraph, prose } from './lexical'
  * - No server address, domain or launch claim; the site is presented as not launched.
  * - Client feedback is paraphrased, never quoted.
  * - Evidence is crops of the 2026-09-22 captures, type only: no stock photography, no empty frames.
+ *   The one exception, asked for by Sina on 2026-09-26, is the `pages` figure: every English page
+ *   of the 2026-09-26 capture, first screens and whole pages, photography included. The home
+ *   page's market-price panel is masked in the page itself before capture.
  *
  * Copy lives in one `Copy` object per locale; the sections builder is a pure template over it, so
  * a missing string or a wrong tuple length is a type error. Shared fields (codes, values, media,
@@ -42,7 +45,63 @@ const MEDIA_FILES = {
   homeAr: { file: 'crops/home-ar.png', name: 'marqevon--desktop-home-ar.png' },
 } as const
 
-export type MqvMediaKey = keyof typeof MEDIA_FILES
+/**
+ * Every English page of the deployment in information-architecture order: the `pages` figure
+ * (DS-25). `gallery/` holds the exports of `capture-2026-09-26/`. The screening article's key
+ * leaves out the gated word; its capture keeps the real slug.
+ */
+export const MQV_PAGES = [
+  'home',
+  'about',
+  'team',
+  'track-record',
+  'products',
+  'petroleum-derivatives',
+  'how-we-work',
+  'procedure',
+  'capabilities',
+  'compliance',
+  'governance',
+  'sustainability',
+  'faq',
+  'insights',
+  'insights--verify-oil-trading-counterparty',
+  'insights--inspection-sampling-certificates',
+  'insights--oil-trade-documents-checklist',
+  'insights--product-specifications-guide',
+  'insights--en-590-diesel-specification',
+  'insights--jet-a1-specification',
+  'insights--iso-8217-fuel-oil-bunkers',
+  'insights--incoterms-oil-products',
+  'insights--reading-the-diesel-curve',
+  'insights--letters-of-credit-plainly',
+  'insights--screening-discipline',
+  'insights--inspection-at-custody-transfer',
+  'careers',
+  'careers--distillates-trader',
+  'careers--operations-analyst',
+  'contact',
+  'qualify',
+  'legal--terms',
+  'legal--privacy',
+  'legal--cookies',
+] as const
+export type MqvPage = (typeof MQV_PAGES)[number]
+
+/** First screens are WebP; whole pages are JPEG, since a phone page can pass WebP's 16,383 px. */
+const PAGE_VARIANTS = {
+  desktop: { dir: 'desktop', ext: 'webp' },
+  mobile: { dir: 'mobile', ext: 'webp' },
+  desktopFull: { dir: 'desktop-full', ext: 'jpg' },
+  mobileFull: { dir: 'mobile-full', ext: 'jpg' },
+} as const
+type PageVariant = keyof typeof PAGE_VARIANTS
+const PAGE_VARIANT_KEYS = Object.keys(PAGE_VARIANTS) as PageVariant[]
+type PageMediaKey = `page:${MqvPage}:${PageVariant}`
+const pageKey = (page: MqvPage, variant: PageVariant): PageMediaKey => `page:${page}:${variant}`
+
+type MqvCropKey = keyof typeof MEDIA_FILES
+export type MqvMediaKey = MqvCropKey | PageMediaKey
 type MqvMediaIds = Partial<Record<MqvMediaKey, string>>
 type Sections = NonNullable<Project['sections']>
 
@@ -58,7 +117,7 @@ export interface MqvCopy {
   team: string
   heroCaption: string
   snapshot: { problem: string; role: string; result: string }
-  alt: Record<MqvMediaKey, string>
+  alt: Record<MqvCropKey, string>
   context: { heading: string; body: Two }
   problem: { heading: string; body: Two }
   question: { text: string; attribution: string; method: string }
@@ -86,6 +145,18 @@ export interface MqvCopy {
     teamEvidence: string
   }
   locales: { label: string; heading: string; body: Two; figureItems: Two; figureCaption: string }
+  pages: {
+    label: string
+    heading: string
+    body: Two
+    figureCaption: string
+    /** Each page's name, as the index and the viewer show it. */
+    names: Record<MqvPage, string>
+    /** Alt templates; `{page}` is the page's name. */
+    alt: Record<PageVariant, string>
+    /** Appended to the home page's whole-page alts. */
+    masked: string
+  }
   outcomes: {
     heading: string
     intro: string
@@ -244,6 +315,58 @@ const EN: MqvCopy = {
     figureItems: ['Persian: the same hero, mirrored.', 'Arabic: the same hero, mirrored.'],
     figureCaption:
       'Both right-to-left locales, navigation included, from the same components as the English.',
+  },
+  pages: {
+    label: 'Every page',
+    heading: 'Thirty-four pages, one system',
+    body: [
+      'Every English page of the deployment, captured on 26 September 2026 at 1,440 pixels wide and on a 390-pixel phone: the sixteen top-level pages, the buyer-qualification intake, two career postings, twelve insight articles and three legal pages.',
+      'The interior pages carry the same hairline data manifests and monospace identity bar as the signature ones, and on a phone each page stacks into a single column, the navigation behind a menu button. On the home page, the market-price panel is masked.',
+    ],
+    figureCaption: 'Every English page, first screen at desktop and phone width; open any page to see all of it.',
+    names: {
+      home: 'Home',
+      about: 'About',
+      team: 'Team & leadership',
+      'track-record': 'Track record',
+      products: 'Products',
+      'petroleum-derivatives': 'Petroleum derivatives',
+      'how-we-work': 'How we work',
+      procedure: 'Procedure',
+      capabilities: 'Capabilities',
+      compliance: 'Compliance & KYC',
+      governance: 'Governance',
+      sustainability: 'Responsibility',
+      faq: 'FAQ',
+      insights: 'Insights',
+      'insights--verify-oil-trading-counterparty': 'Insights · Verifying a counterparty',
+      'insights--inspection-sampling-certificates': 'Insights · Inspection, sampling and certificates',
+      'insights--oil-trade-documents-checklist': 'Insights · Trade documents checklist',
+      'insights--product-specifications-guide': 'Insights · Product specifications guide',
+      'insights--en-590-diesel-specification': 'Insights · EN 590 diesel specification',
+      'insights--jet-a1-specification': 'Insights · Jet A-1 specification',
+      'insights--iso-8217-fuel-oil-bunkers': 'Insights · ISO 8217 fuel oil and bunkers',
+      'insights--incoterms-oil-products': 'Insights · Incoterms for petroleum cargoes',
+      'insights--reading-the-diesel-curve': 'Insights · Reading the diesel curve',
+      'insights--letters-of-credit-plainly': 'Insights · Letters of credit, plainly',
+      'insights--screening-discipline': 'Insights · Screening as an operating discipline',
+      'insights--inspection-at-custody-transfer': 'Insights · Inspection at custody transfer',
+      careers: 'Careers',
+      'careers--distillates-trader': 'Careers · Distillates trader',
+      'careers--operations-analyst': 'Careers · Operations analyst',
+      contact: 'Contact',
+      qualify: 'Buyer qualification',
+      'legal--terms': 'Legal · Terms of use',
+      'legal--privacy': 'Legal · Privacy policy',
+      'legal--cookies': 'Legal · Cookie policy',
+    },
+    alt: {
+      desktop: 'Marqevon on desktop — {page}, the first screen',
+      mobile: 'Marqevon on mobile — {page}, the first screen',
+      desktopFull: 'Marqevon on desktop — {page}, the whole page',
+      mobileFull: 'Marqevon on mobile — {page}, the whole page',
+    },
+    masked: ', with the market-price panel masked',
   },
   outcomes: {
     heading: 'Deployed, not launched',
@@ -457,6 +580,58 @@ const FA: MqvCopy = {
     figureCaption:
       'هر دو زبان راست‌به‌چپ، از جمله ناوبری، ساخته‌شده از همان کامپوننت‌های نسخهٔ انگلیسی.',
   },
+  pages: {
+    label: 'همهٔ صفحه‌ها',
+    heading: 'سی‌وچهار صفحه، یک سیستم',
+    body: [
+      'همهٔ صفحه‌های انگلیسی نسخهٔ مستقرشده، ثبت‌شده در ۴ مهر ۱۴۰۵ در عرض ۱۴۴۰ پیکسل و روی گوشی ۳۹۰ پیکسلی: شانزده صفحهٔ سطح نخست، فرم احراز صلاحیت خریدار، دو آگهی شغلی، دوازده مقالهٔ تحلیلی و سه صفحهٔ حقوقی.',
+      'صفحه‌های داخلی همان مانیفست‌های داده با خطوط مویی و همان نوار هویت با قلم تک‌فاصله را دارند که صفحه‌های شاخص دارند، و روی گوشی هر صفحه در یک ستون چیده می‌شود و ناوبری پشت دکمهٔ منو قرار می‌گیرد. در صفحهٔ اصلی، بخش قیمت‌های بازار پوشانده شده است.',
+    ],
+    figureCaption: 'همهٔ صفحه‌های انگلیسی، نمای نخست در عرض دسکتاپ و گوشی؛ هر صفحه را باز کنید تا تمامش را ببینید.',
+    names: {
+      home: 'صفحهٔ اصلی',
+      about: 'دربارهٔ ما',
+      team: 'تیم و مدیریت',
+      'track-record': 'سابقهٔ کاری',
+      products: 'محصولات',
+      'petroleum-derivatives': 'فرآورده‌های نفتی',
+      'how-we-work': 'شیوهٔ کار ما',
+      procedure: 'رویهٔ معامله',
+      capabilities: 'توانمندی‌ها',
+      compliance: 'انطباق و KYC',
+      governance: 'حاکمیت شرکتی',
+      sustainability: 'مسئولیت‌پذیری',
+      faq: 'پرسش‌های متداول',
+      insights: 'تحلیل‌ها',
+      'insights--verify-oil-trading-counterparty': 'تحلیل‌ها · راستی‌آزمایی طرف معامله',
+      'insights--inspection-sampling-certificates': 'تحلیل‌ها · بازرسی، نمونه‌برداری و گواهی‌ها',
+      'insights--oil-trade-documents-checklist': 'تحلیل‌ها · چک‌لیست اسناد تجارت نفت',
+      'insights--product-specifications-guide': 'تحلیل‌ها · راهنمای مشخصات محصولات',
+      'insights--en-590-diesel-specification': 'تحلیل‌ها · مشخصات گازوئیل EN 590',
+      'insights--jet-a1-specification': 'تحلیل‌ها · مشخصات سوخت Jet A-1',
+      'insights--iso-8217-fuel-oil-bunkers': 'تحلیل‌ها · نفت کوره و سوخت کشتی طبق ISO 8217',
+      'insights--incoterms-oil-products': 'تحلیل‌ها · اینکوترمز برای محموله‌های نفتی',
+      'insights--reading-the-diesel-curve': 'تحلیل‌ها · خوانش منحنی گازوئیل',
+      'insights--letters-of-credit-plainly': 'تحلیل‌ها · اعتبار اسنادی به زبان ساده',
+      'insights--screening-discipline': 'تحلیل‌ها · غربالگری به‌عنوان انضباط عملیاتی',
+      'insights--inspection-at-custody-transfer': 'تحلیل‌ها · بازرسی هنگام تحویل محموله',
+      careers: 'فرصت‌های شغلی',
+      'careers--distillates-trader': 'فرصت‌های شغلی · معامله‌گر میان‌تقطیرها',
+      'careers--operations-analyst': 'فرصت‌های شغلی · تحلیلگر عملیات',
+      contact: 'تماس',
+      qualify: 'احراز صلاحیت خریدار',
+      'legal--terms': 'حقوقی · شرایط استفاده',
+      'legal--privacy': 'حقوقی · سیاست حریم خصوصی',
+      'legal--cookies': 'حقوقی · سیاست کوکی‌ها',
+    },
+    alt: {
+      desktop: 'Marqevon روی دسکتاپ — {page}، نمای نخست',
+      mobile: 'Marqevon روی موبایل — {page}، نمای نخست',
+      desktopFull: 'Marqevon روی دسکتاپ — {page}، کل صفحه',
+      mobileFull: 'Marqevon روی موبایل — {page}، کل صفحه',
+    },
+    masked: '، با بخش قیمت‌های بازار پوشانده‌شده',
+  },
   outcomes: {
     heading: 'مستقر، اما راه‌اندازی‌نشده',
     intro:
@@ -669,6 +844,58 @@ const AR: MqvCopy = {
     ],
     figureCaption:
       'كلتا اللغتين المكتوبتين من اليمين إلى اليسار، بما في ذلك التنقل، من المكوّنات نفسها التي بُنيت بها النسخة الإنجليزية.',
+  },
+  pages: {
+    label: 'كل الصفحات',
+    heading: 'أربع وثلاثون صفحة ونظام واحد',
+    body: [
+      'كل الصفحات الإنجليزية في النسخة المنشورة، التُقطت في 26 سبتمبر 2026 بعرض 1440 بكسلًا وعلى هاتف بعرض 390 بكسلًا: الصفحات الست عشرة في المستوى الأول، ونموذج تأهيل المشتري، وإعلانا توظيف، واثنتا عشرة مقالة تحليلية، وثلاث صفحات قانونية.',
+      'تحمل الصفحات الداخلية جداول البيان نفسها بخطوطها الشعرية وشريط الهوية نفسه بالخط أحادي المسافة، كما في الصفحات الأبرز، وعلى الهاتف تتراص كل صفحة في عمود واحد ويُطوى التنقل خلف زر القائمة. وفي الصفحة الرئيسية، حُجبت لوحة أسعار السوق.',
+    ],
+    figureCaption: 'كل الصفحات الإنجليزية، الشاشة الأولى بعرض سطح المكتب والهاتف؛ افتح أي صفحة لتراها كاملة.',
+    names: {
+      home: 'الصفحة الرئيسية',
+      about: 'من نحن',
+      team: 'الفريق والقيادة',
+      'track-record': 'سجل الإنجازات',
+      products: 'المنتجات',
+      'petroleum-derivatives': 'المشتقات النفطية',
+      'how-we-work': 'كيف نعمل',
+      procedure: 'إجراءات المعاملة',
+      capabilities: 'القدرات',
+      compliance: 'الامتثال واعرف عميلك',
+      governance: 'الحوكمة',
+      sustainability: 'المسؤولية',
+      faq: 'الأسئلة الشائعة',
+      insights: 'رؤى',
+      'insights--verify-oil-trading-counterparty': 'رؤى · التحقق من الطرف المقابل',
+      'insights--inspection-sampling-certificates': 'رؤى · التفتيش وأخذ العينات والشهادات',
+      'insights--oil-trade-documents-checklist': 'رؤى · قائمة مستندات تجارة النفط',
+      'insights--product-specifications-guide': 'رؤى · دليل مواصفات المنتجات',
+      'insights--en-590-diesel-specification': 'رؤى · مواصفات ديزل EN 590',
+      'insights--jet-a1-specification': 'رؤى · مواصفات وقود Jet A-1',
+      'insights--iso-8217-fuel-oil-bunkers': 'رؤى · زيت الوقود ووقود السفن وفق ISO 8217',
+      'insights--incoterms-oil-products': 'رؤى · مصطلحات إنكوترمز لشحنات النفط',
+      'insights--reading-the-diesel-curve': 'رؤى · قراءة منحنى الديزل',
+      'insights--letters-of-credit-plainly': 'رؤى · الاعتمادات المستندية ببساطة',
+      'insights--screening-discipline': 'رؤى · الفحص بوصفه انضباطًا تشغيليًا',
+      'insights--inspection-at-custody-transfer': 'رؤى · التفتيش عند نقل العهدة',
+      careers: 'الوظائف',
+      'careers--distillates-trader': 'الوظائف · متداول المقطرات',
+      'careers--operations-analyst': 'الوظائف · محلل العمليات',
+      contact: 'اتصل بنا',
+      qualify: 'تأهيل المشتري',
+      'legal--terms': 'قانوني · شروط الاستخدام',
+      'legal--privacy': 'قانوني · سياسة الخصوصية',
+      'legal--cookies': 'قانوني · سياسة ملفات تعريف الارتباط',
+    },
+    alt: {
+      desktop: 'Marqevon على سطح المكتب — {page}، الشاشة الأولى',
+      mobile: 'Marqevon على الجوال — {page}، الشاشة الأولى',
+      desktopFull: 'Marqevon على سطح المكتب — {page}، الصفحة كاملة',
+      mobileFull: 'Marqevon على الجوال — {page}، الصفحة كاملة',
+    },
+    masked: '، مع حجب لوحة أسعار السوق',
   },
   outcomes: {
     heading: 'منشور، لم يُطلق',
@@ -889,6 +1116,58 @@ const ES: MqvCopy = {
     figureCaption:
       'Los dos idiomas de derecha a izquierda, navegación incluida, a partir de los mismos componentes que el inglés.',
   },
+  pages: {
+    label: 'Todas las páginas',
+    heading: 'Treinta y cuatro páginas, un solo sistema',
+    body: [
+      'Todas las páginas en inglés del despliegue, capturadas el 26 de septiembre de 2026 a 1440 píxeles de ancho y en un teléfono de 390 píxeles: las dieciséis páginas de primer nivel, el formulario de calificación del comprador, dos ofertas de empleo, doce artículos de análisis y tres páginas legales.',
+      'Las páginas interiores llevan los mismos manifiestos de datos con filetes finos y la misma barra de identidad monoespaciada que las páginas emblemáticas, y en el teléfono cada página se apila en una sola columna, con la navegación tras un botón de menú. En la página de inicio, el panel de precios de mercado aparece enmascarado.',
+    ],
+    figureCaption: 'Todas las páginas en inglés, primera pantalla en escritorio y en teléfono; abra cualquiera para verla completa.',
+    names: {
+      home: 'Inicio',
+      about: 'Acerca de',
+      team: 'Equipo y dirección',
+      'track-record': 'Trayectoria',
+      products: 'Productos',
+      'petroleum-derivatives': 'Derivados del petróleo',
+      'how-we-work': 'Cómo trabajamos',
+      procedure: 'Procedimiento',
+      capabilities: 'Capacidades',
+      compliance: 'Cumplimiento y KYC',
+      governance: 'Gobernanza',
+      sustainability: 'Responsabilidad',
+      faq: 'Preguntas frecuentes',
+      insights: 'Análisis',
+      'insights--verify-oil-trading-counterparty': 'Análisis · Verificar a una contraparte',
+      'insights--inspection-sampling-certificates': 'Análisis · Inspección, muestreo y certificados',
+      'insights--oil-trade-documents-checklist': 'Análisis · Lista de documentos comerciales',
+      'insights--product-specifications-guide': 'Análisis · Guía de especificaciones de producto',
+      'insights--en-590-diesel-specification': 'Análisis · Especificación del diésel EN 590',
+      'insights--jet-a1-specification': 'Análisis · Especificación del Jet A-1',
+      'insights--iso-8217-fuel-oil-bunkers': 'Análisis · Fuelóleo y búnker según ISO 8217',
+      'insights--incoterms-oil-products': 'Análisis · Incoterms para cargamentos de petróleo',
+      'insights--reading-the-diesel-curve': 'Análisis · Leer la curva del diésel',
+      'insights--letters-of-credit-plainly': 'Análisis · Cartas de crédito, en claro',
+      'insights--screening-discipline': 'Análisis · El cribado como disciplina operativa',
+      'insights--inspection-at-custody-transfer': 'Análisis · Inspección en la transferencia de custodia',
+      careers: 'Empleo',
+      'careers--distillates-trader': 'Empleo · Operador de destilados',
+      'careers--operations-analyst': 'Empleo · Analista de operaciones',
+      contact: 'Contacto',
+      qualify: 'Calificación del comprador',
+      'legal--terms': 'Legal · Condiciones de uso',
+      'legal--privacy': 'Legal · Política de privacidad',
+      'legal--cookies': 'Legal · Política de cookies',
+    },
+    alt: {
+      desktop: 'Marqevon en escritorio — {page}, la primera pantalla',
+      mobile: 'Marqevon en móvil — {page}, la primera pantalla',
+      desktopFull: 'Marqevon en escritorio — {page}, la página completa',
+      mobileFull: 'Marqevon en móvil — {page}, la página completa',
+    },
+    masked: ', con el panel de precios de mercado enmascarado',
+  },
   outcomes: {
     heading: 'Desplegado, no lanzado',
     intro:
@@ -1102,6 +1381,58 @@ const DE: MqvCopy = {
     figureItems: ['Persisch: derselbe Hero, gespiegelt.', 'Arabisch: derselbe Hero, gespiegelt.'],
     figureCaption:
       'Beide Rechts-nach-links-Sprachen, Navigation inklusive, aus denselben Komponenten wie die englische Fassung.',
+  },
+  pages: {
+    label: 'Alle Seiten',
+    heading: 'Vierunddreißig Seiten, ein System',
+    body: [
+      'Jede englische Seite des Deployments, aufgenommen am 26. September 2026 bei 1.440 Pixeln Breite und auf einem 390 Pixel breiten Smartphone: die sechzehn Seiten der obersten Ebene, das Formular zur Käuferqualifizierung, zwei Stellenanzeigen, zwölf Fachartikel und drei Rechtsseiten.',
+      'Die Innenseiten tragen dieselben Datenmanifeste mit Haarlinien und dieselbe Monospace-Identitätsleiste wie die Vorzeigeseiten, und auf dem Smartphone stapelt sich jede Seite in einer Spalte, die Navigation hinter einem Menüknopf. Auf der Startseite ist das Feld mit den Marktpreisen abgedeckt.',
+    ],
+    figureCaption: 'Jede englische Seite, erster Bildschirm auf Desktop und Smartphone; jede Seite lässt sich ganz öffnen.',
+    names: {
+      home: 'Startseite',
+      about: 'Über uns',
+      team: 'Team und Leitung',
+      'track-record': 'Referenzen',
+      products: 'Produkte',
+      'petroleum-derivatives': 'Erdölderivate',
+      'how-we-work': 'Wie wir arbeiten',
+      procedure: 'Ablauf',
+      capabilities: 'Kompetenzen',
+      compliance: 'Compliance und KYC',
+      governance: 'Unternehmensführung',
+      sustainability: 'Verantwortung',
+      faq: 'Häufige Fragen',
+      insights: 'Analysen',
+      'insights--verify-oil-trading-counterparty': 'Analysen · Gegenparteien prüfen',
+      'insights--inspection-sampling-certificates': 'Analysen · Inspektion, Probenahme und Zertifikate',
+      'insights--oil-trade-documents-checklist': 'Analysen · Checkliste der Handelsdokumente',
+      'insights--product-specifications-guide': 'Analysen · Leitfaden zu Produktspezifikationen',
+      'insights--en-590-diesel-specification': 'Analysen · Dieselspezifikation EN 590',
+      'insights--jet-a1-specification': 'Analysen · Spezifikation für Jet A-1',
+      'insights--iso-8217-fuel-oil-bunkers': 'Analysen · Heizöl und Bunkerkraftstoffe nach ISO 8217',
+      'insights--incoterms-oil-products': 'Analysen · Incoterms für Mineralölladungen',
+      'insights--reading-the-diesel-curve': 'Analysen · Die Dieselkurve lesen',
+      'insights--letters-of-credit-plainly': 'Analysen · Akkreditive, einfach erklärt',
+      'insights--screening-discipline': 'Analysen · Screening als betriebliche Disziplin',
+      'insights--inspection-at-custody-transfer': 'Analysen · Inspektion bei der Übergabe',
+      careers: 'Karriere',
+      'careers--distillates-trader': 'Karriere · Händler für Mitteldestillate',
+      'careers--operations-analyst': 'Karriere · Operations-Analyst',
+      contact: 'Kontakt',
+      qualify: 'Käuferqualifizierung',
+      'legal--terms': 'Rechtliches · Nutzungsbedingungen',
+      'legal--privacy': 'Rechtliches · Datenschutzerklärung',
+      'legal--cookies': 'Rechtliches · Cookie-Richtlinie',
+    },
+    alt: {
+      desktop: 'Marqevon auf dem Desktop — {page}, der erste Bildschirm',
+      mobile: 'Marqevon auf dem Smartphone — {page}, der erste Bildschirm',
+      desktopFull: 'Marqevon auf dem Desktop — {page}, die ganze Seite',
+      mobileFull: 'Marqevon auf dem Smartphone — {page}, die ganze Seite',
+    },
+    masked: ', das Feld mit den Marktpreisen abgedeckt',
   },
   outcomes: {
     heading: 'Bereitgestellt, nicht gestartet',
@@ -1319,6 +1650,58 @@ const FR: MqvCopy = {
     figureCaption:
       'Les deux langues de droite à gauche, navigation comprise, à partir des mêmes composants que l’anglais.',
   },
+  pages: {
+    label: 'Toutes les pages',
+    heading: 'Trente-quatre pages, un seul système',
+    body: [
+      'Toutes les pages anglaises du déploiement, capturées le 26 septembre 2026 à 1 440 pixels de large et sur un téléphone de 390 pixels : les seize pages de premier niveau, le formulaire de qualification de l’acheteur, deux offres d’emploi, douze articles d’analyse et trois pages juridiques.',
+      'Les pages intérieures portent les mêmes manifestes de données à filets fins et la même barre d’identité à chasse fixe que les pages phares, et sur téléphone chaque page s’empile en une seule colonne, la navigation repliée derrière un bouton de menu. Sur la page d’accueil, le panneau des prix du marché est masqué.',
+    ],
+    figureCaption: 'Toutes les pages anglaises, premier écran sur ordinateur et sur téléphone ; ouvrez une page pour la voir en entier.',
+    names: {
+      home: 'Accueil',
+      about: 'À propos',
+      team: 'Équipe et direction',
+      'track-record': 'Références',
+      products: 'Produits',
+      'petroleum-derivatives': 'Dérivés pétroliers',
+      'how-we-work': 'Notre méthode',
+      procedure: 'Procédure',
+      capabilities: 'Capacités',
+      compliance: 'Conformité et KYC',
+      governance: 'Gouvernance',
+      sustainability: 'Responsabilité',
+      faq: 'Questions fréquentes',
+      insights: 'Analyses',
+      'insights--verify-oil-trading-counterparty': 'Analyses · Vérifier une contrepartie',
+      'insights--inspection-sampling-certificates': 'Analyses · Inspection, échantillonnage et certificats',
+      'insights--oil-trade-documents-checklist': 'Analyses · Liste des documents commerciaux',
+      'insights--product-specifications-guide': 'Analyses · Guide des spécifications produit',
+      'insights--en-590-diesel-specification': 'Analyses · Spécification du diesel EN 590',
+      'insights--jet-a1-specification': 'Analyses · Spécification du Jet A-1',
+      'insights--iso-8217-fuel-oil-bunkers': 'Analyses · Fioul et soutes selon l’ISO 8217',
+      'insights--incoterms-oil-products': 'Analyses · Incoterms pour les cargaisons pétrolières',
+      'insights--reading-the-diesel-curve': 'Analyses · Lire la courbe du diesel',
+      'insights--letters-of-credit-plainly': 'Analyses · Les crédits documentaires, simplement',
+      'insights--screening-discipline': 'Analyses · Le filtrage comme discipline opérationnelle',
+      'insights--inspection-at-custody-transfer': 'Analyses · L’inspection au transfert de garde',
+      careers: 'Carrières',
+      'careers--distillates-trader': 'Carrières · Négociant en distillats',
+      'careers--operations-analyst': 'Carrières · Analyste opérations',
+      contact: 'Contact',
+      qualify: 'Qualification de l’acheteur',
+      'legal--terms': 'Juridique · Conditions d’utilisation',
+      'legal--privacy': 'Juridique · Politique de confidentialité',
+      'legal--cookies': 'Juridique · Politique relative aux cookies',
+    },
+    alt: {
+      desktop: 'Marqevon sur ordinateur — {page}, le premier écran',
+      mobile: 'Marqevon sur mobile — {page}, le premier écran',
+      desktopFull: 'Marqevon sur ordinateur — {page}, la page entière',
+      mobileFull: 'Marqevon sur mobile — {page}, la page entière',
+    },
+    masked: ', le panneau des prix du marché masqué',
+  },
   outcomes: {
     heading: 'Déployé, pas lancé',
     intro:
@@ -1525,6 +1908,58 @@ const JA: MqvCopy = {
     figureCaption:
       '右から左の2言語。ナビゲーションも含め、英語版と同じコンポーネントから作られている。',
   },
+  pages: {
+    label: '全ページ',
+    heading: '34ページ、ひとつのシステム',
+    body: [
+      'デプロイ済みサイトの英語版全ページを、2026年9月26日に幅1440ピクセルと幅390ピクセルのスマートフォンで記録した。最上位の16ページ、バイヤー適格性確認フォーム、2件の求人、12本の分析記事、3つの法務ページである。',
+      '内側のページも象徴的なページと同じ細罫のデータマニフェストと等幅フォントの識別バーを備え、スマートフォンでは各ページが1列に積み重なり、ナビゲーションはメニューボタンの奥に収まる。ホームページでは、市場価格のパネルを隠している。',
+    ],
+    figureCaption: '英語版の全ページ。デスクトップとスマートフォンの最初の画面で、各ページを開くと全体を見られる。',
+    names: {
+      home: 'ホーム',
+      about: '会社概要',
+      team: 'チームと経営陣',
+      'track-record': '取引実績',
+      products: '製品',
+      'petroleum-derivatives': '石油派生品',
+      'how-we-work': '取引の進め方',
+      procedure: '手順',
+      capabilities: '能力・体制',
+      compliance: 'コンプライアンスとKYC',
+      governance: 'ガバナンス',
+      sustainability: '責任ある事業',
+      faq: 'よくある質問',
+      insights: 'インサイト',
+      'insights--verify-oil-trading-counterparty': 'インサイト · 取引相手の確認',
+      'insights--inspection-sampling-certificates': 'インサイト · 検査・サンプリング・証明書',
+      'insights--oil-trade-documents-checklist': 'インサイト · 取引書類チェックリスト',
+      'insights--product-specifications-guide': 'インサイト · 製品仕様ガイド',
+      'insights--en-590-diesel-specification': 'インサイト · EN 590ディーゼルの仕様',
+      'insights--jet-a1-specification': 'インサイト · Jet A-1の仕様',
+      'insights--iso-8217-fuel-oil-bunkers': 'インサイト · ISO 8217の燃料油とバンカー',
+      'insights--incoterms-oil-products': 'インサイト · 石油貨物のインコタームズ',
+      'insights--reading-the-diesel-curve': 'インサイト · ディーゼル・カーブを読む',
+      'insights--letters-of-credit-plainly': 'インサイト · 信用状をわかりやすく',
+      'insights--screening-discipline': 'インサイト · 業務規律としてのスクリーニング',
+      'insights--inspection-at-custody-transfer': 'インサイト · 受渡時の検査',
+      careers: '採用情報',
+      'careers--distillates-trader': '採用情報 · 留分トレーダー',
+      'careers--operations-analyst': '採用情報 · オペレーションアナリスト',
+      contact: 'お問い合わせ',
+      qualify: 'バイヤー適格性確認',
+      'legal--terms': '法務 · 利用規約',
+      'legal--privacy': '法務 · プライバシーポリシー',
+      'legal--cookies': '法務 · Cookieポリシー',
+    },
+    alt: {
+      desktop: 'デスクトップ版Marqevon — {page}、最初の画面',
+      mobile: 'モバイル版Marqevon — {page}、最初の画面',
+      desktopFull: 'デスクトップ版Marqevon — {page}、ページ全体',
+      mobileFull: 'モバイル版Marqevon — {page}、ページ全体',
+    },
+    masked: '（市場価格のパネルは隠している）',
+  },
   outcomes: {
     heading: 'デプロイ済み、未公開',
     intro:
@@ -1587,15 +2022,38 @@ const JA: MqvCopy = {
 
 const COPY: Record<Locale, MqvCopy> = { en: EN, fa: FA, ar: AR, es: ES, de: DE, fr: FR, ja: JA }
 
-export const MQV_MEDIA = Object.fromEntries(
-  (Object.keys(MEDIA_FILES) as MqvMediaKey[]).map((key) => [
-    key,
-    {
-      ...MEDIA_FILES[key],
-      alt: Object.fromEntries(LOCALES.map((locale) => [locale, COPY[locale].alt[key]])),
-    },
-  ]),
-) as Record<MqvMediaKey, MediaSpec>
+/** A page capture's alt in one locale; the home page's whole pages say that the prices are masked. */
+const pageAlt = (locale: Locale, page: MqvPage, variant: PageVariant) => {
+  const copy = COPY[locale].pages
+  const alt = copy.alt[variant].replace('{page}', copy.names[page])
+  const whole = variant === 'desktopFull' || variant === 'mobileFull'
+  return page === 'home' && whole ? `${alt}${copy.masked}` : alt
+}
+
+export const MQV_MEDIA = {
+  ...Object.fromEntries(
+    (Object.keys(MEDIA_FILES) as MqvCropKey[]).map((key) => [
+      key,
+      {
+        ...MEDIA_FILES[key],
+        alt: Object.fromEntries(LOCALES.map((locale) => [locale, COPY[locale].alt[key]])),
+      },
+    ]),
+  ),
+  ...Object.fromEntries(
+    MQV_PAGES.flatMap((page) =>
+      PAGE_VARIANT_KEYS.map((variant) => {
+        const { dir, ext } = PAGE_VARIANTS[variant]
+        const spec: MediaSpec = {
+          file: `gallery/${dir}/${page}.${ext}`,
+          name: `marqevon--page-${page}--${dir}.${ext}`,
+          alt: Object.fromEntries(LOCALES.map((locale) => [locale, pageAlt(locale, page, variant)])),
+        }
+        return [pageKey(page, variant), spec]
+      }),
+    ),
+  ),
+} as Record<MqvMediaKey, MediaSpec>
 
 const PROCESS_CODES: Four = ['BNCH', 'SPEC', 'BLD', 'FDBK']
 const MEASURED_VALUES: Two = ['142', '32 / 33']
@@ -1737,6 +2195,35 @@ export function mqvSections(locale: Locale, media: MqvMediaIds): Sections {
         ...item('homeAr', 'mqv-f14-2', c.locales.figureItems[1]),
       ],
       caption: c.locales.figureCaption,
+    },
+    {
+      id: 'mqv-s17',
+      blockType: 'csNarrative',
+      label: 'custom',
+      customLabel: c.pages.label,
+      heading: c.pages.heading,
+      body: prose(dir, ...c.pages.body.map((value) => paragraph(value, dir))),
+    },
+    {
+      id: 'mqv-s18',
+      blockType: 'csFigure',
+      layout: 'pages',
+      treatment: 'plain',
+      items: MQV_PAGES.flatMap((page, index) => {
+        const desktop = media[pageKey(page, 'desktop')]
+        if (!desktop) return []
+        return [
+          {
+            id: `mqv-g${pad(index + 1)}`,
+            media: desktop,
+            mobile: media[pageKey(page, 'mobile')] ?? null,
+            full: media[pageKey(page, 'desktopFull')] ?? null,
+            mobileFull: media[pageKey(page, 'mobileFull')] ?? null,
+            caption: c.pages.names[page],
+          },
+        ]
+      }),
+      caption: c.pages.figureCaption,
     },
     {
       id: 'mqv-s15',

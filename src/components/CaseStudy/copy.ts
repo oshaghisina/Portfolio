@@ -30,6 +30,22 @@ export interface CaseStudyCopy {
   /** Label of the terse "what was delivered" list under the outcomes. */
   delivered: string
   compare: { before: string; after: string }
+  /** The `pages` figure (DS-25): viewport tabs, sheets of twelve, the whole-page viewer. */
+  pages: {
+    /** Accessible name of the viewport tabs. */
+    views: string
+    desktop: string
+    mobile: string
+    /** Accessible name of the sheet buttons; each button is named by `sheet`. */
+    sheets: string
+    /** `{from}` and `{to}` are the first and last page numbers on a sheet. */
+    sheet: string
+    /** Appended to a page's name on its thumbnail. */
+    open: string
+    previous: string
+    next: string
+    close: string
+  }
   /** "returns to" — the loop annotation of a process map. */
   loopsTo: string
   status: Record<ProjectStatus, string>
@@ -73,6 +89,17 @@ export const caseStudyCopy: Record<Locale, CaseStudyCopy> = {
     outcomeKind: { measured: 'Measured outcome', delivered: 'Delivered output' },
     delivered: 'What was delivered',
     compare: { before: 'Before', after: 'After' },
+    pages: {
+      views: 'Screen width',
+      desktop: 'Desktop',
+      mobile: 'Mobile',
+      sheets: 'Sheets of pages',
+      sheet: 'Pages {from}–{to}',
+      open: 'open the whole page',
+      previous: 'Previous page',
+      next: 'Next page',
+      close: 'Close',
+    },
     loopsTo: 'returns to',
     status: {
       shipped: 'Shipped',
@@ -114,6 +141,17 @@ export const caseStudyCopy: Record<Locale, CaseStudyCopy> = {
     outcomeKind: { measured: 'نتیجهٔ اندازه‌گیری‌شده', delivered: 'خروجی تحویل‌شده' },
     delivered: 'چه چیزی تحویل شد',
     compare: { before: 'قبل', after: 'بعد' },
+    pages: {
+      views: 'عرض صفحه‌نمایش',
+      desktop: 'دسکتاپ',
+      mobile: 'موبایل',
+      sheets: 'برگه‌های صفحه‌ها',
+      sheet: 'صفحه‌های {from} تا {to}',
+      open: 'باز کردن کل صفحه',
+      previous: 'صفحهٔ قبلی',
+      next: 'صفحهٔ بعدی',
+      close: 'بستن',
+    },
     loopsTo: 'بازگشت به',
     status: {
       shipped: 'منتشرشده',
@@ -150,6 +188,17 @@ export const caseStudyCopy: Record<Locale, CaseStudyCopy> = {
     outcomeKind: { measured: 'نتيجة مقاسة', delivered: 'مخرج مُسلَّم' },
     delivered: 'ما تم تسليمه',
     compare: { before: 'قبل', after: 'بعد' },
+    pages: {
+      views: 'عرض الشاشة',
+      desktop: 'سطح المكتب',
+      mobile: 'الجوال',
+      sheets: 'مجموعات الصفحات',
+      sheet: 'الصفحات من {from} إلى {to}',
+      open: 'فتح الصفحة كاملة',
+      previous: 'الصفحة السابقة',
+      next: 'الصفحة التالية',
+      close: 'إغلاق',
+    },
     loopsTo: 'يعود إلى',
     status: {
       shipped: 'أُطلق',
@@ -191,6 +240,17 @@ export const caseStudyCopy: Record<Locale, CaseStudyCopy> = {
     outcomeKind: { measured: 'Resultado medido', delivered: 'Entregable' },
     delivered: 'Qué se entregó',
     compare: { before: 'Antes', after: 'Después' },
+    pages: {
+      views: 'Ancho de pantalla',
+      desktop: 'Escritorio',
+      mobile: 'Móvil',
+      sheets: 'Grupos de páginas',
+      sheet: 'Páginas {from}–{to}',
+      open: 'abrir la página completa',
+      previous: 'Página anterior',
+      next: 'Página siguiente',
+      close: 'Cerrar',
+    },
     loopsTo: 'vuelve a',
     status: {
       shipped: 'Lanzado',
@@ -232,6 +292,17 @@ export const caseStudyCopy: Record<Locale, CaseStudyCopy> = {
     outcomeKind: { measured: 'Gemessenes Ergebnis', delivered: 'Gelieferter Output' },
     delivered: 'Was geliefert wurde',
     compare: { before: 'Vorher', after: 'Nachher' },
+    pages: {
+      views: 'Bildschirmbreite',
+      desktop: 'Desktop',
+      mobile: 'Mobil',
+      sheets: 'Seitengruppen',
+      sheet: 'Seiten {from}–{to}',
+      open: 'ganze Seite öffnen',
+      previous: 'Vorherige Seite',
+      next: 'Nächste Seite',
+      close: 'Schließen',
+    },
     loopsTo: 'zurück zu',
     status: {
       shipped: 'Veröffentlicht',
@@ -273,6 +344,17 @@ export const caseStudyCopy: Record<Locale, CaseStudyCopy> = {
     outcomeKind: { measured: 'Résultat mesuré', delivered: 'Livrable' },
     delivered: 'Ce qui a été livré',
     compare: { before: 'Avant', after: 'Après' },
+    pages: {
+      views: 'Largeur d’écran',
+      desktop: 'Ordinateur',
+      mobile: 'Mobile',
+      sheets: 'Groupes de pages',
+      sheet: 'Pages {from} à {to}',
+      open: 'ouvrir la page entière',
+      previous: 'Page précédente',
+      next: 'Page suivante',
+      close: 'Fermer',
+    },
     loopsTo: 'revient à',
     status: {
       shipped: 'Lancé',
@@ -309,6 +391,17 @@ export const caseStudyCopy: Record<Locale, CaseStudyCopy> = {
     outcomeKind: { measured: '測定された成果', delivered: '納品物' },
     delivered: '納品したもの',
     compare: { before: '改善前', after: '改善後' },
+    pages: {
+      views: '画面幅',
+      desktop: 'デスクトップ',
+      mobile: 'モバイル',
+      sheets: 'ページのまとまり',
+      sheet: '{from}〜{to}ページ',
+      open: 'ページ全体を開く',
+      previous: '前のページ',
+      next: '次のページ',
+      close: '閉じる',
+    },
     loopsTo: '戻る：',
     status: {
       shipped: 'リリース済み',

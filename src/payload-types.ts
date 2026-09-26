@@ -723,19 +723,34 @@ export interface CaseStudyNarrativeBlock {
  * via the `definition` "CaseStudyFigureBlock".
  */
 export interface CaseStudyFigureBlock {
-  layout: 'full' | 'split' | 'sequence' | 'annotated' | 'compare' | 'gallery';
+  layout: 'full' | 'split' | 'sequence' | 'annotated' | 'compare' | 'gallery' | 'pages';
   /**
    * What the media is, not how big it should be.
    */
   treatment?: ('auto' | 'screen' | 'plain' | 'diagram') | null;
   /**
-   * Full / annotated: exactly one. Split / compare: exactly two. Sequence: two to four. Gallery: two to forty.
+   * Full / annotated: exactly one. Split / compare: exactly two. Sequence: two to four. Gallery: two to forty. Pages: one row per page, two to forty.
    */
   items?:
     | {
+        /**
+         * Pages: the first screen at desktop width.
+         */
         media: string | Media;
         /**
-         * Optional per-visual note; keep the explanation in the figure caption below.
+         * The first screen on a phone.
+         */
+        mobile?: (string | null) | Media;
+        /**
+         * The whole page at desktop width, opened on click.
+         */
+        full?: (string | null) | Media;
+        /**
+         * The whole page on a phone, opened on click.
+         */
+        mobileFull?: (string | null) | Media;
+        /**
+         * Optional per-visual note; keep the explanation in the figure caption below. Pages: the page’s name.
          */
         caption?: string | null;
         id?: string | null;
@@ -3374,6 +3389,9 @@ export interface CaseStudyFigureBlockSelect<T extends boolean = true> {
     | T
     | {
         media?: T;
+        mobile?: T;
+        full?: T;
+        mobileFull?: T;
         caption?: T;
         id?: T;
       };
