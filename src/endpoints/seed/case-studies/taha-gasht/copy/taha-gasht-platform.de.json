@@ -9,38 +9,37 @@
     "result": "Die neu gestaltete Buchungsseite ist auf tahagasht.com live. Reiseplaner und Social-Ebene sind gestaltet, aber nicht auf der Website."
   },
   "alt": {
-    "cover": "Entwurf der Startseite von Taha Gasht, Desktop: die Kopfzeile, eine Suche mit Reitern für Flug, Hotel, Flug plus Hotel, Tour und Inlandshotel, darunter die ersten Angebotsreihen",
-    "homeMobile": "Entwurf der Startseite von Taha Gasht auf dem Smartphone: die Suche, danach Reihen mit letzten Suchen, Last-Minute-Flügen und vorgeschlagenen Hotels",
-    "stories": "Vier Story-Screens für die Startseite von Taha Gasht auf dem Smartphone, jeweils ein Bild in voller Höhe mit Titel",
+    "cover": "Entwurf der Startseite von Taha Gasht, Desktop: die Kopfzeile, die Suche mit Reitern für Hotel, Flug, Flug plus Hotel und Tour, darunter zuletzt angesehene Flüge und Reisen in den Süden",
+    "homeMobile": "Entwurf der Startseite von Taha Gasht auf dem Smartphone: die Kopfzeile, die Hotelsuche, darunter zuletzt angesehene Flüge",
+    "stories": "Die erste von vier Stories, die den Travel Maker auf dem Smartphone vorstellen: Ziel und Daten wählen",
     "iaMap": "FigJam-Board: die Informationskarte für Flüge und Hotels mit Suchseite, Ergebnisliste, Seite eines Flugs und eines Hotels, Landingpages und statischen Seiten, verbunden durch Linien",
     "opportunity": "FigJam-Board: zwei Opportunity-Bäume; für Tickets die günstigsten, Charter-, kürzesten und Flüge mit Sonderleistungen mit Zusatzverkäufen bis zum kostenlosen Hotel beim Zwischenstopp; für Hotels die Empfehlungen der Agentur nach Garantie, Lage und Preis",
     "tourMap": "FigJam-Board: die Seite der Japan-Tour als Baum mit Einführung, Wettbewerbsvorteilen, Paketen, Reisekosten, Bewertungen, Leistungen, Dokumenten, Zusatzinformationen, Galerie, Beratung, Fragen und Blog",
     "ticket1": "Erste Iteration der Flugticket-Karte, wiederholt in einer Ergebnisliste mit Filtern daneben",
-    "ticket2": "Dritte Version der Flugticket-Karte in einer Ergebnisliste",
     "ticket3": "Endfassungen der Flug-Ergebnisliste nebeneinander: Karten mit Schatten, auf einem Kartenhintergrund und mit Rahmen, alle auf einer grauen Seite",
     "flightList": "Entwurf der Flugergebnisse, Desktop: ein Streifen mit Daten und ihren günstigsten Preisen, Reiter für günstigste, beste und die Empfehlung von Taha Gasht, Filter an der Seite und Ticketkarten mit den verbleibenden Plätzen",
-    "flightLanding": "Entwurf der Landingpage für die Flugsuche: die Suche über Strecken, Airlines, Kaufanleitung, Fragen und Blogartikeln",
-    "flightDetail": "Entwurf einer Flug-Ergebnisseite: ein geöffneter Flug mit Details, Preisaufschlüsselung und Tarifregeln",
+    "flightDetail": "Die Flugdetails öffnen sich in einem Fenster über den Ergebnissen: jede Teilstrecke mit Flughäfen und Zeiten, ein Zwischenstopp in Doha und der Gesamtpreis",
+    "flightPrice": "Dasselbe Fenster auf dem Preisreiter: der Tarif für Erwachsene, Kinder und Kleinkinder, aufgeschlüsselt, und der Gesamtpreis",
     "hotelList": "Entwurf der Hotelergebnisse: Karten mit Foto, Sternen, Preis pro Nacht und dem Empfehlungsabzeichen der Agentur, Filter an der Seite",
-    "hotelMap": "Hotelergebnisse auf einer Karte: Preismarker über der Stadt neben derselben Hotelliste",
-    "hotelDetail": "Entwurf einer Hotelseite: Galerie, Bewertungen für Personal, Lage und Sauberkeit, Zimmer, Sehenswürdigkeiten in der Nähe mit Zeiten zu Fuß, mit dem Auto und mit der U-Bahn, und Gästebewertungen",
+    "hotelMap": "Hotelergebnisse auf einer Karte: Hotelmarker, einer davon geöffnet, neben der Liste und den Filtern",
+    "hotelDetail": "Entwurf der Hotelseite: die Galerie, die Ausstattung, die Zimmer, Orte in der Nähe auf einer Karte, Bewertungen nach Kategorie und Gästerezensionen",
     "tourList": "Entwurf der Tourenliste: Tourkarten mit Terminen und Preisen ab, Filter nach Saison, Wetter, Ziel und Aktivität",
-    "tourPage": "Entwurf der Seite der Japan-Tour: Pakete, die Bilanz der Agentur, der Plan für jeden Tag, Hotels, Leistungen, Dokumente und ein Beratungsformular",
-    "tourPackage": "Entwurf eines Tourpakets: die Preistabelle nach Hotel und Zimmer, Kinderpreise und ein Kostenrechner für die Gruppe",
-    "checkout": "Entwurf des Checkouts: vier Schritte oben, Passagierdaten mit gespeicherten Passagieren, Kontaktdaten und eine Flugübersicht mit Gesamtbetrag",
-    "travels": "Konto, meine Reisen: Tickets mit ihrem Status sowie die Ansichten für Ticket, Erstattung und Kalender",
-    "passengers": "Konto, Passagiere: gespeicherte Passagiere mit Dialogen zum Hinzufügen, Bearbeiten und Löschen",
-    "wallet": "Konto, Wallet: das Guthaben der Taha-Karte, Aufladebeträge, Buchungen und ein Auszahlungsantrag",
-    "bookmarks": "Konto, Merkliste: gespeicherte Touren, Hotels und Flüge sowie der leere Zustand",
+    "tourPage": "Entwurf der Seite der Japan-Tour: die Bilanz der Agentur, eine Galerie, drei Paketkarten, die Tour auf einen Blick, die Leistungen, Rückruf und Beratung, Sehenswürdigkeiten und Erfahrungen von Reisenden",
+    "tourPackage": "Entwurf der Paketseite der Japan-Tour: Daten und Flüge, ein Kostenrechner für die Gruppe, der Plan für jeden Tag, die Route auf einer Karte, Preise nach Hotel, die Hotels und Bewertungen",
+    "checkout": "Entwurf des Checkouts: fünf Schritte oben, die Flugübersicht, Passagierdaten mit einem Button für gespeicherte Passagiere und die Kontaktdaten",
+    "travels": "Konto, meine Reisen: Buchungen nach Monat gruppiert, jede mit Art, Betrag, Datum und Status sowie Buttons für Erstattung und Ticket",
+    "passengers": "Konto, Passagiere: gespeicherte Passagiere in einer Tabelle, mit Bearbeiten und Löschen in jeder Zeile und einem Button zum Hinzufügen",
+    "wallet": "Konto, Wallet: das Guthaben der Taha-Karte, Aufladen und ein Geschenkcode sowie die Liste der Zahlungen",
+    "bookmarks": "Konto, Merkliste: gespeicherte Flüge, Hotels und Touren, jeweils mit Buttons zum Entfernen und Ansehen",
     "profile": "Konto, Profil: persönliche Daten, Passwort, Ausweisdokumente und Zahlungsdaten",
-    "notifications": "Konto, Benachrichtigungen: Nachrichten mit gelesen und löschen sowie der leere Zustand",
-    "support": "Konto, Support: Tickets nach Status, eine neue Anfrage und der Antwortverlauf eines Tickets",
+    "notifications": "Konto, Nachrichten: Flugänderungen, Angebote und Hinweise, als neu oder gelesen markiert, eine davon geöffnet",
+    "support": "Konto, Support: Anfragen mit ihrem Status (beantwortet, wartet auf Antwort, erledigt) und ein Button für eine neue",
     "signOut": "Konto, Abmelden: der Bestätigungsdialog",
-    "maker1": "Travel Maker, Schritt 1 auf dem Smartphone: Ziel und Daten wählen",
-    "maker2": "Travel Maker, Schritt 2: Verkehrsmittel und Unterkunft wählen",
-    "maker3": "Travel Maker, Schritt 3: Aktivitäten Tag für Tag hinzufügen",
-    "maker4": "Travel Maker, Schritt 4: Einstellungen der Reise und Mitreisende",
-    "socialFeed": "Social-Konzept auf dem Smartphone: Beiträge zu geplanten Touren mit Daten, Preis pro Person und einem Button zum Mitreisen",
+    "maker1": "Travel Maker, Schritt 1 auf dem Smartphone: der Plan mit dem Namen der Reise, Start und Ziel mit Zeiten, Verkehrsmittel und Unterkunft",
+    "maker2": "Travel Maker, Schritt 2, Mitreisende: eine Gruppenreise, wie viele mitfahren, und Name und Telefonnummer jeder Person",
+    "maker3": "Travel Maker, Schritt 3, Aktivitäten Tag für Tag: das Datum, ein Ort auf der Karte, die Art der Aktivität, eine Notiz und Fotos oder Dokumente",
+    "maker4": "Travel Maker, Schritt 4 mit dem Titel „Art der Veröffentlichung“: der Plan Tag für Tag mit einem Button für einen neuen Tag, dazu Bestätigen",
+    "socialFeed": "Social-Konzept auf dem Smartphone: der Beitrag eines Reisenden, der eine Bali-Tour vorschlägt, mit Preis pro Person, Daten und Abflugort",
     "socialExperience": "Social-Konzept: die Erfahrung eines Reisenden, bewertet nach Zufriedenheit, Preis-Leistung und Bereitschaft zur Empfehlung",
     "socialGoals": "FigJam-Board: sieben Ziele für die Social-Ebene mit ihren Unterzielen, darunter acht positive Treiber und die Risiken",
     "socialMap": "FigJam-Board: die Karte des Social-Systems mit Blog, interaktiver Karte, Beitrag, Reels und Reisebericht, jeweils mit Schwerpunkt, hervorstechendem Merkmal, Kontaktpunkten und dem Nutzen, den es schafft",
@@ -109,8 +108,8 @@
       "heading": "Flüge: wählen nach Preis, nach Zeit oder nach der Empfehlung der Agentur",
       "body": [
         "Die Flugergebnisse beginnen mit einem Streifen von Daten und ihren günstigsten Preisen, damit ein günstigerer Tag schon vor dem Scrollen sichtbar ist. Über der Liste stehen drei Sortierreiter, günstigste, beste und die Empfehlung von Taha Gasht, und jeder zeigt seinen Preis und die gesamte Reisezeit.",
-        "Die Filter folgen dem, was auf diesen Strecken zählt: Charter- oder Linienticket, Zahl der Zwischenstopps, ob ein Zwischenstopp ein Visum verlangt, Kabine und Gepäck. Jede Karte zeigt die verbleibenden Plätze und öffnet sich zu Flugdetails, Preisdetails und Erstattungsregeln. Ein Preisalarm sitzt in der Liste, und die vollständige Ergebnisseite ergänzt Tarifregeln, Gebühren und Verkaufsbeschränkungen.",
-        "Die Suche kann einfache Strecke, Hin- und Rückflug und Gabelflüge. Darunter bietet die Landingpage für Flüge, was Suchmaschinen und Erstbesucher brauchen: beliebte Strecken, Airlines, eine Kaufanleitung, häufige Fragen und Blogartikel."
+        "Die Filter folgen dem, was auf diesen Strecken zählt: Charter- oder Linienticket, Zahl der Zwischenstopps, ob ein Zwischenstopp ein Visum verlangt, Kabine und Gepäck. Jede Karte zeigt die verbleibenden Plätze und öffnet ein Fenster mit den Flugdetails, dem Preis für Erwachsene, Kinder und Kleinkinder und den Erstattungsregeln, die auch Gebühren und Verkaufsbeschränkungen nennen. Ein Preisalarm sitzt in der Liste.",
+        "Die Suche kann einfache Strecke, Hin- und Rückflug und Gabelflüge, und die Flugversion der Startseite ergänzt eine Tabelle mit Last-Minute-Charterflügen."
       ],
       "insight": "Das Transitvisum hat einen eigenen Filter: Eine günstige Verbindung über Europa braucht ein Schengen-Visum."
     },
@@ -137,16 +136,16 @@
       "heading": "Eine Startseite für drei Arten von Reisen",
       "customLabel": "Startseite",
       "body": [
-        "Die Startseite beginnt mit einer Suche und fünf Reitern: Flug, Hotel, Flug plus Hotel, Tour und Inlandshotel. Darunter wechseln die Reihen mit der Saison und mit den Reisenden: zuletzt angesehen, Last-Minute-Flüge, eine Reihe für Reisen in den Süden, vorgeschlagene Hotels und beliebte Ziele.",
-        "Weiter unten liefert die Seite Gründe für die Agentur: ihre Vorteile, wie man ein Ticket kauft, Bewertungen von Reisenden, ein Rückrufformular mit den Zeiten, zu denen geantwortet wird, und eine erste Einladung zum Reiseplaner: „Bau dein eigenes Abenteuer.“ Auf dem Smartphone zeigen Stories Touren und Ziele im Vollbild."
+        "Die Startseite beginnt mit einer Suche und vier Reitern: Hotel, Flug, Flug plus Hotel und Tour. Darunter wechseln die Reihen mit der Saison und mit den Reisenden: zuletzt angesehen, eine Reihe für Reisen in den Süden, Last-Minute-Flüge und vorgeschlagene Hotels. Die Startseite gibt es außerdem in einer Version für jedes Produkt: Flüge, Hotels, Flug plus Hotel und Touren.",
+        "Weiter unten liefert die Seite Gründe für die Agentur: ihre Vorteile, wie man ein Ticket kauft, Bewertungen von Reisenden, ein Rückrufformular mit den Zeiten, zu denen geantwortet wird, und eine erste Einladung zum Reiseplaner: „Bau dein eigenes Abenteuer.“ Auf dem Smartphone stellen vier Stories im Vollbild den Travel Maker vor, einen Schritt pro Story."
       ]
     },
     "account": {
       "heading": "Checkout und das Konto der Reisenden",
       "customLabel": "Konto",
       "body": [
-        "Der Checkout läuft in vier Schritten, oben sichtbar: Ticket wählen, Angaben bestätigen, bezahlen und Ticket ausstellen. Gespeicherte Passagiere werden aus einer Liste gewählt, neue mit ihren Passdaten neben einer Flugübersicht hinzugefügt.",
-        "Nach dem Kauf hat das Konto acht Bereiche: Reisen, Passagiere, Wallet, Merkliste, Profil, Benachrichtigungen, Support und Abmelden, jeder mit seinen Dialogen und seinem leeren Zustand gezeichnet. Unter Reisen sieht man den Status jedes Tickets, öffnet das E-Ticket, verfolgt den Flug und startet eine Erstattung nach Strecke und Passagier. Die Wallet, Taha-Karte genannt, wird mit festen oder frei gewählten Beträgen aufgeladen und zahlt auf ein Bankkonto aus. Der Support arbeitet mit Tickets, jedes mit eigenem Antwortverlauf.",
+        "Der Checkout läuft in fünf Schritten, oben sichtbar: Ticket wählen, Passagiere eintragen, Angaben bestätigen, bezahlen und Ticket ausstellen. Gespeicherte Passagiere werden aus einer Liste gewählt, neue mit ihren Passdaten neben einer Flugübersicht hinzugefügt.",
+        "Nach dem Kauf hat das Konto acht Bereiche: Reisen, Passagiere, Wallet, Merkliste, Profil, Nachrichten, Support und Abmelden, die meisten mit ihren Dialogen und leeren Zuständen gezeichnet. Unter Reisen sieht man den Status jedes Tickets, öffnet das E-Ticket, verfolgt den Flug und startet eine Erstattung nach Strecke und Passagier. Die Wallet, Taha-Karte genannt, wird mit festen oder frei gewählten Beträgen aufgeladen und zahlt auf ein Bankkonto aus. Der Support arbeitet mit Tickets, jedes mit eigenem Antwortverlauf.",
         "Die Anmeldung funktioniert mit Passwort oder mit einem Einmalcode, und ein Hilfebereich bündelt die Fragen, die Kaufanleitung und den Support."
       ]
     },
@@ -154,8 +153,8 @@
       "heading": "Was als Nächstes kommen könnte: eine Reise planen und teilen",
       "customLabel": "Nächster Schritt",
       "body": [
-        "Nachdem die Buchungsseite gezeichnet war, entwarf Sina ein Konzept, das Reisende auch zwischen zwei Reisen zurückholt. Der Travel Maker plant eine Reise in vier Schritten: Ziel und Daten, Verkehrsmittel und Unterkunft, Aktivitäten Tag für Tag und die Einstellungen der Reise. Aktivitäten kommen nach Arten, etwa historische Orte, Essen, Einkaufen, Erholung oder lokale Veranstaltungen, und es lassen sich neue Tage hinzufügen. Mitreisende kommen mit Namen und Telefonnummer dazu.",
-        "Die Social-Ebene lässt Reisende eine geplante Tour veröffentlichen und andere einladen mitzukommen, Erfahrungen teilen, bewertet nach Zufriedenheit, Preis-Leistung und ob sie den Ort empfehlen würden, und Reiseberichte schreiben, die auf eine Tour oder ein Hotel verlinken.",
+        "Nachdem die Buchungsseite gezeichnet war, entwarf Sina ein Konzept, das Reisende auch zwischen zwei Reisen zurückholt. Der Travel Maker plant eine Reise in vier Schritten: den Plan selbst mit Route, Daten, Verkehrsmittel und Unterkunft; die Mitreisenden mit Namen und Telefonnummer; die Aktivitäten Tag für Tag; und wie die Reise veröffentlicht wird. Aktivitäten kommen nach Arten, etwa historische Orte, Essen, Einkaufen, Erholung oder lokale Veranstaltungen, jede mit einem Ort auf der Karte und Fotos oder Dokumenten, und es lassen sich neue Tage hinzufügen.",
+        "Die Social-Ebene lässt Reisende eine Tour mit Preis pro Person, Daten und Abflugort veröffentlichen, Erfahrungen teilen, bewertet nach Zufriedenheit, Preis-Leistung und ob sie den Ort empfehlen würden, und Reiseberichte schreiben, die auf eine Tour oder ein Hotel verlinken.",
         "Mit dem Konzept kam ein Strategie-Board. Es setzt sieben Ziele, vom Umsatz und personalisierten Angeboten bis zu Kundentreue und Markenbekanntheit; acht Treiber, die Menschen zurückbringen würden, von Punkten und Abzeichen bis zu Empfehlungen an Freunde; und daneben die Risiken: wenig Beteiligung am Anfang, hohe Kosten und langsame Rendite, die Moderation von Inhalten, Datenschutz und negatives Feedback. Eine Systemkarte ordnet jedes Format (Blog, interaktive Karte, Beitrag, Reels und Reisebericht) dort ein, wo Reisende ihm begegnen: im Feed, unter Entdecken, auf der Startseite, in Kampagnen und in den Tourseiten."
       ],
       "insight": "Das Strategie-Board schreibt die Risiken neben die Ziele."
@@ -179,75 +178,130 @@
       "caption": "Die Seite der Japan-Tour als Baum, von der Einführung bis zum Blog."
     },
     "language": {
-      "caption": "Die Ticketkarte in drei Runden.",
-      "items": ["Erste Iteration", "Ticket, Version 3", "Endfassungen: Schatten, Kartenhintergrund, Rahmen"]
+      "caption": "Die Ticketkarte, von der ersten Iteration bis zu den Endfassungen. Eine Seite öffnen, um sie ganz zu sehen.",
+      "items": [
+        "Erste Iteration",
+        "Endfassungen: Schatten, Kartenhintergrund, Rahmen"
+      ]
     },
     "flightList": {
       "caption": "Flugergebnisse, Desktop.",
       "annotations": [
         "Daten mit ihren günstigsten Preisen",
         "Günstigste, beste und die Empfehlung von Taha Gasht, jeweils mit Preis und Gesamtreisezeit",
-        "Charter oder Linie, Zwischenstopps, Transitvisum, Kabine und Gepäck",
+        "Filter für Charter oder Linie, Zwischenstopps, Transitvisum, Kabine und Gepäck",
         "Verbleibende Plätze auf jeder Karte",
-        "Flug-, Preis- und Erstattungsdetails öffnen sich an Ort und Stelle",
+        "Flug-, Preis- und Erstattungsdetails öffnen sich in einem Fenster",
         "Ein Preisalarm in der Liste"
       ]
     },
     "flightPages": {
-      "caption": "Rund um die Ergebnisliste.",
-      "items": ["Die Landingpage der Flugsuche", "Ein einzelner Flug mit seinen Tarifregeln"]
+      "caption": "Die Details eines Flugs öffnen sich in einem Fenster über den Ergebnissen.",
+      "items": [
+        "Jede Teilstrecke, der Zwischenstopp und der Gesamtpreis",
+        "Der Preis für Erwachsene, Kinder und Kleinkinder"
+      ]
     },
     "hotelViews": {
-      "caption": "Hotelergebnisse als Liste und auf der Karte, mit einem gemeinsamen Satz Filter.",
-      "items": ["Liste", "Karte"]
-    },
-    "hotelDetail": {
-      "caption": "Die Hotelseite: Bewertungen nach Thema, Zimmer, Sehenswürdigkeiten in Minuten und Gästebewertungen."
-    },
-    "tourPage": {
-      "caption": "Die Seite der Japan-Tour."
+      "caption": "Hotels als Liste, auf der Karte und auf ihrer eigenen Seite. Eine Seite öffnen, um sie ganz zu sehen.",
+      "items": [
+        "Liste",
+        "Karte",
+        "Hotelseite"
+      ]
     },
     "tourParts": {
-      "caption": "Eine Tour wählen und dann ihre Kosten berechnen.",
-      "items": ["Tourenliste mit Filtern nach Saison, Wetter, Ziel und Aktivität", "Ein Paket: Preise nach Hotel und Zimmer und ein Rechner"]
+      "caption": "Eine Tour wählen, ihre Seite lesen und dann die Kosten eines Pakets berechnen. Eine Seite öffnen, um sie ganz zu sehen.",
+      "items": [
+        "Tourenliste mit Filtern nach Saison, Wetter, Ziel und Aktivität",
+        "Die Seite der Japan-Tour",
+        "Ein Paket der Japan-Tour: der Tagesplan, Preise nach Hotel und ein Rechner"
+      ]
     },
     "homeMobile": {
-      "caption": "Die Startseite auf dem Smartphone.",
-      "items": ["Startseite", "Stories"]
+      "caption": "Die Startseite auf dem Smartphone und eine Story, die den Travel Maker vorstellt.",
+      "items": [
+        "Startseite",
+        "Story"
+      ]
     },
     "checkout": {
-      "caption": "Der Checkout in vier Schritten."
+      "caption": "Der Checkout in fünf Schritten."
     },
     "account": {
       "caption": "Das Konto der Reisenden, Bereich für Bereich. Einen Bereich öffnen, um ihn in voller Größe zu sehen.",
-      "items": ["Reisen", "Passagiere", "Wallet", "Merkliste", "Profil", "Benachrichtigungen", "Support", "Abmelden"]
+      "items": [
+        "Reisen",
+        "Passagiere",
+        "Wallet",
+        "Merkliste",
+        "Profil",
+        "Nachrichten",
+        "Support",
+        "Abmelden"
+      ]
     },
     "maker": {
       "caption": "Der Travel Maker in vier Schritten.",
-      "items": ["Ziel und Daten", "Verkehrsmittel und Unterkunft", "Aktivitäten, Tag für Tag", "Einstellungen und Mitreisende"]
+      "items": [
+        "Der Plan: Route, Daten, Verkehrsmittel und Unterkunft",
+        "Mitreisende",
+        "Aktivitäten, Tag für Tag",
+        "Veröffentlichen"
+      ]
     },
     "social": {
       "caption": "Die Social-Ebene.",
-      "items": ["Touren zum Mitreisen", "Eine bewertete Erfahrung"]
+      "items": [
+        "Eine Tour, vorgeschlagen in einem Beitrag",
+        "Eine bewertete Erfahrung"
+      ]
     },
     "strategy": {
       "caption": "Das Strategie-Board hinter dem Konzept.",
-      "items": ["Ziele, Treiber und Risiken", "Wo jedes Format den Reisenden begegnet"]
+      "items": [
+        "Ziele, Treiber und Risiken",
+        "Wo jedes Format den Reisenden begegnet"
+      ]
     },
     "live": {
       "caption": "Die Live-Seite, aufgenommen am 27. September 2026. Eine Seite öffnen, um sie ganz zu sehen.",
-      "items": ["Startseite", "Flugergebnisse", "Hotels", "Touren", "Japan-Tour"]
+      "items": [
+        "Startseite",
+        "Flugergebnisse",
+        "Hotels",
+        "Touren",
+        "Japan-Tour"
+      ]
     }
   },
   "process": {
     "heading": "Vom Vergleich zur Live-Seite",
     "steps": [
-      { "label": "Vergleich", "note": "Zwölf Buchungsseiten und die von Taha Gasht, nebeneinander aufgenommen" },
-      { "label": "Informationsarchitektur", "note": "Jedes Modul der Wege für Flug, Hotel und Tour, als übernommen oder neu markiert" },
-      { "label": "Designsprache", "note": "Die Flugticket-Karte in drei Runden, dann die Seiten um sie herum" },
-      { "label": "Seiten", "note": "Startseite, Flüge, Hotels, Touren, Checkout, Hilfe und Anmeldung, für Desktop und Smartphone" },
-      { "label": "Konto", "note": "Acht Bereiche des Reisendenkontos, mit ihren Dialogen und leeren Zuständen" },
-      { "label": "Nächster Schritt", "note": "Ein Reiseplaner und eine Social-Ebene, mit einem Board aus Zielen, Treibern und Risiken" }
+      {
+        "label": "Vergleich",
+        "note": "Zwölf Buchungsseiten und die von Taha Gasht, nebeneinander aufgenommen"
+      },
+      {
+        "label": "Informationsarchitektur",
+        "note": "Jedes Modul der Wege für Flug, Hotel und Tour, als übernommen oder neu markiert"
+      },
+      {
+        "label": "Designsprache",
+        "note": "Die Flugticket-Karte in drei Runden, dann die Seiten um sie herum"
+      },
+      {
+        "label": "Seiten",
+        "note": "Startseite, Flüge, Hotels, Touren, Checkout, Hilfe und Anmeldung, für Desktop und Smartphone"
+      },
+      {
+        "label": "Konto",
+        "note": "Acht Bereiche des Reisendenkontos, mit ihren Dialogen und leeren Zuständen"
+      },
+      {
+        "label": "Nächster Schritt",
+        "note": "Ein Reiseplaner und eine Social-Ebene, mit einem Board aus Zielen, Treibern und Risiken"
+      }
     ]
   },
   "decisions": {
@@ -310,14 +364,26 @@
     "heading": "Was live ging",
     "intro": "Das Redesign ist live. Die Datei hält den Entwurf fest und enthält keine Zahlen zu Traffic oder Umsatz nach dem Start, deshalb gibt es hier keine Nutzungszahlen.",
     "delivered": [
-      { "label": "verglichene Buchungsseiten", "context": "Fünf iranische und sieben internationale, aufgenommen neben der Seite von Taha Gasht" },
-      { "label": "Bereiche im Konto der Reisenden", "context": "Reisen, Passagiere, Wallet, Merkliste, Profil, Benachrichtigungen, Support und Abmelden" },
-      { "label": "Schritte im Travel Maker", "context": "Ziel und Daten, Verkehrsmittel und Unterkunft, Aktivitäten, Einstellungen" },
-      { "label": "Ziele auf dem Social-Strategie-Board", "context": "Mit acht Treibern und den Risiken daneben" }
+      {
+        "label": "verglichene Buchungsseiten",
+        "context": "Fünf iranische und sieben internationale, aufgenommen neben der Seite von Taha Gasht"
+      },
+      {
+        "label": "Bereiche im Konto der Reisenden",
+        "context": "Reisen, Passagiere, Wallet, Merkliste, Profil, Nachrichten, Support und Abmelden"
+      },
+      {
+        "label": "Schritte im Travel Maker",
+        "context": "Der Plan, die Mitreisenden, die Aktivitäten, das Veröffentlichen"
+      },
+      {
+        "label": "Ziele auf dem Social-Strategie-Board",
+        "context": "Mit acht Treibern und den Risiken daneben"
+      }
     ],
     "shipped": [
       "Eine neu gestaltete Startseite und Suche für Flüge, Hotels und Touren",
-      "Flugsuche, Ergebnisse und Details und ein Checkout in vier Schritten",
+      "Flugsuche, Ergebnisse und Details und ein Checkout in fünf Schritten",
       "Hotelsuche mit Liste und Karte und Hotelseiten",
       "Tourenlisten und Tourseiten, beginnend mit Japan",
       "Das Konto der Reisenden, der Hilfebereich und die Anmeldung",

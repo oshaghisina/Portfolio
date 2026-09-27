@@ -9,38 +9,37 @@
     "result": "The redesigned booking site is live on tahagasht.com. The travel planner and the social layer are designed but are not on the site."
   },
   "alt": {
-    "cover": "Taha Gasht home page design, desktop — the header, a search box with tabs for flight, hotel, flight and hotel, tour and domestic hotel, and the first rows of offers below",
-    "homeMobile": "Taha Gasht home page design on a phone — the search box, then rows of recent searches, last-minute flights and suggested hotels",
-    "stories": "Four story screens for the Taha Gasht home page on a phone, each a full-height image with a title",
+    "cover": "Taha Gasht home page design, desktop — the header, the search box with tabs for hotel, flight, flight and hotel, and tour, then recently viewed flights and trips to the south",
+    "homeMobile": "Taha Gasht home page design on a phone — the header, the hotel search box, then recently viewed flights",
+    "stories": "The first of four stories that introduce the Travel Maker on a phone: choose the destination and the dates",
     "iaMap": "FigJam board — the information map of flights and hotels: search page, list view, single flight and hotel pages, landing pages and static pages, joined by connectors",
     "opportunity": "FigJam board — two opportunity trees: for tickets, cheapest, charter, shortest and special-amenity flights with upsells down to a free hotel at a stopover; for hotels, the agency’s picks by guarantee, location and price",
     "tourMap": "FigJam board — the Japan tour page as a tree: introduction, competitive advantages, packages, trip cost, reviews, services, documents, extra information, gallery, consultation, FAQ and blog",
     "ticket1": "First iteration of the flight ticket card, repeated in a result list with filters beside it",
-    "ticket2": "Third version of the flight ticket card in a result list",
     "ticket3": "Final versions of the flight result list, side by side: cards with a shadow, cards on a card background, and cards with a border, all on a grey page",
     "flightList": "Flight results design, desktop — a strip of dates with their lowest fares, sort tabs for cheapest, best and Taha Gasht’s pick, filters on the side and ticket cards with seats left",
-    "flightLanding": "Flight search landing page design — the search box above routes, airlines, how to buy, questions and blog posts",
-    "flightDetail": "Flight result page design — one flight opened with its details, price breakdown and fare rules",
+    "flightDetail": "Flight details open in a window over the results — each leg with its airports and times, a stopover in Doha, and the total fare",
+    "flightPrice": "The same window on its price tab — the fare for adults, children and infants, broken down, and the total",
     "hotelList": "Hotel results design — hotel cards with photo, stars, price per night and the agency’s pick badge, filters on the side",
-    "hotelMap": "Hotel results on a map — price pins over the city beside the same list of hotels",
-    "hotelDetail": "Hotel page design — gallery, ratings for staff, location and cleanliness, rooms, nearby sights with walking, driving and metro times, and guest reviews",
+    "hotelMap": "Hotel results on a map — hotel pins with one opened, beside the list and the filters",
+    "hotelDetail": "Hotel page design — the gallery, amenities, rooms, nearby places on a map, ratings by topic and guest reviews",
     "tourList": "Tour list design — tour cards with dates and starting prices, filters for season, weather, aim and activity",
-    "tourPage": "Japan tour page design — packages, the agency’s record, the day-by-day plan, hotels, services, documents and a consultation form",
-    "tourPackage": "Tour package design — the price table by hotel and room, children’s rates and a cost calculator for the group",
-    "checkout": "Checkout design — four steps across the top, passenger details with saved passengers, contact details and a flight summary with the total",
-    "travels": "Account, my travels — tickets with their status, and the ticket, refund and calendar views",
-    "passengers": "Account, passengers — saved passengers with add, edit and delete views",
-    "wallet": "Account, wallet — the Taha card balance, top-up amounts, transactions and a withdrawal request",
-    "bookmarks": "Account, bookmarks — saved tours, hotels and flights, and the empty state",
+    "tourPage": "Japan tour page design — the agency’s record, a gallery, three package cards, the tour at a glance, the services, a call-back and consultation, places to visit and travellers’ stories",
+    "tourPackage": "Japan tour package page design — dates and flights, a cost calculator for the group, the plan for each day, the route on a map, prices by hotel, the hotels and reviews",
+    "checkout": "Checkout design — five steps across the top, the flight summary, passenger details with a button for saved passengers, and contact details",
+    "travels": "Account, my travels — bookings grouped by month, each with its type, amount, date and status, and buttons for a refund and the ticket",
+    "passengers": "Account, passengers — saved passengers in a table, with edit and delete on each row and a button to add one",
+    "wallet": "Account, wallet — the Taha card balance, a top-up and a gift code, and the list of payments",
+    "bookmarks": "Account, bookmarks — saved flights, hotels and tours, each with remove and view buttons",
     "profile": "Account, profile — personal details, password, identity documents and payment details",
-    "notifications": "Account, notifications — messages with read and delete, and the empty state",
-    "support": "Account, support — tickets by status, a new request and a ticket thread with replies",
+    "notifications": "Account, messages — flight updates, offers and notices marked new or read, with one opened",
+    "support": "Account, support — requests with their status (answered, awaiting a reply, closed) and a button for a new one",
     "signOut": "Account, sign-out — the confirmation dialog",
-    "maker1": "Travel Maker, step 1 on a phone — choose the destination and dates",
-    "maker2": "Travel Maker, step 2 — choose transport and a place to stay",
-    "maker3": "Travel Maker, step 3 — add activities day by day",
-    "maker4": "Travel Maker, step 4 — the trip’s settings and fellow travellers",
-    "socialFeed": "Social concept on a phone — posts of planned tours with dates, price per person and a button to join the trip",
+    "maker1": "Travel Maker, step 1 on a phone — the plan: the trip’s name, origin and destination with times, transport and stay",
+    "maker2": "Travel Maker, step 2 — fellow travellers: a group trip, how many are going, and each traveller’s name and phone",
+    "maker3": "Travel Maker, step 3 — activities, day by day: the date, a place on the map, the type of activity, a note, and photos or documents",
+    "maker4": "Travel Maker, step 4, headed “how to publish” — the day-by-day plan with a button to add a day, and confirm",
+    "socialFeed": "Social concept on a phone — a traveller’s post suggesting a Bali tour, with the price per person, the dates and the departure city",
     "socialExperience": "Social concept — a traveller’s experience rated on satisfaction, value for money and willingness to recommend",
     "socialGoals": "FigJam board — seven goals for the social layer, each with its sub-goals, above eight positive drivers and the risks",
     "socialMap": "FigJam board — the social system map: blog, interactive map, post, Reels and travelogue, each with its focus, standout feature, touch points and value",
@@ -109,8 +108,8 @@
       "heading": "Flights: choose by price, by time or by the agency’s pick",
       "body": [
         "Flight results open with a strip of dates and their lowest fares, so a cheaper day is visible before any scrolling. Three sort tabs sit above the list, cheapest, best and Taha Gasht’s pick, and each shows its price and total time.",
-        "The filters follow what matters on these routes: a charter or systemic ticket, the number of stops, whether a stopover needs a visa, the cabin and the baggage. Every card shows the seats left and opens into flight details, price details and refund rules. A price alert sits in the list, and the full result page adds the fare rules, penalties and sales restrictions.",
-        "The search box handles one-way, round-trip and multi-city trips. Below it, the flight landing page carries what search engines and first-time visitors need: popular routes, airlines, how to buy a ticket, questions and blog posts."
+        "The filters follow what matters on these routes: a charter or systemic ticket, the number of stops, whether a stopover needs a visa, the cabin and the baggage. Every card shows the seats left and opens a window with the flight’s details, the price for adults, children and infants, and the refund rules, which list penalties and sales restrictions. A price alert sits in the list.",
+        "The search box handles one-way, round-trip and multi-city trips, and the flight version of the home page adds a table of last-minute charters."
       ],
       "insight": "A stopover visa gets its own filter: a cheap connection through Europe needs a Schengen visa."
     },
@@ -137,16 +136,16 @@
       "heading": "A home page for three kinds of trip",
       "customLabel": "Home",
       "body": [
-        "The home page opens with one search box and five tabs: flight, hotel, flight and hotel, tour, and domestic hotel. Below it, rows change with the season and the traveller: recently viewed trips, last-minute flights, a row of trips to the south, suggested hotels and popular destinations.",
-        "Further down, the page makes the case for the agency: its features, how to buy a ticket, passengers’ reviews, a call-back form with the hours it is answered, and a first invitation to the travel planner: “Build your own adventure.” On phones, stories show tours and destinations full-screen."
+        "The home page opens with one search box and four tabs: hotel, flight, flight and hotel, and tour. Below it, rows change with the season and the traveller: recently viewed trips, a row of trips to the south, last-minute flights and suggested hotels. The page also comes in a version for each product: flights, hotels, flight and hotel, and tours.",
+        "Further down, the page makes the case for the agency: its features, how to buy a ticket, passengers’ reviews, a call-back form with the hours it is answered, and a first invitation to the travel planner: “Build your own adventure.” On phones, four full-screen stories introduce the Travel Maker, one step each."
       ]
     },
     "account": {
       "heading": "Checkout and the traveller’s account",
       "customLabel": "Account",
       "body": [
-        "Checkout runs in four steps, shown across the top: choose a ticket, confirm the details, pay, and issue the ticket. Saved passengers can be picked from a list, and new ones are added with their passport details beside a summary of the flight.",
-        "After the purchase, the account has eight sections: travels, passengers, wallet, bookmarks, profile, notifications, support and sign-out, each drawn with its dialogs and its empty state. Travels shows each ticket’s status, opens the e-ticket, tracks the flight and starts a refund by route and passenger. The wallet, called the Taha card, is topped up by a set or a custom amount and pays out to a bank account. Support works as tickets, each with its own thread of replies.",
+        "Checkout runs in five steps, shown across the top: choose a ticket, enter the passengers, confirm the details, pay, and issue the ticket. Saved passengers can be picked from a list, and new ones are added with their passport details beside a summary of the flight.",
+        "After the purchase, the account has eight sections: travels, passengers, wallet, bookmarks, profile, messages, support and sign-out, most drawn with their dialogs and empty states. Travels shows each ticket’s status, opens the e-ticket, tracks the flight and starts a refund by route and passenger. The wallet, called the Taha card, is topped up by a set or a custom amount and pays out to a bank account. Support works as tickets, each with its own thread of replies.",
         "Sign-in works with a password or a one-time code, and a help centre gathers the questions, the buying guide and support."
       ]
     },
@@ -154,8 +153,8 @@
       "heading": "What could come next: plan a trip, then share it",
       "customLabel": "Next step",
       "body": [
-        "With the booking site drawn, Sina designed a concept to bring travellers back between trips. The Travel Maker plans a trip in four steps: the destination and dates, transport and a place to stay, activities day by day, and the trip’s settings. Activities come as types, such as historic sites, food, shopping, rest or local events, and new days can be added. Fellow travellers join the trip with their names and phone numbers.",
-        "The social layer lets travellers post a tour they are planning and invite others to join it, share experiences rated on satisfaction, value for money and whether they would recommend the place, and write travelogues that link to a tour or a hotel.",
+        "With the booking site drawn, Sina designed a concept to bring travellers back between trips. The Travel Maker plans a trip in four steps: the plan itself, with the route, the dates, the transport and the stay; the fellow travellers, with their names and phone numbers; the activities, day by day; and how to publish the trip. Activities come as types, such as historic sites, food, shopping, rest or local events, each placed on a map with photos or documents, and new days can be added.",
+        "The social layer lets travellers post a tour with its price per person, dates and departure city, share experiences rated on satisfaction, value for money and whether they would recommend the place, and write travelogues that link to a tour or a hotel.",
         "A strategy board came with it. It sets seven goals, from sales and personalised offers to loyalty and brand awareness; eight drivers that would bring people back, from points and badges to referrals; and the risks beside them: slow early engagement, cost and a slow return, moderating content, privacy and negative feedback. A system map places each format (blog, interactive map, post, Reels and travelogue) where travellers would meet it: the feed, explore, the home page, campaigns and inside tour pages."
       ],
       "insight": "The strategy board lists the risks beside the goals."
@@ -179,10 +178,9 @@
       "caption": "The Japan tour page as a tree, from the introduction to the blog."
     },
     "language": {
-      "caption": "The ticket card in three rounds.",
+      "caption": "The ticket card, from the first iteration to the final versions. Open a page to see it full size.",
       "items": [
         "First iteration",
-        "Ticket, version 3",
         "Final versions: shadow, card background, border"
       ]
     },
@@ -191,48 +189,44 @@
       "annotations": [
         "Dates with their lowest fares",
         "Cheapest, best and Taha Gasht’s pick, each with price and total time",
-        "Charter or systemic, stops, stopover visa, cabin and baggage",
+        "Filters for charter or systemic, stops, stopover visa, cabin and baggage",
         "Seats left on every card",
-        "Flight, price and refund details open in place",
+        "Flight, price and refund details open in a window",
         "A price alert inside the list"
       ]
     },
     "flightPages": {
-      "caption": "Around the result list.",
+      "caption": "A flight’s details open in a window over the results.",
       "items": [
-        "The flight search landing page",
-        "A single flight, with its fare rules"
+        "Each leg, the stopover and the total",
+        "The price for adults, children and infants"
       ]
     },
     "hotelViews": {
-      "caption": "Hotel results as a list and on a map, with one set of filters.",
+      "caption": "Hotels as a list, on a map and on their own page. Open a page to see it full size.",
       "items": [
         "List",
-        "Map"
+        "Map",
+        "Hotel page"
       ]
     },
-    "hotelDetail": {
-      "caption": "The hotel page: ratings by topic, rooms, nearby sights in minutes, and reviews."
-    },
-    "tourPage": {
-      "caption": "The Japan tour page."
-    },
     "tourParts": {
-      "caption": "Choosing a tour, then costing it.",
+      "caption": "Choosing a tour, reading its page, then costing a package. Open a page to see it full size.",
       "items": [
         "Tour list with filters by season, weather, aim and activity",
-        "A package: prices by hotel and room, and a calculator"
+        "The Japan tour page",
+        "A Japan tour package: the daily plan, prices by hotel and a calculator"
       ]
     },
     "homeMobile": {
-      "caption": "The home page on a phone.",
+      "caption": "The home page on a phone, and a story that introduces the Travel Maker.",
       "items": [
         "Home",
-        "Stories"
+        "Story"
       ]
     },
     "checkout": {
-      "caption": "Checkout in four steps."
+      "caption": "Checkout in five steps."
     },
     "account": {
       "caption": "The traveller’s account, section by section. Open a section to see it full size.",
@@ -242,7 +236,7 @@
         "Wallet",
         "Bookmarks",
         "Profile",
-        "Notifications",
+        "Messages",
         "Support",
         "Sign-out"
       ]
@@ -250,16 +244,16 @@
     "maker": {
       "caption": "The Travel Maker in four steps.",
       "items": [
-        "Destination and dates",
-        "Transport and stay",
+        "The plan: route, dates, transport and stay",
+        "Fellow travellers",
         "Activities, day by day",
-        "Settings and fellow travellers"
+        "How to publish"
       ]
     },
     "social": {
       "caption": "The social layer.",
       "items": [
-        "Tours to join",
+        "A tour suggested in a post",
         "A rated experience"
       ]
     },
@@ -376,11 +370,11 @@
       },
       {
         "label": "sections in the traveller’s account",
-        "context": "Travels, passengers, wallet, bookmarks, profile, notifications, support and sign-out"
+        "context": "Travels, passengers, wallet, bookmarks, profile, messages, support and sign-out"
       },
       {
         "label": "steps in the Travel Maker",
-        "context": "Destination and dates, transport and stay, activities, settings"
+        "context": "The plan, fellow travellers, activities, publishing"
       },
       {
         "label": "goals on the social strategy board",
@@ -389,7 +383,7 @@
     ],
     "shipped": [
       "A redesigned home page and search box for flights, hotels and tours",
-      "Flight search, results and details, and a four-step checkout",
+      "Flight search, results and details, and a five-step checkout",
       "Hotel search with a list and a map, and hotel pages",
       "Tour lists and tour pages, starting with Japan",
       "The traveller’s account, the help centre and sign-in",

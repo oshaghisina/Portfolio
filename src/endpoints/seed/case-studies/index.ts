@@ -130,6 +130,13 @@ import {
 } from './rp1-arena'
 import type { CaseStudySeedConfig, CaseStudySeedResult } from './seed-case-study'
 import { assertNoUnseededLocales, seedCaseStudy } from './seed-case-study'
+import {
+  TAH_ASSETS,
+  TAH_MEDIA,
+  TAH_SHARED_FIELDS,
+  TAH_SLUG,
+  tahLocalizedFields,
+} from './taha-gasht/study'
 import { VIN_ASSETS, VIN_MEDIA, VIN_SHARED_FIELDS, VIN_SLUG, vinLocalizedFields } from './vin-app'
 import {
   YAR_ASSETS,
@@ -431,6 +438,20 @@ export const CASE_STUDIES: CaseStudySeedConfig<any, any>[] = [
     coverCompanionMediaKey: 'brandPosition',
     sharedFields: OTE_SHARED_FIELDS,
     localizedFields: oteLocalizedFields,
+  },
+  // Taha Gasht's booking site: an existing archive row (order 8). The card pairs the phone home page
+  // with the first Travel Maker story; the desktop home page stays the share image.
+  {
+    label: 'Taha Gasht',
+    slug: TAH_SLUG,
+    assetsDir: TAH_ASSETS,
+    media: TAH_MEDIA,
+    seedLocales: LOCALES,
+    createFields: { kind: ['product'], order: 8, coverMediaKey: 'homeMobile' },
+    replaceCover: true,
+    coverCompanionMediaKey: 'stories',
+    sharedFields: TAH_SHARED_FIELDS,
+    localizedFields: tahLocalizedFields,
   },
 ]
 

@@ -240,6 +240,12 @@ export const PROJECT_SEED: ProjectSeedRow[] = [
     kind: ['product'],
     order: 8,
     status: 'published',
+    // The case study's (2026-09-27): the first screen of the home page design, desktop.
+    cover: {
+      path: 'Docs/Experience/Taha-Gasht/platform-redesign/assets/study/home/home-desktop.png',
+      name: 'taha-gasht-platform--cover.png',
+      alt: 'Taha Gasht home page design, desktop — the header, the search box with tabs for hotel, flight, flight and hotel, and tour, then recently viewed flights and trips to the south',
+    },
   },
 
   // ── Hadish Mall ─────────────────────────────────────────────────────────────────────────

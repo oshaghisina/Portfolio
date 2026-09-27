@@ -27,7 +27,11 @@ import ja from './copy/taha-gasht-platform.ja.json'
  *   board's journey map (another project, a colleague's stickies); never the Ware House or Logo
  *   pages (authorship unconfirmed).
  * - Exports are masked for personal data: Sina's email, phone-like numbers, passport, IBAN and
- *   national-code samples, and every real person's name except Sina's own.
+ *   national-code samples, and every real person's name except Sina's own. The profile photo, the
+ *   ID-card image and a sample author's photo are blurred, as are the two screenshots pasted onto
+ *   the information-architecture board (the old site, a competitor's map). A price-of-goods line
+ *   left over from another project is cleared from the checkout.
+ * - Phone screens are cropped to the first screen the page shows, so nothing below it is uploaded.
  * - No colleague, reviewer or vendor is named. No traffic or sales figure: the file has none.
  */
 const SLUG = 'taha-gasht-platform'
@@ -47,12 +51,11 @@ const FILES = {
   tourMap: { file: 'study/boards/tour-page-map.png', name: `${N}tour-page-map.png` },
 
   ticket1: { file: 'study/language/iteration-1.png', name: `${N}ticket-iteration-1.png` },
-  ticket2: { file: 'study/language/ticket-v3.png', name: `${N}ticket-v3.png` },
   ticket3: { file: 'study/language/final-versions.png', name: `${N}ticket-final-versions.png` },
 
   flightList: { file: 'study/flights/results-desktop.png', name: `${N}flight-results.png` },
-  flightLanding: { file: 'study/flights/search-landing.png', name: `${N}flight-search-landing.png` },
   flightDetail: { file: 'study/flights/ticket-result.png', name: `${N}flight-ticket-result.png` },
+  flightPrice: { file: 'study/flights/price-details.png', name: `${N}flight-price-details.png` },
 
   hotelList: { file: 'study/hotels/list.png', name: `${N}hotel-list.png` },
   hotelMap: { file: 'study/hotels/map.png', name: `${N}hotel-map.png` },
@@ -111,30 +114,30 @@ const STUDY: CspStudy<Key> = {
     { type: 'figure', key: 'tourMap', layout: 'full', treatment: 'diagram', media: ['tourMap'] },
 
     { type: 'narrative', key: 'language', label: 'custom' },
-    { type: 'figure', key: 'language', layout: 'sequence', treatment: 'screen', media: ['ticket1', 'ticket2', 'ticket3'] },
+    // Desktop pages are `plain`: `screen` frames a phone viewport. Whole pages go in `pages`
+    // (first screen, full page on click); one-screen frames sit side by side or alone.
+    { type: 'figure', key: 'language', layout: 'pages', treatment: 'plain', media: ['ticket1', 'ticket3'] },
 
     { type: 'narrative', key: 'flights', label: 'solution' },
-    { type: 'figure', key: 'flightList', layout: 'annotated', treatment: 'screen', media: ['flightList'] },
-    { type: 'figure', key: 'flightPages', layout: 'split', treatment: 'screen', media: ['flightLanding', 'flightDetail'] },
+    { type: 'figure', key: 'flightList', layout: 'annotated', treatment: 'plain', media: ['flightList'] },
+    { type: 'figure', key: 'flightPages', layout: 'split', treatment: 'plain', media: ['flightDetail', 'flightPrice'] },
 
     { type: 'narrative', key: 'hotels', label: 'custom' },
-    { type: 'figure', key: 'hotelViews', layout: 'split', treatment: 'screen', media: ['hotelList', 'hotelMap'] },
-    { type: 'figure', key: 'hotelDetail', layout: 'full', treatment: 'screen', media: ['hotelDetail'] },
+    { type: 'figure', key: 'hotelViews', layout: 'pages', treatment: 'plain', media: ['hotelList', 'hotelMap', 'hotelDetail'] },
 
     { type: 'narrative', key: 'tours', label: 'custom' },
-    { type: 'figure', key: 'tourPage', layout: 'full', treatment: 'screen', media: ['tourPage'] },
-    { type: 'figure', key: 'tourParts', layout: 'split', treatment: 'screen', media: ['tourList', 'tourPackage'] },
+    { type: 'figure', key: 'tourParts', layout: 'pages', treatment: 'plain', media: ['tourList', 'tourPage', 'tourPackage'] },
 
     { type: 'narrative', key: 'home', label: 'custom' },
     { type: 'figure', key: 'homeMobile', layout: 'split', treatment: 'screen', media: ['homeMobile', 'stories'] },
 
     { type: 'narrative', key: 'account', label: 'custom' },
-    { type: 'figure', key: 'checkout', layout: 'full', treatment: 'screen', media: ['checkout'] },
+    { type: 'figure', key: 'checkout', layout: 'full', treatment: 'plain', media: ['checkout'] },
     {
       type: 'figure',
       key: 'account',
       layout: 'pages',
-      treatment: 'screen',
+      treatment: 'plain',
       media: ['travels', 'passengers', 'wallet', 'bookmarks', 'profile', 'notifications', 'support', 'signOut'],
     },
 
@@ -148,7 +151,7 @@ const STUDY: CspStudy<Key> = {
       type: 'figure',
       key: 'live',
       layout: 'pages',
-      treatment: 'screen',
+      treatment: 'plain',
       media: ['liveHome', 'liveFlights', 'liveHotels', 'liveTours', 'liveJapan'],
     },
 

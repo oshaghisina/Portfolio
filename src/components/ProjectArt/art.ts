@@ -42,6 +42,7 @@ export const PROJECT_ART: Record<string, ProjectArtStyle> = {
   // Skips the headline to the technician photo and the four-step request band.
   'yaravan-platform': { tint: YARAVAN, leadFocus: 'object-[center_5.2%]' },
   'merikh-baft': { tint: '#2d5580' },
+  'taha-gasht-platform': { tint: '#343c7b' },
 }
 
 export const projectArt = (slug: string): ProjectArtStyle =>
