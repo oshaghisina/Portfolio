@@ -65,7 +65,7 @@ All eight public Persian case study URLs returned HTTP 200 and included a title,
 
 | ID | Project / source | CMS slug | Source | Current display | Why the source is not final; publishable scope |
 |---|---|---|---|---|---|
-| TAH-01 | [Taha Gasht platform](Experience/Taha-Gasht/platform-redesign/README.md) | `taha-gasht-platform` | draft | No cover; archive only | Three design files, team/decision scope, shipping status, metrics, and tenure dates are missing. The factual role-level archive entry can stay; a detailed page needs at least a concrete artifact or first-hand account. |
+| TAH-01 | [Taha Gasht booking site](Experience/Taha-Gasht/platform-redesign/README.md) | `taha-gasht-platform` | draft — scanned 2026-09-27 | No cover; archive only until the image pass | Scanned 2026-09-27 (22 pages, 4 boards). Sina: fully built — live on tahagasht.com. Case study copy written in 7 locales (`case-studies/taha-gasht/`); waiting on the Figma image export (daily quota), then register + seed. Open: months (Q1), team (Q2), whether Travel Maker/social shipped (Q3), internal-panel file (Q4). |
 | HDM-01 | Hadish Mall campaigns | `mall-traffic-campaigns` | No source | No cover; archive only | Gather campaign examples and supported results before a detailed story; keep the archive summary factual. |
 | HDM-02 | Mall management app concept | `mall-management-app-concept` | No source | No cover; archive only | Keep the concept label and avoid implying a launched product. |
 | FIB-01 | Fibona brand positioning | `fibona-brand-positioning` | No source | No cover; archive only | Gather process and deliverables before a detailed story. |

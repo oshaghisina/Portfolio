@@ -1,6 +1,7 @@
 import type { Project } from '@/payload-types'
 
 import { bullets, paragraph, prose, type TextDirection } from './lexical'
+import { RP1_SCREEN_MEDIA, type Rp1ScreenMediaKey, rp1ScreenSections } from './rp1-arena-screens'
 import { LOCALES, type Locale } from '@/utilities/locale'
 
 import { projectCompanyCopy, projectRoleCopy, projectTextCopy } from '../project-copy'
@@ -15,6 +16,9 @@ import type { MediaSpec } from '../media'
  *
  * Row ids are deterministic (`rp1-s01`, `rp1-d01` …) and identical in every locale payload, so
  * Payload merges each locale's copy into the same block rows instead of creating new ones.
+ *
+ * The screen index (`rp1-s16a`, `rp1-s16b`; Sina's ask, 2026-09-26) is built in
+ * `rp1-arena-screens.ts`: every distinct frame of the Figma App page, a tab per flow.
  */
 export const RP1_SLUG = 'rp1-arena'
 export const RP1_ASSETS = 'Docs/Experience/Projects/rp1-arena/assets'
@@ -55,13 +59,13 @@ const archiveText = (locale: ArchiveLocale) => {
 // by an untracked leftover — so the lookup missed on every run and Payload suffixed each
 // fresh upload. Eleven identical orphans accumulated before the name was corrected.
 
-export const RP1_MEDIA = {
+const STORY_MEDIA = {
   heroDuel: {
     file: 'games/games-main-duel.png',
     name: 'rp1-arena--games-main-duel.png',
     alt: L({
       en: 'RP1 duel challenge sheet: an incoming Flappy Bird duel in race-to-target format with a 2 USDT stake, and Decline / Accept actions',
-      fa: 'برگهٔ دعوت به دوئل در RP1: یک دوئل Flappy Bird با قالب مسابقه تا امتیاز هدف و ۲ USDT شرط، با دکمه‌های رد و قبول',
+      fa: 'برگه‌ی دعوت به دوئل در RP1: یک دوئل Flappy Bird با قالب مسابقه تا امتیاز هدف و ۲ USDT شرط، با دکمه‌های رد و قبول',
       ar: 'ورقة تحدّي مبارزة في RP1: مبارزة Flappy Bird واردة بصيغة السباق إلى الهدف برهان 2 USDT، مع زرّي الرفض والقبول',
       de: 'RP1-Duell-Herausforderung: ein eingehendes Flappy-Bird-Duell im Race-to-Target-Format mit 2 USDT Einsatz und den Aktionen Ablehnen / Annehmen',
       es: 'Hoja de desafío a duelo de RP1: un duelo entrante de Flappy Bird en formato carrera hasta el objetivo, con una apuesta de 2 USDT y las acciones Rechazar / Aceptar',
@@ -74,7 +78,7 @@ export const RP1_MEDIA = {
     name: 'rp1-arena--today-spotlight.png',
     alt: L({
       en: "Today's Spotlight screen: prize tiers, a live-rankings countdown and the leaderboard of the daily single-game competition",
-      fa: 'صفحهٔ Today’s Spotlight: رده‌های جایزه، شمارش معکوس رده‌بندی زنده و جدول رقابت روزانهٔ تک‌بازی',
+      fa: 'صفحه‌ی Today’s Spotlight: رده‌های جایزه، شمارش معکوس رده‌بندی زنده و جدول رقابت روزانه‌ی تک‌بازی',
       ar: 'شاشة Today’s Spotlight: فئات الجوائز، وعدّاد تنازلي للترتيب المباشر، ولوحة صدارة المسابقة اليومية ذات اللعبة الواحدة',
       de: 'Today’s-Spotlight-Screen: Preisstufen, ein Countdown der Live-Rangliste und das Leaderboard des täglichen Einzelspiel-Wettbewerbs',
       es: 'Pantalla de Today’s Spotlight: niveles de premios, una cuenta atrás de la clasificación en directo y la tabla de líderes de la competición diaria de un solo juego',
@@ -87,7 +91,7 @@ export const RP1_MEDIA = {
     name: 'rp1-arena--weekly-legend-ranking.png',
     alt: L({
       en: 'Weekly Legend screen: a crown, prize tiers, a countdown in days and the weekly cross-game leaderboard',
-      fa: 'صفحهٔ Weekly Legend: تاج، رده‌های جایزه، شمارش معکوس روزانه و جدول هفتگی چندبازی',
+      fa: 'صفحه‌ی Weekly Legend: تاج، رده‌های جایزه، شمارش معکوس روزانه و جدول هفتگی چندبازی',
       ar: 'شاشة Weekly Legend: تاج، وفئات الجوائز، وعدّاد تنازلي بالأيام، ولوحة الصدارة الأسبوعية عبر الألعاب',
       de: 'Weekly-Legend-Screen: eine Krone, Preisstufen, ein Countdown in Tagen und das wöchentliche spielübergreifende Leaderboard',
       es: 'Pantalla de Weekly Legend: una corona, niveles de premios, una cuenta atrás en días y la tabla de líderes semanal entre juegos',
@@ -100,7 +104,7 @@ export const RP1_MEDIA = {
     name: 'rp1-arena--duel-main.png',
     alt: L({
       en: 'Duel entry sheet: challenge a friend, or face a random opponent matched by skill',
-      fa: 'برگهٔ ورود به دوئل: دعوت یک دوست، یا رویارویی با حریفی تصادفی هم‌سطح',
+      fa: 'برگه‌ی ورود به دوئل: دعوت یک دوست، یا رویارویی با حریفی تصادفی هم‌سطح',
       ar: 'ورقة الدخول إلى المبارزة: تحدِّ صديقًا، أو واجه خصمًا عشوائيًا مطابقًا للمهارة',
       de: 'Duell-Einstieg: einen Freund herausfordern oder gegen einen zufälligen, nach Können zugeordneten Gegner antreten',
       es: 'Hoja de entrada al duelo: desafía a un amigo o enfréntate a un rival aleatorio emparejado según su habilidad',
@@ -139,7 +143,7 @@ export const RP1_MEDIA = {
     name: 'rp1-arena--spotlight-game-over.png',
     alt: L({
       en: "Game-over sheet in Today's Spotlight: score, rank, the points needed for the next rank and the remaining ticket time",
-      fa: 'برگهٔ پایان بازی در Today’s Spotlight: امتیاز، رتبه، امتیاز لازم برای رتبهٔ بعدی و زمان باقی‌ماندهٔ بلیت',
+      fa: 'برگه‌ی پایان بازی در Today’s Spotlight: امتیاز، رتبه، امتیاز لازم برای رتبه‌ی بعدی و زمان باقی‌مانده‌ی بلیت',
       ar: 'ورقة انتهاء اللعبة في Today’s Spotlight: النقاط، والترتيب، والنقاط اللازمة للترتيب التالي، والوقت المتبقي من التذكرة',
       de: 'Game-over-Sheet in Today’s Spotlight: Punkte, Rang, die für den nächsten Rang nötigen Punkte und die verbleibende Ticketzeit',
       es: 'Hoja de fin de partida en Today’s Spotlight: puntuación, puesto, los puntos que faltan para el siguiente puesto y el tiempo restante del ticket',
@@ -152,7 +156,7 @@ export const RP1_MEDIA = {
     name: 'rp1-arena--spotlight-on-top.png',
     alt: L({
       en: "Today's Spotlight sheet for the player holding first place, with the remaining time and a prompt to push the score higher",
-      fa: 'برگهٔ Today’s Spotlight برای بازیکن رتبهٔ اول، با زمان باقی‌مانده و دعوت به بالا بردن امتیاز',
+      fa: 'برگه‌ی Today’s Spotlight برای بازیکن رتبه‌ی اول، با زمان باقی‌مانده و دعوت به بالا بردن امتیاز',
       ar: 'ورقة Today’s Spotlight للاعب في المركز الأول، مع الوقت المتبقي ودعوة لرفع النقاط',
       de: 'Today’s-Spotlight-Sheet für den Spieler auf Platz eins, mit Restzeit und der Aufforderung, den Score zu steigern',
       es: 'Hoja de Today’s Spotlight para el jugador en primer puesto, con el tiempo restante y una invitación a subir aún más la puntuación',
@@ -165,7 +169,7 @@ export const RP1_MEDIA = {
     name: 'rp1-arena--spotlight-ended.png',
     alt: L({
       en: "Spotlight-ended sheet: final score, final rank and the next Spotlight's start time",
-      fa: 'برگهٔ پایان Spotlight: امتیاز نهایی، رتبهٔ نهایی و زمان شروع Spotlight بعدی',
+      fa: 'برگه‌ی پایان Spotlight: امتیاز نهایی، رتبه‌ی نهایی و زمان شروع Spotlight بعدی',
       ar: 'ورقة انتهاء الـ Spotlight: النقاط النهائية، والترتيب النهائي، وموعد بدء الـ Spotlight التالي',
       de: 'Spotlight-beendet-Sheet: Endpunktzahl, Endrang und Startzeit des nächsten Spotlights',
       es: 'Hoja de Spotlight finalizado: puntuación final, puesto final y la hora de inicio del próximo Spotlight',
@@ -178,7 +182,7 @@ export const RP1_MEDIA = {
     name: 'rp1-arena--wallet-balance.png',
     alt: L({
       en: 'Wallet screen: total balance in USDT, withdraw and deposit, earnings by source, the on-chain wallet, and available, in-play and pending balances',
-      fa: 'صفحهٔ کیف پول: موجودی کل به USDT، برداشت و واریز، درآمد به تفکیک منبع، کیف پول زنجیره‌ای و موجودی‌های در دسترس، در بازی و در انتظار',
+      fa: 'صفحه‌ی کیف پول: موجودی کل به USDT، برداشت و واریز، درآمد به تفکیک منبع، کیف پول زنجیره‌ای و موجودی‌های در دسترس، در بازی و در انتظار',
       ar: 'شاشة المحفظة: الرصيد الإجمالي بـ USDT، والسحب والإيداع، والأرباح حسب المصدر، والمحفظة على السلسلة، والأرصدة المتاحة وقيد اللعب والمعلّقة',
       de: 'Wallet-Screen: Gesamtguthaben in USDT, Auszahlen und Einzahlen, Erträge nach Quelle, die On-Chain-Wallet sowie verfügbare, im Spiel befindliche und ausstehende Guthaben',
       es: 'Pantalla del monedero: saldo total en USDT, retirar y depositar, ganancias por origen, el monedero on-chain y los saldos disponible, en juego y pendiente',
@@ -230,7 +234,7 @@ export const RP1_MEDIA = {
     name: 'rp1-arena--notifications.png',
     alt: L({
       en: 'Notification feed: transactional cards for deposits, withdrawals, prizes and duel results, each with its own actions',
-      fa: 'فید اعلان‌ها: کارت‌های تراکنشی برای واریز، برداشت، جایزه و نتیجهٔ دوئل، هرکدام با اقدام‌های خودش',
+      fa: 'فید اعلان‌ها: کارت‌های تراکنشی برای واریز، برداشت، جایزه و نتیجه‌ی دوئل، هرکدام با اقدام‌های خودش',
       ar: 'موجز الإشعارات: بطاقات معاملاتية للإيداعات والسحوبات والجوائز ونتائج المبارزات، لكل منها إجراءاتها',
       de: 'Benachrichtigungs-Feed: Transaktionskarten für Einzahlungen, Auszahlungen, Preise und Duellergebnisse, jede mit eigenen Aktionen',
       es: 'Feed de notificaciones: tarjetas transaccionales de depósitos, retiros, premios y resultados de duelos, cada una con sus propias acciones',
@@ -239,6 +243,12 @@ export const RP1_MEDIA = {
     }),
   },
 } satisfies Record<string, MediaSpec>
+
+/** The story's figures, then every screen for the index chapter. */
+export const RP1_MEDIA = { ...STORY_MEDIA, ...RP1_SCREEN_MEDIA } as Record<
+  keyof typeof STORY_MEDIA | Rp1ScreenMediaKey,
+  MediaSpec
+>
 
 export type Rp1MediaKey = keyof typeof RP1_MEDIA
 export type Rp1MediaIds = Partial<Record<Rp1MediaKey, string>>
@@ -277,7 +287,7 @@ const ROLE = L({
 
 const SUMMARY = L({
   en: 'Product design and strategy for a mobile play-to-earn arena that gathers HTML5 games under one competitive and economic layer — competitive-platform research, MVP scoping and a full wireframe spec across 16 sections.',
-  fa: 'راهبرد و طراحی محصول برای آرنای موبایلی Play-to-Earn با بازی‌های HTML5 و سازوکار مشترک رقابت و درآمد. پژوهش نمونه‌های مشابه، تعیین دامنهٔ MVP و وایرفریم ۱۶ بخش را انجام دادم.',
+  fa: 'راهبرد و طراحی محصول برای آرنای موبایلی Play-to-Earn با بازی‌های HTML5 و سازوکار مشترک رقابت و درآمد. پژوهش نمونه‌های مشابه، تعیین دامنه‌ی MVP و وایرفریم ۱۶ بخش را انجام دادم.',
   ar: 'تصميم المنتج والاستراتيجية لساحة Play-to-Earn على الهاتف تجمع ألعاب HTML5 تحت طبقة تنافسية واقتصادية واحدة — بحث في المنصات التنافسية، وتحديد نطاق الـ MVP، ومواصفات إطارات سلكية كاملة عبر 16 قسمًا.',
   de: 'Produktdesign und Strategie für eine mobile Play-to-Earn-Arena, die HTML5-Spiele unter einer gemeinsamen Wettbewerbs- und Wirtschaftsebene bündelt — Research zu Wettbewerbsplattformen, MVP-Scoping und eine vollständige Wireframe-Spezifikation über 16 Bereiche.',
   es: archiveText('es').summary,
@@ -307,7 +317,7 @@ const INDUSTRY = L({
 
 const TEAM = L({
   en: 'A product owner, a game/community-spec collaborator, and Sina as product design & strategy lead',
-  fa: 'سینا در راهبری طراحی و راهبرد محصول، همراه با مالک محصول و نویسندهٔ مشخصات بازی و جامعه',
+  fa: 'سینا در راهبری طراحی و راهبرد محصول، همراه با مالک محصول و نویسنده‌ی مشخصات بازی و جامعه',
   ar: 'مالك منتج، ومتعاون على مواصفات الألعاب والمجتمع، وسينا قائدًا لتصميم المنتج والاستراتيجية',
   de: 'Ein Product Owner, ein Mitwirkender für die Spiel- und Community-Spezifikation und Sina als Lead für Produktdesign und Strategie',
   es: 'Un product owner, un colaborador en la especificación del juego y la comunidad, y Sina como líder de diseño de producto y estrategia',
@@ -327,7 +337,7 @@ const META_TITLE = L({
 
 const HERO_CAPTION = L({
   en: "Three of the 73 exported screens: a duel challenge, Today's Spotlight and the Weekly Legend ranking.",
-  fa: 'سه نمونه از ۷۳ صفحهٔ خروجی‌گرفته‌شده: یک دعوت به دوئل، Today’s Spotlight و رده‌بندی Weekly Legend.',
+  fa: 'سه نمونه از ۷۳ صفحه‌ی خروجی‌گرفته‌شده: یک دعوت به دوئل، Today’s Spotlight و رده‌بندی Weekly Legend.',
   ar: 'ثلاث من 73 شاشة مُصدَّرة: تحدّي مبارزة، وToday’s Spotlight، وترتيب Weekly Legend.',
   de: 'Drei der 73 exportierten Screens: eine Duell-Herausforderung, Today’s Spotlight und das Weekly-Legend-Ranking.',
   es: 'Tres de las 73 pantallas exportadas: un desafío a duelo, Today’s Spotlight y la clasificación Weekly Legend.',
@@ -338,7 +348,7 @@ const HERO_CAPTION = L({
 const SNAPSHOT = {
   problem: L({
     en: 'Casual HTML5 games rarely have a durable competitive or monetization layer — and the platforms that add one tend to read as casino products first.',
-    fa: 'بازی‌های تفننی HTML5 به‌ندرت لایهٔ رقابتی یا درآمدزایی ماندگاری دارند — و پلتفرم‌هایی که چنین لایه‌ای می‌افزایند، بیشتر شبیه کازینو به نظر می‌رسند تا بازی.',
+    fa: 'بازی‌های تفننی HTML5 به‌ندرت لایه‌ی رقابتی یا درآمدزایی ماندگاری دارند — و پلتفرم‌هایی که چنین لایه‌ای می‌افزایند، بیشتر شبیه کازینو به نظر می‌رسند تا بازی.',
     ar: 'نادرًا ما تملك ألعاب HTML5 العابرة طبقة تنافسية أو طبقة تحقيق دخل مستدامة — والمنصات التي تضيفها تبدو غالبًا منتجات كازينو أولًا.',
     de: 'Casual-HTML5-Spiele haben selten eine tragfähige Wettbewerbs- oder Monetarisierungsebene — und Plattformen, die eine hinzufügen, wirken meist zuerst wie Casino-Produkte.',
     es: 'Los juegos casuales en HTML5 rara vez tienen una capa competitiva o de monetización duradera, y las plataformas que la añaden suelen parecer ante todo productos de casino.',
@@ -347,7 +357,7 @@ const SNAPSHOT = {
   }),
   role: L({
     en: 'Product design and strategy lead: the gamification research, the MVP scope and the full 16-section wireframe spec, alongside a product owner and a spec collaborator.',
-    fa: 'راهبری طراحی و راهبرد محصول، شامل پژوهش بازی‌وارسازی، تعیین دامنهٔ MVP و مشخصات وایرفریم در ۱۶ بخش؛ در کنار مالک محصول و نویسندهٔ مشخصات بازی.',
+    fa: 'راهبری طراحی و راهبرد محصول، شامل پژوهش بازی‌وارسازی، تعیین دامنه‌ی MVP و مشخصات وایرفریم در ۱۶ بخش؛ در کنار مالک محصول و نویسنده‌ی مشخصات بازی.',
     ar: 'قيادة تصميم المنتج والاستراتيجية: بحث التلعيب، ونطاق الـ MVP، ومواصفات الإطارات السلكية الكاملة عبر 16 قسمًا، إلى جانب مالك منتج ومتعاون على المواصفات.',
     de: 'Lead für Produktdesign und Strategie: das Gamification-Research, der MVP-Umfang und die vollständige Wireframe-Spezifikation über 16 Bereiche — neben einem Product Owner und einem Mitwirkenden an der Spezifikation.',
     es: 'Líder de diseño de producto y estrategia: la investigación de gamificación, el alcance del MVP y la especificación completa de wireframes en 16 secciones, junto a un product owner y un colaborador de especificación.',
@@ -356,7 +366,7 @@ const SNAPSHOT = {
   }),
   result: L({
     en: 'A fully resolved MVP scope, a 34-component build catalog with a 3-week build order, and a reusable interactive Octalysis tool — pre-launch, so no product metrics yet.',
-    fa: 'دامنهٔ مشخص MVP، فهرست ساخت با ۳۴ جزء و برنامهٔ سه‌هفته‌ای، و ابزار تعاملی Octalysis که دوباره هم می‌شود از آن استفاده کرد. محصول هنوز منتشر نشده و داده‌ای از عملکرد آن وجود ندارد.',
+    fa: 'دامنه‌ی مشخص MVP، فهرست ساخت با ۳۴ جزء و برنامه‌ی سه‌هفته‌ای، و ابزار تعاملی Octalysis که دوباره هم می‌شود از آن استفاده کرد. محصول هنوز منتشر نشده و داده‌ای از عملکرد آن وجود ندارد.',
     ar: 'نطاق MVP محسوم بالكامل، وكتالوج بناء من 34 مكوّنًا مع ترتيب بناء لثلاثة أسابيع، وأداة Octalysis تفاعلية قابلة لإعادة الاستخدام — قبل الإطلاق، فلا مقاييس منتج بعد.',
     de: 'Ein vollständig geklärter MVP-Umfang, ein Build-Katalog mit 34 Komponenten und einer dreiwöchigen Build-Reihenfolge sowie ein wiederverwendbares interaktives Octalysis-Werkzeug — vor dem Launch, also noch ohne Produktkennzahlen.',
     es: 'Un alcance del MVP totalmente resuelto, un catálogo de construcción de 34 componentes con un orden de construcción de 3 semanas y una herramienta interactiva de Octalysis reutilizable; aún sin lanzar, así que todavía no hay métricas de producto.',
@@ -385,7 +395,7 @@ export function rp1Sections(locale: Locale, media: Rp1MediaIds): Sections {
       heading: l(
         L({
           en: 'Many small games, one competitive and economic layer.',
-          fa: 'بازی‌های کوچکِ فراوان، یک لایهٔ رقابتی و اقتصادی.',
+          fa: 'بازی‌های کوچکِ فراوان، یک لایه‌ی رقابتی و اقتصادی.',
           ar: 'ألعاب صغيرة كثيرة، وطبقة تنافسية واقتصادية واحدة.',
           de: 'Viele kleine Spiele, eine Wettbewerbs- und Wirtschaftsebene.',
           es: 'Muchos juegos pequeños, una sola capa competitiva y económica.',
@@ -398,7 +408,7 @@ export function rp1Sections(locale: Locale, media: Rp1MediaIds): Sections {
         p(
           L({
             en: 'RP1 — ReadyPlayerOne in the project’s own docs — is a mobile-first arena that aggregates lightweight HTML5 arcade games — Flappy Bird, Snake, Temple Run, Subway Surf and others — under one competitive and economic layer: daily and weekly leaderboard competitions, 1v1 wagered duels and ticket-gated tournaments, all settled in USDT through an on-chain wallet (BNB Smart Chain, BEP-20).',
-              fa: 'RP1 که در اسناد پروژه ReadyPlayerOne نام دارد، مجموعه‌ای موبایلی از بازی‌های سبک HTML5 مانند Flappy Bird، Snake، Temple Run و Subway Surf است. رقابت‌های روزانه و هفتگی، دوئل‌های یک‌به‌یک با شرط و تورنمنت‌های بلیتی، لایهٔ مشترک رقابت و درآمد آن را می‌سازند. تسویه با USDT از طریق کیف پول مبتنی بر BNB Smart Chain (BEP-20) انجام می‌شود.',
+              fa: 'RP1 که در اسناد پروژه ReadyPlayerOne نام دارد، مجموعه‌ای موبایلی از بازی‌های سبک HTML5 مانند Flappy Bird، Snake، Temple Run و Subway Surf است. رقابت‌های روزانه و هفتگی، دوئل‌های یک‌به‌یک با شرط و تورنمنت‌های بلیتی، لایه‌ی مشترک رقابت و درآمد آن را می‌سازند. تسویه با USDT از طریق کیف پول مبتنی بر BNB Smart Chain (BEP-20) انجام می‌شود.',
             ar: 'RP1 — أو ReadyPlayerOne في وثائق المشروع نفسها — ساحة موجّهة للهاتف أولًا تجمع ألعاب أركيد HTML5 خفيفة — Flappy Bird وSnake وTemple Run وSubway Surf وغيرها — تحت طبقة تنافسية واقتصادية واحدة: مسابقات يومية وأسبوعية بلوحات صدارة، ومبارزات فردية برهان، وبطولات بتذاكر، تُسوّى جميعها بـ USDT عبر محفظة على السلسلة (BNB Smart Chain، BEP-20).',
             de: 'RP1 — in den Projektunterlagen ReadyPlayerOne — ist eine Mobile-first-Arena, die leichte HTML5-Arcade-Spiele — Flappy Bird, Snake, Temple Run, Subway Surf und andere — unter einer Wettbewerbs- und Wirtschaftsebene bündelt: tägliche und wöchentliche Leaderboard-Wettbewerbe, 1-gegen-1-Duelle mit Einsatz und ticketpflichtige Turniere, alle in USDT über eine On-Chain-Wallet (BNB Smart Chain, BEP-20) abgerechnet.',
             es: 'RP1 —ReadyPlayerOne en la documentación del propio proyecto— es una arena mobile-first que reúne juegos arcade ligeros en HTML5 —Flappy Bird, Snake, Temple Run, Subway Surf y otros— bajo una sola capa competitiva y económica: competiciones diarias y semanales por clasificación, duelos 1 contra 1 con apuesta y torneos con acceso por ticket, todo liquidado en USDT a través de un monedero on-chain (BNB Smart Chain, BEP-20).',
@@ -409,7 +419,7 @@ export function rp1Sections(locale: Locale, media: Rp1MediaIds): Sections {
         p(
           L({
             en: 'It is not pitched as a social network — the project’s own docs call it a “competitive visibility engine”. The reference points named throughout the research are Skillz, MPL, WinZO, Kongregate and Plato.',
-              fa: 'RP1 قرار نیست یک شبکهٔ اجتماعی باشد. در اسناد پروژه از آن به‌عنوان «موتور دیده‌شدن در رقابت» یاد شده است. پژوهش به نمونه‌هایی مانند Skillz، MPL، WinZO، Kongregate و Plato رجوع می‌کند.',
+              fa: 'RP1 قرار نیست یک شبکه‌ی اجتماعی باشد. در اسناد پروژه از آن به‌عنوان «موتور دیده‌شدن در رقابت» یاد شده است. پژوهش به نمونه‌هایی مانند Skillz، MPL، WinZO، Kongregate و Plato رجوع می‌کند.',
             ar: 'لا يُقدَّم كشبكة اجتماعية — فوثائق المشروع تسمّيه «محرّك ظهور تنافسي». والمراجع المذكورة في البحث كله هي Skillz وMPL وWinZO وKongregate وPlato.',
             de: 'Es wird nicht als soziales Netzwerk positioniert — die Projektunterlagen nennen es eine „competitive visibility engine“. Die Referenzpunkte, die sich durch das Research ziehen, sind Skillz, MPL, WinZO, Kongregate und Plato.',
             es: 'No se presenta como una red social: la propia documentación del proyecto lo llama un «motor de visibilidad competitiva». Los referentes que aparecen a lo largo de la investigación son Skillz, MPL, WinZO, Kongregate y Plato.',
@@ -437,7 +447,7 @@ export function rp1Sections(locale: Locale, media: Rp1MediaIds): Sections {
       text: l(
         L({
           en: 'Don’t become “the Telegram graveyard”: Hamster Kombat’s collapse from 300M to 23M users after its token airdrop faded was the cautionary case the research kept returning to.',
-    fa: 'پژوهش بارها به افت کاربران Hamster Kombat از ۳۰۰ میلیون به ۲۳ میلیون پس از فروکش‌کردن ایردراپ توکن اشاره می‌کند؛ هشداری دربارهٔ رشد کوتاه‌مدت بدون ماندگاری.',
+    fa: 'پژوهش بارها به افت کاربران Hamster Kombat از ۳۰۰ میلیون به ۲۳ میلیون پس از فروکش‌کردن ایردراپ توکن اشاره می‌کند؛ هشداری درباره‌ی رشد کوتاه‌مدت بدون ماندگاری.',
           ar: 'لا تتحوّل إلى «مقبرة تيليغرام»: انهيار Hamster Kombat من 300 مليون إلى 23 مليون مستخدم بعد خفوت الإسقاط الجوي لعملته كان الحالة التحذيرية التي عاد إليها البحث مرارًا.',
           de: 'Nicht zum „Telegram-Friedhof“ werden: Der Absturz von Hamster Kombat von 300 Mio. auf 23 Mio. Nutzer, nachdem der Token-Airdrop verpufft war, war der Warnfall, auf den das Research immer wieder zurückkam.',
           es: 'No convertirse en «el cementerio de Telegram»: la caída de Hamster Kombat de 300M a 23M de usuarios, tras desvanecerse el airdrop de su token, fue el caso de advertencia al que la investigación volvía una y otra vez.',
@@ -488,7 +498,7 @@ export function rp1Sections(locale: Locale, media: Rp1MediaIds): Sections {
         p(
           L({
             en: 'Casual HTML5 games are plentiful but rarely have a durable competitive or monetization layer — and the platforms that do add one, in crypto-gaming and play-to-earn, tend to read as casino products first and games second.',
-            fa: 'بازی‌های تفننی HTML5 فراوان‌اند اما به‌ندرت لایهٔ رقابتی یا درآمدزایی ماندگاری دارند — و پلتفرم‌هایی که در حوزهٔ بازی‌های کریپتویی و Play-to-Earn چنین لایه‌ای می‌افزایند، معمولاً اول کازینو به نظر می‌رسند و بعد بازی.',
+            fa: 'بازی‌های تفننی HTML5 فراوان‌اند اما به‌ندرت لایه‌ی رقابتی یا درآمدزایی ماندگاری دارند — و پلتفرم‌هایی که در حوزه‌ی بازی‌های کریپتویی و Play-to-Earn چنین لایه‌ای می‌افزایند، معمولاً اول کازینو به نظر می‌رسند و بعد بازی.',
             ar: 'ألعاب HTML5 العابرة وفيرة لكنها نادرًا ما تملك طبقة تنافسية أو طبقة تحقيق دخل مستدامة — والمنصات التي تضيفها، في ألعاب الكريبتو والـ Play-to-Earn، تبدو غالبًا منتجات كازينو أولًا وألعابًا ثانيًا.',
             de: 'Casual-HTML5-Spiele gibt es viele, aber selten mit einer tragfähigen Wettbewerbs- oder Monetarisierungsebene — und die Plattformen, die eine hinzufügen, im Crypto-Gaming und Play-to-Earn, wirken meist zuerst wie Casino-Produkte und erst dann wie Spiele.',
             es: 'Los juegos casuales en HTML5 abundan, pero rara vez tienen una capa competitiva o de monetización duradera, y las plataformas que sí la añaden, en el crypto-gaming y el play-to-earn, suelen parecer primero productos de casino y después juegos.',
@@ -639,7 +649,7 @@ export function rp1Sections(locale: Locale, media: Rp1MediaIds): Sections {
           ],
           fa: [
             'پژوهش گیمیفیکیشن: Octalysis در هر ۸ محرک اصلی، تبدیل‌شده به ابزار امتیازدهی تعاملی به انگلیسی و فارسی',
-            'تعیین دامنهٔ MVP: ناوبری سه‌تبی، یک باشگاه واحد، اقتصادی فقط با USDT',
+            'تعیین دامنه‌ی MVP: ناوبری سه‌تبی، یک باشگاه واحد، اقتصادی فقط با USDT',
             'تصمیم‌های مستند در لاگ حل تعارض، از جمله نام‌گذاری Duel / Tournament / Rumble',
             'مشخصات کامل وایرفریم در هر ۱۶ بخش، هرکدام با ممیزی متن صفحه‌به‌صفحه',
           ],
@@ -691,7 +701,7 @@ export function rp1Sections(locale: Locale, media: Rp1MediaIds): Sections {
           en: [
             'The canonical game and community spec — written by a collaborator; it superseded my earlier community draft',
           ],
-          fa: ['مشخصات مرجع بازی و جامعه — نوشتهٔ یک همکار؛ جایگزین پیش‌نویس اولیهٔ جامعهٔ من شد'],
+          fa: ['مشخصات مرجع بازی و جامعه — نوشته‌ی یک همکار؛ جایگزین پیش‌نویس اولیه‌ی جامعه‌ی من شد'],
           ar: [
             'مواصفات الألعاب والمجتمع المرجعية — كتبها متعاون؛ وحلّت محل مسودّتي الأولى للمجتمع',
           ],
@@ -717,7 +727,7 @@ export function rp1Sections(locale: Locale, media: Rp1MediaIds): Sections {
       heading: l(
         L({
           en: 'Research first, then mechanics, then a ruthless descope.',
-    fa: 'از پژوهش تا طراحی سازوکارها و محدودکردن دامنهٔ MVP.',
+    fa: 'از پژوهش تا طراحی سازوکارها و محدودکردن دامنه‌ی MVP.',
           ar: 'البحث أولًا، ثم الآليات، ثم تقليص نطاق صارم.',
           de: 'Erst Research, dann Mechaniken, dann ein rigoroser Descope.',
           es: 'Primero la investigación, luego las mecánicas y después un recorte implacable.',
@@ -741,7 +751,7 @@ export function rp1Sections(locale: Locale, media: Rp1MediaIds): Sections {
         p(
           L({
             en: 'From there, mechanics design: three mapped systems — a value-creation loop (how a low-balance player earns their way back in), an engagement loop (tournament, duel or club-store choices for a funded player) and a club retention loop with a formal state machine.',
-              fa: 'در مرحلهٔ بعد، سه سازوکار را ترسیم کردم: چرخهٔ خلق ارزش برای بازگشت بازیکن با موجودی کم، چرخهٔ تعامل برای انتخاب میان تورنمنت، دوئل و فروشگاه باشگاه، و چرخهٔ حفظ کاربران باشگاه با وضعیت‌های تعریف‌شده.',
+              fa: 'در مرحله‌ی بعد، سه سازوکار را ترسیم کردم: چرخه‌ی خلق ارزش برای بازگشت بازیکن با موجودی کم، چرخه‌ی تعامل برای انتخاب میان تورنمنت، دوئل و فروشگاه باشگاه، و چرخه‌ی حفظ کاربران باشگاه با وضعیت‌های تعریف‌شده.',
             ar: 'ومن هناك، تصميم الآليات: ثلاثة أنظمة مرسومة — حلقة خلق القيمة (كيف يكسب اللاعب منخفض الرصيد طريق عودته)، وحلقة الانخراط (خيارات البطولة أو المبارزة أو متجر النادي للاعب الممول)، وحلقة الاحتفاظ بالنادي بآلة حالات رسمية.',
             de: 'Von dort das Mechanik-Design: drei abgebildete Systeme — ein Wertschöpfungs-Loop (wie sich ein Spieler mit niedrigem Guthaben den Weg zurück verdient), ein Engagement-Loop (Turnier-, Duell- oder Club-Store-Optionen für einen finanzierten Spieler) und ein Club-Retention-Loop mit einer formalen State Machine.',
             es: 'A partir de ahí llegó el diseño de mecánicas, con tres sistemas mapeados: un bucle de creación de valor (cómo un jugador con poco saldo se gana la vuelta), un bucle de engagement (torneo, duelo o tienda del club como opciones para un jugador con fondos) y un bucle de retención del club con una máquina de estados formal.',
@@ -752,7 +762,7 @@ export function rp1Sections(locale: Locale, media: Rp1MediaIds): Sections {
         p(
           L({
             en: 'MVP descoping followed, tracked in a dated conflict-resolution log rather than left as silent rewrites. A 20-component reuse audit, ranked by reuse score, fed a full wireframe pass across all 16 sections — each with its own per-screen copy audit and a P1/P2/P3 issue log.',
-              fa: 'سپس دامنهٔ MVP را کاهش دادم و دلیل تصمیم‌ها را در گزارش تاریخ‌دار حل تعارض ثبت کردم. ۲۰ جزء را از نظر قابلیت استفادهٔ دوباره بررسی و رتبه‌بندی کردم و بر اساس نتیجه، وایرفریم هر ۱۶ بخش را با بازبینی متن صفحه‌ها و فهرست مسائل P1/P2/P3 آماده کردم.',
+              fa: 'سپس دامنه‌ی MVP را کاهش دادم و دلیل تصمیم‌ها را در گزارش تاریخ‌دار حل تعارض ثبت کردم. ۲۰ جزء را از نظر قابلیت استفاده‌ی دوباره بررسی و رتبه‌بندی کردم و بر اساس نتیجه، وایرفریم هر ۱۶ بخش را با بازبینی متن صفحه‌ها و فهرست مسائل P1/P2/P3 آماده کردم.',
             ar: 'ثم جاء تقليص نطاق الـ MVP، متتبَّعًا في سجل حل نزاعات مؤرَّخ بدل تركه إعادات كتابة صامتة. وغذّى تدقيق لإعادة استخدام 20 مكوّنًا، مرتَّبًا بدرجة إعادة الاستخدام، مرورًا كاملًا بالإطارات السلكية عبر الأقسام الـ 16 — لكل منها تدقيق نصوص لكل شاشة وسجل مشكلات P1/P2/P3.',
             de: 'Es folgte das MVP-Descoping, festgehalten in einem datierten Conflict-Resolution-Log statt in stillen Umschreibungen. Ein Reuse-Audit über 20 Komponenten, nach Reuse-Score sortiert, speiste einen vollständigen Wireframe-Durchgang über alle 16 Bereiche — jeder mit eigenem Copy-Audit pro Screen und einem P1/P2/P3-Issue-Log.',
             es: 'Después llegó el recorte del MVP, registrado en un registro fechado de resolución de conflictos en lugar de quedar como reescrituras silenciosas. Una auditoría de reutilización de 20 componentes, ordenada por puntuación de reutilización, alimentó una pasada completa de wireframes por las 16 secciones, cada una con su propia auditoría de copy por pantalla y un registro de incidencias P1/P2/P3.',
@@ -862,7 +872,7 @@ export function rp1Sections(locale: Locale, media: Rp1MediaIds): Sections {
           label: l(
             L({
               en: 'MVP descope',
-              fa: 'کاهش دامنهٔ MVP',
+              fa: 'کاهش دامنه‌ی MVP',
               ar: 'تقليص نطاق الـ MVP',
               de: 'MVP-Descope',
               es: 'Recorte del MVP',
@@ -888,7 +898,7 @@ export function rp1Sections(locale: Locale, media: Rp1MediaIds): Sections {
           label: l(
             L({
               en: 'Component reuse audit',
-              fa: 'ممیزی استفادهٔ مجدد کامپوننت‌ها',
+              fa: 'ممیزی استفاده‌ی مجدد کامپوننت‌ها',
               ar: 'تدقيق إعادة استخدام المكوّنات',
               de: 'Komponenten-Reuse-Audit',
               es: 'Auditoría de reutilización de componentes',
@@ -945,7 +955,7 @@ export function rp1Sections(locale: Locale, media: Rp1MediaIds): Sections {
       heading: l(
         L({
           en: 'The club retention loop',
-          fa: 'حلقهٔ حفظ باشگاه',
+          fa: 'حلقه‌ی حفظ باشگاه',
           ar: 'حلقة الاحتفاظ بالنادي',
           de: 'Der Club-Retention-Loop',
           es: 'El bucle de retención del club',
@@ -1016,7 +1026,7 @@ export function rp1Sections(locale: Locale, media: Rp1MediaIds): Sections {
           note: l(
             L({
               en: 'Win, near-miss, level-up, daily summary',
-              fa: 'برد، نزدیک‌به‌برد، ارتقای سطح، خلاصهٔ روزانه',
+              fa: 'برد، نزدیک‌به‌برد، ارتقای سطح، خلاصه‌ی روزانه',
               ar: 'فوز، أو اقتراب من الفوز، أو رفع مستوى، أو ملخص يومي',
               de: 'Sieg, Beinahe-Treffer, Level-up, Tagesrückblick',
               es: 'Victoria, casi victoria, subida de nivel, resumen diario',
@@ -1091,7 +1101,7 @@ export function rp1Sections(locale: Locale, media: Rp1MediaIds): Sections {
           tradeoff: l(
             L({
               en: 'A smaller economy — one club, no club stores, no token — in exchange for a scope that could be fully resolved.',
-              fa: 'اقتصاد محصول محدودتر شد: یک باشگاه، بدون فروشگاه و توکن. در مقابل، می‌شد دامنهٔ MVP را به‌طور کامل مشخص کرد.',
+              fa: 'اقتصاد محصول محدودتر شد: یک باشگاه، بدون فروشگاه و توکن. در مقابل، می‌شد دامنه‌ی MVP را به‌طور کامل مشخص کرد.',
               ar: 'اقتصاد أصغر — نادٍ واحد، ولا متاجر أندية، ولا عملة — مقابل نطاق يمكن حسمه بالكامل.',
               de: 'Eine kleinere Ökonomie — ein Club, keine Club-Stores, kein Token — im Tausch gegen einen Umfang, der sich vollständig klären ließ.',
               es: 'Una economía más pequeña —un club, sin tiendas de club, sin token— a cambio de un alcance que pudiera resolverse por completo.',
@@ -1102,7 +1112,7 @@ export function rp1Sections(locale: Locale, media: Rp1MediaIds): Sections {
           evidence: l(
             L({
               en: 'A fully resolved MVP scope and a 34-component build catalog (9 reused, 25 net-new) with a 3-week build order.',
-              fa: 'دامنهٔ MVP و فهرست ساخت ۳۴ جزء مشخص شد: ۹ جزء قابل استفادهٔ دوباره و ۲۵ جزء جدید، با ترتیب ساخت سه‌هفته‌ای.',
+              fa: 'دامنه‌ی MVP و فهرست ساخت ۳۴ جزء مشخص شد: ۹ جزء قابل استفاده‌ی دوباره و ۲۵ جزء جدید، با ترتیب ساخت سه‌هفته‌ای.',
               ar: 'نطاق MVP محسوم بالكامل وكتالوج بناء من 34 مكوّنًا (9 مُعاد استخدامها و25 جديدة) مع ترتيب بناء لثلاثة أسابيع.',
               de: 'Ein vollständig geklärter MVP-Umfang und ein Build-Katalog mit 34 Komponenten (9 wiederverwendet, 25 neu) mit einer dreiwöchigen Build-Reihenfolge.',
               es: 'Un alcance del MVP totalmente resuelto y un catálogo de construcción de 34 componentes (9 reutilizados, 25 nuevos) con un orden de construcción de 3 semanas.',
@@ -1186,7 +1196,7 @@ export function rp1Sections(locale: Locale, media: Rp1MediaIds): Sections {
           tradeoff: l(
             L({
               en: 'Time spent on tooling instead of more screens; the tool now stands as a reusable artifact independent of RP1.',
-      fa: 'این کار از زمان طراحی صفحه‌های بیشتر کم کرد، اما ابزار حاصل مستقل از RP1 و قابل استفادهٔ دوباره است.',
+      fa: 'این کار از زمان طراحی صفحه‌های بیشتر کم کرد، اما ابزار حاصل مستقل از RP1 و قابل استفاده‌ی دوباره است.',
               ar: 'وقت أُنفق على الأدوات بدل مزيد من الشاشات؛ والأداة تقف الآن كمُنتَج قابل لإعادة الاستخدام مستقل عن RP1.',
               de: 'Zeit für Tooling statt für weitere Screens; das Werkzeug ist heute ein wiederverwendbares Artefakt unabhängig von RP1.',
               es: 'Tiempo dedicado a herramientas en lugar de a más pantallas; la herramienta es hoy un artefacto reutilizable, independiente de RP1.',
@@ -1222,7 +1232,7 @@ export function rp1Sections(locale: Locale, media: Rp1MediaIds): Sections {
           why: l(
             L({
               en: 'Formally marking the earlier community draft as superseded by the collaborator’s canonical game and community spec kept the whole team working from the same current truth instead of arguing from stale docs.',
-              fa: 'پیش‌نویس اولیهٔ من دربارهٔ جامعهٔ بازیکنان رسماً کنار گذاشته شد و سندی که همکارم نوشته بود مرجع قرار گرفت. به این ترتیب، همهٔ اعضای تیم به یک نسخه رجوع می‌کردند.',
+              fa: 'پیش‌نویس اولیه‌ی من درباره‌ی جامعه‌ی بازیکنان رسماً کنار گذاشته شد و سندی که همکارم نوشته بود مرجع قرار گرفت. به این ترتیب، همه‌ی اعضای تیم به یک نسخه رجوع می‌کردند.',
               ar: 'إن الوسم الرسمي لمسودّة المجتمع السابقة بأنها مُلغاة لصالح مواصفات الألعاب والمجتمع المرجعية التي كتبها المتعاون أبقى الفريق كله يعمل من الحقيقة الحالية نفسها بدل الجدال من وثائق قديمة.',
               de: 'Den früheren Community-Entwurf formal als durch die kanonische Spiel- und Community-Spezifikation des Mitwirkenden abgelöst zu kennzeichnen, hielt das ganze Team bei derselben aktuellen Wahrheit, statt über veraltete Dokumente zu streiten.',
               es: 'Marcar formalmente el borrador de comunidad anterior como sustituido por la especificación canónica de juego y comunidad del colaborador mantuvo a todo el equipo trabajando sobre la misma verdad vigente, en lugar de discutir a partir de documentos desfasados.',
@@ -1233,7 +1243,7 @@ export function rp1Sections(locale: Locale, media: Rp1MediaIds): Sections {
           tradeoff: l(
             L({
               en: 'The superseded draft was my own.',
-              fa: 'پیش‌نویس منسوخ‌شده، نوشتهٔ خودم بود.',
+              fa: 'پیش‌نویس منسوخ‌شده، نوشته‌ی خودم بود.',
               ar: 'المسودّة المُلغاة كانت مسودّتي أنا.',
               de: 'Der abgelöste Entwurf war mein eigener.',
               es: 'El borrador sustituido era mío.',
@@ -1262,7 +1272,7 @@ export function rp1Sections(locale: Locale, media: Rp1MediaIds): Sections {
       heading: l(
         L({
           en: 'One app, three tabs, every section wireframed.',
-          fa: 'یک اپ، سه تب، وایرفریم برای همهٔ بخش‌ها.',
+          fa: 'یک اپ، سه تب، وایرفریم برای همه‌ی بخش‌ها.',
           ar: 'تطبيق واحد، وثلاثة تبويبات، وإطارات سلكية لكل قسم.',
           de: 'Eine App, drei Tabs, jeder Bereich als Wireframe.',
           es: 'Una app, tres pestañas, cada sección en wireframe.',
@@ -1275,7 +1285,7 @@ export function rp1Sections(locale: Locale, media: Rp1MediaIds): Sections {
         p(
           L({
             en: 'The spec covers the whole app: onboarding with Google, Apple or email and OTP verification; a Games hub aggregating Solo Challenge, Duel, Team Battle and Tournaments; Today Spotlight, a daily single-game competition with a ticket buy-in and live leaderboard; Weekly Legend, a 7-day cross-game competition; Lucky Wheel; Chat; Notifications as rich transactional cards; a USDT-only Wallet with an earnings breakdown; Profile with achievements and an XP-style roadmap; and Settings.',
-            fa: 'مشخصات کل اپ را پوشش می‌دهد: ورود با گوگل، اپل یا ایمیل و تأیید OTP؛ هاب بازی‌ها با Solo Challenge، Duel، Team Battle و Tournaments؛ Today Spotlight، رقابت روزانهٔ تک‌بازی با بلیت ورودی و جدول زنده؛ Weekly Legend، رقابت هفت‌روزهٔ چندبازی؛ Lucky Wheel؛ چت؛ اعلان‌ها به شکل کارت‌های تراکنشی غنی؛ کیف پول فقط با USDT و تفکیک درآمد؛ پروفایل با دستاوردها و نقشهٔ راهی به سبک XP؛ و تنظیمات.',
+            fa: 'مشخصات کل اپ را پوشش می‌دهد: ورود با گوگل، اپل یا ایمیل و تأیید OTP؛ هاب بازی‌ها با Solo Challenge، Duel، Team Battle و Tournaments؛ Today Spotlight، رقابت روزانه‌ی تک‌بازی با بلیت ورودی و جدول زنده؛ Weekly Legend، رقابت هفت‌روزه‌ی چندبازی؛ Lucky Wheel؛ چت؛ اعلان‌ها به شکل کارت‌های تراکنشی غنی؛ کیف پول فقط با USDT و تفکیک درآمد؛ پروفایل با دستاوردها و نقشه‌ی راهی به سبک XP؛ و تنظیمات.',
             ar: 'تغطي المواصفات التطبيق كله: تسجيل الدخول بحساب Google أو Apple أو البريد مع تحقق OTP؛ ومركز ألعاب يجمع Solo Challenge وDuel وTeam Battle وTournaments؛ وToday Spotlight، مسابقة يومية بلعبة واحدة بتذكرة دخول ولوحة صدارة مباشرة؛ وWeekly Legend، مسابقة عبر الألعاب لسبعة أيام؛ وLucky Wheel؛ والدردشة؛ والإشعارات كبطاقات معاملاتية غنية؛ ومحفظة بـ USDT فقط مع تفصيل الأرباح؛ وملف شخصي بإنجازات وخريطة طريق بأسلوب XP؛ والإعدادات.',
             de: 'Die Spezifikation deckt die ganze App ab: Onboarding mit Google, Apple oder E-Mail und OTP-Verifizierung; ein Games-Hub mit Solo Challenge, Duel, Team Battle und Tournaments; Today Spotlight, ein täglicher Einzelspiel-Wettbewerb mit Ticket-Buy-in und Live-Leaderboard; Weekly Legend, ein siebentägiger spielübergreifender Wettbewerb; Lucky Wheel; Chat; Benachrichtigungen als reichhaltige Transaktionskarten; eine reine USDT-Wallet mit Ertragsaufschlüsselung; Profil mit Erfolgen und einer XP-artigen Roadmap; und Einstellungen.',
             es: 'La especificación cubre toda la app: onboarding con Google, Apple o correo electrónico y verificación OTP; un hub de juegos que reúne Solo Challenge, Duel, Team Battle y Tournaments; Today Spotlight, una competición diaria de un solo juego con entrada por ticket y clasificación en directo; Weekly Legend, una competición de 7 días entre juegos; Lucky Wheel; chat; notificaciones como tarjetas transaccionales enriquecidas; una billetera solo en USDT con desglose de ganancias; un perfil con logros y una hoja de ruta al estilo XP; y ajustes.',
@@ -1286,7 +1296,7 @@ export function rp1Sections(locale: Locale, media: Rp1MediaIds): Sections {
         p(
           L({
             en: 'Navigation is locked to three tabs — Club, Game, Wallet — with a single reusable Feed Card pattern (win announcement, tournament starting, near-miss, level-up, daily summary) carrying the Club tab. Three animation systems complete the spec: a profile-entry sequence, a six-keyframe level-up and ten event-based overlays.',
-            fa: 'ناوبری به سه تب باشگاه، بازی و کیف پول محدود است. محتوای تب باشگاه با یک الگوی کارتِ قابل استفادهٔ دوباره ساخته می‌شود: اعلام برد، آغاز تورنمنت، نزدیک‌شدن به برد، ارتقای سطح و خلاصهٔ روزانه. سه مجموعه انیمیشن هم در مشخصات آمده است: ورود به پروفایل، ارتقای سطح در شش فریم و ده پوشش تصویری که با رویدادها فعال می‌شوند.',
+            fa: 'ناوبری به سه تب باشگاه، بازی و کیف پول محدود است. محتوای تب باشگاه با یک الگوی کارتِ قابل استفاده‌ی دوباره ساخته می‌شود: اعلام برد، آغاز تورنمنت، نزدیک‌شدن به برد، ارتقای سطح و خلاصه‌ی روزانه. سه مجموعه انیمیشن هم در مشخصات آمده است: ورود به پروفایل، ارتقای سطح در شش فریم و ده پوشش تصویری که با رویدادها فعال می‌شوند.',
             ar: 'التنقّل مثبَّت على ثلاثة تبويبات — النادي، واللعبة، والمحفظة — مع نمط Feed Card واحد قابل لإعادة الاستخدام (إعلان فوز، وبدء بطولة، واقتراب من الفوز، ورفع مستوى، وملخص يومي) يحمل تبويب النادي. وتكمل المواصفات ثلاثة أنظمة حركة: تسلسل دخول الملف الشخصي، ورفع مستوى بستة إطارات مفتاحية، وعشر طبقات قائمة على الأحداث.',
             de: 'Die Navigation ist auf drei Tabs festgelegt — Club, Game, Wallet — mit einem einzigen wiederverwendbaren Feed-Card-Muster (Siegmeldung, Turnierstart, Beinahe-Treffer, Level-up, Tagesrückblick), das den Club-Tab trägt. Drei Animationssysteme vervollständigen die Spezifikation: eine Profil-Einstiegssequenz, ein Level-up mit sechs Keyframes und zehn ereignisbasierte Overlays.',
             es: 'La navegación queda fijada en tres pestañas —Club, Game, Wallet— y un único patrón reutilizable de Feed Card (anuncio de victoria, torneo que empieza, casi victoria, subida de nivel, resumen diario) sostiene la pestaña Club. Tres sistemas de animación completan la especificación: una secuencia de entrada al perfil, una subida de nivel en seis fotogramas clave y diez overlays basados en eventos.',
@@ -1331,7 +1341,7 @@ export function rp1Sections(locale: Locale, media: Rp1MediaIds): Sections {
       caption: l(
         L({
           en: 'Today’s Spotlight after a run: the near-miss sheet shows the points to the next rank while the ticket is still live; holding first place promises a notification if someone takes the spot; when the Spotlight ends, the final rank and tomorrow’s start time.',
-          fa: 'Today’s Spotlight پس از یک دور بازی: برگهٔ نزدیک‌به‌برد تا وقتی بلیت زنده است، امتیاز لازم تا رتبهٔ بعدی را نشان می‌دهد؛ رتبهٔ اول وعدهٔ اعلان می‌دهد اگر کسی جایش را بگیرد؛ و با پایان Spotlight، رتبهٔ نهایی و زمان شروع فردا.',
+          fa: 'Today’s Spotlight پس از یک دور بازی: برگه‌ی نزدیک‌به‌برد تا وقتی بلیت زنده است، امتیاز لازم تا رتبه‌ی بعدی را نشان می‌دهد؛ رتبه‌ی اول وعده‌ی اعلان می‌دهد اگر کسی جایش را بگیرد؛ و با پایان Spotlight، رتبه‌ی نهایی و زمان شروع فردا.',
           ar: 'Today’s Spotlight بعد جولة: تُظهر ورقة الاقتراب من الفوز النقاط اللازمة للترتيب التالي ما دامت التذكرة سارية؛ ويعد المركز الأول بإشعار إن أخذ أحدهم المكان؛ وعند انتهاء الـ Spotlight، الترتيب النهائي وموعد بدء الغد.',
           de: 'Today’s Spotlight nach einer Runde: Das Beinahe-Treffer-Sheet zeigt die Punkte bis zum nächsten Rang, solange das Ticket läuft; Platz eins verspricht eine Benachrichtigung, falls jemand den Platz übernimmt; endet das Spotlight, folgen Endrang und die Startzeit von morgen.',
           es: 'Today’s Spotlight tras una partida: la hoja de casi victoria muestra los puntos que faltan para el siguiente puesto mientras el ticket sigue activo; quien ocupa el primer puesto recibe la promesa de un aviso si alguien se lo arrebata; cuando termina el Spotlight, el puesto final y la hora de inicio de mañana.',
@@ -1461,7 +1471,7 @@ export function rp1Sections(locale: Locale, media: Rp1MediaIds): Sections {
       caption: l(
         L({
           en: 'Notifications are transactional cards — deposit, withdrawal, prize, duel and rumble results — each with its own actions.',
-          fa: 'اعلان‌ها کارت‌های تراکنشی‌اند — واریز، برداشت، جایزه، نتیجهٔ دوئل و رامبل — هرکدام با اقدام‌های خودش.',
+          fa: 'اعلان‌ها کارت‌های تراکنشی‌اند — واریز، برداشت، جایزه، نتیجه‌ی دوئل و رامبل — هرکدام با اقدام‌های خودش.',
           ar: 'الإشعارات بطاقات معاملاتية — إيداع، وسحب، وجائزة، ونتائج مبارزات ورامبل — لكل منها إجراءاتها.',
           de: 'Benachrichtigungen sind Transaktionskarten — Einzahlung, Auszahlung, Preis, Duell- und Rumble-Ergebnisse — jede mit eigenen Aktionen.',
           es: 'Las notificaciones son tarjetas transaccionales —depósito, retiro, premio, resultados de duelos y de Rumble—, cada una con sus propias acciones.',
@@ -1470,6 +1480,7 @@ export function rp1Sections(locale: Locale, media: Rp1MediaIds): Sections {
         }),
       ),
     },
+    ...rp1ScreenSections(locale, dir, media),
     {
       id: 'rp1-s17',
       blockType: 'csOutcomes',
@@ -1487,7 +1498,7 @@ export function rp1Sections(locale: Locale, media: Rp1MediaIds): Sections {
       intro: l(
         L({
           en: 'RP1 is pre-launch — there is no shipped-product metric to report yet, and this case study doesn’t pretend otherwise.',
-          fa: 'RP1 هنوز منتشر نشده — هنوز هیچ معیار محصولِ منتشرشده‌ای برای گزارش نیست، و این مطالعهٔ موردی وانمود نمی‌کند که هست.',
+          fa: 'RP1 هنوز منتشر نشده — هنوز هیچ معیار محصولِ منتشرشده‌ای برای گزارش نیست، و این مطالعه‌ی موردی وانمود نمی‌کند که هست.',
           ar: 'RP1 لم يُطلق بعد — لا مقياس منتج مُطلَق للإبلاغ عنه حتى الآن، وهذه الدراسة لا تدّعي غير ذلك.',
           de: 'RP1 ist noch vor dem Launch — es gibt noch keine Kennzahl eines veröffentlichten Produkts, und diese Fallstudie tut nicht so, als gäbe es eine.',
           es: 'RP1 aún no se ha lanzado — todavía no hay ninguna métrica de producto publicado que reportar, y este caso de estudio no finge lo contrario.',
@@ -1502,7 +1513,7 @@ export function rp1Sections(locale: Locale, media: Rp1MediaIds): Sections {
           label: l(
             L({
               en: 'A fully resolved MVP scope',
-              fa: 'یک دامنهٔ MVP کاملاً مشخص',
+              fa: 'یک دامنه‌ی MVP کاملاً مشخص',
               ar: 'نطاق MVP محسوم بالكامل',
               de: 'Ein vollständig geklärter MVP-Umfang',
               es: 'Un alcance del MVP totalmente resuelto',
@@ -1524,7 +1535,7 @@ export function rp1Sections(locale: Locale, media: Rp1MediaIds): Sections {
           source: l(
             L({
               en: 'RP1 MVP scope and conflict-resolution log',
-              fa: 'دامنهٔ MVP و لاگ حل تعارض RP1',
+              fa: 'دامنه‌ی MVP و لاگ حل تعارض RP1',
               ar: 'نطاق MVP وسجل حل النزاعات في RP1',
               de: 'RP1-MVP-Umfang und Conflict-Resolution-Log',
               es: 'Alcance del MVP de RP1 y registro de resolución de conflictos',
@@ -1550,7 +1561,7 @@ export function rp1Sections(locale: Locale, media: Rp1MediaIds): Sections {
           context: l(
             L({
               en: '9 reused, 25 net-new, sequenced into a 3-week build order.',
-              fa: '۹ استفادهٔ مجدد، ۲۵ جدید، چیده‌شده در ترتیب ساخت سه‌هفته‌ای.',
+              fa: '۹ استفاده‌ی مجدد، ۲۵ جدید، چیده‌شده در ترتیب ساخت سه‌هفته‌ای.',
               ar: '9 مُعاد استخدامها و25 جديدة، مرتَّبة في ترتيب بناء لثلاثة أسابيع.',
               de: '9 wiederverwendet, 25 neu, in eine dreiwöchige Build-Reihenfolge gebracht.',
               es: '9 reutilizados, 25 nuevos, ordenados en un plan de construcción de 3 semanas.',
@@ -1587,7 +1598,7 @@ export function rp1Sections(locale: Locale, media: Rp1MediaIds): Sections {
           context: l(
             L({
               en: 'Each with a per-screen copy audit and a P1/P2/P3 issue log; 73 exported screens.',
-              fa: 'هرکدام با ممیزی متن صفحه‌به‌صفحه و لاگ مسائل P1/P2/P3؛ ۷۳ صفحهٔ خروجی‌گرفته‌شده.',
+              fa: 'هرکدام با ممیزی متن صفحه‌به‌صفحه و لاگ مسائل P1/P2/P3؛ ۷۳ صفحه‌ی خروجی‌گرفته‌شده.',
               ar: 'لكل منها تدقيق نصوص لكل شاشة وسجل مشكلات P1/P2/P3؛ و73 شاشة مُصدَّرة.',
               de: 'Jeder mit Copy-Audit pro Screen und einem P1/P2/P3-Issue-Log; 73 exportierte Screens.',
               es: 'Cada una con una auditoría de textos por pantalla y un registro de incidencias P1/P2/P3; 73 pantallas exportadas.',
@@ -1613,7 +1624,7 @@ export function rp1Sections(locale: Locale, media: Rp1MediaIds): Sections {
           label: l(
             L({
               en: 'A reusable interactive Octalysis tool',
-              fa: 'یک ابزار تعاملی Octalysis قابل استفادهٔ مجدد',
+              fa: 'یک ابزار تعاملی Octalysis قابل استفاده‌ی مجدد',
               ar: 'أداة Octalysis تفاعلية قابلة لإعادة الاستخدام',
               de: 'Ein wiederverwendbares interaktives Octalysis-Werkzeug',
               es: 'Una herramienta interactiva y reutilizable de Octalysis',
@@ -1624,7 +1635,7 @@ export function rp1Sections(locale: Locale, media: Rp1MediaIds): Sections {
           context: l(
             L({
               en: '8-drive audit, radar chart, journey and loop builders, ethics checklist — in English and Persian.',
-              fa: 'ممیزی ۸ محرک، نمودار رادار، سازندهٔ سفر و حلقه، چک‌لیست اخلاقی — به انگلیسی و فارسی.',
+              fa: 'ممیزی ۸ محرک، نمودار رادار، سازنده‌ی سفر و حلقه، چک‌لیست اخلاقی — به انگلیسی و فارسی.',
               ar: 'تدقيق للمحرّكات الثمانية، ومخطط رادار، وأدوات بناء للرحلة والحلقات، وقائمة تحقق أخلاقية — بالإنجليزية والفارسية.',
               de: 'Audit über 8 Drives, Radardiagramm, Journey- und Loop-Builder, Ethik-Checkliste — auf Englisch und Persisch.',
               es: 'Auditoría de 8 drives, gráfico de radar, constructores de recorridos y bucles, checklist ética — en inglés y persa.',
@@ -1655,7 +1666,7 @@ export function rp1Sections(locale: Locale, media: Rp1MediaIds): Sections {
           fa: [
             'ورود، هاب بازی‌ها، Today Spotlight، Weekly Legend، Duel، Lucky Wheel، چت، اعلان‌ها، کیف پول، پروفایل و تنظیمات — وایرفریم‌شده',
             'سه سیستم انیمیشن: ورود به پروفایل، ارتقای سطح شش‌فریمی، ده روکش رویدادمحور',
-            'یک الگوی کارتِ قابل استفادهٔ دوباره برای محتوای تب باشگاه',
+            'یک الگوی کارتِ قابل استفاده‌ی دوباره برای محتوای تب باشگاه',
           ],
           ar: [
             'تسجيل الدخول، ومركز الألعاب، وToday Spotlight، وWeekly Legend، وDuel، وLucky Wheel، والدردشة، والإشعارات، والمحفظة، والملف الشخصي، والإعدادات — بإطارات سلكية',
@@ -1730,7 +1741,7 @@ export function rp1Sections(locale: Locale, media: Rp1MediaIds): Sections {
           body: l(
             L({
               en: 'The wallet flow names BNB Smart Chain (BEP-20) in the newer, Figma-linked documentation, while an earlier draft says TRC-20/ERC-20. Treating the more recent, cross-referenced source as canonical is right — and a reminder that only a full re-read surfaces small drifts.',
-              fa: 'در مستندات جدیدترِ متصل به Figma، شبکهٔ کیف پول BNB Smart Chain (BEP-20) است؛ در پیش‌نویسی قدیمی‌تر TRC-20/ERC-20 آمده بود. منبع جدیدتر مرجع قرار گرفت، اما این اختلاف نشان داد حتی در پروژهٔ مستند هم باید همهٔ نسخه‌ها را دوباره بررسی کرد.',
+              fa: 'در مستندات جدیدترِ متصل به Figma، شبکه‌ی کیف پول BNB Smart Chain (BEP-20) است؛ در پیش‌نویسی قدیمی‌تر TRC-20/ERC-20 آمده بود. منبع جدیدتر مرجع قرار گرفت، اما این اختلاف نشان داد حتی در پروژه‌ی مستند هم باید همه‌ی نسخه‌ها را دوباره بررسی کرد.',
               ar: 'يذكر مسار المحفظة BNB Smart Chain (BEP-20) في الوثائق الأحدث المرتبطة بـ Figma، بينما تذكر مسودّة سابقة TRC-20/ERC-20. اعتماد المصدر الأحدث والمُحال إليه مرجعًا هو الصواب — وتذكير بأن إعادة قراءة كاملة وحدها تكشف الانحرافات الصغيرة.',
               de: 'Der Wallet-Flow nennt in der neueren, mit Figma verknüpften Dokumentation die BNB Smart Chain (BEP-20), während ein früherer Entwurf TRC-20/ERC-20 angibt. Die neuere, querverwiesene Quelle als kanonisch zu behandeln, ist richtig — und eine Erinnerung daran, dass nur ein vollständiges Wiederlesen kleine Abweichungen aufdeckt.',
               es: 'El flujo de la billetera cita BNB Smart Chain (BEP-20) en la documentación más reciente, vinculada a Figma, mientras que un borrador anterior dice TRC-20/ERC-20. Tratar como canónica la fuente más reciente y con referencias cruzadas es lo correcto — y un recordatorio de que solo una relectura completa saca a la luz las pequeñas desviaciones.',

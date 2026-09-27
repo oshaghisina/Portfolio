@@ -62,7 +62,23 @@ const pages = (count: number, withPhone = true): Items =>
     caption: `Page ${i + 1}`,
   }))
 
-const renderIndex = (items: Items, locale: 'en' | 'fa' = 'en') =>
+/** An app's screens: one phone capture each, a section per flow, and a few whole screens. */
+const appScreens = (sections: [string, number][]): Items =>
+  sections.flatMap(([group, count]) =>
+    Array.from({ length: count }, (_, i) => ({
+      id: `${group}-${i + 1}`,
+      media: shot(`${group}-${i + 1}`, 780, 1688),
+      ...(i === 0 ? { mobileFull: shot(`${group}-whole-${i + 1}`, 780, 5000) } : {}),
+      caption: `${group} ${i + 1}`,
+      group,
+    })),
+  )
+
+const renderIndex = (
+  items: Items,
+  locale: 'en' | 'fa' = 'en',
+  treatment: CaseStudyFigureBlock['treatment'] = 'plain',
+) =>
   render(
     <FigureBlock
       blockType="csFigure"
@@ -72,7 +88,7 @@ const renderIndex = (items: Items, locale: 'en' | 'fa' = 'en') =>
       layout="pages"
       locale={locale}
       number="09"
-      treatment="plain"
+      treatment={treatment}
     />,
   )
 
@@ -165,5 +181,105 @@ describe('FigureBlock pages (DS-25)', () => {
     fireEvent.click(tiles()[0]!)
     const title = container.querySelector('dialog p')!
     expect(title.textContent).toBe('Page 1')
+  })
+
+  it('indexes an app’s screens by section, at phone width only', () => {
+    const { container } = renderIndex(
+      appScreens([
+        ['Onboarding', 2],
+        ['Profile', 14],
+        ['Chat', 1],
+      ]),
+      'en',
+      'screen',
+    )
+    const tablist = screen.getByRole('tablist', { name: en.pages.groups })
+    // A long row of sections scrolls sideways; smooth scroll must leave that swipe to it.
+    expect(tablist.hasAttribute('data-lenis-prevent-horizontal')).toBe(true)
+    const tabs = within(tablist).getAllByRole('tab')
+    expect(tabs.map((tab) => tab.textContent)).toEqual(['Onboarding2', 'Profile14', 'Chat1'])
+    expect(tiles().map((tile) => tile.textContent)).toEqual(['01Onboarding 1', '02Onboarding 2'])
+    expect(container.querySelectorAll('.aspect-\\[390\\/844\\]')).toHaveLength(2)
+    expect(container.querySelector('.aspect-\\[1440\\/900\\]')).toBeNull()
+
+    fireEvent.click(tabs[1]!)
+    expect(tiles()).toHaveLength(12)
+    const sheets = within(screen.getByRole('navigation', { name: en.pages.sheets })).getAllByRole(
+      'button',
+    )
+    fireEvent.click(sheets[1]!)
+    expect(tiles().map((tile) => tile.textContent)).toEqual(['13Profile 13', '14Profile 14'])
+
+    // Another section starts at its own first sheet and numbers from one.
+    fireEvent.keyDown(tablist, { key: 'ArrowRight' })
+    expect(tabs[2]!.getAttribute('aria-selected')).toBe('true')
+    expect(tiles().map((tile) => tile.textContent)).toEqual(['01Chat 1'])
+    expect(screen.queryByRole('navigation')).toBeNull()
+  })
+
+  it('fades whichever edge of a scrolling section row hides more, mirrored right to left', () => {
+    const sections = appScreens([
+      ['Home', 1],
+      ['Tickets', 1],
+      ['Chat', 1],
+    ])
+    // jsdom has no layout: give the row a phone's overflow, then scroll it.
+    const scroll = (row: HTMLElement, left: number) => {
+      Object.defineProperties(row, {
+        scrollWidth: { configurable: true, value: 600 },
+        clientWidth: { configurable: true, value: 300 },
+        scrollLeft: { configurable: true, value: left },
+      })
+      fireEvent.scroll(row)
+      return row.style.maskImage
+    }
+    const fadesRight = /^linear-gradient\(to right, #000, .*, transparent\)$/
+    const fadesLeft = /^linear-gradient\(to right, transparent, .*, #000\)$/
+
+    renderIndex(sections, 'en', 'screen')
+    const row = screen.getByRole('tablist', { name: en.pages.groups })
+    // Everything fits until the row is measured.
+    expect(row.getAttribute('style')).toBeNull()
+    expect(scroll(row, 0)).toMatch(fadesRight)
+    expect(scroll(row, 150)).toMatch(/^linear-gradient\(to right, transparent, .*, transparent\)$/)
+    expect(scroll(row, 300)).toMatch(fadesLeft)
+    cleanup()
+
+    // Right to left the row starts at its right edge and scrolls to negative offsets.
+    renderIndex(sections, 'fa', 'screen')
+    const rtlRow = screen.getByRole('tablist', { name: fa.pages.groups })
+    expect(scroll(rtlRow, 0)).toMatch(fadesLeft)
+    expect(scroll(rtlRow, -300)).toMatch(fadesRight)
+  })
+
+  it('opens the whole screen and names its section in the viewer', () => {
+    const { container } = renderIndex(
+      appScreens([
+        ['Home', 2],
+        ['Tickets', 1],
+      ]),
+      'en',
+      'screen',
+    )
+    const dialog = container.querySelector('dialog')!
+    fireEvent.click(tiles()[0]!)
+    expect(within(dialog).getByRole('img').getAttribute('alt')).toBe('Home-whole-1')
+    expect(container.querySelector('dialog p')!.textContent).toBe('Home 1 · Home')
+    expect(dialog.textContent).toContain('01 / 02')
+
+    // Stepping stays inside the section; a screen with no whole capture opens its first screen.
+    fireEvent.click(within(dialog).getByRole('button', { name: en.pages.next }))
+    expect(within(dialog).getByRole('img').getAttribute('alt')).toBe('Home-2')
+    fireEvent.click(within(dialog).getByRole('button', { name: en.pages.next }))
+    expect(within(dialog).getByRole('img').getAttribute('alt')).toBe('Home-whole-1')
+  })
+
+  it('keeps the width tabs when only some pages name a section', () => {
+    const items = pages(3)
+    items[0] = { ...items[0]!, group: 'About' }
+    renderIndex(items)
+    const tabs = screen.getAllByRole('tab')
+    expect(tabs.map((tab) => tab.textContent)).toEqual(['Desktop3', 'Mobile3'])
+    expect(screen.getByRole('tablist').getAttribute('aria-label')).toBe(en.pages.views)
   })
 })

@@ -73,7 +73,7 @@ export const DG_MEDIA = {
     name: 'digital-gold--order-mobile-cover.png',
     alt: {
       en: ARCHIVE.cover!.alt,
-      fa: 'صفحهٔ سفارش طلای دیجیتال دیجی‌کالا در موبایل: تب‌های طلا و نقره، نرخ لحظه‌ای هر میلی‌گرم، خرید یا فروش، و مبلغ به ریال یا مقدار به میلی‌گرم',
+      fa: 'صفحه‌ی سفارش طلای دیجیتال دیجی‌کالا در موبایل: تب‌های طلا و نقره، نرخ لحظه‌ای هر میلی‌گرم، خرید یا فروش، و مبلغ به ریال یا مقدار به میلی‌گرم',
       ar: 'شاشة الطلب في الذهب الرقمي من ديجيكالا على الهاتف: تبويبا الذهب والفضة، والسعر اللحظي لكل مليغرام، والشراء أو البيع، والمبلغ بالريال أو الكمية بالمليغرام',
       es: 'Pantalla de pedido de Digital Gold de Digikala en el móvil: pestañas de oro y plata, el precio en vivo por miligramo, compra o venta, y un importe en riales o en miligramos',
       de: 'Bestellscreen von Digikala Digital Gold auf dem Smartphone: Tabs für Gold und Silber, der Live-Preis pro Milligramm, Kauf oder Verkauf und ein Betrag in Rial oder in Milligramm',
@@ -86,7 +86,7 @@ export const DG_MEDIA = {
     name: 'digital-gold--order-mobile.png',
     alt: {
       en: 'The order screen: the live price per milligram, buy or sell, an amount in rials or a quantity in milligrams, the order limits, and the wallet balance and buy fee above the Buy gold button',
-      fa: 'صفحهٔ سفارش: نرخ لحظه‌ای هر میلی‌گرم، خرید یا فروش، مبلغ به ریال یا مقدار به میلی‌گرم، سقف و کف سفارش، و موجودی کیف پول و کارمزد خرید بالای دکمهٔ «خرید طلا»',
+      fa: 'صفحه‌ی سفارش: نرخ لحظه‌ای هر میلی‌گرم، خرید یا فروش، مبلغ به ریال یا مقدار به میلی‌گرم، سقف و کف سفارش، و موجودی کیف پول و کارمزد خرید بالای دکمه‌ی «خرید طلا»',
       ar: 'شاشة الطلب: السعر اللحظي لكل مليغرام، والشراء أو البيع، والمبلغ بالريال أو الكمية بالمليغرام، وحدود الطلب، ورصيد المحفظة ورسوم الشراء فوق زر «شراء الذهب»',
       es: 'La pantalla de pedido: el precio en vivo por miligramo, compra o venta, un importe en riales o una cantidad en miligramos, los límites del pedido, y el saldo del monedero y la comisión de compra encima del botón «Comprar oro»',
       de: 'Der Bestellscreen: der Live-Preis pro Milligramm, Kauf oder Verkauf, ein Betrag in Rial oder eine Menge in Milligramm, die Bestellgrenzen sowie Wallet-Guthaben und Kaufgebühr über dem Button „Gold kaufen“',
@@ -99,7 +99,7 @@ export const DG_MEDIA = {
     name: 'digital-gold--my-assets-mobile.png',
     alt: {
       en: 'My Assets: total holdings in toman, the gold and silver balances, a show-or-hide balance toggle, physical delivery, buy and sell summaries and recent transactions',
-      fa: 'دارایی من: کل دارایی به تومان، موجودی طلا و نقره، کلید نمایش یا پنهان‌کردن موجودی، تحویل فیزیکی، خلاصهٔ خرید و فروش و تراکنش‌های اخیر',
+      fa: 'دارایی من: کل دارایی به تومان، موجودی طلا و نقره، کلید نمایش یا پنهان‌کردن موجودی، تحویل فیزیکی، خلاصه‌ی خرید و فروش و تراکنش‌های اخیر',
       ar: 'أصولي: إجمالي الأصول بالتومان، ورصيدا الذهب والفضة، ومفتاح إظهار الرصيد أو إخفائه، والتسليم المادي، وملخّصا الشراء والبيع، والمعاملات الأخيرة',
       es: 'Mis activos: el total en tomanes, los saldos de oro y plata, un control para mostrar u ocultar el saldo, la entrega física, los resúmenes de compra y venta y las transacciones recientes',
       de: 'Meine Assets: Gesamtbestand in Toman, die Gold- und Silberbestände, ein Schalter zum Ein- und Ausblenden des Guthabens, physische Auslieferung, Kauf- und Verkaufsübersicht und die letzten Transaktionen',
@@ -112,7 +112,7 @@ export const DG_MEDIA = {
     name: 'digital-gold--profile-mobile.png',
     alt: {
       en: 'Buy and sell history: All, Sell and Buy tabs, status filters for successful, pending approval, paying out and failed orders, and each order with its fee, price at sale and order number',
-      fa: 'تاریخچهٔ خرید و فروش: تب‌های همه، فروش و خرید، فیلترهای وضعیت برای سفارش‌های موفق، در انتظار تایید، در حال واریز و ناموفق، و هر سفارش با کارمزد، قیمت لحظهٔ فروش و شمارهٔ سفارش',
+      fa: 'تاریخچه‌ی خرید و فروش: تب‌های همه، فروش و خرید، فیلترهای وضعیت برای سفارش‌های موفق، در انتظار تایید، در حال واریز و ناموفق، و هر سفارش با کارمزد، قیمت لحظه‌ی فروش و شماره‌ی سفارش',
       ar: 'سجلّ الشراء والبيع: تبويبات الكل والبيع والشراء، ومرشّحات الحالة للطلبات الناجحة والمنتظرة للتأكيد وقيد الإيداع والفاشلة، وكل طلب برسومه وسعره لحظة البيع ورقمه',
       es: 'Historial de compras y ventas: pestañas Todo, Venta y Compra, filtros de estado para pedidos completados, pendientes de aprobación, en pago y fallidos, y cada pedido con su comisión, el precio en el momento de la venta y su número',
       de: 'Kauf- und Verkaufsverlauf: Tabs für Alle, Verkauf und Kauf, Statusfilter für erfolgreiche, auf Bestätigung wartende, in Auszahlung befindliche und fehlgeschlagene Bestellungen, und jede Bestellung mit Gebühr, Preis zum Verkaufszeitpunkt und Bestellnummer',
@@ -138,7 +138,7 @@ export const DG_MEDIA = {
     name: 'digital-gold--balance-hidden.png',
     alt: {
       en: 'The holdings card with the balance hidden: every value masked, the card’s layout unchanged',
-      fa: 'کارت دارایی با موجودیِ پنهان: همهٔ مقدارها پوشانده شده و چیدمان کارت دست‌نخورده است',
+      fa: 'کارت دارایی با موجودیِ پنهان: همه‌ی مقدارها پوشانده شده و چیدمان کارت دست‌نخورده است',
       ar: 'بطاقة الأصول والرصيد مخفيّ: كل القيم محجوبة وتخطيط البطاقة كما هو',
       es: 'La tarjeta de activos con el saldo oculto: todos los valores enmascarados y la disposición de la tarjeta intacta',
       de: 'Die Bestandskarte mit ausgeblendetem Guthaben: alle Werte maskiert, das Layout der Karte unverändert',
@@ -151,7 +151,7 @@ export const DG_MEDIA = {
     name: 'digital-gold--persona-card.png',
     alt: {
       en: 'Persona card for the silver extension, in Persian: her always-on line, about her, goals, concerns, motivations and behaviours',
-      fa: 'کارت پرسونا برای توسعهٔ نقره: جملهٔ همیشگی، دربارهٔ او، اهداف، نگرانی‌ها، انگیزه‌ها و رفتارها',
+      fa: 'کارت پرسونا برای توسعه‌ی نقره: جمله‌ی همیشگی، درباره‌ی او، اهداف، نگرانی‌ها، انگیزه‌ها و رفتارها',
       ar: 'بطاقة الشخصية لتوسعة الفضة، بالفارسية: عبارتها الدائمة، ونبذة عنها، وأهدافها، ومخاوفها، ودوافعها، وسلوكياتها',
       es: 'Ficha de persona para la extensión a la plata, en persa: su frase de siempre, quién es, objetivos, preocupaciones, motivaciones y comportamientos',
       de: 'Persona-Karte für die Silber-Erweiterung, auf Persisch: ihr Standardsatz, über sie, Ziele, Bedenken, Motivationen und Verhaltensweisen',
@@ -164,7 +164,7 @@ export const DG_MEDIA = {
     name: 'digital-gold--onboarding-slide-1.png',
     alt: {
       en: 'Onboarding slide 1: “Digikala digital gold — buy and sell digital gold online, with physical backing”, over the order widget',
-      fa: 'اسلاید ۱ آشنایی: «طلای دیجیتال دیجی‌کالا — خرید و فروش طلای دیجیتال در بستر آنلاین با پشتوانهٔ فیزیکی» روی ویجت سفارش',
+      fa: 'اسلاید ۱ آشنایی: «طلای دیجیتال دیجی‌کالا — خرید و فروش طلای دیجیتال در بستر آنلاین با پشتوانه‌ی فیزیکی» روی ویجت سفارش',
       ar: 'شريحة التعريف 1: «ذهب ديجيكالا الرقمي — شراء الذهب الرقمي وبيعه عبر الإنترنت بغطاء مادي» فوق أداة الطلب',
       es: 'Diapositiva 1 de bienvenida: «El oro digital de Digikala: compra y vende oro digital en línea, con respaldo físico», sobre el widget de pedido',
       de: 'Onboarding-Slide 1: „Digitales Gold von Digikala — digitales Gold online kaufen und verkaufen, physisch gedeckt“, über dem Bestell-Widget',
@@ -203,7 +203,7 @@ export const DG_MEDIA = {
     name: 'digital-gold--onboarding-slide-4.png',
     alt: {
       en: 'Slide 4: “Physical gold backing — no storage worries; Digikala holds the equivalent of your gold”, with a Start buying gold button',
-      fa: 'اسلاید ۴: «پشتوانهٔ طلای فیزیکی — بدون دغدغهٔ نگهداری، دیجی‌کالا معادل طلای شما را حفظ می‌کند» با دکمهٔ «شروع خرید طلا»',
+      fa: 'اسلاید ۴: «پشتوانه‌ی طلای فیزیکی — بدون دغدغه‌ی نگهداری، دیجی‌کالا معادل طلای شما را حفظ می‌کند» با دکمه‌ی «شروع خرید طلا»',
       ar: 'الشريحة 4: «غطاء من الذهب المادي — بلا همّ التخزين، تحفظ ديجيكالا ما يعادل ذهبك»، مع زر «ابدأ شراء الذهب»',
       es: 'Diapositiva 4: «Respaldo en oro físico: sin preocuparte por guardarlo, Digikala custodia el equivalente de tu oro», con el botón «Empezar a comprar oro»',
       de: 'Slide 4: „Physisch gedecktes Gold — keine Sorge um die Aufbewahrung, Digikala verwahrt den Gegenwert Ihres Goldes“, mit dem Button „Gold kaufen starten“',
@@ -229,7 +229,7 @@ export const DG_MEDIA = {
     name: 'digital-gold--welfare-brochure-01.png',
     alt: {
       en: 'Corporate-welfare brochure, page 1: “An integrated solution — corporate welfare services”, Digikala',
-      fa: 'بروشور خدمات رفاهی سازمانی، صفحهٔ ۱: «راه‌حل یکپارچه — خدمات رفاهی سازمانی»، دیجی‌کالا',
+      fa: 'بروشور خدمات رفاهی سازمانی، صفحه‌ی ۱: «راه‌حل یکپارچه — خدمات رفاهی سازمانی»، دیجی‌کالا',
       ar: 'كتيّب خدمات الرفاه المؤسسي، الصفحة 1: «حلّ متكامل — خدمات الرفاه المؤسسي»، ديجيكالا',
       es: 'Folleto de bienestar corporativo, página 1: «Una solución integral: servicios de bienestar para empresas», Digikala',
       de: 'Broschüre für betriebliche Sozialleistungen, Seite 1: „Eine integrierte Lösung — betriebliche Sozialleistungen“, Digikala',
@@ -242,7 +242,7 @@ export const DG_MEDIA = {
     name: 'digital-gold--welfare-brochure-02.png',
     alt: {
       en: 'Page 2: four value propositions — easy and reliable, exceptional variety, exclusive discounts, time saved',
-      fa: 'صفحهٔ ۲: چهار ارزش پیشنهادی — آسان و مطمئن، تنوع استثنایی، تخفیف اختصاصی، صرفه‌جویی در زمان',
+      fa: 'صفحه‌ی ۲: چهار ارزش پیشنهادی — آسان و مطمئن، تنوع استثنایی، تخفیف اختصاصی، صرفه‌جویی در زمان',
       ar: 'الصفحة 2: أربع قيم مقترحة — سهل وموثوق، وتنوّع استثنائي، وخصم حصري، وتوفير للوقت',
       es: 'Página 2: cuatro propuestas de valor: fácil y fiable, variedad excepcional, descuentos exclusivos y ahorro de tiempo',
       de: 'Seite 2: vier Nutzenversprechen — einfach und verlässlich, außergewöhnliche Vielfalt, exklusive Rabatte, Zeitersparnis',
@@ -255,7 +255,7 @@ export const DG_MEDIA = {
     name: 'digital-gold--welfare-brochure-03.png',
     alt: {
       en: 'Page 3: the sixteen partner brands behind the offer',
-      fa: 'صفحهٔ ۳: شانزده برند همکار پشت این پیشنهاد',
+      fa: 'صفحه‌ی ۳: شانزده برند همکار پشت این پیشنهاد',
       ar: 'الصفحة 3: العلامات الشريكة الست عشرة وراء العرض',
       es: 'Página 3: las dieciséis marcas asociadas detrás de la oferta',
       de: 'Seite 3: die sechzehn Partnermarken hinter dem Angebot',
@@ -268,7 +268,7 @@ export const DG_MEDIA = {
     name: 'digital-gold--welfare-brochure-04.png',
     alt: {
       en: 'Page 4: the service lines — brand-basket credit, long- and short-term employee loans, bulk goods and Nowruz and Yalda packages',
-      fa: 'صفحهٔ ۴: خطوط خدمت — سبد برندها، وام‌های بلندمدت و کوتاه‌مدت کارکنان، تامین عمدهٔ کالا و بسته‌های مناسبتی نوروز و یلدا',
+      fa: 'صفحه‌ی ۴: خطوط خدمت — سبد برندها، وام‌های بلندمدت و کوتاه‌مدت کارکنان، تامین عمده‌ی کالا و بسته‌های مناسبتی نوروز و یلدا',
       ar: 'الصفحة 4: خطوط الخدمة — رصيد لسلّة العلامات، وقروض طويلة وقصيرة الأجل للموظفين، وتوريد السلع بالجملة وباقات النوروز ويلدا',
       es: 'Página 4: las líneas de servicio: crédito para una cesta de marcas, préstamos a empleados a largo y corto plazo, y compras al por mayor con lotes de Nouruz y Yalda',
       de: 'Seite 4: die Leistungsbereiche — Guthaben für einen Markenkorb, lang- und kurzfristige Mitarbeiterdarlehen sowie Großeinkauf mit Paketen zu Nouruz und Yalda',
@@ -298,7 +298,7 @@ export type DgMediaIds = Partial<Record<DgMediaKey, string>>
 
 const STATEMENT: L = {
   en: 'Making one milligram of gold feel as safe to buy as a ten-gram bar — the product, the campaigns and the numbers.',
-    fa: 'خرید یک میلی‌گرم طلا باید به‌اندازهٔ خرید یک شمش ده‌گرمی اطمینان‌بخش باشد؛ از طراحی محصول تا کمپین‌ها و سنجش نتیجه.',
+    fa: 'خرید یک میلی‌گرم طلا باید به‌اندازه‌ی خرید یک شمش ده‌گرمی اطمینان‌بخش باشد؛ از طراحی محصول تا کمپین‌ها و سنجش نتیجه.',
   ar: 'أن يبدو شراء مليغرام واحد من الذهب آمنًا كشراء سبيكة من عشرة غرامات — المنتج والحملات والأرقام.',
   es: 'Que comprar un miligramo de oro se sienta tan seguro como comprar un lingote de diez gramos: el producto, las campañas y las cifras.',
   de: 'Ein Milligramm Gold so sicher kaufen wie einen Zehn-Gramm-Barren — das Produkt, die Kampagnen und die Zahlen.',
@@ -328,7 +328,7 @@ const TEAM: L = {
 
 const META_TITLE: L = {
   en: 'Digital Gold — product, campaigns and reporting for Digikala’s gold and silver',
-  fa: 'طلای دیجیتال — محصول، کمپین‌ها و گزارش‌گیری برای طلا و نقرهٔ دیجی‌کالا',
+  fa: 'طلای دیجیتال — محصول، کمپین‌ها و گزارش‌گیری برای طلا و نقره‌ی دیجی‌کالا',
   ar: 'الذهب الرقمي — المنتج والحملات والتقارير لذهب ديجيكالا وفضّتها',
   es: 'Digital Gold: producto, campañas y reporting para el oro y la plata de Digikala',
   de: 'Digital Gold — Produkt, Kampagnen und Reporting für Gold und Silber bei Digikala',
@@ -338,7 +338,7 @@ const META_TITLE: L = {
 
 const HERO_CAPTION: L = {
   en: 'Three of the 42 screens: the order screen, My Assets and the buy-and-sell history — gold and silver on one set of screens.',
-  fa: 'سه صفحه از ۴۲ صفحه: سفارش، دارایی من و تاریخچهٔ خرید و فروش — طلا و نقره روی یک مجموعه صفحه.',
+  fa: 'سه صفحه از ۴۲ صفحه: سفارش، دارایی من و تاریخچه‌ی خرید و فروش — طلا و نقره روی یک مجموعه صفحه.',
   ar: 'ثلاث من 42 شاشة: شاشة الطلب، وأصولي، وسجلّ الشراء والبيع — الذهب والفضة على مجموعة شاشات واحدة.',
   es: 'Tres de las 42 pantallas: el pedido, Mis activos y el historial de compras y ventas; oro y plata en un mismo conjunto de pantallas.',
   de: 'Drei der 42 Screens: Bestellung, Meine Assets und der Kauf- und Verkaufsverlauf — Gold und Silber auf einem gemeinsamen Satz Screens.',
@@ -358,7 +358,7 @@ const SNAPSHOT: { problem: L; role: L; result: L } = {
   },
   role: {
     en: 'Designer, marketer and BI developer on one product: the order and holdings screens, the campaigns around them and the weekly review behind both.',
-    fa: 'در یک محصول، طراحی صفحه‌های سفارش و دارایی، کمپین‌های مرتبط و گزارش‌گیری هفتگی را در نقش‌های طراح، بازاریاب و توسعه‌دهندهٔ BI پیش بردم.',
+    fa: 'در یک محصول، طراحی صفحه‌های سفارش و دارایی، کمپین‌های مرتبط و گزارش‌گیری هفتگی را در نقش‌های طراح، بازاریاب و توسعه‌دهنده‌ی BI پیش بردم.',
     ar: 'مصمّم ومسوّق ومطوّر ذكاء أعمال على منتج واحد: شاشات الطلب والأصول، والحملات من حولها، والمراجعة الأسبوعية وراءهما.',
     es: 'Diseñador, marketer y desarrollador BI en un mismo producto: las pantallas de pedido y de activos, las campañas a su alrededor y la revisión semanal que las respalda.',
     de: 'Designer, Marketer und BI-Entwickler für ein Produkt: die Bestell- und Bestandsscreens, die Kampagnen darum herum und das wöchentliche Review dahinter.',
@@ -417,7 +417,7 @@ export function dgSections(locale: Locale, media: DgMediaIds): Sections {
         dir,
         p({
           en: 'Digital Gold is Digikala’s melted digital gold and silver, sold at digikala.com/gold with physical backing: Digikala holds the metal equivalent to each purchase, and a holding can be sold back or taken out as bullion.',
-              fa: 'دیجی‌کالا در digikala.com/gold طلا و نقرهٔ آب‌شده را با پشتوانهٔ فیزیکی عرضه می‌کند. معادل هر خرید به‌صورت فلز نگهداری می‌شود و کاربر می‌تواند دارایی‌اش را بفروشد یا به شکل شمش تحویل بگیرد.',
+              fa: 'دیجی‌کالا در digikala.com/gold طلا و نقره‌ی آب‌شده را با پشتوانه‌ی فیزیکی عرضه می‌کند. معادل هر خرید به‌صورت فلز نگهداری می‌شود و کاربر می‌تواند دارایی‌اش را بفروشد یا به شکل شمش تحویل بگیرد.',
           ar: 'الذهب الرقمي هو ذهب ديجيكالا وفضّتها المصهوران رقميًا، يُباعان في digikala.com/gold بغطاء مادي: تحفظ ديجيكالا ما يعادل كل عملية شراء من المعدن، ويمكن بيع الرصيد مجددًا أو استلامه سبائك.',
           es: 'Digital Gold es el oro y la plata fundidos digitales de Digikala, que se venden en digikala.com/gold con respaldo físico: Digikala custodia el metal equivalente a cada compra, y el saldo puede venderse de nuevo o retirarse en lingotes.',
           de: 'Digital Gold ist Digikalas digitales geschmolzenes Gold und Silber, verkauft auf digikala.com/gold mit physischer Deckung: Digikala verwahrt das Metall, das jedem Kauf entspricht, und ein Bestand lässt sich zurückverkaufen oder als Barren ausliefern.',
@@ -426,7 +426,7 @@ export function dgSections(locale: Locale, media: DgMediaIds): Sections {
         }),
         p({
           en: 'It sits in Digikala’s Non-Inventory unit — the part of the marketplace that sells what isn’t physical stock: precious metals, gift cards, services, travel. The role covered the product, the campaigns around it and the reporting behind both.',
-          fa: 'این محصول زیرمجموعهٔ واحد Non-Inventory دیجی‌کالا بود؛ واحدی که فلزات گران‌بها، کارت هدیه، خدمات و سفر را پوشش می‌دهد. کار من طراحی محصول، کمپین‌های مرتبط و گزارش‌گیری برای هر دو بود.',
+          fa: 'این محصول زیرمجموعه‌ی واحد Non-Inventory دیجی‌کالا بود؛ واحدی که فلزات گران‌بها، کارت هدیه، خدمات و سفر را پوشش می‌دهد. کار من طراحی محصول، کمپین‌های مرتبط و گزارش‌گیری برای هر دو بود.',
           ar: 'يقع ضمن وحدة Non-Inventory في ديجيكالا — الجزء من السوق الذي يبيع ما ليس مخزونًا ماديًا: المعادن الثمينة وبطاقات الهدايا والخدمات والسفر. شمل الدور المنتج والحملات من حوله والتقارير وراءهما.',
           es: 'Forma parte de la unidad Non-Inventory de Digikala, la parte del marketplace que vende lo que no es stock físico: metales preciosos, tarjetas regalo, servicios y viajes. El rol abarcaba el producto, las campañas a su alrededor y el reporting detrás de ambos.',
           de: 'Es gehört zur Non-Inventory-Unit von Digikala — dem Teil des Marktplatzes, der verkauft, was kein physischer Lagerbestand ist: Edelmetalle, Geschenkkarten, Services, Reisen. Die Rolle umfasste das Produkt, die Kampagnen darum herum und das Reporting hinter beidem.',
@@ -436,7 +436,7 @@ export function dgSections(locale: Locale, media: DgMediaIds): Sections {
       ),
       insight: l({
         en: 'The design problem was custody and disclosure, not trading.',
-    fa: 'اعتماد به پشتوانهٔ دارایی و شفافیت هزینه‌ها، مسئلهٔ اصلی طراحی بود.',
+    fa: 'اعتماد به پشتوانه‌ی دارایی و شفافیت هزینه‌ها، مسئله‌ی اصلی طراحی بود.',
         ar: 'كانت مشكلة التصميم الحفظ والإفصاح، لا التداول.',
         es: 'El problema de diseño era la custodia y la transparencia, no el trading.',
         de: 'Das Designproblem war Verwahrung und Offenlegung, nicht Trading.',
@@ -470,7 +470,7 @@ export function dgSections(locale: Locale, media: DgMediaIds): Sections {
         }),
         p({
           en: 'The product’s bet was that a one-milligram purchase could feel as safe as a ten-gram bar. That puts three questions on every screen: is my gold real, what exactly am I paying, and can I get it back?',
-              fa: 'فرض اصلی این بود که خرید یک میلی‌گرم طلا هم می‌تواند به‌اندازهٔ خرید یک شمش ده‌گرمی مطمئن باشد. بنابراین هر صفحه باید به سه پرسش پاسخ می‌داد: آیا طلا پشتوانهٔ واقعی دارد؟ هزینهٔ دقیق من چیست؟ چطور می‌توانم دارایی‌ام را پس بگیرم؟',
+              fa: 'فرض اصلی این بود که خرید یک میلی‌گرم طلا هم می‌تواند به‌اندازه‌ی خرید یک شمش ده‌گرمی مطمئن باشد. بنابراین هر صفحه باید به سه پرسش پاسخ می‌داد: آیا طلا پشتوانه‌ی واقعی دارد؟ هزینه‌ی دقیق من چیست؟ چطور می‌توانم دارایی‌ام را پس بگیرم؟',
           ar: 'كان رهان المنتج أن شراء مليغرام واحد يمكن أن يبدو آمنًا كسبيكة من عشرة غرامات. وهذا يضع ثلاثة أسئلة على كل شاشة: هل ذهبي حقيقي، وماذا أدفع بالضبط، وهل أستطيع استرداده؟',
           es: 'La apuesta del producto era que una compra de un miligramo pudiera sentirse tan segura como un lingote de diez gramos. Eso pone tres preguntas en cada pantalla: ¿mi oro es real?, ¿qué estoy pagando exactamente? y ¿puedo recuperarlo?',
           de: 'Die Wette des Produkts: Ein Kauf von einem Milligramm kann sich so sicher anfühlen wie ein Zehn-Gramm-Barren. Damit stellen sich auf jedem Screen drei Fragen: Ist mein Gold echt, was genau bezahle ich, und bekomme ich es zurück?',
@@ -506,7 +506,7 @@ export function dgSections(locale: Locale, media: DgMediaIds): Sections {
             ],
             fa: [
               'خرید و فروش از یک میلی‌گرم، با حداقل ۵ هزار و حداکثر ۲۰۰ میلیون تومان در هر سفارش.',
-              'واریز به کیف پول دیجی‌پی، در چهار نوبت تسویهٔ روزانه.',
+              'واریز به کیف پول دیجی‌پی، در چهار نوبت تسویه‌ی روزانه.',
               'تحویل فیزیکی به‌صورت شمش ۱۰ گرمی.',
               'فارسی، راست‌به‌چپ، با ارقام فارسی در همه‌جا.',
               'دسکتاپ ۱۴۴۰ و موبایل ۳۹۰، به‌عنوان یک سیستم واکنش‌گرای واحد.',
@@ -562,7 +562,7 @@ export function dgSections(locale: Locale, media: DgMediaIds): Sections {
       blockType: 'csOwnership',
       heading: l({
         en: 'Three hats: designer, marketer, BI developer.',
-    fa: 'سه نقش در یک محصول: طراحی، بازاریابی و توسعهٔ BI.',
+    fa: 'سه نقش در یک محصول: طراحی، بازاریابی و توسعه‌ی BI.',
         ar: 'ثلاث قبعات: مصمّم، ومسوّق، ومطوّر ذكاء أعمال.',
         es: 'Tres sombreros: diseñador, marketer y desarrollador BI.',
         de: 'Drei Hüte: Designer, Marketer, BI-Entwickler.',
@@ -587,7 +587,7 @@ export function dgSections(locale: Locale, media: DgMediaIds): Sections {
           'The BI dashboards',
         ],
         fa: [
-          'چشم‌انداز و نقشهٔ راه محصول',
+          'چشم‌انداز و نقشه‌ی راه محصول',
           'جریان‌های سفارش، دارایی و پروفایل',
           'ایده‌های کمپین',
           'مدل بخش‌بندی کاربران',
@@ -636,9 +636,9 @@ export function dgSections(locale: Locale, media: DgMediaIds): Sections {
           'The corporate gift-card offer, with the Non-Inventory unit',
         ],
         fa: [
-          'نحوهٔ نمایش کارمزد و قیمت، با تیم کسب‌وکار',
-          'توسعهٔ نقره',
-          'پیشنهاد کارت هدیهٔ سازمانی، با واحد Non-Inventory',
+          'نحوه‌ی نمایش کارمزد و قیمت، با تیم کسب‌وکار',
+          'توسعه‌ی نقره',
+          'پیشنهاد کارت هدیه‌ی سازمانی، با واحد Non-Inventory',
         ],
         ar: [
           'طريقة عرض الرسوم والتسعير، مع فريق الأعمال',
@@ -702,7 +702,7 @@ export function dgSections(locale: Locale, media: DgMediaIds): Sections {
         dir,
         p({
           en: 'The Figma canvas is organised as a matrix, not a screen dump: each flow opens on a title card, splits into its states, and every state is drawn once at desktop and once at mobile.',
-              fa: 'فایل Figma بر اساس جریان‌ها و وضعیت‌هایشان مرتب شده است. هر جریان با عنوانی مشخص شروع می‌شود و هر وضعیت، نسخهٔ دسکتاپ و موبایل دارد.',
+              fa: 'فایل Figma بر اساس جریان‌ها و وضعیت‌هایشان مرتب شده است. هر جریان با عنوانی مشخص شروع می‌شود و هر وضعیت، نسخه‌ی دسکتاپ و موبایل دارد.',
           ar: 'لوحة Figma منظّمة كمصفوفة، لا كومة شاشات: يبدأ كل مسار ببطاقة عنوان، ثم يتفرّع إلى حالاته، وتُرسم كل حالة مرة لسطح المكتب ومرة للهاتف.',
           es: 'El lienzo de Figma está organizado como una matriz, no como un volcado de pantallas: cada flujo abre con una tarjeta de título, se divide en sus estados y cada estado se dibuja una vez en escritorio y otra en móvil.',
           de: 'Das Figma-Canvas ist als Matrix organisiert, nicht als Screen-Sammlung: Jeder Flow beginnt mit einer Titelkarte, teilt sich in seine Zustände, und jeder Zustand ist einmal für Desktop und einmal für Mobile gezeichnet.',
@@ -720,7 +720,7 @@ export function dgSections(locale: Locale, media: DgMediaIds): Sections {
         }),
         p({
           en: 'Failure is one of those states. A failed order has its own copy, its own tracking code and its own next step, laid out like the success — not an error page.',
-          fa: 'شکست هم یکی از همین حالت‌هاست. سفارش ناموفق متن خودش، کد رهگیری خودش و قدم بعدی خودش را دارد و مثل حالت موفق چیده شده — نه یک صفحهٔ خطا.',
+          fa: 'شکست هم یکی از همین حالت‌هاست. سفارش ناموفق متن خودش، کد رهگیری خودش و قدم بعدی خودش را دارد و مثل حالت موفق چیده شده — نه یک صفحه‌ی خطا.',
           ar: 'الفشل إحدى هذه الحالات. للطلب الفاشل نصّه الخاص ورمز تتبّعه الخاص وخطوته التالية الخاصة، بتخطيط مماثل للنجاح — لا صفحة خطأ.',
           es: 'El fallo es uno de esos estados. Un pedido fallido tiene su propio texto, su propio código de seguimiento y su propio siguiente paso, con la misma disposición que el éxito: no una página de error.',
           de: 'Scheitern ist einer dieser Zustände. Eine fehlgeschlagene Bestellung hat eigenen Text, einen eigenen Tracking-Code und einen eigenen nächsten Schritt, aufgebaut wie der Erfolg — keine Fehlerseite.',
@@ -871,7 +871,7 @@ export function dgSections(locale: Locale, media: DgMediaIds): Sections {
           }),
           why: l({
             en: 'The buy fee, the minimum and maximum and the wallet balance sit in the order card above Buy gold, so nothing about the cost appears for the first time after the commit.',
-            fa: 'کارمزد خرید، حداقل و حداکثر خرید و موجودی کیف پول در کارت سفارش و بالای «خرید طلا» می‌نشینند تا هیچ چیزی دربارهٔ هزینه برای اولین بار بعد از تایید دیده نشود.',
+            fa: 'کارمزد خرید، حداقل و حداکثر خرید و موجودی کیف پول در کارت سفارش و بالای «خرید طلا» می‌نشینند تا هیچ چیزی درباره‌ی هزینه برای اولین بار بعد از تایید دیده نشود.',
             ar: 'تظهر رسوم الشراء والحدّان الأدنى والأقصى ورصيد المحفظة في بطاقة الطلب فوق «شراء الذهب»، فلا يظهر أي شيء عن التكلفة لأول مرة بعد التأكيد.',
             es: 'La comisión de compra, el mínimo y el máximo y el saldo del monedero están en la tarjeta de pedido, encima de «Comprar oro», así que nada del coste aparece por primera vez después de confirmar.',
             de: 'Kaufgebühr, Minimum und Maximum sowie das Wallet-Guthaben stehen in der Bestellkarte über „Gold kaufen“ — nichts an den Kosten taucht erst nach der Bestätigung auf.',
@@ -880,7 +880,7 @@ export function dgSections(locale: Locale, media: DgMediaIds): Sections {
           }),
           evidence: l({
             en: 'The order screen lists the wallet balance, maximum, minimum and buy fee before the button.',
-            fa: 'صفحهٔ سفارش موجودی کیف پول، حداکثر، حداقل و کارمزد خرید را پیش از دکمه فهرست می‌کند.',
+            fa: 'صفحه‌ی سفارش موجودی کیف پول، حداکثر، حداقل و کارمزد خرید را پیش از دکمه فهرست می‌کند.',
             ar: 'تسرد شاشة الطلب رصيد المحفظة والحدّ الأقصى والأدنى ورسوم الشراء قبل الزر.',
             es: 'La pantalla de pedido enumera el saldo, el máximo, el mínimo y la comisión de compra antes del botón.',
             de: 'Der Bestellscreen listet Wallet-Guthaben, Maximum, Minimum und Kaufgebühr vor dem Button.',
@@ -901,7 +901,7 @@ export function dgSections(locale: Locale, media: DgMediaIds): Sections {
           }),
           why: l({
             en: 'The live price refreshes on a visible 20-second countdown. A timer says the price is live and when it will move; a sentence could only claim it.',
-              fa: 'کنار نرخ لحظه‌ای، شمارش معکوس ۲۰ ثانیه‌ای نشان می‌دهد قیمت چه زمانی به‌روز می‌شود. کاربر زمان تغییر را می‌بیند و لازم نیست فقط به جملهٔ «قیمت لحظه‌ای» اعتماد کند.',
+              fa: 'کنار نرخ لحظه‌ای، شمارش معکوس ۲۰ ثانیه‌ای نشان می‌دهد قیمت چه زمانی به‌روز می‌شود. کاربر زمان تغییر را می‌بیند و لازم نیست فقط به جمله‌ی «قیمت لحظه‌ای» اعتماد کند.',
             ar: 'يتجدّد السعر اللحظي مع عدّاد تنازلي ظاهر من 20 ثانية. يقول العدّاد إن السعر حيّ ومتى سيتغيّر؛ أما الجملة فلا تستطيع إلا الادّعاء.',
             es: 'El precio en vivo se actualiza con una cuenta atrás visible de 20 segundos. Un temporizador dice que el precio está vivo y cuándo cambiará; una frase solo podría afirmarlo.',
             de: 'Der Live-Preis aktualisiert sich mit einem sichtbaren 20-Sekunden-Countdown. Ein Timer zeigt, dass der Preis live ist und wann er sich ändert; ein Satz könnte es nur behaupten.',
@@ -940,7 +940,7 @@ export function dgSections(locale: Locale, media: DgMediaIds): Sections {
           }),
           evidence: l({
             en: 'Two linked fields on the order screen: amount paid in rials, quantity of gold in milligrams.',
-            fa: 'دو فیلد پیوسته در صفحهٔ سفارش: مبلغ پرداختی به ریال و مقدار طلا به میلی‌گرم.',
+            fa: 'دو فیلد پیوسته در صفحه‌ی سفارش: مبلغ پرداختی به ریال و مقدار طلا به میلی‌گرم.',
             ar: 'حقلان مترابطان في شاشة الطلب: المبلغ المدفوع بالريال، وكمية الذهب بالمليغرام.',
             es: 'Dos campos vinculados en la pantalla de pedido: importe pagado en riales y cantidad de oro en miligramos.',
             de: 'Zwei verknüpfte Felder im Bestellscreen: gezahlter Betrag in Rial, Goldmenge in Milligramm.',
@@ -961,7 +961,7 @@ export function dgSections(locale: Locale, media: DgMediaIds): Sections {
           }),
           why: l({
             en: 'Holdings are savings, and a phone screen is often seen by someone else. The eye toggle masks every value while the card keeps its shape.',
-              fa: 'موجودی دارایی اطلاعات شخصی است و ممکن است دیگران هم صفحهٔ گوشی را ببینند. دکمهٔ چشم همهٔ مبلغ‌ها را پنهان می‌کند، بی‌آنکه چیدمان کارت تغییر کند.',
+              fa: 'موجودی دارایی اطلاعات شخصی است و ممکن است دیگران هم صفحه‌ی گوشی را ببینند. دکمه‌ی چشم همه‌ی مبلغ‌ها را پنهان می‌کند، بی‌آنکه چیدمان کارت تغییر کند.',
             ar: 'الأصول مدّخرات، وشاشة الهاتف كثيرًا ما يراها شخص آخر. يحجب مفتاح العين كل القيم بينما تحتفظ البطاقة بشكلها.',
             es: 'Los activos son ahorros, y la pantalla del móvil a menudo la ve otra persona. El icono del ojo enmascara todos los valores y la tarjeta conserva su forma.',
             de: 'Bestände sind Ersparnisse, und ein Handybildschirm wird oft von anderen gesehen. Der Augen-Schalter maskiert alle Werte, die Karte behält ihre Form.',
@@ -998,7 +998,7 @@ export function dgSections(locale: Locale, media: DgMediaIds): Sections {
         dir,
         p({
           en: 'Silver came later, as an extension of the gold product, and it was designed around a composite persona rather than the original gold buyer: 27, a freelancer and decoration designer, with low investment knowledge, medium brand loyalty and a self-imposed cap of 20% of her savings in gold.',
-              fa: 'نقره بعداً به محصول طلا اضافه شد. طراحی آن بر پایهٔ پرسونایی ترکیبی بود، نه یک مشتری واقعی: فردی ۲۷ ساله، فریلنسر و طراح دکوراسیون، با دانش محدود سرمایه‌گذاری، وفاداری متوسط به برند و سقف سرمایه‌گذاری ۲۰ درصد در طلا.',
+              fa: 'نقره بعداً به محصول طلا اضافه شد. طراحی آن بر پایه‌ی پرسونایی ترکیبی بود، نه یک مشتری واقعی: فردی ۲۷ ساله، فریلنسر و طراح دکوراسیون، با دانش محدود سرمایه‌گذاری، وفاداری متوسط به برند و سقف سرمایه‌گذاری ۲۰ درصد در طلا.',
           ar: 'جاءت الفضة لاحقًا توسعةً لمنتج الذهب، وصُمّمت حول شخصية مركّبة لا حول مشتري الذهب الأصلي: 27 عامًا، مستقلّة ومصمّمة ديكور، بمعرفة استثمارية منخفضة، وولاء متوسط للعلامة، وسقف ذاتي يبلغ 20% من مدّخراتها في الذهب.',
           es: 'La plata llegó después, como extensión del producto de oro, y se diseñó en torno a una persona compuesta y no al comprador original de oro: 27 años, freelance y diseñadora de interiores, con poco conocimiento de inversión, una fidelidad a la marca media y un límite autoimpuesto del 20 % de sus ahorros en oro.',
           de: 'Silber kam später, als Erweiterung des Goldprodukts, und wurde um eine zusammengesetzte Persona herum entworfen statt um die ursprünglichen Goldkäufer: 27, Freelancerin und Dekorationsdesignerin, mit geringem Anlagewissen, mittlerer Markentreue und einer selbst gesetzten Obergrenze von 20 % ihrer Ersparnisse in Gold.',
@@ -1007,7 +1007,7 @@ export function dgSections(locale: Locale, media: DgMediaIds): Sections {
         }),
         p({
           en: 'Her concerns were the ones the product already answered for gold — little knowledge of how the silver market works, doubts about the security of investing on a digital platform, and sensitivity to price swings. She follows friends’ recommendations and online ads, and tries a small purchase first.',
-          fa: 'نگرانی‌هایش همان‌هایی بود که محصول برای طلا پاسخ داده بود — آگاهی کم از نحوهٔ کار بازار نقره، تردید دربارهٔ امنیت سرمایه‌گذاری در پلتفرم‌های دیجیتال و حساسیت به نوسان قیمت. به پیشنهاد دوستان و تبلیغات آنلاین توجه می‌کند و اول یک خرید کوچک را امتحان می‌کند.',
+          fa: 'نگرانی‌هایش همان‌هایی بود که محصول برای طلا پاسخ داده بود — آگاهی کم از نحوه‌ی کار بازار نقره، تردید درباره‌ی امنیت سرمایه‌گذاری در پلتفرم‌های دیجیتال و حساسیت به نوسان قیمت. به پیشنهاد دوستان و تبلیغات آنلاین توجه می‌کند و اول یک خرید کوچک را امتحان می‌کند.',
           ar: 'كانت مخاوفها هي نفسها التي أجاب عنها المنتج للذهب — معرفة محدودة بكيفية عمل سوق الفضة، وشكوك حول أمان الاستثمار في منصة رقمية، وحساسية لتقلّبات السعر. تتبع توصيات الأصدقاء والإعلانات عبر الإنترنت، وتجرّب شراءً صغيرًا أولًا.',
           es: 'Sus preocupaciones eran las que el producto ya respondía para el oro: poco conocimiento de cómo funciona el mercado de la plata, dudas sobre la seguridad de invertir en una plataforma digital y sensibilidad a las oscilaciones del precio. Se guía por recomendaciones de amigos y anuncios en línea, y prueba primero con una compra pequeña.',
           de: 'Ihre Bedenken waren die, die das Produkt für Gold schon beantwortete — wenig Wissen darüber, wie der Silbermarkt funktioniert, Zweifel an der Sicherheit digitaler Anlageplattformen und Empfindlichkeit gegenüber Preisschwankungen. Sie folgt Empfehlungen von Freunden und Online-Werbung und probiert zuerst einen kleinen Kauf.',
@@ -1074,7 +1074,7 @@ export function dgSections(locale: Locale, media: DgMediaIds): Sections {
       items: item('personaCard', 'dg-f11-1'),
       caption: l({
         en: 'The persona card, in Persian: her line, goals, concerns, motivations and behaviours. Built for the silver extension — a composite, not a real customer.',
-        fa: 'کارت پرسونا: جملهٔ همیشگی، اهداف، نگرانی‌ها، انگیزه‌ها و رفتارها. ساخته‌شده برای توسعهٔ نقره — یک پرسونای ترکیبی، نه یک مشتری واقعی.',
+        fa: 'کارت پرسونا: جمله‌ی همیشگی، اهداف، نگرانی‌ها، انگیزه‌ها و رفتارها. ساخته‌شده برای توسعه‌ی نقره — یک پرسونای ترکیبی، نه یک مشتری واقعی.',
         ar: 'بطاقة الشخصية بالفارسية: عبارتها، وأهدافها، ومخاوفها، ودوافعها، وسلوكياتها. صُنعت لتوسعة الفضة — شخصية مركّبة، لا عميلة حقيقية.',
         es: 'La ficha de persona, en persa: su frase, objetivos, preocupaciones, motivaciones y comportamientos. Hecha para la extensión a la plata: una persona compuesta, no una clienta real.',
         de: 'Die Persona-Karte, auf Persisch: ihr Satz, Ziele, Bedenken, Motivationen und Verhaltensweisen. Erstellt für die Silber-Erweiterung — zusammengesetzt, keine echte Kundin.',
@@ -1108,7 +1108,7 @@ export function dgSections(locale: Locale, media: DgMediaIds): Sections {
         dir,
         p({
           en: 'An onboarding story on digikala.com/gold walks the three questions in four slides — what it is, buying from one milligram, fast liquidity and physical backing — and ends on Start buying gold.',
-          fa: 'استوری معرفی محصول در digikala.com/gold طی چهار اسلاید توضیح می‌دهد محصول چیست، خرید از یک میلی‌گرم چگونه ممکن است، فروش دارایی چقدر سریع انجام می‌شود و پشتوانهٔ فیزیکی آن چیست. اسلاید آخر به «شروع خرید طلا» می‌رسد.',
+          fa: 'استوری معرفی محصول در digikala.com/gold طی چهار اسلاید توضیح می‌دهد محصول چیست، خرید از یک میلی‌گرم چگونه ممکن است، فروش دارایی چقدر سریع انجام می‌شود و پشتوانه‌ی فیزیکی آن چیست. اسلاید آخر به «شروع خرید طلا» می‌رسد.',
           ar: 'تمرّ قصة تعريفية على digikala.com/gold بالأسئلة الثلاثة في أربع شرائح — ما هو المنتج، والشراء من مليغرام واحد، والسيولة السريعة، والغطاء المادي — وتنتهي بزر «ابدأ شراء الذهب».',
           es: 'Una story de bienvenida en digikala.com/gold recorre las tres preguntas en cuatro diapositivas —qué es, comprar desde un miligramo, liquidez rápida y respaldo físico— y termina en «Empezar a comprar oro».',
           de: 'Eine Onboarding-Story auf digikala.com/gold führt in vier Slides durch die drei Fragen — was es ist, Kauf ab einem Milligramm, schnelle Liquidität und physische Deckung — und endet bei „Gold kaufen starten“.',
@@ -1117,7 +1117,7 @@ export function dgSections(locale: Locale, media: DgMediaIds): Sections {
         }),
         p({
           en: 'Consumer campaigns ran on DigiPay: one creative sold zero fee and installment purchase together. A corporate-welfare offer took the Non-Inventory range to HR departments — brand-basket credit, employee loans and occasion packages, across a 16-partner marketplace.',
-          fa: 'کمپین‌های مصرف‌کننده در دیجی‌پی اجرا شدند؛ یکی از طرح‌های تبلیغاتی، کارمزد صفر و خرید قسطی را کنار هم معرفی می‌کرد. برای خدمات رفاهی سازمانی هم پیشنهادی آماده شد که اعتبار خرید از برندها، وام کارکنان و بسته‌های مناسبتی را به واحدهای منابع انسانی ارائه می‌داد؛ شبکهٔ این خدمات ۱۶ همکار داشت.',
+          fa: 'کمپین‌های مصرف‌کننده در دیجی‌پی اجرا شدند؛ یکی از طرح‌های تبلیغاتی، کارمزد صفر و خرید قسطی را کنار هم معرفی می‌کرد. برای خدمات رفاهی سازمانی هم پیشنهادی آماده شد که اعتبار خرید از برندها، وام کارکنان و بسته‌های مناسبتی را به واحدهای منابع انسانی ارائه می‌داد؛ شبکه‌ی این خدمات ۱۶ همکار داشت.',
           ar: 'نُفّذت حملات المستهلكين على DigiPay: تصميم واحد عرض الرسوم الصفرية والشراء بالتقسيط معًا. وحمل عرض الرفاه المؤسسي مجموعة Non-Inventory إلى أقسام الموارد البشرية — رصيد لسلّة العلامات، وقروض للموظفين، وباقات للمناسبات، عبر سوق من 16 شريكًا.',
           es: 'Las campañas para consumidores se lanzaron en DigiPay: una misma creatividad vendía comisión cero y compra a plazos. Una oferta de bienestar corporativo llevó la gama Non-Inventory a los departamentos de RR. HH.: crédito para una cesta de marcas, préstamos a empleados y lotes para fechas señaladas, en un marketplace de 16 socios.',
           de: 'Die Kampagnen für Privatkunden liefen über DigiPay: Ein Creative verkaufte null Gebühren und Ratenkauf zugleich. Ein Angebot für betriebliche Sozialleistungen brachte das Non-Inventory-Sortiment zu Personalabteilungen — Guthaben für einen Markenkorb, Mitarbeiterdarlehen und Anlasspakete, über einen Marktplatz mit 16 Partnern.',
@@ -1126,7 +1126,7 @@ export function dgSections(locale: Locale, media: DgMediaIds): Sections {
         }),
         p({
           en: 'Targeting ran on a segmentation model built on assets, demographics and behaviour, and event-driven flows sent the next message on what people actually did. Gold-backed credit was proposed alongside, as a concept; it did not ship.',
-          fa: 'کاربران بر اساس دارایی، ویژگی‌های جمعیت‌شناختی و رفتارشان بخش‌بندی شدند. پیام بعدی بر پایهٔ رفتار واقعی هر گروه فرستاده می‌شد. ایدهٔ اعتبار با پشتوانهٔ طلا نیز پیشنهاد شد، اما به مرحلهٔ عرضه نرسید.',
+          fa: 'کاربران بر اساس دارایی، ویژگی‌های جمعیت‌شناختی و رفتارشان بخش‌بندی شدند. پیام بعدی بر پایه‌ی رفتار واقعی هر گروه فرستاده می‌شد. ایده‌ی اعتبار با پشتوانه‌ی طلا نیز پیشنهاد شد، اما به مرحله‌ی عرضه نرسید.',
           ar: 'اعتمد الاستهداف على نموذج تقسيم مبني على الأصول والديموغرافيا والسلوك، وكانت مسارات قائمة على الأحداث ترسل الرسالة التالية بحسب ما فعله الناس فعلًا. واقتُرح الائتمان المضمون بالذهب إلى جانب ذلك كمفهوم؛ ولم يُطلق.',
           es: 'La segmentación se basaba en un modelo construido sobre activos, datos demográficos y comportamiento, y flujos basados en eventos enviaban el siguiente mensaje según lo que la gente hacía de verdad. En paralelo se propuso el crédito respaldado por oro, como concepto; no se lanzó.',
           de: 'Das Targeting lief über ein Segmentierungsmodell auf Basis von Bestand, Demografie und Verhalten, und ereignisgesteuerte Flows schickten die nächste Nachricht nach dem, was Menschen tatsächlich taten. Goldgedeckter Kredit wurde daneben als Konzept vorgeschlagen; er ging nicht live.',
@@ -1245,7 +1245,7 @@ export function dgSections(locale: Locale, media: DgMediaIds): Sections {
       }),
       intro: l({
         en: 'These are the Non-Inventory unit’s Q1 results against plan, from the weekly business review this role built. Only achievement is published — the absolute figures are Digikala’s — and they describe the unit, not the effect of any one design. The dashboards behind the review replaced the campaign spreadsheets and tracked NMV, CTR, CPC and conversion.',
-        fa: 'این اعداد از گزارش هفتگی فصل اول واحد Non-Inventory می‌آیند؛ گزارشی که در این نقش تهیه کردم. فقط درصد تحقق برنامه را نشان می‌دهم، چون اعداد مطلق متعلق به دیجی‌کالاست. این نتایج عملکرد واحد را توصیف می‌کنند و نمی‌توان آن‌ها را به یک تصمیم طراحی نسبت داد. داشبوردهای گزارش هم جای فایل‌های پراکندهٔ کمپین را گرفتند و NMV، CTR، CPC و نرخ تبدیل را دنبال کردند.',
+        fa: 'این اعداد از گزارش هفتگی فصل اول واحد Non-Inventory می‌آیند؛ گزارشی که در این نقش تهیه کردم. فقط درصد تحقق برنامه را نشان می‌دهم، چون اعداد مطلق متعلق به دیجی‌کالاست. این نتایج عملکرد واحد را توصیف می‌کنند و نمی‌توان آن‌ها را به یک تصمیم طراحی نسبت داد. داشبوردهای گزارش هم جای فایل‌های پراکنده‌ی کمپین را گرفتند و NMV، CTR، CPC و نرخ تبدیل را دنبال کردند.',
         ar: 'هذه نتائج وحدة Non-Inventory في الربع الأول مقارنة بالخطة، من المراجعة الأسبوعية للأعمال التي بناها هذا الدور. تُنشر نسب التحقيق فقط — فالأرقام المطلقة ملك ديجيكالا — وهي تصف الوحدة، لا أثر تصميم بعينه. وحلّت اللوحات التي تغذّي المراجعة محل جداول الحملات، وتابعت NMV وCTR وCPC ومعدّل التحويل.',
         es: 'Son los resultados del T1 de la unidad Non-Inventory frente al plan, sacados de la revisión semanal de negocio que construyó este rol. Solo se publica el cumplimiento —las cifras absolutas son de Digikala— y describen la unidad, no el efecto de un diseño concreto. Los dashboards detrás de la revisión sustituyeron las hojas de cálculo de campañas y seguían NMV, CTR, CPC y conversión.',
         de: 'Das sind die Q1-Ergebnisse der Non-Inventory-Unit gegenüber dem Plan, aus dem wöchentlichen Business-Review, das diese Rolle aufgebaut hat. Veröffentlicht wird nur die Zielerreichung — die absoluten Zahlen gehören Digikala —, und sie beschreiben die Unit, nicht die Wirkung eines einzelnen Designs. Die Dashboards hinter dem Review ersetzten die Kampagnen-Spreadsheets und verfolgten NMV, CTR, CPC und Conversion.',
@@ -1368,7 +1368,7 @@ export function dgSections(locale: Locale, media: DgMediaIds): Sections {
         ],
         fa: [
           'سفارش، دارایی و پروفایل، در دسکتاپ و موبایل',
-          'توسعهٔ نقره',
+          'توسعه‌ی نقره',
           'استوری چهاراسلایدی معرفی محصول',
           'کمپین کارمزد صفر و خرید قسطی',
           'پیشنهاد خدمات رفاهی سازمانی',
@@ -1490,7 +1490,7 @@ export function dgSections(locale: Locale, media: DgMediaIds): Sections {
           id: 'dg-l01',
           title: l({
             en: 'A visible countdown buys more trust than a reassuring sentence.',
-    fa: 'نمایش زمان تغییر قیمت، از یک وعدهٔ کلی اطمینان‌بخش‌تر است.',
+    fa: 'نمایش زمان تغییر قیمت، از یک وعده‌ی کلی اطمینان‌بخش‌تر است.',
             ar: 'العدّاد التنازلي الظاهر يكسب ثقة أكثر من جملة مطمئِنة.',
             es: 'Una cuenta atrás visible genera más confianza que una frase tranquilizadora.',
             de: 'Ein sichtbarer Countdown schafft mehr Vertrauen als ein beruhigender Satz.',
@@ -1499,7 +1499,7 @@ export function dgSections(locale: Locale, media: DgMediaIds): Sections {
           }),
           body: l({
             en: 'The price could have said it was fair. The timer showed that it was live and when it would change — and left the moment to commit with the user.',
-              fa: 'به‌جای ادعای کلی دربارهٔ قیمت، شمارش معکوس نشان می‌دهد نرخ چه زمانی به‌روز می‌شود. کاربر با دیدن این زمان، خودش دربارهٔ تأیید سفارش تصمیم می‌گیرد.',
+              fa: 'به‌جای ادعای کلی درباره‌ی قیمت، شمارش معکوس نشان می‌دهد نرخ چه زمانی به‌روز می‌شود. کاربر با دیدن این زمان، خودش درباره‌ی تأیید سفارش تصمیم می‌گیرد.',
             ar: 'كان بإمكان السعر أن يقول إنه عادل. أما العدّاد فأظهر أنه حيّ ومتى سيتغيّر — وترك لحظة التأكيد للمستخدم.',
             es: 'El precio podría haber dicho que era justo. El temporizador mostró que estaba vivo y cuándo cambiaría, y dejó en manos del usuario el momento de confirmar.',
             de: 'Der Preis hätte behaupten können, fair zu sein. Der Timer zeigte, dass er live war und wann er sich ändert — und überließ den Moment der Bestätigung dem Nutzer.',
@@ -1532,7 +1532,7 @@ export function dgSections(locale: Locale, media: DgMediaIds): Sections {
           id: 'dg-l03',
           title: l({
             en: 'The dashboard’s real product was one shared set of numbers.',
-    fa: 'ارزش داشبورد، دادهٔ مشترک برای تصمیم‌گیری بود.',
+    fa: 'ارزش داشبورد، داده‌ی مشترک برای تصمیم‌گیری بود.',
             ar: 'كان المنتج الحقيقي للوحة مجموعة أرقام مشتركة واحدة.',
             es: 'El verdadero producto del dashboard era un único conjunto de cifras compartido.',
             de: 'Das eigentliche Produkt des Dashboards war ein gemeinsamer Satz Zahlen.',
@@ -1541,7 +1541,7 @@ export function dgSections(locale: Locale, media: DgMediaIds): Sections {
           }),
           body: l({
             en: 'Replacing the spreadsheets gave product, marketing and PR the same NMV, CTR, CPC and conversion to argue from. The charts were the least of it.',
-              fa: 'با جایگزینی صفحه‌گسترده‌ها، تیم‌های محصول، بازاریابی و روابط‌عمومی به عددهای مشترکی برای NMV، CTR، CPC و نرخ تبدیل دسترسی پیدا کردند. ارزش اصلی داشبورد، تصمیم‌گیری بر پایهٔ همان داده‌ها بود.',
+              fa: 'با جایگزینی صفحه‌گسترده‌ها، تیم‌های محصول، بازاریابی و روابط‌عمومی به عددهای مشترکی برای NMV، CTR، CPC و نرخ تبدیل دسترسی پیدا کردند. ارزش اصلی داشبورد، تصمیم‌گیری بر پایه‌ی همان داده‌ها بود.',
             ar: 'منح استبدال جداول البيانات فرقَ المنتج والتسويق والعلاقات العامة الأرقام نفسها من NMV وCTR وCPC ومعدّل التحويل للنقاش حولها. أما الرسوم البيانية فكانت أقل ما في الأمر.',
             es: 'Sustituir las hojas de cálculo dio a producto, marketing y relaciones públicas el mismo NMV, CTR, CPC y conversión sobre los que discutir. Los gráficos eran lo de menos.',
             de: 'Die Spreadsheets abzulösen gab Produkt, Marketing und PR dieselben Werte für NMV, CTR, CPC und Conversion als Diskussionsgrundlage. Die Charts waren das Geringste daran.',

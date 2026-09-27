@@ -393,7 +393,7 @@ describe('NextProject (DS-28)', () => {
     )
     const links = [...container.querySelectorAll('a')].map((a) => a.getAttribute('href'))
     expect(links).toEqual(['/fa/work/digital-gold', '/fa/work'])
-    expect(container.textContent).toContain('پروژهٔ بعدی')
+    expect(container.textContent).toContain('پروژه‌ی بعدی')
     expect(container.textContent).toContain('From proposition to growth system.')
   })
 

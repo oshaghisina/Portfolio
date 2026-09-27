@@ -1,0 +1,344 @@
+{
+  "statement": "El sitio de reservas de una agencia con treinta años, rediseñado para vuelos, hoteles y tours: de un análisis de doce sitios a páginas publicadas.",
+  "industry": "Viajes · vuelos, hoteles y tours",
+  "team": "Diseñador de producto y estratega a tiempo parcial, con el equipo de la agencia",
+  "heroCaption": "La página de inicio rediseñada: un solo buscador para vuelos, hoteles, vuelo más hotel y tours, sobre las ofertas de la agencia.",
+  "snapshot": {
+    "problem": "Una compra rápida de billete y la decisión larga de un tour tenían que convivir en un sitio, y el criterio de la agencia tenía que verse junto al precio.",
+    "role": "Diseñador de producto y estratega a tiempo parcial: el análisis comparativo, la arquitectura de información, el lenguaje de diseño, todas las páginas de reserva, la cuenta del viajero y un concepto de planificador de viajes.",
+    "result": "El sitio de reservas rediseñado está publicado en tahagasht.com. El planificador de viajes y la capa social están diseñados, pero no están en el sitio."
+  },
+  "alt": {
+    "cover": "Diseño de la página de inicio de Taha Gasht en escritorio: la cabecera, un buscador con pestañas de vuelo, hotel, vuelo más hotel, tour y hotel nacional, y las primeras filas de ofertas debajo",
+    "homeMobile": "Diseño de la página de inicio de Taha Gasht en el móvil: el buscador y después filas de búsquedas recientes, vuelos de última hora y hoteles sugeridos",
+    "stories": "Cuatro pantallas de historias para la página de inicio de Taha Gasht en el móvil, cada una con una imagen a toda altura y un título",
+    "iaMap": "Tablero de FigJam: el mapa de información de vuelos y hoteles, con la página de búsqueda, la lista de resultados, la página de un vuelo y de un hotel, las páginas de aterrizaje y las páginas fijas, unidos por conectores",
+    "opportunity": "Tablero de FigJam: dos árboles de oportunidades; para billetes, el más barato, el chárter, el más corto y los vuelos con servicios especiales, con ventas adicionales hasta un hotel gratis en la escala; para hoteles, las recomendaciones de la agencia por garantía, ubicación y precio",
+    "tourMap": "Tablero de FigJam: la página del tour a Japón como árbol, con introducción, ventajas competitivas, paquetes, coste del viaje, opiniones, servicios, documentos, información adicional, galería, asesoría, preguntas y blog",
+    "ticket1": "Primera iteración de la tarjeta de billete de avión, repetida en una lista de resultados con los filtros al lado",
+    "ticket2": "Tercera versión de la tarjeta de billete en una lista de resultados",
+    "ticket3": "Versiones finales de la lista de resultados de vuelos, lado a lado: tarjetas con sombra, sobre un fondo de tarjeta y con borde, todas sobre una página gris",
+    "flightList": "Diseño de resultados de vuelos en escritorio: una franja de fechas con sus tarifas más bajas, pestañas de más barato, mejor y la recomendación de Taha Gasht, filtros a un lado y tarjetas con los asientos que quedan",
+    "flightLanding": "Diseño de la página de aterrizaje de búsqueda de vuelos: el buscador sobre rutas, aerolíneas, cómo comprar, preguntas y artículos del blog",
+    "flightDetail": "Diseño de la página de resultado de un vuelo: un vuelo abierto con sus detalles, el desglose del precio y las reglas de la tarifa",
+    "hotelList": "Diseño de resultados de hoteles: tarjetas con foto, estrellas, precio por noche y la insignia de recomendación de la agencia, con filtros a un lado",
+    "hotelMap": "Resultados de hoteles en un mapa: marcadores de precio sobre la ciudad junto a la misma lista de hoteles",
+    "hotelDetail": "Diseño de la página de un hotel: galería, valoración del personal, la ubicación y la limpieza, habitaciones, lugares cercanos con el tiempo a pie, en coche y en metro, y opiniones de huéspedes",
+    "tourList": "Diseño de la lista de tours: tarjetas con fechas y precios desde, y filtros por temporada, clima, objetivo y actividad",
+    "tourPage": "Diseño de la página del tour a Japón: paquetes, la trayectoria de la agencia, el plan día a día, hoteles, servicios, documentos y un formulario de asesoría",
+    "tourPackage": "Diseño de un paquete de tour: la tabla de precios por hotel y habitación, las tarifas de niños y una calculadora de coste para el grupo",
+    "checkout": "Diseño del pago: cuatro pasos en la parte superior, datos de pasajeros con pasajeros guardados, datos de contacto y un resumen del vuelo con el total",
+    "travels": "Cuenta, mis viajes: billetes con su estado, y las vistas de billete, reembolso y calendario",
+    "passengers": "Cuenta, pasajeros: pasajeros guardados con las ventanas para añadir, editar y eliminar",
+    "wallet": "Cuenta, monedero: el saldo de la tarjeta Taha, importes de recarga, movimientos y una solicitud de retiro",
+    "bookmarks": "Cuenta, favoritos: tours, hoteles y vuelos guardados, y el estado vacío",
+    "profile": "Cuenta, perfil: datos personales, contraseña, documentos de identidad y datos de pago",
+    "notifications": "Cuenta, notificaciones: mensajes con leído y eliminar, y el estado vacío",
+    "support": "Cuenta, soporte: tickets por estado, una solicitud nueva y el hilo de respuestas de un ticket",
+    "signOut": "Cuenta, cerrar sesión: la ventana de confirmación",
+    "maker1": "Travel Maker, paso 1 en el móvil: elegir destino y fechas",
+    "maker2": "Travel Maker, paso 2: elegir transporte y alojamiento",
+    "maker3": "Travel Maker, paso 3: añadir actividades día a día",
+    "maker4": "Travel Maker, paso 4: los ajustes del viaje y los compañeros de viaje",
+    "socialFeed": "Concepto social en el móvil: publicaciones de tours planeados con fechas, precio por persona y un botón para unirse al viaje",
+    "socialExperience": "Concepto social: la experiencia de un viajero valorada en satisfacción, relación calidad-precio y disposición a recomendar",
+    "socialGoals": "Tablero de FigJam: siete objetivos para la capa social con sus subobjetivos, sobre ocho impulsores positivos y los riesgos",
+    "socialMap": "Tablero de FigJam: el mapa del sistema social, con blog, mapa interactivo, publicación, Reels y diario de viaje, cada uno con su enfoque, rasgo destacado, puntos de contacto y el valor que crea",
+    "liveHome": "La página de inicio publicada de tahagasht.com, capturada el 27 de septiembre de 2026: la portada, el buscador, los tours destacados y los vuelos y hoteles populares",
+    "liveFlights": "Resultados publicados de vuelos de Teherán a Estambul: etiquetas de chárter, botones de día anterior y siguiente, y filtros",
+    "liveHotels": "La página de hoteles publicada en tahagasht.com: el buscador con la pestaña de hotel abierta, hoteles populares, una guía de reserva, preguntas y artículos del blog",
+    "liveTours": "La lista de tours publicada en tahagasht.com: categorías de tours, tarjetas de paquetes con un filtro por ciudad de salida, y un panel de precio y orden",
+    "liveJapan": "La página publicada del tour a Japón: la trayectoria de la agencia, una tarjeta de paquete, los bloques de asesoría y las pestañas de información"
+  },
+  "chapters": {
+    "context": {
+      "heading": "Una agencia de treinta años con tres tipos de viaje",
+      "body": [
+        "Taha Gasht es una agencia de viajes de Teherán que vende viajes desde hace tres décadas: vuelos nacionales e internacionales, hoteles en Irán y en el extranjero, tours en grupo con guía de habla persa y visados. Su sitio web es el sistema de reservas de todo ello, con un panel para agencias asociadas detrás.",
+        "Sina trabajó en él a tiempo parcial como diseñador de producto y estratega. El archivo de Figma dice el encargo en su portada: los cambios del sitio principal de Taha Gasht. El trabajo cubrió el sitio público desde la primera búsqueda hasta la cuenta del viajero, y un concepto para lo que podía venir después."
+      ]
+    },
+    "problem": {
+      "heading": "Una compra rápida y una decisión larga en un mismo sitio",
+      "body": [
+        "Un vuelo nacional se compra en minutos, por precio y horario. Un tour a Japón se sopesa durante semanas: las fechas, los hoteles, los documentos, el guía y, a menudo, una llamada con un asesor. El mismo sitio tiene que servir a los dos.",
+        "Los mismos vuelos y hoteles se venden también en otros sitios de reservas. Lo que una agencia puede añadir es su criterio: qué vuelo tiene el asiento garantizado, qué hotel está bien situado, qué tour vale lo que cuesta. El rediseño tenía que poner ese criterio junto al precio."
+      ],
+      "insight": "Una lista de precios dice cuánto cuesta un viaje. Una agencia también puede decir qué elegir."
+    },
+    "benchmark": {
+      "heading": "Doce sitios de reservas, lado a lado",
+      "body": [
+        "Antes de dibujar, Sina capturó las páginas completas de doce sitios de reservas el mismo día, junto al de Taha Gasht: cinco sitios iraníes que venden los mismos vuelos (Alibaba, Flytoday, MrBilit, Flightio y SafarMarket) y siete internacionales (Booking.com, Expedia, Kayak, Skyscanner, Google Flights, Cheapflights y Wego).",
+        "En el mismo archivo entraron kits de apps de reserva de vuelos como referencia para los flujos móviles y, más tarde, para el concepto social, las páginas de experiencias de viaje de un sitio de reservas iraní y de Tripadvisor. Nada de ese material se muestra aquí: es trabajo de otras personas."
+      ]
+    },
+    "ia": {
+      "heading": "Todo el recorrido en un mapa antes de cualquier pantalla",
+      "body": [
+        "El primer tablero traza los recorridos de vuelo y de hotel módulo a módulo: la página de búsqueda, la lista de resultados, la página de un vuelo o de un hotel y las páginas de aterrizaje que encuentran los buscadores. En la parte de vuelos, cada módulo lleva una marca de su origen: la estructura actual de Taha Gasht o una idea nueva.",
+        "Algunas ideas nuevas son pequeñas, como los botones de día anterior y siguiente, o un calendario de precios que marca los festivos. Otras cambian lo que el sitio puede hacer:"
+      ],
+      "bullets": [
+        "Una alerta de precio que puede reservar el vuelo: el viajero guarda los datos de los pasajeros y recarga el monedero con un 20 a 30 por ciento más que la tarifa, y el vuelo se reserva cuando cambia el precio.",
+        "Los vuelos agotados siguen en la lista.",
+        "Los hoteles en lista y en mapa comparten un filtro, con los mismos resultados en ambos, y al pasar el cursor por un hotel de la lista se ve en el mapa.",
+        "Las opiniones llegan al principio de una fuente externa, con el sistema de opiniones propio del sitio al lado.",
+        "Las páginas de aterrizaje de rutas y hoteles muestran la evolución de precios cuando existen al menos doce meses de datos."
+      ],
+      "insight": "Cada módulo tiene un origen: se conserva del sitio actual o es una idea nueva."
+    },
+    "suggestions": {
+      "heading": "Cuatro formas de sugerir un vuelo",
+      "customLabel": "Sugerencias",
+      "body": [
+        "Dos árboles de oportunidades preguntan qué puede recomendar la agencia. Para vuelos hay cuatro tipos de sugerencia: los más baratos; los chárter, porque en un chárter el asiento está garantizado; los más cortos, en rutas internacionales; y los vuelos con servicios especiales por tiempo limitado, que un responsable configura a mano en el panel de gestión.",
+        "La rama de servicios especiales es también donde la agencia puede vender más: equipaje extra, una mejora a business, descuentos en rutas, una sala CIP, un hotel gratis en la escala. Para hoteles, las recomendaciones combinan habitaciones garantizadas, acceso al centro y precio. Otro tablero traza la página de tour del mismo modo, empezando por Japón."
+      ],
+      "insight": "La recomendación de la agencia se convirtió en una pestaña de orden en la lista de resultados, junto a más barato y mejor."
+    },
+    "language": {
+      "heading": "Tres rondas sobre una tarjeta",
+      "customLabel": "Lenguaje de diseño",
+      "body": [
+        "La tarjeta del billete de avión sostiene la mayor parte del sitio. Se repite en cada lista de resultados, se abre en detalles de vuelo, precio y reembolso, y marca la pauta de las tarjetas de hotel y de tour. Por eso el lenguaje de diseño se trabajó sobre ella, en tres rondas: una primera iteración, una tercera versión del billete y versiones finales que comparan sombras, fondos de tarjeta y bordes sobre la misma página gris.",
+        "La tipografía es Yekan Bakh, ajustada para el persa en todo el sitio. Bocetos anteriores del archivo prueban dos calendarios de precios, uno para vuelos nacionales y otro para internacionales, y un billete que se abre en su sitio."
+      ]
+    },
+    "flights": {
+      "heading": "Vuelos: elegir por precio, por tiempo o por la recomendación de la agencia",
+      "body": [
+        "Los resultados de vuelos empiezan con una franja de fechas y sus tarifas más bajas, para que el día más barato se vea antes de desplazarse. Sobre la lista hay tres pestañas de orden, el más barato, el mejor y la recomendación de Taha Gasht, y cada una muestra su precio y la duración total.",
+        "Los filtros siguen lo que importa en estas rutas: billete chárter o regular, número de escalas, si la escala exige visado, la cabina y el equipaje. Cada tarjeta muestra los asientos que quedan y se abre en detalles del vuelo, detalles del precio y reglas de reembolso. Una alerta de precio está dentro de la lista, y la página completa del resultado añade las reglas de la tarifa, las penalizaciones y las restricciones de venta.",
+        "El buscador admite solo ida, ida y vuelta y varios destinos. Debajo, la página de aterrizaje de vuelos lleva lo que necesitan los buscadores y quien llega por primera vez: rutas populares, aerolíneas, cómo comprar un billete, preguntas frecuentes y artículos del blog."
+      ],
+      "insight": "El visado de escala tiene su propio filtro: una conexión barata por Europa exige un visado Schengen."
+    },
+    "hotels": {
+      "heading": "Hoteles: dónde está y qué dijeron los huéspedes",
+      "customLabel": "Hoteles",
+      "body": [
+        "Los resultados de hoteles se ven en lista o en un mapa, con un mismo conjunto de filtros para ambos: rango de precio, estrellas, tipo de alojamiento (hotel, hotel boutique u hostal) y los barrios de la ciudad. Cada tarjeta lleva el precio por noche, las estrellas y, cuando corresponde, la recomendación de la agencia.",
+        "La página del hotel divide la valoración en personal, ubicación y limpieza, enumera los lugares cercanos con el tiempo para llegar a pie, en coche o en metro, y permite a los huéspedes dejar una opinión con fotos. Las habitaciones se comparan en la misma página, con una solicitud de servicios extra antes de reservar."
+      ],
+      "insight": "Las distancias se dan en minutos y por medio de transporte, como un viajero planifica su día."
+    },
+    "tours": {
+      "heading": "Tours: una decisión que se toma con una persona",
+      "customLabel": "Tours",
+      "body": [
+        "Los tours son donde la agencia es más fuerte y donde una compra tarda más. La lista de tours filtra por lo que el viajero quiere del viaje: la temporada o la fecha señalada, como Nowruz o Navidad, el clima, el objetivo (descanso o aventura) y el tipo de actividad, de la naturaleza y la historia a los festivales, la gastronomía y las compras.",
+        "Una página de tour, dibujada primero para Japón, responde a las preguntas que suele oír un asesor: los paquetes y sus fechas, el precio por hotel y habitación con tarifas de niños, una calculadora para todo el grupo, el plan de cada día, los hoteles, los servicios incluidos (un guía de habla persa, el visado, el seguro y la sala CIP del aeropuerto de Teherán) y los documentos necesarios. Un formulario para que te llamen, un teléfono y WhatsApp quedan siempre a mano.",
+        "La página muestra además la trayectoria de la agencia, sus años de actividad, sus viajeros y su satisfacción, algo que el tablero del tour había planeado como ventaja competitiva."
+      ],
+      "insight": "Un tour se sigue vendiendo con un asesor. La página prepara al viajero para esa llamada."
+    },
+    "home": {
+      "heading": "Una página de inicio para tres tipos de viaje",
+      "customLabel": "Inicio",
+      "body": [
+        "La página de inicio abre con un solo buscador y cinco pestañas: vuelo, hotel, vuelo más hotel, tour y hotel nacional. Debajo, las filas cambian con la temporada y con el viajero: visitas recientes, vuelos de última hora, una fila de viajes al sur, hoteles sugeridos y destinos populares.",
+        "Más abajo, la página da razones para elegir la agencia: sus ventajas, cómo comprar un billete, las opiniones de los viajeros, un formulario para que te llamen con el horario de atención y una primera invitación al planificador de viajes: «Crea tu propia aventura». En el móvil, las historias muestran tours y destinos a pantalla completa."
+      ]
+    },
+    "account": {
+      "heading": "El pago y la cuenta del viajero",
+      "customLabel": "Cuenta",
+      "body": [
+        "El pago se hace en cuatro pasos visibles en la parte superior: elegir el billete, confirmar los datos, pagar y emitir el billete. Los pasajeros guardados se eligen de una lista y los nuevos se añaden con los datos del pasaporte, junto a un resumen del vuelo.",
+        "Tras la compra, la cuenta tiene ocho secciones: viajes, pasajeros, monedero, favoritos, perfil, notificaciones, soporte y cerrar sesión, cada una dibujada con sus ventanas y su estado vacío. En viajes se ve el estado de cada billete, se abre el billete electrónico, se sigue el vuelo y se inicia un reembolso por ruta y pasajero. El monedero, llamado tarjeta Taha, se recarga con importes fijos o libres y paga a una cuenta bancaria. El soporte funciona con tickets, cada uno con su propio hilo de respuestas.",
+        "El acceso funciona con contraseña o con un código de un solo uso, y un centro de ayuda reúne las preguntas, la guía de compra y el soporte."
+      ]
+    },
+    "next": {
+      "heading": "Lo que podía venir después: planear un viaje y compartirlo",
+      "customLabel": "Siguiente paso",
+      "body": [
+        "Con el sitio de reservas dibujado, Sina diseñó un concepto para que los viajeros volvieran entre un viaje y otro. El Travel Maker planifica un viaje en cuatro pasos: destino y fechas, transporte y alojamiento, actividades día a día y los ajustes del viaje. Las actividades vienen por tipos, como lugares históricos, comida, compras, descanso o eventos locales, y se pueden añadir días nuevos. Los compañeros de viaje se suman con su nombre y su teléfono.",
+        "La capa social permite a los viajeros publicar un tour que están planeando e invitar a otros a unirse, compartir experiencias valoradas en satisfacción, relación calidad-precio y si recomendarían el lugar, y escribir diarios de viaje enlazados a un tour o a un hotel.",
+        "Con el concepto llegó un tablero de estrategia. Fija siete objetivos, de las ventas y las ofertas personalizadas a la fidelidad y el reconocimiento de marca; ocho impulsores que harían volver a la gente, de los puntos y las insignias a las recomendaciones de amigos; y, junto a ellos, los riesgos: poca participación al principio, coste alto y retorno lento, moderar el contenido, la privacidad y las opiniones negativas. Un mapa del sistema sitúa cada formato (blog, mapa interactivo, publicación, Reels y diario de viaje) donde lo encontraría el viajero: el feed, explorar, la página de inicio, las campañas y dentro de las páginas de tours."
+      ],
+      "insight": "El tablero de estrategia escribe los riesgos junto a los objetivos."
+    },
+    "shipped": {
+      "heading": "Publicado en tahagasht.com",
+      "body": [
+        "El rediseño se construyó y está publicado en tahagasht.com. Las páginas publicadas siguen los mapas. Los resultados de vuelos llevan la etiqueta de chárter o regular y botones de día anterior y siguiente. La página del tour a Japón abre con la trayectoria de la agencia, tres décadas, un 99 por ciento de satisfacción de los viajeros y más de 6500 viajeros, y conserva sus bloques de asesoría y las pestañas de documentos, precios, mejor época para viajar, ciudades y lugares de interés.",
+        "El Travel Maker y la capa social no están en el sitio publicado. Siguen siendo un siguiente paso diseñado."
+      ]
+    }
+  },
+  "figures": {
+    "iaMap": {
+      "caption": "La arquitectura de información de vuelos y hoteles: búsqueda, lista, detalle y páginas de aterrizaje, módulo a módulo."
+    },
+    "opportunity": {
+      "caption": "Dos árboles de oportunidades: formas de sugerir un vuelo y formas de sugerir un hotel."
+    },
+    "tourMap": {
+      "caption": "La página del tour a Japón como árbol, de la introducción al blog."
+    },
+    "language": {
+      "caption": "La tarjeta del billete en tres rondas.",
+      "items": ["Primera iteración", "Billete, versión 3", "Versiones finales: sombra, fondo de tarjeta, borde"]
+    },
+    "flightList": {
+      "caption": "Resultados de vuelos en escritorio.",
+      "annotations": [
+        "Fechas con sus tarifas más bajas",
+        "Más barato, mejor y la recomendación de Taha Gasht, cada uno con precio y duración total",
+        "Chárter o regular, escalas, visado de escala, cabina y equipaje",
+        "Asientos que quedan en cada tarjeta",
+        "Los detalles de vuelo, precio y reembolso se abren en su sitio",
+        "Una alerta de precio dentro de la lista"
+      ]
+    },
+    "flightPages": {
+      "caption": "Alrededor de la lista de resultados.",
+      "items": ["La página de aterrizaje de búsqueda de vuelos", "Un vuelo, con sus reglas de tarifa"]
+    },
+    "hotelViews": {
+      "caption": "Resultados de hoteles en lista y en mapa, con un mismo conjunto de filtros.",
+      "items": ["Lista", "Mapa"]
+    },
+    "hotelDetail": {
+      "caption": "La página del hotel: valoraciones por tema, habitaciones, lugares cercanos en minutos y opiniones."
+    },
+    "tourPage": {
+      "caption": "La página del tour a Japón."
+    },
+    "tourParts": {
+      "caption": "Elegir un tour y después calcular su coste.",
+      "items": ["Lista de tours con filtros por temporada, clima, objetivo y actividad", "Un paquete: precios por hotel y habitación, y una calculadora"]
+    },
+    "homeMobile": {
+      "caption": "La página de inicio en el móvil.",
+      "items": ["Inicio", "Historias"]
+    },
+    "checkout": {
+      "caption": "El pago en cuatro pasos."
+    },
+    "account": {
+      "caption": "La cuenta del viajero, sección por sección. Abre una sección para verla a tamaño completo.",
+      "items": ["Viajes", "Pasajeros", "Monedero", "Favoritos", "Perfil", "Notificaciones", "Soporte", "Cerrar sesión"]
+    },
+    "maker": {
+      "caption": "El Travel Maker en cuatro pasos.",
+      "items": ["Destino y fechas", "Transporte y alojamiento", "Actividades, día a día", "Ajustes y compañeros de viaje"]
+    },
+    "social": {
+      "caption": "La capa social.",
+      "items": ["Tours a los que unirse", "Una experiencia valorada"]
+    },
+    "strategy": {
+      "caption": "El tablero de estrategia detrás del concepto.",
+      "items": ["Objetivos, impulsores y riesgos", "Dónde encuentra el viajero cada formato"]
+    },
+    "live": {
+      "caption": "El sitio publicado, capturado el 27 de septiembre de 2026. Abre una página para verla entera.",
+      "items": ["Inicio", "Resultados de vuelos", "Hoteles", "Tours", "Tour a Japón"]
+    }
+  },
+  "process": {
+    "heading": "De un análisis comparativo a un sitio publicado",
+    "steps": [
+      { "label": "Análisis comparativo", "note": "Doce sitios de reservas y el de Taha Gasht, capturados lado a lado" },
+      { "label": "Arquitectura de información", "note": "Cada módulo de los recorridos de vuelo, hotel y tour, marcado como conservado o nuevo" },
+      { "label": "Lenguaje de diseño", "note": "La tarjeta del billete en tres rondas y después las páginas a su alrededor" },
+      { "label": "Páginas", "note": "Inicio, vuelos, hoteles, tours, pago, ayuda y acceso, para escritorio y móvil" },
+      { "label": "Cuenta", "note": "Ocho secciones de la cuenta del viajero, con sus ventanas y estados vacíos" },
+      { "label": "Siguiente paso", "note": "Un planificador de viajes y una capa social, con un tablero de objetivos, impulsores y riesgos" }
+    ]
+  },
+  "decisions": {
+    "heading": "Cinco decisiones detrás del sitio",
+    "lede": "Los tableros y las páginas hacen visibles estas decisiones.",
+    "items": [
+      {
+        "title": "Mostrar la recomendación de la agencia junto a más barato y mejor",
+        "why": "Cualquier sitio de reservas puede ordenar por precio. Taha Gasht también puede decir qué vuelo elegiría. Como pestaña de orden, ese criterio está donde el viajero elige, y como cada pestaña muestra precio y duración, el equilibrio entre ambos queda claro.",
+        "alternatives": "Un único orden por precio, o una insignia en algunas tarjetas.",
+        "tradeoff": "La recomendación hay que mantenerla a mano: el tablero indica que los vuelos con servicios especiales los configura un administrador o un responsable.",
+        "evidence": "Los árboles de oportunidades de billetes y hoteles; las pestañas de orden de la lista de resultados."
+      },
+      {
+        "title": "Hacer del chárter y el regular una etiqueta y un filtro",
+        "why": "En un chárter el asiento está garantizado, y por eso el árbol de oportunidades lo sugiere. La diferencia cambia lo que el viajero compra, así que aparece en cada tarjeta y en los filtros.",
+        "tradeoff": "Una etiqueta más en una tarjeta que ya lleva horarios, escalas y asientos.",
+        "evidence": "La lista de resultados publicada muestra la etiqueta en cada tarjeta."
+      },
+      {
+        "title": "Una alerta de precio que puede reservar el vuelo",
+        "why": "En las rutas concurridas los asientos se agotan y las tarifas cambian. Un viajero que guarda los datos de los pasajeros y recarga el monedero con un margen puede tener el vuelo reservado cuando cambia el precio, sin vigilar el sitio.",
+        "alternatives": "Una alerta que solo envía un mensaje.",
+        "tradeoff": "El viajero mantiene en el monedero entre un 20 y un 30 por ciento más que la tarifa.",
+        "evidence": "La rama de alertas de precio de la arquitectura de información y la alerta dentro de la lista de resultados."
+      },
+      {
+        "title": "Vender los tours a través de una conversación",
+        "why": "Un tour en grupo es una decisión larga, con documentos y visados. La página del tour responde a las preguntas habituales, calcula el coste de todo el grupo y mantiene cerca un formulario para que te llamen y un teléfono, así que la llamada del asesor empieza más adelantada.",
+        "alternatives": "Pago inmediato para los tours, como para los vuelos.",
+        "tradeoff": "El sitio deja la venta en manos de personas, así que su ritmo es el del equipo de ventas.",
+        "evidence": "Los estados de llamar, comprar y avisar de la página del tour; los bloques de asesoría de la página publicada del tour a Japón."
+      },
+      {
+        "title": "Un solo filtro para la lista y el mapa",
+        "why": "El valor de un hotel depende de dónde está. Un solo conjunto de filtros, los mismos resultados en ambas vistas y un cursor que las enlaza permiten cambiar de vista sin perder el sitio.",
+        "tradeoff": "Las dos vistas tienen que cargar los mismos resultados, también el mapa.",
+        "evidence": "El tablero de arquitectura de información: filtros sincronizados entre la lista y el mapa, con el mismo resultado en ambos."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "La parte de Sina",
+    "intro": "Sina trabajó a tiempo parcial como diseñador de producto y estratega de Taha Gasht. El archivo de Figma y los tableros son obra suya, salvo el material del análisis comparativo y algunos marcos pegados desde otros proyectos.",
+    "own": [
+      "El análisis comparativo de doce sitios de reservas",
+      "La arquitectura de información de vuelos, hoteles y la página de tour, y los árboles de oportunidades",
+      "El lenguaje de diseño, trabajado sobre la tarjeta del billete de avión",
+      "Todas las páginas del sitio de reservas: inicio, vuelos, hoteles, tours, pago, ayuda y acceso",
+      "La cuenta del viajero",
+      "El concepto del Travel Maker y la capa social, y su tablero de estrategia"
+    ],
+    "collaborate": [
+      "Compañeros de Taha Gasht que revisaron los tableros: una nota en el mapa del tour pide los lugares de interés como infografía",
+      "El equipo que construyó el sitio publicado"
+    ],
+    "note": "Se dejan fuera las capturas del análisis comparativo, los kits de apps, las plantillas de la comunidad y un set de iconos comprado, así como los marcos pegados desde otros proyectos y un mapa de recorrido del tablero de oportunidades que pertenece a otro proyecto."
+  },
+  "outcomes": {
+    "heading": "Lo que se publicó",
+    "intro": "El rediseño está publicado. El archivo recoge el diseño y no contiene cifras de tráfico ni de ventas tras el lanzamiento, así que aquí no hay datos de uso.",
+    "delivered": [
+      { "label": "sitios de reservas analizados", "context": "Cinco iraníes y siete internacionales, capturados junto al sitio de Taha Gasht" },
+      { "label": "secciones en la cuenta del viajero", "context": "Viajes, pasajeros, monedero, favoritos, perfil, notificaciones, soporte y cerrar sesión" },
+      { "label": "pasos en el Travel Maker", "context": "Destino y fechas, transporte y alojamiento, actividades, ajustes" },
+      { "label": "objetivos en el tablero de estrategia social", "context": "Con ocho impulsores y los riesgos al lado" }
+    ],
+    "shipped": [
+      "Una página de inicio y un buscador rediseñados para vuelos, hoteles y tours",
+      "Búsqueda, resultados y detalle de vuelos, y un pago en cuatro pasos",
+      "Búsqueda de hoteles en lista y mapa, y páginas de hotel",
+      "Listas y páginas de tours, empezando por Japón",
+      "La cuenta del viajero, el centro de ayuda y el acceso",
+      "Diseñado como siguiente paso: el Travel Maker y la capa social, con su tablero de estrategia"
+    ]
+  },
+  "lessons": {
+    "heading": "Lo que cambiaría",
+    "items": [
+      {
+        "title": "Escribir cómo un vuelo se gana la recomendación de la agencia",
+        "body": "La recomendación de Taha Gasht es la idea más propia de la lista de resultados, y el archivo no dice en ningún sitio cómo la obtiene un vuelo. Una regla breve, acordada con el equipo de ventas, mantendría honesta la pestaña y daría a los viajeros un motivo para confiar en ella."
+      },
+      {
+        "title": "Probar la página del tour con viajeros",
+        "body": "La página del tour responde a las preguntas que oyen los asesores, pero el archivo no recoge ninguna prueba con viajeros. Unas pocas sesiones con personas que planean un viaje mostrarían qué respuestas buscan primero y por cuáles siguen descolgando el teléfono."
+      },
+      {
+        "title": "Empezar la capa social con un solo formato",
+        "body": "El concepto abarca a la vez publicaciones, Reels, diarios de viaje, un mapa y un planificador. Empezar con un formato, diarios de viaje enlazados a un tour reservado, habría mostrado si los viajeros publican antes de construir el resto."
+      }
+    ]
+  }
+}

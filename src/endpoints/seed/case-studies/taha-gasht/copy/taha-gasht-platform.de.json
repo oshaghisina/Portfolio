@@ -1,0 +1,344 @@
+{
+  "statement": "Die Buchungsseite einer dreißig Jahre alten Reiseagentur, neu gestaltet für Flüge, Hotels und Touren: von zwölf verglichenen Seiten bis zu Live-Seiten.",
+  "industry": "Reisen · Flüge, Hotels und Touren",
+  "team": "Produktdesigner und Stratege in Teilzeit, mit dem Team der Agentur",
+  "heroCaption": "Die neu gestaltete Startseite: eine Suche für Flüge, Hotels, Flug plus Hotel und Touren, darüber die Angebote der Agentur.",
+  "snapshot": {
+    "problem": "Ein schneller Ticketkauf und die lange Entscheidung für eine Tour mussten auf eine Seite passen, und das Urteil der Agentur sollte neben dem Preis sichtbar werden.",
+    "role": "Produktdesigner und Stratege in Teilzeit: der Vergleich mit anderen Seiten, die Informationsarchitektur, die Designsprache, jede Seite der Buchungsseite, das Reisendenkonto und ein Konzept für einen Reiseplaner.",
+    "result": "Die neu gestaltete Buchungsseite ist auf tahagasht.com live. Reiseplaner und Social-Ebene sind gestaltet, aber nicht auf der Website."
+  },
+  "alt": {
+    "cover": "Entwurf der Startseite von Taha Gasht, Desktop: die Kopfzeile, eine Suche mit Reitern für Flug, Hotel, Flug plus Hotel, Tour und Inlandshotel, darunter die ersten Angebotsreihen",
+    "homeMobile": "Entwurf der Startseite von Taha Gasht auf dem Smartphone: die Suche, danach Reihen mit letzten Suchen, Last-Minute-Flügen und vorgeschlagenen Hotels",
+    "stories": "Vier Story-Screens für die Startseite von Taha Gasht auf dem Smartphone, jeweils ein Bild in voller Höhe mit Titel",
+    "iaMap": "FigJam-Board: die Informationskarte für Flüge und Hotels mit Suchseite, Ergebnisliste, Seite eines Flugs und eines Hotels, Landingpages und statischen Seiten, verbunden durch Linien",
+    "opportunity": "FigJam-Board: zwei Opportunity-Bäume; für Tickets die günstigsten, Charter-, kürzesten und Flüge mit Sonderleistungen mit Zusatzverkäufen bis zum kostenlosen Hotel beim Zwischenstopp; für Hotels die Empfehlungen der Agentur nach Garantie, Lage und Preis",
+    "tourMap": "FigJam-Board: die Seite der Japan-Tour als Baum mit Einführung, Wettbewerbsvorteilen, Paketen, Reisekosten, Bewertungen, Leistungen, Dokumenten, Zusatzinformationen, Galerie, Beratung, Fragen und Blog",
+    "ticket1": "Erste Iteration der Flugticket-Karte, wiederholt in einer Ergebnisliste mit Filtern daneben",
+    "ticket2": "Dritte Version der Flugticket-Karte in einer Ergebnisliste",
+    "ticket3": "Endfassungen der Flug-Ergebnisliste nebeneinander: Karten mit Schatten, auf einem Kartenhintergrund und mit Rahmen, alle auf einer grauen Seite",
+    "flightList": "Entwurf der Flugergebnisse, Desktop: ein Streifen mit Daten und ihren günstigsten Preisen, Reiter für günstigste, beste und die Empfehlung von Taha Gasht, Filter an der Seite und Ticketkarten mit den verbleibenden Plätzen",
+    "flightLanding": "Entwurf der Landingpage für die Flugsuche: die Suche über Strecken, Airlines, Kaufanleitung, Fragen und Blogartikeln",
+    "flightDetail": "Entwurf einer Flug-Ergebnisseite: ein geöffneter Flug mit Details, Preisaufschlüsselung und Tarifregeln",
+    "hotelList": "Entwurf der Hotelergebnisse: Karten mit Foto, Sternen, Preis pro Nacht und dem Empfehlungsabzeichen der Agentur, Filter an der Seite",
+    "hotelMap": "Hotelergebnisse auf einer Karte: Preismarker über der Stadt neben derselben Hotelliste",
+    "hotelDetail": "Entwurf einer Hotelseite: Galerie, Bewertungen für Personal, Lage und Sauberkeit, Zimmer, Sehenswürdigkeiten in der Nähe mit Zeiten zu Fuß, mit dem Auto und mit der U-Bahn, und Gästebewertungen",
+    "tourList": "Entwurf der Tourenliste: Tourkarten mit Terminen und Preisen ab, Filter nach Saison, Wetter, Ziel und Aktivität",
+    "tourPage": "Entwurf der Seite der Japan-Tour: Pakete, die Bilanz der Agentur, der Plan für jeden Tag, Hotels, Leistungen, Dokumente und ein Beratungsformular",
+    "tourPackage": "Entwurf eines Tourpakets: die Preistabelle nach Hotel und Zimmer, Kinderpreise und ein Kostenrechner für die Gruppe",
+    "checkout": "Entwurf des Checkouts: vier Schritte oben, Passagierdaten mit gespeicherten Passagieren, Kontaktdaten und eine Flugübersicht mit Gesamtbetrag",
+    "travels": "Konto, meine Reisen: Tickets mit ihrem Status sowie die Ansichten für Ticket, Erstattung und Kalender",
+    "passengers": "Konto, Passagiere: gespeicherte Passagiere mit Dialogen zum Hinzufügen, Bearbeiten und Löschen",
+    "wallet": "Konto, Wallet: das Guthaben der Taha-Karte, Aufladebeträge, Buchungen und ein Auszahlungsantrag",
+    "bookmarks": "Konto, Merkliste: gespeicherte Touren, Hotels und Flüge sowie der leere Zustand",
+    "profile": "Konto, Profil: persönliche Daten, Passwort, Ausweisdokumente und Zahlungsdaten",
+    "notifications": "Konto, Benachrichtigungen: Nachrichten mit gelesen und löschen sowie der leere Zustand",
+    "support": "Konto, Support: Tickets nach Status, eine neue Anfrage und der Antwortverlauf eines Tickets",
+    "signOut": "Konto, Abmelden: der Bestätigungsdialog",
+    "maker1": "Travel Maker, Schritt 1 auf dem Smartphone: Ziel und Daten wählen",
+    "maker2": "Travel Maker, Schritt 2: Verkehrsmittel und Unterkunft wählen",
+    "maker3": "Travel Maker, Schritt 3: Aktivitäten Tag für Tag hinzufügen",
+    "maker4": "Travel Maker, Schritt 4: Einstellungen der Reise und Mitreisende",
+    "socialFeed": "Social-Konzept auf dem Smartphone: Beiträge zu geplanten Touren mit Daten, Preis pro Person und einem Button zum Mitreisen",
+    "socialExperience": "Social-Konzept: die Erfahrung eines Reisenden, bewertet nach Zufriedenheit, Preis-Leistung und Bereitschaft zur Empfehlung",
+    "socialGoals": "FigJam-Board: sieben Ziele für die Social-Ebene mit ihren Unterzielen, darunter acht positive Treiber und die Risiken",
+    "socialMap": "FigJam-Board: die Karte des Social-Systems mit Blog, interaktiver Karte, Beitrag, Reels und Reisebericht, jeweils mit Schwerpunkt, hervorstechendem Merkmal, Kontaktpunkten und dem Nutzen, den es schafft",
+    "liveHome": "Die Live-Startseite von tahagasht.com, aufgenommen am 27. September 2026: der Kopfbereich, die Suche, ausgewählte Touren sowie beliebte Flüge und Hotels",
+    "liveFlights": "Die Live-Flugergebnisse von Teheran nach Istanbul: Charter-Labels, Buttons für Vortag und Folgetag und Filter",
+    "liveHotels": "Die Live-Hotelseite auf tahagasht.com: die Suche mit geöffnetem Hotel-Reiter, beliebte Hotels, eine Buchungsanleitung, Fragen und Blogartikel",
+    "liveTours": "Die Live-Tourenliste auf tahagasht.com: Tourkategorien, Paketkarten mit Filter nach Abflugstadt und ein Bereich für Preis und Sortierung",
+    "liveJapan": "Die Live-Seite der Japan-Tour: die Bilanz der Agentur, eine Paketkarte, die Beratungsblöcke und die Informationsreiter"
+  },
+  "chapters": {
+    "context": {
+      "heading": "Eine dreißig Jahre alte Agentur mit drei Arten von Reisen",
+      "body": [
+        "Taha Gasht ist eine Reiseagentur in Teheran, die seit drei Jahrzehnten Reisen verkauft: Inlands- und Auslandsflüge, Hotels im Iran und im Ausland, Gruppenreisen mit persischsprachiger Reiseleitung und Visa. Ihre Website ist das Buchungssystem für all das, mit einem Portal für Partneragenturen dahinter.",
+        "Sina arbeitete in Teilzeit daran, als Produktdesigner und Stratege. Die Figma-Datei nennt den Auftrag auf ihrem Titelblatt: die Änderungen an der Hauptseite von Taha Gasht. Die Arbeit umfasste die öffentliche Seite von der ersten Suche bis zum Konto der Reisenden und ein Konzept für das, was danach kommen könnte."
+      ]
+    },
+    "problem": {
+      "heading": "Ein schneller Kauf und eine lange Entscheidung auf einer Seite",
+      "body": [
+        "Ein Inlandsflug ist in Minuten gekauft, nach Preis und Uhrzeit. Über eine Tour nach Japan denkt man wochenlang nach: die Termine, die Hotels, die Dokumente, die Reiseleitung und oft ein Anruf bei einer Beraterin oder einem Berater. Dieselbe Seite muss beidem gerecht werden.",
+        "Dieselben Flüge und Hotels gibt es auch auf anderen Buchungsseiten. Was eine Agentur hinzufügen kann, ist ihr Urteil: welcher Flug einen garantierten Platz hat, welches Hotel gut liegt, welche Tour ihr Geld wert ist. Das Redesign sollte dieses Urteil neben den Preis stellen."
+      ],
+      "insight": "Eine Preisliste sagt, was eine Reise kostet. Eine Agentur kann auch sagen, was man wählen sollte."
+    },
+    "benchmark": {
+      "heading": "Zwölf Buchungsseiten nebeneinander",
+      "body": [
+        "Vor dem ersten Entwurf nahm Sina am selben Tag die vollständigen Seiten von zwölf Buchungsseiten auf, neben der von Taha Gasht: fünf iranische Seiten, die dieselben Flüge verkaufen (Alibaba, Flytoday, MrBilit, Flightio und SafarMarket), und sieben internationale (Booking.com, Expedia, Kayak, Skyscanner, Google Flights, Cheapflights und Wego).",
+        "In dieselbe Datei kamen App-Kits für Flugbuchungen als Referenz für mobile Abläufe und später, für das Social-Konzept, die Seiten mit Reiseerlebnissen einer iranischen Buchungsseite und von Tripadvisor. Nichts davon wird hier gezeigt: Es ist die Arbeit anderer."
+      ]
+    },
+    "ia": {
+      "heading": "Die ganze Reise als Karte, vor jedem Screen",
+      "body": [
+        "Das erste Board zeichnet die Wege für Flug und Hotel Modul für Modul auf: die Suchseite, die Ergebnisliste, die Seite eines einzelnen Flugs oder Hotels und die Landingpages, die Suchmaschinen finden. Auf der Flugseite trägt jedes Modul eine Markierung seiner Herkunft: die heutige Struktur von Taha Gasht oder eine neue Idee.",
+        "Manche neuen Ideen sind klein, etwa Buttons für den Vortag und den Folgetag oder ein Preiskalender, der Feiertage markiert. Andere verändern, was die Seite leisten kann:"
+      ],
+      "bullets": [
+        "Ein Preisalarm, der den Flug buchen kann: Reisende speichern die Passagierdaten und laden die Wallet mit 20 bis 30 Prozent über dem Tarif auf, und der Flug wird gebucht, sobald sich der Preis ändert.",
+        "Ausgebuchte Flüge bleiben in der Liste.",
+        "Hotels in der Liste und auf der Karte teilen einen Filter mit denselben Ergebnissen in beiden Ansichten; fährt man in der Liste über ein Hotel, erscheint es auf der Karte.",
+        "Bewertungen kommen anfangs aus einer externen Quelle, das eigene Bewertungssystem der Seite entsteht daneben.",
+        "Landingpages für Strecken und Hotels zeigen Preisentwicklungen, sobald mindestens zwölf Monate an Daten vorliegen."
+      ],
+      "insight": "Jedes Modul hat eine Herkunft: von der heutigen Seite übernommen oder eine neue Idee."
+    },
+    "suggestions": {
+      "heading": "Vier Arten, einen Flug zu empfehlen",
+      "customLabel": "Empfehlungen",
+      "body": [
+        "Zwei Opportunity-Bäume fragen, was die Agentur empfehlen kann. Für Flüge gibt es vier Arten von Empfehlungen: die günstigsten; Charterflüge, weil der Platz im Charter garantiert ist; die kürzesten, auf Auslandsstrecken; und Flüge mit Sonderleistungen für begrenzte Zeit, die im Backoffice von Hand eingestellt werden.",
+        "Der Zweig mit den Sonderleistungen ist auch der Ort, an dem die Agentur mehr verkaufen kann: Zusatzgepäck, ein Upgrade in die Business Class, Rabatte auf Strecken, eine CIP-Lounge, ein kostenloses Hotel beim Zwischenstopp. Für Hotels verbinden die Empfehlungen garantierte Zimmer, die Nähe zum Zentrum und den Preis. Ein weiteres Board zeichnet die Tourseite auf dieselbe Weise auf, beginnend mit Japan."
+      ],
+      "insight": "Die Empfehlung der Agentur wurde zu einem Sortierreiter in der Ergebnisliste, neben günstigste und beste."
+    },
+    "language": {
+      "heading": "Drei Runden an einer Karte",
+      "customLabel": "Designsprache",
+      "body": [
+        "Die Flugticket-Karte trägt den größten Teil der Seite. Sie wiederholt sich in jeder Ergebnisliste, öffnet sich zu Flug-, Preis- und Erstattungsdetails und gibt das Muster für Hotel- und Tourkarten vor. Deshalb wurde die Designsprache an ihr erarbeitet, in drei Runden: eine erste Iteration, eine dritte Version des Tickets und Endfassungen, die Schatten, Kartenhintergründe und Rahmen auf derselben grauen Seite vergleichen.",
+        "Die Schrift ist Yekan Bakh, durchgehend für Persisch gesetzt. Frühere Skizzen in der Datei erproben zwei Preiskalender, einen für Inlands- und einen für Auslandsflüge, und ein Ticket, das sich an Ort und Stelle öffnet."
+      ]
+    },
+    "flights": {
+      "heading": "Flüge: wählen nach Preis, nach Zeit oder nach der Empfehlung der Agentur",
+      "body": [
+        "Die Flugergebnisse beginnen mit einem Streifen von Daten und ihren günstigsten Preisen, damit ein günstigerer Tag schon vor dem Scrollen sichtbar ist. Über der Liste stehen drei Sortierreiter, günstigste, beste und die Empfehlung von Taha Gasht, und jeder zeigt seinen Preis und die gesamte Reisezeit.",
+        "Die Filter folgen dem, was auf diesen Strecken zählt: Charter- oder Linienticket, Zahl der Zwischenstopps, ob ein Zwischenstopp ein Visum verlangt, Kabine und Gepäck. Jede Karte zeigt die verbleibenden Plätze und öffnet sich zu Flugdetails, Preisdetails und Erstattungsregeln. Ein Preisalarm sitzt in der Liste, und die vollständige Ergebnisseite ergänzt Tarifregeln, Gebühren und Verkaufsbeschränkungen.",
+        "Die Suche kann einfache Strecke, Hin- und Rückflug und Gabelflüge. Darunter bietet die Landingpage für Flüge, was Suchmaschinen und Erstbesucher brauchen: beliebte Strecken, Airlines, eine Kaufanleitung, häufige Fragen und Blogartikel."
+      ],
+      "insight": "Das Transitvisum hat einen eigenen Filter: Eine günstige Verbindung über Europa braucht ein Schengen-Visum."
+    },
+    "hotels": {
+      "heading": "Hotels: wo es liegt und was Gäste sagten",
+      "customLabel": "Hotels",
+      "body": [
+        "Hotelergebnisse erscheinen als Liste oder auf einer Karte, mit einem gemeinsamen Satz Filter für beide: Preisspanne, Sterne, Art der Unterkunft (Hotel, Boutiquehotel oder Hostel) und die Viertel der Stadt. Eine Karte zeigt den Preis pro Nacht, die Sterne und, wo es passt, die Empfehlung der Agentur.",
+        "Die Hotelseite teilt die Bewertung in Personal, Lage und Sauberkeit auf, listet Sehenswürdigkeiten in der Nähe mit der Zeit zu Fuß, mit dem Auto oder mit der U-Bahn und lässt Gäste eine Bewertung mit Fotos schreiben. Zimmer werden auf derselben Seite verglichen, mit einer Anfrage für Zusatzleistungen vor der Buchung."
+      ],
+      "insight": "Entfernungen stehen in Minuten und nach Verkehrsmittel, so wie Reisende ihren Tag planen."
+    },
+    "tours": {
+      "heading": "Touren: eine Entscheidung mit einem Menschen",
+      "customLabel": "Touren",
+      "body": [
+        "Bei Touren ist die Agentur am stärksten, und hier dauert ein Kauf am längsten. Die Tourenliste filtert danach, was Reisende von der Reise wollen: die Saison oder den Anlass, etwa Nowruz oder Weihnachten, das Wetter, das Ziel (Erholung oder Abenteuer) und die Art der Aktivität, von Natur und Geschichte bis zu Festen, Essen und Einkaufen.",
+        "Eine Tourseite, zuerst für Japan entworfen, beantwortet die Fragen, die Beraterinnen und Berater meist hören: die Pakete und ihre Termine, den Preis nach Hotel und Zimmer mit Kinderpreisen, einen Rechner für die ganze Gruppe, den Plan für jeden Tag, die Hotels, die enthaltenen Leistungen (eine persischsprachige Reiseleitung, das Visum, die Versicherung und die CIP-Lounge am Flughafen Teheran) und die nötigen Dokumente. Ein Rückrufformular, eine Telefonnummer und WhatsApp bleiben durchgehend nah.",
+        "Die Seite zeigt außerdem die Bilanz der Agentur, ihre Jahre im Geschäft, ihre Reisenden und deren Zufriedenheit, was das Tour-Board als Wettbewerbsvorteil geplant hatte."
+      ],
+      "insight": "Eine Tour wird weiterhin in der Beratung verkauft. Die Seite bereitet Reisende auf dieses Gespräch vor."
+    },
+    "home": {
+      "heading": "Eine Startseite für drei Arten von Reisen",
+      "customLabel": "Startseite",
+      "body": [
+        "Die Startseite beginnt mit einer Suche und fünf Reitern: Flug, Hotel, Flug plus Hotel, Tour und Inlandshotel. Darunter wechseln die Reihen mit der Saison und mit den Reisenden: zuletzt angesehen, Last-Minute-Flüge, eine Reihe für Reisen in den Süden, vorgeschlagene Hotels und beliebte Ziele.",
+        "Weiter unten liefert die Seite Gründe für die Agentur: ihre Vorteile, wie man ein Ticket kauft, Bewertungen von Reisenden, ein Rückrufformular mit den Zeiten, zu denen geantwortet wird, und eine erste Einladung zum Reiseplaner: „Bau dein eigenes Abenteuer.“ Auf dem Smartphone zeigen Stories Touren und Ziele im Vollbild."
+      ]
+    },
+    "account": {
+      "heading": "Checkout und das Konto der Reisenden",
+      "customLabel": "Konto",
+      "body": [
+        "Der Checkout läuft in vier Schritten, oben sichtbar: Ticket wählen, Angaben bestätigen, bezahlen und Ticket ausstellen. Gespeicherte Passagiere werden aus einer Liste gewählt, neue mit ihren Passdaten neben einer Flugübersicht hinzugefügt.",
+        "Nach dem Kauf hat das Konto acht Bereiche: Reisen, Passagiere, Wallet, Merkliste, Profil, Benachrichtigungen, Support und Abmelden, jeder mit seinen Dialogen und seinem leeren Zustand gezeichnet. Unter Reisen sieht man den Status jedes Tickets, öffnet das E-Ticket, verfolgt den Flug und startet eine Erstattung nach Strecke und Passagier. Die Wallet, Taha-Karte genannt, wird mit festen oder frei gewählten Beträgen aufgeladen und zahlt auf ein Bankkonto aus. Der Support arbeitet mit Tickets, jedes mit eigenem Antwortverlauf.",
+        "Die Anmeldung funktioniert mit Passwort oder mit einem Einmalcode, und ein Hilfebereich bündelt die Fragen, die Kaufanleitung und den Support."
+      ]
+    },
+    "next": {
+      "heading": "Was als Nächstes kommen könnte: eine Reise planen und teilen",
+      "customLabel": "Nächster Schritt",
+      "body": [
+        "Nachdem die Buchungsseite gezeichnet war, entwarf Sina ein Konzept, das Reisende auch zwischen zwei Reisen zurückholt. Der Travel Maker plant eine Reise in vier Schritten: Ziel und Daten, Verkehrsmittel und Unterkunft, Aktivitäten Tag für Tag und die Einstellungen der Reise. Aktivitäten kommen nach Arten, etwa historische Orte, Essen, Einkaufen, Erholung oder lokale Veranstaltungen, und es lassen sich neue Tage hinzufügen. Mitreisende kommen mit Namen und Telefonnummer dazu.",
+        "Die Social-Ebene lässt Reisende eine geplante Tour veröffentlichen und andere einladen mitzukommen, Erfahrungen teilen, bewertet nach Zufriedenheit, Preis-Leistung und ob sie den Ort empfehlen würden, und Reiseberichte schreiben, die auf eine Tour oder ein Hotel verlinken.",
+        "Mit dem Konzept kam ein Strategie-Board. Es setzt sieben Ziele, vom Umsatz und personalisierten Angeboten bis zu Kundentreue und Markenbekanntheit; acht Treiber, die Menschen zurückbringen würden, von Punkten und Abzeichen bis zu Empfehlungen an Freunde; und daneben die Risiken: wenig Beteiligung am Anfang, hohe Kosten und langsame Rendite, die Moderation von Inhalten, Datenschutz und negatives Feedback. Eine Systemkarte ordnet jedes Format (Blog, interaktive Karte, Beitrag, Reels und Reisebericht) dort ein, wo Reisende ihm begegnen: im Feed, unter Entdecken, auf der Startseite, in Kampagnen und in den Tourseiten."
+      ],
+      "insight": "Das Strategie-Board schreibt die Risiken neben die Ziele."
+    },
+    "shipped": {
+      "heading": "Live auf tahagasht.com",
+      "body": [
+        "Das Redesign wurde gebaut und ist auf tahagasht.com live. Die Live-Seiten folgen den Karten. Die Flugergebnisse tragen das Charter- oder Linien-Label und Buttons für Vortag und Folgetag. Die Seite der Japan-Tour beginnt mit der Bilanz der Agentur, drei Jahrzehnten, 99 Prozent Zufriedenheit der Reisenden und mehr als 6500 Reisenden, und behält ihre Beratungsblöcke und die Reiter für Dokumente, Preise, die beste Reisezeit, Städte und Sehenswürdigkeiten.",
+        "Travel Maker und Social-Ebene sind nicht auf der Live-Seite. Sie bleiben ein gestalteter nächster Schritt."
+      ]
+    }
+  },
+  "figures": {
+    "iaMap": {
+      "caption": "Die Informationsarchitektur für Flüge und Hotels: Suche, Liste, Detail- und Landingpages, Modul für Modul."
+    },
+    "opportunity": {
+      "caption": "Zwei Opportunity-Bäume: Wege, einen Flug zu empfehlen, und Wege, ein Hotel zu empfehlen."
+    },
+    "tourMap": {
+      "caption": "Die Seite der Japan-Tour als Baum, von der Einführung bis zum Blog."
+    },
+    "language": {
+      "caption": "Die Ticketkarte in drei Runden.",
+      "items": ["Erste Iteration", "Ticket, Version 3", "Endfassungen: Schatten, Kartenhintergrund, Rahmen"]
+    },
+    "flightList": {
+      "caption": "Flugergebnisse, Desktop.",
+      "annotations": [
+        "Daten mit ihren günstigsten Preisen",
+        "Günstigste, beste und die Empfehlung von Taha Gasht, jeweils mit Preis und Gesamtreisezeit",
+        "Charter oder Linie, Zwischenstopps, Transitvisum, Kabine und Gepäck",
+        "Verbleibende Plätze auf jeder Karte",
+        "Flug-, Preis- und Erstattungsdetails öffnen sich an Ort und Stelle",
+        "Ein Preisalarm in der Liste"
+      ]
+    },
+    "flightPages": {
+      "caption": "Rund um die Ergebnisliste.",
+      "items": ["Die Landingpage der Flugsuche", "Ein einzelner Flug mit seinen Tarifregeln"]
+    },
+    "hotelViews": {
+      "caption": "Hotelergebnisse als Liste und auf der Karte, mit einem gemeinsamen Satz Filter.",
+      "items": ["Liste", "Karte"]
+    },
+    "hotelDetail": {
+      "caption": "Die Hotelseite: Bewertungen nach Thema, Zimmer, Sehenswürdigkeiten in Minuten und Gästebewertungen."
+    },
+    "tourPage": {
+      "caption": "Die Seite der Japan-Tour."
+    },
+    "tourParts": {
+      "caption": "Eine Tour wählen und dann ihre Kosten berechnen.",
+      "items": ["Tourenliste mit Filtern nach Saison, Wetter, Ziel und Aktivität", "Ein Paket: Preise nach Hotel und Zimmer und ein Rechner"]
+    },
+    "homeMobile": {
+      "caption": "Die Startseite auf dem Smartphone.",
+      "items": ["Startseite", "Stories"]
+    },
+    "checkout": {
+      "caption": "Der Checkout in vier Schritten."
+    },
+    "account": {
+      "caption": "Das Konto der Reisenden, Bereich für Bereich. Einen Bereich öffnen, um ihn in voller Größe zu sehen.",
+      "items": ["Reisen", "Passagiere", "Wallet", "Merkliste", "Profil", "Benachrichtigungen", "Support", "Abmelden"]
+    },
+    "maker": {
+      "caption": "Der Travel Maker in vier Schritten.",
+      "items": ["Ziel und Daten", "Verkehrsmittel und Unterkunft", "Aktivitäten, Tag für Tag", "Einstellungen und Mitreisende"]
+    },
+    "social": {
+      "caption": "Die Social-Ebene.",
+      "items": ["Touren zum Mitreisen", "Eine bewertete Erfahrung"]
+    },
+    "strategy": {
+      "caption": "Das Strategie-Board hinter dem Konzept.",
+      "items": ["Ziele, Treiber und Risiken", "Wo jedes Format den Reisenden begegnet"]
+    },
+    "live": {
+      "caption": "Die Live-Seite, aufgenommen am 27. September 2026. Eine Seite öffnen, um sie ganz zu sehen.",
+      "items": ["Startseite", "Flugergebnisse", "Hotels", "Touren", "Japan-Tour"]
+    }
+  },
+  "process": {
+    "heading": "Vom Vergleich zur Live-Seite",
+    "steps": [
+      { "label": "Vergleich", "note": "Zwölf Buchungsseiten und die von Taha Gasht, nebeneinander aufgenommen" },
+      { "label": "Informationsarchitektur", "note": "Jedes Modul der Wege für Flug, Hotel und Tour, als übernommen oder neu markiert" },
+      { "label": "Designsprache", "note": "Die Flugticket-Karte in drei Runden, dann die Seiten um sie herum" },
+      { "label": "Seiten", "note": "Startseite, Flüge, Hotels, Touren, Checkout, Hilfe und Anmeldung, für Desktop und Smartphone" },
+      { "label": "Konto", "note": "Acht Bereiche des Reisendenkontos, mit ihren Dialogen und leeren Zuständen" },
+      { "label": "Nächster Schritt", "note": "Ein Reiseplaner und eine Social-Ebene, mit einem Board aus Zielen, Treibern und Risiken" }
+    ]
+  },
+  "decisions": {
+    "heading": "Fünf Entscheidungen hinter der Seite",
+    "lede": "Die Boards und die Seiten machen diese Entscheidungen sichtbar.",
+    "items": [
+      {
+        "title": "Die Empfehlung der Agentur neben günstigste und beste stellen",
+        "why": "Jede Buchungsseite kann nach Preis sortieren. Taha Gasht kann auch sagen, welchen Flug sie selbst wählen würde. Als Sortierreiter steht dieses Urteil dort, wo Reisende wählen, und weil jeder Reiter Preis und Zeit zeigt, ist die Abwägung klar.",
+        "alternatives": "Eine einzige Sortierung nach Preis oder ein Abzeichen auf einigen Karten.",
+        "tradeoff": "Die Empfehlung muss von Menschen gepflegt werden: Das Board sieht vor, dass Flüge mit Sonderleistungen von einer Administratorin, einem Administrator oder der Leitung eingestellt werden.",
+        "evidence": "Die Opportunity-Bäume für Tickets und Hotels; die Sortierreiter der Ergebnisliste."
+      },
+      {
+        "title": "Charter und Linie als Label und als Filter",
+        "why": "Im Charter ist der Platz garantiert, deshalb empfiehlt ihn der Opportunity-Baum. Der Unterschied verändert, was Reisende kaufen, also steht er auf jeder Karte und in den Filtern.",
+        "tradeoff": "Ein weiteres Label auf einer Karte, die schon Zeiten, Zwischenstopps und Plätze zeigt.",
+        "evidence": "Die Live-Ergebnisliste zeigt das Label auf jeder Karte."
+      },
+      {
+        "title": "Ein Preisalarm, der den Flug buchen kann",
+        "why": "Auf vollen Strecken sind Plätze schnell weg, und die Preise ändern sich. Wer die Passagierdaten speichert und die Wallet mit einem Puffer auflädt, bekommt den Flug gebucht, wenn sich der Preis bewegt, ohne die Seite im Auge zu behalten.",
+        "alternatives": "Ein Alarm, der nur eine Nachricht schickt.",
+        "tradeoff": "Reisende halten 20 bis 30 Prozent über dem Tarif in der Wallet.",
+        "evidence": "Der Zweig für Preisalarme in der Informationsarchitektur und der Alarm in der Ergebnisliste."
+      },
+      {
+        "title": "Touren über ein Gespräch verkaufen",
+        "why": "Eine Gruppenreise ist eine lange Entscheidung, mit Dokumenten und Visa. Die Tourseite beantwortet die üblichen Fragen, berechnet die Kosten für die ganze Gruppe und hält ein Rückrufformular und eine Telefonnummer nah, damit das Beratungsgespräch weiter vorn beginnt.",
+        "alternatives": "Sofortiger Checkout für Touren, wie für Flüge.",
+        "tradeoff": "Die Seite übergibt den Verkauf an Menschen, ihr Tempo ist also das des Vertriebs.",
+        "evidence": "Die Zustände Anruf, Kauf und Benachrichtigen auf der Tourseite; die Beratungsblöcke auf der Live-Seite der Japan-Tour."
+      },
+      {
+        "title": "Ein Filter für Liste und Karte",
+        "why": "Der Wert eines Hotels hängt davon ab, wo es liegt. Ein gemeinsamer Satz Filter, dieselben Ergebnisse in beiden Ansichten und ein Hover, der sie verbindet, lassen Reisende die Ansicht wechseln, ohne den Faden zu verlieren.",
+        "tradeoff": "Beide Ansichten müssen dieselben Ergebnisse laden, auch die Karte.",
+        "evidence": "Das Board der Informationsarchitektur: Filter zwischen Liste und Karte synchronisiert, mit demselben Ergebnis in beiden."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "Sinas Anteil",
+    "intro": "Sina arbeitete in Teilzeit als Produktdesigner und Stratege für Taha Gasht. Die Figma-Datei und die Boards sind Sinas Arbeit, bis auf das Vergleichsmaterial und einige Frames, die aus anderen Projekten eingefügt wurden.",
+    "own": [
+      "Der Vergleich von zwölf Buchungsseiten",
+      "Die Informationsarchitektur für Flüge, Hotels und die Tourseite sowie die Opportunity-Bäume",
+      "Die Designsprache, erarbeitet an der Flugticket-Karte",
+      "Jede Seite der Buchungsseite: Startseite, Flüge, Hotels, Touren, Checkout, Hilfe und Anmeldung",
+      "Das Konto der Reisenden",
+      "Das Konzept für Travel Maker und Social-Ebene und sein Strategie-Board"
+    ],
+    "collaborate": [
+      "Kolleginnen und Kollegen bei Taha Gasht, die die Boards prüften: Eine Notiz auf der Tourkarte wünscht die Sehenswürdigkeiten als Infografik",
+      "Das Team, das die Live-Seite gebaut hat"
+    ],
+    "note": "Ausgelassen sind Aufnahmen aus dem Vergleich, App-Kits, Community-Vorlagen und ein gekauftes Icon-Set, ebenso Frames aus anderen Projekten und eine Customer-Journey-Map auf dem Opportunity-Board, die zu einem anderen Projekt gehört."
+  },
+  "outcomes": {
+    "heading": "Was live ging",
+    "intro": "Das Redesign ist live. Die Datei hält den Entwurf fest und enthält keine Zahlen zu Traffic oder Umsatz nach dem Start, deshalb gibt es hier keine Nutzungszahlen.",
+    "delivered": [
+      { "label": "verglichene Buchungsseiten", "context": "Fünf iranische und sieben internationale, aufgenommen neben der Seite von Taha Gasht" },
+      { "label": "Bereiche im Konto der Reisenden", "context": "Reisen, Passagiere, Wallet, Merkliste, Profil, Benachrichtigungen, Support und Abmelden" },
+      { "label": "Schritte im Travel Maker", "context": "Ziel und Daten, Verkehrsmittel und Unterkunft, Aktivitäten, Einstellungen" },
+      { "label": "Ziele auf dem Social-Strategie-Board", "context": "Mit acht Treibern und den Risiken daneben" }
+    ],
+    "shipped": [
+      "Eine neu gestaltete Startseite und Suche für Flüge, Hotels und Touren",
+      "Flugsuche, Ergebnisse und Details und ein Checkout in vier Schritten",
+      "Hotelsuche mit Liste und Karte und Hotelseiten",
+      "Tourenlisten und Tourseiten, beginnend mit Japan",
+      "Das Konto der Reisenden, der Hilfebereich und die Anmeldung",
+      "Als nächster Schritt gestaltet: Travel Maker und Social-Ebene mit ihrem Strategie-Board"
+    ]
+  },
+  "lessons": {
+    "heading": "Was ich ändern würde",
+    "items": [
+      {
+        "title": "Aufschreiben, wie ein Flug die Empfehlung der Agentur verdient",
+        "body": "Die Empfehlung von Taha Gasht ist die eigenständigste Idee in der Ergebnisliste, und die Datei sagt nirgends, wie ein Flug sie bekommt. Eine kurze Regel, mit dem Vertrieb abgestimmt, hätte den Reiter ehrlich gehalten und Reisenden einen Grund gegeben, ihm zu vertrauen."
+      },
+      {
+        "title": "Die Tourseite mit Reisenden testen",
+        "body": "Die Tourseite beantwortet die Fragen, die die Beratung hört, aber die Datei enthält keinen Test mit Reisenden. Ein paar Sitzungen mit Menschen, die eine Reise planen, hätten gezeigt, nach welchen Antworten sie zuerst suchen und für welche sie noch zum Telefon greifen."
+      },
+      {
+        "title": "Die Social-Ebene mit einem Format beginnen",
+        "body": "Das Konzept umfasst Beiträge, Reels, Reiseberichte, eine Karte und einen Planer auf einmal. Mit einem Format zu beginnen, etwa Reiseberichten, die mit einer gebuchten Tour verlinkt sind, hätte gezeigt, ob Reisende überhaupt posten, bevor der Rest gebaut wird."
+      }
+    ]
+  }
+}

@@ -10,7 +10,21 @@ import { describe, expect, it } from 'vitest'
 
 import { FIGURE_ITEM_COUNT, type FigureLayout } from '@/blocks/CaseStudy/Figure/config'
 import { CASE_STUDIES } from '@/endpoints/seed/case-studies'
+import { CPRO_MEDIA, cproLocalizedFields } from '@/endpoints/seed/case-studies/carsparency/pro'
+import {
+  CPRO_APP_GROUPS,
+  CPRO_APP_SCREENS,
+  CPRO_SCREEN_COPY,
+  CPRO_WEB_GROUPS,
+  CPRO_WEB_PAGES,
+} from '@/endpoints/seed/case-studies/carsparency/pro-screens'
 import { DG_LOCALES, DG_MEDIA, dgLocalizedFields } from '@/endpoints/seed/case-studies/digital-gold'
+import { RP1_MEDIA, rp1LocalizedFields } from '@/endpoints/seed/case-studies/rp1-arena'
+import {
+  RP1_SCREEN_COPY,
+  RP1_SCREEN_GROUPS,
+  RP1_SCREENS,
+} from '@/endpoints/seed/case-studies/rp1-arena-screens'
 import type { CaseStudyLocalizedFields } from '@/endpoints/seed/case-studies/seed-case-study'
 import { PROJECT_SEED } from '@/endpoints/seed/projects'
 import { collectIds, hasText } from '@/endpoints/seed/translations/audit'
@@ -217,6 +231,19 @@ describe('every case study agrees with its archive row', () => {
   })
 })
 
+describe('every case study names its cover pair', () => {
+  // Home, /work and the next-project card show the cover in front of a second screen. Both come
+  // from the study's own manifest, so a thumbnail never shows anything its page does not.
+  it.each(CASE_STUDIES.map((config) => [config.label, config] as const))('%s', (_label, config) => {
+    const keys = Object.keys(config.media)
+    const cover = config.createFields.coverMediaKey
+    const companion = config.coverCompanionMediaKey
+    expect(keys, 'cover').toContain(cover)
+    expect(keys, 'companion').toContain(companion)
+    expect(config.media[companion!].name).not.toBe(config.media[cover!].name)
+  })
+})
+
 /**
  * Publication gates for the studies added on 2026-09-23. Each lists the source files that must
  * never be uploaded and the strings that must never be written, in any locale or alt text — the
@@ -278,6 +305,12 @@ const YARAVAN_GATE = {
 }
 
 const GATES: Record<string, { files: RegExp[]; text: RegExp[] }> = {
+  'vin-app': {
+    // The screen index uploads the masked exports only: `gallery/raw/` still shows the sample
+    // account's email on the sign-in screens and the unblurred profile photo (D-051).
+    files: [/gallery\/raw\//],
+    text: [/sinaosh(a|g)(g|h)i@/i],
+  },
   faymen: {
     // Home, search and cart carry a live coupon and a sales number; contact carries phones and the
     // showroom address; about, lookbook and made-to-measure carry imagery of unconfirmed origin.
@@ -405,6 +438,31 @@ const GATES: Record<string, { files: RegExp[]; text: RegExp[] }> = {
       /@|gmail/i,
     ],
   },
+  'taha-gasht-platform': {
+    // Only `study/`: Sina's own frames and boards, masked for personal data, and the live site as
+    // captured on 2026-09-27. Never a benchmark capture, UI kit, community template or the bought
+    // icon set; never a frame pasted in from another client (an online school, a digital-gold buy
+    // box and checkout line, a car marketplace's menu, a software vendor's header); never the
+    // Opportunity board's journey map (another project, a colleague's stickies); never the Ware
+    // House or Logo pages (authorship unconfirmed). No colleague, reviewer or vendor is named.
+    files: [/^(?!study\/)/, /bench|template|kit|icons?\//i, /ware-?house|logo|journey/i],
+    text: [
+      /@|gmail/i,
+      /figma\.com/i,
+      /OTeacher|اتیچر|اُتیچر|ایده ?گزین/i,
+      /Digikala|دیجی‌?کالا|دیجی‌?پلاس|ديجي/i,
+      /carsparency|کارسپرنسی/i,
+      /Moghim|مقیم ?سافت/i,
+      /Lavin|لاوین/i,
+      /Bilito|بیلیتو|Go ?Trip|Golobe|Travelint/i,
+      /Parsa|پارسا|کیارسی|Kiarsi/i,
+      /Meysam|میثم|Shafiei/i,
+      /Arvan|آروان/i,
+      /گنجه|Ganjeh/i,
+      /0933|۰۹۳۳|0991|۰۹۹۱/,
+      /91005453|۹۱۰۰۵۴۵۳/,
+    ],
+  },
   'biomaze-website-education-panel': {
     // Brand Brief Tier-1: never the unverified “first player” market claim, in any locale.
     files: [],
@@ -449,7 +507,17 @@ const GATES: Record<string, { files: RegExp[]; text: RegExp[] }> = {
   'carsparency-web': CARSPARENCY_GATE,
   'carsparency-design-system': CARSPARENCY_GATE,
   yaravan: YARAVAN_GATE,
-  'yaravan-platform': YARAVAN_GATE,
+  'yaravan-platform': {
+    // The service study's gate, plus the live public site (2026-09-26, Sina's call): every page
+    // under `gallery/`, captured with the names, contact details and warranty lengths masked in the
+    // page itself. The public customer-charter and about pages are allowed there only.
+    files: [
+      /^(?!crops\/|gallery\/)/,
+      ...YARAVAN_GATE.files.filter((pattern) => !['/^(?!crops\\/)/', '/charter/', '/about/'].includes(String(pattern))),
+      /^(?!gallery\/).*(charter|about)/,
+    ],
+    text: YARAVAN_GATE.text,
+  },
 }
 
 /**
@@ -517,3 +585,123 @@ describe.each(CASE_STUDIES.filter((config) => config.slug in GATES).map((config)
     })
   },
 )
+
+/**
+ * RP1's screen index (D-051). Not in `GATES`: that table also bars `auto` figures, which the
+ * study's older story figures still use.
+ */
+describe('RP1 screen index', () => {
+  const media = fakeMedia(RP1_MEDIA)
+  const index = (locale: Locale) =>
+    rowsOf(rp1LocalizedFields(locale, media).sections).find((block) => block.id === 'rp1-s16b')!
+  const uploads = Object.entries(RP1_MEDIA).filter(([key]) => key.startsWith('screen:'))
+  // The six modes keep the app's own names on their tabs, in Latin script in every locale.
+  const MODES: string[] = ['solo', 'duel', 'team', 'tournaments', 'spotlight', 'legend']
+
+  it('indexes every distinct frame once, within the figure’s limit', () => {
+    expect(index('en').items).toHaveLength(RP1_SCREENS.length)
+    expect(RP1_SCREENS.length).toBeLessThanOrEqual(FIGURE_ITEM_COUNT.pages.max)
+    expect(new Set(RP1_SCREENS.map((screen) => screen.node)).size).toBe(RP1_SCREENS.length)
+  })
+
+  it('uploads the masked gallery cut only, never a raw export', () => {
+    for (const [, spec] of uploads) expect(spec.file).toMatch(/^gallery\/(first|whole)\//)
+  })
+
+  it.each(LOCALES)('%s: labels every screen, flow by flow, in its own script', (locale) => {
+    const items = index(locale).items as Row[]
+    const problems = items.flatMap((item, i) => {
+      const screen = RP1_SCREENS[i]!
+      const texts = [item.caption, ...(MODES.includes(screen.group) ? [] : [item.group])]
+      return texts.map((text) =>
+        hasText(text) ? ownScriptProblem(locale, text as string) : `${screen.slug}: empty label`,
+      )
+    })
+    expect(problems.filter(Boolean)).toEqual([])
+    // Each flow's screens are contiguous, and the tabs follow the app's order.
+    const tabs = items.map((item) => item.group).filter((group, i, all) => group !== all[i - 1])
+    expect(tabs).toEqual(RP1_SCREEN_GROUPS.map((group) => RP1_SCREEN_COPY[locale].groups[group]))
+  })
+
+  it.each(LOCALES)('%s: says in the alt what is masked, and writes no email', (locale) => {
+    const { masked } = RP1_SCREEN_COPY[locale]
+    for (const screen of RP1_SCREENS) {
+      const text = RP1_MEDIA[`screen:${screen.slug}` as const].alt[locale] ?? ''
+      const note = Object.entries(masked).find(([, value]) => text.endsWith(value))?.[0]
+      expect(note, screen.slug).toBe(screen.mask)
+    }
+    const copy =
+      JSON.stringify(rp1LocalizedFields(locale, media)) +
+      JSON.stringify(uploads.map(([, spec]) => spec.alt[locale]))
+    expect(copy).not.toMatch(/sinaosh(a|g)(g|h)i@/i)
+  })
+})
+
+describe('Carsparency Pro screen index', () => {
+  const media = fakeMedia(CPRO_MEDIA)
+  const block = (locale: Locale, id: string) =>
+    rowsOf(cproLocalizedFields(locale, media).sections).find((row) => row.id === id)!
+  const uploads = Object.entries(CPRO_MEDIA).filter(([key]) => /^(app|web):/.test(key))
+  const INDEXES = [
+    { id: 'cpro-s13b', list: CPRO_APP_SCREENS, groups: CPRO_APP_GROUPS, copy: 'app' },
+    { id: 'cpro-s13c', list: CPRO_WEB_PAGES, groups: CPRO_WEB_GROUPS, copy: 'web' },
+  ] as const
+
+  it('sits after the solution figures, before the ecosystem chapter', () => {
+    const ids = rowsOf(cproLocalizedFields('en', media).sections).map((row) => row.id)
+    expect(ids.slice(ids.indexOf('cpro-s13'), ids.indexOf('cpro-s14') + 1)).toEqual([
+      'cpro-s13',
+      'cpro-s13a',
+      'cpro-s13b',
+      'cpro-s13c',
+      'cpro-s14',
+    ])
+  })
+
+  it.each(INDEXES)('$id indexes every distinct frame once, within the figure’s limit', ({ id, list }) => {
+    expect(block('en', id).items).toHaveLength(list.length)
+    expect(list.length).toBeLessThanOrEqual(FIGURE_ITEM_COUNT.pages.max)
+    expect(new Set(list.map((screen) => screen.node)).size).toBe(list.length)
+    expect(new Set(list.map((screen) => screen.slug)).size).toBe(list.length)
+  })
+
+  it('uploads the masked gallery cut only, never a raw export', () => {
+    for (const [, spec] of uploads) {
+      expect(spec.file).toMatch(/^gallery\/(app\/(first|whole)|web\/(first|full))\/[a-z0-9-]+\.(webp|jpg)$/)
+    }
+  })
+
+  it.each(LOCALES)('%s: labels every screen, flow by flow, in its own script', (locale) => {
+    for (const { id, list, groups, copy } of INDEXES) {
+      const items = block(locale, id).items as Row[]
+      const problems = items.flatMap((item, i) =>
+        [item.caption, item.group].map((text) =>
+          hasText(text) ? ownScriptProblem(locale, text as string) : `${list[i]!.slug}: empty label`,
+        ),
+      )
+      expect(problems.filter(Boolean)).toEqual([])
+      // Each flow's screens are contiguous, and the tabs follow the dealer's order.
+      const tabs = items.map((item) => item.group).filter((group, i, all) => group !== all[i - 1])
+      const names = CPRO_SCREEN_COPY[locale][copy === 'app' ? 'appGroups' : 'webGroups']
+      expect(tabs).toEqual(groups.map((group) => names[group as keyof typeof names]))
+    }
+  })
+
+  it.each(LOCALES)('%s: says in the alt what is masked, and writes no personal email', (locale) => {
+    const { masked } = CPRO_SCREEN_COPY[locale]
+    for (const [surface, list] of [
+      ['app', CPRO_APP_SCREENS],
+      ['web', CPRO_WEB_PAGES],
+    ] as const) {
+      for (const screen of list) {
+        const text = CPRO_MEDIA[`${surface}:${screen.slug}` as const].alt[locale] ?? ''
+        const note = Object.entries(masked).find(([, value]) => text.endsWith(value))?.[0]
+        expect(note, `${surface} ${screen.slug}`).toBe(screen.mask)
+      }
+    }
+    const copy =
+      JSON.stringify(cproLocalizedFields(locale, media)) +
+      JSON.stringify(uploads.map(([, spec]) => spec.alt[locale]))
+    expect(copy).not.toMatch(/sinaosh(a|g)(g|h)i@|oscarisa+c+@|9360642041/i)
+  })
+})

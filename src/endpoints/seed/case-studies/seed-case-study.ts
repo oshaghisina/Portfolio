@@ -54,6 +54,11 @@ export interface CaseStudySeedConfig<
    * lead visual than its archive row was seeded with has to say so.
    */
   replaceCover?: boolean
+  /**
+   * The second screen of the cover pair (`coverCompanion`). The archive seed never sets one, so
+   * the case study owns it and writes it on every run.
+   */
+  coverCompanionMediaKey?: TMediaKey
   sharedFields: Pick<Project, 'projectStatus' | 'tools' | 'period'>
   localizedFields: (
     locale: TLocale,
@@ -160,6 +165,9 @@ export async function seedCaseStudy<TMediaKey extends string, TLocale extends Lo
   const coverId = config.createFields.coverMediaKey
     ? media[config.createFields.coverMediaKey]
     : undefined
+  const companionId = config.coverCompanionMediaKey
+    ? media[config.coverCompanionMediaKey]
+    : undefined
 
   if (!id) {
     const doc = await payload.create({
@@ -176,6 +184,7 @@ export async function seedCaseStudy<TMediaKey extends string, TLocale extends Lo
         order: config.createFields.order,
         featured: config.createFields.featured ?? false,
         ...(coverId ? { cover: coverId } : {}),
+        ...(companionId ? { coverCompanion: companionId } : {}),
         translationReviewed: true,
       },
     })
@@ -195,6 +204,7 @@ export async function seedCaseStudy<TMediaKey extends string, TLocale extends Lo
         ...config.sharedFields,
         ...published,
         ...(config.replaceCover && coverId ? { cover: coverId } : {}),
+        ...(companionId ? { coverCompanion: companionId } : {}),
         translationReviewed: true,
       },
     })

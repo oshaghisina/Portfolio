@@ -1,5 +1,6 @@
-import type { Locale } from '@/utilities/locale'
+import { dirFor, type Locale } from '@/utilities/locale'
 
+import type { MediaSpec } from '../../media'
 import { archiveIdentity } from '../archive'
 import ar from './copy/pro.ar.json'
 import de from './copy/pro.de.json'
@@ -8,6 +9,7 @@ import es from './copy/pro.es.json'
 import fa from './copy/pro.fa.json'
 import fr from './copy/pro.fr.json'
 import ja from './copy/pro.ja.json'
+import { CPRO_SCREEN_MEDIA, type CproScreenMediaKey, cproScreenSections } from './pro-screens'
 import { assertCopyShape, type CspCopy, type CspStudy, cspLocalizedFields, cspMedia } from './shared'
 
 /**
@@ -67,8 +69,32 @@ const STUDY: CspStudy<Key> = {
   ],
 }
 
+type MediaKey = Key | CproScreenMediaKey
+
 export const CPRO_SLUG = SLUG
 export const CPRO_ASSETS = STUDY.assetsDir
-export const CPRO_MEDIA = cspMedia(STUDY)
+/** The story's figures, then every screen for the index chapter (`pro-screens.ts`). */
+export const CPRO_MEDIA = { ...cspMedia(STUDY), ...CPRO_SCREEN_MEDIA } as Record<MediaKey, MediaSpec>
 export const CPRO_COVER_KEY: Key = STUDY.cover
-export const cproLocalizedFields = cspLocalizedFields(STUDY)
+
+const storyFields = cspLocalizedFields(STUDY)
+
+/**
+ * The shared chapter grammar, with the screen index after the solution figures (before the
+ * ecosystem chapter). The rows after it moved position, so every narrative writes its `insight`,
+ * empty if need be: a localized leaf merges by row position and would otherwise keep the insight
+ * of the row that held its place before.
+ */
+export const cproLocalizedFields = (locale: Locale, media: Partial<Record<MediaKey, string>>) => {
+  const fields = storyFields(locale, media)
+  const at = fields.sections.findIndex((section) => section.id === 'cpro-s14')
+  if (at < 0) throw new Error('carsparency-pro: the ecosystem chapter (cpro-s14) moved')
+  const sections = [
+    ...fields.sections.slice(0, at),
+    ...cproScreenSections(locale, dirFor(locale), media),
+    ...fields.sections.slice(at),
+  ].map((section) =>
+    section.blockType === 'csNarrative' && !section.insight ? { ...section, insight: '' } : section,
+  )
+  return { ...fields, sections }
+}

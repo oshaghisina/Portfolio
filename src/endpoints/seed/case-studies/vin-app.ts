@@ -5,6 +5,7 @@ import { LOCALES, type Locale } from '@/utilities/locale'
 
 import { projectCompanyCopy, projectRoleCopy, projectTextCopy } from '../project-copy'
 import type { MediaSpec } from '../media'
+import { VIN_SCREEN_MEDIA, type VinScreenMediaKey, vinScreenSections } from './vin-app-screens'
 
 /**
  * VIN — a connection-first networking app for Dubai's professional community. Every sentence
@@ -55,13 +56,13 @@ const archiveText = (locale: ArchiveLocale) => {
 // cannot be exported legibly, so the opener carries that chapter instead. The venue screens use a
 // real coffee chain as placeholder branding; the figure caption says so rather than hiding it.
 
-export const VIN_MEDIA = {
+const STORY_MEDIA = {
   heroGoalChips: {
     file: 'create-meetup/goal-chips.png',
     name: 'vin-app--create-meetup-goal-chips.png',
     alt: L({
       en: "VIN's meetup-creation opener: a chat bubble asking the goal of the meetup, with four intent chips including an honest 'just want to do an activity' escape hatch",
-      fa: 'صفحهٔ آغاز ساخت دورهمی در VIN: پرسش دربارهٔ هدف دیدار و چهار گزینهٔ پاسخ، از جمله «فقط می‌خواهم فعالیتی انجام دهم»',
+      fa: 'صفحه‌ی آغاز ساخت دورهمی در VIN: پرسش درباره‌ی هدف دیدار و چهار گزینه‌ی پاسخ، از جمله «فقط می‌خواهم فعالیتی انجام دهم»',
       ar: 'شاشة بدء إنشاء اللقاء في VIN: فقاعة محادثة تسأل عن هدف اللقاء، مع أربع رقائق نوايا من بينها خيار صريح «أريد فقط ممارسة نشاط»',
       de: 'VIN-Einstieg zum Erstellen eines Meetups: eine Chat-Blase, die nach dem Ziel des Meetups fragt, mit vier Intent-Chips, darunter das ehrliche Fluchttor „Ich möchte nur eine Aktivität machen“',
       es: 'Inicio de la creación de un meetup en VIN: una burbuja de chat que pregunta el objetivo del meetup, con cuatro chips de intención, entre ellos una honesta vía de escape: «just want to do an activity»',
@@ -74,7 +75,7 @@ export const VIN_MEDIA = {
     name: 'vin-app--sponsor-venue-landing.png',
     alt: L({
       en: "VIN Business landing page: 'Real Footfall, Real Revenue' headline over the four-step partner funnel — List Your Venue, Get Matched, Host & Activate, Measure & Grow",
-      fa: 'صفحهٔ فرود VIN Business با عنوان «مراجعهٔ واقعی، درآمد واقعی» و چهار مرحله برای مکان‌های همکار: ثبت مکان، یافتن گروه مناسب، میزبانی و سنجش نتیجه',
+      fa: 'صفحه‌ی فرود VIN Business با عنوان «مراجعه‌ی واقعی، درآمد واقعی» و چهار مرحله برای مکان‌های همکار: ثبت مکان، یافتن گروه مناسب، میزبانی و سنجش نتیجه',
       ar: 'صفحة هبوط VIN Business: عنوان «إقبال حقيقي، إيرادات حقيقية» فوق قمع الشريك المكوَّن من أربع خطوات — أدرج مكانك، طابِق، استضف وفعِّل، قِس ونمِّ',
       de: 'VIN-Business-Landingpage: Überschrift „Echter Fußverkehr, echter Umsatz“ über dem vierstufigen Partner-Funnel — Venue listen, Match erhalten, Hosten & Aktivieren, Messen & Wachsen',
       es: 'Página de aterrizaje de VIN Business: el titular «Real Footfall, Real Revenue» sobre el embudo de socios en cuatro pasos — List Your Venue, Get Matched, Host & Activate, Measure & Grow',
@@ -87,7 +88,7 @@ export const VIN_MEDIA = {
     name: 'vin-app--meetup-detail-default.png',
     alt: L({
       en: 'A padel meetup detail screen: gallery, attendee roster, map, group chat and an ended-meetup state with a 12-person attendance count',
-      fa: 'صفحهٔ جزئیات میت‌آپ پدل: گالری، فهرست شرکت‌کنندگان، نقشه، گفت‌وگوی گروهی و وضعیت پایان‌یافتهٔ میت‌آپ با شمار ۱۲ حاضر',
+      fa: 'صفحه‌ی جزئیات میت‌آپ پدل: گالری، فهرست شرکت‌کنندگان، نقشه، گفت‌وگوی گروهی و وضعیت پایان‌یافته‌ی میت‌آپ با شمار ۱۲ حاضر',
       ar: 'شاشة تفاصيل لقاء بادل: معرض، وقائمة الحضور، وخريطة، ودردشة جماعية، وحالة لقاء منتهٍ بعدد حضور 12 شخصًا',
       de: 'Detailscreen eines Padel-Meetups: Galerie, Teilnehmerliste, Karte, Gruppenchat und ein beendeter Meetup-Status mit 12 Teilnehmenden',
       es: 'Pantalla de detalle de un meetup de pádel: galería, lista de asistentes, mapa, chat de grupo y un estado de meetup finalizado con una asistencia de 12 personas',
@@ -100,7 +101,7 @@ export const VIN_MEDIA = {
     name: 'vin-app--design-system-color.png',
     alt: L({
       en: "VIN's design-system color page: the phosphorescent accent ramp alongside gray, olive, green, red, orange, blue-purple, purple, blue and pink ramps, each in eleven steps",
-      fa: 'صفحهٔ رنگ در سیستم طراحی وین: طیف رنگ فسفری شاخص در کنار طیف‌های خاکستری، زیتونی، سبز، قرمز، نارنجی، آبی‌بنفش، بنفش، آبی و صورتی، هرکدام در یازده پله',
+      fa: 'صفحه‌ی رنگ در سیستم طراحی وین: طیف رنگ فسفری شاخص در کنار طیف‌های خاکستری، زیتونی، سبز، قرمز، نارنجی، آبی‌بنفش، بنفش، آبی و صورتی، هرکدام در یازده پله',
       ar: 'صفحة الألوان في نظام تصميم VIN: تدرّج اللون الفسفوري المميز إلى جانب تدرّجات رمادي وزيتوني وأخضر وأحمر وبرتقالي وأزرق‌بنفسجي وبنفسجي وأزرق ووردي، كل منها بإحدى عشرة درجة',
       de: 'VIN-Design-System-Farbseite: die phosphoreszierende Akzentrampe neben Grau-, Oliv-, Grün-, Rot-, Orange-, Blau-Lila-, Lila-, Blau- und Pink-Rampen, jede in elf Stufen',
       es: 'Página de color del sistema de diseño de VIN: la escala del acento fosforescente junto a las escalas de gris, oliva, verde, rojo, naranja, azul violáceo, morado, azul y rosa, cada una en once pasos',
@@ -113,7 +114,7 @@ export const VIN_MEDIA = {
     name: 'vin-app--design-system-typography.png',
     alt: L({
       en: 'VIN typography page: Hurme Geometric Sans 3 across 21 named styles — headings, subtitles, body and button text, each with its weight, size and line-height',
-      fa: 'صفحهٔ تایپوگرافی وین: فونت Hurme Geometric Sans 3 در ۲۱ سبک نام‌گذاری‌شده — عنوان، زیرعنوان، متن و دکمه، هرکدام با وزن، اندازه و ارتفاع خط خود',
+      fa: 'صفحه‌ی تایپوگرافی وین: فونت Hurme Geometric Sans 3 در ۲۱ سبک نام‌گذاری‌شده — عنوان، زیرعنوان، متن و دکمه، هرکدام با وزن، اندازه و ارتفاع خط خود',
       ar: 'صفحة الطباعة في VIN: خط Hurme Geometric Sans 3 عبر 21 نمطًا مسمّى — عناوين، عناوين فرعية، نص أساسي وأزرار، لكل منها وزنه وحجمه وارتفاع سطره',
       de: 'VIN-Typografieseite: Hurme Geometric Sans 3 über 21 benannte Stile — Überschriften, Untertitel, Fließtext und Buttons, jeweils mit Schriftschnitt, Größe und Zeilenhöhe',
       es: 'Página tipográfica de VIN: Hurme Geometric Sans 3 en 21 estilos con nombre — títulos, subtítulos, texto de cuerpo y de botón, cada uno con su peso, tamaño e interlineado',
@@ -126,7 +127,7 @@ export const VIN_MEDIA = {
     name: 'vin-app--design-system-cards.png',
     alt: L({
       en: 'VIN card variants: meetup cards driven by Type (Upcoming/Past/Draft) and Save (True/False), plus people and meetup-gallery cards',
-      fa: 'گونه‌های کارت در وین: کارت‌های میت‌آپ بر پایهٔ نوع (آینده/گذشته/پیش‌نویس) و ذخیره (بله/خیر)، به‌همراه کارت‌های افراد و گالری میت‌آپ',
+      fa: 'گونه‌های کارت در وین: کارت‌های میت‌آپ بر پایه‌ی نوع (آینده/گذشته/پیش‌نویس) و ذخیره (بله/خیر)، به‌همراه کارت‌های افراد و گالری میت‌آپ',
       ar: 'أنماط بطاقات VIN: بطاقات اللقاءات المبنية على النوع (قادم/سابق/مسودة) والحفظ (نعم/لا)، إضافة إلى بطاقات الأشخاص ومعرض اللقاءات',
       de: 'VIN-Kartenvarianten: Meetup-Karten gesteuert über Type (Upcoming/Past/Draft) und Save (True/False), dazu Personen- und Meetup-Galerie-Karten',
       es: 'Variantes de tarjeta de VIN: tarjetas de meetup controladas por Type (Upcoming/Past/Draft) y Save (True/False), además de tarjetas de personas y de galería de meetups',
@@ -139,7 +140,7 @@ export const VIN_MEDIA = {
     name: 'vin-app--home-default.png',
     alt: L({
       en: "VIN's home feed: a greeting header, recommended meetups as two-up cards with the start time set in large phosphorescent type, category chips, people you may know, and a map section",
-      fa: 'صفحهٔ اصلی VIN: پیام خوش‌آمد، دورهمی‌های پیشنهادی در دو ستون، زمان شروع با نوشتهٔ درشت فسفری، دسته‌بندی‌ها، افراد پیشنهادی و نقشه',
+      fa: 'صفحه‌ی اصلی VIN: پیام خوش‌آمد، دورهمی‌های پیشنهادی در دو ستون، زمان شروع با نوشته‌ی درشت فسفری، دسته‌بندی‌ها، افراد پیشنهادی و نقشه',
       ar: 'الصفحة الرئيسية في VIN: ترويسة ترحيب، ولقاءات مقترحة في بطاقات مزدوجة مع وقت البدء بخط فسفوري كبير، ورقائق التصنيفات، وأشخاص قد تعرفهم، وقسم الخريطة',
       de: 'VIN-Home-Feed: Begrüßungsheader, empfohlene Meetups als zweispaltige Karten mit der Startzeit in großer phosphoreszierender Schrift, Kategorie-Chips, Personen, die du kennen könntest, und ein Kartenbereich',
       es: 'El feed de inicio de VIN: un encabezado de saludo, meetups recomendados en tarjetas de dos en dos con la hora de inicio en tipografía grande y fosforescente, chips de categoría, personas que quizá conozcas y una sección de mapa',
@@ -165,7 +166,7 @@ export const VIN_MEDIA = {
     name: 'vin-app--chat-single-chat.png',
     alt: L({
       en: 'A single chat thread inside VIN — the conversation layer that carries a meetup before and after it happens',
-      fa: 'صفحهٔ گفت‌وگوی خصوصی در VIN برای هماهنگی و ادامهٔ ارتباط پیش و پس از دورهمی',
+      fa: 'صفحه‌ی گفت‌وگوی خصوصی در VIN برای هماهنگی و ادامه‌ی ارتباط پیش و پس از دورهمی',
       ar: 'محادثة مفردة داخل VIN — طبقة المحادثة التي تحمل اللقاء قبل انعقاده وبعده',
       de: 'Ein einzelner Chat-Thread in VIN — die Konversationsebene, die ein Meetup davor und danach trägt',
       es: 'Un hilo de chat dentro de VIN — la capa de conversación que sostiene un meetup antes y después de que suceda',
@@ -217,7 +218,7 @@ export const VIN_MEDIA = {
     name: 'vin-app--meetup-cancel-paid-last-minute.png',
     alt: L({
       en: "One of four cancellation variants: cancelling a paid meetup inside 24 hours, stated plainly — 'This is within 24 hours — no refund available' — with the destructive action still offered",
-      fa: 'یکی از چهار حالت لغو دورهمی پولی: وقتی کمتر از ۲۴ ساعت مانده، پیام صریحِ بازنگشتن وجه نمایش داده می‌شود و گزینهٔ لغو همچنان در دسترس است',
+      fa: 'یکی از چهار حالت لغو دورهمی پولی: وقتی کمتر از ۲۴ ساعت مانده، پیام صریحِ بازنگشتن وجه نمایش داده می‌شود و گزینه‌ی لغو همچنان در دسترس است',
       ar: 'واحدة من أربع حالات إلغاء: إلغاء لقاء مدفوع خلال 24 ساعة، مذكورة بوضوح «هذا خلال 24 ساعة — لا يوجد استرداد»، مع إبقاء الإجراء المدمّر متاحًا',
       de: 'Eine von vier Storno-Varianten: die Absage eines bezahlten Meetups innerhalb von 24 Stunden, klar benannt — „innerhalb von 24 Stunden, keine Rückerstattung“ — die destruktive Aktion bleibt verfügbar',
       es: 'Una de las cuatro variantes de cancelación: cancelar un meetup de pago con menos de 24 horas de antelación, dicho sin rodeos — «This is within 24 hours — no refund available» — con la acción destructiva todavía disponible',
@@ -269,7 +270,7 @@ export const VIN_MEDIA = {
     name: 'vin-app--sponsor-venue-detail.png',
     alt: L({
       en: "A partner venue's page inside VIN: cover photo and venue type, a one-line description, the meetups it is sponsoring, its location and distance, a gallery, and a 'Be my sponsor' button along the bottom. The venue is a real coffee chain standing in as placeholder content",
-      fa: 'صفحهٔ یک مکان شریک در وین: عکس کاور و نوع مکان، توضیح یک‌خطی، میت‌آپ‌هایی که حمایت می‌کند، موقعیت و فاصله، گالری، و دکمهٔ «اسپانسر من باش» در پایین. مکان، یک برند واقعی قهوه است که نقش محتوای جایگزین را بازی می‌کند',
+      fa: 'صفحه‌ی یک مکان شریک در وین: عکس کاور و نوع مکان، توضیح یک‌خطی، میت‌آپ‌هایی که حمایت می‌کند، موقعیت و فاصله، گالری، و دکمه‌ی «اسپانسر من باش» در پایین. مکان، یک برند واقعی قهوه است که نقش محتوای جایگزین را بازی می‌کند',
       ar: 'صفحة مكان شريك داخل VIN: صورة غلاف ونوع المكان، ووصف من سطر واحد، واللقاءات التي يرعاها، وموقعه والمسافة إليه، ومعرض صور، وزر «كن راعيًا لي» في الأسفل. المكان سلسلة قهوة حقيقية مستخدَمة كمحتوى بديل',
       de: 'Die Seite eines Partner-Venues in VIN: Titelbild und Venue-Typ, eine Beschreibungszeile, die gesponserten Meetups, Standort und Entfernung, eine Galerie und unten ein „Be my sponsor“-Button. Das Venue ist eine reale Kaffeekette als Platzhalterinhalt',
       es: 'La página de un local asociado dentro de VIN: foto de portada y tipo de local, una descripción de una línea, los meetups que patrocina, su ubicación y distancia, una galería y un botón «Be my sponsor» en la parte inferior. El local es una cadena de cafeterías real usada como contenido de relleno',
@@ -282,7 +283,7 @@ export const VIN_MEDIA = {
     name: 'vin-app--sponsor-be-my-sponsor-bid.png',
     alt: L({
       en: "The 'Be my sponsor' request a host sends a venue: expected audience size, preferred date and time, activity type, sponsorship type, what the venue gets in return, and a free-text pitch above a Submit Request button",
-      fa: 'درخواست «اسپانسر من باش» که میزبان برای مکان می‌فرستد: اندازهٔ تخمینی مخاطب، تاریخ و ساعت ترجیحی، نوع فعالیت، نوع حمایت، چیزی که مکان در ازای آن می‌گیرد، و یک متن آزاد بالای دکمهٔ ارسال درخواست',
+      fa: 'درخواست «اسپانسر من باش» که میزبان برای مکان می‌فرستد: اندازه‌ی تخمینی مخاطب، تاریخ و ساعت ترجیحی، نوع فعالیت، نوع حمایت، چیزی که مکان در ازای آن می‌گیرد، و یک متن آزاد بالای دکمه‌ی ارسال درخواست',
       ar: 'طلب «كن راعيًا لي» الذي يرسله المضيف إلى المكان: الحجم المتوقع للحضور، والتاريخ والوقت المفضلان، ونوع النشاط، ونوع الرعاية، وما يحصل عليه المكان في المقابل، ونص حر فوق زر إرسال الطلب',
       de: 'Die „Be my sponsor“-Anfrage, die ein Host an ein Venue schickt: erwartete Gruppengröße, Wunschdatum und -zeit, Aktivitätsart, Sponsoring-Art, was das Venue dafür bekommt, und ein Freitextfeld über dem Absenden-Button',
       es: 'La solicitud «Be my sponsor» que un anfitrión envía a un local: tamaño de público previsto, fecha y hora preferidas, tipo de actividad, tipo de patrocinio, qué recibe el local a cambio y una propuesta en texto libre sobre un botón Submit Request',
@@ -310,7 +311,7 @@ export const VIN_MEDIA = {
     name: 'vin-app--kpi-starter-pack.xlsx',
     alt: L({
       en: 'VIN KPI starter pack — an Excel workbook of 20 KPIs on four sheets',
-      fa: 'فایل اکسل بستهٔ شروع KPI وین: ۲۰ شاخص در چهار برگه',
+      fa: 'فایل اکسل بسته‌ی شروع KPI وین: ۲۰ شاخص در چهار برگه',
       ar: 'ملف Excel لحزمة مؤشرات أداء VIN: 20 مؤشرًا في أربع أوراق',
       de: 'VIN-KPI-Starterpaket — eine Excel-Arbeitsmappe mit 20 KPIs auf vier Blättern',
       es: 'Paquete inicial de KPI de VIN: un libro de Excel con 20 KPI en cuatro hojas',
@@ -319,6 +320,12 @@ export const VIN_MEDIA = {
     }),
   },
 } satisfies Record<string, MediaSpec>
+
+/** The story's figures and downloads, then every screen for the index chapter. */
+export const VIN_MEDIA = { ...STORY_MEDIA, ...VIN_SCREEN_MEDIA } as Record<
+  keyof typeof STORY_MEDIA | VinScreenMediaKey,
+  MediaSpec
+>
 
 export type VinMediaKey = keyof typeof VIN_MEDIA
 export type VinMediaIds = Partial<Record<VinMediaKey, string>>
@@ -357,7 +364,7 @@ const ROLE = L({
 
 const SUMMARY = L({
   en: "A connection-first networking app for Dubai's professional community — a product brief, a 57-problem inventory with its own KPI dictionary, a brand architecture and a B2B venue-revenue layer, audited against the promises the product makes to its own users.",
-    fa: 'برای جامعهٔ حرفه‌ای دبی، اپی طراحی کردم که هدفش شکل‌دادن به ارتباط است. سند محصول، فهرست ۵۷ مسئله و شاخص‌هایشان، معماری برند و مدل درآمد B2B را تدوین کردم و سپس طراحی را با وعده‌هایی که به کاربر می‌داد سنجیدم.',
+    fa: 'برای جامعه‌ی حرفه‌ای دبی، اپی طراحی کردم که هدفش شکل‌دادن به ارتباط است. سند محصول، فهرست ۵۷ مسئله و شاخص‌هایشان، معماری برند و مدل درآمد B2B را تدوین کردم و سپس طراحی را با وعده‌هایی که به کاربر می‌داد سنجیدم.',
   ar: 'تطبيق شبكة اجتماعية يضع التواصل أولًا لمجتمع دبي المهني — موجز منتج، وفهرس 57 مشكلة له قاموس مؤشرات أداء خاص، وهندسة علامة تجارية، وطبقة إيرادات B2B للأماكن، مُدقَّق في ضوء الوعود التي يقطعها المنتج لمستخدميه.',
   de: 'Eine Connection-first-Networking-App für Dubais Berufscommunity — ein Produktbrief, ein Problem-Inventar mit 57 Einträgen samt eigenem KPI-Wörterbuch, eine Markenarchitektur und eine B2B-Venue-Umsatzebene, geprüft an den Versprechen, die das Produkt seinen eigenen Nutzern macht.',
   es: archiveText('es').summary,
@@ -406,13 +413,13 @@ const META_TITLE = L({
 })
 
 const HERO_CAPTION = L({
-  en: 'Three of 120 screens: the chat-first creation flow, the venue-partner revenue layer, and a meetup in progress.',
-  fa: 'سه نمونه از ۱۲۰ صفحه: جریان ساختِ چت‌محور، لایهٔ درآمدیِ شرکای مکان و یک میت‌آپ در جریان.',
-  ar: 'ثلاث من 120 شاشة: تدفّق الإنشاء القائم على المحادثة، وطبقة إيرادات شركاء الأماكن، ولقاء قيد التنفيذ.',
-  de: 'Drei von 120 Screens: der Chat-first-Erstellungsflow, die Venue-Partner-Umsatzebene und ein laufendes Meetup.',
-  es: 'Tres de las 120 pantallas: el flujo de creación basado en el chat, la capa de ingresos de los locales asociados y un meetup en curso.',
-  fr: 'Trois des 120 écrans : le parcours de création par le chat, la couche de revenus des lieux partenaires et un meetup en cours.',
-  ja: '120画面のうちの3つ：チャットから始まる作成フロー、パートナー店舗による収益レイヤー、そして進行中のミートアップ。',
+  en: 'Three of 126 screens: the chat-first creation flow, the venue-partner revenue layer, and a meetup in progress.',
+  fa: 'سه نمونه از ۱۲۶ صفحه: جریان ساختِ چت‌محور، لایه‌ی درآمدیِ شرکای مکان و یک میت‌آپ در جریان.',
+  ar: 'ثلاث من 126 شاشة: تدفّق الإنشاء القائم على المحادثة، وطبقة إيرادات شركاء الأماكن، ولقاء قيد التنفيذ.',
+  de: 'Drei von 126 Screens: der Chat-first-Erstellungsflow, die Venue-Partner-Umsatzebene und ein laufendes Meetup.',
+  es: 'Tres de las 126 pantallas: el flujo de creación basado en el chat, la capa de ingresos de los locales asociados y un meetup en curso.',
+  fr: 'Trois des 126 écrans : le parcours de création par le chat, la couche de revenus des lieux partenaires et un meetup en cours.',
+  ja: '126画面のうちの3つ：チャットから始まる作成フロー、パートナー店舗による収益レイヤー、そして進行中のミートアップ。',
 })
 
 const SNAPSHOT = {
@@ -427,7 +434,7 @@ const SNAPSHOT = {
   }),
   role: L({
     en: 'Product design and strategy lead: the brief, the problem inventory and KPI model, the mobile UI and design system, the brand architecture and the B2B venue layer — alongside a separate development team.',
-    fa: 'راهبری طراحی و راهبرد محصول، از سند محصول و فهرست مسئله‌ها تا رابط موبایل، سیستم طراحی، معماری برند و بخش B2B؛ در کنار یک تیم توسعهٔ مستقل.',
+    fa: 'راهبری طراحی و راهبرد محصول، از سند محصول و فهرست مسئله‌ها تا رابط موبایل، سیستم طراحی، معماری برند و بخش B2B؛ در کنار یک تیم توسعه‌ی مستقل.',
     ar: 'قيادة تصميم المنتج والاستراتيجية: الموجز، وفهرس المشكلات ونموذج المؤشرات، وواجهة الهاتف ونظام التصميم، وهندسة العلامة التجارية وطبقة B2B — إلى جانب فريق تطوير مستقل.',
     de: 'Lead für Produktdesign und Strategie: der Brief, das Problem-Inventar und KPI-Modell, das Mobile-UI und Design-System, die Markenarchitektur und die B2B-Venue-Ebene — neben einem separaten Entwicklungsteam.',
     es: 'Responsable de diseño de producto y estrategia: el brief, el inventario de problemas y el modelo de KPI, la UI móvil y el sistema de diseño, la arquitectura de marca y la capa B2B de locales — junto a un equipo de desarrollo independiente.',
@@ -435,13 +442,13 @@ const SNAPSHOT = {
     ja: 'プロダクトデザインと戦略のリード：ブリーフ、課題インベントリとKPIモデル、モバイルUIとデザインシステム、ブランドアーキテクチャ、店舗向けB2Bレイヤー——別の開発チームと並行して。',
   }),
   result: L({
-    en: '120 screens on a documented system, a 57-problem inventory and a locked cultural-rules instrument — audited against itself: two of four onboarding promises still have no screen.',
-    fa: '۱۲۰ صفحه با سیستم طراحی مستند، فهرست ۵۷ مسئله و قواعد فرهنگیِ ثبت‌شده تهیه شد. بررسی طراحی نشان داد برای دو مورد از چهار وعدهٔ آغاز کار، هنوز صفحه‌ای وجود ندارد.',
-    ar: '120 شاشة على نظام موثّق، وفهرس 57 مشكلة، وأداة قواعد ثقافية مُقفَلة — مُدقَّقة في ضوء نفسها: اثنان من أربعة وعود ترحيبية ما زالا بلا شاشة.',
-    de: '120 Screens auf einem dokumentierten System, ein 57-Probleme-Inventar und ein verriegeltes Instrument kultureller Regeln — an sich selbst geprüft: Zwei von vier Onboarding-Versprechen haben noch keinen Screen.',
-    es: '120 pantallas sobre un sistema documentado, un inventario de 57 problemas y un instrumento de reglas culturales cerrado — auditados contra sí mismos: dos de las cuatro promesas del onboarding siguen sin pantalla.',
-    fr: '120 écrans sur un système documenté, un inventaire de 57 problèmes et un instrument de règles culturelles verrouillé — audités à l’aune d’eux-mêmes : deux des quatre promesses de l’onboarding n’ont toujours pas d’écran.',
-    ja: '文書化されたシステム上の120画面、57項目の課題インベントリ、固定された文化ルールの指針——それ自体に照らして監査した結果、オンボーディングの4つの約束のうち2つにはまだ画面がない。',
+    en: '126 screens on a documented system, a 57-problem inventory and a locked cultural-rules instrument — audited against itself: two of four onboarding promises still have no screen.',
+    fa: '۱۲۶ صفحه با سیستم طراحی مستند، فهرست ۵۷ مسئله و قواعد فرهنگیِ ثبت‌شده تهیه شد. بررسی طراحی نشان داد برای دو مورد از چهار وعده‌ی آغاز کار، هنوز صفحه‌ای وجود ندارد.',
+    ar: '126 شاشة على نظام موثّق، وفهرس 57 مشكلة، وأداة قواعد ثقافية مُقفَلة — مُدقَّقة في ضوء نفسها: اثنان من أربعة وعود ترحيبية ما زالا بلا شاشة.',
+    de: '126 Screens auf einem dokumentierten System, ein 57-Probleme-Inventar und ein verriegeltes Instrument kultureller Regeln — an sich selbst geprüft: Zwei von vier Onboarding-Versprechen haben noch keinen Screen.',
+    es: '126 pantallas sobre un sistema documentado, un inventario de 57 problemas y un instrumento de reglas culturales cerrado — auditados contra sí mismos: dos de las cuatro promesas del onboarding siguen sin pantalla.',
+    fr: '126 écrans sur un système documenté, un inventaire de 57 problèmes et un instrument de règles culturelles verrouillé — audités à l’aune d’eux-mêmes : deux des quatre promesses de l’onboarding n’ont toujours pas d’écran.',
+    ja: '文書化されたシステム上の126画面、57項目の課題インベントリ、固定された文化ルールの指針——それ自体に照らして監査した結果、オンボーディングの4つの約束のうち2つにはまだ画面がない。',
   }),
 }
 
@@ -484,7 +491,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
         p(
           L({
             en: "VIN — operated by Viwin L.L.C-FZ out of Meydan Free Zone, Dubai — is a connection-first networking platform for the city's professional community. A traditional event app reads browse events, then maybe connect, with success measured in tickets sold. VIN reads set a connection goal, get an AI-suggested event path, attend, then log the connection.",
-              fa: 'وین را شرکت Viwin L.L.C-FZ در منطقهٔ آزاد Meydan دبی اداره می‌کند. این پلتفرم برای شبکه‌سازی میان حرفه‌ای‌های شهر طراحی شده است. در اپ‌های معمول رویداد، کاربر رویدادی پیدا می‌کند و شاید با کسی آشنا شود؛ معیار موفقیت هم اغلب فروش بلیت است. در طرح وین، کاربر هدف ارتباطی تعیین می‌کند، مسیر پیشنهادی هوش مصنوعی را می‌بیند، در رویداد شرکت می‌کند و ارتباط حاصل را ثبت می‌کند.',
+              fa: 'وین را شرکت Viwin L.L.C-FZ در منطقه‌ی آزاد Meydan دبی اداره می‌کند. این پلتفرم برای شبکه‌سازی میان حرفه‌ای‌های شهر طراحی شده است. در اپ‌های معمول رویداد، کاربر رویدادی پیدا می‌کند و شاید با کسی آشنا شود؛ معیار موفقیت هم اغلب فروش بلیت است. در طرح وین، کاربر هدف ارتباطی تعیین می‌کند، مسیر پیشنهادی هوش مصنوعی را می‌بیند، در رویداد شرکت می‌کند و ارتباط حاصل را ثبت می‌کند.',
             ar: 'وين — التي تديرها Viwin L.L.C-FZ من منطقة ميدان الحرة في دبي — منصّة شبكة اجتماعية تضع التواصل أولًا لمجتمع المدينة المهني. يُقرأ تطبيق فعاليات تقليدي كالتالي: تصفّح الفعاليات، ثم ربما التواصل، والنجاح يُقاس بالتذاكر المباعة. أما وين فتُقرأ كالتالي: حدِّد هدف تواصل، احصل على مسار فعالية يقترحه الذكاء الاصطناعي، احضر، ثم سجِّل التواصل.',
             de: 'VIN — betrieben von Viwin L.L.C-FZ aus der Meydan Free Zone, Dubai — ist eine Connection-first-Networking-Plattform für die Berufscommunity der Stadt. Eine klassische Event-App liest sich als Events durchsuchen, dann vielleicht verbinden, mit Erfolg gemessen in verkauften Tickets. VIN liest sich als Verbindungsziel setzen, einen KI-vorgeschlagenen Event-Pfad erhalten, teilnehmen, dann die Verbindung protokollieren.',
             es: 'VIN — operada por Viwin L.L.C-FZ desde la Meydan Free Zone, Dubái — es una plataforma de networking centrada en las conexiones para la comunidad profesional de la ciudad. Una app de eventos tradicional sigue la secuencia explorar eventos y quizá conectar, y el éxito se mide en entradas vendidas. VIN sigue la secuencia fijar un objetivo de conexión, recibir una ruta de eventos sugerida por IA, asistir y registrar la conexión.',
@@ -575,7 +582,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
         p(
           L({
             en: "The product's own anti-definition is blunt about it: not another event-discovery app, not a social platform, not a dating app, not a matchmaking service, not a ticketing system.",
-              fa: 'سند محصول مرزهای VIN را روشن کرده است: این محصول اپ کشف رویداد، شبکهٔ اجتماعی، اپ دوستیابی، سرویس همتایابی یا سامانهٔ فروش بلیت نیست.',
+              fa: 'سند محصول مرزهای VIN را روشن کرده است: این محصول اپ کشف رویداد، شبکه‌ی اجتماعی، اپ دوستیابی، سرویس همتایابی یا سامانه‌ی فروش بلیت نیست.',
             ar: 'التعريف المضاد الخاص بالمنتج صريح في هذا: ليس تطبيق اكتشاف فعاليات آخر، ولا منصّة اجتماعية، ولا تطبيق مواعدة، ولا خدمة مطابقة، ولا نظام تذاكر.',
             de: 'Die eigene Anti-Definition des Produkts ist unverblümt: keine weitere Event-Discovery-App, keine soziale Plattform, keine Dating-App, kein Matchmaking-Dienst, kein Ticketing-System.',
             es: 'La propia antidefinición del producto lo dice sin rodeos: no es otra app de descubrimiento de eventos, ni una plataforma social, ni una app de citas, ni un servicio de emparejamiento, ni un sistema de venta de entradas.',
@@ -593,7 +600,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
       heading: l(
         L({
           en: 'Nine non-negotiable rules, before a single screen.',
-          fa: 'نه قاعدهٔ غیرقابل‌مذاکره، پیش از یک صفحه.',
+          fa: 'نه قاعده‌ی غیرقابل‌مذاکره، پیش از یک صفحه.',
           ar: 'تسع قواعد غير قابلة للتفاوض، قبل أي شاشة واحدة.',
           de: 'Neun nicht verhandelbare Regeln, vor einem einzigen Screen.',
           es: 'Nueve reglas innegociables, antes de una sola pantalla.',
@@ -606,7 +613,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
         p(
           L({
             en: 'Several engagement patterns that work elsewhere are culturally wrong here — public leaderboards and competitive framing among them. The brief carries a long section on cultural considerations for Dubai: Ramadan scheduling, gender dynamics, alcohol, Arabic RTL support, and a three-phase cultural launch moving from expat professional to broader expat to Emirati integration.',
-              fa: 'بعضی الگوهای رایج تعامل، مانند جدول رتبه‌بندی عمومی و رقابت آشکار، با زمینهٔ فرهنگی این محصول سازگار نیستند. سند محصول به زمان‌بندی رمضان، روابط میان جنسیت‌ها، الکل و پشتیبانی از عربیِ راست‌به‌چپ می‌پردازد و عرضه را در سه مرحله پیش‌بینی می‌کند: حرفه‌ای‌های مهاجر، جامعهٔ گسترده‌تر مهاجران و سپس کاربران اماراتی.',
+              fa: 'بعضی الگوهای رایج تعامل، مانند جدول رتبه‌بندی عمومی و رقابت آشکار، با زمینه‌ی فرهنگی این محصول سازگار نیستند. سند محصول به زمان‌بندی رمضان، روابط میان جنسیت‌ها، الکل و پشتیبانی از عربیِ راست‌به‌چپ می‌پردازد و عرضه را در سه مرحله پیش‌بینی می‌کند: حرفه‌ای‌های مهاجر، جامعه‌ی گسترده‌تر مهاجران و سپس کاربران اماراتی.',
             ar: 'بعض أنماط التفاعل التي تنجح في أماكن أخرى خاطئة ثقافيًا هنا — من بينها لوحات الصدارة العامة والصياغة التنافسية. يحمل الموجز قسمًا طويلًا عن الاعتبارات الثقافية لدبي: توقيت رمضان، وديناميكيات الجندر، والكحول، ودعم العربية من اليمين إلى اليسار، وإطلاق ثقافي من ثلاث مراحل ينتقل من المغترب المهني إلى المغتربين عمومًا إلى الاندماج الإماراتي.',
             de: 'Mehrere Engagement-Muster, die anderswo funktionieren, sind hier kulturell falsch — öffentliche Ranglisten und Wettbewerbs-Framing darunter. Der Brief enthält einen langen Abschnitt zu kulturellen Erwägungen für Dubai: Ramadan-Terminierung, Geschlechterdynamik, Alkohol, arabische RTL-Unterstützung, und ein dreiphasiger kultureller Launch vom Expat-Professional über breitere Expats bis zur emiratischen Integration.',
             es: 'Varios patrones de engagement que funcionan en otros lugares son culturalmente inadecuados aquí — entre ellos, las clasificaciones públicas y el enfoque competitivo. El brief incluye una larga sección sobre consideraciones culturales para Dubái: la programación durante el Ramadán, las dinámicas de género, el alcohol, el soporte de árabe RTL y un lanzamiento cultural en tres fases que avanza del profesional expatriado al expatriado en general y a la integración emiratí.',
@@ -617,7 +624,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
         p(
           L({
             en: 'The process that produced VIN was later codified into a reusable design-and-audit protocol, with nine non-negotiable Dubai cultural rules and a locked table of intentional design decisions, each carrying its own reason.',
-              fa: 'روش طراحی و بررسی VIN بعداً به پروتکلی قابل استفادهٔ دوباره تبدیل شد؛ شامل نُه قاعدهٔ فرهنگی برای دبی و جدول تصمیم‌های طراحی که دلیل هر تصمیم در آن ثبت شده است.',
+              fa: 'روش طراحی و بررسی VIN بعداً به پروتکلی قابل استفاده‌ی دوباره تبدیل شد؛ شامل نُه قاعده‌ی فرهنگی برای دبی و جدول تصمیم‌های طراحی که دلیل هر تصمیم در آن ثبت شده است.',
             ar: 'تحوّلت العملية التي أنتجت وين لاحقًا إلى بروتوكول تصميم وتدقيق قابل لإعادة الاستخدام، يضم تسع قواعد ثقافية غير قابلة للتفاوض لدبي وجدولًا مُقفَلًا من قرارات التصميم المتعمَّدة، لكل منها سببها الخاص.',
             de: 'Der Prozess, der VIN hervorbrachte, wurde später zu einem wiederverwendbaren Design-und-Audit-Protokoll kodifiziert, mit neun nicht verhandelbaren Dubai-Kulturregeln und einer verriegelten Tabelle bewusster Designentscheidungen, jede mit eigener Begründung.',
             es: 'El proceso que dio lugar a VIN se codificó después en un protocolo reutilizable de diseño y auditoría, con nueve reglas culturales innegociables para Dubái y una tabla cerrada de decisiones de diseño intencionadas, cada una con su propia razón.',
@@ -634,7 +641,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
       intro: l(
         L({
           en: 'Product design and strategy, working alongside a separate development team that built and shipped the running app and the admin panel.',
-          fa: 'طراحی و استراتژیِ محصول، در کنار یک تیم توسعهٔ مستقل که اپ در حال اجرا و پنل مدیریت را ساخت و منتشر کرد.',
+          fa: 'طراحی و استراتژیِ محصول، در کنار یک تیم توسعه‌ی مستقل که اپ در حال اجرا و پنل مدیریت را ساخت و منتشر کرد.',
           ar: 'تصميم المنتج والاستراتيجية، بالتعاون مع فريق تطوير مستقل قام ببناء وإطلاق التطبيق العامل ولوحة الإدارة.',
           de: 'Produktdesign und -strategie, zusammen mit einem separaten Entwicklungsteam, das die laufende App und das Admin-Panel gebaut und veröffentlicht hat.',
           es: 'Diseño de producto y estrategia, junto a un equipo de desarrollo independiente que construyó y lanzó la app en funcionamiento y el panel de administración.',
@@ -655,7 +662,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
             'سند محصول، فهرست مسئله‌ها و مدل شاخص‌ها',
             'رابط کاربری موبایل و سیستم طراحی آن',
             'معماری برند و نام‌گذاری',
-            'لایهٔ B2B مکان‌ها و متن ورود به بازار آن',
+            'لایه‌ی B2B مکان‌ها و متن ورود به بازار آن',
             'بازبینی کیفیت اپِ ساخته‌شده و اسکن عملکردیِ پنل مدیریت',
           ],
           ar: [
@@ -701,7 +708,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
             'A separate development team that built and shipped the running app and the admin panel at admin.viwin.link',
           ],
           fa: [
-            'یک تیم توسعهٔ مستقل که اپ در حال اجرا و پنل مدیریت را در admin.viwin.link ساخت و منتشر کرد',
+            'یک تیم توسعه‌ی مستقل که اپ در حال اجرا و پنل مدیریت را در admin.viwin.link ساخت و منتشر کرد',
           ],
           ar: [
             'فريق تطوير مستقل قام ببناء وإطلاق التطبيق العامل ولوحة الإدارة على admin.viwin.link',
@@ -737,7 +744,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
       heading: l(
         L({
           en: 'Six layers, each producing an artifact the next one used.',
-    fa: 'شش مرحله که خروجی هرکدام، ورودی مرحلهٔ بعد است.',
+    fa: 'شش مرحله که خروجی هرکدام، ورودی مرحله‌ی بعد است.',
           ar: 'ست طبقات، تُنتج كل منها ناتجًا تستخدمه الطبقة التالية.',
           de: 'Sechs Ebenen, jede erzeugt ein Artefakt, das die nächste nutzt.',
           es: 'Seis capas, cada una produciendo un artefacto que usó la siguiente.',
@@ -840,13 +847,13 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           ),
           note: l(
             L({
-              en: '120 screens across 11 sections, on a documented design system',
-              fa: '۱۲۰ صفحه در ۱۱ بخش، روی یک سیستم طراحی مستند',
-              ar: '120 شاشة عبر 11 قسمًا، على نظام تصميم موثّق',
-              de: '120 Screens über 11 Bereiche, auf einem dokumentierten Design-System',
-              es: '120 pantallas en 11 secciones, sobre un sistema de diseño documentado',
-              fr: '120 écrans répartis en 11 sections, sur un design system documenté',
-              ja: '11セクションにわたる120画面。文書化されたデザインシステムの上に構築',
+              en: '126 screens across 11 sections, on a documented design system',
+              fa: '۱۲۶ صفحه در ۱۱ بخش، روی یک سیستم طراحی مستند',
+              ar: '126 شاشة عبر 11 قسمًا، على نظام تصميم موثّق',
+              de: '126 Screens über 11 Bereiche, auf einem dokumentierten Design-System',
+              es: '126 pantallas en 11 secciones, sobre un sistema de diseño documentado',
+              fr: '126 écrans répartis en 11 sections, sur un design system documenté',
+              ja: '11セクションにわたる126画面。文書化されたデザインシステムの上に構築',
             }),
           ),
         },
@@ -893,7 +900,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           note: l(
             L({
               en: 'An ASO pack, plus a dated QA review of the built app and admin panel',
-              fa: 'یک بستهٔ ASO، به‌همراه بازبینی کیفیتِ تاریخ‌دار از اپ ساخته‌شده و پنل مدیریت',
+              fa: 'یک بسته‌ی ASO، به‌همراه بازبینی کیفیتِ تاریخ‌دار از اپ ساخته‌شده و پنل مدیریت',
               ar: 'حزمة ASO، إضافة إلى مراجعة جودة مؤرَّخة للتطبيق المبني ولوحة الإدارة',
               de: 'Ein ASO-Paket, plus eine datierte QA-Prüfung der gebauten App und des Admin-Panels',
               es: 'Un paquete de ASO, además de una revisión de QA fechada de la app construida y del panel de administración',
@@ -917,13 +924,13 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
       ],
       caption: l(
         L({
-          en: 'One tab each: the home feed, tickets, chat and the activity log. Four of eleven sections — 120 screens sit behind them, on one component system.',
-          fa: 'هر تب یکی: فید خانه، بلیت‌ها، گفت‌وگو و گزارش فعالیت. چهار بخش از یازده بخش — ۱۲۰ صفحه پشت آن‌ها، روی یک سیستم کامپوننت.',
-          ar: 'تبويب لكل واحدة: الصفحة الرئيسية، والتذاكر، والدردشة، وسجل النشاط. أربعة من أحد عشر قسمًا — خلفها 120 شاشة على نظام مكوّنات واحد.',
-          de: 'Je ein Tab: Home-Feed, Tickets, Chat und das Aktivitätsprotokoll. Vier von elf Sektionen — dahinter liegen 120 Screens auf einem Komponentensystem.',
-          es: 'Una pestaña cada una: el feed de inicio, los tickets, el chat y el registro de actividad. Cuatro de las once secciones — detrás de ellas hay 120 pantallas, sobre un único sistema de componentes.',
-          fr: 'Un onglet chacun : le fil d’accueil, les billets, le chat et le journal d’activité. Quatre des onze sections — 120 écrans se tiennent derrière, sur un seul système de composants.',
-          ja: '各タブからひとつずつ：ホームフィード、チケット、チャット、アクティビティログ。11セクションのうちの4つ——その背後に、ひとつのコンポーネントシステム上の120画面が控えている。',
+          en: 'One tab each: the home feed, tickets, chat and the activity log. Four of eleven sections — 126 screens sit behind them, on one component system.',
+          fa: 'هر تب یکی: فید خانه، بلیت‌ها، گفت‌وگو و گزارش فعالیت. چهار بخش از یازده بخش — ۱۲۶ صفحه پشت آن‌ها، روی یک سیستم کامپوننت.',
+          ar: 'تبويب لكل واحدة: الصفحة الرئيسية، والتذاكر، والدردشة، وسجل النشاط. أربعة من أحد عشر قسمًا — خلفها 126 شاشة على نظام مكوّنات واحد.',
+          de: 'Je ein Tab: Home-Feed, Tickets, Chat und das Aktivitätsprotokoll. Vier von elf Sektionen — dahinter liegen 126 Screens auf einem Komponentensystem.',
+          es: 'Una pestaña cada una: el feed de inicio, los tickets, el chat y el registro de actividad. Cuatro de las once secciones — detrás de ellas hay 126 pantallas, sobre un único sistema de componentes.',
+          fr: 'Un onglet chacun : le fil d’accueil, les billets, le chat et le journal d’activité. Quatre des onze sections — 126 écrans se tiennent derrière, sur un seul système de composants.',
+          ja: '各タブからひとつずつ：ホームフィード、チケット、チャット、アクティビティログ。11セクションのうちの4つ——その背後に、ひとつのコンポーネントシステム上の126画面が控えている。',
         }),
       ),
     },
@@ -936,7 +943,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
       customLabel: l(
         L({
           en: 'Roadmap',
-          fa: 'نقشهٔ راه',
+          fa: 'نقشه‌ی راه',
           ar: 'خارطة الطريق',
           de: 'Roadmap',
           es: 'Hoja de ruta',
@@ -947,7 +954,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
       heading: l(
         L({
           en: 'The roadmap started as a list of 57 problems.',
-          fa: 'نقشهٔ راه با فهرست ۵۷ مسئله شروع شد.',
+          fa: 'نقشه‌ی راه با فهرست ۵۷ مسئله شروع شد.',
           ar: 'بدأت خارطة الطريق بقائمة من 57 مشكلة.',
           de: 'Die Roadmap begann mit einer Liste von 57 Problemen.',
           es: 'La hoja de ruta empezó como una lista de 57 problemas.',
@@ -960,7 +967,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
         p(
           L({
             en: "Before any sprint was planned, every problem the product would face went into one inventory: 57 in all, each tagged with where it sits — attendees, hosts, the platform or VIN's own model. Each problem lists the features that could solve it and a KPI with a target. Then it goes into one of five tiers by effort, from quick wins that take days to fundamental tensions that are managed, never solved.",
-            fa: 'پیش از برنامه‌ریزی اسپرینت‌ها، همهٔ مسئله‌هایی که محصول با آن‌ها روبه‌رو می‌شد در یک فهرست جمع شد: ۵۷ مسئله. برای هر مسئله مشخص است به شرکت‌کننده‌ها، میزبان‌ها، پلتفرم یا مدل خاص وین مربوط می‌شود. کنار هرکدام، قابلیت‌هایی که می‌توانند حلش کنند و یک KPI با عدد هدف آمده است. بعد هر مسئله بر اساس حجم کار در یکی از پنج سطح قرار گرفت؛ از کارهای سریعی که چند روز طول می‌کشند تا تنش‌های بنیادی که حل نمی‌شوند و فقط باید مدیریت شوند.',
+            fa: 'پیش از برنامه‌ریزی اسپرینت‌ها، همه‌ی مسئله‌هایی که محصول با آن‌ها روبه‌رو می‌شد در یک فهرست جمع شد: ۵۷ مسئله. برای هر مسئله مشخص است به شرکت‌کننده‌ها، میزبان‌ها، پلتفرم یا مدل خاص وین مربوط می‌شود. کنار هرکدام، قابلیت‌هایی که می‌توانند حلش کنند و یک KPI با عدد هدف آمده است. بعد هر مسئله بر اساس حجم کار در یکی از پنج سطح قرار گرفت؛ از کارهای سریعی که چند روز طول می‌کشند تا تنش‌های بنیادی که حل نمی‌شوند و فقط باید مدیریت شوند.',
             ar: 'قبل التخطيط لأي سبرنت، جُمعت كل مشكلة قد يواجهها المنتج في قائمة واحدة: 57 مشكلة، لكلٍّ منها وسمٌ يحدد موقعها — الحضور، أو المضيفون، أو المنصّة، أو نموذج VIN نفسه. تسرد كل مشكلة الميزات التي قد تحلّها ومؤشر أداء بهدف محدد. ثم توضع في واحد من خمسة مستويات بحسب الجهد، من مكاسب سريعة تستغرق أيامًا إلى توترات جوهرية تُدار ولا تُحل.',
             de: 'Bevor ein Sprint geplant wurde, kam jedes Problem, auf das das Produkt stoßen würde, in ein Inventar: 57 insgesamt, jedes danach markiert, wo es liegt — bei Teilnehmenden, Hosts, der Plattform oder VINs eigenem Modell. Zu jedem Problem gehören die Features, die es lösen könnten, und ein KPI mit Zielwert. Dann landet es nach Aufwand in einer von fünf Stufen, von Quick Wins, die Tage dauern, bis zu grundlegenden Spannungen, die man steuert und nie löst.',
             es: 'Antes de planificar ningún sprint, cada problema al que se enfrentaría el producto entró en un inventario: 57 en total, cada uno etiquetado según dónde se sitúa — asistentes, anfitriones, la plataforma o el propio modelo de VIN. Cada problema recoge las funcionalidades que podrían resolverlo y un KPI con un objetivo. Después pasa a uno de cinco niveles según el esfuerzo, desde victorias rápidas que llevan días hasta tensiones de fondo que se gestionan y nunca se resuelven.',
@@ -971,7 +978,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
         p(
           L({
             en: 'The KPI pack defines those numbers once. Each of its 20 KPIs has a plain formula, the segments to cut it by and a tracking status: one north star, twelve drivers and seven guardrails that watch for damage from growth. Only six could be measured on day one. The order of work then came from the tiers, as the four phases below.',
-            fa: 'بستهٔ KPI این عددها را یک‌جا تعریف می‌کند. هرکدام از ۲۰ شاخص فرمولی ساده، بخش‌بندی‌های لازم برای تحلیل و وضعیت ردیابی دارد. یکی از آن‌ها شاخص اصلی است، دوازده شاخص آن را جلو می‌برند و هفت شاخص مراقب پیامدهای منفی رشد هستند. از روز اول فقط شش شاخص قابل اندازه‌گیری بود. ترتیب کار هم از همین سطح‌ها به دست آمد و در چهار مرحلهٔ زیر آمده است.',
+            fa: 'بسته‌ی KPI این عددها را یک‌جا تعریف می‌کند. هرکدام از ۲۰ شاخص فرمولی ساده، بخش‌بندی‌های لازم برای تحلیل و وضعیت ردیابی دارد. یکی از آن‌ها شاخص اصلی است، دوازده شاخص آن را جلو می‌برند و هفت شاخص مراقب پیامدهای منفی رشد هستند. از روز اول فقط شش شاخص قابل اندازه‌گیری بود. ترتیب کار هم از همین سطح‌ها به دست آمد و در چهار مرحله‌ی زیر آمده است.',
             ar: 'تعرّف حزمة المؤشرات هذه الأرقام مرة واحدة. لكل مؤشر من مؤشراتها العشرين صيغة واضحة، والشرائح التي يُقسَّم بحسبها، وحالة التتبّع: مؤشر شمالي واحد، واثنا عشر مؤشرًا دافعًا، وسبعة حواجز أمان ترصد الضرر الذي قد يسببه النمو. ستة منها فقط كانت قابلة للقياس من اليوم الأول. ثم جاء ترتيب العمل من المستويات، في المراحل الأربع أدناه.',
             de: 'Das KPI-Paket definiert diese Zahlen einmal. Jeder der 20 KPIs hat eine einfache Formel, die Segmente, nach denen man ihn aufschlüsselt, und einen Tracking-Status: ein Nordstern, zwölf Treiber und sieben Leitplanken, die auf Schäden durch Wachstum achten. Nur sechs ließen sich ab dem ersten Tag messen. Die Reihenfolge der Arbeit ergab sich dann aus den Stufen, in den vier Phasen unten.',
             es: 'El paquete de KPI define esas cifras una sola vez. Cada uno de sus 20 KPI tiene una fórmula sencilla, los segmentos por los que desglosarlo y un estado de seguimiento: una estrella polar, doce impulsores y siete salvaguardas que vigilan el daño que puede causar el crecimiento. Solo seis se podían medir desde el primer día. El orden del trabajo salió después de los niveles, en las cuatro fases de abajo.',
@@ -983,7 +990,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
       insight: l(
         L({
           en: 'Each item on the roadmap is a problem with a number attached, so the team can tell when it is solved.',
-          fa: 'هر قدم نقشهٔ راه یک مسئله است با یک عدد مشخص؛ عددی که نشان می‌دهد مسئله حل شده است یا نه.',
+          fa: 'هر قدم نقشه‌ی راه یک مسئله است با یک عدد مشخص؛ عددی که نشان می‌دهد مسئله حل شده است یا نه.',
           ar: 'كل بند في خارطة الطريق مشكلةٌ مرتبطة برقم، ليعرف الفريق متى حُلّت.',
           de: 'Jeder Punkt der Roadmap ist ein Problem mit einer Zahl daneben, damit das Team erkennt, wann es gelöst ist.',
           es: 'Cada punto de la hoja de ruta es un problema con una cifra al lado, para que el equipo sepa cuándo está resuelto.',
@@ -999,7 +1006,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
       heading: l(
         L({
           en: "The order of work, from the inventory's summary sheet",
-          fa: 'ترتیب کار، بر اساس برگهٔ خلاصهٔ فهرست مسئله‌ها',
+          fa: 'ترتیب کار، بر اساس برگه‌ی خلاصه‌ی فهرست مسئله‌ها',
           ar: 'ترتيب العمل، من ورقة الملخص في فهرس المشكلات',
           de: 'Die Reihenfolge der Arbeit, aus dem Übersichtsblatt des Inventars',
           es: 'El orden del trabajo, según la hoja de resumen del inventario',
@@ -1120,7 +1127,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
       heading: l(
         L({
           en: 'The two workbooks behind the roadmap',
-          fa: 'دو فایل اکسل این نقشهٔ راه',
+          fa: 'دو فایل اکسل این نقشه‌ی راه',
           ar: 'الملفان وراء خارطة الطريق',
           de: 'Die zwei Arbeitsmappen hinter der Roadmap',
           es: 'Los dos libros de cálculo detrás de la hoja de ruta',
@@ -1143,7 +1150,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           }),
           L({
             en: '57 problems in five tiers, each with the features that could solve it and a KPI target. Eight sheets, ending in a summary with the order of work.',
-            fa: '۵۷ مسئله در پنج سطح، هرکدام با قابلیت‌های پیشنهادی و یک KPI با عدد هدف. فایل هشت برگه دارد و برگهٔ آخر، خلاصه و ترتیب کار است.',
+            fa: '۵۷ مسئله در پنج سطح، هرکدام با قابلیت‌های پیشنهادی و یک KPI با عدد هدف. فایل هشت برگه دارد و برگه‌ی آخر، خلاصه و ترتیب کار است.',
             ar: '57 مشكلة في خمسة مستويات، لكلٍّ منها الميزات التي قد تحلّها وهدف لمؤشر الأداء. ثماني أوراق، آخرها ملخص بترتيب العمل.',
             de: '57 Probleme in fünf Stufen, jedes mit den Features, die es lösen könnten, und einem KPI-Ziel. Acht Blätter, am Ende eine Übersicht mit der Reihenfolge der Arbeit.',
             es: '57 problemas en cinco niveles, cada uno con las funcionalidades que podrían resolverlo y un objetivo de KPI. Ocho hojas, que terminan en un resumen con el orden del trabajo.',
@@ -1156,7 +1163,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           'vin-dl02',
           L({
             en: 'KPI starter pack',
-            fa: 'بستهٔ شروع KPI',
+            fa: 'بسته‌ی شروع KPI',
             ar: 'حزمة البداية لمؤشرات الأداء',
             de: 'KPI-Starterpaket',
             es: 'Paquete inicial de KPI',
@@ -1181,13 +1188,13 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
       label: 'approach',
       heading: l(
         L({
-          en: 'Eleven sections, 120 screens, one documented system.',
-          fa: 'یازده بخش، ۱۲۰ صفحه، یک سیستم مستند.',
-          ar: 'أحد عشر قسمًا، 120 شاشة، نظام موثّق واحد.',
-          de: 'Elf Bereiche, 120 Screens, ein dokumentiertes System.',
-          es: 'Once secciones, 120 pantallas, un sistema documentado.',
-          fr: 'Onze sections, 120 écrans, un système documenté.',
-          ja: '11セクション、120画面、ひとつの文書化されたシステム。',
+          en: 'Eleven sections, 126 screens, one documented system.',
+          fa: 'یازده بخش، ۱۲۶ صفحه، یک سیستم مستند.',
+          ar: 'أحد عشر قسمًا، 126 شاشة، نظام موثّق واحد.',
+          de: 'Elf Bereiche, 126 Screens, ein dokumentiertes System.',
+          es: 'Once secciones, 126 pantallas, un sistema documentado.',
+          fr: 'Onze sections, 126 écrans, un système documenté.',
+          ja: '11セクション、126画面、ひとつの文書化されたシステム。',
         }),
       ),
       body: prose(
@@ -1195,7 +1202,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
         p(
           L({
             en: 'One App canvas holds the whole product — 17,589 nodes across 11 Figma sections: Profile (27 screens), Meet up Detail (23, including four cancellation variants), Sponser (19, the B2B venue layer), Chat (13), the Final Wizard (11), Home (7), and six smaller flows.',
-            fa: 'یک بوم App کل محصول را در خود دارد — ۱۷٬۵۸۹ گره در ۱۱ بخش فیگما: پروفایل (۲۷ صفحه)، جزئیات میت‌آپ (۲۳، شامل چهار گونهٔ لغو)، Sponser (۱۹، لایهٔ B2B مکان‌ها)، گفت‌وگو (۱۳)، ویزارد نهایی (۱۱)، خانه (۷)، و شش جریان کوچک‌تر.',
+            fa: 'یک بوم App کل محصول را در خود دارد — ۱۷٬۵۸۹ گره در ۱۱ بخش فیگما: پروفایل (۲۷ صفحه)، جزئیات میت‌آپ (۲۳، شامل چهار گونه‌ی لغو)، Sponser (۱۹، لایه‌ی B2B مکان‌ها)، گفت‌وگو (۱۳)، ویزارد نهایی (۱۱)، خانه (۷)، و شش جریان کوچک‌تر.',
             ar: 'يحمل لوح App واحد المنتج كله — 17,589 عقدة عبر 11 قسمًا في Figma: الملف الشخصي (27 شاشة)، تفاصيل اللقاء (23، بما فيها أربعة أنماط إلغاء)، Sponser (19، طبقة B2B للأماكن)، الدردشة (13)، المعالج النهائي (11)، الرئيسية (7)، وستة تدفقات أصغر.',
             de: 'Eine App-Canvas hält das gesamte Produkt — 17.589 Nodes über 11 Figma-Bereiche: Profile (27 Screens), Meet-up-Detail (23, inklusive vier Storno-Varianten), Sponser (19, die B2B-Venue-Ebene), Chat (13), der Final Wizard (11), Home (7) und sechs kleinere Flows.',
             es: 'Un único lienzo App contiene todo el producto — 17 589 nodos en 11 secciones de Figma: Profile (27 pantallas), Meet up Detail (23, incluidas cuatro variantes de cancelación), Sponser (19, la capa B2B de locales), Chat (13), el Final Wizard (11), Home (7) y seis flujos más pequeños.',
@@ -1230,7 +1237,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
       caption: l(
         L({
           en: 'Three of twelve component groups — 221 component nodes on their own design-system page, versioned independently of the app canvas.',
-          fa: 'سه نمونه از دوازده گروه کامپوننت — ۲۲۱ گرهٔ کامپوننت روی صفحهٔ مستقل سیستم طراحی، با نسخه‌بندیِ مستقل از بوم اپ.',
+          fa: 'سه نمونه از دوازده گروه کامپوننت — ۲۲۱ گره‌ی کامپوننت روی صفحه‌ی مستقل سیستم طراحی، با نسخه‌بندیِ مستقل از بوم اپ.',
           ar: 'ثلاث من اثنتي عشرة مجموعة مكوّنات — 221 عقدة مكوّن على صفحة نظام التصميم الخاصة بها، بترقيم إصدارات مستقل عن لوح التطبيق.',
           de: 'Drei von zwölf Komponentengruppen — 221 Komponenten-Nodes auf einer eigenen Design-System-Seite, unabhängig von der App-Canvas versioniert.',
           es: 'Tres de los doce grupos de componentes — 221 nodos de componente en su propia página del sistema de diseño, versionada de forma independiente del lienzo de la app.',
@@ -1252,7 +1259,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
       caption: l(
         L({
           en: 'The states a spec gets judged by: an offline screen that keeps the tab bar in place, an empty chat that points back at joining a meetup, and cancelling a paid meetup inside 24 hours — one of four cancellation variants, each with its own refund sentence.',
-          fa: 'حالت‌هایی که یک اسپک با آن‌ها سنجیده می‌شود: صفحهٔ آفلاین که نوار تب را سر جایش نگه می‌دارد، گفت‌وگوی خالی که به پیوستن به میت‌آپ بازمی‌گرداند، و لغو میت‌آپ پولی در کمتر از ۲۴ ساعت — یکی از چهار گونهٔ لغو، هرکدام با جملهٔ بازگشت وجه خودش.',
+          fa: 'حالت‌هایی که یک اسپک با آن‌ها سنجیده می‌شود: صفحه‌ی آفلاین که نوار تب را سر جایش نگه می‌دارد، گفت‌وگوی خالی که به پیوستن به میت‌آپ بازمی‌گرداند، و لغو میت‌آپ پولی در کمتر از ۲۴ ساعت — یکی از چهار گونه‌ی لغو، هرکدام با جمله‌ی بازگشت وجه خودش.',
           ar: 'الحالات التي يُحكم بها على المواصفة: شاشة دون اتصال تُبقي شريط التبويب في مكانه، ودردشة فارغة تعيدك إلى الانضمام للقاء، وإلغاء لقاء مدفوع خلال 24 ساعة — واحدة من أربع حالات إلغاء، لكل منها جملتها عن الاسترداد.',
           de: 'Die Zustände, an denen eine Spezifikation gemessen wird: ein Offline-Screen, der die Tab-Bar behält, ein leerer Chat, der auf das Beitreten zurückverweist, und die Absage eines bezahlten Meetups innerhalb von 24 Stunden — eine von vier Storno-Varianten, jede mit ihrem eigenen Erstattungssatz.',
           es: 'Los estados por los que se juzga una especificación: una pantalla sin conexión que mantiene la barra de pestañas en su sitio, un chat vacío que remite a unirse a un meetup y la cancelación de un meetup de pago con menos de 24 horas de antelación — una de las cuatro variantes de cancelación, cada una con su propia frase sobre el reembolso.',
@@ -1268,7 +1275,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
       heading: l(
         L({
           en: 'The thesis sits in the first screen of the most-used flow.',
-          fa: 'فرضیهٔ اصلی در اولین صفحهٔ پرکاربردترین جریان نشسته است.',
+          fa: 'فرضیه‌ی اصلی در اولین صفحه‌ی پرکاربردترین جریان نشسته است.',
           ar: 'الفرضية الأساسية تقبع في الشاشة الأولى لأكثر التدفقات استخدامًا.',
           de: 'Die These sitzt im ersten Screen des meistgenutzten Flows.',
           es: 'La tesis está en la primera pantalla del flujo más usado.',
@@ -1281,7 +1288,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
         p(
           L({
             en: "Meetup creation opens as a conversation, not a form: 'Hi Sina, what is your goal of Create a Meet up?' — with four intents, the fourth an honest escape hatch for people who don't want the strategy layer at all: meet new people, analyse my network, strengthen existing connections, or just do an activity.",
-            fa: 'ساخت میت‌آپ به‌جای فرم، مثل یک گفت‌وگو باز می‌شود: «سلام سینا، هدفت از ساخت میت‌آپ چیست؟» — با چهار قصد، که چهارمی‌شان دریچهٔ صادقانه‌ای است برای کسانی که اصلاً لایهٔ استراتژی را نمی‌خواهند: آشنایی با افراد جدید، تحلیل شبکه‌ام، تقویت ارتباط‌های موجود، یا فقط انجام یک فعالیت.',
+            fa: 'ساخت میت‌آپ به‌جای فرم، مثل یک گفت‌وگو باز می‌شود: «سلام سینا، هدفت از ساخت میت‌آپ چیست؟» — با چهار قصد، که چهارمی‌شان دریچه‌ی صادقانه‌ای است برای کسانی که اصلاً لایه‌ی استراتژی را نمی‌خواهند: آشنایی با افراد جدید، تحلیل شبکه‌ام، تقویت ارتباط‌های موجود، یا فقط انجام یک فعالیت.',
             ar: 'يُفتح إنشاء اللقاء كمحادثة، لا كنموذج: «مرحبًا سينا، ما هدفك من إنشاء لقاء؟» — بأربع نوايا، رابعتها منفذ صريح لمن لا يريدون طبقة الاستراتيجية إطلاقًا: التعرّف على أشخاص جدد، تحليل شبكتي، تعزيز التواصلات القائمة، أو فقط ممارسة نشاط.',
             de: 'Die Meetup-Erstellung öffnet als Gespräch, nicht als Formular: „Hi Sina, was ist dein Ziel beim Erstellen eines Meetups?“ — mit vier Intents, der vierte ein ehrliches Fluchttor für alle, die die Strategieebene gar nicht wollen: neue Leute treffen, mein Netzwerk analysieren, bestehende Verbindungen stärken, oder einfach eine Aktivität machen.',
             es: 'La creación de un meetup se abre como una conversación, no como un formulario: «Hi Sina, what is your goal of Create a Meet up?» — con cuatro intenciones, la cuarta una honesta vía de escape para quien no quiere en absoluto la capa estratégica: conocer gente nueva, analizar mi red, fortalecer conexiones existentes o simplemente hacer una actividad.',
@@ -1304,7 +1311,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
       insight: l(
         L({
           en: "The fourth option — 'just want to do an activity' — is the product being honest about the users who don't want its thesis.",
-          fa: 'گزینهٔ چهارم — «فقط می‌خواهم فعالیتی انجام دهم» — صداقتِ محصول است دربارهٔ کاربرانی که فرضیه‌اش را نمی‌خواهند.',
+          fa: 'گزینه‌ی چهارم — «فقط می‌خواهم فعالیتی انجام دهم» — صداقتِ محصول است درباره‌ی کاربرانی که فرضیه‌اش را نمی‌خواهند.',
           ar: 'الخيار الرابع — «أريد فقط ممارسة نشاط» — هو صدق المنتج مع المستخدمين الذين لا يريدون فرضيته.',
           de: 'Die vierte Option — „einfach eine Aktivität machen“ — ist das Produkt, das ehrlich zu Nutzern ist, die seine These gar nicht wollen.',
           es: 'La cuarta opción — «just want to do an activity» — es el producto siendo honesto con los usuarios que no quieren su tesis.',
@@ -1367,7 +1374,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           text: l(
             L({
               en: '"Just want to do an activity — skip the strategy, create a simple Meet up." The escape hatch, and the most honest line in the file.',
-              fa: '«فقط می‌خواهم فعالیتی انجام دهم — استراتژی را رد کن، یک میت‌آپ ساده بساز.» راه گریز، و صادقانه‌ترین جملهٔ فایل.',
+              fa: '«فقط می‌خواهم فعالیتی انجام دهم — استراتژی را رد کن، یک میت‌آپ ساده بساز.» راه گریز، و صادقانه‌ترین جمله‌ی فایل.',
               ar: '«أريد فقط ممارسة نشاط — تخطَّ الاستراتيجية وأنشئ لقاءً بسيطًا.» مخرج الطوارئ، وأصدق سطر في الملف.',
               de: '„Ich will einfach etwas unternehmen — überspring die Strategie, mach ein einfaches Meetup.“ Das Fluchttor, und die ehrlichste Zeile der Datei.',
               es: '«Just want to do an activity — skip the strategy, create a simple Meet up.» La vía de escape, y la línea más honesta del archivo.',
@@ -1394,7 +1401,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
       caption: l(
         L({
           en: 'Meetup creation — the flow a host uses most — opens by asking what the meetup is for. The product thesis, stated as the first question anyone answers.',
-          fa: 'ساخت میت‌آپ — پرکاربردترین جریان برای میزبان — با این پرسش باز می‌شود که این میت‌آپ برای چیست. فرضیهٔ محصول، در قالب نخستین پرسشی که هر کسی پاسخ می‌دهد.',
+          fa: 'ساخت میت‌آپ — پرکاربردترین جریان برای میزبان — با این پرسش باز می‌شود که این میت‌آپ برای چیست. فرضیه‌ی محصول، در قالب نخستین پرسشی که هر کسی پاسخ می‌دهد.',
           ar: 'إنشاء اللقاء — المسار الأكثر استخدامًا لدى المضيف — يبدأ بسؤال: ما الغرض من هذا اللقاء؟ فرضية المنتج بوصفها أول سؤال يجيب عنه أي شخص.',
           de: 'Das Erstellen eines Meetups — der meistgenutzte Flow — beginnt mit der Frage, wofür das Meetup da ist. Die Produktthese als erste Frage, die jemand beantwortet.',
           es: 'La creación de un meetup — el flujo que más usa un anfitrión — empieza preguntando para qué es el meetup. La tesis del producto, planteada como la primera pregunta que responde cualquiera.',
@@ -1423,7 +1430,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           why: l(
             L({
               en: "VIN is the platform; Meet is the action — a fixed usage rule ('Join a VIN Meet', never 'Download VIN Meet App') so five planned verticals (VIN Party, VIN Challenge, VIN Business Walk, VIN Retreat) never force a rename.",
-              fa: 'وین پلتفرم است؛ Meet کنش است — قاعدهٔ کاربردیِ ثابتی («به یک VIN Meet بپیوندید»، هرگز «اپ VIN Meet را دانلود کنید») تا پنج عمود برنامه‌ریزی‌شده (VIN Party، VIN Challenge، VIN Business Walk، VIN Retreat) هرگز نیازی به تغییر نام نداشته باشند.',
+              fa: 'وین پلتفرم است؛ Meet کنش است — قاعده‌ی کاربردیِ ثابتی («به یک VIN Meet بپیوندید»، هرگز «اپ VIN Meet را دانلود کنید») تا پنج عمود برنامه‌ریزی‌شده (VIN Party، VIN Challenge، VIN Business Walk، VIN Retreat) هرگز نیازی به تغییر نام نداشته باشند.',
               ar: 'وين هي المنصّة؛ وMeet هو الفعل — قاعدة استخدام ثابتة («انضم إلى VIN Meet»، أبدًا «حمِّل تطبيق VIN Meet») حتى لا تفرض خمس شرائح مخطَّطة (VIN Party، VIN Challenge، VIN Business Walk، VIN Retreat) أي إعادة تسمية أبدًا.',
               de: 'VIN ist die Plattform; Meet ist die Aktion — eine feste Nutzungsregel („Einem VIN Meet beitreten“, niemals „VIN-Meet-App herunterladen“), damit fünf geplante Verticals (VIN Party, VIN Challenge, VIN Business Walk, VIN Retreat) nie eine Umbenennung erzwingen.',
               es: 'VIN es la plataforma; Meet es la acción: una regla de uso fija («Únete a un VIN Meet», nunca «Descarga la app VIN Meet») para que cinco verticales previstas (VIN Party, VIN Challenge, VIN Business Walk, VIN Retreat) nunca obliguen a cambiar de nombre.',
@@ -1481,7 +1488,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           why: l(
             L({
               en: 'Public leaderboards and competitive display read as culturally wrong for this market.',
-              fa: 'جدول رده‌بندی عمومی و نمایش رقابتی با زمینهٔ فرهنگی این بازار سازگار نیستند.',
+              fa: 'جدول رده‌بندی عمومی و نمایش رقابتی با زمینه‌ی فرهنگی این بازار سازگار نیستند.',
               ar: 'تُقرأ لوحات الصدارة العامة والعرض التنافسي على أنها خاطئة ثقافيًا لهذا السوق.',
               de: 'Öffentliche Ranglisten und Wettbewerbsdarstellung gelten für diesen Markt als kulturell falsch.',
               es: 'Los rankings públicos y la exhibición competitiva se perciben como culturalmente inadecuados para este mercado.',
@@ -1514,7 +1521,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           evidence: l(
             L({
               en: 'Nine non-negotiable Dubai cultural rules, part of the reusable design-and-audit protocol',
-              fa: 'نه قاعدهٔ فرهنگیِ غیرقابل‌مذاکرهٔ دبی، بخشی از پروتکل طراحی-و-ممیزیِ قابل‌استفادهٔ مجدد',
+              fa: 'نه قاعده‌ی فرهنگیِ غیرقابل‌مذاکره‌ی دبی، بخشی از پروتکل طراحی-و-ممیزیِ قابل‌استفاده‌ی مجدد',
               ar: 'تسع قواعد ثقافية غير قابلة للتفاوض لدبي، جزء من بروتوكول التصميم والتدقيق القابل لإعادة الاستخدام',
               de: 'Neun nicht verhandelbare Dubai-Kulturregeln, Teil des wiederverwendbaren Design-und-Audit-Protokolls',
               es: 'Nueve reglas culturales innegociables para Dubái, parte del protocolo reutilizable de diseño y auditoría',
@@ -1528,7 +1535,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           title: l(
             L({
               en: 'Chat-first meetup creation, with a real escape hatch',
-              fa: 'ساخت میت‌آپِ چت‌محور، با دریچهٔ فرارِ واقعی',
+              fa: 'ساخت میت‌آپِ چت‌محور، با دریچه‌ی فرارِ واقعی',
               ar: 'إنشاء لقاء قائم على المحادثة، مع منفذ حقيقي',
               de: 'Chat-first-Meetup-Erstellung, mit einem echten Fluchttor',
               es: 'Creación de meetups desde el chat, con una salida real',
@@ -1539,7 +1546,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           why: l(
             L({
               en: 'Puts the AI-pathfinding thesis in front of every host at the moment of creation, rather than burying it in settings.',
-              fa: 'فرضیهٔ مسیریابیِ هوش مصنوعی را در لحظهٔ ساخت جلوی چشم هر میزبان می‌گذارد، نه اینکه در تنظیمات دفن شود.',
+              fa: 'فرضیه‌ی مسیریابیِ هوش مصنوعی را در لحظه‌ی ساخت جلوی چشم هر میزبان می‌گذارد، نه اینکه در تنظیمات دفن شود.',
               ar: 'يضع فرضية تحديد المسار بالذكاء الاصطناعي أمام كل مضيف لحظة الإنشاء، بدلًا من دفنها في الإعدادات.',
               de: 'Stellt die KI-Pathfinding-These jedem Host im Moment der Erstellung vor Augen, statt sie in den Einstellungen zu vergraben.',
               es: 'Pone la tesis del pathfinding con IA delante de cada anfitrión en el momento de crear, en lugar de enterrarla en los ajustes.',
@@ -1550,7 +1557,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           alternatives: l(
             L({
               en: 'A plain creation form — which is what actually ships behind the fourth intent chip.',
-              fa: 'یک فرم سادهٔ ساخت — که همان چیزی است که پشت چیپ قصدِ چهارم واقعاً ارائه می‌شود.',
+              fa: 'یک فرم ساده‌ی ساخت — که همان چیزی است که پشت چیپ قصدِ چهارم واقعاً ارائه می‌شود.',
               ar: 'نموذج إنشاء بسيط — وهو ما يُقدَّم فعليًا خلف رقاقة النيّة الرابعة.',
               de: 'Ein einfaches Erstellungsformular — genau das, was tatsächlich hinter dem vierten Intent-Chip steckt.',
               es: 'Un formulario de creación simple, que es justo lo que se entrega tras el cuarto chip de intención.',
@@ -1561,7 +1568,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           tradeoff: l(
             L({
               en: 'Costs a small amount of friction for someone who just wants to book a padel session; the fourth chip pays that back honestly instead of forcing the strategy layer on everyone.',
-              fa: 'برای کسی که فقط می‌خواهد یک جلسهٔ پدل رزرو کند، این مرحله کار را طولانی‌تر می‌کند. گزینهٔ چهارم راه ساده‌تری پیش پای او می‌گذارد تا مجبور نباشد مسیر راهبردی را طی کند.',
+              fa: 'برای کسی که فقط می‌خواهد یک جلسه‌ی پدل رزرو کند، این مرحله کار را طولانی‌تر می‌کند. گزینه‌ی چهارم راه ساده‌تری پیش پای او می‌گذارد تا مجبور نباشد مسیر راهبردی را طی کند.',
               ar: 'يكلّف قدرًا يسيرًا من الاحتكاك لمن يريد فقط حجز جلسة بادل؛ وتعوّض الرقاقة الرابعة ذلك بصدق بدل فرض طبقة الاستراتيجية على الجميع.',
               de: 'Kostet etwas Reibung für jemanden, der nur eine Padel-Session buchen will; der vierte Chip zahlt das ehrlich zurück, statt allen die Strategieebene aufzuzwingen.',
               es: 'Supone algo de fricción para quien solo quiere reservar una sesión de pádel; el cuarto chip lo compensa con honestidad en vez de imponer a todos la capa de estrategia.',
@@ -1576,7 +1583,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           title: l(
             L({
               en: 'Design the venue layer as a two-sided product, not a landing page',
-              fa: 'طراحی لایهٔ مکان‌ها به‌عنوان محصولی دوسویه، نه یک صفحهٔ فرود',
+              fa: 'طراحی لایه‌ی مکان‌ها به‌عنوان محصولی دوسویه، نه یک صفحه‌ی فرود',
               ar: 'تصميم طبقة الأماكن كمنتج ثنائي الجانب، لا كصفحة هبوط',
               de: 'Die Venue-Ebene als zweiseitiges Produkt gestalten, nicht als Landingpage',
               es: 'Diseñar la capa de locales como un producto de dos lados, no como una landing page',
@@ -1587,7 +1594,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           why: l(
             L({
               en: "Matching venues to groups turns 'off-peak covers' into a real scheduling and group-size constraint on the consumer side, not just a sales pitch.",
-              fa: 'تطبیق مکان‌ها با گروه‌ها «پوشش ساعات کم‌ترافیک» را به محدودیت واقعیِ زمان‌بندی و اندازهٔ گروه در سمت مصرف‌کننده تبدیل می‌کند، نه فقط یک پیشنهاد فروش.',
+              fa: 'تطبیق مکان‌ها با گروه‌ها «پوشش ساعات کم‌ترافیک» را به محدودیت واقعیِ زمان‌بندی و اندازه‌ی گروه در سمت مصرف‌کننده تبدیل می‌کند، نه فقط یک پیشنهاد فروش.',
               ar: 'مطابقة الأماكن بالمجموعات تحوّل «تغطية ساعات الركود» إلى قيد جدولة وحجم مجموعة حقيقي على الجانب الاستهلاكي، لا مجرد عرض بيع.',
               de: 'Das Matching von Venues mit Gruppen macht „Off-Peak-Covers“ zu einer echten Scheduling- und Gruppengrößen-Beschränkung auf der Konsumentenseite, nicht nur zu einem Verkaufsargument.',
               es: 'Emparejar locales con grupos convierte los «cubiertos en horas valle» en una restricción real de programación y de tamaño de grupo del lado del consumidor, no solo en un argumento de venta.',
@@ -1598,7 +1605,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           alternatives: l(
             L({
               en: 'A single static partner-inquiry page.',
-              fa: 'یک صفحهٔ استاتیکِ واحد برای درخواست همکاری.',
+              fa: 'یک صفحه‌ی استاتیکِ واحد برای درخواست همکاری.',
               ar: 'صفحة استفسار شركاء ثابتة واحدة.',
               de: 'Eine einzelne statische Partner-Anfrageseite.',
               es: 'Una única página estática de solicitud para socios.',
@@ -1620,7 +1627,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           evidence: l(
             L({
               en: 'Sponser section, 19 screens, with a considered legal disclaimer on performance figures',
-              fa: 'بخش Sponser، ۱۹ صفحه، همراه با سلب مسئولیت حقوقیِ سنجیده دربارهٔ ارقام عملکرد',
+              fa: 'بخش Sponser، ۱۹ صفحه، همراه با سلب مسئولیت حقوقیِ سنجیده درباره‌ی ارقام عملکرد',
               ar: 'قسم Sponser، 19 شاشة، مع إخلاء مسؤولية قانوني مدروس حول أرقام الأداء',
               de: 'Sponser-Bereich, 19 Screens, mit einem durchdachten rechtlichen Disclaimer zu Leistungszahlen',
               es: 'Sección Sponser, 19 pantallas, con un aviso legal cuidado sobre las cifras de rendimiento',
@@ -1638,7 +1645,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
       heading: l(
         L({
           en: 'The venue layer is the business model, not a landing page.',
-          fa: 'لایهٔ مکان‌ها مدل کسب‌وکار است، نه یک صفحهٔ فرود.',
+          fa: 'لایه‌ی مکان‌ها مدل کسب‌وکار است، نه یک صفحه‌ی فرود.',
           ar: 'طبقة الأماكن هي نموذج العمل، لا صفحة هبوط.',
           de: 'Die Venue-Ebene ist das Geschäftsmodell, keine Landingpage.',
           es: 'La capa de locales es el modelo de negocio, no una landing page.',
@@ -1662,7 +1669,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
         p(
           L({
             en: "The pitch to venues is blunt: 'Empty seats aren't a marketing problem — they're a predictable demand problem.' The page even carries a legal disclaimer marking performance figures as indicative, not guaranteed, based on pilot data.",
-            fa: 'پیام به مکان‌ها روشن است: «صندلی‌های خالی مشکل تبلیغات نیستند؛ مسئله، پیش‌بینی تقاضاست.» در صفحه توضیح حقوقی هم آمده است که ارقام عملکرد، برآوردی بر پایهٔ داده‌های آزمایشی‌اند و نتیجه‌ای را تضمین نمی‌کنند.',
+            fa: 'پیام به مکان‌ها روشن است: «صندلی‌های خالی مشکل تبلیغات نیستند؛ مسئله، پیش‌بینی تقاضاست.» در صفحه توضیح حقوقی هم آمده است که ارقام عملکرد، برآوردی بر پایه‌ی داده‌های آزمایشی‌اند و نتیجه‌ای را تضمین نمی‌کنند.',
             ar: 'العرض للأماكن صريح: «المقاعد الفارغة ليست مشكلة تسويقية — إنها مشكلة طلب يمكن التنبؤ بها.» بل تحمل الصفحة إخلاء مسؤولية قانوني يصف أرقام الأداء بأنها إرشادية لا مضمونة، مستندة إلى بيانات تجريبية.',
             de: 'Das Angebot an Venues ist unverblümt: „Leere Plätze sind kein Marketingproblem — sie sind ein vorhersehbares Nachfrageproblem.“ Die Seite trägt sogar einen rechtlichen Disclaimer, der Leistungszahlen als indikativ, nicht garantiert, basierend auf Pilotdaten kennzeichnet.',
             es: 'El mensaje a los locales es directo: «Los asientos vacíos no son un problema de marketing: son un problema de demanda predecible». La página incluso lleva un aviso legal que presenta las cifras de rendimiento como orientativas, no garantizadas, basadas en datos piloto.',
@@ -1732,7 +1739,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           note: l(
             L({
               en: 'VIN suggests relevant meetup groups by area, timing and audience fit',
-              fa: 'وین گروه‌های میت‌آپِ مرتبط را بر پایهٔ منطقه، زمان‌بندی و تناسب مخاطب پیشنهاد می‌دهد',
+              fa: 'وین گروه‌های میت‌آپِ مرتبط را بر پایه‌ی منطقه، زمان‌بندی و تناسب مخاطب پیشنهاد می‌دهد',
               ar: 'تقترح وين مجموعات لقاءات ذات صلة حسب المنطقة والتوقيت وملاءمة الجمهور',
               de: 'VIN schlägt relevante Meetup-Gruppen nach Gebiet, Timing und Zielgruppenpassung vor',
               es: 'VIN sugiere grupos de meetup relevantes según la zona, el horario y el encaje con el público',
@@ -1806,7 +1813,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           'vin-f12a-1',
           L({
             en: 'The venue page a member reaches from the feed',
-            fa: 'صفحهٔ مکان، همان‌طور که عضو از فید به آن می‌رسد',
+            fa: 'صفحه‌ی مکان، همان‌طور که عضو از فید به آن می‌رسد',
             ar: 'صفحة المكان كما يصل إليها العضو من الموجز',
             de: 'Die Venue-Seite, die ein Mitglied aus dem Feed erreicht',
             es: 'La página del local a la que un miembro llega desde el feed',
@@ -1819,7 +1826,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           'vin-f12a-2',
           L({
             en: 'The request its bottom button opens',
-            fa: 'درخواستی که دکمهٔ پایین آن باز می‌کند',
+            fa: 'درخواستی که دکمه‌ی پایین آن باز می‌کند',
             ar: 'الطلب الذي يفتحه زرّها السفلي',
             de: 'Die Anfrage, die ihr unterer Button öffnet',
             es: 'La solicitud que abre su botón inferior',
@@ -1831,7 +1838,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
       caption: l(
         L({
           en: 'Both sides of the venue layer in one flow: the venue page ends in "Be my sponsor", and the sheet it opens asks for audience size, date, activity, sponsorship type and what the venue gets back. A landing page collects an enquiry; this collects a bookable offer. The venue itself is a real coffee chain standing in as placeholder content.',
-          fa: 'هر دو سوی لایهٔ مکان در یک جریان: صفحهٔ مکان به «اسپانسر من باش» ختم می‌شود و شیتی که باز می‌کند، اندازهٔ مخاطب، تاریخ، فعالیت، نوع حمایت و آنچه مکان در ازایش می‌گیرد را می‌پرسد. یک صفحهٔ فرود، استعلام جمع می‌کند؛ این، پیشنهادی قابل‌رزرو. خودِ مکان یک برند واقعی قهوه است در نقش محتوای جایگزین.',
+          fa: 'هر دو سوی لایه‌ی مکان در یک جریان: صفحه‌ی مکان به «اسپانسر من باش» ختم می‌شود و شیتی که باز می‌کند، اندازه‌ی مخاطب، تاریخ، فعالیت، نوع حمایت و آنچه مکان در ازایش می‌گیرد را می‌پرسد. یک صفحه‌ی فرود، استعلام جمع می‌کند؛ این، پیشنهادی قابل‌رزرو. خودِ مکان یک برند واقعی قهوه است در نقش محتوای جایگزین.',
           ar: 'جانبا طبقة الأماكن في مسار واحد: تنتهي صفحة المكان بزر «كن راعيًا لي»، والورقة التي يفتحها تسأل عن حجم الحضور والتاريخ والنشاط ونوع الرعاية وما يحصل عليه المكان. صفحة الهبوط تجمع استفسارًا؛ وهذه تجمع عرضًا قابلًا للحجز. والمكان نفسه سلسلة قهوة حقيقية مستخدَمة كمحتوى بديل.',
           de: 'Beide Seiten der Venue-Ebene in einem Flow: Die Venue-Seite endet mit „Be my sponsor“, und das Sheet dahinter fragt nach Gruppengröße, Datum, Aktivität, Sponsoring-Art und der Gegenleistung. Eine Landingpage sammelt eine Anfrage; das hier sammelt ein buchbares Angebot. Das Venue selbst ist eine reale Kaffeekette als Platzhalterinhalt.',
           es: 'Los dos lados de la capa de locales en un solo flujo: la página del local termina en «Be my sponsor», y la hoja que abre pide el tamaño del público, la fecha, la actividad, el tipo de patrocinio y lo que recibe el local a cambio. Una landing page recoge una consulta; esto recoge una oferta reservable. El local en sí es una cadena de cafeterías real que hace de contenido provisional.',
@@ -1871,7 +1878,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
         p(
           L({
             en: "But the onboarding screen makes four promises, and the file designs two of them. Across all 17,589 nodes, none contains the word 'path' and none contains 'log' — no goal-setting screen, no AI path, no connection-logging interface.",
-            fa: 'اما صفحهٔ خوش‌آمدگویی چهار وعده می‌دهد، و فایل فقط دوتای آن‌ها را طراحی می‌کند. در میان کل ۱۷٬۵۸۹ گره، هیچ‌کدام حاوی واژهٔ «مسیر» و هیچ‌کدام حاوی «ثبت» نیستند — نه صفحهٔ تعیین هدف، نه مسیر هوش مصنوعی، نه رابط ثبت ارتباط.',
+            fa: 'اما صفحه‌ی خوش‌آمدگویی چهار وعده می‌دهد، و فایل فقط دوتای آن‌ها را طراحی می‌کند. در میان کل ۱۷٬۵۸۹ گره، هیچ‌کدام حاوی واژه‌ی «مسیر» و هیچ‌کدام حاوی «ثبت» نیستند — نه صفحه‌ی تعیین هدف، نه مسیر هوش مصنوعی، نه رابط ثبت ارتباط.',
             ar: 'لكن شاشة الترحيب تقطع أربعة وعود، ويصمّم الملف اثنين منها فقط. عبر جميع العقد الـ17,589، لا تحتوي أي منها على كلمة "path" ولا "log" — لا شاشة لتحديد الهدف، ولا مسار ذكاء اصطناعي، ولا واجهة تسجيل تواصل.',
             de: 'Aber der Onboarding-Screen macht vier Versprechen, und die Datei entwirft zwei davon. Von allen 17.589 Nodes enthält keiner das Wort „path“ und keiner „log“ — kein Zielsetzungs-Screen, kein KI-Pfad, keine Connection-Logging-Oberfläche.',
             es: 'Pero la pantalla de onboarding hace cuatro promesas, y el archivo diseña dos de ellas. De los 17 589 nodos, ninguno contiene la palabra «path» y ninguno contiene «log»: no hay pantalla para fijar objetivos, ni ruta de IA, ni interfaz para registrar conexiones.',
@@ -1910,7 +1917,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           text: l(
             L({
               en: '"Who You Want to Meet" — "define your connection goals and we\'ll find the right events to get you there." No goal-setting screen exists in the file.',
-              fa: '«چه کسی را می‌خواهی ملاقات کنی» — «هدف‌های ارتباطی‌ات را تعیین کن تا رویدادهای درست را برایت پیدا کنیم.» هیچ صفحهٔ تعیین هدفی در فایل نیست.',
+              fa: '«چه کسی را می‌خواهی ملاقات کنی» — «هدف‌های ارتباطی‌ات را تعیین کن تا رویدادهای درست را برایت پیدا کنیم.» هیچ صفحه‌ی تعیین هدفی در فایل نیست.',
               ar: '«مَن تريد أن تلتقي» — «حدِّد أهداف تواصلك وسنجد لك الفعاليات المناسبة.» لا توجد شاشة لتحديد الأهداف في الملف.',
               de: '„Who You Want to Meet“ — „definiere deine Verbindungsziele, und wir finden die passenden Events.“ In der Datei gibt es keinen Screen dafür.',
               es: '«Who You Want to Meet»: «define tus objetivos de conexión y encontraremos los eventos adecuados para llegar a ellos». En el archivo no existe ninguna pantalla para fijar objetivos.',
@@ -1938,7 +1945,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           text: l(
             L({
               en: '"Your Network Grows With You" — "track your events, your connections, and the relationships that matter." No connection-logging screen exists either.',
-              fa: '«شبکه‌ات با تو رشد می‌کند» — «رویدادها، ارتباط‌ها و روابط مهمت را پیگیری کن.» صفحهٔ ثبت ارتباط هم وجود ندارد.',
+              fa: '«شبکه‌ات با تو رشد می‌کند» — «رویدادها، ارتباط‌ها و روابط مهمت را پیگیری کن.» صفحه‌ی ثبت ارتباط هم وجود ندارد.',
               ar: '«شبكتك تنمو معك» — «تتبَّع فعالياتك وتواصلاتك والعلاقات المهمة.» ولا توجد شاشة لتسجيل التواصلات أيضًا.',
               de: '„Your Network Grows With You“ — „verfolge deine Events, deine Kontakte und die Beziehungen, die zählen.“ Auch dafür gibt es keinen Screen.',
               es: '«Your Network Grows With You»: «sigue tus eventos, tus conexiones y las relaciones que importan». Tampoco existe ninguna pantalla para registrar conexiones.',
@@ -1951,7 +1958,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
       caption: l(
         L({
           en: 'Onboarding makes four promises across four slides. Searching all 17,589 named nodes for "path" and for "log" returns nothing: two of the four — the two the thesis rests on — have no screen behind them.',
-          fa: 'خوش‌آمدگویی در چهار اسلاید، چهار وعده می‌دهد. جست‌وجوی هر ۱۷٬۵۸۹ گرهٔ نام‌دار برای «path» و «log» چیزی برنمی‌گرداند: دو تا از چهار وعده — همان دوتایی که فرضیه بر آن‌ها ایستاده — صفحه‌ای پشت‌شان ندارند.',
+          fa: 'خوش‌آمدگویی در چهار اسلاید، چهار وعده می‌دهد. جست‌وجوی هر ۱۷٬۵۸۹ گره‌ی نام‌دار برای «path» و «log» چیزی برنمی‌گرداند: دو تا از چهار وعده — همان دوتایی که فرضیه بر آن‌ها ایستاده — صفحه‌ای پشت‌شان ندارند.',
           ar: 'يقدّم الترحيب أربعة وعود عبر أربع شرائح. البحث في كل العقد المسمّاة البالغة 17,589 عن «path» و«log» لا يعيد شيئًا: وعدان من الأربعة — وهما ما تقوم عليه الفرضية — بلا شاشة خلفهما.',
           de: 'Das Onboarding gibt auf vier Folien vier Versprechen. Eine Suche über alle 17.589 benannten Nodes nach „path“ und nach „log“ liefert nichts: Zwei der vier — die beiden, auf denen die These ruht — haben keinen Screen dahinter.',
           es: 'El onboarding hace cuatro promesas en cuatro diapositivas. Buscar «path» y «log» en los 17 589 nodos con nombre no devuelve nada: dos de las cuatro —justo las dos en las que se apoya la tesis— no tienen ninguna pantalla detrás.',
@@ -1996,7 +2003,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
       caption: l(
         L({
           en: 'Two sections, one screen: below the title these frames are pixel-identical — the same twelve people in the same order. Correct component reuse, and also the gap, because nothing in either screen separates "we were in the same room" from "we met."',
-          fa: 'دو بخش، یک صفحه: زیر عنوان، این دو فریم پیکسل‌به‌پیکسل یکسان‌اند — همان دوازده نفر به همان ترتیب. هم استفادهٔ درست از کامپوننت است و هم همان شکاف، چون در هیچ‌کدام چیزی «در یک اتاق بودیم» را از «همدیگر را ملاقات کردیم» جدا نمی‌کند.',
+          fa: 'دو بخش، یک صفحه: زیر عنوان، این دو فریم پیکسل‌به‌پیکسل یکسان‌اند — همان دوازده نفر به همان ترتیب. هم استفاده‌ی درست از کامپوننت است و هم همان شکاف، چون در هیچ‌کدام چیزی «در یک اتاق بودیم» را از «همدیگر را ملاقات کردیم» جدا نمی‌کند.',
           ar: 'قسمان، شاشة واحدة: تحت العنوان يتطابق الإطاران بكسلًا بكسل — الأشخاص الاثنا عشر أنفسهم بالترتيب نفسه. إعادة استخدام صحيحة للمكوّن، وهي أيضًا الفجوة، إذ لا شيء في أيٍّ من الشاشتين يفصل «كنّا في الغرفة نفسها» عن «التقينا».',
           de: 'Zwei Sektionen, ein Screen: Unterhalb des Titels sind beide Frames pixelgleich — dieselben zwölf Personen in derselben Reihenfolge. Korrekte Komponenten-Wiederverwendung und zugleich die Lücke, denn nichts in beiden trennt „wir waren im selben Raum“ von „wir haben uns kennengelernt“.',
           es: 'Dos secciones, una pantalla: bajo el título, estos frames son idénticos píxel a píxel, con las mismas doce personas en el mismo orden. Una reutilización de componentes correcta, y también la brecha, porque nada en ninguna de las dos pantallas distingue «estuvimos en la misma sala» de «nos conocimos».',
@@ -2012,7 +2019,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
       text: l(
         L({
           en: "Problem #52 assigns the still-unbuilt AI path a 60% target before it has a frame; problem #44 reasons about users who 'log connections but don't follow up.' The KPI has a target before the feature has a screen.",
-          fa: 'برای مسیر هوش مصنوعی در مسئلهٔ #۵۲، پیش از طراحی حتی یک صفحه، هدف ۶۰٪ تعیین شده بود. مسئلهٔ #۴۴ هم به کاربرانی می‌پردازد که «ارتباط را ثبت می‌کنند اما پیگیری نمی‌کنند». به این ترتیب، شاخص‌ها پیش از وجود رابطی برای این رفتارها تعریف شده بودند.',
+          fa: 'برای مسیر هوش مصنوعی در مسئله‌ی #۵۲، پیش از طراحی حتی یک صفحه، هدف ۶۰٪ تعیین شده بود. مسئله‌ی #۴۴ هم به کاربرانی می‌پردازد که «ارتباط را ثبت می‌کنند اما پیگیری نمی‌کنند». به این ترتیب، شاخص‌ها پیش از وجود رابطی برای این رفتارها تعریف شده بودند.',
           ar: 'تحدِّد المشكلة #52 هدفًا بنسبة 60٪ لمسار الذكاء الاصطناعي غير المبني بعد قبل أن يكون له إطار؛ وتُحلِّل المشكلة #44 مستخدمين «يسجّلون التواصلات لكن لا يتابعون». المؤشر له هدف قبل أن تكون للميزة شاشة.',
           de: 'Problem #52 weist dem noch nicht gebauten KI-Pfad ein 60%-Ziel zu, bevor er einen Frame hat; Problem #44 argumentiert über Nutzer, die „Verbindungen protokollieren, aber nicht nachfassen“. Der KPI hat ein Ziel, bevor das Feature einen Screen hat.',
           es: 'El problema #52 asigna a la ruta de IA, aún sin construir, un objetivo del 60 % antes de que tenga un frame; el problema #44 razona sobre usuarios que «registran conexiones pero no hacen seguimiento». El KPI tiene objetivo antes de que la funcionalidad tenga pantalla.',
@@ -2023,7 +2030,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
       attribution: l(
         L({
           en: 'VIN problem inventory, problems #52 and #44',
-          fa: 'فهرست مسئلهٔ وین، مسئله‌های #۵۲ و #۴۴',
+          fa: 'فهرست مسئله‌ی وین، مسئله‌های #۵۲ و #۴۴',
           ar: 'فهرس مشكلات VIN، المشكلتان #52 و#44',
           de: 'VIN-Problem-Inventar, Probleme #52 und #44',
           es: 'Inventario de problemas de VIN, problemas #52 y #44',
@@ -2043,13 +2050,15 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
         }),
       ),
     },
+    // Every screen, flow by flow — before the outcomes, as Marqevon's page index sits.
+    ...vinScreenSections(locale, dir, media),
     {
       id: 'vin-s16',
       blockType: 'csOutcomes',
       intro: l(
         L({
           en: 'Pre-launch, so these are design and audit outputs, not product usage numbers.',
-          fa: 'پیش از انتشار، پس این‌ها خروجی‌های طراحی و ممیزی‌اند، نه ارقام استفادهٔ محصول.',
+          fa: 'پیش از انتشار، پس این‌ها خروجی‌های طراحی و ممیزی‌اند، نه ارقام استفاده‌ی محصول.',
           ar: 'قبل الإطلاق، لذا هذه نواتج تصميم وتدقيق، لا أرقام استخدام للمنتج.',
           de: 'Vor dem Launch, daher sind dies Design- und Audit-Outputs, keine Produktnutzungszahlen.',
           es: 'Antes del lanzamiento, así que son resultados de diseño y auditoría, no cifras de uso del producto.',
@@ -2060,7 +2069,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
       items: [
         {
           id: 'vin-o01',
-          value: '120',
+          value: '126',
           label: l(
             L({
               en: 'screens shipped as spec',
@@ -2102,7 +2111,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           label: l(
             L({
               en: 'problems inventoried',
-              fa: 'مسئلهٔ فهرست‌شده',
+              fa: 'مسئله‌ی فهرست‌شده',
               ar: 'مشكلة مُفهرَسة',
               de: 'inventarisierte Probleme',
               es: 'problemas inventariados',
@@ -2113,7 +2122,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           context: l(
             L({
               en: 'Across five difficulty tiers, each with an owning KPI and a difficulty rating',
-              fa: 'در پنج ردهٔ دشواری، هرکدام با یک شاخص مالک و درجهٔ دشواری',
+              fa: 'در پنج رده‌ی دشواری، هرکدام با یک شاخص مالک و درجه‌ی دشواری',
               ar: 'عبر خمس مستويات صعوبة، لكل منها مؤشر أداء مالك ودرجة صعوبة',
               de: 'Über fünf Schwierigkeitsstufen, jede mit einem zugehörigen KPI und einer Schwierigkeitsbewertung',
               es: 'En cinco niveles de dificultad, cada uno con un KPI responsable y una valoración de dificultad',
@@ -2125,7 +2134,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           source: l(
             L({
               en: 'Problem inventory workbook',
-              fa: 'کارپوشهٔ فهرست مسئله',
+              fa: 'کارپوشه‌ی فهرست مسئله',
               ar: 'كتاب عمل فهرس المشكلات',
               de: 'Problem-Inventar-Arbeitsheft',
               es: 'Hoja de cálculo del inventario de problemas',
@@ -2140,7 +2149,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           label: l(
             L({
               en: 'onboarding promises with a matching screen',
-              fa: 'وعدهٔ خوش‌آمدگویی با صفحهٔ متناظر',
+              fa: 'وعده‌ی خوش‌آمدگویی با صفحه‌ی متناظر',
               ar: 'وعد ترحيبي له شاشة مطابقة',
               de: 'Onboarding-Versprechen mit passendem Screen',
               es: 'promesas del onboarding con una pantalla que les corresponde',
@@ -2216,7 +2225,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           en: [
             'Product brief (3,716 lines)',
             '57-problem inventory + 20-KPI dictionary (8- and 4-sheet workbooks)',
-            '120-screen UI on a 12-group design system',
+            '126-screen UI on a 12-group design system',
             'Brand & naming architecture',
             'B2B venue-revenue layer (19 screens)',
             'ASO pack + Arabic/RTL localisation checklist',
@@ -2224,17 +2233,17 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           ],
           fa: [
             'سند محصول (۳٬۷۱۶ خط)',
-            'فهرست ۵۷مسئله‌ای + واژه‌نامهٔ ۲۰شاخصی (کارپوشه‌های ۸ و ۴برگه)',
-            'رابط کاربریِ ۱۲۰صفحه‌ای روی سیستم طراحیِ ۱۲گروهی',
+            'فهرست ۵۷مسئله‌ای + واژه‌نامه‌ی ۲۰شاخصی (کارپوشه‌های ۸ و ۴برگه)',
+            'رابط کاربریِ ۱۲۶صفحه‌ای روی سیستم طراحیِ ۱۲گروهی',
             'معماری برند و نام‌گذاری',
-            'لایهٔ درآمدیِ B2B مکان‌ها (۱۹ صفحه)',
-            'بستهٔ ASO + چک‌لیست بومی‌سازیِ عربی/راست‌به‌چپ',
-            'پروتکل طراحی-و-ممیزیِ قابل‌استفادهٔ مجدد (تصمیم‌های قفل‌شده، قواعد فرهنگی، الگوهای متنی)',
+            'لایه‌ی درآمدیِ B2B مکان‌ها (۱۹ صفحه)',
+            'بسته‌ی ASO + چک‌لیست بومی‌سازیِ عربی/راست‌به‌چپ',
+            'پروتکل طراحی-و-ممیزیِ قابل‌استفاده‌ی مجدد (تصمیم‌های قفل‌شده، قواعد فرهنگی، الگوهای متنی)',
           ],
           ar: [
             'موجز المنتج (3,716 سطرًا)',
             'فهرس 57 مشكلة + قاموس 20 مؤشر أداء (كتب عمل من 8 و4 أوراق)',
-            'واجهة من 120 شاشة على نظام تصميم من 12 مجموعة',
+            'واجهة من 126 شاشة على نظام تصميم من 12 مجموعة',
             'هندسة العلامة التجارية والتسمية',
             'طبقة إيرادات B2B للأماكن (19 شاشة)',
             'حزمة ASO + قائمة تدقيق لتوطين العربية/RTL',
@@ -2243,7 +2252,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           de: [
             'Produktbrief (3.716 Zeilen)',
             '57-Probleme-Inventar + 20-KPI-Wörterbuch (8- und 4-Blatt-Arbeitshefte)',
-            '120-Screen-UI auf einem Design-System mit 12 Gruppen',
+            '126-Screen-UI auf einem Design-System mit 12 Gruppen',
             'Marken- & Namensarchitektur',
             'B2B-Venue-Umsatzebene (19 Screens)',
             'ASO-Paket + Checkliste zur arabischen/RTL-Lokalisierung',
@@ -2252,7 +2261,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           es: [
             'Brief de producto (3716 líneas)',
             'Inventario de 57 problemas + diccionario de 20 KPI (hojas de cálculo de 8 y 4 pestañas)',
-            'UI de 120 pantallas sobre un sistema de diseño de 12 grupos',
+            'UI de 126 pantallas sobre un sistema de diseño de 12 grupos',
             'Arquitectura de marca y de naming',
             'Capa B2B de ingresos para locales (19 pantallas)',
             'Paquete ASO + checklist de localización al árabe y RTL',
@@ -2261,7 +2270,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           fr: [
             'Brief produit (3 716 lignes)',
             'Inventaire de 57 problèmes + dictionnaire de 20 KPI (classeurs de 8 et 4 onglets)',
-            'UI de 120 écrans sur un design system de 12 groupes',
+            'UI de 126 écrans sur un design system de 12 groupes',
             'Architecture de marque et de nommage',
             'Couche B2B de revenus pour les lieux (19 écrans)',
             'Pack ASO + checklist de localisation arabe/RTL',
@@ -2270,7 +2279,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           ja: [
             'プロダクトブリーフ（3,716行）',
             '57項目の問題インベントリ + 20のKPI辞書（8シートと4シートのワークブック）',
-            '12グループのデザインシステム上に構築した120画面のUI',
+            '12グループのデザインシステム上に構築した126画面のUI',
             'ブランドとネーミングのアーキテクチャ',
             'B2Bの店舗収益レイヤー（19画面）',
             'ASOパック + アラビア語・RTLローカライズのチェックリスト',
@@ -2324,13 +2333,13 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           ),
           body: l(
             L({
-              en: 'The brief was written, 57 problems inventoried, 20 KPIs defined, 120 screens drawn — and the two features the whole thesis depends on still have no frame, while one already has a 60% target. A thin, ugly frame of the goal-to-log loop in week one would have surfaced the hard question earlier.',
-              fa: 'سند محصول، ۵۷ مسئله، ۲۰ شاخص و ۱۲۰ صفحه آماده شد؛ اما دو ویژگی اصلیِ فرضیه هنوز صفحه‌ای نداشتند و برای یکی از آن‌ها هدف ۶۰٪ تعیین شده بود. یک نمونهٔ ساده از مسیر تعیین هدف تا ثبت ارتباط در هفتهٔ اول، این شکاف را زودتر آشکار می‌کرد.',
-              ar: 'كُتب الموجز، وفُهرست 57 مشكلة، وحُدِّد 20 مؤشرًا، ورُسمت 120 شاشة — والميزتان اللتان تعتمد عليهما الفرضية كلها ما زالتا بلا إطار، فيما إحداهما تحمل بالفعل هدف 60٪. إطار رقيق وغير أنيق لحلقة الهدف-إلى-التسجيل في الأسبوع الأول كان سيكشف السؤال الصعب أبكر.',
-              de: 'Der Brief wurde geschrieben, 57 Probleme inventarisiert, 20 KPIs definiert, 120 Screens gezeichnet — und die zwei Features, von denen die ganze These abhängt, haben noch keinen Frame, während eines bereits ein 60%-Ziel hat. Ein dünner, hässlicher Frame der Goal-to-Log-Schleife in Woche eins hätte die harte Frage früher zutage gebracht.',
-              es: 'Se escribió el brief, se inventariaron 57 problemas, se definieron 20 KPI y se dibujaron 120 pantallas, y las dos funcionalidades de las que depende toda la tesis siguen sin frame, mientras que una ya tiene un objetivo del 60 %. Un frame fino y feo del ciclo del objetivo al registro en la primera semana habría sacado a la luz antes la pregunta difícil.',
-              fr: 'Le brief a été écrit, 57 problèmes inventoriés, 20 KPI définis, 120 écrans dessinés — et les deux fonctionnalités dont dépend toute la thèse n’ont toujours pas de frame, alors que l’une a déjà un objectif de 60 %. Une frame sommaire et laide de la boucle de l’objectif à l’enregistrement dès la première semaine aurait fait émerger plus tôt la question difficile.',
-              ja: 'ブリーフを書き、57の問題を洗い出し、20のKPIを定義し、120画面を描いた。それでも仮説全体が依存する2つの機能にはまだフレームがなく、一方にはすでに60%の目標がある。1週目に、目標から記録までのループを粗く不格好なフレームで描いていれば、難しい問いはもっと早く浮かび上がっていたはずだ。',
+              en: 'The brief was written, 57 problems inventoried, 20 KPIs defined, 126 screens drawn — and the two features the whole thesis depends on still have no frame, while one already has a 60% target. A thin, ugly frame of the goal-to-log loop in week one would have surfaced the hard question earlier.',
+              fa: 'سند محصول، ۵۷ مسئله، ۲۰ شاخص و ۱۲۶ صفحه آماده شد؛ اما دو ویژگی اصلیِ فرضیه هنوز صفحه‌ای نداشتند و برای یکی از آن‌ها هدف ۶۰٪ تعیین شده بود. یک نمونه‌ی ساده از مسیر تعیین هدف تا ثبت ارتباط در هفته‌ی اول، این شکاف را زودتر آشکار می‌کرد.',
+              ar: 'كُتب الموجز، وفُهرست 57 مشكلة، وحُدِّد 20 مؤشرًا، ورُسمت 126 شاشة — والميزتان اللتان تعتمد عليهما الفرضية كلها ما زالتا بلا إطار، فيما إحداهما تحمل بالفعل هدف 60٪. إطار رقيق وغير أنيق لحلقة الهدف-إلى-التسجيل في الأسبوع الأول كان سيكشف السؤال الصعب أبكر.',
+              de: 'Der Brief wurde geschrieben, 57 Probleme inventarisiert, 20 KPIs definiert, 126 Screens gezeichnet — und die zwei Features, von denen die ganze These abhängt, haben noch keinen Frame, während eines bereits ein 60%-Ziel hat. Ein dünner, hässlicher Frame der Goal-to-Log-Schleife in Woche eins hätte die harte Frage früher zutage gebracht.',
+              es: 'Se escribió el brief, se inventariaron 57 problemas, se definieron 20 KPI y se dibujaron 126 pantallas, y las dos funcionalidades de las que depende toda la tesis siguen sin frame, mientras que una ya tiene un objetivo del 60 %. Un frame fino y feo del ciclo del objetivo al registro en la primera semana habría sacado a la luz antes la pregunta difícil.',
+              fr: 'Le brief a été écrit, 57 problèmes inventoriés, 20 KPI définis, 126 écrans dessinés — et les deux fonctionnalités dont dépend toute la thèse n’ont toujours pas de frame, alors que l’une a déjà un objectif de 60 %. Une frame sommaire et laide de la boucle de l’objectif à l’enregistrement dès la première semaine aurait fait émerger plus tôt la question difficile.',
+              ja: 'ブリーフを書き、57の問題を洗い出し、20のKPIを定義し、126画面を描いた。それでも仮説全体が依存する2つの機能にはまだフレームがなく、一方にはすでに60%の目標がある。1週目に、目標から記録までのループを粗く不格好なフレームで描いていれば、難しい問いはもっと早く浮かび上がっていたはずだ。',
             }),
           ),
         },
@@ -2339,7 +2348,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           title: l(
             L({
               en: "Non-negotiable survives arguments that advisory doesn't",
-    fa: 'قاعدهٔ روشن و مستدل، در تصمیم‌های بعدی دوام می‌آورد',
+    fa: 'قاعده‌ی روشن و مستدل، در تصمیم‌های بعدی دوام می‌آورد',
               ar: 'غير القابل للتفاوض يصمد أمام حجج لا يصمد أمامها الاستشاري',
               de: 'Nicht verhandelbar übersteht Argumente, die beratend nicht übersteht',
               es: 'Lo innegociable resiste discusiones que lo orientativo no resiste',
@@ -2350,7 +2359,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           body: l(
             L({
               en: "'No public leaderboards' as guidance loses the first argument it has with a growth idea; phrased as a locked constraint with a stated reason, it holds. The same technique on vocabulary — declaring 'Meetup' and 'Event' discontinued rather than discouraged — gives the brand architecture teeth, though the file shows a locked decision still needs a migration pass to become real.",
-              fa: 'اگر «بدون جدول رده‌بندی عمومی» فقط یک توصیه باشد، ممکن است با نخستین ایدهٔ رشد کنار برود. وقتی دلیل فرهنگی آن ثبت و به قاعده‌ای قطعی تبدیل شود، در تصمیم‌های بعدی هم پابرجا می‌ماند. همین رویکرد برای کنار گذاشتن واژه‌های «میت‌آپ» و «رویداد» به نام‌گذاری جهت می‌دهد؛ هرچند فایل طراحی نشان می‌دهد متن‌های موجود هنوز باید با این تصمیم هماهنگ شوند.',
+              fa: 'اگر «بدون جدول رده‌بندی عمومی» فقط یک توصیه باشد، ممکن است با نخستین ایده‌ی رشد کنار برود. وقتی دلیل فرهنگی آن ثبت و به قاعده‌ای قطعی تبدیل شود، در تصمیم‌های بعدی هم پابرجا می‌ماند. همین رویکرد برای کنار گذاشتن واژه‌های «میت‌آپ» و «رویداد» به نام‌گذاری جهت می‌دهد؛ هرچند فایل طراحی نشان می‌دهد متن‌های موجود هنوز باید با این تصمیم هماهنگ شوند.',
               ar: '«بلا لوحات صدارة عامة» كإرشاد يخسر أول جدال له مع فكرة نمو؛ لكن مصاغًا كقيد مُقفَل بسبب معلن، يصمد. التقنية نفسها على المفردات — إعلان "Meetup" و"Event" متوقّفَين بدل مثبَّطَين — يمنح هندسة العلامة التجارية قوة، مع أن الملف يُظهر أن قرارًا مُقفَلًا ما زال يحتاج تمريرة ترحيل ليصبح واقعًا.',
               de: '„Keine öffentlichen Ranglisten“ als Empfehlung verliert das erste Argument mit einer Wachstumsidee; formuliert als verriegelte Beschränkung mit genanntem Grund, hält sie stand. Dieselbe Technik beim Vokabular — „Meetup“ und „Event“ als eingestellt statt nur abgeraten zu erklären — verleiht der Markenarchitektur Biss, auch wenn die Datei zeigt, dass eine verriegelte Entscheidung noch einen Migrationsdurchgang braucht, um real zu werden.',
               es: '«Sin rankings públicos» como pauta pierde la primera discusión que tiene con una idea de crecimiento; formulada como restricción bloqueada y con su motivo explícito, se mantiene. La misma técnica aplicada al vocabulario —declarar «Meetup» y «Event» descontinuados en lugar de desaconsejados— da dientes a la arquitectura de marca, aunque el archivo muestra que una decisión bloqueada aún necesita una pasada de migración para hacerse realidad.',
@@ -2364,7 +2373,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           title: l(
             L({
               en: 'Designing the revenue layer as a product changes the consumer brief',
-              fa: 'طراحیِ لایهٔ درآمد به‌عنوان محصول، سند مصرف‌کننده را عوض می‌کند',
+              fa: 'طراحیِ لایه‌ی درآمد به‌عنوان محصول، سند مصرف‌کننده را عوض می‌کند',
               ar: 'تصميم طبقة الإيرادات كمنتج يغيّر موجز المستهلك',
               de: 'Die Umsatzebene als Produkt zu gestalten verändert den Consumer-Brief',
               es: 'Diseñar la capa de ingresos como producto cambia el brief del consumidor',
@@ -2375,7 +2384,7 @@ export function vinSections(locale: Locale, media: VinMediaIds): Sections {
           body: l(
             L({
               en: "Once venues are matched to groups and hosts bid for sponsorship, 'off-peak covers' becomes a real constraint on scheduling, group size and category mix — a far more specific brief than 'help people network'.",
-              fa: 'وقتی مکان‌ها با گروه‌ها تطبیق داده می‌شوند و میزبانان برای حمایت مزایده می‌دهند، «پوشش ساعات کم‌ترافیک» به محدودیتی واقعی روی زمان‌بندی، اندازهٔ گروه و ترکیب دسته‌بندی تبدیل می‌شود — سندی به‌مراتب دقیق‌تر از «به مردم در شبکه‌سازی کمک کن».',
+              fa: 'وقتی مکان‌ها با گروه‌ها تطبیق داده می‌شوند و میزبانان برای حمایت مزایده می‌دهند، «پوشش ساعات کم‌ترافیک» به محدودیتی واقعی روی زمان‌بندی، اندازه‌ی گروه و ترکیب دسته‌بندی تبدیل می‌شود — سندی به‌مراتب دقیق‌تر از «به مردم در شبکه‌سازی کمک کن».',
               ar: 'حين تُطابَق الأماكن بالمجموعات ويزايد المضيفون على الرعاية، تصبح «تغطية ساعات الركود» قيدًا حقيقيًا على الجدولة وحجم المجموعة ومزيج الفئات — موجزًا أدق بكثير من «ساعد الناس على التواصل».',
               de: 'Sobald Venues mit Gruppen gematcht werden und Hosts um Sponsoring bieten, wird „Off-Peak-Covers“ zu einer echten Beschränkung für Scheduling, Gruppengröße und Kategorie-Mix — ein weit spezifischerer Brief als „hilf Menschen beim Netzwerken“.',
               es: 'Cuando los locales se emparejan con grupos y los anfitriones pujan por patrocinios, los «cubiertos en horas valle» se convierten en una restricción real de programación, tamaño de grupo y combinación de categorías: un brief mucho más concreto que «ayudar a la gente a hacer networking».',

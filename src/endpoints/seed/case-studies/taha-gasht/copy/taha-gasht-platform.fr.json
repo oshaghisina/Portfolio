@@ -1,0 +1,344 @@
+{
+  "statement": "Le site de réservation d’une agence de trente ans, repensé pour les vols, les hôtels et les circuits : de douze sites comparés à des pages en ligne.",
+  "industry": "Voyage · vols, hôtels et circuits",
+  "team": "Designer produit et stratège à temps partiel, avec l’équipe de l’agence",
+  "heroCaption": "La page d’accueil repensée : une seule recherche pour les vols, les hôtels, vol plus hôtel et les circuits, au-dessus des offres de l’agence.",
+  "snapshot": {
+    "problem": "Un achat de billet rapide et la longue décision d’un circuit devaient tenir sur un même site, et le jugement de l’agence devait se voir à côté du prix.",
+    "role": "Designer produit et stratège à temps partiel : l’analyse comparative, l’architecture de l’information, le langage de design, toutes les pages de réservation, le compte du voyageur et un concept de planificateur de voyage.",
+    "result": "Le site de réservation repensé est en ligne sur tahagasht.com. Le planificateur de voyage et la couche sociale sont conçus, mais absents du site."
+  },
+  "alt": {
+    "cover": "Maquette de la page d’accueil de Taha Gasht sur ordinateur : l’en-tête, une recherche avec des onglets vol, hôtel, vol plus hôtel, circuit et hôtel national, et les premières rangées d’offres en dessous",
+    "homeMobile": "Maquette de la page d’accueil de Taha Gasht sur téléphone : la recherche, puis des rangées de recherches récentes, de vols de dernière minute et d’hôtels suggérés",
+    "stories": "Quatre écrans de stories pour la page d’accueil de Taha Gasht sur téléphone, chacun une image pleine hauteur avec un titre",
+    "iaMap": "Tableau FigJam : la carte d’information des vols et des hôtels, avec la page de recherche, la liste de résultats, la page d’un vol et d’un hôtel, les pages d’atterrissage et les pages fixes, reliées par des connecteurs",
+    "opportunity": "Tableau FigJam : deux arbres d’opportunités ; pour les billets, les moins chers, les charters, les plus courts et les vols à prestations spéciales, avec des ventes additionnelles jusqu’à un hôtel offert pendant l’escale ; pour les hôtels, les choix de l’agence selon la garantie, l’emplacement et le prix",
+    "tourMap": "Tableau FigJam : la page du circuit au Japon en arbre, avec introduction, avantages concurrentiels, forfaits, coût du voyage, avis, services, documents, informations complémentaires, galerie, conseil, questions et blog",
+    "ticket1": "Première itération de la carte de billet d’avion, répétée dans une liste de résultats avec les filtres à côté",
+    "ticket2": "Troisième version de la carte de billet dans une liste de résultats",
+    "ticket3": "Versions finales de la liste de résultats de vols, côte à côte : cartes avec ombre, sur un fond de carte et avec bordure, toutes sur une page grise",
+    "flightList": "Maquette des résultats de vols sur ordinateur : une bande de dates avec leurs tarifs les plus bas, des onglets le moins cher, le meilleur et le choix de Taha Gasht, les filtres sur le côté et des cartes de billets avec les places restantes",
+    "flightLanding": "Maquette de la page d’atterrissage de recherche de vols : la recherche au-dessus des itinéraires, des compagnies, du guide d’achat, des questions et des articles du blog",
+    "flightDetail": "Maquette de la page de résultat d’un vol : un vol ouvert avec ses détails, le détail du prix et les règles tarifaires",
+    "hotelList": "Maquette des résultats d’hôtels : cartes avec photo, étoiles, prix par nuit et badge de recommandation de l’agence, filtres sur le côté",
+    "hotelMap": "Résultats d’hôtels sur une carte : des repères de prix sur la ville à côté de la même liste d’hôtels",
+    "hotelDetail": "Maquette de la page d’un hôtel : galerie, notes du personnel, de l’emplacement et de la propreté, chambres, lieux proches avec le temps à pied, en voiture et en métro, et avis des clients",
+    "tourList": "Maquette de la liste des circuits : cartes avec dates et prix à partir de, filtres par saison, climat, objectif et activité",
+    "tourPage": "Maquette de la page du circuit au Japon : forfaits, le parcours de l’agence, le programme de chaque jour, hôtels, services, documents et formulaire de conseil",
+    "tourPackage": "Maquette d’un forfait de circuit : le tableau des prix par hôtel et par chambre, les tarifs enfants et un calculateur de coût pour le groupe",
+    "checkout": "Maquette du paiement : quatre étapes en haut, les données des passagers avec les passagers enregistrés, les coordonnées et un récapitulatif du vol avec le total",
+    "travels": "Compte, mes voyages : billets avec leur statut, et les vues billet, remboursement et calendrier",
+    "passengers": "Compte, passagers : passagers enregistrés avec les fenêtres d’ajout, de modification et de suppression",
+    "wallet": "Compte, portefeuille : le solde de la carte Taha, les montants de recharge, les opérations et une demande de virement",
+    "bookmarks": "Compte, favoris : circuits, hôtels et vols enregistrés, et l’état vide",
+    "profile": "Compte, profil : données personnelles, mot de passe, pièces d’identité et coordonnées de paiement",
+    "notifications": "Compte, notifications : messages avec lu et supprimer, et l’état vide",
+    "support": "Compte, assistance : tickets par statut, une nouvelle demande et le fil de réponses d’un ticket",
+    "signOut": "Compte, déconnexion : la fenêtre de confirmation",
+    "maker1": "Travel Maker, étape 1 sur téléphone : choisir la destination et les dates",
+    "maker2": "Travel Maker, étape 2 : choisir le transport et l’hébergement",
+    "maker3": "Travel Maker, étape 3 : ajouter des activités jour par jour",
+    "maker4": "Travel Maker, étape 4 : les réglages du voyage et les compagnons de voyage",
+    "socialFeed": "Concept social sur téléphone : publications de circuits prévus avec dates, prix par personne et un bouton pour rejoindre le voyage",
+    "socialExperience": "Concept social : l’expérience d’un voyageur notée sur la satisfaction, le rapport qualité-prix et l’envie de recommander",
+    "socialGoals": "Tableau FigJam : sept objectifs pour la couche sociale avec leurs sous-objectifs, au-dessus de huit leviers positifs et des risques",
+    "socialMap": "Tableau FigJam : la carte du système social, avec blog, carte interactive, publication, Reels et carnet de voyage, chacun avec son axe, son trait marquant, ses points de contact et la valeur qu’il crée",
+    "liveHome": "La page d’accueil en ligne de tahagasht.com, capturée le 27 septembre 2026 : le bandeau, la recherche, les circuits à la une, les vols et hôtels populaires",
+    "liveFlights": "Les résultats de vols en ligne de Téhéran à Istanbul : étiquettes charter, boutons jour précédent et jour suivant, et filtres",
+    "liveHotels": "La page hôtels en ligne sur tahagasht.com : la recherche avec l’onglet hôtel ouvert, les hôtels populaires, un guide de réservation, des questions et des articles du blog",
+    "liveTours": "La liste des circuits en ligne sur tahagasht.com : catégories de circuits, cartes de forfaits avec un filtre par ville de départ, et un panneau de prix et de tri",
+    "liveJapan": "La page en ligne du circuit au Japon : le parcours de l’agence, une carte de forfait, les blocs de conseil et les onglets d’information"
+  },
+  "chapters": {
+    "context": {
+      "heading": "Une agence de trente ans et trois sortes de voyage",
+      "body": [
+        "Taha Gasht est une agence de voyages de Téhéran qui vend des voyages depuis trois décennies : vols intérieurs et internationaux, hôtels en Iran et à l’étranger, circuits de groupe avec un guide persanophone, et visas. Son site est le système de réservation de tout cela, avec un espace pour les agences partenaires derrière.",
+        "Sina y a travaillé à temps partiel comme designer produit et stratège. Le fichier Figma énonce la mission sur sa couverture : les changements du site principal de Taha Gasht. Le travail a couvert le site public de la première recherche au compte du voyageur, et un concept pour la suite."
+      ]
+    },
+    "problem": {
+      "heading": "Un achat rapide et une longue décision sur un même site",
+      "body": [
+        "Un vol intérieur s’achète en quelques minutes, selon le prix et l’horaire. Un circuit au Japon se pèse pendant des semaines : les dates, les hôtels, les documents, le guide et souvent un appel avec un conseiller. Le même site doit servir les deux.",
+        "Les mêmes vols et les mêmes hôtels se vendent aussi sur d’autres sites de réservation. Ce qu’une agence peut ajouter, c’est son jugement : quel vol a une place garantie, quel hôtel est bien situé, quel circuit vaut son prix. La refonte devait placer ce jugement à côté du prix."
+      ],
+      "insight": "Une liste de prix dit combien coûte un voyage. Une agence peut aussi dire quoi choisir."
+    },
+    "benchmark": {
+      "heading": "Douze sites de réservation, côte à côte",
+      "body": [
+        "Avant de dessiner, Sina a capturé les pages complètes de douze sites de réservation le même jour, à côté de celui de Taha Gasht : cinq sites iraniens qui vendent les mêmes vols (Alibaba, Flytoday, MrBilit, Flightio et SafarMarket) et sept sites internationaux (Booking.com, Expedia, Kayak, Skyscanner, Google Flights, Cheapflights et Wego).",
+        "Des kits d’applications de réservation de vols sont entrés dans le même fichier comme références pour les parcours mobiles, puis, pour le concept social, les pages d’expériences de voyage d’un site de réservation iranien et de Tripadvisor. Rien de ce matériel n’est montré ici : c’est le travail d’autres personnes."
+      ]
+    },
+    "ia": {
+      "heading": "Tout le parcours sur une carte, avant tout écran",
+      "body": [
+        "Le premier tableau cartographie les parcours vol et hôtel module par module : la page de recherche, la liste de résultats, la page d’un vol ou d’un hôtel, et les pages d’atterrissage que trouvent les moteurs de recherche. Côté vols, chaque module porte une marque de son origine : la structure actuelle de Taha Gasht, ou une idée nouvelle.",
+        "Certaines idées nouvelles sont petites, comme des boutons jour précédent et jour suivant, ou un calendrier des prix qui signale les jours fériés. D’autres changent ce que le site peut faire :"
+      ],
+      "bullets": [
+        "Une alerte de prix qui peut réserver le vol : le voyageur enregistre les données des passagers et recharge le portefeuille de 20 à 30 % au-dessus du tarif, et le vol est réservé quand le prix change.",
+        "Les vols complets restent dans la liste.",
+        "Les hôtels en liste et sur la carte partagent un filtre, avec les mêmes résultats dans les deux, et survoler un hôtel dans la liste le montre sur la carte.",
+        "Les avis viennent d’abord d’une source externe, avec le système d’avis propre au site à côté.",
+        "Les pages d’atterrissage des itinéraires et des hôtels montrent l’évolution des prix dès que douze mois de données existent au moins."
+      ],
+      "insight": "Chaque module a une origine : repris du site actuel, ou idée nouvelle."
+    },
+    "suggestions": {
+      "heading": "Quatre façons de suggérer un vol",
+      "customLabel": "Suggestions",
+      "body": [
+        "Deux arbres d’opportunités demandent ce que l’agence peut recommander. Pour les vols, il y a quatre sortes de suggestions : les moins chers ; les charters, parce que sur un charter la place est garantie ; les plus courts, sur les lignes internationales ; et les vols à prestations spéciales pour une durée limitée, réglés à la main dans l’interface d’administration.",
+        "La branche des prestations spéciales est aussi celle où l’agence peut vendre davantage : bagage supplémentaire, surclassement en affaires, remises sur des lignes, salon CIP, hôtel offert pendant l’escale. Pour les hôtels, les choix combinent chambres garanties, accès au centre-ville et prix. Un second tableau cartographie la page de circuit de la même manière, en commençant par le Japon."
+      ],
+      "insight": "Le choix de l’agence est devenu un onglet de tri dans la liste de résultats, à côté du moins cher et du meilleur."
+    },
+    "language": {
+      "heading": "Trois tours sur une carte",
+      "customLabel": "Langage de design",
+      "body": [
+        "La carte du billet d’avion porte l’essentiel du site. Elle se répète dans chaque liste de résultats, s’ouvre sur les détails du vol, du prix et du remboursement, et donne le modèle des cartes d’hôtel et de circuit. Le langage de design a donc été travaillé sur elle, en trois tours : une première itération, une troisième version du billet et des versions finales qui comparent ombres, fonds de carte et bordures sur la même page grise.",
+        "La police est Yekan Bakh, réglée pour le persan partout. Des esquisses plus anciennes du fichier essaient deux calendriers de prix, l’un pour les vols intérieurs, l’autre pour les vols internationaux, et un billet qui s’ouvre sur place."
+      ]
+    },
+    "flights": {
+      "heading": "Vols : choisir par le prix, par le temps ou par le choix de l’agence",
+      "body": [
+        "Les résultats de vols s’ouvrent sur une bande de dates et leurs tarifs les plus bas, pour qu’un jour moins cher se voie avant de faire défiler. Au-dessus de la liste, trois onglets de tri, le moins cher, le meilleur et le choix de Taha Gasht, affichent chacun leur prix et la durée totale.",
+        "Les filtres suivent ce qui compte sur ces lignes : billet charter ou régulier, nombre d’escales, visa exigé ou non pour l’escale, cabine et bagages. Chaque carte montre les places restantes et s’ouvre sur les détails du vol, du prix et des règles de remboursement. Une alerte de prix se trouve dans la liste, et la page complète du résultat ajoute les règles tarifaires, les pénalités et les restrictions de vente.",
+        "La recherche gère l’aller simple, l’aller-retour et les trajets multiples. En dessous, la page d’atterrissage des vols porte ce dont ont besoin les moteurs de recherche et les nouveaux visiteurs : itinéraires populaires, compagnies, comment acheter un billet, questions fréquentes et articles du blog."
+      ],
+      "insight": "Le visa d’escale a son propre filtre : une correspondance bon marché par l’Europe demande un visa Schengen."
+    },
+    "hotels": {
+      "heading": "Hôtels : où il se trouve et ce qu’en disent les clients",
+      "customLabel": "Hôtels",
+      "body": [
+        "Les résultats d’hôtels s’affichent en liste ou sur une carte, avec un seul jeu de filtres pour les deux : fourchette de prix, étoiles, type d’hébergement (hôtel, hôtel boutique ou auberge) et quartiers de la ville. Une carte affiche le prix par nuit, les étoiles et, le cas échéant, le choix de l’agence.",
+        "La page de l’hôtel détaille la note en personnel, emplacement et propreté, liste les lieux proches avec le temps pour s’y rendre à pied, en voiture ou en métro, et permet aux clients de laisser un avis avec des photos. Les chambres se comparent sur la même page, avec une demande de services supplémentaires avant la réservation."
+      ],
+      "insight": "Les distances sont données en minutes et par mode de transport, comme un voyageur prévoit sa journée."
+    },
+    "tours": {
+      "heading": "Circuits : une décision prise avec quelqu’un",
+      "customLabel": "Circuits",
+      "body": [
+        "C’est sur les circuits que l’agence est la plus forte, et là qu’un achat prend le plus de temps. La liste des circuits filtre selon ce que le voyageur attend du voyage : la saison ou la fête, comme Norouz ou Noël, le climat, le but (repos ou aventure) et le type d’activité, de la nature et l’histoire aux festivals, à la gastronomie et au shopping.",
+        "Une page de circuit, dessinée d’abord pour le Japon, répond aux questions qu’un conseiller entend d’habitude : les forfaits et leurs dates, le prix selon l’hôtel et la chambre avec les tarifs enfants, un calculateur pour tout le groupe, le programme de chaque jour, les hôtels, les services inclus (un guide persanophone, le visa, l’assurance et le salon CIP de l’aéroport de Téhéran) et les documents nécessaires. Un formulaire de rappel, un numéro de téléphone et WhatsApp restent à portée de main.",
+        "La page montre aussi le parcours de l’agence, ses années d’activité, ses voyageurs et leur satisfaction, que le tableau du circuit avait prévus comme avantages concurrentiels."
+      ],
+      "insight": "Un circuit se vend toujours avec un conseiller. La page prépare le voyageur à cet appel."
+    },
+    "home": {
+      "heading": "Une page d’accueil pour trois sortes de voyage",
+      "customLabel": "Accueil",
+      "body": [
+        "La page d’accueil s’ouvre sur une seule recherche et cinq onglets : vol, hôtel, vol plus hôtel, circuit et hôtel national. En dessous, les rangées changent avec la saison et avec le voyageur : consultés récemment, vols de dernière minute, une rangée de voyages vers le sud, hôtels suggérés et destinations populaires.",
+        "Plus bas, la page donne les raisons de choisir l’agence : ses atouts, comment acheter un billet, les avis des voyageurs, un formulaire de rappel avec les horaires de réponse, et une première invitation au planificateur de voyage : « Construisez votre propre aventure. » Sur téléphone, des stories montrent circuits et destinations en plein écran."
+      ]
+    },
+    "account": {
+      "heading": "Le paiement et le compte du voyageur",
+      "customLabel": "Compte",
+      "body": [
+        "Le paiement se fait en quatre étapes, visibles en haut : choisir le billet, confirmer les informations, payer, émettre le billet. Les passagers enregistrés se choisissent dans une liste, les nouveaux s’ajoutent avec leurs données de passeport, à côté d’un récapitulatif du vol.",
+        "Après l’achat, le compte regroupe huit sections : voyages, passagers, portefeuille, favoris, profil, notifications, assistance et déconnexion, chacune dessinée avec ses fenêtres et son état vide. Dans voyages, on voit le statut de chaque billet, on ouvre le billet électronique, on suit le vol et on lance un remboursement par trajet et par passager. Le portefeuille, appelé carte Taha, se recharge par montants fixes ou libres et verse sur un compte bancaire. L’assistance fonctionne par tickets, chacun avec son propre fil de réponses.",
+        "La connexion se fait par mot de passe ou par code à usage unique, et un centre d’aide réunit les questions, le guide d’achat et l’assistance."
+      ]
+    },
+    "next": {
+      "heading": "La suite possible : préparer un voyage, puis le partager",
+      "customLabel": "Étape suivante",
+      "body": [
+        "Une fois le site de réservation dessiné, Sina a conçu un concept pour faire revenir les voyageurs entre deux voyages. Le Travel Maker planifie un voyage en quatre étapes : destination et dates, transport et hébergement, activités jour par jour, et réglages du voyage. Les activités sont classées par type, comme les sites historiques, la cuisine, le shopping, le repos ou les événements locaux, et l’on peut ajouter des jours. Les compagnons de voyage s’ajoutent avec leur nom et leur numéro de téléphone.",
+        "La couche sociale permet aux voyageurs de publier un circuit qu’ils préparent et d’inviter d’autres personnes à le rejoindre, de partager des expériences notées sur la satisfaction, le rapport qualité-prix et l’envie de recommander le lieu, et d’écrire des carnets de voyage liés à un circuit ou à un hôtel.",
+        "Un tableau de stratégie accompagnait le concept. Il fixe sept objectifs, des ventes et offres personnalisées à la fidélité et à la notoriété de la marque ; huit leviers qui feraient revenir les gens, des points et badges au parrainage ; et, à côté, les risques : peu d’engagement au départ, coût élevé et retour lent, modération des contenus, vie privée et retours négatifs. Une carte du système place chaque format (blog, carte interactive, publication, Reels et carnet de voyage) là où le voyageur le rencontrerait : le fil, l’exploration, la page d’accueil, les campagnes et les pages de circuit."
+      ],
+      "insight": "Le tableau de stratégie écrit les risques à côté des objectifs."
+    },
+    "shipped": {
+      "heading": "En ligne sur tahagasht.com",
+      "body": [
+        "La refonte a été développée et elle est en ligne sur tahagasht.com. Les pages en ligne suivent les cartes. Les résultats de vols portent l’étiquette charter ou régulier et des boutons jour précédent et jour suivant. La page du circuit au Japon s’ouvre sur le parcours de l’agence, trois décennies, 99 % de voyageurs satisfaits et plus de 6 500 voyageurs, et garde ses blocs de conseil et ses onglets documents, prix, meilleure période, villes et sites.",
+        "Le Travel Maker et la couche sociale ne sont pas sur le site en ligne. Ils restent une étape suivante conçue."
+      ]
+    }
+  },
+  "figures": {
+    "iaMap": {
+      "caption": "L’architecture de l’information des vols et des hôtels : recherche, liste, détail et pages d’atterrissage, module par module."
+    },
+    "opportunity": {
+      "caption": "Deux arbres d’opportunités : des façons de suggérer un vol, et des façons de suggérer un hôtel."
+    },
+    "tourMap": {
+      "caption": "La page du circuit au Japon en arbre, de l’introduction au blog."
+    },
+    "language": {
+      "caption": "La carte du billet en trois tours.",
+      "items": ["Première itération", "Billet, version 3", "Versions finales : ombre, fond de carte, bordure"]
+    },
+    "flightList": {
+      "caption": "Résultats de vols sur ordinateur.",
+      "annotations": [
+        "Des dates avec leurs tarifs les plus bas",
+        "Le moins cher, le meilleur et le choix de Taha Gasht, chacun avec son prix et sa durée totale",
+        "Charter ou régulier, escales, visa d’escale, cabine et bagages",
+        "Les places restantes sur chaque carte",
+        "Les détails du vol, du prix et du remboursement s’ouvrent sur place",
+        "Une alerte de prix dans la liste"
+      ]
+    },
+    "flightPages": {
+      "caption": "Autour de la liste de résultats.",
+      "items": ["La page d’atterrissage de recherche de vols", "Un vol, avec ses règles tarifaires"]
+    },
+    "hotelViews": {
+      "caption": "Les résultats d’hôtels en liste et sur carte, avec un seul jeu de filtres.",
+      "items": ["Liste", "Carte"]
+    },
+    "hotelDetail": {
+      "caption": "La page de l’hôtel : notes par thème, chambres, lieux proches en minutes et avis."
+    },
+    "tourPage": {
+      "caption": "La page du circuit au Japon."
+    },
+    "tourParts": {
+      "caption": "Choisir un circuit, puis en calculer le coût.",
+      "items": ["Liste des circuits avec filtres par saison, climat, but et activité", "Un forfait : prix par hôtel et par chambre, et un calculateur"]
+    },
+    "homeMobile": {
+      "caption": "La page d’accueil sur téléphone.",
+      "items": ["Accueil", "Stories"]
+    },
+    "checkout": {
+      "caption": "Le paiement en quatre étapes."
+    },
+    "account": {
+      "caption": "Le compte du voyageur, section par section. Ouvrez une section pour la voir en taille réelle.",
+      "items": ["Voyages", "Passagers", "Portefeuille", "Favoris", "Profil", "Notifications", "Assistance", "Déconnexion"]
+    },
+    "maker": {
+      "caption": "Le Travel Maker en quatre étapes.",
+      "items": ["Destination et dates", "Transport et hébergement", "Activités, jour par jour", "Réglages et compagnons de voyage"]
+    },
+    "social": {
+      "caption": "La couche sociale.",
+      "items": ["Des circuits à rejoindre", "Une expérience notée"]
+    },
+    "strategy": {
+      "caption": "Le tableau de stratégie derrière le concept.",
+      "items": ["Objectifs, leviers et risques", "Où chaque format rencontre le voyageur"]
+    },
+    "live": {
+      "caption": "Le site en ligne, capturé le 27 septembre 2026. Ouvrez une page pour la voir en entier.",
+      "items": ["Accueil", "Résultats de vols", "Hôtels", "Circuits", "Circuit au Japon"]
+    }
+  },
+  "process": {
+    "heading": "D’une analyse comparative à un site en ligne",
+    "steps": [
+      { "label": "Analyse comparative", "note": "Douze sites de réservation et celui de Taha Gasht, capturés côte à côte" },
+      { "label": "Architecture de l’information", "note": "Chaque module des parcours vol, hôtel et circuit, marqué comme repris ou nouveau" },
+      { "label": "Langage de design", "note": "La carte du billet d’avion en trois tours, puis les pages autour" },
+      { "label": "Pages", "note": "Accueil, vols, hôtels, circuits, paiement, aide et connexion, sur ordinateur et téléphone" },
+      { "label": "Compte", "note": "Huit sections du compte du voyageur, avec leurs fenêtres et leurs états vides" },
+      { "label": "Étape suivante", "note": "Un planificateur de voyage et une couche sociale, avec un tableau d’objectifs, de leviers et de risques" }
+    ]
+  },
+  "decisions": {
+    "heading": "Cinq décisions derrière le site",
+    "lede": "Les tableaux et les pages rendent ces choix visibles.",
+    "items": [
+      {
+        "title": "Montrer le choix de l’agence à côté du moins cher et du meilleur",
+        "why": "N’importe quel site de réservation peut trier par prix. Taha Gasht peut aussi dire quel vol elle choisirait. En onglet de tri, ce jugement se trouve là où le voyageur choisit, et comme chaque onglet affiche prix et durée, l’arbitrage est clair.",
+        "alternatives": "Un seul tri par prix, ou un badge sur quelques cartes.",
+        "tradeoff": "Le choix doit être entretenu par des personnes : le tableau indique que les vols à prestations spéciales sont réglés par un administrateur ou un responsable.",
+        "evidence": "Les arbres d’opportunités des billets et des hôtels ; les onglets de tri de la liste de résultats."
+      },
+      {
+        "title": "Faire du charter et du régulier une étiquette et un filtre",
+        "why": "Sur un charter, la place est garantie : c’est pourquoi l’arbre d’opportunités le suggère. La différence change ce que le voyageur achète, elle figure donc sur chaque carte et dans les filtres.",
+        "tradeoff": "Une étiquette de plus sur une carte qui porte déjà horaires, escales et places.",
+        "evidence": "La liste de résultats en ligne affiche l’étiquette sur chaque carte."
+      },
+      {
+        "title": "Une alerte de prix qui peut réserver le vol",
+        "why": "Sur les lignes chargées, les places partent et les tarifs changent. Un voyageur qui enregistre les données des passagers et recharge son portefeuille avec une marge peut voir son vol réservé quand le prix bouge, sans surveiller le site.",
+        "alternatives": "Une alerte qui se contente d’envoyer un message.",
+        "tradeoff": "Le voyageur garde dans son portefeuille 20 à 30 % au-dessus du tarif.",
+        "evidence": "La branche d’alerte de prix de l’architecture de l’information, et l’alerte dans la liste de résultats."
+      },
+      {
+        "title": "Vendre les circuits par la conversation",
+        "why": "Un circuit de groupe est une longue décision, avec des documents et des visas. La page du circuit répond aux questions courantes, calcule le coût pour tout le groupe et garde un formulaire de rappel et un numéro de téléphone à portée, pour que l’appel du conseiller commence plus loin.",
+        "alternatives": "Un paiement immédiat pour les circuits, comme pour les vols.",
+        "tradeoff": "Le site confie la vente à des personnes : son rythme est celui de l’équipe commerciale.",
+        "evidence": "Les états appel, achat et notification de la page du circuit ; les blocs de conseil de la page en ligne du circuit au Japon."
+      },
+      {
+        "title": "Un seul filtre pour la liste et la carte",
+        "why": "La valeur d’un hôtel dépend de son emplacement. Un seul jeu de filtres, les mêmes résultats dans les deux vues et un survol qui les relie permettent de changer de vue sans perdre le fil.",
+        "tradeoff": "Les deux vues doivent charger les mêmes résultats, carte comprise.",
+        "evidence": "Le tableau d’architecture de l’information : filtres synchronisés entre la liste et la carte, avec le même résultat pour les deux."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "La part de Sina",
+    "intro": "Sina a travaillé à temps partiel comme designer produit et stratège de Taha Gasht. Le fichier Figma et les tableaux sont son travail, hormis le matériel de l’analyse comparative et quelques cadres collés depuis d’autres projets.",
+    "own": [
+      "L’analyse comparative de douze sites de réservation",
+      "L’architecture de l’information des vols, des hôtels et de la page de circuit, et les arbres d’opportunités",
+      "Le langage de design, travaillé sur la carte du billet d’avion",
+      "Toutes les pages du site de réservation : accueil, vols, hôtels, circuits, paiement, aide et connexion",
+      "Le compte du voyageur",
+      "Le concept du Travel Maker et de la couche sociale, et son tableau de stratégie"
+    ],
+    "collaborate": [
+      "Des collègues de Taha Gasht, qui ont relu les tableaux : une note sur la carte du circuit demande les sites en infographie",
+      "L’équipe qui a développé le site en ligne"
+    ],
+    "note": "Sont laissés de côté les captures de l’analyse comparative, les kits d’applications, les modèles communautaires et un jeu d’icônes acheté, ainsi que les cadres collés depuis d’autres projets et une carte de parcours du tableau d’opportunités qui appartient à un autre projet."
+  },
+  "outcomes": {
+    "heading": "Ce qui a été mis en ligne",
+    "intro": "La refonte est en ligne. Le fichier consigne le design et ne contient aucun chiffre de trafic ou de ventes après le lancement : il n’y a donc pas de données d’usage ici.",
+    "delivered": [
+      { "label": "sites de réservation comparés", "context": "Cinq iraniens et sept internationaux, capturés à côté du site de Taha Gasht" },
+      { "label": "sections dans le compte du voyageur", "context": "Voyages, passagers, portefeuille, favoris, profil, notifications, assistance et déconnexion" },
+      { "label": "étapes dans le Travel Maker", "context": "Destination et dates, transport et hébergement, activités, réglages" },
+      { "label": "objectifs sur le tableau de stratégie sociale", "context": "Avec huit leviers et les risques à côté" }
+    ],
+    "shipped": [
+      "Une page d’accueil et une recherche repensées pour les vols, les hôtels et les circuits",
+      "Recherche, résultats et détail des vols, et un paiement en quatre étapes",
+      "Recherche d’hôtels en liste et sur carte, et pages d’hôtel",
+      "Listes et pages de circuits, en commençant par le Japon",
+      "Le compte du voyageur, le centre d’aide et la connexion",
+      "Conçus pour l’étape suivante : le Travel Maker et la couche sociale, avec leur tableau de stratégie"
+    ]
+  },
+  "lessons": {
+    "heading": "Ce que je changerais",
+    "items": [
+      {
+        "title": "Écrire comment un vol obtient le choix de l’agence",
+        "body": "Le choix de Taha Gasht est l’idée la plus singulière de la liste de résultats, et le fichier ne dit nulle part comment un vol l’obtient. Une règle courte, convenue avec l’équipe commerciale, aurait gardé l’onglet honnête et donné aux voyageurs une raison de lui faire confiance."
+      },
+      {
+        "title": "Tester la page du circuit avec des voyageurs",
+        "body": "La page du circuit répond aux questions qu’entendent les conseillers, mais le fichier ne contient aucun test avec des voyageurs. Quelques séances avec des personnes qui préparent un voyage auraient montré quelles réponses elles cherchent d’abord, et pour lesquelles elles décrochent encore le téléphone."
+      },
+      {
+        "title": "Commencer la couche sociale par un seul format",
+        "body": "Le concept couvre à la fois publications, Reels, carnets de voyage, carte et planificateur. Commencer par un format, des carnets de voyage liés à un circuit réservé, aurait montré si les voyageurs publient vraiment avant de construire le reste."
+      }
+    ]
+  }
+}
