@@ -32,7 +32,6 @@ import ja from './pro-screens/ja.json'
  */
 
 export const CPRO_APP_GROUPS = [
-  // __APP_GROUPS__
   'sign-in',
   'auctions',
   'car',
@@ -52,7 +51,6 @@ export const CPRO_APP_GROUPS = [
 type AppGroup = (typeof CPRO_APP_GROUPS)[number]
 
 export const CPRO_WEB_GROUPS = [
-  // __WEB_GROUPS__
   'sign-in',
   'auctions',
   'car',
@@ -89,7 +87,6 @@ interface CproScreen<G> {
 
 /** In the order a dealer meets them, flow by flow; each flow in the order of its canvas. */
 export const CPRO_APP_SCREENS: readonly CproScreen<AppGroup>[] = [
-  // __APP_SCREENS__
   { slug: 'splash', group: 'sign-in', node: '1:2912' },
   { slug: 'onboarding-1', group: 'sign-in', node: '1:3614' },
   { slug: 'onboarding-2', group: 'sign-in', node: '1:3121' },
@@ -157,7 +154,13 @@ export const CPRO_APP_SCREENS: readonly CproScreen<AppGroup>[] = [
   { slug: 'settlement', group: 'settlement', node: '1:11776', whole: true, mask: 'document' },
   { slug: 'proof-photo', group: 'settlement', node: '1:11974', whole: true },
   { slug: 'proof-amount', group: 'settlement', node: '1:12070', whole: true, mask: 'document' },
-  { slug: 'proof-amount-keypad', group: 'settlement', node: '1:12181', whole: true, mask: 'document' },
+  {
+    slug: 'proof-amount-keypad',
+    group: 'settlement',
+    node: '1:12181',
+    whole: true,
+    mask: 'document',
+  },
   { slug: 'proof-zoom', group: 'settlement', node: '1:11063', mask: 'document' },
   { slug: 'proof-confirm', group: 'settlement', node: '1:12415', whole: true },
   { slug: 'proof-error', group: 'settlement', node: '1:12293', whole: true, mask: 'document' },
@@ -310,7 +313,6 @@ export const CPRO_APP_SCREENS: readonly CproScreen<AppGroup>[] = [
 
 /** The desktop web product, in the app's order; each page at 1,440 px. */
 export const CPRO_WEB_PAGES: readonly CproScreen<WebGroup>[] = [
-  // __WEB_PAGES__
   { slug: 'loading', group: 'sign-in', node: '1:36214', whole: true },
   { slug: 'splash', group: 'sign-in', node: '20:122140', whole: true },
   { slug: 'onboarding-1', group: 'sign-in', node: '20:122163', whole: true },
@@ -399,7 +401,13 @@ export const CPRO_WEB_PAGES: readonly CproScreen<WebGroup>[] = [
   { slug: 'settlement', group: 'settlement', node: '1:72751', whole: true, mask: 'document' },
   { slug: 'proof-photo', group: 'settlement', node: '1:73722', whole: true, mask: 'document' },
   { slug: 'proof-amount', group: 'settlement', node: '1:73854', whole: true, mask: 'document' },
-  { slug: 'proof-amount-balance', group: 'settlement', node: '1:74832', whole: true, mask: 'document' },
+  {
+    slug: 'proof-amount-balance',
+    group: 'settlement',
+    node: '1:74832',
+    whole: true,
+    mask: 'document',
+  },
   { slug: 'proof-zoom', group: 'settlement', node: '1:74165', whole: true, mask: 'document' },
   { slug: 'proof-confirm', group: 'settlement', node: '1:74294', whole: true, mask: 'document' },
   { slug: 'proof-error', group: 'settlement', node: '1:74004', whole: true, mask: 'document' },
