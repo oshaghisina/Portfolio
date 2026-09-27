@@ -1,4 +1,4 @@
-import type { Experience, Media } from '@/payload-types'
+import type { Experience } from '@/payload-types'
 import type { RequiredDataFromCollectionSlug } from 'payload'
 
 import {
@@ -34,11 +34,10 @@ import { paragraph, richText } from './lexical-helpers'
 
 type AboutArgs = {
   experienceDocs: Record<number, Experience>
-  metaImage: Media
 }
 
 /** Thin factory mirroring `home.ts` — assembles the About page from experience doc ids. English pass; the Persian overlay is applied after creation (see `localizeAboutLayoutFa`). */
-export const about: (args: AboutArgs) => RequiredDataFromCollectionSlug<'pages'> = ({ experienceDocs, metaImage }) => {
+export const about: (args: AboutArgs) => RequiredDataFromCollectionSlug<'pages'> = ({ experienceDocs }) => {
   return {
     slug: 'about',
     _status: 'published',
@@ -49,7 +48,6 @@ export const about: (args: AboutArgs) => RequiredDataFromCollectionSlug<'pages'>
     layout: buildAboutLayoutEn(experienceDocs),
     meta: {
       description: aboutMetaDescriptionEn,
-      image: metaImage.id,
       title: aboutMetaTitleEn,
     },
     title: 'About',

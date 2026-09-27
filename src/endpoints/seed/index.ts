@@ -327,7 +327,7 @@ export const seed = async ({
     payload.create({
       collection: 'pages',
       depth: 0,
-      data: home({ heroImage: imageHomeDoc, metaImage: image2Doc, mosaicProjects }),
+      data: home({ heroImage: imageHomeDoc, mosaicProjects }),
       context: { disableRevalidate: true },
     }),
     payload.create({
@@ -349,7 +349,7 @@ export const seed = async ({
   const aboutPage = await payload.create({
     collection: 'pages',
     depth: 0,
-    data: about({ experienceDocs, metaImage: image2Doc }),
+    data: about({ experienceDocs }),
     context: { disableRevalidate: true },
   })
 
