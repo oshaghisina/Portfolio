@@ -65,7 +65,7 @@ export const Patterns: React.FC<{ locale: PreviewLocale }> = ({ locale }) => {
 
         <Demo ds="DS-17 · ProjectMeta" title="Case-study meta strip">
           <ProjectMeta
-            back={{ href: '#patterns', label: locale === 'fa' ? 'همهٔ پروژه‌ها' : 'All work' }}
+            back={{ href: '#patterns', label: locale === 'fa' ? 'همه‌ی پروژه‌ها' : 'All work' }}
             locale={locale}
             values={{ ...s.meta, link: { href: 'https://example.com', label: 'example.com' } }}
           />

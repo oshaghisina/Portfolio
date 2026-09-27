@@ -10,8 +10,7 @@ import { cn } from '@/utilities/ui'
  * optional column beside the copy from `lg` up, closed by the `SystemLandscape` hairline. Lifted
  * out of the homepage hero, which is now just one caller of it.
  *
- * The `aside` renders verbatim — its own responsive behaviour belongs to the caller, because the
- * homepage's console panel hides below `lg` while a case study's meta block stacks and stays.
+ * The `aside` renders verbatim — its own responsive behaviour belongs to the caller.
  *
  * When `written` is set, the opener hosts the shared title-write entrance: `WrittenHeadline` owns
  * the H1 motion; eyebrow / lede / actions / aside follow via `[data-hero-entrance]` CSS.

@@ -52,7 +52,7 @@ export const PROJECT_META_LABELS: Record<Locale, Record<ProjectMetaKey, string>>
     status: 'وضعیت',
     tools: 'ابزارها و فناوری‌ها',
     client: 'کارفرما',
-    link: 'نسخهٔ زنده',
+    link: 'نسخه‌ی زنده',
   },
   ar: {
     company: 'الشركة',

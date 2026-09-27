@@ -46,7 +46,7 @@ describe('Industry catalogue and rendering', () => {
       )
       expect(homeCopy[locale].proof.metrics[2]!.value).toBe(industryCountLabel(locale))
     }
-    expect(industryLabels.fa.consulting).toBe('مشاورهٔ کسب‌وکار')
+    expect(industryLabels.fa.consulting).toBe('مشاوره‌ی کسب‌وکار')
   })
 
   it('rejects duplicate, missing and unknown keys in the CMS', () => {

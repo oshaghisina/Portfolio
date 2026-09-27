@@ -16,6 +16,29 @@ export const SignatureIntroScript: React.FC = () => (
   />
 )
 
+/** Ruled lines drawn beside the sheet: enough 2.5rem rows for a screen about 2000px tall. */
+const FRAME_RULES = Array.from({ length: 48 }, (_, rule) => rule)
+
+/**
+ * The page's frame, ruled on the curtain while the name is written: the header's bottom border,
+ * the sheet's two rails, then the ruled lines beside the sheet (`signature.css`). It is built from
+ * the page's own `.canvas` and the header's height, so each line lands on the page's line and holds
+ * still when the curtain lifts off the page.
+ */
+const SignatureFrame: React.FC = () => (
+  <div className="signature-frame">
+    <div className="canvas signature-frame-rails" />
+    <div className="canvas signature-frame-header border-b border-line">
+      <div className="h-14 xl:h-16" />
+    </div>
+    <div className="signature-frame-rules">
+      {FRAME_RULES.map((rule) => (
+        <span key={rule} style={{ '--signature-frame-rule': rule } as React.CSSProperties} />
+      ))}
+    </div>
+  </div>
+)
+
 /**
  * The first-load curtain: a blank sheet the name is written on before it docks into the header.
  * Rendered on every page but shown only while the script above has marked <html>, so returning
@@ -23,7 +46,9 @@ export const SignatureIntroScript: React.FC = () => (
  */
 export const SignatureIntro: React.FC = () => (
   <div aria-hidden="true" className="signature-intro" data-lenis-prevent="">
-    <div className="signature-intro-curtain" />
+    <div className="signature-intro-curtain">
+      <SignatureFrame />
+    </div>
     <div className="signature-intro-mark">
       <SignatureDraw mode="write" />
     </div>

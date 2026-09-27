@@ -46,6 +46,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data, locale, readin
       className={cn('canvas', 'sticky top-0 z-20 bg-background border-b border-line')}
       {...(theme ? { 'data-theme': theme } : {})}
     >
+      {/* The first-load intro rules this bottom border at this height (`SignatureFrame`). */}
       <div className="flex h-14 items-center justify-between gap-4 xl:h-16 xl:gap-6">
         {/* The cropped SVG is sized by its ink, so it sits optically with the technical controls. */}
         <Link

@@ -168,7 +168,7 @@ describe('WorkspaceBlock', () => {
     expect(screen.getByRole('figure').textContent).toContain('معیار موفقیت')
     fireEvent.keyDown(screen.getByRole('tablist'), { key: 'ArrowLeft' })
     expect(screen.getByRole('tab', { name: /02\s*Map/ }).getAttribute('aria-selected')).toBe('true')
-    expect(screen.getByRole('figure').textContent).toContain('تجربهٔ محصول')
+    expect(screen.getByRole('figure').textContent).toContain('تجربه‌ی محصول')
   })
 
   it('cycles Next through stages and Back to Frame on the last', () => {

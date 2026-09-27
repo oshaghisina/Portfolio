@@ -186,6 +186,136 @@
   animation-play-state: paused;
 }
 
+/* The page's frame, ruled on the curtain while the name is written (SignatureFrame): the header's
+   bottom border grows from its middle, the sheet's rails run down the screen, then the ruled lines
+   beside the sheet grow out of the rails, top to bottom. The copy is built from the page's own
+   .canvas and header height, so each line lands on the page's line and holds still while the
+   curtain lifts. Transforms only, so the drawing stays smooth while the page hydrates. */
+.signature-frame {
+  /* How far the sheet's outer edge sits from the screen's: .canvas's margin (globals.css). */
+  --signature-frame-gutter: 0.5rem;
+  /* The frame starts once the S is written… */
+  --signature-frame-at: calc(var(--signature-write-duration, 1.7s) * 0.25);
+  /* …and its ruled lines cascade over about 0.75 s, however many the screen holds. */
+  --signature-frame-stagger: 36ms;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+@media (min-width: 48rem) {
+  .signature-frame {
+    --signature-frame-gutter: calc(
+      (100% - min(var(--container-canvas), var(--container-page))) / 2
+    );
+  }
+}
+
+@media (min-height: 56.25rem) {
+  .signature-frame {
+    --signature-frame-stagger: 28ms;
+  }
+}
+
+@media (min-height: 75rem) {
+  .signature-frame {
+    --signature-frame-stagger: 20ms;
+  }
+}
+
+@media (min-height: 100rem) {
+  .signature-frame {
+    --signature-frame-stagger: 16ms;
+  }
+}
+
+/* The sheet's rails and nothing else, full height. */
+.signature-frame-rails {
+  position: absolute;
+  inset: 0;
+  background: none;
+  transform-origin: top;
+}
+
+/* The header's bottom border and nothing else. */
+.signature-frame-header {
+  flex: none;
+  background: none;
+  border-inline-color: transparent;
+}
+
+.signature-frame-rules {
+  position: relative;
+  flex: 1;
+}
+
+/* One row per line of .ruled-paper, which starts where the header ends. */
+.signature-frame-rules > span {
+  position: absolute;
+  inset-inline: 0;
+  top: calc(var(--signature-frame-rule) * 2.5rem);
+  height: 1px;
+}
+
+/* Left and right rather than start and end: both grow out of the sheet, so RTL looks the same. */
+.signature-frame-rules > span::before,
+.signature-frame-rules > span::after {
+  content: '';
+  position: absolute;
+  inset-block: 0;
+  width: var(--signature-frame-gutter);
+  background-color: var(--line-soft);
+}
+
+.signature-frame-rules > span::before {
+  left: 0;
+  transform-origin: right;
+}
+
+.signature-frame-rules > span::after {
+  right: 0;
+  transform-origin: left;
+}
+
+@keyframes signature-frame-across {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes signature-frame-down {
+  from {
+    transform: scaleY(0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Timed from the moment the page is visible, like the write. Filled backwards only: a line that
+     keeps its finished transform can stay on its own layer, which rounds its sub-pixel offset away
+     and puts a rail a pixel off the page's. */
+  :root[data-theme] .signature-frame-header {
+    animation: signature-frame-across var(--duration-fast) var(--ease-standard)
+      var(--signature-frame-at) backwards;
+  }
+
+  :root[data-theme] .signature-frame-rails {
+    animation: signature-frame-down var(--duration-fast) var(--ease-standard)
+      calc(var(--signature-frame-at) + 150ms) backwards;
+  }
+
+  :root[data-theme] .signature-frame-rules > span::before,
+  :root[data-theme] .signature-frame-rules > span::after {
+    animation: signature-frame-across var(--duration-fast) var(--ease-standard)
+      calc(
+        var(--signature-frame-at) + 300ms + var(--signature-frame-rule) *
+          var(--signature-frame-stagger)
+      )
+      backwards;
+  }
+}
+
 @media print {
   :root[data-signature-intro] .signature-intro {
     display: none;

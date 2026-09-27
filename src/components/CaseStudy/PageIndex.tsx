@@ -19,17 +19,30 @@ export type PageShot = Pick<
   'alt' | 'height' | 'id' | 'mimeType' | 'updatedAt' | 'url' | 'width'
 >
 
-/** One page of the site: its first screen at desktop and phone width, and each whole page. */
+/**
+ * One page of the site: its first screen at desktop and phone width, and each whole page. An
+ * app's screen has the phone width only.
+ */
 export interface PageEntry {
   id: string
   label: string
-  desktop: PageShot
+  /** The section the page belongs to (an app's flow); two or more sections become the tabs. */
+  group?: string
+  desktop?: PageShot
   mobile?: PageShot
   desktopFull?: PageShot
   mobileFull?: PageShot
 }
 
 type View = 'desktop' | 'mobile'
+
+/** A tab of the index: every page at one width, or one section's pages. */
+interface Tab {
+  key: string
+  label: string
+  view: View
+  entries: PageEntry[]
+}
 
 /** A sheet of the index: four rows of three, three of four or two of six — never a long wall. */
 const PER_SHEET = 12
@@ -55,16 +68,38 @@ export interface PageIndexProps {
 
 /**
  * DS-25 inside a case study: every page of a site as an index, with viewport tabs and their
- * counts, sheets of twelve first screens, and a viewer that opens the whole page. The grid only
- * ever loads twelve thumbnails; a whole-page capture loads when it is opened. Captures are never
- * mirrored in RTL — only the controls are.
+ * counts, sheets of twelve first screens, and a viewer that opens the whole page. When every page
+ * names a section and there are two or more, the sections are the tabs instead — an app's screens,
+ * flow by flow, at the one width they have. The grid only ever loads twelve thumbnails; a
+ * whole-page capture loads when it is opened. Captures are never mirrored in RTL — only the
+ * controls are.
  */
 export const PageIndex: React.FC<PageIndexProps> = ({ copy, locale, pages }) => {
   const baseId = useId()
   const views = (['desktop', 'mobile'] as const).filter((view) =>
     pages.some((entry) => firstScreen(entry, view)),
   )
-  const [view, setView] = useState<View>(views[0] ?? 'desktop')
+  const groups = [...new Set(pages.map((entry) => entry.group))]
+  const grouped = groups.length > 1 && groups.every(Boolean)
+  const tabs: Tab[] = (
+    grouped
+      ? groups.map((group) => {
+          const view = views[0] ?? 'desktop'
+          return {
+            key: `group-${group}`,
+            label: group!,
+            view,
+            entries: pages.filter((entry) => entry.group === group && firstScreen(entry, view)),
+          }
+        })
+      : views.map((view) => ({
+          key: view,
+          label: copy[view],
+          view,
+          entries: pages.filter((entry) => firstScreen(entry, view)),
+        }))
+  ).filter((tab) => tab.entries.length)
+  const [selected, setSelected] = useState(0)
   const [sheet, setSheet] = useState(0)
   const [open, setOpen] = useState<number | null>(null)
   const tabsRef = useRef<(HTMLButtonElement | null)[]>([])
@@ -73,9 +108,14 @@ export const PageIndex: React.FC<PageIndexProps> = ({ copy, locale, pages }) => 
   const viewerRef = useRef<HTMLDivElement>(null)
   const openerRef = useRef<HTMLElement | null>(null)
   const overflowRef = useRef('')
+  const rowRef = useRef<HTMLDivElement>(null)
+  const [edges, setEdges] = useState({ start: false, end: false })
 
   const rtl = isRtl(locale)
-  const list = pages.filter((entry) => firstScreen(entry, view))
+  const at = Math.min(selected, Math.max(0, tabs.length - 1))
+  const tab = tabs[at]
+  const view = tab?.view ?? 'desktop'
+  const list = tab?.entries ?? []
   const sheets = Math.max(1, Math.ceil(list.length / PER_SHEET))
   const current = Math.min(sheet, sheets - 1)
   const start = current * PER_SHEET
@@ -109,17 +149,43 @@ export const PageIndex: React.FC<PageIndexProps> = ({ copy, locale, pages }) => 
     [],
   )
 
+  // On a phone the sections run in one row that scrolls sideways: note which edge hides more.
+  useEffect(() => {
+    const row = rowRef.current
+    if (!row || !grouped) return
+    const measure = () => {
+      const hidden = row.scrollWidth - row.clientWidth
+      // Right to left, the row scrolls to negative offsets.
+      const scrolled = Math.abs(row.scrollLeft)
+      const start = hidden > 1 && scrolled > 1
+      const end = hidden > 1 && scrolled < hidden - 1
+      setEdges((was) => (was.start === start && was.end === end ? was : { start, end }))
+    }
+    measure()
+    row.addEventListener('scroll', measure, { passive: true })
+    window.addEventListener('resize', measure)
+    return () => {
+      row.removeEventListener('scroll', measure)
+      window.removeEventListener('resize', measure)
+    }
+  }, [grouped])
+
   if (!list.length) return null
 
-  const chooseView = (index: number) => {
-    const next = views[index]
-    if (!next) return
-    setView(next)
-    tabsRef.current[index]?.focus({ preventScroll: true })
+  const chooseTab = (index: number) => {
+    if (!tabs[index]) return
+    // Another width shows the same pages, so the sheet stays; another section starts at its first.
+    if (grouped && index !== at) setSheet(0)
+    setSelected(index)
+    const element = tabsRef.current[index]
+    element?.focus({ preventScroll: true })
+    // A row of sections outruns a phone's width: keep the chosen one in sight.
+    if (typeof element?.scrollIntoView === 'function') {
+      element.scrollIntoView({ block: 'nearest', inline: 'nearest' })
+    }
   }
 
   const onTabKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    const at = views.indexOf(view)
     let next: number
     switch (event.key) {
       case 'ArrowLeft':
@@ -132,14 +198,14 @@ export const PageIndex: React.FC<PageIndexProps> = ({ copy, locale, pages }) => 
         next = 0
         break
       case 'End':
-        next = views.length - 1
+        next = tabs.length - 1
         break
       default:
         return
     }
-    if (next < 0 || next >= views.length) return
+    if (next < 0 || next >= tabs.length) return
     event.preventDefault()
-    chooseView(next)
+    chooseTab(next)
   }
 
   const turnTo = (next: number) => {
@@ -170,44 +236,75 @@ export const PageIndex: React.FC<PageIndexProps> = ({ copy, locale, pages }) => 
   const tabId = (index: number) => `${baseId}-tab-${index}`
   const panelId = `${baseId}-panel`
   const titleId = `${baseId}-title`
+  // The row's start is its right edge in RTL.
+  const fadeLeft = rtl ? edges.end : edges.start
+  const fadeRight = rtl ? edges.start : edges.end
+  const rowMask =
+    fadeLeft || fadeRight
+      ? `linear-gradient(to right, ${fadeLeft ? 'transparent' : '#000'}, #000 2rem, #000 calc(100% - 2rem), ${fadeRight ? 'transparent' : '#000'})`
+      : undefined
 
   return (
     <div data-reveal-skip="">
-      {views.length > 1 ? (
+      {tabs.length > 1 ? (
+        // An app's sections are DS-22 chips: from `lg` they wrap, every one in view, since tabs
+        // stacked in rows read as tiers. On a phone or tablet they run in one row that scrolls
+        // sideways, its hidden edge faded — wrapped there, fourteen flows took four rows before
+        // the first screen (`data-lenis-prevent-horizontal` leaves the swipe to the row; the
+        // padding keeps focus rings inside the scroll box). The two widths stay tabs on one rule,
+        // an inset shadow, since a scroll box would clip an indicator hung over a border.
         <div
-          aria-label={copy.views}
-          className="flex border-b border-line"
+          aria-label={grouped ? copy.groups : copy.views}
+          className={cn(
+            'flex overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
+            grouped
+              ? '-mx-1 scroll-px-8 gap-2 p-1 lg:mx-0 lg:flex-wrap lg:overflow-visible lg:p-0'
+              : 'gap-x-8 shadow-[inset_0_-1px_0_var(--color-line)]',
+          )}
+          data-lenis-prevent-horizontal=""
           onKeyDown={onTabKeyDown}
+          ref={rowRef}
           role="tablist"
+          style={rowMask ? { maskImage: rowMask, WebkitMaskImage: rowMask } : undefined}
         >
-          {views.map((option, index) => {
-            const selected = option === view
+          {tabs.map((option, index) => {
+            const chosen = index === at
             return (
               <button
                 aria-controls={panelId}
-                aria-selected={selected}
+                aria-selected={chosen}
                 className={cn(
-                  'relative flex min-h-11 items-baseline gap-2 px-4 py-3 first:ps-0',
+                  'relative flex shrink-0 whitespace-nowrap',
                   'transition-colors duration-(--duration-fast) ease-standard',
-                  'hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring',
-                  selected ? 'text-foreground' : 'text-ink-3',
+                  'focus-visible:outline-2 focus-visible:outline-ring',
+                  grouped
+                    ? 'h-9 items-center gap-2 rounded-chip border px-3 focus-visible:outline-offset-2'
+                    : 'h-11 items-baseline gap-2 py-3 hover:text-foreground focus-visible:-outline-offset-2',
+                  grouped &&
+                    (chosen
+                      ? 'border-brand bg-brand text-brand-foreground'
+                      : 'border-line text-ink-2 hover:border-ink-3 hover:text-foreground'),
+                  !grouped && (chosen ? 'text-foreground' : 'text-ink-3'),
                 )}
                 id={tabId(index)}
-                key={option}
-                onClick={() => chooseView(index)}
+                key={option.key}
+                onClick={() => chooseTab(index)}
                 ref={(element) => {
                   tabsRef.current[index] = element
                 }}
                 role="tab"
-                tabIndex={selected ? 0 : -1}
+                tabIndex={chosen ? 0 : -1}
                 type="button"
               >
-                {selected ? (
-                  <span aria-hidden className="absolute inset-x-0 -bottom-px h-0.5 bg-brand" />
+                {chosen && !grouped ? (
+                  <span aria-hidden className="absolute inset-x-0 bottom-0 h-0.5 bg-brand" />
                 ) : null}
-                <span className="eyebrow text-current">{copy[option]}</span>
-                <span className="index-code" dir="ltr">
-                  {pages.filter((page) => firstScreen(page, option)).length}
+                <span className="eyebrow text-current">{option.label}</span>
+                <span
+                  className={cn('index-code', grouped && chosen && 'text-current opacity-75')}
+                  dir="ltr"
+                >
+                  {option.entries.length}
                 </span>
               </button>
             )
@@ -216,11 +313,11 @@ export const PageIndex: React.FC<PageIndexProps> = ({ copy, locale, pages }) => 
       ) : null}
 
       <div
-        aria-labelledby={views.length > 1 ? tabId(views.indexOf(view)) : undefined}
+        aria-labelledby={tabs.length > 1 ? tabId(at) : undefined}
         className="scroll-mt-28 pt-6"
         id={panelId}
         ref={panelRef}
-        role={views.length > 1 ? 'tabpanel' : undefined}
+        role={tabs.length > 1 ? 'tabpanel' : undefined}
       >
         <ol
           className={cn(
@@ -321,9 +418,9 @@ export const PageIndex: React.FC<PageIndexProps> = ({ copy, locale, pages }) => 
               </span>
               <p className="min-w-0 flex-1 truncate text-small text-foreground" id={titleId}>
                 {entry.label}
-                {/* Only worth saying when there is another width to switch to — a deck of slides
-                    or a set of boards has none. */}
-                {views.length > 1 ? <span className="text-ink-3"> · {copy[view]}</span> : null}
+                {/* The tab it came from — its width or its section. Only worth saying when there
+                    is another tab: a deck of slides or a set of boards has none. */}
+                {tab && tabs.length > 1 ? <span className="text-ink-3"> · {tab.label}</span> : null}
               </p>
               <button
                 aria-label={copy.previous}

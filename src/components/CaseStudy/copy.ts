@@ -34,6 +34,8 @@ export interface CaseStudyCopy {
   pages: {
     /** Accessible name of the viewport tabs. */
     views: string
+    /** Accessible name of the tabs when they are an app's sections instead of widths. */
+    groups: string
     desktop: string
     mobile: string
     /** Accessible name of the sheet buttons; each button is named by `sheet`. */
@@ -93,6 +95,7 @@ export const caseStudyCopy: Record<Locale, CaseStudyCopy> = {
     compare: { before: 'Before', after: 'After' },
     pages: {
       views: 'Screen width',
+      groups: 'Sections',
       desktop: 'Desktop',
       mobile: 'Mobile',
       sheets: 'Sheets of pages',
@@ -141,18 +144,19 @@ export const caseStudyCopy: Record<Locale, CaseStudyCopy> = {
       tradeoff: 'بده‌بستان',
       evidence: 'شواهد',
     },
-    outcomeKind: { measured: 'نتیجهٔ اندازه‌گیری‌شده', delivered: 'خروجی تحویل‌شده' },
+    outcomeKind: { measured: 'نتیجه‌ی اندازه‌گیری‌شده', delivered: 'خروجی تحویل‌شده' },
     delivered: 'چه چیزی تحویل شد',
     compare: { before: 'قبل', after: 'بعد' },
     pages: {
       views: 'عرض صفحه‌نمایش',
+      groups: 'بخش‌ها',
       desktop: 'دسکتاپ',
       mobile: 'موبایل',
       sheets: 'برگه‌های صفحه‌ها',
       sheet: 'صفحه‌های {from} تا {to}',
       open: 'باز کردن کل صفحه',
-      previous: 'صفحهٔ قبلی',
-      next: 'صفحهٔ بعدی',
+      previous: 'صفحه‌ی قبلی',
+      next: 'صفحه‌ی بعدی',
       close: 'بستن',
     },
     loopsTo: 'بازگشت به',
@@ -164,10 +168,10 @@ export const caseStudyCopy: Record<Locale, CaseStudyCopy> = {
       paused: 'متوقف',
       concept: 'کانسپت',
     },
-    nextProject: 'پروژهٔ بعدی',
+    nextProject: 'پروژه‌ی بعدی',
     moreFrom: 'کارهای دیگر در {company}',
-    explore: 'خواندن مطالعهٔ موردی',
-    allWork: 'همهٔ پروژه‌ها',
+    explore: 'خواندن مطالعه‌ی موردی',
+    allWork: 'همه‌ی پروژه‌ها',
   },
   ar: {
     contents: 'المحتويات',
@@ -194,6 +198,7 @@ export const caseStudyCopy: Record<Locale, CaseStudyCopy> = {
     compare: { before: 'قبل', after: 'بعد' },
     pages: {
       views: 'عرض الشاشة',
+      groups: 'الأقسام',
       desktop: 'سطح المكتب',
       mobile: 'الجوال',
       sheets: 'مجموعات الصفحات',
@@ -247,6 +252,7 @@ export const caseStudyCopy: Record<Locale, CaseStudyCopy> = {
     compare: { before: 'Antes', after: 'Después' },
     pages: {
       views: 'Ancho de pantalla',
+      groups: 'Secciones',
       desktop: 'Escritorio',
       mobile: 'Móvil',
       sheets: 'Grupos de páginas',
@@ -300,6 +306,7 @@ export const caseStudyCopy: Record<Locale, CaseStudyCopy> = {
     compare: { before: 'Vorher', after: 'Nachher' },
     pages: {
       views: 'Bildschirmbreite',
+      groups: 'Bereiche',
       desktop: 'Desktop',
       mobile: 'Mobil',
       sheets: 'Seitengruppen',
@@ -353,6 +360,7 @@ export const caseStudyCopy: Record<Locale, CaseStudyCopy> = {
     compare: { before: 'Avant', after: 'Après' },
     pages: {
       views: 'Largeur d’écran',
+      groups: 'Sections',
       desktop: 'Ordinateur',
       mobile: 'Mobile',
       sheets: 'Groupes de pages',
@@ -401,6 +409,7 @@ export const caseStudyCopy: Record<Locale, CaseStudyCopy> = {
     compare: { before: '改善前', after: '改善後' },
     pages: {
       views: '画面幅',
+      groups: 'セクション',
       desktop: 'デスクトップ',
       mobile: 'モバイル',
       sheets: 'ページのまとまり',

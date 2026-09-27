@@ -228,12 +228,13 @@ export const PROJECT_SEED: ProjectSeedRow[] = [
 
   // ── Taha Gasht ──────────────────────────────────────────────────────────────────────────
   {
-    // Thin by design: `Docs/Experience/Taha-Gasht/` was opened from three Figma files and its
-    // dates, team and launch status are still open questions. Nothing here goes beyond the README.
+    // Retitled 2026-09-27 from the scan of the B2C file and four boards
+    // (`Docs/Experience/Taha-Gasht/platform-redesign/README.md`): that set holds no internal agents'
+    // panel (README Q4). Sina: the redesign shipped. Case study: `case-studies/taha-gasht/`.
     slug: 'taha-gasht-platform',
-    title: 'Taha Gasht — booking site and internal booking panel',
+    title: 'Taha Gasht — booking site redesign',
     summary:
-      'A travel business selling flights, hotels and tours, designed across three files: the public booking site, the internal booking panel the agents work in, and the design system shared between them.',
+      'The booking site of a thirty-year-old travel agency, redesigned for flights, hotels and tours: from a twelve-site benchmark and information architecture to live pages, plus a travel-planner and social concept.',
     company: TAHA_GASHT,
     role: 'Product designer & strategist',
     kind: ['product'],

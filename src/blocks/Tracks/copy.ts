@@ -20,8 +20,8 @@ export const trackStageCopy: Record<Locale, TrackCopy> = {
     designSystems: ['Shared tokens', 'Reusable components', 'Consistent products'],
   },
   fa: {
-    productDesign: ['پژوهش و شواهد', 'اولویت‌ها و جریان‌ها', 'تجربهٔ محصول'],
-    aiWorkflow: ['زمینهٔ مستند', 'اجرای همراه با AI', 'بازبینی انسانی'],
+    productDesign: ['پژوهش و شواهد', 'اولویت‌ها و جریان‌ها', 'تجربه‌ی محصول'],
+    aiWorkflow: ['زمینه‌ی مستند', 'اجرای همراه با AI', 'بازبینی انسانی'],
     designSystems: ['توکن‌های مشترک', 'اجزای تکرارپذیر', 'محصولات هماهنگ'],
   },
   ar: {

@@ -190,28 +190,38 @@ export const FigureBlock: React.FC<FigureBlockProps> = ({
         </div>
       )
       break
-    case 'pages':
+    case 'pages': {
+      // With the Screen treatment the rows are an app's screens: the upload is the first screen
+      // on the phone and `mobileFull` the whole screen — there is no desktop width to show.
+      const phone = treatment === 'screen'
       body = (
         <PageIndex
           copy={copy.pages}
           locale={locale}
           pages={visuals.flatMap((item, i): PageEntry[] => {
-            const desktop = pageShot(item.media)
-            if (!desktop) return []
+            const first = pageShot(item.media)
+            if (!first) return []
+            const entry = {
+              id: item.id ?? String(i),
+              label: item.caption || pad(i + 1),
+              group: item.group || undefined,
+            }
             return [
-              {
-                id: item.id ?? String(i),
-                label: item.caption || pad(i + 1),
-                desktop,
-                mobile: pageShot(item.mobile),
-                desktopFull: pageShot(item.full),
-                mobileFull: pageShot(item.mobileFull),
-              },
+              phone
+                ? { ...entry, mobile: first, mobileFull: pageShot(item.mobileFull) }
+                : {
+                    ...entry,
+                    desktop: first,
+                    mobile: pageShot(item.mobile),
+                    desktopFull: pageShot(item.full),
+                    mobileFull: pageShot(item.mobileFull),
+                  },
             ]
           })}
         />
       )
       break
+    }
     default:
       body = cell(visuals[0]!, 0)
   }

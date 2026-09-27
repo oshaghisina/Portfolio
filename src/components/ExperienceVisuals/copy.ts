@@ -57,7 +57,7 @@ export const experienceVisualCopy: Record<Locale, VisualCopy> = {
       ai: 'زمینه و کمک به اجرا',
     },
     pause: 'توقف حرکت تصویرها',
-    resume: 'ادامهٔ حرکت تصویرها',
+    resume: 'ادامه‌ی حرکت تصویرها',
     reduced: 'کاهش حرکت فعال است',
   },
   ar: {

@@ -75,7 +75,7 @@ export default async function DesignPage({ searchParams }: Args) {
           eyebrow="Design system · pleurat.com-derived · v0"
           lede={
             locale === 'fa'
-              ? 'همهٔ مقادیر از یک فایل توکن می‌آیند. این صفحه خروجی همان توکن‌هایی را نشان می‌دهد که theme.css از آن‌ها ساخته شده است.'
+              ? 'همه‌ی مقادیر از یک فایل توکن می‌آیند. این صفحه خروجی همان توکن‌هایی را نشان می‌دهد که theme.css از آن‌ها ساخته شده است.'
               : 'Every value here comes from one tokens file; this page renders exactly what theme.css was built from.'
           }
           titleSlot={

@@ -321,6 +321,27 @@ describe('first-load intro', () => {
     expect(root.hasAttribute(attribute)).toBe(false)
   })
 
+  it('rules the page frame on the curtain, with the sheet and header height the page uses', () => {
+    const { container } = render(<SignatureIntro />)
+    // Inside the curtain, so the copy lifts with it onto the page's own lines.
+    const frame = container.querySelector('.signature-intro-curtain > .signature-frame')!
+    expect(frame).not.toBeNull()
+
+    const classes = (selector: string) => frame.querySelector(selector)!.className.split(' ')
+    expect(classes('.signature-frame-rails')).toContain('canvas')
+    expect(classes('.signature-frame-header')).toEqual(
+      expect.arrayContaining(['canvas', 'border-b', 'border-line']),
+    )
+    expect(frame.querySelector('.signature-frame-header > div')!.className).toBe('h-14 xl:h-16')
+
+    // One row per ruled line, numbered top to bottom for the cascade.
+    const rules = frame.querySelectorAll<HTMLElement>('.signature-frame-rules > span')
+    expect(rules.length).toBeGreaterThan(0)
+    rules.forEach((rule, index) =>
+      expect(rule.style.getPropertyValue('--signature-frame-rule')).toBe(String(index)),
+    )
+  })
+
   it('lifts the curtain at the first input, and ends on its own if the write never runs', () => {
     render(<SignatureIntro />)
     signatureIntro(SIGNATURE_INTRO)

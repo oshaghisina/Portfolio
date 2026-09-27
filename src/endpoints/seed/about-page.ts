@@ -188,7 +188,7 @@ export const localizeAboutLayoutFa = (enLayout: NonNullable<PageLayout>): PageLa
             tag: 'مسیر',
             lead: 'چطور',
             tail: 'به اینجا رسیدم',
-            lede: 'پنج مرحله که دامنهٔ مسئولیتم را گسترش دادند.',
+            lede: 'پنج مرحله که دامنه‌ی مسئولیتم را گسترش دادند.',
           },
           stages: (block.stages as Record<string, unknown>[]).map((stage, i) => {
             const order = careerStageOrder[i]!
