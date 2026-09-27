@@ -116,13 +116,13 @@ const EN: BioCopy = {
   industry: 'Edtech · Konkur education (Iran)',
   team: 'Product manager & designer, part-time, working with Biomaze’s engineering team',
   heroCaption:
-    'The education panel’s classes surface on desktop and tablet — teacher cards, schedule chips and the shared panel chrome.',
+    'The education panel’s classes surface on desktop — teacher cards, schedule chips and the shared panel chrome.',
   snapshot: {
     problem:
       'A growing Konkur brand needed one coherent digital surface for prospects on the web and students inside a logged-in panel — without diverging UI on every page.',
     role: 'Product manager & designer across the public website, the learning panel and the shared design system.',
     result:
-      'A 32-page design file covering website, panel and system boards; panel domains named by job (classes, exams, live, wallet, auth) with responsive frames.',
+      'The learning panel and the public website both went live on biomaze.ir, designed in one 32-page file with a shared kit.',
   },
   alt: {
     cover:
@@ -145,7 +145,7 @@ const EN: BioCopy = {
     heading: 'Maz needed a site students could trust and a panel they could live in',
     body: [
       'Biomaze / گروه آموزشی ماز is a nationwide Iranian Konkur education brand. The live property is biomaze.ir — packages, online classes and national practice exams under one roof.',
-      'Over three part-time years the brief was to design the public website and the learning panel, and to leave engineers a design system so both surfaces could ship without reinventing chrome on every screen.',
+      'Part-time from 2022 to 2025, the brief was to design the public website and the learning panel, and to leave engineers a design system so both surfaces could ship without reinventing chrome on every screen.',
     ],
     figureCaption: 'Brand mark from the BioMaze | Design cover page — ماز as maze and growth.',
   },
@@ -170,8 +170,8 @@ const EN: BioCopy = {
       'The design-system boards consumed by both surfaces.',
       'Keeping playground and warehouse website iterations readable beside “main”.',
     ],
-    collaborate: ['Engineering delivery of biomaze.ir and the panel (team size to confirm).'],
-    note: 'Exact calendar dates and team roster are open questions in the Docs README.',
+    collaborate: ['Engineering delivery of biomaze.ir and the panel.'],
+    note: 'Part-time, 2022–2025. Every panel page and every website page shipped; the home page on biomaze.ir today is not this work.',
   },
   approach: {
     heading: 'The file is the process record',
@@ -233,7 +233,7 @@ const EN: BioCopy = {
   },
   solutionWeb: {
     heading: 'The public website',
-    body: 'Eight website pages cover home, Konkur and rank tools, packages and shop, schedule and campaign landings — with playground and warehouse iterations kept beside main.',
+    body: 'Eight website pages cover home, Konkur and rank tools, packages and shop, schedule and campaign landings — with playground and warehouse iterations kept beside main. The Konkur tools, shop, schedule and campaign pages went live; the home page on biomaze.ir today is not this work, so the hero below is an exploration.',
     bullets: [
       'Website | Main — Home, Konkoor, Nahai and Shop sections.',
       'Website | Playground and Warehouse — home and shop explorations plus live-site captures.',
@@ -244,7 +244,7 @@ const EN: BioCopy = {
   designSystem: {
     heading: 'Design system as a chapter, not a separate case study',
     body: [
-      'The Design System page holds colour, typography, buttons, form fields, modal, side menu, header and footer, toast, profile, breadcrumbs, toggles and brand icons — versioned as 0.0.1 on the boards.',
+      'The Design System page holds colour, typography, buttons, form fields, modal, side menu, header and footer, toast, profile, breadcrumbs, toggles and brand icons — versioned as 0.0.1 on the boards. Its tokens became Figma variables, not just static boards.',
       'BIO-02 stays an archive row on /work; this case study is the published umbrella, with the kit shown as the shared language behind both surfaces.',
     ],
     figureCaption: 'Colour, button states and RTL form fields from the kit.',
@@ -271,14 +271,14 @@ const EN: BioCopy = {
     ],
     delivered: {
       label: '1 shared kit',
-      context: 'Design System plus icon and tooltip pages consumed by panel instances.',
+      context: 'Design System with its tokens as Figma variables, plus icon and tooltip pages consumed by panel instances.',
     },
     shipped: [
-      'Public website boards for home, shop and campaigns',
+      'Public website pages for Konkur tools, shop and campaigns',
       'Learning panel for classes, exams, live and wallet',
       'Auth flows (OTP and password)',
       'Responsive panel frames at three widths',
-      'Colour, button and form boards for engineering',
+      'Figma variables plus colour, button and form boards for engineering',
     ],
   },
   lessons: {
@@ -305,13 +305,13 @@ const FA: BioCopy = {
     'وب‌سایت عمومی و پنل یادگیری راست‌به‌چپ ماز: کلاس، آزمون، کلاس زنده و کیف پول — یک فایل Figma با سیستم طراحی موازی.',
   industry: 'آموزش · کنکور (ایران)',
   team: 'مدیر محصول و طراح، پاره‌وقت، کنار تیم فنی بایومیز',
-  heroCaption: 'سطح کلاس‌های پنل آموزش روی دسکتاپ و تبلت — کارت استاد، زمان‌بندی و کروم مشترک پنل.',
+  heroCaption: 'سطح کلاس‌های پنل آموزش روی دسکتاپ — کارت استاد، زمان‌بندی و کروم مشترک پنل.',
   snapshot: {
     problem:
       'برند رو‌به‌رشد کنکور به یک سطح دیجیتال منسجم نیاز داشت: وب برای متقاضی و پنل برای دانش‌آموز — بدون واگرایی UI در هر صفحه.',
     role: 'مدیر محصول و طراح روی وب‌سایت عمومی، پنل یادگیری و سیستم طراحی مشترک.',
     result:
-      'فایل ۳۲صفحه‌ای برای وب، پنل و بردهای سیستم؛ دامنه‌های پنل با نام شغل (کلاس، آزمون، زنده، کیف پول، احراز هویت) و فریم‌های ریسپانسیو.',
+      'پنل یادگیری و وب‌سایت عمومی هر دو روی biomaze.ir منتشر شدند، با طراحی در یک فایل ۳۲صفحه‌ای و یک کیت مشترک.',
   },
   alt: {
     cover: 'پنل آموزش بایومیز — فهرست کلاس‌ها روی دسکتاپ به فارسی، با کارت استاد و کروم پنل',
@@ -333,7 +333,7 @@ const FA: BioCopy = {
     heading: 'ماز به سایتی قابل اعتماد و پنلی برای زندگی روزمره نیاز داشت',
     body: [
       'بایومیز / گروه آموزشی ماز برند سراسری آموزش کنکور است. ملک زنده biomaze.ir است — بسته، کلاس آنلاین و آزمون آزمایشی زیر یک سقف.',
-      'در سه سال پاره‌وقت، کار طراحی وب‌سایت عمومی و پنل یادگیری بود و گذاشتن سیستم طراحی برای تیم فنی تا هر دو سطح بدون اختراع دوباره‌ی کروم منتشر شوند.',
+      'از ۲۰۲۲ تا ۲۰۲۵ و به‌صورت پاره‌وقت، کار طراحی وب‌سایت عمومی و پنل یادگیری بود و گذاشتن سیستم طراحی برای تیم فنی تا هر دو سطح بدون اختراع دوباره‌ی کروم منتشر شوند.',
     ],
     figureCaption: 'نشان از صفحه Cover فایل BioMaze | Design.',
   },
@@ -358,8 +358,8 @@ const FA: BioCopy = {
       'بردهای سیستم طراحی مصرف‌شده در هر دو سطح.',
       'خوانا نگه داشتن تکرارهای playground و warehouse کنار main.',
     ],
-    collaborate: ['تحویل مهندسی biomaze.ir و پنل (اندازه‌ی تیم تأیید شود).'],
-    note: 'تاریخ دقیق و ترکیب تیم در README اسناد باز است.',
+    collaborate: ['تحویل مهندسی biomaze.ir و پنل.'],
+    note: 'پاره‌وقت، ۲۰۲۲ تا ۲۰۲۵. همه‌ی صفحه‌های پنل و همه‌ی صفحه‌های وب‌سایت منتشر شدند؛ صفحه‌ی اصلی فعلی biomaze.ir جزو این کار نیست.',
   },
   approach: {
     heading: 'فایل همان سابقه‌ی فرایند است',
@@ -421,7 +421,7 @@ const FA: BioCopy = {
   },
   solutionWeb: {
     heading: 'وب‌سایت عمومی',
-    body: 'هشت صفحه‌ی وب خانه، ابزار کنکور و رتبه، بسته و فروشگاه، برنامه و لندینگ کمپین را پوشش می‌دهد — با تکرارهای playground و warehouse کنار main.',
+    body: 'هشت صفحه‌ی وب خانه، ابزار کنکور و رتبه، بسته و فروشگاه، برنامه و لندینگ کمپین را پوشش می‌دهد — با تکرارهای playground و warehouse کنار main. صفحه‌های ابزار کنکور، فروشگاه، برنامه و کمپین منتشر شدند؛ صفحه‌ی اصلی فعلی biomaze.ir جزو این کار نیست، پس هیروی زیر یک اکتشاف است.',
     bullets: [
       'Website | Main — Home، Konkoor، Nahai و Shop.',
       'Website | Playground و Warehouse — اکتشاف خانه و فروشگاه به‌همراه کپچر زنده.',
@@ -432,7 +432,7 @@ const FA: BioCopy = {
   designSystem: {
     heading: 'سیستم طراحی به‌عنوان فصل، نه مطالعه‌ی جدا',
     body: [
-      'صفحه‌ی Design System رنگ، تایپ، دکمه، فیلد فرم، مودال، منوی کناری، هدر و فوتر، توست، پروفایل، بردکرامب، تاگل و آیکون برند را نگه می‌دارد — نسخه‌ی ۰٫۰٫۱ روی بردها.',
+      'صفحه‌ی Design System رنگ، تایپ، دکمه، فیلد فرم، مودال، منوی کناری، هدر و فوتر، توست، پروفایل، بردکرامب، تاگل و آیکون برند را نگه می‌دارد — نسخه‌ی ۰٫۰٫۱ روی بردها. توکن‌ها به متغیرهای Figma تبدیل شدند، نه فقط بردهای ثابت.',
       'BIO-02 ردیف آرشیو می‌ماند؛ این مطالعه چتر منتشرشده است و کیت را زبان مشترک هر دو سطح نشان می‌دهد.',
     ],
     figureCaption: 'رنگ، حالت دکمه و فیلدهای RTL از کیت.',
@@ -459,14 +459,14 @@ const FA: BioCopy = {
     ],
     delivered: {
       label: '۱ کیت مشترک',
-      context: 'Design System به‌همراه صفحات آیکون و تولتیپ مصرف‌شده در نمونه‌های پنل.',
+      context: 'Design System با توکن‌هایی به‌شکل متغیرهای Figma، به‌همراه صفحات آیکون و تولتیپ مصرف‌شده در نمونه‌های پنل.',
     },
     shipped: [
-      'بردهای وب عمومی برای خانه، فروشگاه و کمپین',
+      'صفحه‌های وب عمومی برای ابزار کنکور، فروشگاه و کمپین',
       'پنل یادگیری برای کلاس، آزمون، زنده و کیف پول',
       'جریان‌های احراز هویت (OTP و رمز)',
       'فریم‌های ریسپانسیو پنل در سه عرض',
-      'برد رنگ، دکمه و فرم برای مهندسی',
+      'متغیرهای Figma و برد رنگ، دکمه و فرم برای مهندسی',
     ],
   },
   lessons: {
@@ -494,13 +494,13 @@ const AR: BioCopy = {
     'موقع عام ولوحة تعلّم من اليمين لليسار لماز: صفوف وامتحانات وبث ومحفظة — ملف Figma واحد مع نظام تصميم موازٍ.',
   industry: 'تعليم · كنكور (إيران)',
   team: 'مدير منتج ومصمم بدوام جزئي مع فريق هندسة بايوميز',
-  heroCaption: 'سطح الصفوف في لوحة التعليم على سطح المكتب والجهاز اللوحي.',
+  heroCaption: 'سطح الصفوف في لوحة التعليم على سطح المكتب.',
   snapshot: {
     problem:
       'علامة كنكور نامية احتاجت سطحاً رقمياً متماسكاً للزائر على الويب وللطالب داخل اللوحة — دون تباعد واجهات في كل صفحة.',
     role: 'مدير منتج ومصمم عبر الموقع العام ولوحة التعلّم ونظام التصميم المشترك.',
     result:
-      'ملف من 32 صفحة يغطي الموقع واللوحة وألواح النظام؛ نطاقات اللوحة مسماة بالمهام مع إطارات متجاوبة.',
+      'أُطلقت لوحة التعلّم والموقع العام كلاهما على biomaze.ir، بتصميم في ملف واحد من 32 صفحة مع عدّة مشتركة.',
   },
   alt: {
     cover: 'لوحة تعليم بايوميز — قائمة الصفوف على سطح المكتب بالفارسية',
@@ -522,7 +522,7 @@ const AR: BioCopy = {
     heading: 'ماز احتاج موقعاً يُوثق به ولوحة يُعاش فيها',
     body: [
       'بايوميز / مجموعة ماز التعليمية علامة كنكور إيرانية على مستوى البلاد. الملك الحي biomaze.ir.',
-      'على مدى ثلاث سنوات بدوام جزئي كان العمل تصميم الموقع ولوحة التعلّم وترك نظام تصميم للمهندسين.',
+      'من 2022 إلى 2025 بدوام جزئي كان العمل تصميم الموقع ولوحة التعلّم وترك نظام تصميم للمهندسين.',
     ],
     figureCaption: 'شعار الغلاف من ملف BioMaze | Design.',
   },
@@ -547,8 +547,8 @@ const AR: BioCopy = {
       'ألواح نظام التصميم التي يستهلكها السطحان.',
       'الإبقاء على تكرارات playground وwarehouse مقروءة.',
     ],
-    collaborate: ['تسليم هندسة biomaze.ir واللوحة (حجم الفريق للتأكيد).'],
-    note: 'التواريخ الدقيقة وتشكيل الفريق أسئلة مفتوحة في README.',
+    collaborate: ['تسليم هندسة biomaze.ir واللوحة.'],
+    note: 'بدوام جزئي، 2022–2025. أُطلقت كل صفحات اللوحة وكل صفحات الموقع؛ الصفحة الرئيسية الحالية لـ biomaze.ir ليست من هذا العمل.',
   },
   approach: {
     heading: 'الملف هو سجل العملية',
@@ -609,7 +609,7 @@ const AR: BioCopy = {
   },
   solutionWeb: {
     heading: 'الموقع العام',
-    body: 'ثماني صفحات للموقع تغطي الرئيسية وأدوات الكنكور والمتجر والحملات.',
+    body: 'ثماني صفحات للموقع تغطي الرئيسية وأدوات الكنكور والمتجر والحملات. أُطلقت صفحات أدوات الكنكور والمتجر والجدول والحملات؛ الصفحة الرئيسية الحالية ليست من هذا العمل، لذا فالواجهة أدناه استكشاف.',
     bullets: [
       'Website | Main — الرئيسية وكنكور ونهاي والمتجر.',
       'Playground وWarehouse — استكشافات مع لقطات حية.',
@@ -620,7 +620,7 @@ const AR: BioCopy = {
   designSystem: {
     heading: 'نظام التصميم كفصل لا دراسة منفصلة',
     body: [
-      'صفحة Design System تحوي اللون والنوع والأزرار والنماذج والإطار — الإصدار 0.0.1.',
+      'صفحة Design System تحوي اللون والنوع والأزرار والنماذج والإطار — الإصدار 0.0.1. تحوّلت رموز التصميم إلى متغيرات Figma، لا مجرد ألواح ثابتة.',
       'BIO-02 يبقى صف أرشيف؛ هذه الدراسة هي المظلة المنشورة.',
     ],
     figureCaption: 'اللون وحالات الأزرار وحقول RTL.',
@@ -647,14 +647,14 @@ const AR: BioCopy = {
     ],
     delivered: {
       label: 'عدّة واحدة مشتركة',
-      context: 'نظام التصميم مع صفحات الأيقونات والتلميحات.',
+      context: 'نظام التصميم برموز على شكل متغيرات Figma، مع صفحات الأيقونات والتلميحات.',
     },
     shipped: [
-      'ألواح الموقع للرئيسية والمتجر والحملات',
+      'صفحات الموقع لأدوات الكنكور والمتجر والحملات',
       'لوحة التعلّم للصفوف والامتحانات والبث والمحفظة',
       'مسارات الهوية',
       'إطارات متجاوبة بثلاثة عروض',
-      'ألواح اللون والأزرار والنماذج',
+      'متغيرات Figma وألواح اللون والأزرار والنماذج',
     ],
   },
   lessons: {
@@ -682,13 +682,13 @@ const ES: BioCopy = {
     'Sitio público y panel RTL de Maz: clases, exámenes, clase en vivo y monedero — un archivo Figma con el design system en paralelo.',
   industry: 'Edtech · educación Konkur (Irán)',
   team: 'Product manager y diseñador a tiempo parcial con el equipo de ingeniería de Biomaze',
-  heroCaption: 'La superficie de clases del panel en escritorio y tableta.',
+  heroCaption: 'La superficie de clases del panel en escritorio.',
   snapshot: {
     problem:
       'Una marca Konkur en crecimiento necesitaba una superficie digital coherente para prospectos en la web y alumnos en el panel.',
     role: 'Product manager y diseñador del sitio público, el panel de aprendizaje y el design system compartido.',
     result:
-      'Un archivo de 32 páginas que cubre web, panel y sistema; dominios del panel nombrados por tarea, con marcos responsive.',
+      'El panel de aprendizaje y la web pública salieron en vivo en biomaze.ir, diseñados en un archivo de 32 páginas con un kit compartido.',
   },
   alt: {
     cover: 'Panel Biomaze — lista de clases en escritorio en persa',
@@ -710,7 +710,7 @@ const ES: BioCopy = {
     heading: 'Maz necesitaba un sitio de confianza y un panel habitable',
     body: [
       'Biomaze / grupo educativo Maz es una marca Konkur iraní de alcance nacional. La propiedad en vivo es biomaze.ir.',
-      'Durante tres años a tiempo parcial el encargo fue diseñar el sitio y el panel, y dejar un design system para ingeniería.',
+      'De 2022 a 2025, a tiempo parcial, el encargo fue diseñar el sitio y el panel, y dejar un design system para ingeniería.',
     ],
     figureCaption: 'Marca de la portada de BioMaze | Design.',
   },
@@ -735,8 +735,8 @@ const ES: BioCopy = {
       'Tableros del design system consumidos por ambas superficies.',
       'Mantener legibles playground y warehouse junto a main.',
     ],
-    collaborate: ['Entrega de ingeniería de biomaze.ir y el panel (tamaño del equipo por confirmar).'],
-    note: 'Fechas exactas y equipo son preguntas abiertas en el README.',
+    collaborate: ['Entrega de ingeniería de biomaze.ir y el panel.'],
+    note: 'A tiempo parcial, 2022–2025. Todas las páginas del panel y de la web salieron en vivo; la página de inicio actual de biomaze.ir no es parte de este trabajo.',
   },
   approach: {
     heading: 'El archivo es el registro del proceso',
@@ -797,7 +797,7 @@ const ES: BioCopy = {
   },
   solutionWeb: {
     heading: 'El sitio público',
-    body: 'Ocho páginas web cubren inicio, Konkur, tienda y campañas.',
+    body: 'Ocho páginas web cubren inicio, Konkur, tienda y campañas. Las páginas de Konkur, tienda, calendario y campañas salieron en vivo; el inicio actual no es parte de este trabajo, así que el héroe de abajo es una exploración.',
     bullets: [
       'Website | Main — Home, Konkoor, Nahai y Shop.',
       'Playground y Warehouse — exploraciones con capturas en vivo.',
@@ -808,7 +808,7 @@ const ES: BioCopy = {
   designSystem: {
     heading: 'Design system como capítulo, no como caso aparte',
     body: [
-      'La página Design System guarda color, tipografía, botones, formularios y chrome — versión 0.0.1.',
+      'La página Design System guarda color, tipografía, botones, formularios y chrome — versión 0.0.1. Sus tokens se convirtieron en variables de Figma, no solo tableros estáticos.',
       'BIO-02 sigue siendo fila de archivo; este caso es el paraguas publicado.',
     ],
     figureCaption: 'Color, estados de botón y campos RTL.',
@@ -835,14 +835,14 @@ const ES: BioCopy = {
     ],
     delivered: {
       label: '1 kit compartido',
-      context: 'Design System más iconos y tooltips.',
+      context: 'Design System con sus tokens como variables de Figma, más iconos y tooltips.',
     },
     shipped: [
-      'Tableros web de inicio, tienda y campañas',
+      'Páginas web de Konkur, tienda y campañas',
       'Panel de clases, exámenes, vivo y monedero',
       'Flujos de autenticación',
       'Marcos responsive a tres anchos',
-      'Tableros de color, botón y formulario',
+      'Variables de Figma y tableros de color, botón y formulario',
     ],
   },
   lessons: {
@@ -870,13 +870,13 @@ const DE: BioCopy = {
     'Öffentliche Website und RTL-Lernpanel für Maz: Kurse, Prüfungen, Live-Klasse und Wallet — eine Figma-Datei mit parallel gebautem Design-System.',
   industry: 'Edtech · Konkur-Bildung (Iran)',
   team: 'Product Manager & Designer in Teilzeit mit Biomazes Engineering-Team',
-  heroCaption: 'Die Kursfläche des Panels auf Desktop und Tablet.',
+  heroCaption: 'Die Kursfläche des Panels auf dem Desktop.',
   snapshot: {
     problem:
       'Eine wachsende Konkur-Marke brauchte eine kohärente digitale Fläche für Interessenten im Web und Schüler im Panel.',
     role: 'Product Manager & Designer für Website, Lernpanel und gemeinsames Design-System.',
     result:
-      'Eine 32-Seiten-Datei für Web, Panel und System; Panel-Domänen nach Aufgabe benannt, mit responsiven Frames.',
+      'Lernpanel und öffentliche Website gingen beide auf biomaze.ir live, gestaltet in einer 32-Seiten-Datei mit gemeinsamem Kit.',
   },
   alt: {
     cover: 'Biomaze-Panel — Kursliste auf dem Desktop auf Persisch',
@@ -898,7 +898,7 @@ const DE: BioCopy = {
     heading: 'Maz brauchte eine vertrauenswürdige Site und ein bewohnbares Panel',
     body: [
       'Biomaze / Bildungsgruppe Maz ist eine landesweite iranische Konkur-Marke. Die Live-Präsenz ist biomaze.ir.',
-      'Über drei Teilzeitjahre ging es um Website und Lernpanel sowie ein Design-System für die Entwicklung.',
+      'Von 2022 bis 2025 ging es in Teilzeit um Website und Lernpanel sowie ein Design-System für die Entwicklung.',
     ],
     figureCaption: 'Markenzeichen von der Cover-Seite in BioMaze | Design.',
   },
@@ -923,8 +923,8 @@ const DE: BioCopy = {
       'Design-System-Boards für beide Flächen.',
       'Playground- und Warehouse-Iterationen lesbar neben main halten.',
     ],
-    collaborate: ['Engineering-Lieferung von biomaze.ir und Panel (Teamgröße bestätigen).'],
-    note: 'Genaue Daten und Team sind offene Fragen im Docs-README.',
+    collaborate: ['Engineering-Lieferung von biomaze.ir und Panel.'],
+    note: 'Teilzeit, 2022–2025. Alle Panel- und Website-Seiten gingen live; die heutige Startseite von biomaze.ir gehört nicht zu dieser Arbeit.',
   },
   approach: {
     heading: 'Die Datei ist das Prozessprotokoll',
@@ -985,7 +985,7 @@ const DE: BioCopy = {
   },
   solutionWeb: {
     heading: 'Die öffentliche Website',
-    body: 'Acht Website-Seiten decken Home, Konkur, Shop und Kampagnen ab.',
+    body: 'Acht Website-Seiten decken Home, Konkur, Shop und Kampagnen ab. Konkur-, Shop-, Termin- und Kampagnenseiten gingen live; die heutige Startseite gehört nicht zu dieser Arbeit, der Hero unten ist daher eine Exploration.',
     bullets: [
       'Website | Main — Home, Konkoor, Nahai und Shop.',
       'Playground und Warehouse — Explorationen mit Live-Captures.',
@@ -996,7 +996,7 @@ const DE: BioCopy = {
   designSystem: {
     heading: 'Design-System als Kapitel, nicht als eigene Case Study',
     body: [
-      'Die Design-System-Seite hält Farbe, Typo, Buttons, Formulare und Chrome — Version 0.0.1.',
+      'Die Design-System-Seite hält Farbe, Typo, Buttons, Formulare und Chrome — Version 0.0.1. Die Tokens wurden zu Figma-Variablen, nicht nur statische Boards.',
       'BIO-02 bleibt Archivzeile; diese Case Study ist der veröffentlichte Schirm.',
     ],
     figureCaption: 'Farbe, Button-Zustände und RTL-Felder.',
@@ -1023,14 +1023,14 @@ const DE: BioCopy = {
     ],
     delivered: {
       label: '1 gemeinsames Kit',
-      context: 'Design-System plus Icon- und Tooltip-Seiten.',
+      context: 'Design-System mit Tokens als Figma-Variablen, plus Icon- und Tooltip-Seiten.',
     },
     shipped: [
-      'Website-Boards für Home, Shop und Kampagnen',
+      'Website-Seiten für Konkur, Shop und Kampagnen',
       'Lernpanel für Kurse, Prüfungen, Live und Wallet',
       'Auth-Flows',
       'Responsive Panel-Frames in drei Breiten',
-      'Farb-, Button- und Formular-Boards',
+      'Figma-Variablen plus Farb-, Button- und Formular-Boards',
     ],
   },
   lessons: {
@@ -1058,13 +1058,13 @@ const FR: BioCopy = {
     'Site public et panneau RTL de Maz : cours, examens, classe en direct et portefeuille — un fichier Figma avec le design system en parallèle.',
   industry: 'Edtech · éducation Konkur (Iran)',
   team: 'Product manager et designer à temps partiel avec l’équipe d’ingénierie de Biomaze',
-  heroCaption: 'La surface des cours du panneau sur bureau et tablette.',
+  heroCaption: 'La surface des cours du panneau sur ordinateur.',
   snapshot: {
     problem:
       'Une marque Konkur en croissance avait besoin d’une surface numérique cohérente pour les prospects sur le web et les élèves dans le panneau.',
     role: 'Product manager et designer du site public, du panneau d’apprentissage et du design system partagé.',
     result:
-      'Un fichier de 32 pages couvrant site, panneau et système ; domaines du panneau nommés par tâche, avec cadres responsive.',
+      'Le panneau d’apprentissage et le site public ont été mis en ligne sur biomaze.ir, conçus dans un seul fichier de 32 pages avec un kit partagé.',
   },
   alt: {
     cover: 'Panneau Biomaze — liste des cours sur bureau en persan',
@@ -1086,7 +1086,7 @@ const FR: BioCopy = {
     heading: 'Maz avait besoin d’un site de confiance et d’un panneau habitable',
     body: [
       'Biomaze / groupe éducatif Maz est une marque Konkur iranienne nationale. La propriété live est biomaze.ir.',
-      'Sur trois ans à temps partiel, le brief était de concevoir le site et le panneau, et de laisser un design system à l’ingénierie.',
+      'De 2022 à 2025, à temps partiel, le brief était de concevoir le site et le panneau, et de laisser un design system à l’ingénierie.',
     ],
     figureCaption: 'Marque de la page Cover de BioMaze | Design.',
   },
@@ -1111,8 +1111,8 @@ const FR: BioCopy = {
       'Planches du design system consommées par les deux surfaces.',
       'Garder playground et warehouse lisibles à côté de main.',
     ],
-    collaborate: ['Livraison ingénierie de biomaze.ir et du panneau (taille d’équipe à confirmer).'],
-    note: 'Dates exactes et équipe sont des questions ouvertes dans le README Docs.',
+    collaborate: ['Livraison ingénierie de biomaze.ir et du panneau.'],
+    note: 'Temps partiel, 2022–2025. Toutes les pages du panneau et du site ont été mises en ligne ; la page d’accueil actuelle de biomaze.ir ne fait pas partie de ce travail.',
   },
   approach: {
     heading: 'Le fichier est le registre du process',
@@ -1173,7 +1173,7 @@ const FR: BioCopy = {
   },
   solutionWeb: {
     heading: 'Le site public',
-    body: 'Huit pages web couvrent l’accueil, Konkur, la boutique et les campagnes.',
+    body: 'Huit pages web couvrent l’accueil, Konkur, la boutique et les campagnes. Les pages Konkur, boutique, planning et campagnes ont été mises en ligne ; l’accueil actuel ne fait pas partie de ce travail, le hero ci-dessous est donc une exploration.',
     bullets: [
       'Website | Main — Home, Konkoor, Nahai et Shop.',
       'Playground et Warehouse — explorations avec captures live.',
@@ -1184,7 +1184,7 @@ const FR: BioCopy = {
   designSystem: {
     heading: 'Design system comme chapitre, pas comme étude séparée',
     body: [
-      'La page Design System tient couleur, type, boutons, formulaires et chrome — version 0.0.1.',
+      'La page Design System tient couleur, type, boutons, formulaires et chrome — version 0.0.1. Ses tokens sont devenus des variables Figma, pas seulement des planches statiques.',
       'BIO-02 reste une ligne d’archive ; cette étude est le parapluie publié.',
     ],
     figureCaption: 'Couleur, états de bouton et champs RTL.',
@@ -1211,14 +1211,14 @@ const FR: BioCopy = {
     ],
     delivered: {
       label: '1 kit partagé',
-      context: 'Design system plus icônes et tooltips.',
+      context: 'Design system avec ses tokens en variables Figma, plus icônes et tooltips.',
     },
     shipped: [
-      'Planches site pour accueil, boutique et campagnes',
+      'Pages du site pour Konkur, boutique et campagnes',
       'Panneau pour cours, examens, live et portefeuille',
       'Parcours d’authentification',
       'Cadres responsive sur trois largeurs',
-      'Planches couleur, bouton et formulaire',
+      'Variables Figma et planches couleur, bouton et formulaire',
     ],
   },
   lessons: {
@@ -1246,13 +1246,13 @@ const JA: BioCopy = {
     'Mazの公開サイトとRTL学習パネル。授業・試験・ライブ・ウォレットを、デザインシステムと並行した1つのFigmaファイルで設計した。',
   industry: 'エドテック · コンクール教育（イラン）',
   team: 'プロダクトマネージャー／デザイナー（パートタイム）、Biomazeのエンジニアリングチームと連携',
-  heroCaption: '教育パネルの授業一覧。デスクトップとタブレット。',
+  heroCaption: '教育パネルの授業一覧。デスクトップ。',
   snapshot: {
     problem:
       '成長中のコンクールブランドには、Webの見込み客とパネル内の生徒をつなぐ一貫したデジタル面が必要だった。',
     role: '公開サイト、学習パネル、共有デザインシステムを担うプロダクトマネージャー／デザイナー。',
     result:
-      'Web・パネル・システムを覆う32ページのファイル。パネル領域は仕事名で整理し、レスポンシブフレームを持つ。',
+      '学習パネルと公開サイトはともに biomaze.ir で公開された。設計は共有キットを持つ32ページのファイル1つで行った。',
   },
   alt: {
     cover: 'Biomaze教育パネル — デスクトップの授業一覧（ペルシア語）',
@@ -1274,7 +1274,7 @@ const JA: BioCopy = {
     heading: 'Mazには信頼できるサイトと、生活できるパネルが必要だった',
     body: [
       'Biomaze／教育グループMazはイラン全国のコンクール教育ブランド。ライブのプロパティは biomaze.ir。',
-      'パートタイム3年の課題は、公開サイトと学習パネルを設計し、エンジニアが両面を出荷できるデザインシステムを残すことだった。',
+      '2022年から2025年までパートタイムで担った課題は、公開サイトと学習パネルを設計し、エンジニアが両面を出荷できるデザインシステムを残すことだった。',
     ],
     figureCaption: 'BioMaze | Design のカバーにあるブランドマーク。',
   },
@@ -1299,8 +1299,8 @@ const JA: BioCopy = {
       '両面が消費するデザインシステムボード。',
       'playground と warehouse を main の隣で読める状態に保つこと。',
     ],
-    collaborate: ['biomaze.ir とパネルのエンジニアリング納品（チーム規模は確認中）。'],
-    note: '正確な日付とチーム編成は Docs README の未解決事項。',
+    collaborate: ['biomaze.ir とパネルのエンジニアリング納品。'],
+    note: 'パートタイム、2022〜2025年。パネルとWebサイトの全ページが公開された。現在の biomaze.ir のホームページはこの仕事ではない。',
   },
   approach: {
     heading: 'ファイルそのものがプロセス記録',
@@ -1361,7 +1361,7 @@ const JA: BioCopy = {
   },
   solutionWeb: {
     heading: '公開ウェブサイト',
-    body: '8つのWebページがホーム、コンクール、ショップ、キャンペーンを覆う。',
+    body: '8つのWebページがホーム、コンクール、ショップ、キャンペーンを覆う。コンクール、ショップ、スケジュール、キャンペーンのページは公開された。現在のホームはこの仕事ではないため、下のヒーローは探索案として示す。',
     bullets: [
       'Website | Main — Home、Konkoor、Nahai、Shop。',
       'Playground と Warehouse — ライブキャプチャ付きの探索。',
@@ -1372,7 +1372,7 @@ const JA: BioCopy = {
   designSystem: {
     heading: '別ケースではなく章としてのデザインシステム',
     body: [
-      'Design System ページはカラー、タイプ、ボタン、フォーム、クロムを持つ — バージョン 0.0.1。',
+      'Design System ページはカラー、タイプ、ボタン、フォーム、クロムを持つ — バージョン 0.0.1。トークンは静的なボードにとどまらず、Figma変数になった。',
       'BIO-02 はアーカイブ行のまま。このケースが公開された傘になる。',
     ],
     figureCaption: 'カラー、ボタン状態、RTLフォーム。',
@@ -1399,14 +1399,14 @@ const JA: BioCopy = {
     ],
     delivered: {
       label: '共有キット1つ',
-      context: 'デザインシステムとアイコン／ツールチップページ。',
+      context: 'トークンをFigma変数として持つデザインシステムと、アイコン／ツールチップページ。',
     },
     shipped: [
-      'ホーム・ショップ・キャンペーンのWebボード',
+      'コンクール・ショップ・キャンペーンのWebページ',
       '授業・試験・ライブ・ウォレットの学習パネル',
       '認証フロー',
       '3幅のレスポンシブパネルフレーム',
-      'カラー・ボタン・フォームボード',
+      'Figma変数とカラー・ボタン・フォームボード',
     ],
   },
   lessons: {
@@ -1529,22 +1529,32 @@ export function bioSections(locale: Locale, media: BioMediaIds): Sections {
       id: 'bio-s09',
       blockType: 'csFigure',
       layout: 'sequence',
-      treatment: 'screen',
+      treatment: 'plain',
       items: [
-        ...item('cover', 'bio-f09-1'),
+        ...item('classesTablet', 'bio-f09-1'),
         ...item('login', 'bio-f09-2'),
         ...item('live', 'bio-f09-3'),
         ...item('wallet', 'bio-f09-4'),
       ],
       caption: c.solutionPanel.figureCaption,
     },
+    // The exam flow at both widths: a figure has one treatment, so the desktop frame and the phone
+    // frame are two figures rather than one split that would crop the desktop into a phone.
     {
       id: 'bio-s10',
       blockType: 'csFigure',
-      layout: 'split',
-      treatment: 'screen',
-      items: [...item('examDesktop', 'bio-f10-1'), ...item('examMobile', 'bio-f10-2')],
+      layout: 'full',
+      treatment: 'plain',
+      items: [...item('examDesktop', 'bio-f10-1')],
       caption: c.alt.examDesktop,
+    },
+    {
+      id: 'bio-s10b',
+      blockType: 'csFigure',
+      layout: 'full',
+      treatment: 'screen',
+      items: [...item('examMobile', 'bio-f10-2')],
+      caption: c.alt.examMobile,
     },
     {
       id: 'bio-s11',
@@ -1557,7 +1567,7 @@ export function bioSections(locale: Locale, media: BioMediaIds): Sections {
       id: 'bio-s12',
       blockType: 'csFigure',
       layout: 'sequence',
-      treatment: 'screen',
+      treatment: 'plain',
       items: [
         ...item('websiteHero', 'bio-f12-1'),
         ...item('websiteCampaign', 'bio-f12-2'),
@@ -1629,7 +1639,8 @@ export function bioLocalizedFields(locale: Locale, media: BioMediaIds) {
     industry: c.industry,
     team: c.team,
     hero: {
-      items: (['cover', 'classesTablet', 'examMobile'] as const)
+      // One desktop screen: a hero of two or three renders every item in a phone frame.
+      items: (['cover'] as const)
         .filter((key) => media[key])
         .map((key, index) => ({
           id: `bio-h${String(index + 1).padStart(2, '0')}`,
@@ -1647,7 +1658,9 @@ export function bioLocalizedFields(locale: Locale, media: BioMediaIds) {
   }
 }
 
-export const BIO_SHARED_FIELDS: Pick<Project, 'projectStatus' | 'tools'> = {
+export const BIO_SHARED_FIELDS: Pick<Project, 'projectStatus' | 'tools' | 'period'> = {
   projectStatus: 'shipped',
   tools: ['Figma'],
+  // Sina, 2026-09-27: part-time from 2022 to 2025.
+  period: { start: '2022-01-01T00:00:00.000Z', end: '2025-01-01T00:00:00.000Z' },
 }

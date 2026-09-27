@@ -245,9 +245,9 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         },
         {
           name: 'Biomaze',
-          role: 'Product Manager & designer · 3 yr',
+          role: 'Product Manager & designer · 3 yr · Part time',
           blurb:
-            'Built the website, education panel and a design system so developers could ship fast.',
+            'Designed the education panel and website pages that went live, on a design system built in Figma variables.',
         },
         {
           name: 'Didestan',
@@ -447,9 +447,9 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         },
         {
           name: 'بایومیز',
-          role: 'مدیر محصول و طراح · ۳ سال',
+          role: 'مدیر محصول و طراح · ۳ سال · پاره‌وقت',
           blurb:
-            'وب‌سایت، پنل آموزش و سیستم طراحی را ساختم تا تیم توسعه بتواند سریع‌تر محصول را عرضه کند.',
+            'پنل آموزش و صفحه‌های وب‌سایت را طراحی کردم و همه منتشر شدند؛ سیستم طراحی را هم با متغیرهای فیگما ساختم.',
         },
         {
           name: 'دیدستان',
@@ -651,8 +651,8 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         },
         {
           name: 'بايوميز',
-          role: 'مدير منتج ومصمم · ثلاث سنوات',
-          blurb: 'بنيتُ الموقع ولوحة التعليم ونظام تصميم مكّن المطوّرين من الشحن بسرعة.',
+          role: 'مدير منتج ومصمم · ثلاث سنوات · بدوام جزئي',
+          blurb: 'صمّمتُ لوحة التعليم وصفحات الموقع التي أُطلقت كلها، ونظام تصميم بُني بمتغيرات Figma.',
         },
         {
           name: 'ديدستان',
@@ -856,9 +856,9 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         },
         {
           name: 'Biomaze',
-          role: 'Product Manager y diseñador · 3 años',
+          role: 'Product Manager y diseñador · 3 años · Media jornada',
           blurb:
-            'Construí la web, el panel de formación y un sistema de diseño para que los desarrolladores lanzaran rápido.',
+            'Diseñé el panel de formación y las páginas web que salieron a producción, con un sistema de diseño en variables de Figma.',
         },
         {
           name: 'Didestan',
@@ -1061,9 +1061,9 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         },
         {
           name: 'Biomaze',
-          role: 'Product Manager & Designer · 3 Jahre',
+          role: 'Product Manager & Designer · 3 Jahre · Teilzeit',
           blurb:
-            'Website, Schulungspanel und ein Design-System gebaut, damit Entwickler schnell ausliefern konnten.',
+            'Schulungspanel und Website-Seiten gestaltet, die alle live gingen, auf einem Design-System aus Figma-Variablen.',
         },
         {
           name: 'Didestan',
@@ -1267,9 +1267,9 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         },
         {
           name: 'Biomaze',
-          role: 'Product Manager et designer · 3 ans',
+          role: 'Product Manager et designer · 3 ans · Temps partiel',
           blurb:
-            'J’ai construit le site, le panneau de formation et un design system pour que les développeurs livrent vite.',
+            'J’ai conçu le panneau de formation et les pages du site, tous mis en ligne, sur un design system en variables Figma.',
         },
         {
           name: 'Didestan',
@@ -1471,9 +1471,9 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         },
         {
           name: 'Biomaze',
-          role: 'プロダクトマネージャー／デザイナー · 3年',
+          role: 'プロダクトマネージャー／デザイナー · 3年 · パートタイム',
           blurb:
-            '開発者が速くリリースできるよう、ウェブサイト、教育パネル、デザインシステムを構築した。',
+            '教育パネルとウェブサイトの各ページをデザインし、すべて公開された。デザインシステムはFigma変数で構築した。',
         },
         {
           name: 'Didestan',

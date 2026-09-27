@@ -6,6 +6,10 @@
  * block's limits all fail here instead of halfway through `pnpm seed:case-studies`, after some
  * locales were already written.
  */
+import { existsSync } from 'node:fs'
+import path from 'node:path'
+
+import sharp from 'sharp'
 import { describe, expect, it } from 'vitest'
 
 import { FIGURE_ITEM_COUNT, type FigureLayout } from '@/blocks/CaseStudy/Figure/config'
@@ -241,6 +245,39 @@ describe('every case study names its cover pair', () => {
     expect(keys, 'cover').toContain(cover)
     expect(keys, 'companion').toContain(companion)
     expect(config.media[companion!].name).not.toBe(config.media[cover!].name)
+  })
+})
+
+describe('every phone frame holds a phone capture', () => {
+  // Every item of a two- or three-item hero, every Screen figure, and any portrait image in a
+  // one-item hero or an Auto figure is cropped to a 390×844 phone viewport, so a desktop or tablet capture there loses both sides
+  // (Biomaze, 2026-09-27). Phone captures are exported under 1,000 px wide. `Docs/` is local-only,
+  // so a file that is not on disk is skipped.
+  it.each(CASE_STUDIES.map((config) => [config.label, config] as const))('%s', async (_label, config) => {
+    const fields = config.localizedFields('en', fakeMedia(config.media)) as CaseStudyLocalizedFields
+    const hero = fields.hero?.items ?? []
+    const figures = rowsOf(fields.sections).filter((block) => block.blockType === 'csFigure')
+    const framed = [
+      ...hero.map((item) => ({ media: item.media, portraitOnly: hero.length === 1 })),
+      ...figures
+        .filter(
+          (block) =>
+            block.treatment === 'screen' || (block.treatment === 'auto' && block.layout !== 'pages'),
+        )
+        .flatMap((block) =>
+          (block.items as Row[]).map((item) => ({ media: item.media, portraitOnly: block.treatment === 'auto' })),
+        ),
+    ]
+    const problems: string[] = []
+    for (const { media, portraitOnly } of framed) {
+      const spec = config.media[String(media).replace(/^media:/, '')]
+      const file = spec && path.resolve(config.assetsDir, spec.file)
+      if (!file || !existsSync(file)) continue
+      const { width = 0, height = 0 } = await sharp(file).metadata()
+      if (portraitOnly && height <= width) continue
+      if (width >= 1000) problems.push(`${spec.file} is ${width}×${height}`)
+    }
+    expect(problems).toEqual([])
   })
 })
 
