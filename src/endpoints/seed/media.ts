@@ -43,6 +43,21 @@ export async function readAsset(
   }
 }
 
+/**
+ * The `filesize` Payload will store for this file. Payload runs WebP, GIF and AVIF (the types it
+ * treats as possibly animated) through sharp on upload and keeps the re-encoded bytes, so their
+ * stored size never equals the file on disk — comparing raw sizes re-uploaded every WebP on each
+ * re-seed. Re-encoding the same way reproduces the stored size exactly.
+ */
+export async function storedFilesize(payload: Payload, file: File): Promise<number> {
+  const sharp = payload.config.sharp
+  if (!sharp || !['image/webp', 'image/gif', 'image/avif'].includes(file.mimetype)) return file.size
+  const { data } = await sharp(file.data, { animated: true })
+    .rotate()
+    .toBuffer({ resolveWithObject: true })
+  return data.byteLength
+}
+
 /** Where the media collection writes its files — `public/media` unless the config moves it. */
 function mediaStaticDir(payload: Payload): string | undefined {
   const upload = payload.config.collections.find((c) => c.slug === 'media')?.upload
@@ -88,7 +103,7 @@ export async function upsertMedia(
   } else {
     const file = await readAsset(assetsDir, spec.file, spec.name)
     // A re-export changed the bytes — swap the file on the document rather than adding a second one.
-    if (file && file.size !== current.filesize) {
+    if (file && (await storedFilesize(payload, file)) !== current.filesize) {
       // Local disk only: Payload picks `name-1.png` while the target name is still on disk, so
       // clear the old file first. With Arvan S3 (`S3_BUCKET` set), `disableLocalStorage` is on
       // and the adapter owns object lifecycle on update — skip the fs.rm.
