@@ -94,18 +94,31 @@ describe('complete Work archive', () => {
     expect(container.querySelector('.archive-specimen')).toBeTruthy()
   })
 
-  it('fills the preview frame with object-cover instead of letterboxing', () => {
-    const tall: Media = {
-      ...media('phone'),
-      width: 390,
-      height: 844,
-    }
-    const [row] = toIndexRows([project(1, { slug: 'vin-app', cover: tall })], 'en')
+  it('shows the cover and its companion as two phones on the project tint', () => {
+    const phone = (id: string): Media => ({ ...media(id), width: 390, height: 844 })
+    const [row] = toIndexRows(
+      [project(1, { slug: 'vin-app', cover: phone('lead'), coverCompanion: phone('second') })],
+      'en',
+    )
     const { container } = render(<ArchivePreview row={row} />)
-    const img = container.querySelector('img')!
-    expect(img.className).toContain('object-cover')
-    expect(img.className).not.toContain('object-contain')
-    expect(img.className).toContain('object-[center_30%]')
+    const art = container.querySelector<HTMLElement>('.project-art')!
+    expect(art.getAttribute('data-layout')).toBe('phones')
+    expect(art.style.getPropertyValue('--art-tint')).toBe('#467d79')
+    const [lead, companion] = [...art.querySelectorAll('img')]
+    expect(lead.getAttribute('src')).toContain('lead.png')
+    expect(companion.getAttribute('src')).toContain('second.png')
+    // A phone frame crops from the top instead of letterboxing.
+    expect(lead.className).toContain('object-cover')
+    expect(lead.className).not.toContain('object-contain')
+  })
+
+  it('leans a desktop cover behind a phone companion', () => {
+    const [row] = toIndexRows(
+      [project(1, { cover: media('desk'), coverCompanion: { ...media('phone'), width: 390, height: 844 } })],
+      'en',
+    )
+    const { container } = render(<ArchivePreview row={row} />)
+    expect(container.querySelector('.project-art')!.getAttribute('data-layout')).toBe('desktop-phone')
   })
 
   it('uses cover then a populated hero and never invents an image', () => {

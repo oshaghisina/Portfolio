@@ -4,77 +4,26 @@
   gap: 2.75rem 2rem;
 }
 .work-story {
-  --work-tint: #647c82;
   display: flex;
   min-width: 0;
   flex-direction: column;
   color: var(--foreground);
-}
-.work-story[data-project='vin-app'] {
-  --work-tint: #467d79;
-}
-.work-story[data-project='rp1-arena'] {
-  --work-tint: #8063ac;
-}
-.work-story[data-project='digital-gold'] {
-  --work-tint: #bd9449;
-}
-.work-story[data-project='khodro45-dealer-app'] {
-  --work-tint: #be6947;
 }
 .work-story:focus-visible,
 .work-selection-footer:focus-visible {
   outline: 2px solid var(--ring);
   outline-offset: 6px;
 }
+/* The plate itself is `ProjectArt` (components/ProjectArt/art.css); the mosaic only sizes it. */
 .work-art {
   position: relative;
   overflow: hidden;
-  isolation: isolate;
   aspect-ratio: 6 / 5;
-  background: color-mix(in srgb, var(--work-tint) 22%, var(--paper));
-}
-.work-art::before {
-  content: '';
-  position: absolute;
-  width: 90%;
-  aspect-ratio: 1;
-  inset: 18% auto auto -20%;
-  border: 1px solid color-mix(in srgb, var(--work-tint) 24%, transparent);
-  border-radius: 50%;
-}
-.work-art-screen {
-  position: absolute;
-  overflow: hidden;
-}
-.work-art-lead {
-  inset: 0;
-}
-.work-art[data-portrait] .work-art-lead {
-  inset: 7% auto 7% 50%;
-  aspect-ratio: 9 / 19.7;
-  transform: translateX(-50%);
-  border-radius: 5px;
-  box-shadow: 0 14px 28px -12px #0005;
-}
-.work-art[data-paired] .work-art-lead {
-  left: 65%;
-  transform: translateX(-50%) rotate(4deg);
-}
-.work-art-companion {
-  inset: 18% auto -9% 10%;
-  aspect-ratio: 9 / 19.7;
-  transform: rotate(-5deg);
-  border-radius: 5px;
-  box-shadow: 0 14px 28px -12px #0004;
 }
 .work-art-specimen {
   display: grid;
   place-items: center;
   background: var(--panel);
-}
-.work-art-specimen::before {
-  display: none;
 }
 .work-art-initial {
   color: var(--ink-3);
@@ -165,13 +114,6 @@
 .work-story-note .work-art {
   aspect-ratio: 3 / 4;
 }
-.work-story-note .work-art[data-portrait] .work-art-lead {
-  inset: 0;
-  aspect-ratio: auto;
-  transform: none;
-  border-radius: 0;
-  box-shadow: none;
-}
 .work-story-note .work-story-copy {
   padding: 0;
 }
@@ -253,16 +195,5 @@
   .work-story-note {
     grid-template-columns: 56px minmax(0, 1fr);
     gap: 1rem;
-  }
-}
-@media (hover: hover) and (prefers-reduced-motion: no-preference) {
-  .work-art-screen {
-    transition: translate 350ms ease;
-  }
-  .work-story-featured:where(a):hover .work-art-lead {
-    translate: 0 -5px;
-  }
-  .work-story-featured:where(a):hover .work-art-companion {
-    translate: 0 5px;
   }
 }

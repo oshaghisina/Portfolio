@@ -185,7 +185,8 @@
   font-size: 0.65rem;
   text-shadow: 0 0 0.5rem var(--panel), 0 0 0.25rem var(--panel);
 }
-.archive-preview-media {
+/* The cover plate (`ProjectArt`) fills the frame; its tint replaces the dot grid behind it. */
+.archive-preview .archive-preview-media {
   position: absolute;
   inset: 0;
 }
@@ -331,8 +332,18 @@
     align-self: start;
     border: 1px solid var(--line);
   }
-  .archive-projects[data-view='list'] .archive-preview-media {
-    inset: 0;
+  /* A 144px thumbnail holds one screen: the lead, upright and centred. */
+  .archive-projects[data-view='list'] .project-art-companion {
+    display: none;
+  }
+  .archive-projects[data-view='list'] .project-art-lead.project-art-phone {
+    inset: 8% auto 8% 50%;
+    transform: translateX(-50%);
+  }
+  .archive-projects[data-view='list'] .project-art-lead.project-art-desktop {
+    width: 84%;
+    inset: 50% auto auto 8%;
+    transform: translateY(-50%);
   }
   .archive-projects[data-view='list'] .archive-specimen {
     inset: 20px 10px 10px;

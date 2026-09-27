@@ -1,21 +1,15 @@
 'use client'
 
-import Image from 'next/image'
 import React, { useState } from 'react'
 
-import { getMediaUrl } from '@/utilities/getMediaUrl'
-import { isPortraitMedia } from '@/components/ProjectCover'
-import { cn } from '@/utilities/ui'
+import { ProjectArt } from '@/components/ProjectArt'
 
-import { coverObjectClass } from './coverFocus'
 import type { IndexRow } from './rows'
 
 /** Fixed geometry, actual source images. Entries without images get an honest type specimen. */
 export function ArchivePreview({ row }: { row: IndexRow }) {
-  const [failedUrl, setFailedUrl] = useState<string | null>(null)
-  const src = getMediaUrl(row.cover?.url, row.cover?.updatedAt)
-  const portrait = isPortraitMedia(row.cover)
-  const veryTall = Boolean(portrait && row.cover!.height! / row.cover!.width! > 2.5)
+  const art = [row.cover?.url, row.companion?.url].join(' ')
+  const [failedArt, setFailedArt] = useState<string | null>(null)
   const initials = row.title
     .split(/[\s–—-]+/)
     .slice(0, 2)
@@ -23,21 +17,18 @@ export function ArchivePreview({ row }: { row: IndexRow }) {
     .join('')
 
   return (
-    <div aria-hidden="true" className="archive-preview" data-portrait={portrait || undefined}>
+    <div aria-hidden="true" className="archive-preview">
       <span className="archive-preview-index index-code">{row.index}</span>
-      {src && failedUrl !== src ? (
-        <div className="archive-preview-media">
-          <Image
-            alt=""
-            fill
-            className={cn(coverObjectClass(row.slug, veryTall))}
-            onError={() => setFailedUrl(src)}
-            quality={100}
-            src={src}
-            unoptimized={/^https?:\/\//i.test(src) || src.startsWith('/media/')}
-            sizes="(min-width: 1100px) 30vw, (min-width: 640px) 45vw, 90vw"
-          />
-        </div>
+      {row.cover && failedArt !== art ? (
+        <ProjectArt
+          className="archive-preview-media"
+          companion={row.companion}
+          decorative
+          lead={row.cover}
+          onImageError={() => setFailedArt(art)}
+          size="(min-width: 1100px) 30vw, (min-width: 640px) 45vw, 90vw"
+          slug={row.slug}
+        />
       ) : (
         <div className="archive-specimen">
           <span className="archive-specimen-initials" dir="auto">

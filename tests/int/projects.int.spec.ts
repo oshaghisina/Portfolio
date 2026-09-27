@@ -120,9 +120,9 @@ describe('Projects — case-study publication rules', () => {
       context,
       locale: 'fa',
       data: {
-        title: 'مطالعهٔ موردی آزمایشی',
+        title: 'مطالعه‌ی موردی آزمایشی',
         company: 'آزمایش',
-        summary: 'خلاصهٔ آزمایشی',
+        summary: 'خلاصه‌ی آزمایشی',
         sections: [narrative('عنوان فارسی')],
         _status: 'published',
       },

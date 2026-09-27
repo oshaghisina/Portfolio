@@ -587,6 +587,10 @@ export interface Project {
    */
   cover?: (string | null) | Media;
   /**
+   * A second, clearly different screen of the same product, tilted behind the cover on Home, /work and the next-project card. A phone screen pairs with a phone cover or a desktop one. Leave empty to use the case study’s second hero screen.
+   */
+  coverCompanion?: (string | null) | Media;
+  /**
    * Optional. A live product or external page; archive rows show it with an outward arrow.
    */
   liveUrl?: string | null;
@@ -730,12 +734,12 @@ export interface CaseStudyFigureBlock {
    */
   treatment?: ('auto' | 'screen' | 'plain' | 'diagram') | null;
   /**
-   * Full / annotated: exactly one. Split / compare: exactly two. Sequence: two to four. Gallery: two to forty. Pages: one row per page, two to forty.
+   * Full / annotated: exactly one. Split / compare: exactly two. Sequence: two to four. Gallery: two to forty. Pages: one row per page or screen, two to 240.
    */
   items?:
     | {
         /**
-         * Pages: the first screen at desktop width.
+         * Pages: the first screen at desktop width — with the Screen treatment, the first screen on the phone.
          */
         media: string | Media;
         /**
@@ -754,6 +758,10 @@ export interface CaseStudyFigureBlock {
          * Optional per-visual note; keep the explanation in the figure caption below. Pages: the page’s name.
          */
         caption?: string | null;
+        /**
+         * The section the page belongs to. Two or more sections become the index’s tabs, in order of first appearance — give every row one.
+         */
+        group?: string | null;
         id?: string | null;
       }[]
     | null;
@@ -3325,6 +3333,7 @@ export interface ProjectsSelect<T extends boolean = true> {
   projectStatus?: T;
   tools?: T;
   cover?: T;
+  coverCompanion?: T;
   liveUrl?: T;
   statement?: T;
   hero?: T | CaseStudyHeroSelect<T>;
@@ -3411,6 +3420,7 @@ export interface CaseStudyFigureBlockSelect<T extends boolean = true> {
         full?: T;
         mobileFull?: T;
         caption?: T;
+        group?: T;
         id?: T;
       };
   annotations?:

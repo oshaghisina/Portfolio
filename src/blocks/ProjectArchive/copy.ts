@@ -29,10 +29,10 @@ export const archiveCopy: Record<Locale, ArchiveCopy> = {
   fa: {
     search: 'جست‌وجوی پروژه، شرکت یا موضوع',
     company: 'شرکت',
-    allCompanies: 'همهٔ شرکت‌ها',
+    allCompanies: 'همه‌ی شرکت‌ها',
     grid: 'نمای تصویری',
     list: 'نمای فهرستی',
-    view: 'شیوهٔ نمایش پروژه‌ها',
+    view: 'شیوه‌ی نمایش پروژه‌ها',
     clear: 'پاک‌کردن فیلترها',
     noResults: 'پروژه‌ای با این فیلترها پیدا نشد.',
     archiveEntry: 'معرفی پروژه',

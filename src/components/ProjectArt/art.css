@@ -1,0 +1,109 @@
+/* The cover plate. The caller sets the size (aspect ratio or a filled parent); the plate places
+   the screens in percentages of itself, so one composition serves every slot. */
+.project-art {
+  --art-tint: #647c82;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: color-mix(in srgb, var(--art-tint) 22%, var(--paper));
+}
+.project-art::before {
+  content: '';
+  position: absolute;
+  width: 90%;
+  aspect-ratio: 1;
+  inset: 18% auto auto -20%;
+  border: 1px solid color-mix(in srgb, var(--art-tint) 24%, transparent);
+  border-radius: 50%;
+}
+.project-art-screen {
+  position: absolute;
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: 0 14px 28px -12px #0005;
+}
+.project-art-lead {
+  z-index: 1;
+}
+.project-art-companion {
+  box-shadow: 0 14px 28px -12px #0004;
+}
+.project-art-phone {
+  aspect-ratio: 9 / 19.7;
+}
+.project-art-desktop {
+  aspect-ratio: 16 / 10;
+  border-radius: 4px;
+}
+
+/* One phone, upright in the middle. */
+.project-art[data-layout='phone'] .project-art-lead {
+  inset: 7% auto 7% 50%;
+  transform: translateX(-50%);
+}
+
+/* The house composition: the lead in front on the right, its companion behind on the left. */
+.project-art[data-layout='phones'] .project-art-lead {
+  inset: 7% auto 7% 65%;
+  transform: translateX(-50%) rotate(4deg);
+}
+.project-art[data-layout='phones'] .project-art-companion {
+  inset: 18% auto -9% 10%;
+  transform: rotate(-5deg);
+}
+
+/* One desktop screen. */
+.project-art[data-layout='desktop'] .project-art-lead {
+  width: 80%;
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+}
+
+/* A desktop screen leaning behind a phone, whichever of the two leads. */
+.project-art[data-layout='desktop-phone'] .project-art-desktop {
+  z-index: 0;
+  width: 72%;
+  top: 47%;
+  left: 6%;
+  transform: translateY(-50%) rotate(-3deg);
+}
+.project-art[data-layout='desktop-phone'] .project-art-phone {
+  z-index: 1;
+  inset: 14% auto 4% 78%;
+  transform: translateX(-50%) rotate(4deg);
+}
+
+/* Two desktop screens: the companion behind, up and left; the lead in front, down and right. */
+.project-art[data-layout='desktop-pair'] .project-art-companion {
+  width: 62%;
+  top: 40%;
+  left: 40%;
+  transform: translate(-50%, -50%) rotate(-4deg);
+}
+.project-art[data-layout='desktop-pair'] .project-art-lead {
+  width: 66%;
+  top: 60%;
+  left: 58%;
+  transform: translate(-50%, -50%) rotate(3deg);
+}
+
+/* A thumbnail too small for two screens: the lead fills the plate. */
+.project-art[data-layout='fill'] .project-art-lead {
+  inset: 0;
+  aspect-ratio: auto;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .project-art-screen {
+    transition: translate 350ms ease;
+  }
+  a:hover .project-art:not([data-layout='fill']) .project-art-lead {
+    translate: 0 -5px;
+  }
+  a:hover .project-art .project-art-companion {
+    translate: 0 5px;
+  }
+}

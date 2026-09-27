@@ -6,7 +6,7 @@ import { afterEach, describe, expect, it } from 'vitest'
 import { WorkMosaicBlock } from '@/blocks/WorkMosaic/Component'
 import { WorkMosaic } from '@/blocks/WorkMosaic/config'
 import { isMosaicSize, toMosaicSize, type MosaicSize } from '@/blocks/WorkMosaic/sizes'
-import { mosaicMedia } from '@/blocks/WorkMosaic/Cover'
+import { coverPair } from '@/components/ProjectArt/pair'
 import { HOME_MOSAIC } from '@/endpoints/seed/home-content'
 import type { Media, Project } from '@/payload-types'
 import { uiCopy } from '@/utilities/uiCopy'
@@ -69,13 +69,37 @@ describe('mosaic tiles', () => {
       height: 860,
     })
     const doc = project({ cover, hero: { items: [{ media: cover }, { media: secondary }] } })
-    expect(mosaicMedia(doc)).toEqual({ lead: cover, companion: secondary })
+    expect(coverPair(doc)).toEqual({ lead: cover, companion: secondary })
     const fullCover = media({ id: 'cover-full', url: '/api/media/file/cover-full.png' })
     expect(
-      mosaicMedia(project({ cover, hero: { items: [{ media: fullCover }, { media: secondary }] } }))
+      coverPair(project({ cover, hero: { items: [{ media: fullCover }, { media: secondary }] } }))
         .companion,
     ).toBe(secondary)
-    expect(mosaicMedia(doc, secondary)).toEqual({ lead: secondary, companion: null })
+    expect(coverPair(doc, secondary)).toEqual({ lead: secondary, companion: null })
+  })
+
+  it('pairs the cover with its chosen companion before any hero frame', () => {
+    const cover = media({ id: 'cover', width: 390, height: 844 })
+    const chosen = media({ id: 'chosen', url: '/api/media/file/chosen.png', width: 390, height: 844 })
+    const hero = media({ id: 'hero', url: '/api/media/file/hero.png', width: 390, height: 844 })
+    const doc = project({
+      caseStudyStatus: 'published',
+      cover,
+      coverCompanion: chosen,
+      hero: { items: [{ media: cover }, { media: hero }] },
+    })
+    expect(coverPair(doc)).toEqual({ lead: cover, companion: chosen })
+    // A companion that repeats the cover is no companion: the hero's next frame stands in.
+    expect(coverPair({ ...doc, coverCompanion: cover }).companion).toBe(hero)
+
+    const { container } = render(
+      <WorkMosaicBlock items={[tile('large', doc)]} locale="en" sectionHeader={header} />,
+    )
+    const art = container.querySelector('.project-art')!
+    expect(art.getAttribute('data-layout')).toBe('phones')
+    const images = [...art.querySelectorAll('img')].map((img) => img.getAttribute('src'))
+    expect(images[0]).toContain('cover.png')
+    expect(images[1]).toContain('chosen.png')
   })
 
   it('keeps context visible for project notes without a public case study', () => {

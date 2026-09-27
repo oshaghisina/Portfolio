@@ -56,6 +56,7 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
     size: sizeFromProps,
     src: srcFromProps,
     loading: loadingFromProps,
+    onError,
   } = props
 
   let width: number | undefined
@@ -87,9 +88,10 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
 
   // Public Object Storage URLs (D-034) are already on Arvan's CDN. Proxying them through
   // `/_next/image` on the 900MB VPS adds multi-second cold latency and makes figures look
-  // empty. Keep Sharp for relative `/api/media/...` (local-disk) paths only.
+  // empty. Keep Sharp for relative `/api/media/...` (local-disk) paths only; a `/media/...` file is
+  // a static copy in `public/` (the archive's development preview) and is served as it is.
   const unoptimized =
-    typeof src === 'string' && /^https?:\/\//i.test(src)
+    typeof src === 'string' && (/^https?:\/\//i.test(src) || src.startsWith('/media/'))
 
   return (
     <picture className={cn(pictureClassName)}>
@@ -103,6 +105,7 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
         priority={priority}
         quality={100}
         loading={loading}
+        onError={onError}
         sizes={sizes}
         src={src}
         unoptimized={unoptimized}

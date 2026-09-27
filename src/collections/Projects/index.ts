@@ -41,7 +41,8 @@ export const Projects: CollectionConfig<'projects'> = {
     update: authenticated,
   },
   // What a referencing document (the homepage block) receives — the archive-row fields plus the
-  // cover, which must be listed here or it never reaches the page. See `defaultPopulate` on Posts.
+  // cover and its companion, which must be listed here or they never reach the page. See
+  // `defaultPopulate` on Posts.
   defaultPopulate: {
     title: true,
     slug: true,
@@ -51,6 +52,7 @@ export const Projects: CollectionConfig<'projects'> = {
     kind: true,
     period: true,
     cover: true,
+    coverCompanion: true,
     liveUrl: true,
     caseStudyStatus: true,
     featured: true,
@@ -181,6 +183,16 @@ export const Projects: CollectionConfig<'projects'> = {
               admin: {
                 description:
                   'Real project evidence — UI, dashboard, artifact. Portrait screens are fine; the page frames them instead of cropping. Leave empty to show the "media pending" placeholder.',
+              },
+            },
+            {
+              name: 'coverCompanion',
+              type: 'upload',
+              relationTo: 'media',
+              label: 'Cover companion',
+              admin: {
+                description:
+                  'A second, clearly different screen of the same product, tilted behind the cover on Home, /work and the next-project card. A phone screen pairs with a phone cover or a desktop one. Leave empty to use the case study’s second hero screen.',
               },
             },
             {

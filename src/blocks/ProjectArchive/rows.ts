@@ -1,6 +1,7 @@
 import type { Media, Project } from '@/payload-types'
 
 import { kindLabel, isProjectKind, type ProjectKind } from '@/collections/Projects/kinds'
+import { coverPair } from '@/components/ProjectArt/pair'
 import { hasPublicCaseStudy, projectUrl } from '@/i18n/routes'
 import type { Locale } from '@/utilities/locale'
 
@@ -46,6 +47,8 @@ export interface IndexRow {
   slug: string
   summary: string
   cover: Media | null
+  /** The second screen behind the cover — see `coverPair`. */
+  companion: Media | null
   kinds: { value: ProjectKind; label: string }[]
   role: string | null
   company: string
@@ -63,6 +66,7 @@ type ArchiveProject = Pick<
   | 'slug'
   | 'summary'
   | 'cover'
+  | 'coverCompanion'
   | 'hero'
   | 'kind'
   | 'role'
@@ -76,13 +80,15 @@ type ArchiveProject = Pick<
 export function toIndexRows(docs: ArchiveProject[], locale: Locale): IndexRow[] {
   return docs.map((project, i) => {
     const link = projectLink(project, locale)
+    const { lead, companion } = coverPair(project)
     return {
       id: project.id,
       index: padIndex(i),
       title: project.title,
       slug: project.slug,
       summary: project.summary,
-      cover: archiveCover(project),
+      cover: lead,
+      companion,
       kinds: (project.kind ?? [])
         .filter(isProjectKind)
         .map((value) => ({ value, label: kindLabel(value, locale) })),
@@ -97,10 +103,7 @@ export function toIndexRows(docs: ArchiveProject[], locale: Locale): IndexRow[] 
 
 /** Use actual project evidence; a missing cover can still have a usable case-study hero. */
 export function archiveCover(project: Pick<Project, 'cover' | 'hero'>): Media | null {
-  const candidates = [project.cover, ...(project.hero?.items?.map((item) => item.media) ?? [])]
-  return (
-    candidates.find((media): media is Media => typeof media === 'object' && !!media?.url) ?? null
-  )
+  return coverPair(project).lead
 }
 
 /** Persian and Arabic keyboard variants should find the same project. */

@@ -51,6 +51,7 @@ export const ProjectArchiveBlock: React.FC<ProjectArchiveProps> = async ({
       kind: true,
       period: true,
       cover: true,
+      coverCompanion: true,
       hero: true,
       liveUrl: true,
       caseStudyStatus: true,
