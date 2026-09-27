@@ -141,13 +141,13 @@ describe('SEO helpers', () => {
     })
   })
 
-  it('pages sitemap source no longer advertises /search', () => {
+  it('pages sitemap source advertises neither /search nor the Lab archive', () => {
     const source = readFileSync(
       path.join(process.cwd(), 'src/app/(frontend)/(sitemaps)/pages-sitemap.xml/route.ts'),
       'utf8',
     )
     expect(source).not.toMatch(/['"]\/search['"]/)
-    expect(source).toContain('COLLECTION_PATH_PREFIX.posts')
+    expect(source).not.toContain('COLLECTION_PATH_PREFIX.posts')
   })
 
   it('robots config disallows admin, api, next, and design', () => {

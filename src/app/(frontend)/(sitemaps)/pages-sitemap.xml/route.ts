@@ -4,7 +4,6 @@ import config from '@payload-config'
 import { unstable_cache } from 'next/cache'
 
 import { localePath } from '@/i18n/navigation'
-import { COLLECTION_PATH_PREFIX } from '@/i18n/routes'
 import { LOCALES } from '@/utilities/locale'
 
 const getPagesSitemap = unstable_cache(
@@ -17,12 +16,9 @@ const getPagesSitemap = unstable_cache(
 
     const dateFallback = new Date().toISOString()
 
-    // The Lab archive has no `pages` document behind it. `/search` is intentionally omitted —
-    // it is noindex and must not inflate the sitemap with query-result permutations.
-    const defaultSitemap = LOCALES.map((locale) => ({
-      loc: `${SITE_URL}${localePath(locale, COLLECTION_PATH_PREFIX.posts)}`,
-      lastmod: dateFallback,
-    }))
+    // Only `pages` documents. The Lab archive (`/lab`) is left out for now: it has no published
+    // posts (R18, 2026-09-27). `/search` is intentionally omitted — it is noindex and must not
+    // inflate the sitemap with query-result permutations.
 
     // One query per locale (D-009) — `_status` is per-locale now, so a locale only contributes a
     // URL when its own copy of the page is actually published, never English's.
@@ -57,7 +53,7 @@ const getPagesSitemap = unstable_cache(
       }),
     )
 
-    return [...defaultSitemap, ...perLocale.flat()]
+    return perLocale.flat()
   },
   ['pages-sitemap'],
   {
