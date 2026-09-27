@@ -5,8 +5,10 @@ import type { Locale } from '@/utilities/locale'
 const mediaUrl = (
   serverUrl: string,
   media: Media | string | number | null | undefined,
-): string | undefined =>
-  media && typeof media === 'object' && media.url ? `${serverUrl}${media.url}` : undefined
+): string | undefined => {
+  if (!media || typeof media !== 'object' || !media.url) return undefined
+  return /^https?:\/\//i.test(media.url) ? media.url : `${serverUrl}${media.url}`
+}
 
 /**
  * `CreativeWork` JSON-LD for a case study, built only from fields the project really has —

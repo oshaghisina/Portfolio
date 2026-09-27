@@ -20,15 +20,19 @@ export const OG_LOCALE: Record<Locale, string> = {
   ja: 'ja_JP',
 }
 
+/** S3 media URLs are already absolute; only local paths (`/api/media/…`) need the site origin. */
+const withOrigin = (serverUrl: string, url: string) =>
+  /^https?:\/\//i.test(url) ? url : serverUrl + url
+
 const getImageURL = (image?: Media | Config['db']['defaultIDType'] | null) => {
   const serverUrl = getServerSideURL()
 
   let url = serverUrl + '/sina-oshaghi-OG.webp'
 
   if (image && typeof image === 'object' && 'url' in image) {
-    const ogUrl = image.sizes?.og?.url
+    const src = image.sizes?.og?.url || image.url
 
-    url = ogUrl ? serverUrl + ogUrl : serverUrl + image.url
+    if (src) url = withOrigin(serverUrl, src)
   }
 
   return url

@@ -6,6 +6,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { RETIRED_PROJECT_SLUGS } from '@/endpoints/seed/projects'
 import { CARSPARENCY_NEXT_CHAIN } from '@/endpoints/seed/sync-carsparency-next'
 import { buildBreadcrumbJsonLd } from '@/utilities/breadcrumbSchema'
+import { buildCreativeWorkJsonLd } from '@/utilities/creativeWorkSchema'
 import { OG_LOCALE, generateMeta } from '@/utilities/generateMeta'
 import { withSiteName } from '@/utilities/site'
 import { buildWebSiteJsonLd } from '@/utilities/websiteSchema'
@@ -77,6 +78,39 @@ describe('SEO helpers', () => {
     expect(meta.robots).toEqual({ index: false, follow: false })
     expect(meta.alternates?.canonical).toBe('https://sinaoshaghi.com/fa/about')
     expect(meta.openGraph?.locale).toBe('fa_IR')
+  })
+
+  it('generateMeta keeps absolute S3 image URLs and prefixes local ones', async () => {
+    const s3 =
+      'https://sinaoshaghi-portfolio.s3.ir-thr-at1.arvanstorage.ir/vin-app--cover-1200x630.webp'
+    const fromS3 = await generateMeta({
+      doc: { meta: { image: { id: 'a', url: 'https://x/full.webp', sizes: { og: { url: s3 } } } } },
+    } as Parameters<typeof generateMeta>[0])
+    expect(fromS3.openGraph?.images).toEqual([{ url: s3 }])
+    expect(fromS3.twitter?.images).toEqual([s3])
+
+    const local = await generateMeta({
+      doc: { meta: { image: { id: 'b', url: '/api/media/file/cover.webp' } } },
+    } as Parameters<typeof generateMeta>[0])
+    expect(local.openGraph?.images).toEqual([
+      { url: 'https://sinaoshaghi.com/api/media/file/cover.webp' },
+    ])
+
+    const none = await generateMeta({ doc: { title: 'Home' } })
+    expect(none.openGraph?.images).toEqual([
+      { url: 'https://sinaoshaghi.com/sina-oshaghi-OG.webp' },
+    ])
+  })
+
+  it('buildCreativeWorkJsonLd keeps absolute S3 image URLs', () => {
+    const s3 = 'https://sinaoshaghi-portfolio.s3.ir-thr-at1.arvanstorage.ir/vin-app--cover.webp'
+    const ld = buildCreativeWorkJsonLd({
+      locale: 'en',
+      project: { title: 'VIN', summary: 'x', updatedAt: '2026-09-27', cover: { url: s3 } },
+      serverUrl: 'https://sinaoshaghi.com',
+      url: 'https://sinaoshaghi.com/work/vin-app',
+    } as Parameters<typeof buildCreativeWorkJsonLd>[0])
+    expect(ld.image).toBe(s3)
   })
 
   it('buildWebSiteJsonLd is factual site identity', () => {
