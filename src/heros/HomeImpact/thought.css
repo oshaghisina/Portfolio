@@ -1,0 +1,220 @@
+/* Home alone gets room for an opening illustration; other PageOpeners keep their layout. */
+.home-opener > div:first-child {
+  gap: 24px;
+}
+
+.home-opener .hero-written-title {
+  font-size: clamp(2.5rem, 4.5vw, 4.25rem);
+}
+
+.home-thought {
+  width: 100%;
+  max-width: 37.5rem;
+  min-width: 0;
+  margin: 0 auto;
+  align-self: center;
+}
+
+.home-thought .thought-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 600 / 540;
+  overflow: hidden;
+}
+
+[data-theme='dark'] .thought-art {
+  --cap-shadow: color-mix(in oklab, black 28%, transparent);
+}
+
+.thought-stages {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0 6%;
+  padding: 0;
+  list-style: none;
+}
+
+.thought-stages li {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  color: var(--ink-2);
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.thought-stages .index-code {
+  color: var(--track-accent);
+  font-size: 10px;
+}
+
+.thought-travel,
+.thought-return {
+  opacity: 0;
+  stroke-dasharray: 0.07 0.93;
+}
+
+.thought-use {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@media (min-width: 1024px) {
+  .home-opener > div:first-child {
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr);
+    gap: clamp(24px, 3vw, 56px);
+    padding-top: 4rem;
+    padding-bottom: 3rem;
+  }
+
+  .home-opener > div:first-child > div:first-child {
+    min-width: 0;
+  }
+
+  .home-thought {
+    max-width: none;
+  }
+}
+
+@media (max-width: 479px) {
+  .thought-stages {
+    gap: 8px;
+    margin-inline: 3%;
+  }
+
+  .thought-stages li {
+    flex-direction: column;
+    gap: 3px;
+    padding-top: 8px;
+    font-size: 12px;
+  }
+}
+
+/* Only an accent moves through an already-readable scene, once, for 3.4 seconds. */
+@media (prefers-reduced-motion: no-preference) {
+  .home-thought[data-thought-started='true'] .thought-travel {
+    animation: thought-travel 3.4s ease-in-out both;
+  }
+
+  .home-thought[data-thought-started='true'] .thought-return {
+    animation: thought-return 3.4s ease-in-out both;
+  }
+
+  .home-thought[data-thought-started='true'] .thought-evidence {
+    animation: thought-evidence 3.4s ease-in-out both;
+  }
+
+  .home-thought[data-thought-started='true'] .thought-product {
+    animation: thought-product 3.4s ease-in-out both;
+  }
+
+  .home-thought[data-thought-started='true'] .thought-learning {
+    animation: thought-learning 3.4s ease-in-out both;
+  }
+
+  .home-thought[data-thought-started='true'] .thought-use {
+    animation: thought-use 3.4s ease-in-out both;
+  }
+
+  .home-thought[data-thought-running='false'] .thought-art * {
+    animation-play-state: paused;
+  }
+
+  @keyframes thought-travel {
+    0% {
+      opacity: 0;
+      stroke-dashoffset: 1;
+    }
+    8% {
+      opacity: 1;
+      stroke-dashoffset: 1;
+    }
+    76% {
+      opacity: 1;
+      stroke-dashoffset: 0;
+    }
+    84%,
+    100% {
+      opacity: 0;
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes thought-return {
+    0%,
+    73% {
+      opacity: 0;
+      stroke-dashoffset: 1;
+    }
+    76% {
+      opacity: 1;
+      stroke-dashoffset: 1;
+    }
+    96% {
+      opacity: 1;
+      stroke-dashoffset: 0;
+    }
+    100% {
+      opacity: 0;
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes thought-evidence {
+    0%,
+    32%,
+    100% {
+      transform: translateY(0);
+    }
+    15% {
+      transform: translateY(-5px);
+    }
+  }
+
+  @keyframes thought-product {
+    0%,
+    24%,
+    65%,
+    100% {
+      transform: translateY(0);
+    }
+    43% {
+      transform: translateY(-6px);
+    }
+  }
+
+  @keyframes thought-learning {
+    0%,
+    55%,
+    100% {
+      transform: translateY(0);
+    }
+    73% {
+      transform: translateY(-4px);
+    }
+  }
+
+  @keyframes thought-use {
+    0%,
+    43% {
+      opacity: 0;
+      transform: scale(0.4);
+    }
+    49% {
+      opacity: 0.8;
+      transform: scale(0.75);
+    }
+    64%,
+    100% {
+      opacity: 0;
+      transform: scale(1.4);
+    }
+  }
+}
