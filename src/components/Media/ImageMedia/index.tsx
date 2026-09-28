@@ -11,6 +11,8 @@ import type { Props as MediaProps } from '../types'
 import { cssVariables } from '@/cssVariables'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 
+import { responsiveSource } from '../responsive'
+
 const { breakpoints } = cssVariables
 
 // A base64 encoded image to use as a placeholder while the image is loading
@@ -57,12 +59,14 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
     src: srcFromProps,
     loading: loadingFromProps,
     onError,
+    usage = 'figure',
   } = props
 
   let width: number | undefined
   let height: number | undefined
   let alt = altFromProps
   let src: StaticImageData | string = srcFromProps || ''
+  let cacheTag: string | undefined
 
   if (!src && resource && typeof resource === 'object') {
     const { alt: altFromResource, height: fullHeight, url, width: fullWidth } = resource
@@ -72,12 +76,14 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
     // Media.alt is required in the CMS; keep a string for next/image if a legacy row is empty.
     alt = altFromProps ?? altFromResource ?? ''
 
-    const cacheTag = resource.updatedAt
+    cacheTag = resource.updatedAt
 
     src = getMediaUrl(url, cacheTag)
   }
 
-  const loading = loadingFromProps || (!priority ? 'lazy' : undefined)
+  // `priority` (deprecated in Next 16) would preload the fallback `src`, the full original, while
+  // the `<source>` below picks a smaller copy: two downloads. Eager + high fetch priority instead.
+  const loading = loadingFromProps || (priority ? 'eager' : 'lazy')
 
   // NOTE: this is used by the browser to determine which image to download at different screen sizes
   const sizes = sizeFromProps
@@ -93,16 +99,25 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
   const unoptimized =
     typeof src === 'string' && (/^https?:\/\//i.test(src) || src.startsWith('/media/'))
 
+  // The same files, right-sized: the browser picks one of the copies Payload already made, and
+  // the `<img>` keeps the original as its fallback `src` (R11). An optimised local path already
+  // gets Next's own `srcset`.
+  const source =
+    unoptimized && resource && typeof resource === 'object'
+      ? responsiveSource(resource, { cacheTag, sizes: sizeFromProps || '100vw', usage })
+      : null
+
   return (
     <picture className={cn(pictureClassName)}>
+      {source ? <source sizes={source.sizes} srcSet={source.srcSet} /> : null}
       <NextImage
         alt={alt || ''}
         className={cn(imgClassName)}
+        fetchPriority={priority ? 'high' : undefined}
         fill={fill}
         height={!fill ? height : undefined}
         placeholder="blur"
         blurDataURL={placeholderBlur}
-        priority={priority}
         quality={100}
         loading={loading}
         onError={onError}

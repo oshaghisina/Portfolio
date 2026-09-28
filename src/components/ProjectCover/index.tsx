@@ -84,6 +84,7 @@ export const ProjectCover: React.FC<ProjectCoverProps> = ({
         priority={priority}
         resource={resource}
         size={size}
+        usage="thumbnail"
       />
     )
   }
@@ -102,6 +103,7 @@ export const ProjectCover: React.FC<ProjectCoverProps> = ({
           priority={priority}
           resource={resource}
           size={size}
+          usage="thumbnail"
         />
       </div>
     )

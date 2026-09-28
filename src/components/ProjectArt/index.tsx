@@ -9,12 +9,21 @@ import { projectArt } from './art'
 import { artLayout, isPhoneScreen } from './pair'
 import './art.css'
 
+/**
+ * `sizes` for each kind of screen on the plate, measured on the real layout: a phone screen is
+ * a third of the plate or less, so the plate's own width would load copies far too wide.
+ */
+export interface ArtSizes {
+  phone: string
+  desktop: string
+}
+
 export interface ProjectArtProps {
   slug: string
   lead: MediaType
   companion?: MediaType | null
-  /** `sizes` for next/image — the plate's rendered width is a fair upper bound. */
-  size?: string
+  /** `sizes` for the screens: one string for every screen (a filled thumbnail), or one per kind. */
+  size?: string | ArtSizes
   priority?: boolean
   /** The surrounding card already names the project, so the screens stay silent. */
   decorative?: boolean
@@ -29,6 +38,8 @@ export interface ProjectArtProps {
  * on a plate tinted with the product's own colour. The lead stands in front on the right and its
  * companion leans behind it on the left; desktop screens sit behind a phone or each other. The
  * lead comes first in the DOM whatever the layout, so the cover a reader hears is the cover.
+ * Screens are previews here: they load the upload's smaller copies, and the full capture only
+ * where it weighs less than its widest copy.
  */
 export const ProjectArt: React.FC<ProjectArtProps> = ({
   className,
@@ -76,7 +87,8 @@ export const ProjectArt: React.FC<ProjectArtProps> = ({
             onError={onImageError}
             priority={priority && role === 'lead'}
             resource={media}
-            size={size}
+            size={typeof size === 'object' ? size[phone ? 'phone' : 'desktop'] : size}
+            usage="thumbnail"
             videoClassName={fit}
           />
         )

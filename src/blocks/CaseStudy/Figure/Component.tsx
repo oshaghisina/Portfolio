@@ -4,6 +4,7 @@ import type { CaseStudyFigureBlock } from '@/payload-types'
 
 import { FigureMedia, resolveTreatment } from '@/components/CaseStudy/FigureMedia'
 import { PageIndex, type PageEntry, type PageShot } from '@/components/CaseStudy/PageIndex'
+import { scaledSizes } from '@/components/Media/responsive'
 import { isPortraitMedia } from '@/components/ProjectCover'
 import { PLATE_STYLE, pad } from '@/components/CaseStudy/plate'
 import { cn } from '@/utilities/ui'
@@ -33,11 +34,17 @@ const SIZES: Record<FigureLayout, string> = {
   pages: '(min-width: 64rem) 20vw, 50vw',
 }
 
-/** The few fields the client-side page index needs — never a whole media document. */
-const pageShot = (resource: unknown): PageShot | undefined => {
+/**
+ * The few fields the client-side page index needs — never a whole media document. A first screen
+ * (`tile`) keeps its scaled copies for the grid's `srcset`; a whole page opens as the original.
+ */
+const pageShot = (resource: unknown, tile = false): PageShot | undefined => {
   if (!resource || typeof resource !== 'object') return undefined
-  const { alt, height, id, mimeType, updatedAt, url, width } = resource as PageShot
-  return url ? { alt, height, id, mimeType, updatedAt, url, width } : undefined
+  const { alt, filesize, height, id, mimeType, updatedAt, url, width } = resource as PageShot
+  if (!url) return undefined
+  const shot: PageShot = { alt, height, id, mimeType, updatedAt, url, width }
+  const sizes = tile ? scaledSizes(resource as PageShot) : undefined
+  return sizes ? { ...shot, filesize, sizes } : shot
 }
 
 /** Literal class strings so the Tailwind scanner sees every count. */
@@ -199,7 +206,7 @@ export const FigureBlock: React.FC<FigureBlockProps> = ({
           copy={copy.pages}
           locale={locale}
           pages={visuals.flatMap((item, i): PageEntry[] => {
-            const first = pageShot(item.media)
+            const first = pageShot(item.media, true)
             if (!first) return []
             const entry = {
               id: item.id ?? String(i),
@@ -212,7 +219,7 @@ export const FigureBlock: React.FC<FigureBlockProps> = ({
                 : {
                     ...entry,
                     desktop: first,
-                    mobile: pageShot(item.mobile),
+                    mobile: pageShot(item.mobile, true),
                     desktopFull: pageShot(item.full),
                     mobileFull: pageShot(item.mobileFull),
                   },

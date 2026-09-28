@@ -6,6 +6,17 @@ import { ProjectArt } from '@/components/ProjectArt'
 
 import type { IndexRow } from './rows'
 
+/**
+ * Screen widths on a grid card's plate, measured at 360–2560 px (R11). The list view's 144 px
+ * thumbnail is smaller still, so these stay an upper bound there.
+ */
+const PREVIEW_SIZES = {
+  phone:
+    '(min-width: 1800px) 156px, (min-width: 1100px) 9vw, (min-width: 768px) 13.5vw, (min-width: 640px) 17vw, 35vw',
+  desktop:
+    '(min-width: 1800px) 314px, (min-width: 1100px) 18vw, (min-width: 768px) 26.5vw, (min-width: 640px) 34vw, 70vw',
+}
+
 /** Fixed geometry, actual source images. Entries without images get an honest type specimen. */
 export function ArchivePreview({ row }: { row: IndexRow }) {
   const art = [row.cover?.url, row.companion?.url].join(' ')
@@ -26,7 +37,7 @@ export function ArchivePreview({ row }: { row: IndexRow }) {
           decorative
           lead={row.cover}
           onImageError={() => setFailedArt(art)}
-          size="(min-width: 1100px) 30vw, (min-width: 640px) 45vw, 90vw"
+          size={PREVIEW_SIZES}
           slug={row.slug}
         />
       ) : (

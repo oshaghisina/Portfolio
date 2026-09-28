@@ -21,6 +21,12 @@ export const resolveTreatment = (
   return isPortraitMedia(resource) ? 'screen' : 'plain'
 }
 
+/**
+ * A screen on its own plate is at most `max-w-xs` (20rem) wide, whatever the layout's column:
+ * measured 282 px at 360, 312 px at 390 and 318 px from 430 up (R11).
+ */
+const STANDALONE_SCREEN_SIZES = '(min-width: 430px) 20rem, calc(100vw - 4.5rem)'
+
 export interface FigureMediaProps {
   resource: MediaType | string | number | null | undefined
   treatment?: FigureTreatment | null
@@ -53,7 +59,7 @@ export const FigureMedia: React.FC<FigureMediaProps> = ({
         className="mx-auto w-full max-w-xs"
         priority={priority}
         resource={resource}
-        sizes={sizes}
+        sizes={standalone ? STANDALONE_SCREEN_SIZES : sizes}
       />
     )
     return standalone ? (

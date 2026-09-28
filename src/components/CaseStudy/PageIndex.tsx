@@ -6,6 +6,7 @@ import React, { useEffect, useId, useRef, useState } from 'react'
 import type { Media as MediaType } from '@/payload-types'
 
 import { Media } from '@/components/Media'
+import { capDensity } from '@/components/Media/responsive'
 import { isRtl, type Locale } from '@/utilities/locale'
 import { cn } from '@/utilities/ui'
 
@@ -13,10 +14,14 @@ import type { CaseStudyCopy } from './copy'
 import { pad } from './plate'
 import { ScreenFrame } from './ScreenFrame'
 
-/** What the client needs of an upload — not the whole media document with its seven sizes. */
+/**
+ * What the client needs of an upload — not the whole media document. A first screen also carries
+ * its scaled copies (only the fields a `srcset` reads), so a tile loads one of those; a whole
+ * page opens as the original.
+ */
 export type PageShot = Pick<
   MediaType,
-  'alt' | 'height' | 'id' | 'mimeType' | 'updatedAt' | 'url' | 'width'
+  'alt' | 'filesize' | 'height' | 'id' | 'mimeType' | 'sizes' | 'updatedAt' | 'url' | 'width'
 >
 
 /**
@@ -47,9 +52,14 @@ interface Tab {
 /** A sheet of the index: four rows of three, three of four or two of six — never a long wall. */
 const PER_SHEET = 12
 
+/**
+ * Tile widths measured at 360–2560 px (R11): two, three, then four desktop tiles a row; three,
+ * four, then six phone screens.
+ */
 const TILE_SIZES: Record<View, string> = {
-  desktop: '(min-width: 64rem) 20vw, (min-width: 48rem) 26vw, 50vw',
-  mobile: '(min-width: 64rem) 13vw, (min-width: 40rem) 20vw, 33vw',
+  desktop: '(min-width: 1800px) 266px, (min-width: 1024px) 15vw, (min-width: 768px) 23.5vw, 47vw',
+  mobile:
+    '(min-width: 1800px) 170px, (min-width: 1024px) 9.5vw, (min-width: 768px) 17vw, (min-width: 640px) 22.5vw, 30vw',
 }
 
 const firstScreen = (entry: PageEntry, view: View) =>
@@ -348,12 +358,15 @@ export const PageIndex: React.FC<PageIndexProps> = ({ copy, locale, pages }) => 
                       imgClassName="object-cover object-top"
                       resource={shot as MediaType}
                       size={TILE_SIZES.desktop}
+                      usage="thumbnail"
                     />
                   ) : (
+                    // ScreenFrame loads every screen as a readable figure; a tile is a
+                    // preview, so its `sizes` arrive with the 2× cap already applied.
                     <ScreenFrame
                       className="w-full transition-colors duration-(--duration-fast) ease-standard group-hover:border-ink-3"
                       resource={shot as MediaType}
-                      sizes={TILE_SIZES.mobile}
+                      sizes={capDensity(TILE_SIZES.mobile)}
                     />
                   )}
                   <span className="flex items-baseline gap-2 text-caption">
@@ -469,6 +482,7 @@ export const PageIndex: React.FC<PageIndexProps> = ({ copy, locale, pages }) => 
                   loading="eager"
                   resource={whole as MediaType}
                   size={view === 'desktop' ? '(min-width: 80rem) 80rem, 100vw' : '26rem'}
+                  usage="viewer"
                 />
               </div>
             </div>

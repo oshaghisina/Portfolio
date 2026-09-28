@@ -28,6 +28,15 @@ export interface NextProjectProps {
 }
 
 /**
+ * Screen widths on the 4:5 plate, measured at 360–2560 px (R11): a phone screen is at most 55vw
+ * below 768 and 17vw above; a desktop screen is at most 80% of the plate.
+ */
+const ART_SIZES = {
+  phone: '(min-width: 1800px) 300px, (min-width: 768px) 17vw, 55vw',
+  desktop: '(min-width: 1800px) 388px, (min-width: 768px) 22vw, 70vw',
+}
+
+/**
  * DS-28 next-case card: the case study hands the reader straight into another argument —
  * NEXT PROJECT, title, positioning line, "read" cue and the project's cover — one link, hairline
  * frame, no hover theatre. A quiet "All work" line underneath is the way back to the archive.
@@ -66,7 +75,7 @@ export const NextProject: React.FC<NextProjectProps> = ({
               companion={art.companion}
               decorative
               lead={art.lead}
-              size="(min-width: 768px) 39vw, 100vw"
+              size={ART_SIZES}
               slug={project.slug}
             />
           ) : (

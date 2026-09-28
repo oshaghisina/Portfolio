@@ -86,6 +86,7 @@ export const WorkCover: React.FC<WorkCoverProps> = ({
             priority={primary}
             resource={resource}
             size={detailSize}
+            usage="thumbnail"
           />
         </div>
         <div className="relative overflow-hidden">
@@ -95,6 +96,7 @@ export const WorkCover: React.FC<WorkCoverProps> = ({
             imgClassName="object-contain"
             resource={resource}
             size={overviewSize}
+            usage="thumbnail"
           />
         </div>
         {primary ? (
@@ -105,6 +107,7 @@ export const WorkCover: React.FC<WorkCoverProps> = ({
               imgClassName="object-cover object-[center_86%]"
               resource={resource}
               size={detailSize}
+              usage="thumbnail"
             />
           </div>
         ) : null}
