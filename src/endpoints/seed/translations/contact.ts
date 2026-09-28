@@ -77,13 +77,6 @@ export async function seedContactTranslations({ payload }: { payload: Payload })
   if (!block) throw new Error('The `contact` layout has no `formBlock`.')
 
   const formId = typeof block.form === 'object' ? (block.form as { id: string }).id : block.form
-  const form = await payload.findByID({
-    collection: 'forms',
-    id: formId,
-    depth: 0,
-    locale: DEFAULT_LOCALE,
-  })
-
   // 1) Default locale owns the field structure (phone → company + project-type).
   const enCopy = contactCopy[DEFAULT_LOCALE]
   const enDir = dirFor(DEFAULT_LOCALE)
@@ -97,11 +90,6 @@ export async function seedContactTranslations({ payload }: { payload: Payload })
         heading(enCopy.form.confirmationTitle, 'h2', enDir),
         paragraph(enCopy.form.confirmation, enDir),
       ),
-      emails: (form.emails ?? []).map((email) => ({
-        ...email,
-        message: richText(paragraph(enCopy.form.emailBody, enDir)),
-        subject: enCopy.form.emailSubject,
-      })),
       fields: contactFieldsFor(DEFAULT_LOCALE),
       submitButtonLabel: enCopy.form.submitLabel,
     },
@@ -181,11 +169,6 @@ export async function seedContactTranslations({ payload }: { payload: Payload })
           heading(copy.form.confirmationTitle, 'h2', dir),
           paragraph(copy.form.confirmation, dir),
         ),
-        emails: (structured.emails ?? []).map((email) => ({
-          ...email,
-          message: richText(paragraph(copy.form.emailBody, dir)),
-          subject: copy.form.emailSubject,
-        })),
         fields: (structured.fields ?? []).map((field) => {
           if (!('name' in field) || !field.name) return field
           const label = labelByName[field.name]

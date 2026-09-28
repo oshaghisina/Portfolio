@@ -6,6 +6,11 @@ import { seoPlugin } from '@payloadcms/plugin-seo'
 import { searchPlugin } from '@payloadcms/plugin-search'
 import { s3Storage } from '@payloadcms/storage-s3'
 import { Plugin } from 'payload'
+import {
+  notifyContactSubmission,
+  rejectRepeatedSubmission,
+  submissionKeyField,
+} from '@/hooks/contactSubmission'
 import { revalidateRedirects } from '@/hooks/revalidateRedirects'
 import { GenerateTitle, GenerateURL } from '@payloadcms/plugin-seo/types'
 import { FixedToolbarFeature, HeadingFeature, lexicalEditor } from '@payloadcms/richtext-lexical'
@@ -61,6 +66,10 @@ export const plugins: Plugin[] = [
     generateURL,
   }),
   formBuilderPlugin({
+    // The form's own "Emails" list never sends: the laptop DB still holds the template's demo
+    // auto-reply (from demo@payloadcms.com, to the visitor). The one email per message is
+    // `notifyContactSubmission` below (R01).
+    beforeEmail: () => [],
     fields: {
       payment: false,
     },
@@ -83,6 +92,13 @@ export const plugins: Plugin[] = [
           }
           return field
         })
+      },
+    },
+    formSubmissionOverrides: {
+      fields: ({ defaultFields }) => [...defaultFields, submissionKeyField],
+      hooks: {
+        afterChange: [notifyContactSubmission],
+        beforeValidate: [rejectRepeatedSubmission],
       },
     },
   }),

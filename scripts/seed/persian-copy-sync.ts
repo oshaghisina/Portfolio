@@ -217,18 +217,12 @@ await addCollection('pages', String(contact.id), 'page/contact', {
   meta: { ...(asDoc(contact.meta)), ...contactCopy.fa.meta },
 })
 const formId = typeof formBlock.form === 'object' ? String(asDoc(formBlock.form).id) : String(formBlock.form)
-const form = asDoc(await payload.findByID({ collection: 'forms', id: formId, depth: 0, locale: 'en' }))
 await addCollection('forms', formId, 'form/contact', {
   submitButtonLabel: contactCopy.fa.form.submitLabel,
   confirmationMessage: richText(
     heading(contactCopy.fa.form.confirmationTitle, 'h2', 'rtl'),
     paragraph(contactCopy.fa.form.confirmation, 'rtl'),
   ),
-  emails: (form.emails as Doc[] ?? []).map((email) => ({
-    ...email,
-    subject: contactCopy.fa.form.emailSubject,
-    message: richText(paragraph(contactCopy.fa.form.emailBody, 'rtl')),
-  })),
   fields: [
     {
       name: 'full-name',

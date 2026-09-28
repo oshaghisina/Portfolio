@@ -2285,6 +2285,10 @@ export interface FormSubmission {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Sent once per message by the site form, so a retry is not saved twice.
+   */
+  submissionKey?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -3880,6 +3884,7 @@ export interface FormSubmissionsSelect<T extends boolean = true> {
         value?: T;
         id?: T;
       };
+  submissionKey?: T;
   updatedAt?: T;
   createdAt?: T;
 }

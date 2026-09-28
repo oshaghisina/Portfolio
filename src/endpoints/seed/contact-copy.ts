@@ -38,8 +38,6 @@ export interface ContactCopy {
     confirmationTitle: string
     /** Confirmation body after submit. */
     confirmation: string
-    emailSubject: string
-    emailBody: string
     labels: {
       fullName: string
       email: string
@@ -99,8 +97,6 @@ export const contactCopy: Record<Locale, ContactCopy> = {
       submitLabel: 'Send message',
       confirmationTitle: 'Message received',
       confirmation: 'Thanks — I’ll get back to you soon.',
-      emailSubject: 'You’ve received a new message.',
-      emailBody: 'Your contact form submission was successfully received.',
       labels: {
         fullName: 'Full name',
         email: 'Email',
@@ -151,8 +147,6 @@ export const contactCopy: Record<Locale, ContactCopy> = {
       submitLabel: 'ارسال پیام',
       confirmationTitle: 'پیام دریافت شد',
       confirmation: 'ممنون — به‌زودی با شما در تماس می‌گیرم.',
-      emailSubject: 'پیام تازه‌ای دریافت کرده‌اید.',
-      emailBody: 'پیام تازه‌ای از فرم تماس سایت دریافت شد.',
       labels: {
         fullName: 'نام و نام خانوادگی',
         email: 'ایمیل',
@@ -203,8 +197,6 @@ export const contactCopy: Record<Locale, ContactCopy> = {
       submitLabel: 'إرسال الرسالة',
       confirmationTitle: 'وصلت الرسالة',
       confirmation: 'شكراً — سأردّ عليك قريباً.',
-      emailSubject: 'وصلتك رسالة جديدة.',
-      emailBody: 'تم استلام نموذج التواصل الخاص بك بنجاح.',
       labels: {
         fullName: 'الاسم الكامل',
         email: 'البريد الإلكتروني',
@@ -255,8 +247,6 @@ export const contactCopy: Record<Locale, ContactCopy> = {
       submitLabel: 'Enviar mensaje',
       confirmationTitle: 'Mensaje recibido',
       confirmation: 'Gracias — te responderé pronto.',
-      emailSubject: 'Has recibido un mensaje nuevo.',
-      emailBody: 'Tu envío del formulario de contacto se ha recibido correctamente.',
       labels: {
         fullName: 'Nombre completo',
         email: 'Correo electrónico',
@@ -307,8 +297,6 @@ export const contactCopy: Record<Locale, ContactCopy> = {
       submitLabel: 'Nachricht senden',
       confirmationTitle: 'Nachricht erhalten',
       confirmation: 'Danke — ich melde mich bald.',
-      emailSubject: 'Sie haben eine neue Nachricht erhalten.',
-      emailBody: 'Ihre Kontaktformular-Einsendung wurde erfolgreich empfangen.',
       labels: {
         fullName: 'Vollständiger Name',
         email: 'E-Mail',
@@ -359,8 +347,6 @@ export const contactCopy: Record<Locale, ContactCopy> = {
       submitLabel: 'Envoyer le message',
       confirmationTitle: 'Message reçu',
       confirmation: 'Merci — je vous réponds bientôt.',
-      emailSubject: 'Vous avez reçu un nouveau message.',
-      emailBody: 'Votre envoi du formulaire de contact a bien été reçu.',
       labels: {
         fullName: 'Nom complet',
         email: 'E-mail',
@@ -411,8 +397,6 @@ export const contactCopy: Record<Locale, ContactCopy> = {
       submitLabel: 'メッセージを送る',
       confirmationTitle: 'メッセージを受け取りました',
       confirmation: 'ありがとうございます。追ってご連絡します。',
-      emailSubject: '新しいメッセージが届きました。',
-      emailBody: 'お問い合わせフォームの送信を受け付けました。',
       labels: {
         fullName: 'お名前',
         email: 'メールアドレス',

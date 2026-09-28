@@ -30,6 +30,8 @@ export const ContactImpactHero: React.FC<Page['hero'] & { locale?: Locale }> = (
     }
     asideAlign="start"
     asideSupports
+    // Shorter opening so the form starts in the first screen (R01, E10).
+    compact
     eyebrow={contactCopy[locale].eyebrow}
     locale={locale}
     titleSlot={richText ? <HeroWrittenRichText data={richText} headingClassName="mt-4" locale={locale} /> : null}

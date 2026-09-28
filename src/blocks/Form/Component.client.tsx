@@ -33,6 +33,14 @@ export type FormBlockClientProps = {
 
 const FORM_ANCHOR_ID = 'contact-form'
 
+function newSubmissionKey(): string {
+  if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
+    return crypto.randomUUID()
+  }
+  // randomUUID needs a secure context; plain-http previews fall back to this.
+  return `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 12)}`
+}
+
 export const FormBlockClient: React.FC<{ id?: string } & FormBlockClientProps> = (props) => {
   const {
     closingNote,
@@ -60,13 +68,17 @@ export const FormBlockClient: React.FC<{ id?: string } & FormBlockClientProps> =
 
   const [isLoading, setIsLoading] = useState(false)
   const [hasSubmitted, setHasSubmitted] = useState(false)
-  const [error, setError] = useState<{ message: string; status?: string } | undefined>()
+  const [error, setError] = useState<{ message: string } | undefined>()
   const router = useRouter()
+  // One key per filled form: a retry after a lost response is recognised, not saved twice (R01).
+  const [submissionKey] = useState(newSubmissionKey)
+  const sendingRef = useRef(false)
 
   const onSubmit = useCallback(
     (data: Record<string, unknown>) => {
-      let loadingTimerID: ReturnType<typeof setTimeout>
       const submitForm = async () => {
+        if (sendingRef.current) return
+        sendingRef.current = true
         setError(undefined)
         setIsLoading(true)
 
@@ -75,15 +87,12 @@ export const FormBlockClient: React.FC<{ id?: string } & FormBlockClientProps> =
           value,
         }))
 
-        loadingTimerID = setTimeout(() => {
-          // keep isLoading true; indicator already visible
-        }, 0)
-
         try {
           const req = await fetch(`${getClientSideURL()}/api/form-submissions`, {
             body: JSON.stringify({
               form: formID,
               submissionData: dataToSend,
+              submissionKey,
             }),
             headers: {
               'Content-Type': 'application/json',
@@ -91,15 +100,10 @@ export const FormBlockClient: React.FC<{ id?: string } & FormBlockClientProps> =
             method: 'POST',
           })
 
-          const res = await req.json()
-          clearTimeout(loadingTimerID)
-
-          if (req.status >= 400) {
+          // 409: this key was saved by an earlier try, so the message is already received.
+          if (!req.ok && req.status !== 409) {
             setIsLoading(false)
-            setError({
-              message: res.errors?.[0]?.message || copy.formError,
-              status: res.status,
-            })
+            setError({ message: copy.formError })
             statusRef.current?.focus()
             return
           }
@@ -113,18 +117,19 @@ export const FormBlockClient: React.FC<{ id?: string } & FormBlockClientProps> =
           }
         } catch (err) {
           console.warn(err)
-          clearTimeout(loadingTimerID)
           setIsLoading(false)
           setError({
             message: copy.formError,
           })
           statusRef.current?.focus()
+        } finally {
+          sendingRef.current = false
         }
       }
 
       void submitForm()
     },
-    [copy.formError, router, formID, redirect, confirmationType],
+    [copy.formError, router, formID, redirect, confirmationType, submissionKey],
   )
 
   return (

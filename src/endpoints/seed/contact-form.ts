@@ -10,15 +10,9 @@ export const contactForm: RequiredDataFromCollectionSlug<'forms'> = {
   ),
   confirmationType: 'message',
   createdAt: '2023-01-12T21:47:41.374Z',
-  emails: [
-    {
-      // TODO: replace with Sina’s real transactional From address before production mail.
-      emailFrom: '"Payload" \u003Cdemo@payloadcms.com\u003E',
-      emailTo: '{{email}}',
-      message: richText(paragraph(contactCopy.en.form.emailBody)),
-      subject: contactCopy.en.form.emailSubject,
-    },
-  ],
+  // The email to Sina is sent by `notifyContactSubmission` (src/hooks/contactSubmission.ts),
+  // with addresses from the environment, so the form stores none.
+  emails: [],
   fields: [
     {
       name: 'full-name',
