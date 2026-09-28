@@ -228,6 +228,16 @@ describe('ScreenFrame', () => {
     expect(frame.className).toContain('aspect-[390/844]')
     expect(frame.className).not.toContain('rtl:')
     expect(container.querySelector('img')!.getAttribute('class')).toContain('object-top')
+    expect((frame as HTMLElement).style.aspectRatio).toBe('')
+  })
+
+  it('keeps a screen shorter than the viewport whole instead of cutting its sides', () => {
+    const { container } = render(
+      <ScreenFrame resource={media({ width: 720, height: 1280 })} sizes="20rem" />,
+    )
+    const frame = container.firstElementChild as HTMLElement
+    expect(frame.style.aspectRatio).toBe('720 / 1280')
+    expect(frame.querySelectorAll('img')).toHaveLength(1)
   })
 })
 
