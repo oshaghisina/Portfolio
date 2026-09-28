@@ -1,7 +1,7 @@
 # Project showcase and case study roadmap
 
 **Last reconciled with the local site:** 25 September 2026 (`http://localhost:3000/fa`)  
-**Scope:** 37 independent project records in the public work archive. Digikala activities DGK-02–07 are chapters of Digital Gold, not six additional project records.
+**Scope:** 40 independent project records in the public work archive. Digikala activities DGK-02–07 are chapters of Digital Gold, not six additional project records.
 
 This is the starting point for anyone working on project coverage. The [inventory](Experience/Inventory.md) records candidate history, each linked project README records source material and open questions, `src/endpoints/seed/projects.ts` supplies archive data, and `src/endpoints/seed/case-studies/index.ts` lists case studies that the seed process actually publishes. Reconcile this file after content or publication changes.
 
@@ -28,6 +28,72 @@ A **hard publication gate** applies only where we cannot yet state a truthful, s
 All eight public Persian case study URLs returned HTTP 200 and included a title, content sections, and images in server-rendered HTML. **Visual quality is not yet signed off.** Mobile and desktop layout, real image loading and cropping, content accuracy, and editorial quality still need review. In the live Persian API, `translationReviewed` was `false` for all eight; this is an editorial follow-up, not a reason to remove supported work from the site.
 
 **Status key:** `draft` / `review` / `ready` is the source README's frontmatter status, not the CMS publication status. `Public (N)` means a public case study with N CMS sections and a successful Persian HTTP response. `Seed authored` means a case study implementation exists but is not registered in `CASE_STUDIES` or public in the current CMS. Every row below already appears in the public Persian archive; “cover” reports the current CMS cover field. `No source` means no independent project README, although the inventory/company README may still contain a factual summary.
+
+## Open questions for Sina: projects without a case study
+
+**Written 2026-09-27; live checked read-only ~15:30 UTC.** Nothing on the site or in the CMS was changed.
+
+The 19 projects that had no case study and no link on live `/work` earlier on 2026-09-27 each have an `OPEN-QUESTIONS.md` in their Docs folder. Each file lists what is already known, a readiness level, the minimum input needed and checkbox questions marked `BLOCKER`, `USEFUL` or `OPTIONAL`. The files are in Persian so Sina can answer by ticking boxes. Nine projects had no folder, so one was created for the file alone, with no README and no case-study text. Where a project README exists, each question names the README question it covers.
+
+Live has changed since that list of 19:
+
+- **Taha Gasht** has been a live case study since ~15:21 UTC. Its file has no blockers.
+- **Nine rows were hidden on live** (set to draft) earlier the same day: `bnpl-concept`, `gold-backed-credit-concept`, `pr-brand-awareness`, `mall-traffic-campaigns`, `fibona-brand-positioning`, `fibona-website`, `arvan-cloud-platform-redesign`, `didestan-video-platform`, `a1paradise-call-apps`. The laptop DB and `projects.ts` still publish them, so a laptop → live projects sync or a production `seed:projects` would bring them back.
+- Live now has **31** public rows and **21** case studies. **Nine** rows are visible without a link.
+
+Readiness is `READY`, `NEARLY READY`, `PARTIAL`, `EARLY` or `INSUFFICIENT EVIDENCE`. **Input** is a rough time for the blocker questions only. **Suggested format** is a documentation recommendation, not a decision. Groups sort by how much input is still needed, not by project quality.
+
+### 1. Little input needed
+
+| Project | Company | On live | Readiness | Blockers | Useful | Input | Suggested format | File |
+|---|---|---|---|---:|---:|---|---|---|
+| Booking site redesign | Taha Gasht | case study live | READY | 0 | 2 | none | Full case study (published) | [open questions](Experience/Taha-Gasht/platform-redesign/OPEN-QUESTIONS.md) |
+| Cloud platform redesign & IA | Arvan Cloud | hidden; study seeded locally 2026-09-27, not synced | READY | 0 | 1 | none | Full case study | [open questions](Experience/Arvan-Cloud/platform-redesign/OPEN-QUESTIONS.md) |
+| Design system | Biomaze | visible, no link | NEARLY READY | 1 | 2 | < 2 min | Link to the chapter in the Biomaze study | [open questions](Experience/Biomaze/design-system/OPEN-QUESTIONS.md) |
+| Server-metrics dashboard research | Arvan Cloud | visible, no link | EARLY | 3¹ | 2 | < 2 min | Chapter in the Arvan study | [open questions](Experience/Arvan-Cloud/server-metrics-research/OPEN-QUESTIONS.md) |
+| BNPL for gold — concept | Digikala | hidden | EARLY | 3¹ | 1 | < 2 min | No detail page | [open questions](Experience/Digikala/bnpl-concept/OPEN-QUESTIONS.md) |
+| Gold-backed credit — concept | Digikala | hidden | INSUFFICIENT EVIDENCE | 2 | 2 | < 2 min | No detail page | [open questions](Experience/Digikala/gold-backed-credit-concept/OPEN-QUESTIONS.md) |
+
+### 2. Some context missing
+
+| Project | Company | On live | Readiness | Blockers | Useful | Input | Suggested format | File |
+|---|---|---|---|---:|---:|---|---|---|
+| Matchmaking redesign — two-sided research | OTeacher | visible, no link | PARTIAL | 3 | 2 | 2–5 min | Chapter in the strategy study | [open questions](Experience/OTeacher/matchmaking-redesign/OPEN-QUESTIONS.md) |
+| Panel redesign | OTeacher | visible, no link | PARTIAL | 3 | 2 | 2–5 min | Full case study, with Website | [open questions](Experience/OTeacher/panel-redesign/OPEN-QUESTIONS.md) |
+| Website redesign | OTeacher | visible, no link | PARTIAL | 3 | 2 | 2–5 min | Full case study, with Panel | [open questions](Experience/OTeacher/website-redesign/OPEN-QUESTIONS.md) |
+| Education unit program | OTeacher | visible, no link | PARTIAL | 3 | 1 | 2–5 min | Chapter in the strategy study | [open questions](Experience/OTeacher/education-unit-program/OPEN-QUESTIONS.md) |
+| Renova+ | Independent | visible, no link | PARTIAL | 3 | 2 | 2–5 min | Full case study | [open questions](Experience/Projects/renova-plus/OPEN-QUESTIONS.md) |
+| Razhmana | Independent | visible, no link | PARTIAL | 3 | 1 | 2–5 min | Full case study | [open questions](Experience/Projects/razhmana/OPEN-QUESTIONS.md) |
+| Narian Summer Passport | Independent | visible, no link | PARTIAL | 3 | 2 | 2–5 min | Short project story | [open questions](Experience/Projects/narian-summer-passport/OPEN-QUESTIONS.md) |
+| Traffic campaigns & influencer program | Hadish Mall | hidden | EARLY | 3 | 2 | 2–5 min, then a campaign list after our scan | Gallery page | [open questions](Experience/Hadish-Mall/traffic-campaigns/OPEN-QUESTIONS.md) |
+| PR & brand-awareness program | Digikala | hidden | INSUFFICIENT EVIDENCE | 3 | 1 | 5–10 min (finding article links) | Section in Digital Gold | [open questions](Experience/Digikala/pr-brand-awareness/OPEN-QUESTIONS.md) |
+
+### 3. Large evidence gaps
+
+Nothing but resume lines exists on disk for these. The questions are quick; finding old files is the slow part.
+
+| Project | Company | On live | Readiness | Blockers | Useful | Input | Suggested format | File |
+|---|---|---|---|---:|---:|---|---|---|
+| Brand positioning & tagline | Fibona | hidden | INSUFFICIENT EVIDENCE | 3 | 3 | 2–5 min, plus finding files | Short story, only if material exists | [open questions](Experience/Fibona/brand-positioning/OPEN-QUESTIONS.md) |
+| Fibona website | Fibona | hidden | INSUFFICIENT EVIDENCE | 4 | 1 | 2–5 min, plus finding files | Short story, only if material exists | [open questions](Experience/Fibona/website/OPEN-QUESTIONS.md) |
+| Video platform | Didestan | hidden | INSUFFICIENT EVIDENCE | 2 | 2 | < 2 min, 10+ min to find old files | No detail page | [open questions](Experience/Didestan/video-platform/OPEN-QUESTIONS.md) |
+| Desktop call app & WiFon B2C app | A1Paradise | hidden | INSUFFICIENT EVIDENCE | 2 | 2 | < 2 min, 10+ min to find old files | No detail page | [open questions](Experience/A1Paradise/call-apps/OPEN-QUESTIONS.md) |
+
+¹ One blocker applies only after a particular answer to the first question.
+
+**Totals:** 19 projects; 47 blocker questions (2 conditional), 37 useful, 14 optional. Done or nearly ready: 3 (Taha Gasht, Arvan platform, Biomaze design system). Need substantial input from Sina: 4 (both Fibona rows, Didestan, A1Paradise).
+
+**One decision, several files:** OTE-01, OTE-03 and OTE-04 each ask whether OTeacher's panel, website and teacher finder become one product-design study, and FIB-01 and FIB-02 ask the same layout question. Answer each pair the same way.
+
+**Work that needs no answers** (each file lists its own): scan the ~95 marketing pages of the Hadish Mall Figma file; read the OTeacher Design file's website and panel pages plus its three unread pages; read the Biomaze variable collections; read the older dashboards page of the Arvan IAAS file; look up fibona.org, didestan.com and WiFon on web.archive.org.
+
+**Found while writing these, not yet in any README:**
+
+- The server-metrics row (ARV-02) claims research into which *server* metrics to show. No evidence for that has turned up. The IAAS file's "Metrics & KPI" board is about product funnel metrics.
+- `~/Downloads/Move to Desktop/Search project - Arvan.pdf` (October 2021, 12 pages) is a help-centre search project. It cites a 1,600-user survey on the create-server page.
+- Three Hadish code folders in `~/Downloads/Projects/Development/`: two Vue/Python apps from 2025 and a Next.js project, `Hadishmall`, from August 2026.
+
+When Sina answers, copy the answer into the project README and update the row below. For ARV-01, the README's own question list stays the source of truth while its study is being built.
 
 ## Project-by-project status and draft reasons
 
@@ -70,9 +136,9 @@ All eight public Persian case study URLs returned HTTP 200 and included a title,
 | HDM-02 | Mall management app concept | `mall-management-app-concept` | No source | No cover; archive only | Keep the concept label and avoid implying a launched product. |
 | FIB-01 | Fibona brand positioning | `fibona-brand-positioning` | No source | No cover; archive only | Gather process and deliverables before a detailed story. |
 | FIB-02 | Fibona website | `fibona-website` | No source | No cover; archive only | Gather design evidence and precise role before a detailed story. |
-| ARV-01 | Arvan Cloud platform redesign | `arvan-cloud-platform-redesign` | No source | No cover; archive only | High-potential portfolio story; gather source, screens, role, and permission for any NPS claim. Keep the current factual archive entry visible. |
+| ARV-01 | [Arvan Cloud platform redesign](Experience/Arvan-Cloud/platform-redesign/README.md) | `arvan-cloud-platform-redesign` | draft — sourced 2026-09-27; seeded locally ~19:50 UTC | **Study seeded locally** (7 locales, 21 sections, 12 uploads, cover pair = server page + file manager, status Shipped); not committed, not synced; the row is hidden on live | Sources (2026-09-27, Sina): three Dribbble shots and the IAAS Figma file. Built only from Sina-named frames and Sina's research boards. Sina's answers the same day: real A/B test (Q2), all designs shipped (Q3), another designer worked on the project (Q7, frames stay out), DCD is its own case study (Q8), English panel copy not Sina's (Q9). The "100% vs 87.74%" is still reported as reaching the size step (completion equal at ~52%), not as a win; no NPS. Open: dates (Q1), NPS (Q4), per-arm A/B numbers (Q12). Next: commit when asked; `sync-case-study.ts` under a named approval (republishes the hidden row). |
 | ARV-02 | Server-metrics research | `arvan-server-metrics-research` | No source | No cover; archive only | Gather research artifact or consider a chapter within ARV-01. |
-| BIO-01 | [Biomaze website and education panel](Experience/Biomaze/website-education-panel/README.md) | `biomaze-website-education-panel` | ready | Cover; Public (17) | Answered 2026-09-27: part-time 2022–2025; every panel and website page shipped, but the current biomaze.ir home page is not Sina's (so it is not claimed as shipped, and the hero is labelled an exploration). Seed copy updated in 7 locales and `period` set. Re-seeded locally 2026-09-27 with a figure fix: desktop and tablet screens no longer sit in phone frames (the hero is one desktop frame, the exam flow is two figures). The home page's Biomaze row now says part time and Figma variables. The live sync of the study and of the home row is pending. Team size and the backend/CMS owner are still unknown; avoid invented business results. |
+| BIO-01 | [Biomaze website and education panel](Experience/Biomaze/website-education-panel/README.md) | `biomaze-website-education-panel` | ready | Cover; Public (17) | Answered 2026-09-27: part-time 2022–2025; every panel and website page shipped, but the current biomaze.ir home page is not Sina's (so it is not claimed as shipped, and the hero is labelled an exploration). Seed copy updated in 7 locales and `period` set. Re-seeded locally 2026-09-27 with a figure fix: desktop and tablet screens no longer sit in phone frames (the hero is one desktop frame, the exam flow is two figures). The home page's Biomaze row now says part time and Figma variables. Committed as `3a37245` (not pushed yet). The study is live since 2026-09-27 11:21 UTC (session 40's `sync-case-study.ts`), but live Home still shows the old Biomaze row ("…so developers could ship fast"): the auto-mode check blocked the raw DB patch, so Sina has to allow it or edit the row in /admin. Team size and the backend/CMS owner are still unknown; avoid invented business results. |
 | BIO-02 | [Biomaze design system](Experience/Biomaze/design-system/README.md) | `biomaze-design-system` | ready | Cover; archive only | Answered 2026-09-27: the tokens became Figma variables, so that claim is now allowed (BIO-01's design-system chapter says it). Candidate for its own study under R07. |
 | DID-01 | Didestan video platform | `didestan-video-platform` | No source | No cover; archive only | Gather project source and work samples before a detailed story. |
 | A1P-02 | A1Paradise / WiFon calling apps | `a1paradise-call-apps` | No source | No cover; archive only | Gather project source and work samples before a detailed story. |
@@ -84,7 +150,7 @@ All eight public Persian case study URLs returned HTTP 200 and included a title,
 | PRJ-01 | [RP1 Arena](Experience/Projects/rp1-arena/README.md) | `rp1-arena` | draft | Cover; Public (18) | Current project status and authorship of an interactive Octalysis tool are open. The documented arena design can remain public; avoid unsupported shipping or tool-authorship claims. |
 | PRJ-02 | [Arash Rezvani](Experience/Projects/arash-rezvani/README.md) | `arash-rezvani` | draft | Cover; Public (14) | Contributor split and the optional analytics decision are open. Analytics is not a publication gate. Keep the existing image/privacy restrictions; describe authorship only as confirmed. |
 | PRJ-03 | [Marqevon](Experience/Projects/marqevon/README.md) | `marqevon` | draft | Cover; **Seed authored; not public** | Contributor split and status after mid-September (domain, launch, feedback branch) are open. Publish the evidenced site design as not launched, without real identity/registration or market-price claims. Review the existing crops, then register the authored seed and check the live page. |
-| PRJ-04 | [Fayman](Experience/Projects/faymen/README.md) | `faymen` | draft | Cover; Public (13) | How to describe multi-agent authorship, publishable commercial numbers, and current payment gateways remain open. Keep the live storefront and design work public; omit unsupported numbers and gateway claims. |
+| PRJ-04 | [Fayman](Experience/Projects/faymen/README.md) | `faymen` | draft | Cover; Public (13) live · **Rebuilt on the laptop 2026-09-27: 34 sections, 15 chapters, 52 media, 7 locales — not live yet** | Full product audit in [CASE-STUDY-COVERAGE.md](Experience/Projects/faymen/CASE-STUDY-COVERAGE.md): discovery, product page, checkout, account (12 screens from a masked local build), commerce rules, operations. Open: AI-share wording, store-policy ownership, post-09-15 rails, imagery origin, commercial numbers. Live needs a code deploy (new Process `map` kind) and then `sync-case-study.ts faymen`. |
 | PRJ-05 | [Renova+](Experience/Projects/renova-plus/README.md) | `renova-plus` | draft | No cover; archive only | One story vs two, PRD authorship, and later engagement status are unresolved. Show the evidenced design phase and prototype with clear stage labels; select safe visuals for a deeper page. |
 | PRJ-06 | [VIN](Experience/Projects/vin-app/README.md) | `vin-app` | draft | Cover; Public (22) | Team/decision split, launch and feature status, and the current north-star metric are open. Keep the designed concept and confirmed screens public; do not imply unconfirmed features launched. |
 | PRJ-07 | [Razhmana](Experience/Projects/razhmana/README.md) | `razhmana` | draft | No cover; archive only | Later engagement status and permission to name the client are unresolved. Anonymize if naming is not cleared; show the process architecture without implying implementation. |
