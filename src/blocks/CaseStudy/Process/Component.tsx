@@ -47,6 +47,59 @@ const Arrowhead: React.FC<{ className?: string }> = ({ className }) => (
   </svg>
 )
 
+const Marker: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <span className="index-code relative z-10 flex h-9 min-w-9 items-center justify-center rounded-full border border-ink-3/60 bg-background px-2 text-ink-2">
+    {/* cancel the trailing letter-spacing so the marker sits optically centred */}
+    <span className="-me-(--text-eyebrow--letter-spacing)">{children}</span>
+  </span>
+)
+
+/**
+ * A map has no order to draw: one ruled row per area — marker, name and note on the start side,
+ * its parts in a small grid on the end side (under the name on phones). No connectors, because
+ * nothing here happens in sequence.
+ */
+const ProcessMap: React.FC<{
+  heading?: string | null
+  markers: CaseStudyProcessBlock['markers']
+  rows: Step[]
+}> = ({ heading, markers, rows }) => (
+  <div>
+    {heading ? (
+      <h3 className="text-h3 font-medium text-balance text-foreground">{heading}</h3>
+    ) : null}
+    <ol className={cn('border-t border-line', heading && 'mt-8')}>
+      {rows.map((step, i) => {
+        const parts = (step.parts ?? []).filter(Boolean)
+        return (
+          <li
+            className="grid gap-3 border-b border-line py-6 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] md:gap-10"
+            key={step.id ?? i}
+          >
+            <div className="flex gap-4">
+              <Marker>{stepMarker(step, i, markers)}</Marker>
+              <div className="flex flex-col gap-1 pt-1.5">
+                <span className="text-small font-medium text-foreground">{step.label}</span>
+                {step.note ? <span className="text-caption text-ink-3">{step.note}</span> : null}
+              </div>
+            </div>
+            {parts.length ? (
+              // Every part opens with its own hairline, so a wrapped row never ends on a stray rule.
+              <ul className="grid grid-cols-2 gap-x-4 gap-y-3 ps-13 md:ps-0 md:pt-1.5 lg:grid-cols-3">
+                {parts.map((part, j) => (
+                  <li className="border-s border-line ps-3 text-small text-ink-2" key={j}>
+                    {part}
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+          </li>
+        )
+      })}
+    </ol>
+  </div>
+)
+
 /**
  * The project's own sequence as nodes and hairlines — mono markers in small rings, labels, a
  * technical note under each. A horizontal rail from `md` (wrapping past five steps, numbers keep
@@ -64,6 +117,7 @@ export const ProcessBlock: React.FC<ProcessBlockProps> = ({
 }) => {
   const rows = steps ?? []
   if (!rows.length) return null
+  if (kind === 'map') return <ProcessMap heading={heading} markers={markers} rows={rows} />
   const loop = kind === 'loop'
   const cols = processColumns(rows.length, kind)
   const colsMd = processColumns(rows.length, kind, TABLET)
@@ -118,12 +172,7 @@ export const ProcessBlock: React.FC<ProcessBlockProps> = ({
                       <Arrowhead className="inset-x-0 -bottom-6 mx-auto md:hidden" />
                     </>
                   ) : null}
-                  <span className="index-code relative z-10 flex h-9 min-w-9 items-center justify-center rounded-full border border-ink-3/60 bg-background px-2 text-ink-2">
-                    {/* cancel the trailing letter-spacing so the marker sits optically centred */}
-                    <span className="-me-(--text-eyebrow--letter-spacing)">
-                      {stepMarker(step, i, markers)}
-                    </span>
-                  </span>
+                  <Marker>{stepMarker(step, i, markers)}</Marker>
                 </div>
                 <div className="flex flex-col gap-1 pt-1.5 md:pt-0">
                   <span className="text-small font-medium text-foreground">{step.label}</span>

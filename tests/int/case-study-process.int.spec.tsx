@@ -64,4 +64,30 @@ describe('process map', () => {
     renderProcess({ kind: 'process' })
     expect(screen.queryByText(/returns to/)).toBeNull()
   })
+
+  it('draws a map as numbered areas with their parts, and no connectors', () => {
+    const { container } = renderProcess({
+      kind: 'map',
+      steps: [
+        { id: 'a', label: 'Orders', note: 'After payment', parts: ['Order list', 'Order page'] },
+        { id: 'b', label: 'Wallet', parts: ['Statement'] },
+        { id: 'c', label: 'Wishlist' },
+      ],
+    })
+    const areas = within(screen.getAllByRole('list')[0]!).getAllByRole('listitem', {
+      name: (_, el) => el.parentElement?.tagName === 'OL',
+    })
+    expect(areas.map((li) => li.querySelector('.index-code')?.textContent)).toEqual([
+      '01',
+      '02',
+      '03',
+    ])
+    expect(within(areas[0]!).getAllByRole('listitem').map((li) => li.textContent)).toEqual([
+      'Order list',
+      'Order page',
+    ])
+    expect(screen.getByText('After payment')).toBeTruthy()
+    expect(container.querySelector('svg')).toBeNull()
+    expect(screen.queryByText(/returns to/)).toBeNull()
+  })
 })

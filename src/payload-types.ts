@@ -810,7 +810,7 @@ export interface CaseStudyProcessBlock {
    * Optional short title, e.g. "Six passes, in order".
    */
   heading?: string | null;
-  kind?: ('process' | 'loop') | null;
+  kind?: ('process' | 'loop' | 'map') | null;
   /**
    * Codes only when they say more than the order, e.g. L1–L4 for a loop.
    */
@@ -826,6 +826,10 @@ export interface CaseStudyProcessBlock {
          * Optional technical annotation under the label.
          */
         note?: string | null;
+        /**
+         * Map only: what this area is made of, as short names, e.g. "Order list".
+         */
+        parts?: string[] | null;
         id?: string | null;
       }[]
     | null;
@@ -3463,6 +3467,7 @@ export interface CaseStudyProcessBlockSelect<T extends boolean = true> {
         code?: T;
         label?: T;
         note?: T;
+        parts?: T;
         id?: T;
       };
   id?: T;

@@ -4,8 +4,10 @@ import { text } from 'payload/shared'
 /**
  * Process map — the project's actual sequence as nodes and lines (thin hairlines, mono markers),
  * never a generic double diamond. `loop` closes the last step back to the first for iterative
- * systems (retention loops, state machines). Nodes show the step's position unless `markers` opts
- * into per-step codes; codes stored while the block shows numbers are kept but not rendered.
+ * systems (retention loops, state machines). `map` drops the order altogether: each step is one
+ * area of a system with its `parts`, for architecture that has no sequence to draw. Nodes show the
+ * step's position unless `markers` opts into per-step codes; codes stored while the block shows
+ * numbers are kept but not rendered.
  */
 export const CaseStudyProcess: Block = {
   slug: 'csProcess',
@@ -31,6 +33,7 @@ export const CaseStudyProcess: Block = {
           options: [
             { label: 'Sequence — start to finish', value: 'process' },
             { label: 'Loop — the last step returns to the first', value: 'loop' },
+            { label: 'Map — areas of one system, each with its parts', value: 'map' },
           ],
           admin: { width: '25%' },
         },
@@ -88,6 +91,17 @@ export const CaseStudyProcess: Block = {
           type: 'text',
           localized: true,
           admin: { description: 'Optional technical annotation under the label.' },
+        },
+        {
+          name: 'parts',
+          type: 'text',
+          hasMany: true,
+          localized: true,
+          maxRows: 10,
+          admin: {
+            condition: (_data, _siblingData, { blockData }) => blockData?.kind === 'map',
+            description: 'Map only: what this area is made of, as short names, e.g. "Order list".',
+          },
         },
       ],
     },

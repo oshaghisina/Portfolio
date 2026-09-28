@@ -87,6 +87,9 @@ const blockProblems = (block: Row): string[] => {
       for (const step of rows('steps')) {
         need(step.label, `step ${String(step.id)} label`)
         if (typeof step.code !== 'string' || step.code.length > 4) problems.push(`${at}: code ${String(step.code)}`)
+        const parts = Array.isArray(step.parts) ? step.parts : []
+        if (parts.length > 10) problems.push(`${at}: step ${String(step.id)} has ${parts.length} parts`)
+        if (parts.length && block.kind !== 'map') problems.push(`${at}: parts on a ${String(block.kind)} step`)
       }
       break
     case 'csDecisions':
