@@ -37,6 +37,9 @@ Docs/
 !Docs/
 Docs/*
 !Docs/CASE_STUDY_ROADMAP.md
+# Mandatory for every agent and linked from CLAUDE.md, so it ships with every clone and worktree.
+# Keep it free of hosts, ids and secrets: the repo is public.
+!Docs/Production-Update-Policy.md
 
 # Legacy SQLite database from before the MongoDB migration (37b1539)
 portfolio.db
