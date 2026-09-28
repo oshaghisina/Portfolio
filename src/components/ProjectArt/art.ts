@@ -43,6 +43,8 @@ export const PROJECT_ART: Record<string, ProjectArtStyle> = {
   'yaravan-platform': { tint: YARAVAN, leadFocus: 'object-[center_5.2%]' },
   'merikh-baft': { tint: '#2d5580' },
   'taha-gasht-platform': { tint: '#343c7b' },
+  // The console's own teal, from the Dribbble shots' palette.
+  'arvan-cloud-platform-redesign': { tint: '#1b9797' },
 }
 
 export const projectArt = (slug: string): ProjectArtStyle =>

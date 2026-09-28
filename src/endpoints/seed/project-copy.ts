@@ -608,32 +608,32 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
     fa: {
       title: 'بازطراحی پلتفرم ابری و معماری اطلاعات',
       summary:
-        'بازطراحی تجربه‌ی کاربری و معماری اطلاعات پلتفرم ابری آروان را هدایت کردم. داده‌های رفتاری نشان داد کدام شاخص‌های سرور برای کاربران اهمیت دارند.',
+        'جایی را که خریداران سرور ابری در ویزارد ساخت ابرک آروان منصرف می‌شدند اندازه گرفتم، دو راه برای انتخاب اندازه‌ی سرور طراحی کردم و در آزمون A/B سنجیدم، و صفحه‌هایی از پنل مثل صفحه‌ی سرور و مدیریت فایل را بازطراحی کردم.',
     },
     ar: {
       title: 'إعادة تصميم المنصّة السحابية ومعمارية المعلومات',
       summary:
-        'قدتُ إعادة تصميم واجهة وتجربة المستخدم ومعمارية المعلومات لمنصّة أروان السحابية، مستخدمًا بيانات السلوك لتحديد مؤشّرات الخوادم التي يحتاج المستخدمون رؤيتها فعلًا.',
+        'قستُ الموضع الذي يتراجع عنده مشترو الخوادم السحابية في معالج إنشاء الخادم لدى أروان، وصمّمتُ طريقتين لاختيار حجم الخادم وقارنتُهما في اختبار A/B، وأعدتُ تصميم صفحات في لوحة التحكم مثل صفحة الخادم ومدير الملفات.',
     },
     es: {
       title: 'Rediseño de plataforma cloud y arquitectura de información',
       summary:
-        'Lideré el rediseño de UI/UX y de la arquitectura de información de la plataforma cloud de Arvan, usando datos de comportamiento para decidir qué métricas de servidor necesitaban ver realmente los usuarios.',
+        'Medí en qué punto abandonaban quienes compraban un servidor en la nube en el asistente de Arvan, diseñé dos formas de elegir su tamaño y las comparé en una prueba A/B, y rediseñé páginas de la consola como la del servidor y el gestor de archivos.',
     },
     de: {
       title: 'Cloud-Plattform-Redesign & Informationsarchitektur',
       summary:
-        'Das UI/UX- und Informationsarchitektur-Redesign von Arvans Cloud-Plattform geleitet und anhand von Verhaltensdaten entschieden, welche Servermetriken Nutzer wirklich sehen mussten.',
+        'Gemessen, wo Käufer eines Cloud-Servers in Arvans Assistenten zum Anlegen eines Servers aufgaben, zwei Wege zur Wahl der Servergröße entworfen und per A/B-Test verglichen, und Konsolenseiten wie die Serverseite und den Dateimanager neu gestaltet.',
     },
     fr: {
       title: 'Refonte de plateforme cloud et architecture de l’information',
       summary:
-        'J’ai piloté la refonte UI/UX et de l’architecture de l’information de la plateforme cloud d’Arvan, en m’appuyant sur les données de comportement pour décider quelles métriques serveur les utilisateurs avaient réellement besoin de voir.',
+        'J’ai mesuré où les acheteurs d’un serveur cloud abandonnaient dans l’assistant de création de serveur d’Arvan, conçu deux façons d’en choisir la taille, testées en A/B, et repensé des pages de la console comme la page serveur et le gestionnaire de fichiers.',
     },
     ja: {
       title: 'クラウドプラットフォームの再設計と情報設計',
       summary:
-        'Arvanのクラウドプラットフォームについて、UI/UXと情報設計の刷新を主導。行動データをもとに、ユーザーが実際に見る必要のあるサーバー指標を判断した。',
+        'Arvanのサーバー作成ウィザードでクラウドサーバーの購入者が離脱する箇所を計測し、サーバーのサイズを選ぶ2つの方法を設計してA/Bテストで比べ、サーバーページやファイルマネージャーなどのコンソール画面を再設計した。',
     },
   },
   'bnpl-concept': {

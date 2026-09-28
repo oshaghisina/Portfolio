@@ -514,6 +514,27 @@ const GATES: Record<string, { files: RegExp[]; text: RegExp[] }> = {
       /91005453|۹۱۰۰۵۴۵۳/,
     ],
   },
+  'arvan-cloud-platform-redesign': {
+    // Only `study/`: the research images from Sina's Dribbble write-up (the group-analysis table with
+    // its user counts blurred) and the two panel screens cropped out of their Dribbble frames. Never
+    // the title card (a 3D hand-and-tablet mock-up). No company superlatives, NPS or satisfaction
+    // claim, sanctions context, prices or absolute counts; the write-up's "100% vs 87.74%" is not
+    // repeated as the sliders' win (README, "Reading the group analysis"). "A/B" is allowed since
+    // 2026-09-27: Sina confirmed the size comparison was a real A/B test.
+    files: [/^(?!study\/)/, /title-card|mock-?up/i],
+    text: [
+      /\bNPS\b|net promoter/i,
+      /frustrat/i,
+      /\bleading\b|global cloud|40 (locations|countries)/i,
+      /sanction|sancion|Sanktion|OFAC|تحریم|العقوبات|制裁/i,
+      /\brials?\b|ریال|ريال|\btomans?\b|تومان/i,
+      /1[,٬]?925|۱[,٬]?۹۲۵/,
+      /\b(510|283|221|603|26[,.]?493)\b|(۵۱۰|۲۸۳|۲۲۱|۶۰۳)/,
+      /dribbble/i,
+      /figma\.com/i,
+      /@|gmail/i,
+    ],
+  },
   'biomaze-website-education-panel': {
     // Brand Brief Tier-1: never the unverified “first player” market claim, in any locale.
     files: [],

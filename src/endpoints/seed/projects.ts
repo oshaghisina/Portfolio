@@ -366,13 +366,21 @@ export const PROJECT_SEED: ProjectSeedRow[] = [
   {
     slug: 'arvan-cloud-platform-redesign',
     title: 'Cloud platform redesign & information architecture',
+    // Rewritten 2026-09-27 to match the case study's evidence (Sina's Dribbble shots): its behaviour
+    // data is about the create-server wizard, not which server metrics to show.
     summary:
-      "Led the UI/UX and information-architecture redesign of Arvan's cloud platform, using behaviour data to decide which server metrics users actually needed to see.",
+      'Measured where people buying a cloud server gave up in Arvan’s create-server wizard, designed and A/B-tested two ways to choose a server’s size, and redesigned console pages such as the server page and the file manager.',
     company: 'Arvan Cloud',
     role: 'Product designer',
     kind: ['product'],
     order: 59,
     status: 'published',
+    // The case study's (2026-09-27): the redesigned server page, cropped out of its Dribbble frame.
+    cover: {
+      path: 'Docs/Experience/Arvan-Cloud/platform-redesign/assets/study/panel/server-detail.jpg',
+      name: 'arvan-cloud-platform-redesign--server-detail.jpg',
+      alt: 'The Arvan Cloud console’s server page, in Persian: the server’s name and status, SSH access and IP addresses with copy buttons, its plan, and CPU and memory charts for the past hour',
+    },
   },
   {
     slug: 'arvan-server-metrics-research',

@@ -1,0 +1,265 @@
+{
+  "statement": "Encontrar el paso en el que abandonan quienes compran un servidor en la nube, medir por qué y rediseñar ese paso primero.",
+  "industry": "Infraestructura en la nube · CDN y servidores en la nube",
+  "team": "Diseño de producto, con otro diseñador y con los equipos de ingeniería y de producto de Arvan",
+  "heroCaption": "La página del servidor rediseñada: estado, datos de acceso y plan arriba, y el uso de CPU y memoria de la última hora abajo.",
+  "snapshot": {
+    "problem": "Comprar un servidor en la nube suponía un asistente de siete pasos, y cerca de la mitad de quienes lo empezaban no lo terminaba. La mayor pérdida llegaba justo después del paso que pide el tamaño del servidor.",
+    "role": "Diseño de producto. Probó el flujo de compra con un usuario, propuso Heap y escribió el plan de seguimiento, localizó el paso débil, diseñó dos formas de elegir un tamaño y las comparó en una prueba A/B, y rediseñó páginas de la consola como la lista de servidores.",
+    "result": "Los diseños se publicaron en la consola de Arvan. En la prueba A/B, el 44 % de todos los que empezaron el asistente ajustó el tamaño con los deslizadores, frente a cerca del 1 % con la tabla; la finalización se quedó en torno al 52 % en ambos casos."
+  },
+  "alt": {
+    "cover": "La página del servidor en la consola de Arvan Cloud, en persa: una barra de productos y un menú de computación en la nube a la derecha; arriba, el nombre y el estado del servidor, el acceso SSH y las direcciones IP con botones de copiar, y su plan; abajo, pestañas con gráficos de CPU y memoria de la última hora",
+    "fileManager": "El gestor de archivos del almacenamiento de objetos en la consola de Arvan Cloud, en persa: los archivos de una carpeta en filas con tamaño, fecha y un interruptor de enlace público, una fila subiéndose al 60 %, otra fallida con un botón de reintentar, y arriba botones para subir un archivo y crear una carpeta",
+    "siteToPanel": "Dos gráficos de Google Analytics: la proporción de eventos de la página de inicio, la página de servidores en la nube, su botón en la página de inicio y su botón Comprar; debajo, un embudo desde la página de servidores en la nube hasta el asistente de creación de servidores de la consola, con las cifras difuminadas",
+    "heapRequirements": "Un tablero en persa titulado «Requisitos de una herramienta de análisis del comportamiento de los usuarios», presentado por Sina Oshaghi: lo que necesita el equipo, las cinco herramientas estudiadas y los motivos para elegir Heap",
+    "metricsKpi": "Un tablero en persa titulado «Métricas del lado de la consola»: conversión desde el inicio de la consola a la lista de servidores, de la lista a un servidor nuevo y de la elección del centro de datos al final del asistente, y una puntuación de lo difícil que fue crear un servidor",
+    "wizardFunnel": "Un embudo de Heap con los siete pasos para crear un servidor, de la lista de servidores a los detalles del servidor, con la conversión entre cada par de pasos; la mayor caída llega tras elegir el tamaño, y el 52,19 % termina",
+    "effort": "El análisis de esfuerzo de Heap sobre los mismos siete pasos: conversión, interacciones, tiempo de uso y tasa de regreso entre cada par de pasos, todo en su peor punto después de elegir el tamaño",
+    "sizeOptions": "Dos versiones del paso de elegir tamaño, en persa: la opción 1, una tabla de tamaños listos con CPU, memoria, disco y precio mensual; la opción 2, deslizadores de CPU, memoria y disco junto al precio mensual y por hora",
+    "groups": "El análisis de grupos de Heap sobre el asistente: los usuarios separados según ajustaran el tamaño con los deslizadores o lo eligieran en la tabla, con la proporción que llega a cada paso; el número de usuarios está difuminado",
+    "createResult": "El último paso del asistente de creación de servidores, en persa: seis pasos completados y el séptimo en curso, tres servidores creándose con nombre de usuario y contraseña oculta, uno de ellos fallido; después, tarjetas para añadir un disco, configurar un cortafuegos, activar copias de seguridad o crear una red privada, y artículos para empezar y para resolver problemas",
+    "serverList": "La lista de servidores de la consola de Arvan Cloud, en persa: arriba una pestaña por centro de datos, una búsqueda, acciones en bloque y un botón de servidor nuevo, y después filas con el estado, el nombre, el tamaño, el usuario, las etiquetas y las acciones de cada servidor, dos de ellos aún creándose",
+    "windowsNotice": "Un aviso sobre la consola oscurecida, en persa: la imagen de Windows que se instala es una versión de evaluación, su licencia dura 180 días y, sin una licencia válida, el servidor se reiniciará cada hora; un botón Entendido"
+  },
+  "chapters": {
+    "context": {
+      "heading": "Una consola que también tiene que vender servidores",
+      "body": [
+        "Arvan Cloud es un proveedor iraní de nube y CDN. Las empresas usan su consola para comprar y mantener servidores en la nube, guardar archivos y distribuir contenido. Sina trabajó allí a tiempo completo en diseño de producto, en la interfaz de la consola y su arquitectura de la información.",
+        "Una consola así tiene dos funciones. Es donde los clientes gestionan lo que ya tienen en marcha, y es donde los clientes nuevos compran su primer servidor. Este caso sigue la segunda, desde la web pública hasta un servidor funcionando, y luego muestra páginas del rediseño de la consola, todas publicadas: el último paso del asistente, la lista de servidores, la página del servidor y el gestor de archivos del almacenamiento de objetos."
+      ]
+    },
+    "problem": {
+      "heading": "Dos lugares donde se perdían compradores",
+      "body": [
+        "La investigación señaló dos problemas. Quienes visitaban la web de Arvan casi nunca llegaban a la consola para comprar. Y quienes empezaban el asistente de creación de servidores lo abandonaban mientras intentaban averiguar qué recursos necesitaban.",
+        "Google Analytics mostró el primero. De los eventos del sitio que se seguían para este recorrido, unos 90 de cada 100 eran visitas a la página de inicio y 9 a la página de servidores en la nube. Cerca de 1 era un clic en el botón de esa página desde el inicio, y menos de 1 un clic en «Comprar».",
+        "El tablero de la prueba de usabilidad, de septiembre de 2021, muestra por qué. Recoge una sesión con alguien que llevaba dos años de desarrollo full stack y que, en una pantalla de 1366 × 768, quería montar un servidor Windows con un panel de hosting. Sus preguntas principales eran sobre el propio producto: qué diferencia hay entre la nube y el hosting, si un servidor en la nube es lo mismo que una máquina virtual y si convenía comprar un servidor o un plan de hosting. Y luego, sobre la consola: «¿Por qué este panel no explica qué es cada cosa?»",
+        "El tablero clasifica cada hallazgo por tipo: problema de texto, de diseño, de producto o técnico."
+      ],
+      "bullets": [
+        "Ninguna introducción llevaba del inicio de la consola al producto de servidores en la nube, y los demás productos en la nube a su alrededor distraían más de lo que ayudaban.",
+        "Los nombres no coincidían: la web decía «servidor en la nube», la consola IaaS y «computación en la nube», y la página del producto introducía «Abrak» sin explicarlo.",
+        "Un error saltaba la página de primera visita, así que la persona de la prueba llegó a «No tienes ningún servidor» sin haberla visto nunca.",
+        "El botón para crear un servidor y las guías no eran claros.",
+        "En el paso del tamaño, los criterios de decisión eran complejos y las pestañas no se leían como partes de una misma elección."
+      ],
+      "insight": "La prueba y la analítica coincidían: la gente se perdía primero en las palabras y después en el paso del tamaño."
+    },
+    "research": {
+      "heading": "Decidir qué medir y después medirlo",
+      "body": [
+        "Sina escribió para el equipo un documento de requisitos para una herramienta de análisis del comportamiento de los usuarios y lo presentó. La herramienta debía registrar el comportamiento sin tener que definir eventos antes, ser lo bastante sencilla para todos los equipos, convertir los objetivos en métricas compartidas y no ralentizar nunca el producto ni debilitar su seguridad. Se compararon Google Analytics, Mixpanel, Amplitude, FullStory y Heap, y se eligió Heap: registra cada interacción, así que cualquier pregunta nueva puede responderse con comportamiento ya capturado, y llevaba varios meses funcionando sin problemas en la consola.",
+        "Después llegó un plan de seguimiento del asistente, paso a paso, cada medida con la pregunta que responde: clics y tiempo hasta encontrar el botón de crear servidor, mapas de calor del inicio de la consola, abandonos en cada paso, qué centros de datos y sistemas operativos se eligen, cuánto se desplazan las tablas de tamaños, cuánto tiempo se pasa en el tamaño personalizado, si se añaden redes privadas o cortafuegos, si se crean varios servidores a la vez o se les cambia el nombre, y si en la última página se copian los datos del servidor. Las métricas del lado de la consola lo unían todo: conversión desde el inicio de la consola a la lista de servidores, de la lista a un servidor nuevo y del centro de datos al final del asistente, además de una puntuación de lo difícil que resultaba crear un servidor.",
+        "Heap convirtió el asistente en un embudo de siete pasos: la lista de servidores, la página de centros de datos, después la elección del sistema operativo, el tamaño, el método de acceso y el nombre, y por último los detalles del servidor. Cada paso de una etapa a la siguiente se midió de cuatro formas: cuántas personas lo superaron, cuántas interacciones hicieron falta, cuánto tiempo llevó y cuántas salieron del producto y volvieron.",
+        "Un paso destacaba en todas las medidas. Tras elegir el tamaño solo continuó el 73,09 %, frente al 89-99 % de los demás pasos. Ese avance llevó una mediana de 5 interacciones y 23 segundos, el doble aproximado que los otros, y el 3,8 % salió del producto y volvió antes de seguir, más que en cualquier otro paso. Elegir el sistema operativo también hacía perder gente, sobre todo a quienes buscaban algo distinto de los sistemas más usados o en el marketplace. En total, el 52,19 % de quienes empezaron el asistente lo terminó."
+      ],
+      "insight": "Elegir el tamaño es el único paso que pide prever lo que necesitará el proyecto. Fue el que costó más clics, más tiempo y más compradores."
+    },
+    "solution": {
+      "heading": "Dos formas de elegir un tamaño",
+      "body": [
+        "Sina diseñó el paso del tamaño de dos formas. Las dos mantienen el mismo marco: el título «Elegir el tamaño del servidor», cuatro pestañas para servidores generales, optimizados para memoria, optimizados para cómputo y personalizados, y los botones Volver y Confirmar. Se diferencian en cómo se elige el tamaño.",
+        "La opción 1 enumera tamaños listos en una tabla, agrupados por escala y empezando por los pequeños. Cada fila indica la CPU, la memoria, el SSD, el paquete base y el precio mensual, y una nota sobre la tabla explica las dos generaciones de hardware. Hay una fila ya seleccionada, para que quien no sepa qué elegir pueda seguir igualmente.",
+        "La opción 2, la pestaña personalizada, ajusta los núcleos del procesador, la memoria y el disco con tres deslizadores. Una tarjeta al lado actualiza el precio mensual y por hora con cada movimiento. Un tamaño montado con los deslizadores cuesta lo mismo que la fila equivalente de la tabla."
+      ]
+    },
+    "comparison": {
+      "heading": "Qué mostró la prueba A/B",
+      "customLabel": "Prueba A/B",
+      "body": [
+        "Sina hizo una prueba A/B de los dos diseños, con la conversión como medida. El informe de Heap agrupó a las personas según el control que usaron en el paso del tamaño: de todos los que empezaron el asistente, el 44 % ajustó el tamaño con los deslizadores y cerca del 1 % eligió una fila de la tabla. El resto no tocó ninguno de los dos.",
+        "Todo el grupo de los deslizadores llegó al paso del tamaño, frente al 87,74 % del resto. En la presentación de Heap, Sina planteó esa diferencia como punto de partida de una hipótesis, no como un veredicto: el paso del tamaño ofrece demasiadas opciones en una interfaz complicada, así que menos opciones y un control más sencillo deberían hacer pasar a más gente.",
+        "Esa cautela era acertada. El grupo de los deslizadores llegaba al paso del tamaño por definición, porque los deslizadores solo existen ahí. Al final del asistente, los dos grupos grandes estaban igualados: terminó el 52,04 % de quienes usaron los deslizadores, frente al 52,30 % del resto.",
+        "La gente prefirió claramente ajustar el tamaño por su cuenta a leer una tabla. Esa preferencia no se tradujo en más servidores creados, y los dos diseños se publicaron como pestañas del mismo paso."
+      ],
+      "insight": "Preferencia y conversión son resultados distintos: los deslizadores ganaron la primera y dejaron la segunda donde estaba."
+    },
+    "handoff": {
+      "heading": "Un último paso que pone en marcha la configuración",
+      "customLabel": "Siguientes pasos",
+      "body": [
+        "El plan de seguimiento observaba lo que la gente hacía en la última página del asistente: si cambiaba el nombre del servidor y si copiaba sus datos. En el rediseño, esa página se convierte en un punto de partida.",
+        "Una barra de pasos muestra seis pasos completados y el séptimo, la creación, en curso: centro de datos, sistema operativo, tamaño, disco, ajustes avanzados, y nombre y cantidad. Cada servidor nuevo tiene una tarjeta con su progreso, su nombre de usuario y una contraseña oculta, ambos con botón de copiar. Un servidor que falló se vuelve rojo, con un enlace a los detalles.",
+        "Debajo de los servidores, cuatro tarjetas ofrecen lo que la mayoría de los servidores necesita después, para configurarlo mientras se crean: añadir un disco, configurar un cortafuegos, activar copias de seguridad y crear una red privada. Cada una tiene una línea que explica el porqué, una guía y un botón. Dos listas cierran la página: artículos para empezar, como configurar el cortafuegos o proteger el servidor, y otros para resolver problemas, como los de SSH.",
+        "Es una respuesta a la pregunta de la prueba de usabilidad: la página explica qué hacer a continuación, donde la persona de la prueba no había encontrado ninguna explicación."
+      ]
+    },
+    "console": {
+      "heading": "La lista de servidores, la página del servidor y el gestor de archivos",
+      "customLabel": "Consola",
+      "body": [
+        "El rediseño abarcó también las páginas que se usan una vez que se es cliente. La lista de servidores se abre con una pestaña por centro de datos, en Irán y uno en Ámsterdam, con una búsqueda limitada al centro abierto, acciones en bloque, un filtro de etiquetas y un botón de servidor nuevo. Cada fila muestra el estado, el nombre y el tamaño de un servidor, su usuario de acceso, sus etiquetas y sus acciones; un servidor que aún se está creando muestra su progreso. Otra versión de la lista añade la dirección IP de cada servidor y una acción para trasladarlo a otro centro de datos.",
+        "La página del servidor, que aparece al principio de este caso, responde a una historia de usuario, con palabras de Sina: «Como usuario, quiero ver el estado y los detalles de mi servidor para comprobar que todo va bien, con algunas operaciones para usar mi servidor». Primero va lo necesario para llegar al servidor: su nombre y si está encendido, el comando SSH y las direcciones IP pública y privada con botones de copiar, y una guía de Escritorio remoto. Al lado están los datos del plan y una fila de acciones: encendido, eliminar, ajustes, rescate, cambiar tamaño, reconstruir, consola e instantánea. Debajo, unas pestañas agrupan ajustes, red, uso, instantáneas, consola, reconstrucción y eventos; la pestaña de uso representa la CPU y la memoria de la última hora.",
+        "El gestor de archivos del almacenamiento de objetos lista las carpetas y los archivos de un bucket con su tamaño, su fecha de creación y un interruptor que hace público un archivo. Las subidas ocurren en la propia lista: una fila se llena mientras se sube su archivo, y una subida fallida se vuelve roja con un botón de reintentar. Una ruta de navegación al pie muestra el camino desde el bucket hasta la carpeta abierta.",
+        "Todas estas páginas comparten un marco: una barra con los productos de Arvan (CDN, IaaS, VoD, Live, Ads y PaaS) y un menú para el producto abierto."
+      ]
+    }
+  },
+  "figures": {
+    "siteToPanel": {
+      "caption": "Google Analytics, de la web a la consola: la mayoría de los eventos seguidos eran visitas a la página de inicio, y pocos llegaban a Comprar en la página de servidores en la nube. Las cifras están difuminadas."
+    },
+    "boards": {
+      "caption": "Dos de los tableros de investigación de Sina, en persa: los requisitos que llevaron a Heap y las métricas con las que se juzgaría la consola.",
+      "items": [
+        "Requisitos de una herramienta de análisis, y por qué Heap",
+        "Métricas del lado de la consola"
+      ]
+    },
+    "wizardFunnel": {
+      "caption": "El embudo de Heap del asistente de creación de servidores: la mayor caída llega tras el paso del tamaño (continúa el 73,09 %), y termina el 52,19 %."
+    },
+    "effort": {
+      "caption": "El análisis de esfuerzo de Heap: salir del paso del tamaño exige más interacciones, más tiempo y más regresos que ningún otro."
+    },
+    "sizeOptions": {
+      "caption": "El paso del tamaño de dos formas, ambas publicadas: tamaños listos en una tabla (1), o núcleos, memoria y disco ajustados con deslizadores y con precio a cada movimiento (2)."
+    },
+    "groups": {
+      "caption": "El informe de Heap sobre la prueba A/B: usuarios agrupados según ajustaran el tamaño con los deslizadores o eligieran una fila de la tabla. El número de usuarios está difuminado; los porcentajes son de Heap."
+    },
+    "createResult": {
+      "caption": "El último paso del asistente: el progreso y las credenciales de cada servidor, un servidor fallido con sus detalles, y cuatro pasos siguientes con sus guías."
+    },
+    "serverList": {
+      "caption": "La lista de servidores: una pestaña por centro de datos, búsqueda, acciones en bloque y etiquetas, y dos servidores aún creándose."
+    },
+    "fileManager": {
+      "caption": "Almacenamiento de objetos: los archivos de una carpeta, una subida en curso, una subida fallida con botón de reintentar y un interruptor de enlace público en cada archivo."
+    }
+  },
+  "process": {
+    "heading": "Cómo se hizo el trabajo",
+    "steps": [
+      {
+        "label": "Escuchar",
+        "note": "Una prueba de usabilidad moderada, encuestas y cada mensaje a la empresa en Twitter e Instagram"
+      },
+      {
+        "label": "Elegir",
+        "note": "Requisitos de una herramienta de análisis, cinco herramientas comparadas, Heap elegida y presentada"
+      },
+      {
+        "label": "Planificar",
+        "note": "Qué seguir en cada paso del asistente, y por qué"
+      },
+      {
+        "label": "Medir",
+        "note": "El embudo de siete pasos, y las interacciones, el tiempo y los regresos entre pasos"
+      },
+      {
+        "label": "Diseñar",
+        "note": "Dos formas de elegir un tamaño, y el último paso del asistente como punto de partida"
+      },
+      {
+        "label": "Probar",
+        "note": "Una prueba A/B de los dos diseños del tamaño, medida en Heap"
+      }
+    ]
+  },
+  "decisions": {
+    "heading": "Seis decisiones",
+    "lede": "Cada una se ve en las imágenes, en el archivo o en los datos que hay detrás.",
+    "items": [
+      {
+        "title": "Elegir una herramienta de análisis que lo registre todo",
+        "why": "Heap captura cada interacción sin definir eventos de antemano, así que cualquier pregunta nueva sobre el asistente puede responderse con comportamiento ya registrado, también por personas ajenas al diseño y al análisis.",
+        "tradeoff": "Una segunda herramienta junto a Google Analytics supone dos juegos de cifras que no siempre coincidirán."
+      },
+      {
+        "title": "Medir cada paso antes de rediseñar ninguno",
+        "why": "El embudo y el análisis de esfuerzo situaron el problema en un solo lugar, el paso del tamaño, en vez de repartir la culpa por todo el asistente.",
+        "tradeoff": "Hubo que seguir eventos en la web y en la consola antes de obtener ninguna respuesta."
+      },
+      {
+        "title": "Mantener tamaños listos, con una elección ya hecha",
+        "why": "La tabla agrupa los tamaños por escala, muestra los recursos y el precio mensual de cada uno y empieza con una fila seleccionada, para que quien no sepa qué elegir pueda seguir.",
+        "tradeoff": "Una tabla larga obliga a comparar filas de números que quizá no se entienden."
+      },
+      {
+        "title": "Dejar que cada comprador ajuste núcleos, memoria y disco",
+        "why": "Los deslizadores convierten la elección en tres decisiones, cada una con un precio que cambia al moverse, al mes y por hora. En la prueba A/B, la mayoría de quienes ajustaron un tamaño lo hizo así.",
+        "tradeoff": "Un tamaño personalizado sigue dando por hecho que se sabe lo que necesita el proyecto."
+      },
+      {
+        "title": "Terminar el asistente con lo que viene después",
+        "why": "Mientras se crean los servidores, la página deja las credenciales de cada uno a un clic de copiarse y ofrece un disco, un cortafuegos, copias de seguridad y una red privada, cada uno con su guía.",
+        "tradeoff": "Cuatro ofertas a la vez pueden parecer venta adicional a quien solo quería un servidor."
+      },
+      {
+        "title": "Explicar una licencia de evaluación antes de que el servidor dependa de ella",
+        "why": "Elegir la versión de evaluación de Windows muestra primero un aviso: la licencia dura 180 días y, sin una licencia válida, el servidor se reinicia cada hora.",
+        "tradeoff": "El cuadro de diálogo interrumpe a todo el que elige esa imagen, aunque ya lo sepa."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "La parte de Sina",
+    "intro": "Tomado de las imágenes publicadas por Sina, de las páginas de investigación del archivo de Figma y de los diseños que allí llevan el nombre de Sina. Otro diseñador trabajó en la consola junto a Sina; sus pantallas no se muestran aquí.",
+    "own": [
+      "La investigación del flujo de compra: una prueba de usabilidad moderada, encuestas y mensajes de redes sociales",
+      "Los requisitos de una herramienta de análisis y los argumentos a favor de Heap",
+      "Un plan de seguimiento para cada paso del asistente, y los análisis de embudo y de esfuerzo",
+      "Los dos diseños del paso del tamaño, y su prueba A/B",
+      "El último paso del asistente, la lista de servidores, la página del servidor y el gestor de archivos del almacenamiento de objetos"
+    ],
+    "collaborate": [
+      "Otro diseñador, en otras pantallas de la consola",
+      "Los equipos de ingeniería de Arvan, sobre el rendimiento de los servidores",
+      "Los equipos de producto de Arvan, para llevar los hallazgos a la consola"
+    ],
+    "note": "Estos diseños se publicaron en la consola de Arvan. Las pantallas del archivo que llevan el nombre del otro diseñador, o ningún nombre, se han dejado fuera."
+  },
+  "outcomes": {
+    "heading": "Qué produjo el trabajo",
+    "intro": "Los diseños se publicaron, pero los datos no muestran un resultado de negocio: ninguna cifra de satisfacción ni de ingresos, y en la prueba A/B la finalización se quedó en torno al 52 % con cualquiera de los dos controles.",
+    "delivered": [
+      {
+        "label": "herramientas de análisis comparadas",
+        "context": "Google Analytics, Mixpanel, Amplitude, FullStory y Heap"
+      },
+      {
+        "label": "pasos del asistente medidos",
+        "context": "Cada uno con su conversión, interacciones, tiempo de uso y tasa de regreso"
+      },
+      {
+        "label": "diseños del paso del tamaño",
+        "context": "Tamaños listos en una tabla, y deslizadores personalizados con precio en directo; ambos pasaron por una prueba A/B y se publicaron"
+      },
+      {
+        "label": "páginas de la consola rediseñadas",
+        "context": "El último paso del asistente, la lista de servidores, la página del servidor y el gestor de archivos, todos publicados"
+      }
+    ],
+    "shipped": [
+      "Una prueba de usabilidad del flujo de compra, con los hallazgos clasificados por tipo",
+      "Un documento de requisitos y los argumentos a favor de Heap",
+      "Un plan de seguimiento, y un análisis de embudo y de esfuerzo del asistente de creación de servidores",
+      "Dos formas de elegir el tamaño de un servidor, y una prueba A/B de ambas",
+      "El último paso del asistente, la lista de servidores, la página del servidor y el gestor de archivos del almacenamiento de objetos"
+    ]
+  },
+  "lessons": {
+    "heading": "Lo que cambiaría",
+    "items": [
+      {
+        "title": "Juzgar un cambio al final del embudo",
+        "body": "El grupo de los deslizadores llegaba siempre al paso del tamaño, porque los deslizadores solo existen en ese paso. La cifra que podía mostrar una diferencia era la proporción de quienes terminaban, y era la misma en los dos grupos. Es la cifra que presentaría primero."
+      },
+      {
+        "title": "Presentar los grupos que forma la prueba",
+        "body": "La prueba A/B repartió a los compradores al azar, pero el informe los agrupó según el control que tocaron, y eso mezcla el diseño con quienes lo eligen. La cifra que muestra si los deslizadores retienen a más compradores es la finalización en cada mitad aleatoria."
+      },
+      {
+        "title": "Registrar cada sesión tan a fondo como la primera",
+        "body": "El tablero de la prueba documenta por completo a una sola persona, y su hoja de tiempos tiene sitio para cinco. Completar las cinco sesiones habría mostrado qué problemas son frecuentes y cuáles eran de una sola persona."
+      },
+      {
+        "title": "Poner palabras a las acciones que no se pueden deshacer",
+        "body": "La página del servidor alinea ocho acciones como iconos, entre ellas eliminar y encender o apagar. Una etiqueta en esas dos costaría poco espacio y podría evitar un error caro."
+      }
+    ]
+  }
+}

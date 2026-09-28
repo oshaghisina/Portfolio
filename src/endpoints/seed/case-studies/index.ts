@@ -3,6 +3,13 @@ import type { Payload } from 'payload'
 import { LOCALES } from '@/utilities/locale'
 
 import {
+  ARV_ASSETS,
+  ARV_MEDIA,
+  ARV_SHARED_FIELDS,
+  ARV_SLUG,
+  arvLocalizedFields,
+} from './arvan-cloud/study'
+import {
   ARR_ASSETS,
   ARR_LOCALES,
   ARR_MEDIA,
@@ -452,6 +459,20 @@ export const CASE_STUDIES: CaseStudySeedConfig<any, any>[] = [
     coverCompanionMediaKey: 'stories',
     sharedFields: TAH_SHARED_FIELDS,
     localizedFields: tahLocalizedFields,
+  },
+  // Arvan Cloud's console redesign: an existing archive row (order 59) with no cover until now. The
+  // card pairs the server page with the object-storage file manager, both desktop screens.
+  {
+    label: 'Arvan Cloud',
+    slug: ARV_SLUG,
+    assetsDir: ARV_ASSETS,
+    media: ARV_MEDIA,
+    seedLocales: LOCALES,
+    createFields: { kind: ['product'], order: 59, coverMediaKey: 'cover' },
+    replaceCover: true,
+    coverCompanionMediaKey: 'fileManager',
+    sharedFields: ARV_SHARED_FIELDS,
+    localizedFields: arvLocalizedFields,
   },
 ]
 

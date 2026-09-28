@@ -1,0 +1,265 @@
+{
+  "statement": "Den Schritt finden, an dem Käufer eines Cloud-Servers aufgeben, messen, warum – und genau diesen Schritt zuerst neu gestalten.",
+  "industry": "Cloud-Infrastruktur · CDN und Cloud-Server",
+  "team": "Produktdesign, mit einem weiteren Designer und Arvans Engineering- und Produktteams",
+  "heroCaption": "Die neu gestaltete Serverseite: Status, Zugangsdaten und Tarif oben, darunter CPU- und Speicherauslastung der letzten Stunde.",
+  "snapshot": {
+    "problem": "Ein Cloud-Server wurde über einen Assistenten mit sieben Schritten gekauft, und etwa die Hälfte derer, die ihn begannen, schloss ihn nie ab. Der größte einzelne Verlust kam direkt nach dem Schritt, der nach der Servergröße fragt.",
+    "role": "Produktdesign. Den Kaufweg mit einer Testperson geprüft, Heap vorgeschlagen und den Tracking-Plan geschrieben, den schwachen Schritt gefunden, zwei Wege zur Größenwahl entworfen und per A/B-Test verglichen, und Konsolenseiten wie die Serverliste neu gestaltet.",
+    "result": "Die Entwürfe wurden in Arvans Konsole veröffentlicht. Im A/B-Test stellten 44 % aller, die den Assistenten begannen, die Größe mit den Schiebereglern ein, gegenüber etwa 1 % mit der Tabelle; die Abschlussquote blieb in beiden Fällen bei rund 52 %."
+  },
+  "alt": {
+    "cover": "Die Serverseite der Arvan-Cloud-Konsole, auf Persisch: rechts eine Produktleiste und ein Cloud-Computing-Menü; oben Name und Status des Servers, SSH-Zugang und IP-Adressen mit Kopier-Buttons sowie sein Tarif; darunter Tabs mit Diagrammen zu CPU und Arbeitsspeicher der letzten Stunde",
+    "fileManager": "Der Dateimanager für Object Storage in der Arvan-Cloud-Konsole, auf Persisch: die Dateien eines Ordners in Zeilen mit Größe, Datum und einem Schalter für den öffentlichen Link, eine Zeile beim Hochladen bei 60 %, eine fehlgeschlagene mit Wiederholen-Button, darüber Buttons zum Hochladen und für einen neuen Ordner",
+    "siteToPanel": "Zwei Diagramme aus Google Analytics: Anteile der Ereignisse für die Startseite, die Cloud-Server-Seite, deren Button auf der Startseite und deren Kaufen-Button; darunter ein Trichter von der Cloud-Server-Seite in den Assistenten der Konsole zum Anlegen eines Servers, die Zahlen unkenntlich gemacht",
+    "heapRequirements": "Eine Tafel auf Persisch mit dem Titel „Anforderungen an ein Tool zur Analyse des Nutzerverhaltens“, präsentiert von Sina Oshaghi: was das Team braucht, die fünf geprüften Tools und die Gründe für Heap",
+    "metricsKpi": "Eine Tafel auf Persisch mit dem Titel „Kennzahlen auf Konsolenseite“: Conversion von der Konsolen-Startseite zur Serverliste, von der Liste zu einem neuen Server und von der Wahl des Rechenzentrums bis zum Ende des Assistenten, dazu eine Bewertung, wie schwer das Anlegen eines Servers fiel",
+    "wizardFunnel": "Ein Heap-Trichter der sieben Schritte zum Anlegen eines Servers, von der Serverliste bis zu den Serverdetails, mit der Conversion zwischen je zwei Schritten; der größte Abfall kommt nach der Größenwahl, und 52,19 % kommen ans Ende",
+    "effort": "Heaps Aufwandsanalyse derselben sieben Schritte: Conversion, Interaktionen, aktive Zeit und Rückkehrquote zwischen je zwei Schritten, alle am schlechtesten nach der Größenwahl",
+    "sizeOptions": "Zwei Versionen des Schritts zur Größenwahl, auf Persisch: Option 1 eine Tabelle fertiger Größen mit CPU, Arbeitsspeicher, Festplatte und Monatspreis; Option 2 Schieberegler für CPU, Arbeitsspeicher und Festplatte neben dem Monats- und Stundenpreis",
+    "groups": "Heaps Gruppenanalyse des Assistenten: Nutzer danach getrennt, ob sie die Größe mit den Schiebereglern einstellten oder aus der Tabelle wählten, mit dem Anteil, der jeden Schritt erreicht; die Nutzerzahlen sind unkenntlich gemacht",
+    "createResult": "Der letzte Schritt des Assistenten zum Anlegen eines Servers, auf Persisch: sechs erledigte Schritte und der siebte läuft, drei Server im Aufbau mit Benutzername und verborgenem Passwort, einer davon fehlgeschlagen; darunter Karten, um eine Festplatte hinzuzufügen, eine Firewall einzurichten, Backups zu aktivieren oder ein privates Netzwerk anzulegen, sowie Artikel für den Einstieg und zur Fehlerbehebung",
+    "serverList": "Die Serverliste der Arvan-Cloud-Konsole, auf Persisch: oben ein Tab für jedes Rechenzentrum, eine Suche, Sammelaktionen und ein Button für einen neuen Server, darunter Zeilen mit Status, Name, Größe, Benutzer, Tags und Aktionen jedes Servers, zwei davon noch im Aufbau",
+    "windowsNotice": "Ein Hinweis über der abgedunkelten Konsole, auf Persisch: Das installierte Windows-Image ist eine Evaluierungsversion, ihre Lizenz gilt 180 Tage, und ohne gültige Lizenz wird der Server jede Stunde zurückgesetzt; ein Button „Verstanden“"
+  },
+  "chapters": {
+    "context": {
+      "heading": "Eine Konsole, die auch Server verkaufen muss",
+      "body": [
+        "Arvan Cloud ist ein iranischer Cloud- und CDN-Anbieter. Unternehmen kaufen und betreiben über seine Konsole Cloud-Server, speichern Dateien und liefern Inhalte aus. Sina arbeitete dort in Vollzeit im Produktdesign, an der Oberfläche der Konsole und ihrer Informationsarchitektur.",
+        "Eine solche Konsole hat zwei Aufgaben. Kunden verwalten dort, was sie bereits betreiben, und neue Kunden kaufen dort ihren ersten Server. Diese Fallstudie folgt der zweiten Aufgabe, von der öffentlichen Website bis zum laufenden Server, und zeigt dann Konsolenseiten aus dem Redesign, die alle veröffentlicht wurden: den letzten Schritt des Assistenten, die Serverliste, die Serverseite und den Dateimanager für Object Storage."
+      ]
+    },
+    "problem": {
+      "heading": "Zwei Stellen, an denen Käufer verloren gingen",
+      "body": [
+        "Die Recherche benannte zwei Probleme. Besucher von Arvans Website kamen selten bis in die Konsole, um zu kaufen. Und wer den Assistenten zum Anlegen eines Servers begann, brach ab, während er herauszufinden versuchte, welche Ressourcen er brauchte.",
+        "Google Analytics zeigte das erste Problem. Von den Website-Ereignissen, die für diesen Weg erfasst wurden, waren etwa 90 von 100 Aufrufe der Startseite und 9 Besuche der Cloud-Server-Seite. Etwa 1 war ein Klick auf den Button dieser Seite auf der Startseite, und weniger als 1 ein Klick auf „Kaufen“.",
+        "Die Tafel zum Usability-Test vom September 2021 zeigt, warum. Sie dokumentiert eine Sitzung mit jemandem, der seit zwei Jahren im Full-Stack-Bereich entwickelte und an einem Bildschirm mit 1366 × 768 Pixeln einen Windows-Server mit einem Hosting-Panel einrichten wollte. Die wichtigsten Fragen betrafen das Produkt selbst: Was ist der Unterschied zwischen Cloud und Hosting, ist ein Cloud-Server dasselbe wie eine virtuelle Maschine, und sollte man überhaupt einen Server kaufen oder lieber ein Hosting-Paket? Dann zur Konsole: „Warum erklärt dieses Panel nicht, was was ist?“",
+        "Die Tafel ordnet jeden Befund einer Art zu: Text-, Design-, Produkt- oder technisches Problem."
+      ],
+      "bullets": [
+        "Keine Einführung führte von der Konsolen-Startseite zum Cloud-Server-Produkt, und die anderen Cloud-Produkte daneben lenkten eher ab, als dass sie halfen.",
+        "Die Namen passten nicht zusammen: Die Website sagte „Cloud-Server“, die Konsole IaaS und „Cloud Computing“, und die Produktseite führte „Abrak“ ein, ohne es zu erklären.",
+        "Ein Fehler übersprang die Seite für den ersten Besuch, sodass die Testperson auf „Sie haben keine Server“ landete, ohne sie je zu sehen.",
+        "Der Button zum Anlegen eines Servers und die Anleitungen waren nicht klar.",
+        "Beim Schritt zur Größe waren die Entscheidungskriterien kompliziert, und die Tabs wirkten nicht wie Teile einer einzigen Wahl."
+      ],
+      "insight": "Test und Analytics waren sich einig: Die Leute verloren sich zuerst in Begriffen, dann beim Schritt zur Größe."
+    },
+    "research": {
+      "heading": "Erst festlegen, was gemessen wird, dann messen",
+      "body": [
+        "Sina schrieb für das Team ein Anforderungsdokument für ein Tool zur Analyse des Nutzerverhaltens und stellte es vor. Das Tool sollte Verhalten erfassen, ohne dass vorher Ereignisse eingerichtet werden, einfach genug für alle Teams sein, Ziele in gemeinsame Kennzahlen übersetzen und das Produkt nie verlangsamen oder seine Sicherheit schwächen. Verglichen wurden Google Analytics, Mixpanel, Amplitude, FullStory und Heap; gewählt wurde Heap. Es zeichnet jede Interaktion auf, sodass sich eine neue Frage aus bereits erfasstem Verhalten beantworten lässt, und es lief schon seit mehreren Monaten problemlos in der Konsole.",
+        "Dann folgte ein Tracking-Plan für den Assistenten, Schritt für Schritt, und zu jeder Messung die Frage, die sie beantwortet: Klicks und Zeit bis zum Button zum Anlegen eines Servers, Heatmaps der Konsolen-Startseite, Abbrüche in jedem Schritt, welche Rechenzentren und Betriebssysteme gewählt werden, wie weit die Größentabellen gescrollt werden, wie lange die Leute bei der eigenen Größe bleiben, ob sie private Netzwerke oder Firewalls hinzufügen, mehrere Server auf einmal anlegen oder umbenennen und ob sie auf der letzten Seite die Daten ihres Servers kopieren. Kennzahlen auf Konsolenseite verbanden alles: Conversion von der Konsolen-Startseite zur Serverliste, von der Liste zu einem neuen Server und vom Rechenzentrum bis zum Ende des Assistenten, dazu eine Bewertung, wie schwer sich das Anlegen eines Servers anfühlte.",
+        "Heap machte aus dem Assistenten einen Trichter mit sieben Schritten: die Serverliste, die Seite der Rechenzentren, dann die Wahl von Betriebssystem, Größe, Zugangsart und Name und schließlich die Serverdetails. Jeder Übergang von einem Schritt zum nächsten wurde auf vier Arten gemessen: wie viele weiterkamen, wie viele Interaktionen es brauchte, wie lange es dauerte und wie viele das Produkt verließen und zurückkehrten.",
+        "Ein Schritt fiel bei jeder Messung auf. Nach der Größenwahl gingen nur 73,09 % weiter, gegenüber 89 bis 99 % bei jedem anderen Schritt. Dieser Übergang dauerte im Median 5 Interaktionen und 23 Sekunden, etwa doppelt so lang wie die anderen, und 3,8 % verließen das Produkt und kamen zurück, bevor sie weitermachten – mehr als bei jedem anderen Schritt. Auch die Wahl des Betriebssystems kostete Leute, vor allem jene, die etwas jenseits der gängigen Systeme oder im Marketplace suchten. Insgesamt schlossen 52,19 % derer, die den Assistenten begannen, ihn ab."
+      ],
+      "insight": "Die Größenwahl ist der einzige Schritt, der verlangt, vorherzusagen, was ein Projekt brauchen wird. Er kostete die meisten Klicks, die meiste Zeit und die meisten Käufer."
+    },
+    "solution": {
+      "heading": "Zwei Wege, eine Größe zu wählen",
+      "body": [
+        "Sina entwarf den Schritt zur Größe auf zwei Arten. Beide behalten denselben Rahmen: den Titel „Größe des Servers wählen“, vier Tabs für allgemeine, speicheroptimierte, rechenoptimierte und eigene Server sowie die Buttons Zurück und Bestätigen. Sie unterscheiden sich darin, wie eine Größe gewählt wird.",
+        "Option 1 listet fertige Größen in einer Tabelle, nach Umfang gruppiert und mit den kleinen beginnend. Jede Zeile nennt CPU, Arbeitsspeicher, SSD, Basispaket und Monatspreis, und ein Hinweis über der Tabelle erklärt die zwei Hardware-Generationen. Eine Zeile ist bereits ausgewählt, damit auch weiterkommt, wer unsicher ist.",
+        "Option 2, der Tab für eigene Größen, stellt Prozessorkerne, Arbeitsspeicher und Festplatte mit drei Schiebereglern ein. Eine Karte daneben aktualisiert bei jeder Bewegung den Preis pro Monat und pro Stunde. Eine mit den Schiebereglern gebaute Größe kostet genauso viel wie die passende Zeile der Tabelle."
+      ]
+    },
+    "comparison": {
+      "heading": "Was der A/B-Test zeigte",
+      "customLabel": "A/B-Test",
+      "body": [
+        "Sina führte einen A/B-Test der beiden Entwürfe durch, mit der Conversion als Maßstab. Heaps Bericht dazu gruppierte die Leute nach dem Bedienelement, das sie beim Schritt zur Größe nutzten: Von allen, die den Assistenten begannen, stellten 44 % die Größe mit den Schiebereglern ein, und etwa 1 % wählte eine Zeile aus der Tabelle. Der Rest nutzte keines von beiden.",
+        "Alle aus der Schieberegler-Gruppe erreichten den Schritt zur Größe, gegenüber 87,74 % der übrigen. In der Heap-Präsentation stellte Sina diesen Abstand als Ausgangspunkt einer Hypothese vor, nicht als Urteil: Der Schritt zur Größe bietet zu viele Optionen in einer komplizierten Oberfläche, also sollten weniger Optionen und ein einfacheres Bedienelement mehr Leute hindurchbringen.",
+        "Diese Vorsicht war berechtigt. Die Schieberegler-Gruppe erreichte den Schritt zur Größe per Definition, denn die Schieberegler gibt es nur dort. Am Ende des Assistenten lagen die beiden großen Gruppen gleichauf: 52,04 % der Schieberegler-Nutzer schlossen ab, gegenüber 52,30 % der übrigen.",
+        "Die Leute stellten ihre Größe klar lieber selbst ein, als eine Tabelle zu lesen. Diese Vorliebe führte nicht zu mehr fertigen Servern, und beide Entwürfe wurden veröffentlicht, als Tabs desselben Schritts."
+      ],
+      "insight": "Vorliebe und Conversion sind verschiedene Ergebnisse: Die Schieberegler gewannen das erste und ließen das zweite, wo es war."
+    },
+    "handoff": {
+      "heading": "Ein letzter Schritt, mit dem die Einrichtung beginnt",
+      "customLabel": "Nächste Schritte",
+      "body": [
+        "Der Tracking-Plan beobachtete, was die Leute auf der letzten Seite des Assistenten taten: ob sie ihren Server umbenannten und ob sie seine Daten kopierten. Im Redesign wird diese Seite zu einem Ausgangspunkt.",
+        "Eine Schrittanzeige zeigt sechs erledigte Schritte und den siebten, das Anlegen, in Arbeit: Rechenzentrum, Betriebssystem, Größe, Festplatte, erweiterte Einstellungen, Name und Anzahl. Jeder neue Server bekommt eine Karte mit seinem Fortschritt, dem Benutzernamen und einem verborgenen Passwort, beide mit Kopier-Button. Ein fehlgeschlagener Server wird rot und verlinkt auf die Details.",
+        "Unter den Servern bieten vier Karten an, was die meisten Server als Nächstes brauchen, einzurichten, während sie noch entstehen: eine Festplatte hinzufügen, eine Firewall einrichten, Backups aktivieren, ein privates Netzwerk anlegen. Jede hat eine Zeile zum Warum, eine Anleitung und einen Button. Zwei Listen schließen die Seite ab: Artikel für den Einstieg, etwa zur Konfiguration der Firewall oder zum Schutz des Servers, und Hilfe bei Problemen, etwa mit SSH.",
+        "Das ist eine Antwort auf die Frage aus dem Usability-Test: Die Seite erklärt, was als Nächstes zu tun ist, wo die Testperson gar keine Erklärung gefunden hatte."
+      ]
+    },
+    "console": {
+      "heading": "Die Serverliste, die Serverseite und der Dateimanager",
+      "customLabel": "Konsole",
+      "body": [
+        "Das Redesign umfasste auch die Seiten, die man als Kunde täglich nutzt. Die Serverliste öffnet mit einem Tab für jedes Rechenzentrum, im Iran und eines in Amsterdam, mit einer Suche, die auf das offene Rechenzentrum beschränkt ist, Sammelaktionen, einem Tag-Filter und einem Button für einen neuen Server. Jede Zeile zeigt Status, Name und Größe eines Servers, den Login-Benutzer, Tags und Aktionen; ein Server im Aufbau zeigt seinen Fortschritt. Eine andere Version der Liste ergänzt die IP-Adresse jedes Servers und eine Aktion, den Server in ein anderes Rechenzentrum zu verlegen.",
+        "Die Serverseite, oben in dieser Fallstudie zu sehen, beantwortet eine User Story, in Sinas Worten: „Als Nutzer will ich den Status und die Details meines Servers sehen, um zu prüfen, dass alles in Ordnung ist, mit einigen Aktionen, um meinen Server zu nutzen.“ Zuerst kommt, was man braucht, um den Server zu erreichen: sein Name und ob er läuft, der SSH-Befehl und die öffentliche und private IP-Adresse mit Kopier-Buttons sowie eine Anleitung für Remote Desktop. Daneben stehen die Daten des Tarifs und eine Reihe von Aktionen: Ein/Aus, Löschen, Einstellungen, Rescue, Größe ändern, Neu aufsetzen, Konsole und Snapshot. Darunter liegen Tabs für Einstellungen, Netzwerk, Auslastung, Snapshots, Konsole, Neuaufbau und Ereignisse; der Tab Auslastung zeigt CPU und Arbeitsspeicher der letzten Stunde.",
+        "Der Dateimanager für Object Storage listet die Ordner und Dateien eines Buckets mit Größe, Erstellungsdatum und einem Schalter, der eine Datei öffentlich macht. Hochgeladen wird direkt in der Liste: Eine Zeile füllt sich, während ihre Datei hochlädt, und ein fehlgeschlagener Upload wird rot und bekommt einen Wiederholen-Button. Eine Brotkrumennavigation am unteren Rand zeigt den Pfad vom Bucket bis zum offenen Ordner.",
+        "Alle diese Seiten teilen einen Rahmen: eine Leiste mit Arvans Produkten (CDN, IaaS, VoD, Live, Ads und PaaS) und ein Menü für das geöffnete Produkt."
+      ]
+    }
+  },
+  "figures": {
+    "siteToPanel": {
+      "caption": "Google Analytics, von der Website zur Konsole: Die meisten erfassten Ereignisse waren Aufrufe der Startseite, und wenige erreichten „Kaufen“ auf der Cloud-Server-Seite. Die Zahlen sind unkenntlich gemacht."
+    },
+    "boards": {
+      "caption": "Zwei von Sinas Recherche-Tafeln, auf Persisch: die Anforderungen, die zu Heap führten, und die Kennzahlen, an denen die Konsole gemessen werden sollte.",
+      "items": [
+        "Anforderungen an ein Analyse-Tool, und warum Heap",
+        "Kennzahlen auf Konsolenseite"
+      ]
+    },
+    "wizardFunnel": {
+      "caption": "Heaps Trichter des Assistenten zum Anlegen eines Servers: Der größte Abfall kommt nach dem Schritt zur Größe (73,09 % gehen weiter), und 52,19 % kommen ans Ende."
+    },
+    "effort": {
+      "caption": "Heaps Aufwandsanalyse: Der Übergang nach dem Schritt zur Größe braucht die meisten Interaktionen, die meiste Zeit und die meisten Rückkehrer."
+    },
+    "sizeOptions": {
+      "caption": "Der Schritt zur Größe auf zwei Arten, beide veröffentlicht: fertige Größen in einer Tabelle (1) oder Kerne, Arbeitsspeicher und Festplatte per Schieberegler, bei jeder Bewegung mit Preis (2)."
+    },
+    "groups": {
+      "caption": "Heaps Bericht zum A/B-Test: Nutzer danach gruppiert, ob sie die Größe mit den Schiebereglern einstellten oder eine Zeile aus der Tabelle wählten. Die Nutzerzahlen sind unkenntlich gemacht; die Prozentwerte stammen von Heap."
+    },
+    "createResult": {
+      "caption": "Der letzte Schritt des Assistenten: Fortschritt und Zugangsdaten jedes Servers, ein fehlgeschlagener Server mit Details und vier nächste Schritte mit Anleitungen."
+    },
+    "serverList": {
+      "caption": "Die Serverliste: ein Tab pro Rechenzentrum, Suche, Sammelaktionen und Tags, und zwei Server noch im Aufbau."
+    },
+    "fileManager": {
+      "caption": "Object Storage: die Dateien eines Ordners, ein laufender Upload, ein fehlgeschlagener Upload mit Wiederholen-Button und ein Schalter für den öffentlichen Link an jeder Datei."
+    }
+  },
+  "process": {
+    "heading": "Wie die Arbeit verlief",
+    "steps": [
+      {
+        "label": "Zuhören",
+        "note": "Ein moderierter Usability-Test, Umfragen und jede Nachricht an das Unternehmen auf Twitter und Instagram"
+      },
+      {
+        "label": "Wählen",
+        "note": "Anforderungen an ein Analyse-Tool, fünf Tools verglichen, Heap gewählt und vorgestellt"
+      },
+      {
+        "label": "Planen",
+        "note": "Was bei jedem Schritt des Assistenten erfasst wird, und warum"
+      },
+      {
+        "label": "Messen",
+        "note": "Der Trichter mit sieben Schritten und die Interaktionen, Zeit und Rückkehrer zwischen den Schritten"
+      },
+      {
+        "label": "Entwerfen",
+        "note": "Zwei Wege zur Größenwahl, und der letzte Schritt des Assistenten als Ausgangspunkt"
+      },
+      {
+        "label": "Testen",
+        "note": "Ein A/B-Test der beiden Entwürfe zur Größe, in Heap gemessen"
+      }
+    ]
+  },
+  "decisions": {
+    "heading": "Sechs Entscheidungen",
+    "lede": "Jede ist in den Shots, in der Datei oder in den Daten dahinter zu sehen.",
+    "items": [
+      {
+        "title": "Ein Analyse-Tool wählen, das alles aufzeichnet",
+        "why": "Heap erfasst jede Interaktion, ohne dass vorher Ereignisse eingerichtet werden, sodass sich eine neue Frage zum Assistenten aus bereits aufgezeichnetem Verhalten beantworten lässt – auch von Leuten außerhalb von Design und Analyse.",
+        "tradeoff": "Ein zweites Tool neben Google Analytics heißt zwei Zahlenwerke, die nicht immer übereinstimmen."
+      },
+      {
+        "title": "Jeden Schritt messen, bevor einer neu gestaltet wird",
+        "why": "Trichter und Aufwandsanalyse verorteten das Problem an einer Stelle, dem Schritt zur Größe, statt die Schuld über den ganzen Assistenten zu verteilen.",
+        "tradeoff": "Ereignisse mussten auf Website und Konsole erfasst werden, bevor irgendeine Antwort kam."
+      },
+      {
+        "title": "Fertige Größen behalten, mit einer bereits getroffenen Wahl",
+        "why": "Die Tabelle gruppiert Größen nach Umfang, zeigt die Ressourcen und den Monatspreis jeder Größe und beginnt mit einer ausgewählten Zeile, damit auch weiterkommt, wer nicht weiß, was er wählen soll.",
+        "tradeoff": "Eine lange Tabelle verlangt, Zahlenreihen zu vergleichen, die man vielleicht nicht versteht."
+      },
+      {
+        "title": "Kerne, Arbeitsspeicher und Festplatte selbst einstellen lassen",
+        "why": "Schieberegler machen aus der Wahl drei Entscheidungen, jede mit einem Preis, der sich beim Bewegen ändert, pro Monat und pro Stunde. Im A/B-Test wählten die meisten, die eine Größe einstellten, diesen Weg.",
+        "tradeoff": "Auch eine eigene Größe setzt voraus, dass man weiß, was das eigene Projekt braucht."
+      },
+      {
+        "title": "Den Assistenten mit dem Nächsten enden lassen",
+        "why": "Während die Server entstehen, hält die Seite die Zugangsdaten jedes Servers einen Klick zum Kopieren entfernt und bietet eine Festplatte, eine Firewall, Backups und ein privates Netzwerk an, jeweils mit Anleitung.",
+        "tradeoff": "Vier Angebote auf einmal können wie Upselling wirken, wenn man nur einen Server wollte."
+      },
+      {
+        "title": "Eine Evaluierungslizenz erklären, bevor der Server von ihr abhängt",
+        "why": "Wer die Evaluierungsversion von Windows wählt, sieht zuerst einen Hinweis: Die Lizenz gilt 180 Tage, und ohne gültige Lizenz wird der Server jede Stunde zurückgesetzt.",
+        "tradeoff": "Der Dialog unterbricht alle, die dieses Image wählen, auch wer es schon weiß."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "Sinas Anteil",
+    "intro": "Zusammengestellt aus Sinas veröffentlichten Shots, den Recherche-Seiten der Figma-Datei und den Frames dort, die Sinas Namen tragen. Ein weiterer Designer arbeitete mit Sina an der Konsole; seine Screens werden hier nicht gezeigt.",
+    "own": [
+      "Die Recherche zum Kaufweg: ein moderierter Usability-Test, Umfragen und Nachrichten aus sozialen Medien",
+      "Die Anforderungen an ein Analyse-Tool und die Begründung für Heap",
+      "Ein Tracking-Plan für jeden Schritt des Assistenten sowie Trichter- und Aufwandsanalyse",
+      "Beide Entwürfe des Schritts zur Größe und ihr A/B-Test",
+      "Der letzte Schritt des Assistenten, die Serverliste, die Serverseite und der Dateimanager für Object Storage"
+    ],
+    "collaborate": [
+      "Ein weiterer Designer, an anderen Screens der Konsole",
+      "Arvans Engineering-Teams, zur Leistung der Server",
+      "Arvans Produktteams, um die Erkenntnisse in die Konsole zu bringen"
+    ],
+    "note": "Diese Entwürfe wurden in Arvans Konsole veröffentlicht. Screens der Datei, die den Namen des anderen Designers oder gar keinen Namen tragen, sind weggelassen."
+  },
+  "outcomes": {
+    "heading": "Was die Arbeit hervorbrachte",
+    "intro": "Die Entwürfe wurden veröffentlicht, doch die Belege enthalten kein Geschäftsergebnis: keine Zahl zu Zufriedenheit oder Umsatz, und im A/B-Test blieb die Abschlussquote mit beiden Bedienelementen bei rund 52 %.",
+    "delivered": [
+      {
+        "label": "Analyse-Tools verglichen",
+        "context": "Google Analytics, Mixpanel, Amplitude, FullStory und Heap"
+      },
+      {
+        "label": "Schritte im Assistenten gemessen",
+        "context": "Jeder mit Conversion, Interaktionen, aktiver Zeit und Rückkehrquote"
+      },
+      {
+        "label": "Entwürfe für den Schritt zur Größe",
+        "context": "Fertige Größen in einer Tabelle und eigene Schieberegler mit Live-Preis; beide per A/B-Test geprüft und veröffentlicht"
+      },
+      {
+        "label": "Konsolenseiten neu gestaltet",
+        "context": "Der letzte Schritt des Assistenten, die Serverliste, die Serverseite und der Dateimanager, alle veröffentlicht"
+      }
+    ],
+    "shipped": [
+      "Ein Usability-Test des Kaufwegs, mit nach Art geordneten Befunden",
+      "Ein Anforderungsdokument und die Begründung für Heap",
+      "Ein Tracking-Plan sowie eine Trichter- und Aufwandsanalyse des Assistenten zum Anlegen eines Servers",
+      "Zwei Entwürfe zur Wahl der Servergröße und ein A/B-Test der beiden",
+      "Der letzte Schritt des Assistenten, die Serverliste, die Serverseite und der Dateimanager für Object Storage"
+    ]
+  },
+  "lessons": {
+    "heading": "Was ich ändern würde",
+    "items": [
+      {
+        "title": "Eine Änderung am Ende des Trichters beurteilen",
+        "body": "Die Schieberegler-Gruppe erreichte den Schritt zur Größe jedes Mal, weil es die Schieberegler nur in diesem Schritt gibt. Die Zahl, die einen Unterschied hätte zeigen können, war der Anteil derer, die abschlossen, und der war in beiden Gruppen gleich. Diese Zahl würde ich zuerst berichten."
+      },
+      {
+        "title": "Die Gruppen berichten, die der Test bildet",
+        "body": "Der A/B-Test teilte die Käufer zufällig auf, doch der Bericht gruppierte sie nach dem Bedienelement, das sie angefasst hatten – und das vermischt das Design mit denen, die es wählen. Ob die Schieberegler mehr Käufer halten, zeigt die Abschlussquote jeder zufälligen Hälfte."
+      },
+      {
+        "title": "Jede Sitzung so vollständig festhalten wie die erste",
+        "body": "Die Test-Tafel dokumentiert eine Testperson vollständig, und ihr Zeitbogen hat Platz für fünf. Alle fünf Sitzungen auszufüllen, hätte gezeigt, welche Probleme häufig sind und welche nur eine Person betrafen."
+      },
+      {
+        "title": "Aktionen beschriften, die sich nicht rückgängig machen lassen",
+        "body": "Die Serverseite reiht acht Aktionen als Icons auf, darunter Löschen und Ein/Aus. Eine Beschriftung an diesen beiden kostet kaum Platz und kann einen teuren Fehlgriff verhindern."
+      }
+    ]
+  }
+}

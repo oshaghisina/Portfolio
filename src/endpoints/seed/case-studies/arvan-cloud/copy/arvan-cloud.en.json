@@ -1,0 +1,265 @@
+{
+  "statement": "Find the step where people buying a cloud server give up, measure why, and redesign that step first.",
+  "industry": "Cloud infrastructure · CDN and cloud servers",
+  "team": "Product designer, with another designer and Arvan’s engineering and product teams",
+  "heroCaption": "The redesigned server page: status, access details and the plan at the top, and CPU and memory use over the past hour below.",
+  "snapshot": {
+    "problem": "Buying a cloud server meant a seven-step wizard, and about half the people who started it never finished. The biggest single loss came right after the step that asks for the server’s size.",
+    "role": "Product designer. Tested the buying flow with a user, made the case for Heap and planned what to track, found the weak step, designed two ways to choose a size and A/B-tested them, and redesigned console pages such as the server list.",
+    "result": "The designs shipped in Arvan’s console. In the A/B test, 44% of everyone who started the wizard set a size with the sliders, against about 1% with the table; completion stayed at about 52% either way."
+  },
+  "alt": {
+    "cover": "The Arvan Cloud console’s server page, in Persian: a product rail and a cloud-computing menu on the right; the server’s name and status, SSH access and IP addresses with copy buttons, and its plan at the top; tabs below, with CPU and memory charts for the past hour",
+    "fileManager": "The Arvan Cloud console’s object-storage file manager, in Persian: a folder’s files in rows with size, date and a public-link switch, one row uploading at 60%, one failed with a retry button, and upload and new-folder buttons above",
+    "siteToPanel": "Two Google Analytics charts: event shares for the home page, the cloud-server page, that page’s button on the home page and its Buy button; below, a funnel from the cloud-server page into the console’s create-server wizard, its counts blurred",
+    "heapRequirements": "A board in Persian titled “Requirements for a user-behaviour analytics tool”, presented by Sina Oshaghi: what the team needs, the five tools considered, and the reasons for choosing Heap",
+    "metricsKpi": "A board in Persian titled “Panel-side metrics”: conversion from the panel home to the server list, from the list to a new server, and from choosing a data centre to the end of the wizard, and a score for how hard creating a server was",
+    "wizardFunnel": "A Heap funnel of the seven create-server steps, from the server list to the server’s details, with the conversion between each pair of steps; the drop after choosing a size is the largest, and 52.19% finish",
+    "effort": "Heap’s effort analysis of the same seven steps: conversion, interactions, time engaged and revisit rate between each pair of steps, all at their worst after choosing a size",
+    "sizeOptions": "Two versions of the choose-a-size step, in Persian: option 1, a table of ready-made sizes with CPU, memory, disk and a monthly price; option 2, sliders for CPU, memory and disk beside the monthly and hourly price",
+    "groups": "Heap’s group analysis of the wizard: users split by whether they set a size with the sliders or picked one from the table, with the share reaching each step; user counts are blurred",
+    "createResult": "The last step of the create-server wizard, in Persian: seven completed steps, three servers being created with their usernames and hidden passwords, one of them failed, then cards to add a disk, set up a firewall, turn on backups or create a private network, and getting-started and troubleshooting articles",
+    "serverList": "The Arvan Cloud console’s server list, in Persian: a tab for each data centre across the top, a search box, bulk actions and a New server button, then rows of servers with status, name, size, user, tags and actions, two of them still being created",
+    "windowsNotice": "A notice over the dimmed console, in Persian: the Windows image being installed is an evaluation copy, its licence lasts 180 days, and without a valid licence the server will reset every hour; a Got it button"
+  },
+  "chapters": {
+    "context": {
+      "heading": "A console that has to sell servers too",
+      "body": [
+        "Arvan Cloud is an Iranian cloud and CDN provider. Businesses use its console to buy and run cloud servers, store files and deliver content. Sina worked there full-time as a product designer, on the console’s interface and its information architecture.",
+        "A console like this does two jobs. It is where customers manage what they already run, and it is where new customers buy their first server. This study follows the second job, from the public website to a running server, and then shows console pages from the redesign, all of which shipped: the wizard’s last step, the server list, the server page and the file manager for object storage."
+      ]
+    },
+    "problem": {
+      "heading": "Two places where buyers were lost",
+      "body": [
+        "The research named two problems. Visitors to Arvan’s website rarely made it into the console to buy. And people who did start the create-server wizard dropped out while trying to work out which resources they needed.",
+        "Google Analytics showed the first one. Of the site events tracked for this path, about 90 in 100 were home-page views and 9 were visits to the cloud-server page. About 1 was a click on that page’s button on the home page, and fewer than 1 was a click on Buy.",
+        "The usability test board, dated September 2021, shows why. It records a session with a developer two years into full-stack work, on a 1366 × 768 screen, who wanted to set up a Windows server with a hosting panel. The participant’s main questions were about the product itself: what is the difference between cloud and hosting, is a cloud server the same as a virtual machine, and should they buy a server at all or a hosting plan? Then, about the console: “Why doesn’t this panel have an explanation, so I can understand what’s what?”",
+        "Each finding on the test board is filed as a copy, design, product or technical problem:"
+      ],
+      "bullets": [
+        "No introduction led from the console’s home to the cloud-server product, and the other cloud products around it distracted rather than helped.",
+        "The names didn’t match: the website said “cloud server”, the console said IaaS and “cloud computing”, and the product page introduced “Abrak” without explaining it.",
+        "A bug skipped the first-visit page, so the participant landed on “You have no servers” without ever seeing it.",
+        "The create-server button and the guides weren’t clear.",
+        "At the size step the decision criteria were complex, and the tabs didn’t read as parts of one choice."
+      ],
+      "insight": "The test and the analytics agreed: people were lost first in words, then at the size step."
+    },
+    "research": {
+      "heading": "Choosing what to measure, then measuring it",
+      "body": [
+        "Sina wrote the team a requirements document for a user-behaviour analytics tool and presented it. The tool had to capture behaviour without events being set up first, be simple enough for every team to use, turn goals into shared metrics, and never slow the product down or weaken its security. Google Analytics, Mixpanel, Amplitude, FullStory and Heap were compared, and Heap was chosen: it records every interaction, so a new question can be answered from behaviour already captured, and it had run without trouble on the panel for several months.",
+        "Next came a tracking plan for the wizard, step by step, each measure with the question it answers: clicks and time to find the create-server button, heat maps of the console’s home, drop-off at every step, which data centres and operating systems people pick, how far they scroll the size tables, how long they stay on the custom size, whether they add private networks or firewalls, create several servers at once or rename them, and whether they copy their server’s details on the last page. Panel-side metrics tied it together: conversion from the console’s home to the server list, from the list to a new server, and from the data centre to the end of the wizard, plus a score for how hard creating a server felt.",
+        "Heap turned the wizard into a seven-step funnel: the server list, the data-centre page, then choosing the operating system, the size, the access method and a name, and finally the server’s details. Each move from one step to the next was measured four ways: how many people made it, how many interactions it took, how long they spent, and how many left the product and came back.",
+        "One step stood out on every measure. After choosing a size, only 73.09% moved on, against 89–99% at every other step. That move took a median of 5 interactions and 23 seconds, about twice as long as the others, and 3.8% of people left and came back before going on, the most of any step. Choosing the operating system lost people too, above all those looking for something beyond the popular systems or in the marketplace. Overall, 52.19% of the people who started the wizard finished it."
+      ],
+      "insight": "Choosing a size is the one step that asks people to predict what their project will need. It cost the most clicks, the most time and the most buyers."
+    },
+    "solution": {
+      "heading": "Two ways to choose a size",
+      "body": [
+        "Sina designed the size step two ways. Both keep the same frame: the title “Choose the server’s size”, four tabs for general, memory-optimised, compute-optimised and custom servers, and Back and Confirm buttons. They differ in how a size is picked.",
+        "Option 1 lists ready-made sizes in a table, grouped by scale and starting with the small ones. Each row gives the CPU, memory, SSD, base package and monthly price, and a note above the table explains the two hardware generations. One row is already selected, so someone unsure what to pick can still go on.",
+        "Option 2, the custom tab, sets processor cores, memory and disk with three sliders. A card beside them updates the price per month and per hour as they move. A size built with the sliders costs the same as the matching row in the table."
+      ]
+    },
+    "comparison": {
+      "heading": "What the A/B test showed",
+      "customLabel": "A/B test",
+      "body": [
+        "Sina ran an A/B test of the two designs, with conversion as the measure. Heap’s report on it grouped people by the control they used at the size step: of everyone who started the wizard, 44% set a size with the sliders and about 1% picked a row from the table. The rest touched neither.",
+        "Everyone in the slider group reached the size step, against 87.74% of the rest. In the Heap presentation, Sina offered that gap as the start of a hypothesis, not a verdict: the size step offers too many choices in a complicated interface, so fewer choices and a simpler control should get more people through it.",
+        "That caution was right. The slider group reached the size step by definition, since the sliders only exist there. At the end of the wizard the two large groups were level: 52.04% of slider users finished, against 52.30% of the rest.",
+        "People clearly preferred setting their own size to reading a table. The preference did not turn into more finished servers, and both designs shipped, as tabs of the same step."
+      ],
+      "insight": "Preference and conversion are different results: the sliders won the first and left the second where it was."
+    },
+    "handoff": {
+      "heading": "A last step that starts the setup",
+      "customLabel": "Next steps",
+      "body": [
+        "The tracking plan watched what people did on the wizard’s last page: whether they renamed their server and whether they copied its details. In the redesign that page becomes a place to start from.",
+        "A stepper shows six steps done and the seventh, creation, under way: data centre, operating system, size, disk, advanced settings, name and count. Each new server gets a card with its progress, its username and a hidden password, both with copy buttons. A server that failed turns red, with a link to the details.",
+        "Below the servers, four cards offer what most servers need next, to set up while they are being built: add a disk, set up a firewall, turn on backups, create a private network. Each has one line on why, a guide and a button. Two lists close the page, one of articles to get started, such as configuring the firewall or protecting the server, and one for troubleshooting, such as SSH problems.",
+        "It is one answer to the question from the usability test: the page explains what to do next, where the participant had found no explanation at all."
+      ]
+    },
+    "console": {
+      "heading": "The server list, the server page and the file manager",
+      "customLabel": "Console",
+      "body": [
+        "The redesign also covered the pages people use once they are customers. The server list opens on a tab for each data centre, in Iran and one in Amsterdam, with a search box scoped to the open data centre, bulk actions, a tag filter and a New server button. Each row shows a server’s status, name and size, its login user, tags and actions; a server still being created shows its progress. Another version of the list adds each server’s IP address and an action to move the server to another data centre.",
+        "The server page, shown at the top of this study, answers one user story, in Sina’s words: “As a user, I want to see my server status and details to check everything is ok, with some operations to use my server.” What it takes to reach the server comes first: its name and whether it is on, the SSH command and the public and private IP addresses with copy buttons, and a guide to Remote Desktop. Beside them sit the plan’s facts and a row of actions: power, delete, settings, rescue, resize, rebuild, console and snapshot. Below, tabs hold settings, network, usage, snapshots, the console, rebuild and events; the usage tab charts CPU and memory over the past hour.",
+        "The file manager for object storage lists a bucket’s folders and files with their size, creation date and a switch that makes a file public. Uploads happen in the list itself: a row fills as its file uploads, and a failed upload turns red with a retry button. A breadcrumb at the foot shows the path from the bucket down to the open folder.",
+        "All of them share one frame: a rail of Arvan’s products (CDN, IaaS, VoD, Live, Ads and PaaS) and a menu for the product that is open."
+      ]
+    }
+  },
+  "figures": {
+    "siteToPanel": {
+      "caption": "Google Analytics, from the site to the console: most tracked events were home-page views, and few reached Buy on the cloud-server page. The counts are blurred."
+    },
+    "boards": {
+      "caption": "Two of Sina’s research boards, in Persian: the requirements that led to Heap, and the metrics the console would be judged by.",
+      "items": [
+        "Requirements for an analytics tool, and why Heap",
+        "Panel-side metrics"
+      ]
+    },
+    "wizardFunnel": {
+      "caption": "Heap’s funnel of the create-server wizard: the largest drop comes after the size step (73.09% move on), and 52.19% finish."
+    },
+    "effort": {
+      "caption": "Heap’s effort analysis: moving on from the size step takes the most interactions, the most time and the most revisits."
+    },
+    "sizeOptions": {
+      "caption": "The size step two ways, both shipped: ready-made sizes in a table (1), or cores, memory and disk set with sliders and priced as they move (2)."
+    },
+    "groups": {
+      "caption": "Heap’s report on the A/B test: users grouped by whether they set a size with the sliders or picked one from the table. User counts are blurred; the percentages are Heap’s."
+    },
+    "createResult": {
+      "caption": "The wizard’s last step: each server’s progress and credentials, a failed server with its details, and four next steps with guides."
+    },
+    "serverList": {
+      "caption": "The server list: a tab per data centre, search, bulk actions and tags, and two servers still being created."
+    },
+    "fileManager": {
+      "caption": "Object storage: a folder’s files, an upload in progress, a failed upload with a retry button, and a public-link switch on every file."
+    }
+  },
+  "process": {
+    "heading": "How the work ran",
+    "steps": [
+      {
+        "label": "Listen",
+        "note": "A moderated usability test, surveys, and every message to the company on Twitter and Instagram"
+      },
+      {
+        "label": "Choose",
+        "note": "Requirements for an analytics tool, five tools compared, Heap chosen and presented"
+      },
+      {
+        "label": "Plan",
+        "note": "What to track at every wizard step, and why"
+      },
+      {
+        "label": "Measure",
+        "note": "The seven-step funnel, and the interactions, time and revisits between the steps"
+      },
+      {
+        "label": "Design",
+        "note": "Two ways to choose a size, and the wizard’s last step as a place to start from"
+      },
+      {
+        "label": "Test",
+        "note": "An A/B test of the two size designs, measured in Heap"
+      }
+    ]
+  },
+  "decisions": {
+    "heading": "Six decisions",
+    "lede": "Each one is visible in the shots, the file or the data behind them.",
+    "items": [
+      {
+        "title": "Choose an analytics tool that records everything",
+        "why": "Heap captures every interaction without events being set up first, so a new question about the wizard can be answered from behaviour already recorded, by people outside design and analytics too.",
+        "tradeoff": "A second tool beside Google Analytics means two sets of numbers that won’t always agree."
+      },
+      {
+        "title": "Measure every step before redesigning one",
+        "why": "The funnel and the effort analysis put the problem in one place, the size step, instead of spreading the blame across the whole wizard.",
+        "tradeoff": "Events had to be tracked across the site and the console before any answer came back."
+      },
+      {
+        "title": "Keep ready-made sizes, with a choice already made",
+        "why": "The table groups sizes by scale, shows each one’s resources and monthly price, and starts with a row selected, so a buyer who doesn’t know what to pick can still go on.",
+        "tradeoff": "A long table asks people to compare rows of numbers they may not understand."
+      },
+      {
+        "title": "Let buyers set cores, memory and disk themselves",
+        "why": "Sliders turn the choice into three decisions, each priced as it moves, per month and per hour. In the A/B test, most people who set a size did it this way.",
+        "tradeoff": "A custom size still assumes the buyer knows what their project needs."
+      },
+      {
+        "title": "End the wizard with what to do next",
+        "why": "While the servers are being built, the page keeps each one’s credentials a copy away and offers a disk, a firewall, backups and a private network, each with a guide.",
+        "tradeoff": "Four offers at once can read as upselling to someone who only wanted a server."
+      },
+      {
+        "title": "Explain an evaluation licence before the server depends on it",
+        "why": "Picking the evaluation copy of Windows brings up a notice first: the licence lasts 180 days, and without a valid one the server resets every hour.",
+        "tradeoff": "A dialog interrupts everyone who picks that image, including those who already know."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "Sina’s part",
+    "intro": "Listed from Sina’s published shots, the research pages of the Figma file and the frames there that carry Sina’s name. Another designer worked on the console with Sina; that designer’s screens are not shown.",
+    "own": [
+      "The research on the buying flow: a moderated usability test, surveys and social-media messages",
+      "The requirements for an analytics tool and the case for Heap",
+      "A tracking plan for every wizard step, and the funnel and effort analyses",
+      "Both designs of the size step, and the A/B test of them",
+      "The wizard’s last step, the server list, the server page and the object-storage file manager"
+    ],
+    "collaborate": [
+      "Another designer, on other screens of the console",
+      "Arvan’s engineering teams, on how the servers perform",
+      "Arvan’s product teams, on turning the findings into the console"
+    ],
+    "note": "These designs shipped in Arvan’s console. Screens in the file that carry the other designer’s name, or no name, are left out."
+  },
+  "outcomes": {
+    "heading": "What the work produced",
+    "intro": "The designs shipped, but the evidence holds no business result: no satisfaction or revenue figure, and in the A/B test completion stayed at about 52% whichever control people used.",
+    "delivered": [
+      {
+        "label": "analytics tools compared",
+        "context": "Google Analytics, Mixpanel, Amplitude, FullStory and Heap"
+      },
+      {
+        "label": "wizard steps measured",
+        "context": "Each with its conversion, interactions, time engaged and revisit rate"
+      },
+      {
+        "label": "designs of the size step",
+        "context": "Ready-made sizes in a table, and custom sliders with a live price; both A/B-tested and shipped"
+      },
+      {
+        "label": "console pages redesigned",
+        "context": "The wizard’s last step, the server list, the server page and the file manager, all shipped"
+      }
+    ],
+    "shipped": [
+      "A usability test of the buying flow, its findings filed by kind",
+      "A requirements document and the case for Heap",
+      "A tracking plan, and a funnel and effort analysis of the create-server wizard",
+      "Two designs for choosing a server’s size, and an A/B test of them",
+      "The wizard’s last step, the server list, the server page and the object-storage file manager"
+    ]
+  },
+  "lessons": {
+    "heading": "What I’d change",
+    "items": [
+      {
+        "title": "Judge a change at the end of the funnel",
+        "body": "The slider group reached the size step every time, because the sliders only exist on that step. The number that could show a difference was the share who finished, and it was the same for both groups. That is the number I’d report first."
+      },
+      {
+        "title": "Report the groups the test made",
+        "body": "The A/B test split buyers at random, but the report grouped them by the control they touched, which mixes the design with the people who choose it. Completion in each random half is the number that shows whether the sliders keep more buyers."
+      },
+      {
+        "title": "Record every session as fully as the first",
+        "body": "The test board documents one participant in full, and its timing sheet has room for five. Filling in all five would have shown which problems are common and which belong to one developer."
+      },
+      {
+        "title": "Put words on the actions that can’t be undone",
+        "body": "The server page lines up eight actions as icons, delete and power among them. A label on those two would cost little room and could save a costly slip."
+      }
+    ]
+  }
+}

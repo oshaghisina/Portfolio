@@ -1,0 +1,265 @@
+{
+  "statement": "Trouver l’étape où les acheteurs d’un serveur cloud abandonnent, mesurer pourquoi, et repenser cette étape en premier.",
+  "industry": "Infrastructure cloud · CDN et serveurs cloud",
+  "team": "Design produit, avec un autre designer et les équipes d’ingénierie et produit d’Arvan",
+  "heroCaption": "La page serveur repensée : statut, accès et offre en haut, et utilisation du processeur et de la mémoire sur la dernière heure en bas.",
+  "snapshot": {
+    "problem": "Acheter un serveur cloud passait par un assistant en sept étapes, et environ la moitié des personnes qui le commençaient ne le terminaient jamais. La plus grosse perte venait juste après l’étape qui demande la taille du serveur.",
+    "role": "Design produit. Test du parcours d’achat avec un utilisateur, proposition de Heap et rédaction du plan de suivi, repérage de l’étape faible, deux façons de choisir une taille comparées par un test A/B, et refonte de pages de la console comme la liste des serveurs.",
+    "result": "Les maquettes ont été mises en production dans la console d’Arvan. Dans le test A/B, 44 % de tous ceux qui ont commencé l’assistant ont réglé la taille avec les curseurs, contre environ 1 % avec le tableau ; la complétion est restée autour de 52 % dans les deux cas."
+  },
+  "alt": {
+    "cover": "La page serveur de la console Arvan Cloud, en persan : une barre de produits et un menu de calcul cloud à droite ; le nom et le statut du serveur, l’accès SSH et les adresses IP avec des boutons de copie, et son offre en haut ; des onglets en bas, avec les graphiques du processeur et de la mémoire sur la dernière heure",
+    "fileManager": "Le gestionnaire de fichiers du stockage objet dans la console Arvan Cloud, en persan : les fichiers d’un dossier en lignes avec taille, date et un interrupteur de lien public, une ligne en cours d’envoi à 60 %, une en échec avec un bouton Réessayer, et au-dessus des boutons pour envoyer un fichier et créer un dossier",
+    "siteToPanel": "Deux graphiques Google Analytics : la part des événements pour la page d’accueil, la page des serveurs cloud, son bouton sur la page d’accueil et son bouton Acheter ; en dessous, un entonnoir de la page des serveurs cloud jusqu’à l’assistant de création de serveur de la console, chiffres floutés",
+    "heapRequirements": "Un tableau en persan intitulé « Besoins pour un outil d’analyse du comportement des utilisateurs », présenté par Sina Oshaghi : les besoins de l’équipe, les cinq outils étudiés et les raisons du choix de Heap",
+    "metricsKpi": "Un tableau en persan intitulé « Indicateurs côté console » : conversion de l’accueil de la console vers la liste des serveurs, de la liste vers un nouveau serveur et du choix du centre de données jusqu’à la fin de l’assistant, et une note de la difficulté de création d’un serveur",
+    "wizardFunnel": "Un entonnoir Heap des sept étapes de création d’un serveur, de la liste des serveurs aux détails du serveur, avec la conversion entre chaque paire d’étapes ; la plus forte chute suit le choix de la taille, et 52,19 % vont au bout",
+    "effort": "L’analyse d’effort de Heap sur les mêmes sept étapes : conversion, interactions, temps d’engagement et taux de retour entre chaque paire d’étapes, tous au plus mal après le choix de la taille",
+    "sizeOptions": "Deux versions de l’étape du choix de la taille, en persan : option 1, un tableau de tailles prêtes avec processeur, mémoire, disque et prix mensuel ; option 2, des curseurs pour le processeur, la mémoire et le disque à côté du prix mensuel et horaire",
+    "groups": "L’analyse de groupes de Heap sur l’assistant : les utilisateurs répartis selon qu’ils ont réglé la taille avec les curseurs ou l’ont choisie dans le tableau, avec la part qui atteint chaque étape ; le nombre d’utilisateurs est flouté",
+    "createResult": "La dernière étape de l’assistant de création de serveur, en persan : six étapes terminées et la septième en cours, trois serveurs en création avec nom d’utilisateur et mot de passe masqué, dont un en échec ; puis des cartes pour ajouter un disque, configurer un pare-feu, activer les sauvegardes ou créer un réseau privé, et des articles pour démarrer et pour dépanner",
+    "serverList": "La liste des serveurs de la console Arvan Cloud, en persan : un onglet par centre de données en haut, une recherche, des actions groupées et un bouton Nouveau serveur, puis des lignes avec le statut, le nom, la taille, l’utilisateur, les étiquettes et les actions de chaque serveur, dont deux encore en création",
+    "windowsNotice": "Un avertissement sur la console assombrie, en persan : l’image Windows installée est une version d’évaluation, sa licence vaut 180 jours, et sans licence valide le serveur sera réinitialisé toutes les heures ; un bouton J’ai compris"
+  },
+  "chapters": {
+    "context": {
+      "heading": "Une console qui doit aussi vendre des serveurs",
+      "body": [
+        "Arvan Cloud est un fournisseur iranien de cloud et de CDN. Les entreprises utilisent sa console pour acheter et faire tourner des serveurs cloud, stocker des fichiers et diffuser du contenu. Sina y travaillait à temps plein en design produit, sur l’interface de la console et son architecture de l’information.",
+        "Une telle console a deux rôles. C’est là que les clients gèrent ce qu’ils font déjà tourner, et c’est là que les nouveaux clients achètent leur premier serveur. Cette étude suit le second rôle, du site public jusqu’à un serveur en marche, puis montre des pages de la refonte, toutes mises en production : la dernière étape de l’assistant, la liste des serveurs, la page serveur et le gestionnaire de fichiers du stockage objet."
+      ]
+    },
+    "problem": {
+      "heading": "Deux endroits où l’on perdait des acheteurs",
+      "body": [
+        "La recherche a nommé deux problèmes. Les visiteurs du site d’Arvan arrivaient rarement jusqu’à la console pour acheter. Et les personnes qui commençaient l’assistant de création de serveur abandonnaient en cherchant de quelles ressources elles avaient besoin.",
+        "Google Analytics a montré le premier. Parmi les événements du site suivis pour ce parcours, environ 90 sur 100 étaient des vues de la page d’accueil et 9 des visites de la page des serveurs cloud. Environ 1 était un clic sur le bouton de cette page depuis l’accueil, et moins de 1 un clic sur « Acheter ».",
+        "Le tableau du test d’utilisabilité, daté de septembre 2021, montre pourquoi. Il consigne une séance avec une personne qui développait en full stack depuis deux ans et voulait, sur un écran de 1366 × 768, installer un serveur Windows avec un panneau d’hébergement. Ses questions principales portaient sur le produit lui-même : quelle différence entre le cloud et l’hébergement, un serveur cloud est-il une machine virtuelle, et faut-il acheter un serveur ou plutôt une offre d’hébergement ? Puis, à propos de la console : « Pourquoi ce panneau n’explique-t-il pas ce qui est quoi ? »",
+        "Le tableau classe chaque constat par type : problème de texte, de design, de produit ou technique."
+      ],
+      "bullets": [
+        "Aucune introduction ne menait de l’accueil de la console au produit serveur cloud, et les autres produits cloud autour de lui distrayaient plus qu’ils n’aidaient.",
+        "Les noms ne concordaient pas : le site disait « serveur cloud », la console IaaS et « calcul cloud », et la page produit introduisait « Abrak » sans l’expliquer.",
+        "Un bug sautait la page de première visite : la personne testée est arrivée sur « Vous n’avez aucun serveur » sans jamais la voir.",
+        "Le bouton de création de serveur et les guides n’étaient pas clairs.",
+        "À l’étape de la taille, les critères de décision étaient complexes, et les onglets ne se lisaient pas comme les parties d’un même choix."
+      ],
+      "insight": "Le test et les analyses concordaient : on se perdait d’abord dans les mots, puis à l’étape de la taille."
+    },
+    "research": {
+      "heading": "Choisir ce qu’on mesure, puis le mesurer",
+      "body": [
+        "Sina a rédigé pour l’équipe un cahier des besoins pour un outil d’analyse du comportement des utilisateurs, puis l’a présenté. L’outil devait capter le comportement sans qu’il faille d’abord définir des événements, rester assez simple pour toutes les équipes, traduire les objectifs en indicateurs partagés, et ne jamais ralentir le produit ni affaiblir sa sécurité. Google Analytics, Mixpanel, Amplitude, FullStory et Heap ont été comparés, et Heap a été retenu : il enregistre chaque interaction, de sorte qu’une nouvelle question trouve sa réponse dans un comportement déjà capté, et il tournait sans souci sur la console depuis plusieurs mois.",
+        "Est venu ensuite un plan de suivi de l’assistant, étape par étape, chaque mesure accompagnée de la question à laquelle elle répond : clics et temps pour trouver le bouton de création de serveur, cartes de chaleur de l’accueil de la console, abandons à chaque étape, centres de données et systèmes d’exploitation choisis, défilement dans les tableaux de tailles, temps passé sur la taille personnalisée, ajout de réseaux privés ou de pare-feu, création de plusieurs serveurs d’un coup ou renommage, et copie des informations du serveur sur la dernière page. Les indicateurs côté console reliaient le tout : conversion de l’accueil de la console vers la liste des serveurs, de la liste vers un nouveau serveur et du centre de données jusqu’à la fin de l’assistant, plus une note de la difficulté ressentie à créer un serveur.",
+        "Heap a transformé l’assistant en entonnoir de sept étapes : la liste des serveurs, la page des centres de données, puis le choix du système d’exploitation, de la taille, du mode d’accès et d’un nom, et enfin les détails du serveur. Chaque passage d’une étape à la suivante a été mesuré de quatre façons : combien l’ont franchi, combien d’interactions il a fallu, combien de temps cela a pris, et combien ont quitté le produit avant de revenir.",
+        "Une étape ressortait sur chaque mesure. Après le choix de la taille, seuls 73,09 % ont continué, contre 89 à 99 % à toutes les autres étapes. Ce passage a demandé en médiane 5 interactions et 23 secondes, environ deux fois plus que les autres, et 3,8 % ont quitté le produit puis sont revenus avant de poursuivre, le plus haut taux de toutes les étapes. Le choix du système d’exploitation faisait aussi perdre du monde, surtout parmi ceux qui cherchaient autre chose que les systèmes courants ou dans la place de marché. Au total, 52,19 % des personnes qui ont commencé l’assistant l’ont terminé."
+      ],
+      "insight": "Le choix de la taille est la seule étape qui demande de prévoir ce dont un projet aura besoin. C’est elle qui a coûté le plus de clics, le plus de temps et le plus d’acheteurs."
+    },
+    "solution": {
+      "heading": "Deux façons de choisir une taille",
+      "body": [
+        "Sina a conçu l’étape de la taille de deux façons. Les deux gardent le même cadre : le titre « Choisir la taille du serveur », quatre onglets pour les serveurs généraux, optimisés mémoire, optimisés calcul et personnalisés, et les boutons Retour et Confirmer. Elles diffèrent par la manière de choisir la taille.",
+        "L’option 1 liste des tailles prêtes dans un tableau, regroupées par échelle en commençant par les petites. Chaque ligne indique le processeur, la mémoire, le SSD, l’offre de base et le prix mensuel, et une note au-dessus du tableau explique les deux générations de matériel. Une ligne est déjà sélectionnée, pour qu’on puisse avancer même sans savoir quoi choisir.",
+        "L’option 2, l’onglet personnalisé, règle les cœurs du processeur, la mémoire et le disque avec trois curseurs. Une carte à côté met à jour le prix mensuel et horaire à chaque mouvement. Une taille composée avec les curseurs coûte autant que la ligne équivalente du tableau."
+      ]
+    },
+    "comparison": {
+      "heading": "Ce que le test A/B a montré",
+      "customLabel": "Test A/B",
+      "body": [
+        "Sina a mené un test A/B des deux versions, avec la conversion pour mesure. Le rapport de Heap a regroupé les personnes selon la commande utilisée à l’étape de la taille : parmi toutes celles qui ont commencé l’assistant, 44 % ont réglé la taille avec les curseurs et environ 1 % ont choisi une ligne du tableau. Les autres n’ont touché ni l’un ni l’autre.",
+        "Tout le groupe des curseurs a atteint l’étape de la taille, contre 87,74 % des autres. Dans la présentation de Heap, Sina a fait de cet écart le point de départ d’une hypothèse, pas un verdict : l’étape de la taille propose trop de choix dans une interface compliquée, donc moins de choix et une commande plus simple devraient faire passer davantage de monde.",
+        "Cette prudence était juste. Le groupe des curseurs atteignait l’étape de la taille par définition, puisque les curseurs n’existent que là. À la fin de l’assistant, les deux grands groupes étaient à égalité : 52,04 % des utilisateurs des curseurs ont terminé, contre 52,30 % des autres.",
+        "Les gens préféraient clairement régler leur taille eux-mêmes plutôt que lire un tableau. Cette préférence ne s’est pas traduite par davantage de serveurs créés, et les deux versions ont été mises en production, comme onglets de la même étape."
+      ],
+      "insight": "Préférence et conversion sont deux résultats différents : les curseurs ont gagné le premier et laissé le second là où il était."
+    },
+    "handoff": {
+      "heading": "Une dernière étape qui lance la configuration",
+      "customLabel": "La suite",
+      "body": [
+        "Le plan de suivi observait ce que les gens faisaient sur la dernière page de l’assistant : renommaient-ils leur serveur, copiaient-ils ses informations. Dans la refonte, cette page devient un point de départ.",
+        "Une barre d’étapes montre six étapes terminées et la septième, la création, en cours : centre de données, système d’exploitation, taille, disque, réglages avancés, nom et nombre. Chaque nouveau serveur a sa carte avec sa progression, son nom d’utilisateur et un mot de passe masqué, tous deux avec un bouton de copie. Un serveur en échec passe au rouge, avec un lien vers les détails.",
+        "Sous les serveurs, quatre cartes proposent ce dont la plupart des serveurs ont besoin ensuite, à configurer pendant leur création : ajouter un disque, configurer un pare-feu, activer les sauvegardes, créer un réseau privé. Chacune a une ligne sur le pourquoi, un guide et un bouton. Deux listes ferment la page : des articles pour démarrer, comme configurer le pare-feu ou protéger le serveur, et d’autres pour dépanner, comme les problèmes SSH.",
+        "C’est une réponse à la question du test d’utilisabilité : la page explique quoi faire ensuite, là où la personne testée n’avait trouvé aucune explication."
+      ]
+    },
+    "console": {
+      "heading": "La liste des serveurs, la page serveur et le gestionnaire de fichiers",
+      "customLabel": "Console",
+      "body": [
+        "La refonte couvrait aussi les pages qu’on utilise une fois client. La liste des serveurs s’ouvre sur un onglet par centre de données, en Iran et un à Amsterdam, avec une recherche limitée au centre ouvert, des actions groupées, un filtre par étiquette et un bouton Nouveau serveur. Chaque ligne montre le statut, le nom et la taille d’un serveur, son utilisateur de connexion, ses étiquettes et ses actions ; un serveur encore en création affiche sa progression. Une autre version de la liste ajoute l’adresse IP de chaque serveur et une action pour déplacer le serveur vers un autre centre de données.",
+        "La page serveur, montrée en haut de cette étude, répond à un récit utilisateur, dans les mots de Sina : « En tant qu’utilisateur, je veux voir le statut et les détails de mon serveur pour vérifier que tout va bien, avec quelques opérations pour utiliser mon serveur. » Ce qu’il faut pour atteindre le serveur vient d’abord : son nom et s’il est allumé, la commande SSH et les adresses IP publique et privée avec des boutons de copie, et un guide pour Remote Desktop. À côté figurent les caractéristiques de l’offre et une rangée d’actions : alimentation, suppression, réglages, secours, redimensionnement, reconstruction, console et instantané. En dessous, des onglets regroupent réglages, réseau, utilisation, instantanés, console, reconstruction et événements ; l’onglet utilisation trace le processeur et la mémoire sur la dernière heure.",
+        "Le gestionnaire de fichiers du stockage objet liste les dossiers et fichiers d’un bucket avec leur taille, leur date de création et un interrupteur qui rend un fichier public. L’envoi se fait dans la liste même : une ligne se remplit pendant l’envoi de son fichier, et un envoi en échec passe au rouge avec un bouton Réessayer. Un fil d’Ariane en bas montre le chemin du bucket jusqu’au dossier ouvert.",
+        "Toutes ces pages partagent un même cadre : une barre des produits d’Arvan (CDN, IaaS, VoD, Live, Ads et PaaS) et un menu pour le produit ouvert."
+      ]
+    }
+  },
+  "figures": {
+    "siteToPanel": {
+      "caption": "Google Analytics, du site à la console : la plupart des événements suivis étaient des vues de la page d’accueil, et peu atteignaient Acheter sur la page des serveurs cloud. Chiffres floutés."
+    },
+    "boards": {
+      "caption": "Deux tableaux de recherche de Sina, en persan : les besoins qui ont mené à Heap, et les indicateurs sur lesquels la console serait jugée.",
+      "items": [
+        "Besoins pour un outil d’analyse, et pourquoi Heap",
+        "Indicateurs côté console"
+      ]
+    },
+    "wizardFunnel": {
+      "caption": "L’entonnoir Heap de l’assistant de création de serveur : la plus forte chute suit l’étape de la taille (73,09 % continuent), et 52,19 % vont au bout."
+    },
+    "effort": {
+      "caption": "L’analyse d’effort de Heap : quitter l’étape de la taille demande le plus d’interactions, le plus de temps et le plus de retours."
+    },
+    "sizeOptions": {
+      "caption": "L’étape de la taille de deux façons, toutes deux mises en production : des tailles prêtes dans un tableau (1), ou cœurs, mémoire et disque réglés par curseurs et chiffrés à chaque mouvement (2)."
+    },
+    "groups": {
+      "caption": "Le rapport de Heap sur le test A/B : les utilisateurs regroupés selon qu’ils ont réglé la taille avec les curseurs ou choisi une ligne du tableau. Nombre d’utilisateurs flouté ; les pourcentages sont ceux de Heap."
+    },
+    "createResult": {
+      "caption": "La dernière étape de l’assistant : la progression et les identifiants de chaque serveur, un serveur en échec avec ses détails, et quatre étapes suivantes avec leurs guides."
+    },
+    "serverList": {
+      "caption": "La liste des serveurs : un onglet par centre de données, recherche, actions groupées et étiquettes, et deux serveurs encore en création."
+    },
+    "fileManager": {
+      "caption": "Stockage objet : les fichiers d’un dossier, un envoi en cours, un envoi en échec avec un bouton Réessayer, et un interrupteur de lien public sur chaque fichier."
+    }
+  },
+  "process": {
+    "heading": "Comment le travail s’est déroulé",
+    "steps": [
+      {
+        "label": "Écouter",
+        "note": "Un test d’utilisabilité modéré, des enquêtes, et chaque message adressé à l’entreprise sur Twitter et Instagram"
+      },
+      {
+        "label": "Choisir",
+        "note": "Les besoins pour un outil d’analyse, cinq outils comparés, Heap retenu et présenté"
+      },
+      {
+        "label": "Planifier",
+        "note": "Ce qu’on suit à chaque étape de l’assistant, et pourquoi"
+      },
+      {
+        "label": "Mesurer",
+        "note": "L’entonnoir de sept étapes, et les interactions, le temps et les retours entre les étapes"
+      },
+      {
+        "label": "Concevoir",
+        "note": "Deux façons de choisir une taille, et la dernière étape de l’assistant comme point de départ"
+      },
+      {
+        "label": "Tester",
+        "note": "Un test A/B des deux versions de la taille, mesuré dans Heap"
+      }
+    ]
+  },
+  "decisions": {
+    "heading": "Six décisions",
+    "lede": "Chacune est visible dans les images, dans le fichier ou dans les données qui les sous-tendent.",
+    "items": [
+      {
+        "title": "Choisir un outil d’analyse qui enregistre tout",
+        "why": "Heap capte chaque interaction sans définition préalable d’événements, si bien qu’une nouvelle question sur l’assistant trouve sa réponse dans un comportement déjà enregistré, y compris pour des personnes hors design et analyse.",
+        "tradeoff": "Un second outil à côté de Google Analytics, ce sont deux séries de chiffres qui ne concorderont pas toujours."
+      },
+      {
+        "title": "Mesurer chaque étape avant d’en repenser une",
+        "why": "L’entonnoir et l’analyse d’effort ont situé le problème à un seul endroit, l’étape de la taille, au lieu de le répartir sur tout l’assistant.",
+        "tradeoff": "Il a fallu suivre des événements sur le site et la console avant d’obtenir la moindre réponse."
+      },
+      {
+        "title": "Garder des tailles prêtes, avec un choix déjà fait",
+        "why": "Le tableau regroupe les tailles par échelle, montre les ressources et le prix mensuel de chacune et commence avec une ligne sélectionnée, pour qu’un acheteur qui ne sait pas quoi choisir puisse quand même avancer.",
+        "tradeoff": "Un long tableau oblige à comparer des rangées de chiffres qu’on ne comprend pas forcément."
+      },
+      {
+        "title": "Laisser l’acheteur régler cœurs, mémoire et disque",
+        "why": "Les curseurs transforment le choix en trois décisions, chacune chiffrée au fil du mouvement, au mois et à l’heure. Dans le test A/B, la plupart de ceux qui ont réglé une taille l’ont fait ainsi.",
+        "tradeoff": "Une taille personnalisée suppose toujours de savoir ce dont son projet a besoin."
+      },
+      {
+        "title": "Finir l’assistant sur la suite",
+        "why": "Pendant la création des serveurs, la page garde les identifiants de chacun à une copie près et propose un disque, un pare-feu, des sauvegardes et un réseau privé, chacun avec un guide.",
+        "tradeoff": "Quatre offres d’un coup peuvent passer pour de la vente additionnelle auprès de qui voulait seulement un serveur."
+      },
+      {
+        "title": "Expliquer une licence d’évaluation avant que le serveur en dépende",
+        "why": "Choisir la version d’évaluation de Windows affiche d’abord un avertissement : la licence vaut 180 jours, et sans licence valide le serveur est réinitialisé toutes les heures.",
+        "tradeoff": "La boîte de dialogue interrompt tous ceux qui choisissent cette image, même ceux qui le savent déjà."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "La part de Sina",
+    "intro": "Établie à partir des images publiées par Sina, des pages de recherche du fichier Figma et des maquettes qui y portent le nom de Sina. Un autre designer a travaillé sur la console aux côtés de Sina ; ses écrans ne sont pas montrés ici.",
+    "own": [
+      "La recherche sur le parcours d’achat : un test d’utilisabilité modéré, des enquêtes et les messages des réseaux sociaux",
+      "Les besoins pour un outil d’analyse et l’argumentaire pour Heap",
+      "Un plan de suivi pour chaque étape de l’assistant, et les analyses d’entonnoir et d’effort",
+      "Les deux versions de l’étape de la taille, et leur test A/B",
+      "La dernière étape de l’assistant, la liste des serveurs, la page serveur et le gestionnaire de fichiers du stockage objet"
+    ],
+    "collaborate": [
+      "Un autre designer, sur d’autres écrans de la console",
+      "Les équipes d’ingénierie d’Arvan, sur les performances des serveurs",
+      "Les équipes produit d’Arvan, pour intégrer les enseignements à la console"
+    ],
+    "note": "Ces maquettes ont été mises en production dans la console d’Arvan. Les écrans du fichier qui portent le nom de l’autre designer, ou aucun nom, sont laissés de côté."
+  },
+  "outcomes": {
+    "heading": "Ce que le travail a produit",
+    "intro": "Les maquettes ont été mises en production, mais les éléments ne contiennent aucun résultat commercial : aucun chiffre de satisfaction ni de revenu, et dans le test A/B la complétion est restée autour de 52 % quelle que soit la commande utilisée.",
+    "delivered": [
+      {
+        "label": "outils d’analyse comparés",
+        "context": "Google Analytics, Mixpanel, Amplitude, FullStory et Heap"
+      },
+      {
+        "label": "étapes de l’assistant mesurées",
+        "context": "Chacune avec sa conversion, ses interactions, son temps d’engagement et son taux de retour"
+      },
+      {
+        "label": "versions de l’étape de la taille",
+        "context": "Des tailles prêtes dans un tableau, et des curseurs personnalisés au prix en direct ; toutes deux passées par un test A/B et mises en production"
+      },
+      {
+        "label": "pages de la console repensées",
+        "context": "La dernière étape de l’assistant, la liste des serveurs, la page serveur et le gestionnaire de fichiers, le tout mis en production"
+      }
+    ],
+    "shipped": [
+      "Un test d’utilisabilité du parcours d’achat, ses constats classés par type",
+      "Un cahier des besoins et l’argumentaire pour Heap",
+      "Un plan de suivi, et une analyse d’entonnoir et d’effort de l’assistant de création de serveur",
+      "Deux façons de choisir la taille d’un serveur, et un test A/B des deux",
+      "La dernière étape de l’assistant, la liste des serveurs, la page serveur et le gestionnaire de fichiers du stockage objet"
+    ]
+  },
+  "lessons": {
+    "heading": "Ce que je changerais",
+    "items": [
+      {
+        "title": "Juger un changement au bout de l’entonnoir",
+        "body": "Le groupe des curseurs atteignait l’étape de la taille à chaque fois, parce que les curseurs n’existent qu’à cette étape. Le chiffre qui pouvait révéler une différence était la part de ceux qui terminaient, et elle était la même pour les deux groupes. C’est le chiffre que je présenterais en premier."
+      },
+      {
+        "title": "Présenter les groupes que le test a formés",
+        "body": "Le test A/B a réparti les acheteurs au hasard, mais le rapport les a regroupés selon la commande qu’ils ont touchée, ce qui mêle la conception et les personnes qui la choisissent. Le chiffre qui montre si les curseurs retiennent plus d’acheteurs, c’est la complétion dans chaque moitié tirée au hasard."
+      },
+      {
+        "title": "Consigner chaque séance aussi complètement que la première",
+        "body": "Le tableau du test documente entièrement une seule personne, et sa feuille de chronométrage prévoit cinq places. Remplir les cinq séances aurait montré quels problèmes sont fréquents et lesquels ne concernaient qu’une personne."
+      },
+      {
+        "title": "Mettre des mots sur les actions irréversibles",
+        "body": "La page serveur aligne huit actions sous forme d’icônes, dont la suppression et l’alimentation. Un libellé sur ces deux-là coûterait peu de place et pourrait éviter une erreur coûteuse."
+      }
+    ]
+  }
+}
