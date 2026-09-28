@@ -9,13 +9,10 @@ import React, { cache } from 'react'
 import type { Project } from '@/payload-types'
 
 import { buildChapters } from '@/blocks/CaseStudy/chapters'
-import { RenderCaseStudy } from '@/blocks/CaseStudy/RenderCaseStudy'
 import { CaseStudyHeader } from '@/components/CaseStudy/CaseStudyHeader'
-import { CaseStudyHero, hasHeroMedia } from '@/components/CaseStudy/CaseStudyHero'
 import { caseStudyCopy } from '@/components/CaseStudy/copy'
 import { MoreFrom, type MoreFromDoc } from '@/components/CaseStudy/MoreFrom'
-import { SectionIndex } from '@/components/CaseStudy/SectionIndex'
-import { Snapshot } from '@/components/CaseStudy/Snapshot'
+import { CaseStudyReadingPath } from '@/components/CaseStudy/ReadingPath'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 import { NextProject, type NextProjectDoc } from '@/components/NextProject'
 import { PageFrame } from '@/components/PageFrame'
@@ -97,18 +94,8 @@ export default async function ProjectPage({ params: paramsPromise }: Args) {
       <PageFrame>
         <article>
           <CaseStudyHeader copy={copy} locale={locale} project={project} />
-          <CaseStudyHero className="mt-12 md:mt-16" copy={copy} hero={project.hero} />
-          <Snapshot className="mt-12 md:mt-20" copy={copy} snapshot={project.snapshot} />
-          {/* Wide viewports get the DS-14 margin index in an inline-start rail; below `xl` the narrative takes the full width. */}
-          <div className="xl:grid xl:grid-cols-[9rem_minmax(0,1fr)] xl:gap-x-10">
-            <SectionIndex chapters={chapters} className="xl:pt-section" label={copy.contents} />
-            <RenderCaseStudy
-              copy={copy}
-              firstFigure={hasHeroMedia(project.hero) ? 2 : 1}
-              locale={locale}
-              sections={sections}
-            />
-          </div>
+          {/* Snapshot first (the quick path), then the hero and the chapters. */}
+          <CaseStudyReadingPath chapters={chapters} copy={copy} locale={locale} project={project} />
           <MoreFrom
             className="mt-section"
             company={project.company}

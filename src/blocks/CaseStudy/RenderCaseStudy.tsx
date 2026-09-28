@@ -100,11 +100,13 @@ export const RenderCaseStudy: React.FC<RenderCaseStudyProps> = ({
             </div>
           )
         }
+        // `scroll-mt-28` clears the sticky header and, below `xl`, the contents row under it. A
+        // contents jump hands the chapter focus (see `chapterNav`), so it wears no focus ring.
         return (
           <section
             aria-labelledby={`${chapter.id}-heading`}
             className={cn(
-              'scroll-mt-28 pt-section',
+              'scroll-mt-28 pt-section focus:outline-none',
               BIG_TRANSITION.has(chapter.key) && 'mt-section border-t border-line',
             )}
             id={chapter.id}

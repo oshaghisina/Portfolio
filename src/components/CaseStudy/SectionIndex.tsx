@@ -1,11 +1,12 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
-import { useLenis } from 'lenis/react'
+import React from 'react'
 
 import type { Chapter } from '@/blocks/CaseStudy/chapters'
 
 import { cn } from '@/utilities/ui'
+
+import { useActiveChapter, useChapterJump } from './chapterNav'
 
 export interface SectionIndexProps {
   chapters: Chapter[]
@@ -21,39 +22,11 @@ export const SECTION_INDEX_MIN_CHAPTERS = 4
  * DS-14 sticky margin section index: chapter numbers and labels in the inline-start rail on wide
  * viewports only (`xl` and up). Plain anchors, so it is keyboard-navigable as-is; the active
  * chapter is tracked with an IntersectionObserver and announced via `aria-current`. Below `xl`
- * the rail is not rendered — content stays the priority on tablets and phones.
+ * the rail is not rendered — tablets and phones get the same links in `ContentsMenu` instead.
  */
 export const SectionIndex: React.FC<SectionIndexProps> = ({ chapters, className, label }) => {
-  const [active, setActive] = useState<string | null>(null)
-  const lenis = useLenis()
-
-  useEffect(() => {
-    if (typeof IntersectionObserver === 'undefined') return
-    const targets = chapters
-      .map((chapter) => document.getElementById(chapter.id))
-      .filter((el): el is HTMLElement => el instanceof HTMLElement)
-    if (!targets.length) return
-
-    // The active chapter is the last one whose top has passed the reading line (30% down the
-    // viewport); above the first chapter nothing is active. Computed from geometry on every
-    // observer callback, so a fast scroll in either direction never leaves a stale entry.
-    const update = () => {
-      const line = window.innerHeight * 0.3
-      let current: string | null = null
-      for (const el of targets) {
-        if (el.getBoundingClientRect().top <= line) current = el.id
-        else break
-      }
-      setActive(current)
-    }
-    const observer = new IntersectionObserver(update, {
-      rootMargin: '-30% 0px -60% 0px',
-      threshold: [0, 1],
-    })
-    targets.forEach((el) => observer.observe(el))
-    update()
-    return () => observer.disconnect()
-  }, [chapters])
+  const active = useActiveChapter(chapters)
+  const jump = useChapterJump()
 
   if (chapters.length < SECTION_INDEX_MIN_CHAPTERS) return null
 
@@ -71,15 +44,11 @@ export const SectionIndex: React.FC<SectionIndexProps> = ({ chapters, className,
                   current ? 'text-foreground' : 'text-ink-3 hover:text-foreground',
                 )}
                 href={`#${chapter.id}`}
-                onClick={(e) => {
-                  if (!lenis) return // reduced motion / no Lenis instance: let the native href navigate
-                  e.preventDefault()
-                  lenis.scrollTo(`#${chapter.id}`)
-                }}
+                onClick={(event) => jump(event, chapter.id)}
               >
                 <span className={cn('index-code shrink-0', current && 'text-brand')}>
                   {chapter.number}
-                </span>
+                </span>{' '}
                 <span>{chapter.label}</span>
               </a>
             </li>
