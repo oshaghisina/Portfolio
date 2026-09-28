@@ -27,6 +27,9 @@
 }
 .work-archive {
   padding-block-start: 1.75rem;
+  /* A short filtered list must not shorten the page under the reader's controls: the browser
+     would clamp the scroll position and the page would jump. */
+  min-height: 100svh;
 }
 .archive-heading {
   display: flex;
@@ -147,6 +150,8 @@
 }
 .archive-projects > li {
   min-width: 0;
+  /* `#work-<slug>` links and the return from a study land below the sticky header (h-14/xl:h-16). */
+  scroll-margin-block-start: 5.5rem;
 }
 .archive-card {
   display: flex;

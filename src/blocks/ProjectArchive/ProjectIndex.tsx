@@ -2,16 +2,18 @@
 
 import { ArrowRight, ArrowUpRight, LayoutGrid, List, Search, X } from 'lucide-react'
 import Link from 'next/link'
-import React, { useId, useMemo, useState } from 'react'
+import React, { useId, useMemo, useRef } from 'react'
 
-import { kindLabel, PROJECT_KINDS, type ProjectKind } from '@/collections/Projects/kinds'
+import { kindLabel, PROJECT_KINDS } from '@/collections/Projects/kinds'
 import type { Locale } from '@/utilities/locale'
 import { uiCopy } from '@/utilities/uiCopy'
 import { cn } from '@/utilities/ui'
 
 import { ArchivePreview } from './ArchivePreview'
 import { archiveCopy } from './copy'
-import { companyKey, matchesProject, type IndexRow } from './rows'
+import { matchesProject, workRowId, type IndexRow } from './rows'
+import { useWorkView } from './useWorkView'
+import { DEFAULT_WORK_VIEW, MAX_QUERY_LENGTH } from './workView'
 
 export interface ProjectIndexProps {
   rows: IndexRow[]
@@ -23,10 +25,12 @@ function CardShell({
   row,
   children,
   newTabLabel,
+  onOpen,
 }: {
   row: IndexRow
   children: React.ReactNode
   newTabLabel: string
+  onOpen: (event: React.MouseEvent<HTMLAnchorElement>) => void
 }) {
   if (!row.href) return <article className="archive-card">{children}</article>
   if (row.external)
@@ -37,44 +41,60 @@ function CardShell({
       </a>
     )
   return (
-    <Link className="archive-card" href={row.href} prefetch={false}>
+    <Link className="archive-card" href={row.href} onClick={onOpen} prefetch={false}>
       {children}
     </Link>
   )
 }
 
-/** One DOM entry per project in either view; all published work is visible by default. */
+/**
+ * One DOM entry per project in either view; all published work is visible by default. The view
+ * lives in the URL (`useWorkView`), so a filtered archive can be shared, refreshed and returned to.
+ */
 export function ProjectIndex({ className, locale, rows }: ProjectIndexProps) {
   const copy = uiCopy[locale]
   const labels = archiveCopy[locale]
   const id = useId()
-  const [kind, setKind] = useState<ProjectKind | 'all'>('all')
-  const [company, setCompany] = useState('')
-  const [query, setQuery] = useState('')
-  const [view, setView] = useState<'grid' | 'list'>('grid')
+  const searchRef = useRef<HTMLInputElement>(null)
   const number = (value: number) =>
     new Intl.NumberFormat(locale === 'fa' ? 'fa-IR' : locale).format(value)
 
   const companies = useMemo(() => {
     const groups = new Map<string, { name: string; count: number }>()
     for (const row of rows) {
-      const key = companyKey(row.company)
-      if (!key) continue
-      const group = groups.get(key)
-      groups.set(key, { name: group?.name ?? row.company.trim(), count: (group?.count ?? 0) + 1 })
+      if (!row.companyKey) continue
+      const group = groups.get(row.companyKey)
+      groups.set(row.companyKey, {
+        name: group?.name ?? row.company.trim(),
+        count: (group?.count ?? 0) + 1,
+      })
     }
     return [...groups].sort((a, b) => a[1].name.localeCompare(b[1].name, locale))
   }, [locale, rows])
 
-  const filters = PROJECT_KINDS.filter((value) =>
-    rows.some((row) => row.kinds.some((item) => item.value === value)),
+  const filters = useMemo(
+    () =>
+      PROJECT_KINDS.filter((value) =>
+        rows.some((row) => row.kinds.some((item) => item.value === value)),
+      ),
+    [rows],
   )
+  const options = useMemo(
+    () => ({ kinds: filters, companies: companies.map(([key]) => key) }),
+    [companies, filters],
+  )
+  const { view: current, update, leave } = useWorkView(options)
+  const { q: query, kind, company, view } = current
+
   const visibleRows = rows.filter((row) => matchesProject(row, query, kind, company))
   const filtered = kind !== 'all' || Boolean(company) || Boolean(query.trim())
+  // The clear buttons disappear once used, so focus moves to the search field instead of <body>.
   const reset = () => {
-    setKind('all')
-    setCompany('')
-    setQuery('')
+    update(
+      { q: DEFAULT_WORK_VIEW.q, kind: DEFAULT_WORK_VIEW.kind, company: DEFAULT_WORK_VIEW.company },
+      'push',
+    )
+    searchRef.current?.focus()
   }
 
   return (
@@ -94,7 +114,7 @@ export function ProjectIndex({ className, locale, rows }: ProjectIndexProps) {
               aria-label={label}
               aria-pressed={view === key}
               key={key}
-              onClick={() => setView(key)}
+              onClick={() => update({ view: key }, 'push')}
               title={label}
               type="button"
             >
@@ -113,15 +133,20 @@ export function ProjectIndex({ className, locale, rows }: ProjectIndexProps) {
           <input
             autoComplete="off"
             id={`${id}-search`}
-            onChange={(event) => setQuery(event.target.value)}
+            maxLength={MAX_QUERY_LENGTH}
+            onChange={(event) => update({ q: event.target.value }, 'replace')}
             placeholder={labels.search}
+            ref={searchRef}
             type="search"
             value={query}
           />
         </div>
         <label className="archive-company">
           <span className="sr-only">{labels.company}</span>
-          <select onChange={(event) => setCompany(event.target.value)} value={company}>
+          <select
+            onChange={(event) => update({ company: event.target.value }, 'push')}
+            value={company}
+          >
             <option value="">{labels.allCompanies}</option>
             {companies.map(([key, group]) => (
               <option key={key} value={key}>
@@ -138,7 +163,7 @@ export function ProjectIndex({ className, locale, rows }: ProjectIndexProps) {
             <button
               aria-pressed={kind === value}
               key={value}
-              onClick={() => setKind(value)}
+              onClick={() => update({ kind: value }, 'push')}
               type="button"
             >
               {value === 'all' ? copy.workFilterAll : kindLabel(value, locale)}
@@ -165,8 +190,17 @@ export function ProjectIndex({ className, locale, rows }: ProjectIndexProps) {
 
       <ol className="archive-projects" data-view={view}>
         {visibleRows.map((row) => (
-          <li data-project-slug={row.slug} data-reveal-unit="" key={row.id}>
-            <CardShell newTabLabel={copy.opensInNewTab} row={row}>
+          <li
+            data-project-slug={row.slug}
+            data-reveal-unit=""
+            id={workRowId(row.slug)}
+            key={row.id}
+          >
+            <CardShell
+              newTabLabel={copy.opensInNewTab}
+              onOpen={(event) => leave(row.slug, event.currentTarget.closest('li'))}
+              row={row}
+            >
               <ArchivePreview row={row} />
               <div className="archive-card-copy">
                 <div className="archive-card-meta text-caption text-ink-3">
