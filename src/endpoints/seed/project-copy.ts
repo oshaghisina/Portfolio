@@ -1143,34 +1143,34 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
   },
   'arash-rezvani': {
     fa: {
-      title: 'آرش رضوانی — برند شخصی و وبلاگ',
+      title: 'آرش رضوانی — سایت نشر دوزبانه برای یک نویسنده و مدرس',
       summary:
-        'برای یک نویسنده، مدرس و عکاس، سایت و وبلاگی دوزبانه با زبان پیش‌فرض فارسی ساختم؛ همراه با راهنمای طراحی مکتوب، سیستم رزرو با تقویم شمسی و زیرساختی که در ایران میزبانی می‌شود.',
+        'برای یک نویسنده و مدرس سایتی فارسی‌محور ساختم که از روایت خود او شکل گرفته: صفحه‌ها و کتاب‌ها، دفتر یادداشت، ترانه‌ها، جست‌وجو و رزرو با تقویم شمسی، روی سروری در ایران.',
     },
     ar: {
-      title: 'آرش رضواني — علامة شخصية ومدوّنة',
+      title: 'آرش رضواني — موقع نشر ثنائي اللغة لكاتب ومعلّم',
       summary:
-        'موقع ومدوّنة ثنائيا اللغة بالفارسية افتراضيًا لكاتب ومعلّم ومصوّر — لغة تصميم مكتوبة، ونظام حجز بالتقويم الشمسي، وحزمة تقنية داخل إيران بالكامل.',
+        'موقع بالفارسية أولًا لكاتب ومعلّم: صفحات وكتب مبنية على روايته هو، ومدوّنة، وأغانٍ، وبحث، وحجز بالتقويم الشمسي، مستضاف داخل إيران.',
     },
     es: {
-      title: 'Arash Rezvani — marca personal y blog',
+      title: 'Arash Rezvani — sitio editorial bilingüe para un escritor y profesor',
       summary:
-        'Un sitio y blog bilingüe con persa por defecto para un escritor, profesor y fotógrafo: un lenguaje de diseño documentado, un sistema de reservas con calendario persa y un stack íntegramente alojado en Irán.',
+        'Un sitio con el persa primero para un escritor y profesor: páginas y libros a partir de su propio relato, un diario, canciones, búsqueda y reservas con calendario persa, alojado en Irán.',
     },
     de: {
-      title: 'Arash Rezvani — Personal Brand & Blog',
+      title: 'Arash Rezvani — zweisprachige Publikationsseite für einen Autor und Lehrer',
       summary:
-        'Eine zweisprachige Website und ein Blog mit Persisch als Standard für einen Autor, Lehrer und Fotografen – eine schriftlich festgehaltene Designsprache, ein Schamsi-Buchungssystem und ein Stack vollständig innerhalb des Iran.',
+        'Eine Persisch-zuerst-Website für einen Autor und Lehrer: Seiten und Bücher aus seiner eigenen Darstellung, ein Journal, Lieder, Suche und Schamsi-Buchung, gehostet im Iran.',
     },
     fr: {
-      title: 'Arash Rezvani — marque personnelle et blog',
+      title: 'Arash Rezvani — site éditorial bilingue pour un écrivain et enseignant',
       summary:
-        'Un site et un blog bilingues, persan par défaut, pour un écrivain, enseignant et photographe — un langage de design écrit, un système de réservation en calendrier persan, et une stack entièrement hébergée en Iran.',
+        'Un site d’abord en persan pour un écrivain et enseignant : des pages et des livres tirés de son propre récit, un journal, des chansons, une recherche et une réservation en calendrier persan, hébergé en Iran.',
     },
     ja: {
-      title: 'Arash Rezvani — パーソナルブランドとブログ',
+      title: 'Arash Rezvani — 作家・講師のためのバイリンガル出版サイト',
       summary:
-        '作家・講師・写真家のための、ペルシャ語を既定とするバイリンガルのサイトとブログ。文書化されたデザイン言語、シャムシー暦の予約システム、そしてすべてイラン国内で完結するスタック。',
+        '作家・講師のための、ペルシャ語を第一とするサイト。本人の記述にもとづくページと本、ジャーナル、楽曲、検索、シャムシー暦の予約を備え、イラン国内でホストしている。',
     },
   },
   marqevon: {

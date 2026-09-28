@@ -447,9 +447,11 @@ export const PROJECT_SEED: ProjectSeedRow[] = [
   // ── Independent — freelance projects ────────────────────────────────────────────────────
   {
     slug: 'arash-rezvani',
-    title: 'Arash Rezvani — personal brand & blog',
+    // Retitled 2026-09-27 with the case study's rewrite: the scope is a publishing site (pages,
+    // books, a journal, songs, search, booking), not a brand page and a blog.
+    title: 'Arash Rezvani — bilingual publishing site for a writer and teacher',
     summary:
-      'A Persian-default bilingual site and blog for a writer, teacher and photographer — a written design language, a Shamsi booking system, and a stack kept entirely inside Iran.',
+      'A Persian-first site for a writer and teacher: pages and books from his own account, a journal, songs, search and Shamsi booking, hosted inside Iran.',
     company: INDEPENDENT,
     role: 'Product designer & developer',
     kind: ['product'],

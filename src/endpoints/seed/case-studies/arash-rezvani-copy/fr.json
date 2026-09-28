@@ -1,0 +1,376 @@
+{
+  "statement": "Un site d’abord en persan pour un écrivain et enseignant, fondé sur son propre récit : livres, journal, chansons, recherche et réservation.",
+  "industry": "Site personnel · édition",
+  "team": "Seul designer et développeur, en lien direct avec l’auteur",
+  "heroCaption": "Le site persan sur mobile : les neuf pratiques en rangées tracées au filet, la page poésie et le calendrier de réservation Shamsi.",
+  "snapshot": {
+    "problem": "Neuf pratiques menées de front pendant des décennies devaient devenir un site fidèle à son propre récit, facile à parcourir, et trouvable en persan.",
+    "role": "Seul designer et développeur : architecture de l’information, marque et langage de design, modèle de contenu, développement Payload et Next.js avec l’assistance de l’IA, et une infrastructure dans le pays.",
+    "result": "En ligne depuis le 30 août 2026, le persan sur ses propres URL indexables et les réservations ouvertes depuis le 12 septembre ; pas encore de mesure d’audience, et cette lacune est consignée."
+  },
+  "alt": {
+    "cover": "Arash Rezvani sur mobile — la page expérience en persan, qui s’ouvre sur son accroche, « Plus qu’un titre », entre des murs de filets",
+    "practicesMobile": "Arash Rezvani sur mobile — les neuf pratiques en rangées numérotées, chaque filet s’arrêtant au bord de la colonne",
+    "poetryMobile": "Arash Rezvani sur mobile — la page poésie en persan, un grand titre au-dessus d’une ligne sur le ghazal, la qasida, le rubai et le vers libre",
+    "calendarMobile": "Arash Rezvani sur mobile — le calendrier de réservation du mois de Mehr en chiffres persans, la semaine commençant le samedi, les vendredis fermés",
+    "experienceEn": "Arash Rezvani sur ordinateur — la page expérience en anglais, intitulée « Plus qu’un titre », entre deux murs de filets",
+    "experienceFa": "Arash Rezvani sur ordinateur — la même page expérience en persan, composée de droite à gauche, sans interlettrage",
+    "booksFa": "Arash Rezvani sur ordinateur — la page des livres en persan, dont l’ouverture indique que six titres sur près de dix sont présentés et que les autres ne le sont pas encore",
+    "lattice": "Arash Rezvani sur ordinateur — la liste des pratiques avec ses filets de rangée et de colonne, fermée par une bande couleur encre portant les chiffres sourcés",
+    "hoursEn": "Arash Rezvani sur ordinateur — un jour choisi, samedi 4 Mehr 1405 avec sa date grégorienne, et ses quarts d’heure libres à l’heure de Téhéran",
+    "postsFa": "Arash Rezvani sur ordinateur — le journal en persan, ses entrées datées en Shamsi et filtrées par pratique",
+    "postsEn": "Arash Rezvani sur ordinateur — le journal en anglais, les mêmes entrées datées selon le calendrier grégorien et filtrées par pratique",
+    "hoursMobile": "Arash Rezvani sur mobile — les quarts d’heure libres d’un jour choisi à l’heure de Téhéran, en chiffres persans",
+    "bookingDetails": "Arash Rezvani sur mobile — le formulaire de réservation en persan : le jour et l’heure choisis au-dessus des champs nom, téléphone et e-mail",
+    "poetryEmpty": "Arash Rezvani sur ordinateur — la section des poèmes de la page poésie en persan, qui indique qu’aucun texte de poème n’est encore présent",
+    "workEmpty": "Arash Rezvani sur ordinateur — la bande de clôture de la page travail en anglais : le travail n’est pas encore en ligne",
+    "searchFa": "Arash Rezvani sur mobile — résultats de recherche en persan pour le mot signifiant « coach » : un livre sous son titre anglais, puis deux articles sous leurs titres persans",
+    "searchEn": "Arash Rezvani sur mobile — résultats de recherche en anglais pour « coach », chacun avec un extrait en persan sous son titre anglais",
+    "structure": "Schéma des routes du site, numérotées de un à huit : la page d’accueil, à propos et expérience, les quatre pages de pratique, leurs liens vers les livres, les livres et le journal, la musique, la recherche et le contact, et l’ancienne page travail",
+    "bookReach": "Schéma d’une fiche de livre et des six endroits qu’elle atteint : ses pages persane et anglaise, l’étagère et la page enseignement, le plan du site des livres et la recherche, les données structurées Book, et une image de partage découpée dans sa couverture"
+  },
+  "context": {
+    "heading": "Une carrière qui ne tient pas en un seul titre",
+    "body": [
+      "Arash Rezvani est écrivain, poète, enseignant, photographe et aventurier. Selon ses propres dires, il a publié près de dix livres et plus d’une centaine de poèmes, entraîné des cyclistes pendant quinze ans, fait de l’escalade pendant plus de vingt-cinq ans et de la photographie pendant plus de trente. La commande : un site personnel et un journal pour tout cela.",
+      "Le persan est sa langue et celle de ses lecteurs ; c’est donc la langue par défaut du site, avec l’anglais à ses côtés. Autour de son propre récit, j’ai construit un site de publication : une page pour chaque part de son travail, une étagère de livres avec une page chacun, un journal, ses chansons, la recherche, et un calendrier pour réserver un appel. Il est édité depuis une administration en persan et hébergé en Iran."
+    ],
+    "figureItems": [
+      "/en/experience : la page anglaise, composée en capitales latines.",
+      "/fa/experience : la même page en persan, une écriture qu’on n’interlettre jamais."
+    ],
+    "figureCaption": "Une page, deux URL : chaque langue est un document à part entière, pas une traduction basculée par un cookie."
+  },
+  "problem": {
+    "heading": "Vérité, structure et portée",
+    "body": [
+      "Le premier problème était la vérité. Une vie aussi variée incite à arrondir à la hausse, et le projet avait déjà connu le pire cas : le premier contenu sur lequel le design avait été construit décrivait quelqu’un d’autre, et son propre récit écrit contredisait presque chacun des faits qu’il contenait.",
+      "Le second était la structure. Ses pratiques se sont menées de front pendant des décennies — l’écriture, la formation de cyclistes et de moniteurs, l’entraînement cycliste, la photographie, la calligraphie, la montagne, la route, le guidage, l’aide humanitaire — et aucune n’a remplacé une autre. Une seule page de profil ne peut pas contenir tout cela, et des pages qui tentent chacune de tout résumer finissent par se répéter entre elles.",
+      "Le troisième était la portée. Pour un écrivain dont les livres et les lecteurs sont persans, les pages persanes doivent pouvoir être trouvées à leurs propres adresses. Un site qui affiche bien le persan mais ne le sert à aucun robot d’indexation a échoué dans la seule chose pour laquelle il existe."
+    ]
+  },
+  "constraints": {
+    "heading": "Un petit serveur, sur un réseau filtré",
+    "body": [
+      "Le site tourne sur un seul serveur en Iran, avec deux cœurs et moins de 4 Go de mémoire, qui fait aussi tourner son serveur Git et sa messagerie. Depuis là, Docker Hub, le registre de conteneurs de Google et Quay répondent tous par un 403, et YouTube est filtré, si bien que le serveur ne peut pas atteindre les vidéos que sa propre page musique répertorie.",
+      "Les builds tournent sur la même machine et occupent les deux cœurs pendant environ huit minutes ; mesurés le 2 septembre, les temps de réponse sont passés de 5 secondes à 37, puis à un délai dépassé jusqu’à la fin du build. Aucun runner de CI n’a jamais été installé, si bien que rien ne vérifie un push avant sa mise en ligne. Chacun de ces éléments a pesé sur une décision plus loin."
+    ]
+  },
+  "ownership": {
+    "heading": "Un designer-développeur, un auteur",
+    "intro": "J’ai conçu et construit le site seul, à partir du récit écrit d’Arash lui-même et des messages qu’il a envoyés à propos de chaque pratique. Le code est parti du template de site de Payload, et je l’ai construit avec l’assistance de l’IA : Claude est crédité sur 93 des 97 commits.",
+    "own": [
+      "L’architecture de l’information : quelle page porte quelle part de son récit",
+      "La marque et le langage de design écrit",
+      "Le modèle de contenu : 8 collections, 4 globals et 21 blocs de page, dont 16 écrits pour ce site",
+      "Le développement Payload et Next.js, en deux langues",
+      "Le système de réservation et son calendrier",
+      "L’infrastructure dans le pays, le journal de déploiement et le journal des opérations de contenu"
+    ],
+    "collaborate": [
+      "Arash : sa biographie, ses dix textes de pratique, les couvertures de ses livres et ses photographies"
+    ],
+    "note": "Chaque chiffre du site remonte à ses propres mots ; quand le site et un brouillon divergent, c’est la biographie qui l’emporte. Les brouillons, l’aperçu en direct, la programmation, l’indexation de recherche et le constructeur de formulaires sont venus avec le template ; la structure, les règles et les décisions sont miennes."
+  },
+  "sources": {
+    "label": "Sources",
+    "heading": "Rien de déduit, rien de comblé",
+    "body": [
+      "Le site ne s’appuie que sur deux sources pour dire qui il est : un document qu’il a écrit sur lui-même, et dix messages qu’il a envoyés le 11 septembre, un par pratique. Le fichier de biographie conserve les deux, avec le persan comme texte de référence, et un tableau des chiffres sourcés, chacun tel qu’il l’a énoncé, son ≈ ou son + intact. Quand un ancien fichier de contenu contredisait son récit, le désaccord a été consigné dans la biographie et son récit l’a emporté.",
+      "Le même fichier liste ce qui n’existe pas encore — le reste de ses titres de livres, le texte d’un poème quelconque, ses certificats — et la règle pour tout cela est de ne rien afficher. Les lacunes apparaissent donc comme des énoncés simples, non comme des espaces réservés : la page des livres présente six titres sur près de dix et le précise, la page poésie explique quatre formes et précise qu’aucun poème n’est encore présent, et la page travail précise que la calligraphie et les photographies ne sont pas en ligne.",
+      "Un tableau de placement dans le même fichier note la page et le bloc où vit désormais chacun de ses passages, afin qu’une modification ultérieure ne puisse pas discrètement placer un passage à deux endroits."
+    ],
+    "insight": "Le site est devenu public le 30 août ; son contenu est devenu véridique le 3 septembre, quand son récit a remplacé l’ancien fichier sur chaque page.",
+    "rule": {
+      "text": "« Rien ici n’est déduit, et aucun chiffre absent de ce tableau ne peut apparaître sur le site. »",
+      "attribution": "Le tableau des chiffres sourcés de la biographie",
+      "method": "Établi à partir du récit d’Arash lui-même et de dix messages qu’il a envoyés, un par pratique"
+    },
+    "booksCaption": "La page des livres énonce ses propres limites : près de dix titres écrits, traduits et publiés, six d’entre eux présentés, les autres pas encore.",
+    "emptyItems": [
+      "/fa/poetry : la section des poèmes, en attente de poèmes complets avec leur forme, jamais d’extraits.",
+      "/en/work : ni la calligraphie ni la photographie ne sont encore en ligne, et la page le précise."
+    ],
+    "emptyCaption": "Des états vides écrits comme des énoncés : chacun nomme ce qui manque au lieu de remplir l’espace."
+  },
+  "structure": {
+    "label": "Structure",
+    "heading": "Une page par fonction, un seul foyer par fait",
+    "body": [
+      "J’ai donné à chaque page une seule fonction. Expérience est la vue d’ensemble : neuf fils, chacun renvoyant à la page qui le porte en entier, et la seule bande de chiffres du site. Enseigner, Route, Regard et Poésie portent chacune une part de son récit, dans ses propres mots. Livres, le journal et musique sont des collections avec un index. Recherche et Contact servent toutes les pages.",
+      "Ce qui tient l’ensemble, c’est l’axiome du langage de design appliqué au contenu : une page dit une chose une seule fois, et un fait a un seul foyer. Sur la première page auditée, Travail, les six mêmes éléments apparaissaient trois fois — les chiffres dans le hero puis dans la bande de statistiques, une ligne en citation puis à nouveau dans une liste. Chaque fait a reçu un seul propriétaire et les copies ont été supprimées ; rien n’a été réécrit. Sur l’ensemble du déploiement, l’audit a relevé quatorze répétitions sur cinq pages, et chaque correction a été une soustraction.",
+      "Les liens croisés remplacent la répétition. Enseigner et Route montrent chacune le livre lié à leur propre sujet, avec un lien vers sa page, et Enseigner, Livres, Musique et Expérience se referment sur une bande qui mène à Contact. Une fois que les pages internes possédaient leurs faits, la page d’accueil n’avait plus rien de propre à dire, si bien qu’elle est devenue l’index : les livres, six voies d’entrée, la carte du pays, les chansons les plus récentes et les dernières notes."
+    ],
+    "insight": "Deux anciennes pages n’ont pas rattrapé le reste. Travail et Expérience précèdent Route et Regard, et six des neuf liens d’Expérience pointent encore vers Travail, qui ne porte plus qu’une courte liste et une bande « pas encore en ligne ».",
+    "mapKey": [
+      "La page d’accueil est l’index. Une adresse nue va au persan, et chaque route existe sous /fa et /en.",
+      "À propos, et Expérience : la vue d’ensemble des neuf fils, avec la seule bande de chiffres du site.",
+      "Enseigner, Route, Regard et Poésie portent chacune une part de son récit.",
+      "Enseigner et Route relient les livres depuis leur propre sujet.",
+      "Livres et le journal : un index et une page par fiche ; le journal filtre par six catégories.",
+      "Musique lit la collection des vidéos ; la page d’accueil montre les trois plus récentes.",
+      "Recherche lit les pages, les articles et les livres ; Contact porte le formulaire et le calendrier de réservation.",
+      "Travail précède Route et Regard ; sa place dans la structure reste ouverte."
+    ],
+    "mapCaption": "Le site vu par ses routes, comptées le 27 septembre 2026. Chaque route existe deux fois, sous /fa et sous /en.",
+    "homeCaption": "La page d’accueil comme index, plus bas : la carte du pays qui mène à Expérience, et les six dernières notes. Les couvertures de livres et les images de chansons entre les deux sont les siennes, elles sont donc laissées de côté."
+  },
+  "approach": {
+    "heading": "Un axiome, et chaque page mesurée à son aune",
+    "body": [
+      "Le site a d’abord été mis en ligne sur un système de marque éditorial, avec une palette tirée des photographies d’Arash : une encre chaude, l’ambre, le papier, une brume froide et le cobalt. Chaque paire a été mesurée. L’ambre sur papier ressortait à 2,1:1 ; l’ambre n’est donc jamais du texte sur blanc, et un seul ambre par vue est devenu une règle.",
+      "Trois jours plus tard, le langage de design a été écrit en une seule phrase, « Aucune ligne sans fin », avec trois façons légitimes pour une ligne de s’arrêter : sur un mur, sur une autre ligne ou sur un changement de fond. Tout le reste est un défaut, pas un style, et chaque page a été reconstruite et mesurée à cette aune.",
+      "La règle a tranché des détails qui font d’ordinaire débat. Les murs se posent sur le bord de la colonne de contenu, si bien que chaque filet tracé par un bloc vient s’y poser sans que le bloc ne sache qu’ils existent. Une bande avec sa propre couleur ne trace aucun filet, parce que le changement de couleur est déjà le bord. Chaque ligne a une seule épaisseur, 1,5 px, et aucune zone n’a de coin arrondi. Un champ de formulaire est un soulignement qui montre le focus par un changement de couleur, mesuré à 6,18:1 dans le thème clair et 7,44:1 dans le thème sombre, là où 3:1 est exigé. Et le persan n’est jamais interlettré : chaque valeur de tracking, y compris celle de Tailwind, est mise à zéro pour le persan, qui fermait auparavant les jointures de chaque titre persan."
+    ],
+    "insight": "Le test d’un bord n’est pas de savoir si une limite existe, mais si un lecteur verrait la ligne s’arrêter là. Le portrait de l’accueil a échoué à ce test de 64 px, si bien que sa colonne trace désormais son propre filet.",
+    "processHeading": "Du template à un site bilingue en ligne",
+    "steps": [
+      {
+        "label": "Mise en place",
+        "note": "Le template de site de Payload dans Next.js, une administration en persan et un pipeline de déploiement, depuis le 25 août"
+      },
+      {
+        "label": "Système de marque",
+        "note": "Une palette mesurée à partir de ses photographies ; en ligne le 30 août"
+      },
+      {
+        "label": "Son propre récit",
+        "note": "Le Treillis mis par écrit et chaque page reconstruite sur sa biographie ; véridique depuis le 3 septembre"
+      },
+      {
+        "label": "Textes de pratique",
+        "note": "Ses dix messages placés le 11 septembre, chacun avec un seul foyer"
+      },
+      {
+        "label": "URL dédiées et réservation",
+        "note": "Chaque langue sous son propre préfixe, et un calendrier Shamsi pour les appels, depuis le 12 septembre"
+      },
+      {
+        "label": "Les livres en pages",
+        "note": "Une page par livre, et une recherche lue dans la langue de la page, le 13 septembre"
+      },
+      {
+        "label": "Musique",
+        "note": "Les chansons de la chaîne en cartes chargées au clic, le 18 septembre"
+      }
+    ],
+    "annotations": [
+      "Les filets de rangée s’arrêtent sur le filet de colonne : une ligne s’arrête sur une autre ligne.",
+      "Le filet de colonne s’arrête sur le filet de bande sous la liste.",
+      "Les murs s’arrêtent là où le papier devient encre : un changement de fond est un bord.",
+      "Chaque chiffre de la bande vient du tableau des chiffres sourcés, ses ≈ et ses + conservés."
+    ],
+    "figureCaption": "La page expérience en persan : des murs, des filets de rangée et un filet de colonne, fermés par la bande couleur encre des chiffres."
+  },
+  "imagery": {
+    "label": "Images",
+    "heading": "Une ressemblance tirée de ses propres photos",
+    "body": [
+      "Le site a été lancé avec une médiathèque vide. Ses archives comptaient 59 images, et aucune ne faisait une référence propre : sur les 42 premières que j’ai vérifiées, chaque plan rapproché montrait sa tête sous une casquette, un chapeau ou un casque, souvent avec des lunettes de soleil, et chaque plan tête nue montrait un visage trop petit pour être lu. J’ai donc dirigé les images avec un modèle de génération, à partir de ces photographies.",
+      "Les premières images du site venaient de deux premières planches de référence. Une semaine plus tard, j’ai construit neuf planches de rotation de garde-robe, une par façon dont il s’habille réellement sur ses photos, chacune rattachée à des photos sources nommées et vue sous neuf angles fixes, et elles sont devenues la référence de continuité pour dix-sept études éditoriales. Chaque image a été briefée sur les règles de la marque — sa palette, des angles droits, un ambre au plus, et ni texte, ni logo, ni titre de livre inventé. Les onze images du site les respectent ; quelques études dépassent la limite d’un seul ambre."
+    ],
+    "insight": "Là où une vraie photo fonctionne, elle l’emporte : son portrait et son avatar sur la page À propos sont des recadrages d’une photographie de lui. Ici, les images générées sont montrées comme telles ; sur son propre site, elles ne portent encore aucune mention, et c’est un point resté ouvert.",
+    "heroCaption": "Les images en place : l’accueil s’ouvre sur la tête en trois fenêtres, en anglais et en persan, où toute la page se retourne de droite à gauche.",
+    "waysCaption": "« Six voies », l’index de ses pratiques sur l’accueil : chaque pratique se place sous l’une des cartes de section générées.",
+    "phoneCaption": "Le même accueil sur un téléphone, en persan : la phrase d’ouverture, la tête, les six cartes deux par rangée et les notes.",
+    "turnaroundsCaption": "Neuf planches de rotation de garde-robe, une par style : artiste littéraire, voyageur décontracté, enseignant formel, créatif urbain, motard classique, moniteur de moto, motard d’aventure, voyageur de terrain et tenue de secours.",
+    "siteCaption": "Ce qui est arrivé sur le site : la tête de l’accueil et une tête en collage antérieure, les six cartes de section, la bande de clôture (depuis retirée ; son recadrage 1200×630 sert toujours de carte de partage), et deux substituts sur la page À propos, en attendant qu’un vrai panneau de calligraphie soit photographié et qu’une de ses propres photographies arrive.",
+    "studiesCaption": "Dix-sept études éditoriales, chacune une composition nouvelle dans l’une des neuf garde-robes : collage, sérigraphie, portrait en lumière dure, nature morte.",
+    "own": "Direction artistique des images : 37 images générées, la ressemblance tirée de ses photographies"
+  },
+  "publishing": {
+    "label": "Publication",
+    "heading": "Des fiches, et tous les endroits que chacune atteint",
+    "body": [
+      "Les livres, les articles du journal et les chansons sont des fiches, pas des sections de page, parce qu’une fiche peut avoir sa propre adresse, ses propres métadonnées et une place dans la recherche. Publier une fiche ne la rend pas atteignable pour autant, si bien que chaque type est relié aux surfaces par lesquelles un lecteur ou un robot d’indexation arrive.",
+      "Un livre reçoit une page dans chaque langue, une ligne dans le plan du site des livres et dans la recherche, des données structurées Book qui nomment son rôle tel que la couverture l’imprime, et une image de partage découpée dans sa jaquette. Un article de journal reçoit une page par langue, le plan du site des articles, un flux RSS par langue, des données structurées Article et un filtre par catégorie ; les six catégories portent les noms de ses pratiques. Une chanson n’a pas de page propre : la page musique et la bande de l’accueil lisent la collection des vidéos, et la décrivent comme une liste de VideoObjects.",
+      "Autour d’eux : des URL canoniques, des paires hreflang avec x-default sur le persan, trois plans de site, un graphe WebSite et Person sur chaque page, et des cartes de partage : un livre utilise sa propre jaquette, toute autre page la carte du site."
+    ],
+    "insight": "Le journal ne satisfait pas encore la propre règle du site. Vingt de ses 21 entrées ont été créées en un seul lot le 10 septembre, écrites à sa voix, créditées à moi et datées jusqu’à janvier ; l’autre reste de l’ancien contenu. Tant que sa propre écriture ne les remplace pas, le système fonctionne mais son contenu, non.",
+    "bookKey": [
+      "Une fiche dans la collection des livres, éditée une seule fois dans l’administration.",
+      "Une page en persan et une en anglais, associées par hreflang.",
+      "Une carte sur l’étagère des livres, et un panneau sur la page de son sujet.",
+      "Une ligne dans le plan du site des livres et dans la recherche du site, dans les deux langues.",
+      "Des données structurées Book, avec son rôle tel que la couverture l’imprime : auteur, coauteur ou traducteur.",
+      "Une image de partage 1200×630 découpée dans sa jaquette."
+    ],
+    "bookCaption": "Un livre suivi à travers le site. Les articles suivent le même schéma et ajoutent un flux RSS par langue ; les chansons sont lues par la page musique et n’ont pas de page propre.",
+    "journalItems": [
+      "/fa/posts : chaque date en Shamsi, en chiffres persans.",
+      "/en/posts : le même index, daté selon le calendrier grégorien."
+    ],
+    "journalCaption": "L’index du journal dans les deux langues : six catégories nommées d’après ses pratiques, douze entrées par page."
+  },
+  "decisions": {
+    "heading": "Six décisions qui ont tenu",
+    "lede": "Chacune a été imposée par le public, la matière source ou le réseau, pas par le goût.",
+    "items": [
+      {
+        "title": "Donner à chaque langue sa propre URL",
+        "why": "La première version persane choisissait la langue par cookie : une URL, deux rendus. Un robot d’indexation ne porte pas de cookie ; aucune page traduite n’était donc accessible à une quelconque URL, et aucun hreflang ne pouvait être émis. Désormais, l’anglais vit sous /en et le persan sous /fa, et une URL nue va vers la dernière langue du lecteur, ou vers le persan.",
+        "alternatives": "Une seule URL, la langue étant choisie par cookie",
+        "tradeoff": "Chaque lien interne doit porter son préfixe, et le changement de langue impose un rechargement complet de la page."
+      },
+      {
+        "title": "Protéger les réservations par un index de base de données, pas par un hook",
+        "why": "Deux appels confirmés ne peuvent jamais partager la même heure de début. Les options d’index de Payload ne savent pas exprimer « unique parmi les seules lignes confirmées » ; l’application construit donc un index unique partiel au démarrage, et les réservations publiques passent par un seul endpoint. Testé en situation de concurrence : un 201, un 409, une ligne.",
+        "alternatives": "Une vérification des doublons dans un hook d’enregistrement",
+        "tradeoff": "Si l’index ne se construit pas, le site continue de tourner sans la garantie ; il faut donc lire le journal de démarrage."
+      },
+      {
+        "title": "Ne charger une vidéo que lorsqu’on la demande",
+        "why": "En Iran, un lecteur YouTube exige un VPN. Chaque chanson est une carte chargée au clic, dont l’affiche et le titre viennent du stockage propre au site : la carte est complète sans VPN, et aucun lecteur ne se charge avant le clic.",
+        "alternatives": "Intégrer le lecteur dans la page",
+        "tradeoff": "Les affiches sont pour l’instant des images tirées de YouTube, stockées sur le site et remplacées à la main."
+      },
+      {
+        "title": "Garder toute l’infrastructure en Iran",
+        "why": "Docker Hub répond au serveur par un 403 : cinq déploiements ont échoué au téléchargement de l’image de base avant qu’elle ne passe par un miroir iranien. Le stockage, Git, la plateforme de déploiement et la messagerie tournent tous dans le pays.",
+        "alternatives": "Des registres publics et un Git hébergé",
+        "tradeoff": "Davantage à faire tourner sur un seul petit serveur : un build a manqué de mémoire et a entraîné le serveur Git dans sa chute."
+      },
+      {
+        "title": "Faire de chaque livre une fiche avec sa propre page",
+        "why": "Une liste à l’intérieur d’un bloc de page ne peut donner à un livre ni adresse, ni métadonnées propres, ni identité vers laquelle d’autres pages pourraient pointer. En tant que fiche, un livre apparaît sur l’étagère, sur la page de son sujet, dans la recherche et à sa propre URL, si bien qu’un lecteur qui recherche «مربی شو» arrive sur le livre. Aucune des couvertures n’indique d’année ni d’éditeur, l’étagère est donc classée à la main, et chaque carte porte le rôle que la couverture imprime : auteur, coauteur ou traducteur.",
+        "alternatives": "Les six livres comme des lignes à l’intérieur de la page des livres",
+        "tradeoff": "Aucun ordre automatique, et une section de détails qui reste vide tant qu’une année ou un éditeur n’est pas connu."
+      },
+      {
+        "title": "Traiter le contenu comme des données, pas comme une mise en production",
+        "why": "Depuis le 3 septembre, c’est la base de données, et non le dépôt, qui porte le contenu. Chaque changement est d’abord trié : le contenu et les réglages passent par l’API, tout ce qui changera encore est rendu éditable une bonne fois, et seuls le schéma, le comportement et l’infrastructure sont livrés par un build. Les chansons, la page musique, les horaires de réservation et la navigation ont tous changé sans déploiement.",
+        "alternatives": "Éditer le contenu dans les fichiers seed et le déployer",
+        "tradeoff": "Le dépôt ne porte plus le texte en ligne, si bien que chaque écriture est sauvegardée, comparée et journalisée à la main."
+      }
+    ],
+    "hoursEvidence": "Les quarts d’heure libres d’une journée, à l’heure de Téhéran ; en anglais, la date Shamsi porte sa date grégorienne en dessous."
+  },
+  "solution": {
+    "heading": "De la lecture à la question",
+    "body": [
+      "La recherche lit un seul index construit à partir des pages, des articles et des livres. Depuis le 13 septembre, elle lit cet index dans la langue de la page, si bien que les articles persans reviennent sous leurs titres persans. Les résultats s’arrêtent à douze, et les pages de résultats sont tenues à l’écart des moteurs de recherche, car chaque requête deviendrait sinon une page pauvre.",
+      "Le formulaire de contact est une bande de champs soulignés avec un honeypot caché. Le serveur de messagerie est câblé, et le conteneur refuse de démarrer sans ses réglages, parce que l’échec contre lequel il protège est le silencieux : un formulaire qui remercie le visiteur et ne le dit à personne. Le formulaire lui-même, pourtant, n’a aucune notification réglée en production, si bien qu’aujourd’hui les messages attendent dans l’administration : le même échec silencieux, un cran plus haut.",
+      "Un appel se réserve selon les étapes ci-dessous. Chaque règle sur le quand — les horaires, les pauses, la durée des créneaux, la marge entre les appels, le délai de prévenance, les jours bloqués, et un interrupteur qui ferme tout — vit dans un réglage que l’administration édite, si bien que changer les horaires n’est jamais un déploiement. Les réservations n’envoient encore aucun e-mail ; l’administration s’ouvre sur les prochains appels confirmés."
+    ],
+    "insight": "La recherche n’est corrigée qu’à moitié. Les livres et les pages reviennent encore sous leurs titres anglais dans la recherche persane, et l’extrait ainsi que la catégorie sous chaque résultat ne sont stockés que dans une seule langue, si bien que la recherche anglaise affiche des extraits en persan et manque les correspondances dans les descriptions anglaises.",
+    "bookingHeading": "Réserver un appel, en cinq étapes",
+    "bookingSteps": [
+      {
+        "label": "Choisir un jour",
+        "note": "Un mois Shamsi, la semaine commençant le samedi ; les jours passés, les vendredis et les jours complets sont désactivés"
+      },
+      {
+        "label": "Choisir une heure",
+        "note": "Les quarts d’heure libres à l’heure de Téhéran, avec l’heure propre du visiteur à côté"
+      },
+      {
+        "label": "Coordonnées",
+        "note": "Nom, téléphone et e-mail ; le téléphone est vérifié et un champ caché piège les robots"
+      },
+      {
+        "label": "Vérification",
+        "note": "Un seul écran de confirmation avant toute écriture"
+      },
+      {
+        "label": "Réservé",
+        "note": "201 et un reçu ; un créneau pris entre-temps répond 409, et le calendrier propose le reste"
+      }
+    ],
+    "bookingCaption": "Sur un téléphone en persan : les quarts d’heure libres du jour choisi, puis les coordonnées.",
+    "searchItems": [
+      "/fa/search pour «مربی» : les articles reviennent sous leurs titres persans ; le livre affiche encore le sien en anglais.",
+      "/en/search pour « coach » : des titres anglais, avec un extrait en persan sous chacun."
+    ],
+    "searchCaption": "La même recherche dans les deux langues sur un téléphone, capturée le 27 septembre 2026 : ce que la correction de langue a résolu, et ce qu’elle n’a pas résolu."
+  },
+  "operations": {
+    "label": "Exploitation",
+    "heading": "Le faire tourner sans mise en production",
+    "body": [
+      "L’administration parle persan par défaut et passe d’elle-même de droite à gauche ; la marque sur son écran de connexion est sa signature, dessinée à la place de celle de Payload. Les brouillons, la sauvegarde automatique, l’aperçu en direct et la publication programmée sont venus avec le template, mais jusqu’au 8 septembre la programmation ne faisait rien : l’administration mettait une tâche en file d’attente que rien n’exécutait, si bien qu’un article programmé ne serait jamais apparu. Un exécuteur de tâches à l’intérieur du conteneur vide désormais la file chaque minute.",
+      "Depuis le 3 septembre, les changements de contenu se font à l’exécution, pas dans le code. Entre le 11 et le 18 septembre, le journal des opérations de contenu enregistre quinze écritures — ses textes de pratique, les réglages de réservation, les cartes de la page d’accueil, la page musique et ses chansons — et un retour en arrière : les neuf cartes de la page À propos, qui cassaient la page persane dans les navigateurs sans WebGL, ont été annulées via l’API dans l’heure et restaurées le jour même une fois le code corrigé.",
+      "Chaque écriture suit les mêmes étapes, et chaque ligne du journal porte sa vérification."
+    ],
+    "insight": "Les agents d’IA peuvent lire le contenu via MCP mais ne peuvent pas l’écrire ; élargir cela serait en soi un changement de code, fait à dessein.",
+    "processHeading": "Un changement de contenu, du début à la fin",
+    "steps": [
+      {
+        "label": "Classer",
+        "note": "Contenu, réglage, quelque chose à rendre éditable une bonne fois, ou code"
+      },
+      {
+        "label": "Sauvegarder",
+        "note": "Le document dans les deux langues, avant l’écriture"
+      },
+      {
+        "label": "Écrire",
+        "note": "L’anglais d’abord, puis le persan, chaque id de ligne conservé"
+      },
+      {
+        "label": "Relire",
+        "note": "Comparaison avec la sauvegarde : seuls les champs visés peuvent changer"
+      },
+      {
+        "label": "Journaliser",
+        "note": "Une ligne dans le journal des opérations de contenu, avec sa vérification"
+      }
+    ]
+  },
+  "outcomes": {
+    "heading": "En ligne, lacunes comprises",
+    "intro": "En ligne sur arashrezvani.me depuis le 30 août 2026, et ouvert aux réservations depuis le 12 septembre. Toujours ouvert, et consigné : aucune mesure d’audience d’aucune sorte, donc aucun chiffre de visiteurs ; aucun runner de CI, donc un push atteint le site sans vérification de lint ni de types ; aucun e-mail depuis le formulaire de contact ou les réservations, les deux attendent donc dans l’administration ; une recherche seulement à moitié localisée ; des entrées de journal qui ne sont pas de lui ; et des images générées que son site ne signale pas comme telles.",
+    "measured": [
+      {
+        "label": "Répétitions relevées et supprimées",
+        "context": "L’audit « le dire une fois » sur cinq pages ; chaque correction a été une soustraction.",
+        "source": "L’audit de déploiement du langage de design"
+      },
+      {
+        "label": "Tests réussis au dernier contrôle avant mise en production",
+        "context": "En plus des vérifications de types, du lint, d’un build de production et d’un smoke test avant le push.",
+        "source": "Journal de déploiement, 18 septembre 2026"
+      }
+    ],
+    "delivered": [
+      {
+        "label": "Le persan et l’anglais à leurs propres URL",
+        "context": "Le persan par défaut, les deux moitiés dans hreflang et dans les sitemaps."
+      },
+      {
+        "label": "Un journal de déploiement qui garde ses échecs",
+        "context": "18 exécutions en production consignées, dont cinq en échec, à côté d’un journal distinct de chaque écriture de contenu et de chaque retour en arrière."
+      }
+    ],
+    "shipped": [
+      "Réservation Shamsi",
+      "Une URL par langue",
+      "Une page par livre",
+      "RSS par langue",
+      "Données structurées",
+      "Vidéo chargée au clic",
+      "Administration en persan",
+      "Publication programmée qui fonctionne"
+    ]
+  },
+  "lessons": {
+    "heading": "Ce que je garderais, et ce qui m’a piégé",
+    "items": [
+      {
+        "title": "Énoncer le langage en une seule phrase",
+        "body": "« Aucune ligne sans fin » a tranché les débats sans réunion de plus, car chaque désaccord se ramenait à une seule question : cette ligne aboutit-elle quelque part ?"
+      },
+      {
+        "title": "Un site bilingue ne l’est pas tant que chaque langue n’a pas son URL",
+        "body": "Le système par cookie passait tous les tests qu’une personne pouvait mener, et échouait complètement pour le visiteur qui compte le plus pour le site d’un écrivain : le robot d’indexation."
+      },
+      {
+        "title": "Une amélioration qui ne sait pas échouer proprement n’en est pas une",
+        "body": "Une apparition au défilement en WebGL levait une erreur dans les navigateurs sans WebGL et remplaçait toute une page persane par un message d’erreur. Elle est revenue derrière une détection de capacité et une error boundary qui se replie sur l’image simple."
+      },
+      {
+        "title": "Une règle doit s’appliquer à tout ce qui est ajouté en masse",
+        "body": "Chaque page a été mesurée à l’aune de son récit, une par une, sauf le journal : ses entrées sont entrées en un seul lot. C’est la seule partie du site qui échoue au propre test du site, et la première chose à remplacer."
+      }
+    ]
+  }
+}

@@ -1,0 +1,376 @@
+{
+  "statement": "A Persian-first site for a writer and teacher, built from his own account: books, a journal, songs, search and booking.",
+  "industry": "Personal site · publishing",
+  "team": "Sole designer and developer, working directly with the author",
+  "heroCaption": "The Persian site on a phone: the nine practices as ruled rows, the poetry page, and the Shamsi booking calendar.",
+  "snapshot": {
+    "problem": "Nine practices that ran side by side for decades had to become a site that stays true to his own account, is easy to move through, and can be found in Persian.",
+    "role": "Sole designer and developer: information architecture, brand and design language, content model, the Payload and Next.js build with AI assistance, and an in-country stack.",
+    "result": "Live since 30 August 2026, with Persian on its own crawlable URLs and bookings open since 12 September; no analytics yet, and that gap is on the record."
+  },
+  "alt": {
+    "cover": "Arash Rezvani on a phone — the Persian experience page opening on its headline, “More than a title”, inside ruled walls",
+    "practicesMobile": "Arash Rezvani on a phone — the nine practices as numbered rows, each rule ending on the column’s edge",
+    "poetryMobile": "Arash Rezvani on a phone — the poetry page in Persian, a large headline over one line on the ghazal, qasida, rubai and free verse",
+    "calendarMobile": "Arash Rezvani on a phone — the booking calendar for the month of Mehr in Persian numerals, Saturday first, with Fridays closed",
+    "experienceEn": "Arash Rezvani on desktop — the English experience page, headed “More than a title”, inside two ruled walls",
+    "experienceFa": "Arash Rezvani on desktop — the same experience page in Persian, set right to left with no letter-spacing",
+    "booksFa": "Arash Rezvani on desktop — the Persian books page, whose opening says six of close to ten titles are listed and the rest are not yet",
+    "lattice": "Arash Rezvani on desktop — the practices list with its row and column rules, closed by an ink band of sourced figures",
+    "hoursEn": "Arash Rezvani on desktop — a chosen day, Saturday 4 Mehr 1405 with its Gregorian date, and its free quarter-hours in Tehran time",
+    "postsFa": "Arash Rezvani on desktop — the Persian journal, its entries dated in Shamsi and filtered by practice",
+    "postsEn": "Arash Rezvani on desktop — the English journal, the same entries dated in the Gregorian calendar and filtered by practice",
+    "hoursMobile": "Arash Rezvani on a phone — the free quarter-hours of a chosen day in Tehran time, in Persian numerals",
+    "bookingDetails": "Arash Rezvani on a phone — the booking form in Persian: the chosen day and time above fields for name, phone and email",
+    "poetryEmpty": "Arash Rezvani on desktop — the Persian poetry page’s poems section, which says no poem text is here yet",
+    "workEmpty": "Arash Rezvani on desktop — the English work page’s closing band: the work is not online yet",
+    "searchFa": "Arash Rezvani on a phone — Persian search results for the word for “coach”: a book under its English title, then two posts under Persian titles",
+    "searchEn": "Arash Rezvani on a phone — English search results for “coach”, each with a Persian excerpt under its English title",
+    "structure": "Diagram of the site’s routes, numbered one to eight: the home page, about and experience, the four practice pages, their links to books, books and the journal, music, search and contact, and the older work page",
+    "bookReach": "Diagram of one book record and the six places it reaches: its Persian and English pages, the shelf and the teach page, the books sitemap and search, Book structured data, and a share image cut from its cover"
+  },
+  "context": {
+    "heading": "A career that resists a single headline",
+    "body": [
+      "Arash Rezvani is a writer, poet, teacher, photographer and adventurer. By his own account he has published close to ten books and more than a hundred poems, coached cycling for fifteen years, climbed for more than twenty-five and photographed for more than thirty. The brief was a personal site and a journal for all of it.",
+      "Persian is his language and his readers’, so Persian is the site’s default, with English beside it. Around his own account I built a publishing site: a page for each part of his work, a shelf of books with a page each, a journal, his songs, search, and a calendar for booking a call. It is edited from a Persian admin and hosted inside Iran."
+    ],
+    "figureItems": [
+      "/en/experience: the English page, set in Latin capitals.",
+      "/fa/experience: the same page in Persian, which is never letter-spaced."
+    ],
+    "figureCaption": "One page, two URLs: each language is its own document, not a translation switched by a cookie."
+  },
+  "problem": {
+    "heading": "Truth, structure and reach",
+    "body": [
+      "The first problem was truth. A life this varied invites rounding up, and the project had already met the worse case: the first content the design was built on described someone else, and his own written account contradicted nearly every fact in it.",
+      "The second was structure. His practices have run side by side for decades — writing, teaching riders and instructors, coaching cycling, photography, calligraphy, the mountain, the road, guiding, relief work — and none replaced another. One profile page cannot hold that, and pages that each try to sum it all up end up repeating one another.",
+      "The third was reach. For a writer whose books and readers are Persian, the Persian pages have to be findable at their own addresses. A site that renders Persian well but serves it to no crawler has failed at the one thing it is for."
+    ]
+  },
+  "constraints": {
+    "heading": "One small server, on a filtered network",
+    "body": [
+      "The site runs on one server in Iran with two cores and under 4 GB of memory, which also runs its Git server and its mail. From there Docker Hub, Google’s container registry and Quay all answer 403, and YouTube is filtered, so the server cannot reach the videos its own music page lists.",
+      "Builds run on the same machine and take both cores for about eight minutes; measured on 2 September, response times went from 5 seconds to 37 and then to a timeout until the build finished. No CI runner was ever installed, so nothing checks a push before it goes live. Each of these shaped a decision further down."
+    ]
+  },
+  "ownership": {
+    "heading": "One designer-developer, one author",
+    "intro": "I designed and built the site alone, from Arash’s own written account and the messages he sent about each practice. The code started from Payload’s website template, and I built it with AI assistance: Claude is credited on 93 of the 97 commits.",
+    "own": [
+      "The information architecture: which page holds which part of his account",
+      "The brand and the written design language",
+      "The content model: 8 collections, 4 globals and 21 page blocks, 16 of them written for this site",
+      "The Payload and Next.js build, in two languages",
+      "The booking system and its calendar",
+      "The in-country stack, the deploy log and the content-operations log"
+    ],
+    "collaborate": [
+      "Arash: his biography, his ten practice statements, his book covers and his photographs"
+    ],
+    "note": "Every figure on the site traces back to his own words; where the site and a draft disagree, the biography wins. Drafts, live preview, scheduling, search indexing and the form builder came with the template; the structure, the rules and the decisions are mine."
+  },
+  "sources": {
+    "label": "Sources",
+    "heading": "Nothing inferred, nothing filled in",
+    "body": [
+      "The site may use two sources for who he is: a document he wrote about himself, and ten messages he sent on 11 September, one per practice. The biography file keeps both, with Persian as the authoritative text, and a table of sourced numbers, each as he stated it, its ≈ or + intact. When an older content file disagreed with his account, the conflict was written into the biography and his account won.",
+      "The same file lists what does not exist yet — the rest of his book titles, the text of any poem, his certificates — and the rule for all of it is to render nothing. So the gaps show as plain statements, not placeholders: the books page lists six of close to ten titles and says so, the poetry page explains four forms and says no poem is here yet, and the work page says the calligraphy and photographs are not online.",
+      "A placement table in the same file records the page and block where each of his passages now lives, so a later edit cannot quietly put a passage in two places."
+    ],
+    "insight": "The site went public on 30 August; its content became truthful on 3 September, when his account replaced the older file on every page.",
+    "rule": {
+      "text": "“Nothing here is inferred, and no number outside this table may appear on the site.”",
+      "attribution": "The biography’s sourced-numbers table",
+      "method": "Built from Arash’s own account and ten messages he sent, one per practice"
+    },
+    "booksCaption": "The books page states its own limits: close to ten titles written, translated and published, six of them listed, the rest not yet.",
+    "emptyItems": [
+      "/fa/poetry: the poems section, waiting for complete poems with their form, never excerpts.",
+      "/en/work: none of the calligraphy or photography is online yet, and the page says so."
+    ],
+    "emptyCaption": "Empty states written as statements: each names what is missing instead of filling the space."
+  },
+  "structure": {
+    "label": "Structure",
+    "heading": "One page per job, one home per fact",
+    "body": [
+      "I gave each page one job. Experience is the overview: nine threads, each linking to the page that carries it in full, and the only band of figures on the site. Teach, Road, Looking and Poetry each hold one part of his account, in his words. Books, the journal and music are collections with an index. Search and Contact serve every page.",
+      "What holds it together is the design language’s axiom applied to content: a page says a thing once, and a fact has one home. On the first page audited, Work, the same six things appeared three times — the figures in the hero and again in the stats band, one line as a pull quote and again in a list. Each fact got one owner and the copies were deleted; nothing was rewritten. Across the rollout the audit found fourteen repetitions on five pages, and every fix was a subtraction.",
+      "Cross-links replace repetition. Teach and Road each show the book from their own subject, linked to its page, and Teach, Books, Music and Experience close on a band that leads to Contact. Once the inner pages owned their facts, the home page had nothing of its own left to say, so it became the index: the books, six ways in, the country map, the newest songs and the latest notes."
+    ],
+    "insight": "Two older pages have not caught up. Work and Experience predate Road and Looking, and six of Experience’s nine links still point at Work, which now holds only a short list and a ‘not online yet’ band.",
+    "mapKey": [
+      "The home page is the index. A bare address goes to Persian, and every route exists under /fa and /en.",
+      "About, and Experience: the overview of all nine threads, with the site’s only band of figures.",
+      "Teach, Road, Looking and Poetry each hold one part of his account.",
+      "Teach and Road link the books from their own subject.",
+      "Books and the journal: an index and a page for every record; the journal filters by six categories.",
+      "Music reads the videos collection; the home page shows the newest three.",
+      "Search reads pages, posts and books; Contact holds the form and the booking calendar.",
+      "Work predates Road and Looking; its place in the structure is still open."
+    ],
+    "mapCaption": "The site as its routes, counted on 27 September 2026. Every route exists twice, under /fa and /en.",
+    "homeCaption": "The home page as an index, further down: the country map that leads to Experience, and the six latest notes. The book covers and song stills between them are his, so they are left out."
+  },
+  "approach": {
+    "heading": "One axiom, and every page measured against it",
+    "body": [
+      "The site first went live on an editorial brand system with a palette drawn from Arash’s own photography: a warm ink, amber, paper, a cool mist and cobalt. Every pair was measured. Amber on paper came out at 2.1:1, so amber is never text on white, and one amber per view became a rule.",
+      "Three days later the design language was written down as one sentence, “No line without an end”, with three legal ways for a line to stop: on a wall, on another line, or on a change of ground. Anything else is a defect, not a style, and every page was rebuilt and measured against it.",
+      "The rule settled details that usually get argued. The walls sit on the content column’s edge, so every rule a block draws lands on them without the block knowing they exist. A band with its own colour draws no rule, because the colour change is the edge. Every line has one weight, 1.5 px, and no region has a rounded corner. A form field is an underline that shows focus by changing colour, measured at 6.18:1 in the light theme and 7.44:1 in the dark, where 3:1 is required. And Persian is never letter-spaced: every tracking value, Tailwind’s own included, is zeroed for Persian, which had been closing the joins of every Persian headline."
+    ],
+    "insight": "The test for an edge is not whether a boundary exists but whether a reader would see the line stop there. The home portrait failed it by 64 px, so its column now draws a rule of its own.",
+    "processHeading": "From a template to a live, bilingual site",
+    "steps": [
+      {
+        "label": "Build-out",
+        "note": "Payload’s website template inside Next.js, a Persian admin and a deploy pipeline, from 25 August"
+      },
+      {
+        "label": "Brand system",
+        "note": "A palette measured from his photography; live on 30 August"
+      },
+      {
+        "label": "His own account",
+        "note": "The Lattice written down and every page rebuilt on his biography; truthful from 3 September"
+      },
+      {
+        "label": "Practice statements",
+        "note": "His ten messages placed on 11 September, one home each"
+      },
+      {
+        "label": "Own URLs and booking",
+        "note": "Each language at its own prefix, and a Shamsi calendar for calls, from 12 September"
+      },
+      {
+        "label": "Books as pages",
+        "note": "A page per book, and search read in the page’s language, 13 September"
+      },
+      {
+        "label": "Music",
+        "note": "The channel’s songs as click-to-load cards, 18 September"
+      }
+    ],
+    "annotations": [
+      "Row rules end on the column rule: a line stops on another line.",
+      "The column rule ends on the band rule under the list.",
+      "The walls stop where paper turns to ink: a change of ground is an edge.",
+      "Every figure in the band comes from the sourced table, its ≈ and + kept."
+    ],
+    "figureCaption": "The experience page in Persian: walls, row rules and a column rule, closed by the ink band of figures."
+  },
+  "imagery": {
+    "label": "Imagery",
+    "heading": "A likeness drawn from his own photographs",
+    "body": [
+      "The site launched with an empty media library. His archive held 59 images, and none gave a clean reference: in the first 42 I checked, every close frame had his head under a cap, hat or helmet, usually with sunglasses, and every bare-headed frame showed his face too small to read. So I directed the imagery with an image model, working from those photographs.",
+      "The first site images came from two early reference sheets. A week later I built nine wardrobe turnarounds, one for each recurring way he dresses in his photos, each traced to named source photographs and seen from nine fixed angles, and they became the continuity reference for seventeen editorial studies. Every image was briefed on the brand’s rules — its palette, square corners, one amber at most, and no text, logo or invented book title. The eleven site images keep to them; a few of the studies go past the one-amber limit."
+    ],
+    "insight": "Where a real photograph works, it wins: his About portrait and avatar are crops of a photograph of him. Here the generated images are shown as generated; on his own site they carry no label yet, and that is an open item.",
+    "heroCaption": "The imagery in place: the live home page opens on the three-window masthead, in English and in Persian, where the whole page mirrors right to left.",
+    "waysCaption": "“Six ways”, the home page’s index of his practices: each practice sits under one of the generated section cards.",
+    "phoneCaption": "The same home page on a phone, in Persian: the opening line, the masthead, the six cards two to a row, and the notes.",
+    "turnaroundsCaption": "Nine wardrobe turnarounds, one per style he wears: literary artist, relaxed traveller, formal educator, urban creative, heritage motorcyclist, motorcycle coach, adventure tourer, field traveller and relief-service fieldwear.",
+    "siteCaption": "What reached the site: the home masthead and an earlier collage masthead, the six section cards, the closing band (since taken down; its 1200×630 crop is still the share card), and two stand-ins on the About page until a real calligraphy panel is photographed and one of his own photographs arrives.",
+    "studiesCaption": "Seventeen editorial studies, each a new composition in one of the nine wardrobes: collage, screen print, hard-light portrait, still life.",
+    "own": "Art direction of the imagery: 37 generated images, the likeness drawn from his photographs"
+  },
+  "publishing": {
+    "label": "Publishing",
+    "heading": "Records, and everywhere each one reaches",
+    "body": [
+      "Books, journal posts and songs are records, not sections of a page, because a record can have its own address, its own metadata and a place in search. Publishing a record does not make it reachable, so each kind is wired to the surfaces a reader or a crawler arrives from.",
+      "A book gets a page in each language, a row in the books sitemap and in search, Book structured data that names his role as the cover prints it, and a share image cut from its jacket. A journal post gets a page per language, the posts sitemap, an RSS feed per language, Article structured data and a filter by category; the six categories carry the names of his practices. A song has no page of its own: the music page and the home band read the videos collection, and describe it as a list of VideoObjects.",
+      "Around them: canonical URLs, hreflang pairs with x-default on Persian, three sitemaps, a WebSite and Person graph on every page, and share cards: a book uses its own jacket, every other page the site’s card."
+    ],
+    "insight": "The journal does not meet the site’s own rule yet. Twenty of its 21 entries were created in one batch on 10 September, written in his voice, credited to me and dated as far back as January; the other is left from the older content. Until his own writing replaces them, the system works and its content does not.",
+    "bookKey": [
+      "One record in the books collection, edited once in the admin.",
+      "A page in Persian and one in English, paired by hreflang.",
+      "A card on the books shelf, and a panel on the page of its subject.",
+      "A row in the books sitemap and in site search, in both languages.",
+      "Book structured data, with his role as the cover prints it: author, co-author or translator.",
+      "A 1200×630 share image cut from its jacket."
+    ],
+    "bookCaption": "One book traced through the site. Posts follow the same pattern and add an RSS feed per language; songs are read by the music page and have no page of their own.",
+    "journalItems": [
+      "/fa/posts: every date in Shamsi, with Persian numerals.",
+      "/en/posts: the same index, dated in the Gregorian calendar."
+    ],
+    "journalCaption": "The journal index in both languages: six categories named after his practices, twelve entries to a page."
+  },
+  "decisions": {
+    "heading": "Six decisions that held",
+    "lede": "Each was forced by the audience, the source material or the network, not by taste.",
+    "items": [
+      {
+        "title": "Give each language its own URL",
+        "why": "The first Persian release chose the language by cookie: one URL, two renders. A crawler carries no cookie, so every translated page was reachable at no URL and no hreflang could be emitted. Now English lives under /en and Persian under /fa, and a bare URL goes to the reader’s last language, or to Persian.",
+        "alternatives": "One URL, with the language chosen by cookie",
+        "tradeoff": "Every internal link must carry its prefix, and the language toggle has to be a full page load."
+      },
+      {
+        "title": "Guard bookings with a database index, not a hook",
+        "why": "Two confirmed calls can never share a start time. Payload’s own index options cannot say “unique among confirmed rows only”, so the app builds a partial unique index at boot, and public bookings go through one endpoint. Tested as a race: one 201, one 409, one row.",
+        "alternatives": "A duplicate check in a save hook",
+        "tradeoff": "If the index fails to build, the site runs on without the guarantee, so the boot log has to be read."
+      },
+      {
+        "title": "Load a video only when it is asked for",
+        "why": "Inside Iran a YouTube player needs a VPN. Each song is a click-to-load card whose poster and title come from the site’s own storage, so the card is whole without one and no player loads until the click.",
+        "alternatives": "Embed the player on the page",
+        "tradeoff": "The posters are YouTube’s own frames for now, stored on the site and replaced by hand."
+      },
+      {
+        "title": "Keep the whole stack inside Iran",
+        "why": "Docker Hub answers the server with 403: five deployments failed at the base-image pull before it came through an Iranian mirror. Storage, Git, the deploy platform and mail all run inside the country.",
+        "alternatives": "Public registries and hosted Git",
+        "tradeoff": "More to run on one small server: one build ran out of memory and took the Git server down with it."
+      },
+      {
+        "title": "Make each book a record with its own page",
+        "why": "A list inside a page block cannot give a book an address, its own metadata or an identity other pages can point to. As a record, a book appears on the shelf, on the page of its subject, in search and at its own URL, so a reader searching «مربی شو» lands on the book. None of the covers states a year or a publisher, so the shelf is ordered by hand, and each card carries the role the cover prints: author, co-author or translator.",
+        "alternatives": "The six books as rows inside the books page",
+        "tradeoff": "No automatic order, and a details section that stays empty until a year or a publisher is known."
+      },
+      {
+        "title": "Treat content as data, not a release",
+        "why": "From 3 September the database, not the repository, holds the content. Every change is sorted first: content and settings go through the API, anything that will change again is made editable once, and only schema, behaviour and infrastructure ship as a build. The songs, the music page, the booking hours and the nav all changed without a deployment.",
+        "alternatives": "Edit content in the seed files and deploy it",
+        "tradeoff": "The repository no longer holds the live text, so every write is backed up, diffed and logged by hand."
+      }
+    ],
+    "hoursEvidence": "One day’s free quarter-hours in Tehran time; in English the Shamsi date carries its Gregorian date beneath it."
+  },
+  "solution": {
+    "heading": "From reading to asking",
+    "body": [
+      "Search reads one index built from pages, posts and books. Since 13 September it reads that index in the page’s own language, so Persian posts come back under Persian titles. Results stop at twelve, and result pages are kept out of search engines, because every query would otherwise become a thin page.",
+      "The contact form is a band of underlined fields with a hidden honeypot. The mail server is wired in, and the container refuses to start without its settings, because the failure it guards against is the quiet one: a form that thanks the visitor and tells nobody. The form itself, though, has no notification set in production, so today messages wait in the admin: the same quiet failure, one layer up.",
+      "A call is booked in the steps below. Every rule about when — hours, breaks, slot length, the buffer between calls, notice, blocked days, and a switch that closes it — lives in a setting the admin edits, so changing the hours is never a deployment. Bookings send no email yet; the admin opens on the next confirmed calls."
+    ],
+    "insight": "Search is only half fixed. Books and pages still come back under English titles on the Persian search, and the excerpt and category under each result are stored in one language, so the English search shows Persian excerpts and misses matches in English descriptions.",
+    "bookingHeading": "Booking a call, in five steps",
+    "bookingSteps": [
+      {
+        "label": "Choose a day",
+        "note": "A Shamsi month, Saturday first; past days, Fridays and full days are disabled"
+      },
+      {
+        "label": "Choose a time",
+        "note": "Free quarter-hours in Tehran time, with the visitor’s own time beside them"
+      },
+      {
+        "label": "Details",
+        "note": "Name, phone and email; the phone is checked and a hidden field catches bots"
+      },
+      {
+        "label": "Review",
+        "note": "One screen to confirm before anything is written"
+      },
+      {
+        "label": "Booked",
+        "note": "201 and a receipt; a slot taken meanwhile answers 409, and the calendar offers the rest"
+      }
+    ],
+    "bookingCaption": "On a phone in Persian: the chosen day’s free quarter-hours, then the details.",
+    "searchItems": [
+      "/fa/search for «مربی»: the posts come back under Persian titles; the book still shows its English one.",
+      "/en/search for “coach”: English titles, with a Persian excerpt under each."
+    ],
+    "searchCaption": "The same search in both languages on a phone, captured on 27 September 2026: what the locale fix solved, and what it did not."
+  },
+  "operations": {
+    "label": "Operations",
+    "heading": "Running it without a release",
+    "body": [
+      "The admin speaks Persian by default and turns right-to-left on its own; the mark on its login screen is his signature, drawn in place of Payload’s. Drafts, autosave, live preview and scheduled publishing came with the template, but until 8 September scheduling did nothing: the admin queued a job that nothing ran, so a scheduled post would never have appeared. A job runner inside the container now drains the queue every minute.",
+      "From 3 September content changes are made at runtime, not in code. Between 11 and 18 September the content-operations log records fifteen writes — his practice statements, the booking settings, the home page’s cards, the music page and its songs — and one rollback: the About page’s nine cards, which broke the Persian page in browsers without WebGL, were taken back through the API within the hour and restored the same day once the code was fixed.",
+      "Each write follows the same steps, and each row in the log carries its verification."
+    ],
+    "insight": "AI agents can read the content through MCP but cannot write it; widening that would itself be a code change, made on purpose.",
+    "processHeading": "One content change, start to finish",
+    "steps": [
+      {
+        "label": "Classify",
+        "note": "Content, a setting, something to make editable once, or code"
+      },
+      {
+        "label": "Back up",
+        "note": "The document in both languages, before the write"
+      },
+      {
+        "label": "Write",
+        "note": "English first, then Persian, every row id kept"
+      },
+      {
+        "label": "Read back",
+        "note": "Diff against the backup: only the intended fields may move"
+      },
+      {
+        "label": "Log",
+        "note": "A row in the content-operations log, with its check"
+      }
+    ]
+  },
+  "outcomes": {
+    "heading": "Live, with the gaps named",
+    "intro": "Live at arashrezvani.me since 30 August 2026 and taking bookings since 12 September. Still open, and on the record: no analytics of any kind, so there are no visitor numbers; no CI runner, so a push reaches the site without lint or type checks; no email from the contact form or from bookings, so both wait in the admin; search that is only half localized; journal entries that are not his; and generated images his site does not label.",
+    "measured": [
+      {
+        "label": "Repetitions found and removed",
+        "context": "The say-it-once audit across five pages; every fix was a subtraction.",
+        "source": "The design language’s rollout audit"
+      },
+      {
+        "label": "Tests passing at the last release gate",
+        "context": "Beside type checks, lint, a production build and a smoke test before the push.",
+        "source": "Deployment log, 18 September 2026"
+      }
+    ],
+    "delivered": [
+      {
+        "label": "Persian and English at their own URLs",
+        "context": "Persian by default, both halves in hreflang and in the sitemaps."
+      },
+      {
+        "label": "A deploy log that keeps its failures",
+        "context": "18 production runs recorded, five of them failed, beside a separate log of every content write and rollback."
+      }
+    ],
+    "shipped": [
+      "Shamsi booking",
+      "A URL per language",
+      "A page per book",
+      "RSS per language",
+      "Structured data",
+      "Click-to-load video",
+      "Persian admin",
+      "Scheduled publishing that runs"
+    ]
+  },
+  "lessons": {
+    "heading": "What I’d keep, and what bit",
+    "items": [
+      {
+        "title": "State the language as one sentence",
+        "body": "“No line without an end” settled arguments without another meeting, because every disagreement reduced to one question: does this line arrive somewhere?"
+      },
+      {
+        "title": "A bilingual site is not bilingual until each language has a URL",
+        "body": "The cookie scheme passed every test a person could run, and failed completely for the one visitor that matters most to a writer’s site: the crawler."
+      },
+      {
+        "title": "An enhancement that cannot fail closed is not one",
+        "body": "A WebGL scroll reveal threw in browsers without WebGL and replaced a whole Persian page with an error. It came back behind a capability check and an error boundary that settles to the plain picture."
+      },
+      {
+        "title": "A rule has to reach whatever is added in bulk",
+        "body": "Every page was measured against his account one by one, and the journal was not: its entries went in as one batch. It is the one part of the site that fails the site’s own test, and the first thing to replace."
+      }
+    ]
+  }
+}

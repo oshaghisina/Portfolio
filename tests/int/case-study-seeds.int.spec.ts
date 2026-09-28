@@ -375,8 +375,12 @@ const GATES: Record<string, { files: RegExp[]; text: RegExp[] }> = {
     // the full books page, or the contact page below the calendar (his address and handle). The
     // imagery chapter is Sina's generated work only — no crop of his own photographs, no cover.
     // The live home page (2026-09-26) only in its hero, six-ways, map and notes sections.
+    // The 2026-09-27 rewrite adds type-only captures (search, the booking details step, two empty
+    // states) and two diagrams drawn from the routes — each by exact name, nothing else in either folder.
     files: [
-      /^(?!capture-2026-09\/|imagery\/(turnarounds|site|studies)\/|live-2026-09-26\/)/,
+      /^(?!capture-2026-09\/|capture-2026-09-27\/|diagrams\/|imagery\/(turnarounds|site|studies)\/|live-2026-09-26\/)/,
+      /^capture-2026-09-27\/(?!(mobile\/(search-(en|fa)|booking-fa-details)|desktop\/(poetry-fa-poems|work-en-notyet))\.png$)/,
+      /^diagrams\/(?!(site-structure|record-reach)\.png$)/,
       /^live-2026-09-26\/(?!(desktop|mobile)\/home-(en|fa)-(\d-)?(hero|masthead|ways|map|notes)\.(jpg|png)$)/,
       /^capture-2026-09\/.*(home|about|music|teach|road|looking|icon|logo|books(?!-fa-fold)|contact-(fa|en)-full)/,
       /bookshelves|pigeons|riders|eroded|translated|book-|cover|avatar|IMG_/i,
