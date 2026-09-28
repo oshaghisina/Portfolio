@@ -1,74 +1,43 @@
 import type { Metadata } from 'next/types'
 
-import { CollectionArchive } from '@/components/CollectionArchive'
 import { PageFrame } from '@/components/PageFrame'
 import { PageOpener } from '@/components/PageOpener'
-import configPromise from '@payload-config'
-import { getPayload } from 'payload'
 import React from 'react'
 import { Search } from '@/search/Component'
+import { SearchResults } from '@/search/SearchResults'
+import type { SearchResult } from '@/search/results'
+import { searchSite } from '@/search/searchSite'
+import { readSearchQuery } from '@/search/url'
 import PageClient from './page.client'
-import { CardPostData } from '@/components/Card'
 import { getLocale } from '@/utilities/getLocale'
 import { withSiteName } from '@/utilities/site'
 import { uiCopy } from '@/utilities/uiCopy'
 
 type Args = {
   searchParams: Promise<{
-    q: string
+    q?: string | string[]
   }>
 }
+
+/**
+ * `/search` — projects and Lab posts in the visitor's locale, read from their collections with
+ * the public gates (see `searchSite`). The query lives in `?q=`, so a result list can be shared,
+ * refreshed and returned to with Back.
+ */
 export default async function Page({ searchParams: searchParamsPromise }: Args) {
-  const { q: query } = await searchParamsPromise
-  const payload = await getPayload({ config: configPromise })
+  const query = readSearchQuery((await searchParamsPromise).q)
   const locale = await getLocale()
 
-  // The search index is shared across locales. Query the source collection for Persian so an
-  // English-only indexed post cannot appear as a Persian result with English title/excerpt.
-  const posts = await payload.find({
-    collection: locale === 'fa' ? 'posts' : 'search',
-    depth: 1,
-    fallbackLocale: false,
-    limit: 12,
-    locale,
-    overrideAccess: false,
-    select: {
-      title: true,
-      slug: true,
-      categories: true,
-      meta: true,
-    },
-    // pagination: false reduces overhead if you don't need totalDocs
-    pagination: false,
-    ...(query
-      ? {
-          where: {
-            or: [
-              {
-                title: {
-                  like: query,
-                },
-              },
-              {
-                'meta.description': {
-                  like: query,
-                },
-              },
-              {
-                'meta.title': {
-                  like: query,
-                },
-              },
-              {
-                slug: {
-                  like: query,
-                },
-              },
-            ],
-          },
-        }
-      : {}),
-  })
+  let results: SearchResult[] = []
+  let failed = false
+  if (query) {
+    try {
+      results = await searchSite({ locale, query })
+    } catch (error) {
+      console.error('Search failed', error)
+      failed = true
+    }
+  }
 
   return (
     <PageFrame>
@@ -76,19 +45,19 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
       <PageOpener
         actions={
           <div className="basis-full max-w-[34rem]">
-            <Search locale={locale} />
+            <Search locale={locale} query={query} />
           </div>
         }
         title={uiCopy[locale].search}
       />
 
-      <div className="mt-12 md:mt-16">
-        {posts.totalDocs > 0 ? (
-          <CollectionArchive locale={locale} posts={posts.docs as CardPostData[]} />
-        ) : (
-          <p className="text-body text-ink-2">{uiCopy[locale].searchNoResults}</p>
-        )}
-      </div>
+      <SearchResults
+        className="mt-12 md:mt-16"
+        failed={failed}
+        locale={locale}
+        query={query}
+        results={results}
+      />
     </PageFrame>
   )
 }

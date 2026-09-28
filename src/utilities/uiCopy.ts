@@ -115,6 +115,16 @@ export interface UiCopy {
   searchPlaceholder: string
   /** `/search` empty-state line. */
   searchNoResults: string
+  /** `/search` status line before anything is typed. */
+  searchPrompt: string
+  /** `/search` status line: how many results the query found. */
+  searchResults: PluralCopy
+  /** `/search` status line when the query itself failed. */
+  searchError: string
+  /** `/search` result type for a project without a public case study (it opens its /work row). */
+  searchTypeProject: string
+  /** `/search` result type for a Lab post. */
+  searchTypePost: string
   /** `{language}` is replaced with the target locale's native name — see `switchToLanguageLabel`. */
   switchToLanguage: string
   theme: string
@@ -192,6 +202,11 @@ export const uiCopy: Record<Locale, UiCopy> = {
     search: 'Search',
     searchNoResults: 'No results found.',
     searchPlaceholder: 'Search',
+    searchPrompt: 'Type a project, company or topic.',
+    searchResults: { one: '{n} result', other: '{n} results' },
+    searchError: 'Search is not working right now. Please try again in a moment.',
+    searchTypeProject: 'Project',
+    searchTypePost: 'Lab note',
     switchToLanguage: 'Switch to {language}',
     theme: 'Toggle theme',
     switchToDarkMode: 'Switch to dark mode',
@@ -263,6 +278,11 @@ export const uiCopy: Record<Locale, UiCopy> = {
     search: 'جستجو',
     searchNoResults: 'نتیجه‌ای یافت نشد.',
     searchPlaceholder: 'جستجو',
+    searchPrompt: 'نام پروژه، شرکت یا موضوع را بنویسید.',
+    searchResults: { other: '{n} نتیجه' },
+    searchError: 'جستجو الان کار نمی‌کند. چند لحظه‌ی دیگر دوباره امتحان کنید.',
+    searchTypeProject: 'پروژه',
+    searchTypePost: 'یادداشت',
     switchToLanguage: 'تغییر زبان به {language}',
     theme: 'تغییر پوسته',
     switchToDarkMode: 'تغییر به حالت تیره',
@@ -334,6 +354,11 @@ export const uiCopy: Record<Locale, UiCopy> = {
     search: 'بحث',
     searchNoResults: 'لم يتم العثور على نتائج.',
     searchPlaceholder: 'بحث',
+    searchPrompt: 'اكتب اسم مشروع أو شركة أو موضوع.',
+    searchResults: { one: 'نتيجة واحدة', two: 'نتيجتان', few: '{n} نتائج', other: '{n} نتيجة' },
+    searchError: 'البحث لا يعمل الآن. حاول مرة أخرى بعد قليل.',
+    searchTypeProject: 'مشروع',
+    searchTypePost: 'ملاحظة',
     switchToLanguage: 'التبديل إلى {language}',
     theme: 'تبديل المظهر',
     switchToDarkMode: 'التبديل إلى الوضع الداكن',
@@ -406,6 +431,11 @@ export const uiCopy: Record<Locale, UiCopy> = {
     search: 'Buscar',
     searchNoResults: 'No se encontraron resultados.',
     searchPlaceholder: 'Buscar',
+    searchPrompt: 'Escribe un proyecto, una empresa o un tema.',
+    searchResults: { one: '{n} resultado', other: '{n} resultados' },
+    searchError: 'La búsqueda no funciona en este momento. Inténtalo de nuevo en un rato.',
+    searchTypeProject: 'Proyecto',
+    searchTypePost: 'Nota',
     switchToLanguage: 'Cambiar a {language}',
     theme: 'Cambiar tema',
     switchToDarkMode: 'Cambiar al modo oscuro',
@@ -478,6 +508,11 @@ export const uiCopy: Record<Locale, UiCopy> = {
     search: 'Suche',
     searchNoResults: 'Keine Ergebnisse gefunden.',
     searchPlaceholder: 'Suche',
+    searchPrompt: 'Geben Sie ein Projekt, ein Unternehmen oder ein Thema ein.',
+    searchResults: { one: '{n} Treffer', other: '{n} Treffer' },
+    searchError: 'Die Suche funktioniert gerade nicht. Bitte versuchen Sie es gleich noch einmal.',
+    searchTypeProject: 'Projekt',
+    searchTypePost: 'Notiz',
     switchToLanguage: 'Zu {language} wechseln',
     theme: 'Design wechseln',
     switchToDarkMode: 'Zum Dunkelmodus wechseln',
@@ -550,6 +585,11 @@ export const uiCopy: Record<Locale, UiCopy> = {
     search: 'Rechercher',
     searchNoResults: 'Aucun résultat trouvé.',
     searchPlaceholder: 'Rechercher',
+    searchPrompt: 'Saisissez un projet, une entreprise ou un sujet.',
+    searchResults: { one: '{n} résultat', other: '{n} résultats' },
+    searchError: 'La recherche ne fonctionne pas pour le moment. Réessayez dans un instant.',
+    searchTypeProject: 'Projet',
+    searchTypePost: 'Note',
     switchToLanguage: 'Passer en {language}',
     theme: 'Changer de thème',
     switchToDarkMode: 'Passer au mode sombre',
@@ -621,6 +661,11 @@ export const uiCopy: Record<Locale, UiCopy> = {
     search: '検索',
     searchNoResults: '該当する結果がありません。',
     searchPlaceholder: '検索',
+    searchPrompt: 'プロジェクト名、会社名、トピックを入力してください。',
+    searchResults: { other: '{n}件' },
+    searchError: '現在、検索を利用できません。しばらくしてからもう一度お試しください。',
+    searchTypeProject: 'プロジェクト',
+    searchTypePost: 'ノート',
     switchToLanguage: '{language}に切り替え',
     theme: 'テーマを切り替え',
     switchToDarkMode: 'ダークモードに切り替え',
