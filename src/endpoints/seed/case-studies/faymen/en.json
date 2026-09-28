@@ -1,0 +1,507 @@
+{
+  "statement": "A commerce template rebuilt into a working Iranian menswear store, from the shop and checkout to the account and the admin.",
+  "industry": "Retail · menswear e-commerce",
+  "team": "Sole designer and developer, working with AI coding agents",
+  "heroCaption": "On a phone: the shop, a product page and the customer account. The account screen comes from a local build of the production code with test data.",
+  "snapshot": {
+    "problem": "The template assumed Stripe, dollars, email log-in and servers that can reach GitHub. An Iranian menswear store could count on none of them.",
+    "role": "Product designer and developer across the shop, product pages, checkout, payments, the customer account, the admin and the infrastructure, with AI coding agents writing most of the code.",
+    "result": "Live at faymen.ir since July 2026 and taking payments; one feedback report uncovered 113 of 166 products returning 404, now fixed."
+  },
+  "alt": {
+    "cover": "Fayman on a phone — the waistcoat collection as a right-to-left product grid priced in Toman",
+    "shop": "Fayman on a phone — the shop page with a search field, category tabs and trousers priced in Toman",
+    "shoesProduct": "Fayman on a phone — a leather derby shoe product page with its discounted Toman price and an add-to-cart button",
+    "login": "Fayman on a phone — the log-in page with a single mobile-number field and a button requesting a verification code",
+    "shipping": "Fayman on a phone — the shipping page promising free delivery above a Toman threshold, with order tracking",
+    "faq": "Fayman on a phone — the searchable frequently asked questions page, grouped by topic",
+    "waistcoatsDesk": "Fayman on desktop — the waistcoat category as a right-to-left grid with filters on the right and struck-through prices",
+    "sizeGuideDesk": "Fayman on desktop — the Size Finder form beside the guide’s promises of free returns and advice",
+    "fabricGuideDesk": "Fayman on desktop — the fabric guide, matching cloth to season with a comparison table and fabric swatches",
+    "productSections": "Fayman’s product-section showcase page — three rails of belts, tie clips and shirts, each labelled with its source and how it shows prices",
+    "filterSheet": "Fayman on a phone — the shop’s filter sheet open, with sort, fabric and occasion options",
+    "occasionFilter": "Fayman on a phone — the suits category filtered to weddings, with a removable filter chip and a count on the filter button",
+    "searchResults": "Fayman on a phone — search results for the Persian word for “jacket”, showing 75 products",
+    "productSizes": "Fayman local build on a phone — a suit’s product page with size 50 chosen, size 52 disabled as sold out, a discount and an in-stock line",
+    "cart": "Fayman local build on a phone — the cart drawer with a discounted suit and a tuxedo, a test coupon, and the bill split into list price, product discount and coupon",
+    "checkoutSignIn": "Fayman local build on a phone — checkout for a signed-out customer: the order summary first, then sign-in by mobile number",
+    "checkoutCode": "Fayman local build on a phone — the six-digit code step inside checkout, with the phone number masked",
+    "checkoutPay": "Fayman local build on a phone — signed-in checkout with a saved address, the payment methods, a wallet shortfall in words and the pay button with its amount",
+    "accDashboard": "Fayman local build on a phone — the account dashboard with orders in progress, wallet balance, wishlist count and open returns",
+    "accDashboardWhole": "Fayman local build on a phone — the whole account dashboard page, down to the last three orders",
+    "accWallet": "Fayman local build on a phone — the wallet page with the usable balance and the start of the statement",
+    "accWalletWhole": "Fayman local build on a phone — the whole wallet statement: a gift credit, an order paid from the wallet and a refund for a return",
+    "accAddresses": "Fayman local build on a phone — two saved addresses with edit and delete buttons, phone numbers masked",
+    "accAddressesWhole": "Fayman local build on a phone — the whole addresses page with the button to add a new address",
+    "accWishlist": "Fayman local build on a phone — the wishlist as a grid of saved products with filled hearts",
+    "accWishlistWhole": "Fayman local build on a phone — the whole wishlist page",
+    "accSettings": "Fayman local build on a phone — account settings with a read-only verified phone number, masked, and a name field",
+    "accSettingsWhole": "Fayman local build on a phone — the whole account settings page",
+    "accNotifications": "Fayman local build on a phone — notification preferences for email and SMS, and for order, return and newsletter messages",
+    "accNotificationsWhole": "Fayman local build on a phone — the whole notification preferences page with its save button",
+    "accOrders": "Fayman local build on a phone — the order list with status filter chips and product thumbnails",
+    "accOrdersWhole": "Fayman local build on a phone — the whole order list with three orders: cancelled, processing and completed",
+    "accOrder": "Fayman local build on a phone — a completed order with its three-stage track, date, total and status",
+    "accOrderWhole": "Fayman local build on a phone — the whole order page with items at their purchase prices, the address and the return button",
+    "accWalletOrder": "Fayman local build on a phone — an order in processing, marked as paid from the wallet",
+    "accWalletOrderWhole": "Fayman local build on a phone — the whole page of an order paid from the wallet",
+    "accReturnForm": "Fayman local build on a phone — the return request form with an item chosen, a reason and a note",
+    "accReturnFormWhole": "Fayman local build on a phone — the whole return request form with its submit button",
+    "accReturnSent": "Fayman local build on a phone — the confirmation after a return request, with the next steps",
+    "accReturns": "Fayman local build on a phone — the returns list with one approved request",
+    "accReturnsWhole": "Fayman local build on a phone — the whole returns page",
+    "deskDashboard": "Fayman local build on desktop — the account dashboard beside the account menu, with recent orders and their statuses",
+    "deskWallet": "Fayman local build on desktop — the wallet statement with a gift credit, an order payment and a return refund",
+    "adminDiscounts": "Fayman admin in a local build — the discount console with counts of discounted products, categories and coupon codes",
+    "adminDashboard": "Fayman admin in a local build — the dashboard with an alert that a paid order is waiting for an operator",
+    "adminDashboardWhole": "Fayman admin in a local build — the whole dashboard with the collections grouped in Farsi",
+    "adminOrders": "Fayman admin in a local build — the order list with unconfirmed paid orders highlighted in red",
+    "adminOrder": "Fayman admin in a local build — an order with its confirm button, amount in Rial and the wallet payment method",
+    "adminOrderWhole": "Fayman admin in a local build — the whole order page in the admin",
+    "adminSizeStock": "Fayman admin in a local build — the size and stock screen with stock per size for the suits category",
+    "adminSizeStockWhole": "Fayman admin in a local build — the whole size and stock screen for every category",
+    "adminWalletCredit": "Fayman admin in a local build — a new wallet entry with the amount in Rial spelled out in Toman words below it"
+  },
+  "chapters": {
+    "context": {
+      "heading": "A tailoring store built on a commerce template",
+      "body": [
+        "Fayman (فیمن) sells tailored menswear online: suits, blazers, trousers, shirts, shoes and accessories, with a size guide, a fabric guide and a made-to-measure service. The store started on 23 June 2026 from the official Payload ecommerce template plus a first clean-up pass. By 15 September, 491 commits later, most of it had been replaced.",
+        "The template gave a working catalogue, a cart and an order model. It also assumed Stripe, US dollars, email accounts and hosted tooling. The work was to turn it into a store an Iranian customer can use from the first search to a return request, and that the store’s staff can run without a developer.",
+        "Of the 518 source files at the end, 80 are unchanged from the template. Payments, sign-in, checkout and currency were replaced outright; the customer account, the admin tools and 17 of the 25 page blocks are new."
+      ]
+    },
+    "problem": {
+      "heading": "Five assumptions that don’t hold in Iran, and a store to run",
+      "body": ["Every assumption in an international commerce template had to be replaced, not configured:"],
+      "bullets": [
+        "Payments — Stripe does not operate in Iran. Stores are paid through Shaparak gateways, and each gateway has its own protocol.",
+        "Currency — prices are kept in Rial and spoken in Toman. One integration that gets the factor of ten backwards charges a customer ten times too much or too little.",
+        "Identity — customers know a store by their phone number, not an email address, and the production server never had an email service.",
+        "Infrastructure — GitHub and Docker Hub are not reliably reachable from an Iranian server, so a deploy that depends on them can fail when a fix is needed.",
+        "Typography — a design language written for left-to-right English software had to carry Persian retail.",
+        "Operations — the store’s staff had to set discounts, stock and pages themselves, in Persian, with Persian dates."
+      ]
+    },
+    "system": {
+      "customLabel": "System",
+      "heading": "What had to work as one system",
+      "body": [
+        "A clothing store is judged on the path from a search to a delivered order, and on what happens when that path breaks. The parts below share data: the badge on a product card, the shop’s sale filter, the cart total and the amount sent to the bank all come from one pricing rule.",
+        "Design ran through a review loop of its own: a screenshot of a problem, a diagnosis against the code and the design language, a card, then a build. By 12 September there were 63 design cards, 55 of them done."
+      ],
+      "insight": "One pricing resolver feeds the product card, the cart, the bill and the payment check, so the price a customer sees is the price the bank is asked for."
+    },
+    "discovery": {
+      "customLabel": "Discovery",
+      "heading": "Finding the right product",
+      "body": [
+        "Customers reach a suit from different questions: an occasion, a category, a sale, a search or a shared link. The home page answers several of them, and each answer ends in the same shop.",
+        "Its product rails come from one block, the Product Section, with four sources: a category rule with sale-only and in-stock switches, hand-picked products, a pasted shop URL, or a list of product links. It has three layouts: rail, grid and spotlight. Every source runs through the shop’s own query, so a rail and the shop can’t disagree about what is on sale or in stock. Editors use it on the live home page today for rails such as discounted full sets and single sizes.",
+        "The occasion row sits above the category row, following the store’s feedback that a customer starts from “I have a wedding”, not “I want a blazer”. In the shop, every filter lives in the URL: fabric, occasion, style, a price range in Toman, in stock only and on sale only. Stock, sale and price are checked on the same size, so a sold-out size on sale can’t pull a product into the results. On a phone the filters open as a sheet, and active filters stay visible as removable chips.",
+        "Search is the weakest entry point. It matches product titles only and doesn’t yet treat Arabic and Persian letter forms as the same. The lookbook is editorial: its looks hand off to filtered shop pages rather than to single products."
+      ]
+    },
+    "product": {
+      "customLabel": "Product page",
+      "heading": "Reducing uncertainty before the purchase",
+      "body": [
+        "Buying tailored clothes online raises three questions: will it fit, what is it made of, and what happens if it’s wrong. The product page was rebuilt around them: a buy column that stays beside the gallery, a stock line, a trust row with the delivery and 7-day return terms, an accordion for size, care and shipping, and a buy bar that stays in reach on a phone.",
+        "Sizes had to tell the truth. On 13 August, 23 of the 25 products with sizes offered at least one size that nothing behind it could sell. One shared rule now hides sizes a product isn’t made in, disables sizes that are sold out, and labels a product with nothing left «ناموجود». Below ten pieces, the page says how many are left.",
+        "The Size Finder on the size guide takes the garment, a preferred fit and body measurements, and answers from the store’s size tables. Between two sizes it picks the larger one, since taking in is safer than letting out. Out of range it offers a measuring consultation, and for shirts it gives a collar reading instead of guessing a letter size. The fabric guide matches cloth to season and use, and each fabric links to the shop filtered by it.",
+        "Two parts are unfinished. The Size Finder isn’t on the product page and doesn’t read what each product actually sells, and the product page doesn’t show each product’s fabric."
+      ]
+    },
+    "checkout": {
+      "customLabel": "Checkout",
+      "heading": "From the cart to a paid order",
+      "body": [
+        "The cart is priced on the server by the same resolver the payment check uses, so the cart and the bank can’t disagree. Opening the cart re-prices it from the live catalogue: on production, 4 of 15 open carts held a total that had gone stale. The bill shows the list price, the product discounts and the coupon as separate lines.",
+        "Checkout is one page. On a phone the order summary comes first. A signed-out customer signs in with a mobile number and a six-digit code without leaving the page, and a new number gets an account. The first saved address is selected. Only the payment methods the order qualifies for are shown, and the button names the amount: «پرداخت … تومان». Anything that can’t be used yet is explained in a sentence instead of a greyed-out control, such as a wallet balance that falls short by a named amount.",
+        "Payment runs through one adapter for every Iranian gateway: Zarinpal, Zibal, Torob Pay, SnappPay and DigiPay, plus the store wallet. Before sending anyone to a bank, the server recomputes the total and refuses to charge unless it matches the cart to the Rial. The order is created only after the gateway confirms the payment. A repeated callback can’t create a second order, and a job every ten minutes picks up payments whose callback never arrived.",
+        "The adapter’s shape comes from real faults. Over two days in September, DigiPay needed seven fixes: an empty endpoint setting that broke checkout, a request format that made valid credentials look invalid, a return from the gateway that hit a missing route, and an amount unit that had to be confirmed as Rial on a live payment. Each became a rule: DigiPay’s endpoint is a required setting whose empty value hides the gateway, every gateway accepts both kinds of return request, and no amount unit is ever guessed."
+      ]
+    },
+    "account": {
+      "customLabel": "Account",
+      "heading": "The account, after and between orders",
+      "body": [
+        "A returning customer signs in with the same phone number and lands on a dashboard built around what people come back for: orders in progress, the wallet balance, saved products, open returns and the last three orders. The earlier page was a settings form, with the order status the third panel down.",
+        "The order list filters by status and shows product thumbnails, because customers recognise an order by what is in it. The order page shows a three-stage track (placed, processing, completed), the prices paid at the time, the address, and a return button for seven days. It shows only what the data supports: the track has no dates for later stages, because the system doesn’t record when each change happened.",
+        "A return request picks items, quantities and a reason, and the server checks the owner, the seven-day window and what was already returned. Staff move the request through its statuses. No money moves automatically; staff can add the refund to the customer’s wallet by hand. The wallet page answers “why is my balance this number?” with a statement in which each entry has a reason, a link to its order and the balance after it. There is no top-up button, because top-up doesn’t exist and a button would promise it.",
+        "Addresses saved here are the same records checkout uses. The wishlist keeps products for signed-in customers. Settings holds a name and shows the verified phone, which can’t be changed there. Notification preferences are saved, but nothing sends messages from them yet: apart from sign-in codes, customers receive no SMS."
+      ]
+    },
+    "rules": {
+      "customLabel": "Commerce rules",
+      "heading": "The rules behind the interface",
+      "body": [
+        "Discounts have two layers. A product or a category can carry a discount with start and end dates set on a Persian calendar; the product’s own discount wins, and the two never stack. A coupon then applies once per cart, to the already-discounted total, and counts as used only after a confirmed payment. The ٪ badge, the struck-through price, the shop’s sale filter and the sale rails all read the same rule.",
+        "That order was learned from a real basket. For six days in August, coupons were applied to the list price and replaced the product discount, which overcharged customers; a weak coupon could even raise the price. Coupons now apply after catalogue discounts.",
+        "Stock is kept per size. It is checked when payment starts and taken only after the bank confirms, in one guarded update, so two buyers of the last piece can’t both succeed. If stock runs out between the two, the order is marked refunded, a payment reversal is attempted, and any stock already taken for that order is given back.",
+        "Staff manage this from a discount console that shows each discount as active, scheduled, expired, off or used up, and from a generator that makes single-use codes for a campaign."
+      ]
+    },
+    "operations": {
+      "customLabel": "Operations",
+      "heading": "Running the store without a developer",
+      "body": [
+        "The admin is in Farsi by default, since the staff are in Iran, and discount dates are picked on a Persian calendar. Pages are built from blocks: the template had 8, the store has 25, and 17 are new, from the Product Section to the size guide, the FAQ and the returns policy. Header links, footer columns, social links and the order of categories are edited in the admin.",
+        "The operating tools were built for jobs the staff actually do. Paid orders wait for an operator’s confirmation and stay flagged in red until someone confirms them. A size and stock screen shows stock per size across each category and warns before a size that orders still use is deleted. Wallet credit is typed in Rial and spelled out in Toman words under the field, because a credit can’t be undone.",
+        "SMS carries three events: the sign-in code, a sale alert to staff, and new corporate-sales leads. Each has an editable template and its own recipients. The corporate-sales page takes enquiries for 50 pieces or more as leads; there is no bulk pricing or quote system.",
+        "Two limits remain: there is one admin role, with no narrower staff account, and the size tables behind the Size Finder live in code."
+      ]
+    },
+    "iran": {
+      "customLabel": "Built for Iran",
+      "heading": "Designing for Iran, not translating for it",
+      "body": [
+        "Right-to-left went beyond the direction attribute. Layout moved to logical properties, which the template didn’t use at all; carousels and galleries follow the reading direction on the keyboard too; and phone numbers, postal codes and coupon codes sit in left-to-right fields inside Persian forms. Prices use Persian digits, and dates use the Persian calendar through the browser’s own calendar support rather than a library.",
+        "The design language was adapted, not invented. An adaptation layer on top of an existing system, written for English software, names where it disagrees with a Persian menswear store and settles that the adaptation wins. Its sharpest rule is zero letter-spacing on Persian, because letter-spacing breaks joined letters. The fonts are self-hosted, so the store never waits on Google.",
+        "Money follows local rules: whole Rial stored, Toman shown, and Torob price tags in Toman so the price-comparison site lists the right number. The footer carries the E-namad seal, which customers can click through to Iran’s e-commerce registry. On 27 September the store’s public checkout settings listed Zibal, the wallet, Torob Pay and DigiPay.",
+        "The infrastructure stays in the country: code and images on a self-hosted Git server, media on ArvanCloud storage, deploys through Coolify, and analytics on a self-hosted Umami. The architecture notes put the rule plainly: everything the live site depends on at build and deploy time must be reachable in-country."
+      ]
+    },
+    "reliability": {
+      "customLabel": "Reliability",
+      "heading": "Keeping a live store working",
+      "body": [
+        "On 10 August the store reported one product that returned 404 while it still appeared in the admin. A read-only sweep of production showed the real scale: 113 of 166 published products were unreachable. Two bugs were stacked. Payload’s default slug function dropped every Persian letter, and Next.js handed pages their Persian slugs still percent-encoded, so even a correct slug failed. The code was fixed first, then the 113 slugs were repaired on production, and a second sweep returned 200 for all 166.",
+        "Releases pass one local gate: generated types and import maps checked, then type checks, lint, tests and a production build. The suite held about 1,086 tests on 1 September, 772 of them unit tests, and 1,354 by 12 September. Every production release is written into an append-only deploy ledger. A smoke script then checks each gateway’s return route, analytics and the shop, and every check in it exists because that fault once reached production.",
+        "A dependency sweep on 1 September updated 54 of 58 outdated packages, in two verified batches plus nine major upgrades on their own, and recorded why the other four were held back. No page-speed numbers were ever measured, so none are claimed here; the one measured build change is the compile step, from 88 to 18.2 seconds."
+      ]
+    }
+  },
+  "figures": {
+    "catalogue": {
+      "caption": "A category page at desktop width: a right-to-left grid, filters on the right, Toman prices with the pre-discount price struck through."
+    },
+    "productSections": {
+      "caption": "The Product Section block on the store’s showcase page, which lists 60 combinations of source, layout and price display. Each rail names its source and how it shows prices."
+    },
+    "filters": {
+      "caption": "Filters, an active filter and search on a phone. The state lives in the URL, so any view can be shared or reloaded.",
+      "items": [
+        "Filters open as a sheet.",
+        "An active occasion filter stays as a removable chip, with a count on the button.",
+        "Search results are the shop, filtered by the query."
+      ]
+    },
+    "productPage": {
+      "caption": "The product page on a phone. The buy bar at the bottom stays in reach while the page scrolls.",
+      "items": [
+        "Local build, test data: one size sold out and disabled, a size chosen, stock confirmed, the terms beside the button.",
+        "The live store: a discounted product with its old price struck through."
+      ]
+    },
+    "guides": {
+      "caption": "The guides answer fit and fabric questions without leaving the store, and link back into the shop.",
+      "items": [
+        "The Size Finder: garment, fit and measurements, then a size.",
+        "The fabric guide: which cloth suits which season, use and care."
+      ]
+    },
+    "support": {
+      "caption": "Support pages answer the questions that stop a purchase: size, delivery, returns and payment. The free-delivery threshold is text; checkout calculates no shipping cost.",
+      "items": [
+        "Shipping: methods, times and the free-delivery threshold.",
+        "The FAQ, grouped by topic and searchable in Persian."
+      ]
+    },
+    "checkout": {
+      "caption": "Checkout on a phone, from a local build of the production code with test data. A test gateway stands in for the bank, and the phone number is masked.",
+      "items": [
+        "The cart: list price, product discount and a coupon on separate lines.",
+        "Signed out: the summary first, then sign-in by mobile number.",
+        "The six-digit code. No account is needed beforehand.",
+        "Signed in: a saved address, the methods, a wallet shortfall in words, and the amount on the button."
+      ]
+    },
+    "accountScreens": {
+      "caption": "Every account page on a phone, from a local build of the production code with test data. Open a page to see all of it. Phone numbers are masked.",
+      "items": [
+        "Dashboard",
+        "Wallet",
+        "Addresses",
+        "Wishlist",
+        "Settings",
+        "Notifications",
+        "Orders",
+        "Order page",
+        "Paid from the wallet",
+        "Return request",
+        "Return sent",
+        "Returns"
+      ],
+      "groups": [
+        "Account",
+        "Account",
+        "Account",
+        "Account",
+        "Account",
+        "Account",
+        "Orders and returns",
+        "Orders and returns",
+        "Orders and returns",
+        "Orders and returns",
+        "Orders and returns",
+        "Orders and returns"
+      ]
+    },
+    "accountDesktop": {
+      "caption": "The same account at desktop width, with the account menu beside each page (local build, test data).",
+      "items": [
+        "The dashboard: orders in progress, wallet, wishlist, open returns and recent orders.",
+        "The wallet statement: a gift credit, an order paid from the wallet and a refund for a return."
+      ]
+    },
+    "discounts": {
+      "caption": "The discount console in the admin (local build, test data): products and categories on sale, coupon codes, and what is about to start or end."
+    },
+    "admin": {
+      "caption": "The admin, from a local build of the production code with test data: the unconfirmed-order alert, the order list, the confirm button, the size and stock screen, and a wallet credit spelled out in Toman.",
+      "items": ["Dashboard", "Orders", "Order", "Size and stock", "Wallet credit"]
+    }
+  },
+  "steps": {
+    "timeline": {
+      "heading": "Twelve weeks, by date",
+      "steps": [
+        { "label": "Template", "note": "23 Jun · Payload’s ecommerce template plus a first clean-up pass" },
+        { "label": "Iran basics", "note": "28 Jun · Right-to-left Persian layout, Rial prices, a Shaparak payment adapter" },
+        { "label": "Live", "note": "7 Jul · faymen.ir served from an in-country server" },
+        { "label": "Phone sign-in", "note": "24 Jul · Log-in by SMS code beside the old email form" },
+        { "label": "Feedback waves", "note": "10–31 Aug · Store feedback and design reviews: slugs, sizes, discounts, checkout" },
+        { "label": "Wallet and account", "note": "2 Sep · Store credit, the account dashboard, Torob price tags" },
+        { "label": "Phone-first", "note": "15 Sep · Every storefront email path replaced by the mobile number" }
+      ]
+    },
+    "workLoop": {
+      "heading": "How a piece of work moved",
+      "steps": [
+        { "label": "Report", "note": "A raw comment or a screenshot goes into the tracker" },
+        { "label": "Investigate", "note": "Checked against the real code before anything is built" },
+        { "label": "Spec card", "note": "Acceptance criteria an agent can build from" },
+        { "label": "Build", "note": "An agent implements it on its own branch" },
+        { "label": "Gate and release", "note": "Type checks, tests and a build, then a deploy recorded in the ledger" }
+      ]
+    },
+    "systemMap": {
+      "heading": "The system, by area",
+      "steps": [
+        {
+          "label": "Storefront",
+          "note": "What a customer sees",
+          "parts": ["Home and product sections", "Shop and filters", "Search", "Product page", "Size and fabric guides", "Support pages"]
+        },
+        {
+          "label": "Purchase",
+          "note": "From the cart to a paid order",
+          "parts": ["Cart", "One-page checkout", "Phone sign-in", "Saved addresses", "Payment gateways", "Wallet"]
+        },
+        {
+          "label": "Account",
+          "note": "After and between orders",
+          "parts": ["Dashboard", "Orders", "Returns", "Wallet statement", "Wishlist", "Settings"]
+        },
+        {
+          "label": "Commerce rules",
+          "note": "What the interface reads",
+          "parts": ["Rial prices", "Product and category discounts", "Coupon codes", "Stock per size", "Order records", "Wallet ledger"]
+        },
+        {
+          "label": "Operations",
+          "note": "What the store’s staff run",
+          "parts": ["Farsi admin", "Page blocks", "Discount console", "Size and stock screen", "Order confirmation", "SMS settings"]
+        },
+        {
+          "label": "Infrastructure",
+          "note": "Inside the country",
+          "parts": ["ArvanCloud storage", "Self-hosted Git", "Coolify", "Umami analytics", "Deploy ledger"]
+        }
+      ]
+    },
+    "journey": {
+      "heading": "One purchase, as the code runs it",
+      "steps": [
+        { "label": "Find", "note": "Home sections, shop filters or search" },
+        { "label": "Decide", "note": "Product page, stock line, size and fabric guides" },
+        { "label": "Choose a size", "note": "Sizes it isn’t made in are hidden, sold-out sizes disabled" },
+        { "label": "Cart", "note": "Priced on the server, re-priced when opened" },
+        { "label": "Sign in", "note": "Mobile number and a six-digit code, inside checkout" },
+        { "label": "Address and method", "note": "A saved address; the methods the order qualifies for" },
+        { "label": "Pay", "note": "At the gateway; the order exists only after the bank confirms" },
+        { "label": "Account", "note": "Order page, return request, wallet" }
+      ]
+    },
+    "accountMap": {
+      "heading": "The account, by area",
+      "steps": [
+        {
+          "label": "Sign-in",
+          "note": "One flow for new and returning customers",
+          "parts": ["Mobile number", "Six-digit code", "14-day session", "Log-out"]
+        },
+        {
+          "label": "Dashboard",
+          "note": "What people come back for",
+          "parts": ["Orders in progress", "Wallet balance", "Wishlist count", "Open returns", "Last three orders"]
+        },
+        {
+          "label": "Orders",
+          "note": "Created only by a confirmed payment",
+          "parts": ["Status filter", "Order page", "Three-stage track", "Prices at purchase", "Return button for 7 days"]
+        },
+        {
+          "label": "Returns",
+          "note": "Requests; staff set the status",
+          "parts": ["Request form", "Server checks", "Status list"]
+        },
+        {
+          "label": "Wallet",
+          "note": "An append-only ledger",
+          "parts": ["Balance", "Statement with reasons", "Pays whole orders"]
+        },
+        {
+          "label": "Saved details",
+          "note": "Shared with checkout",
+          "parts": ["Addresses", "Wishlist", "Name and verified phone", "Notification preferences (stored only)"]
+        }
+      ]
+    },
+    "slugFix": {
+      "heading": "The 404 fix, in order",
+      "steps": [
+        { "label": "Report", "note": "One product returns 404 but shows in the admin" },
+        { "label": "Sweep", "note": "113 of 166 published products unreachable" },
+        { "label": "Two causes", "note": "Slugs lost their Persian letters; pages received encoded slugs" },
+        { "label": "Fix, then repair", "note": "Code first, then 113 slugs rewritten on production" },
+        { "label": "Sweep again", "note": "166 of 166 return 200" }
+      ]
+    }
+  },
+  "findings": {
+    "currencyTrap": {
+      "text": "It is the one item here that produces confidently wrong numbers rather than missing ones.",
+      "attribution": "The store’s analytics plan, on the Rial/Toman trap",
+      "method": "Written on 27 August 2026, before analytics went live on 31 August"
+    },
+    "slugFix": {
+      "text": "…would have changed nothing a customer sees, since a correct Persian slug still 404’d.",
+      "attribution": "Commit message of the routing fix, on repairing the slugs alone",
+      "method": "11 August 2026, the day the slugs were repaired"
+    }
+  },
+  "decisions": {
+    "heading": "Six replacements, not configurations",
+    "lede": "Each one swaps a template default for the constraint it ignored.",
+    "items": [
+      {
+        "title": "Store whole Rial, show Toman",
+        "why": "Prices are spoken in Toman but settled in Rial. Every amount is stored as whole Rial and converted in one place for display, so a factor-of-ten error can’t reach a charge.",
+        "alternatives": "Store Toman and convert per gateway",
+        "tradeoff": "Each integration declares its unit at one boundary: Torob’s price tags want Toman, the gateways want Rial."
+      },
+      {
+        "title": "Make the phone number the only identity",
+        "why": "Sign-in, sign-up and checkout take a mobile number and a one-time code. The email and password pages were retired: none could work without an email service, which production never had.",
+        "alternatives": "Keep email log-in beside the code",
+        "tradeoff": "Every sign-in depends on SMS delivery, so requests are rate-limited and capped per day.",
+        "evidence": "The live log-in page: one field, a mobile number, and a button that requests a code."
+      },
+      {
+        "title": "Create the order only after the bank confirms",
+        "why": "The template confirmed orders from the browser. Here the server verifies the payment with the gateway, including the amount, and only then creates the order and takes the stock.",
+        "alternatives": "Create the order when the customer is sent to the bank",
+        "tradeoff": "If the gateway’s check times out, the customer sees the failure page even though the money was taken. The ten-minute job creates the order later, but the customer isn’t told."
+      },
+      {
+        "title": "Treat store credit as a payment method",
+        "why": "The wallet plugs into the same adapter as the gateways, so it gets the same total check, duplicate protection and recovery job. Its ledger is append-only: no one, admins included, can edit or delete an entry.",
+        "alternatives": "A balance line subtracted from the total",
+        "tradeoff": "In this version the wallet must cover the whole order; paying part by wallet and part by card is left for later."
+      },
+      {
+        "title": "Keep order confirmation out of the order status",
+        "why": "Staff confirm each paid order in the admin. That is a separate flag with a confirm button, not a fifth status, because the status is shown to customers and internal steps shouldn’t reach them.",
+        "alternatives": "Add a “confirmed” status",
+        "tradeoff": "Staff read two fields, so unconfirmed orders are flagged in the list, the menu and the dashboard."
+      },
+      {
+        "title": "Keep every deploy dependency inside the country",
+        "why": "Code, container images, media storage, deploys and analytics all run in Iran, so a fix can ship when GitHub or Docker Hub is unreachable.",
+        "alternatives": "Hosted CI and public registries",
+        "tradeoff": "More infrastructure to run, watch and back up."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "One designer, many agents",
+    "intro": "I designed the product and directed its build. AI coding agents wrote most of the code from written specs; scope, design direction and every production release were decided by people.",
+    "own": [
+      "Information architecture, flows and the design language",
+      "Shop, product page, checkout and the customer account",
+      "Commerce rules: prices, discounts, stock and payments",
+      "The admin tools the store runs on",
+      "In-country infrastructure and the release process"
+    ],
+    "collaborate": ["The store’s feedback, run through a tracker", "AI coding agents, for implementation"],
+    "note": "A raw comment was investigated against the real code before it became a spec an agent could build without asking a follow-up question. Every production release is written into an append-only deploy ledger."
+  },
+  "outcomes": {
+    "heading": "Live, with the gaps named",
+    "intro": "Live at faymen.ir since 7 July 2026 and taking payments. No commercial figures are published. The numbers below are measured fixes; the rest is delivered scope.",
+    "items": [
+      {
+        "label": "Products returning 404, found and fixed",
+        "context": "Persian titles produced broken slugs; more than two thirds of the catalogue was unreachable.",
+        "source": "Feedback card and production sweep, 11 August 2026"
+      },
+      {
+        "label": "Products with sizes that offered a size nobody could buy",
+        "context": "Replaced by one rule that hides or disables sizes by what is in stock.",
+        "source": "Size-system card, 13 August 2026"
+      },
+      {
+        "label": "Open carts holding a stale total",
+        "context": "The cart now re-prices itself when it opens.",
+        "source": "Code note on the cart repair"
+      },
+      {
+        "label": "A store customers can use end to end",
+        "context": "Shop, checkout, account and admin: 491 commits in twelve weeks, from the template to phone-first checkout."
+      }
+    ],
+    "shipped": [
+      "Phone-only sign-in",
+      "One-page checkout",
+      "Customer account with wallet and returns",
+      "Two-layer discounts with a console",
+      "Product Section block",
+      "Size and stock screen",
+      "Operator order confirmation",
+      "Torob price tags and the E-namad seal"
+    ]
+  },
+  "lessons": {
+    "heading": "What the store taught",
+    "items": [
+      {
+        "title": "Constraints that look like chores are product decisions",
+        "body": "“Docker Hub is unreachable” decides whether a fix can ship during a sale; “there is no email service” rewrote identity, checkout and the newsletter."
+      },
+      {
+        "title": "A report is not a task until it is checked against the code",
+        "body": "A report of one product returning 404 while still visible in the admin turned out, once checked against the code and the catalogue, to be two thirds of the store and two separate bugs."
+      },
+      {
+        "title": "Show only what the data can support",
+        "body": "The order track has no dates because none are recorded; a count that fails to load shows a dash, not zero; the wallet has no top-up button; the Size Finder won’t name a size the shop can’t sell."
+      },
+      {
+        "title": "Write down where a borrowed design language disagrees",
+        "body": "Adapting an existing design language was cheaper than writing a new one, and the disagreements, such as Persian letter-spacing and no illustration, became its most useful part."
+      }
+    ]
+  }
+}

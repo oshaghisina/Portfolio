@@ -1273,32 +1273,32 @@ export const projectTextCopy: Record<string, Record<ProjectLocale, ProjectText>>
     fa: {
       title: 'فیمن — فروشگاه فارسی پوشاک مردانه',
       summary:
-        'فروشگاه آنلاین پوشاک مردانه را با رابط فارسی و راست‌به‌چپ راه‌اندازی کردم. قالب بین‌المللی آن برای پرداخت ایرانی، ورود با شماره‌ی تلفن و زیرساخت داخلی بازسازی شد.',
+        'فروشگاه آنلاین پوشاک مردانه که از ابتدا تا انتها طراحی و ساخته شد: فروشگاه، صفحه‌ی محصول، پرداخت با درگاه‌های ایرانی، حساب مشتری و پنل مدیریت، روی زیرساختی داخل کشور.',
     },
     ar: {
       title: 'فيمن — متجر ملابس رجالية فارسي من اليمين إلى اليسار',
       summary:
-        'متجر ملابس رجالية فارسي حيّ باتجاه من اليمين إلى اليسار — قالب تجارة إلكترونية عالمي أُعيد بناؤه حول المدفوعات الإيرانية والهوية بالهاتف فقط وحزمة داخل البلاد.',
+        'متجر ملابس رجالية فارسي حيّ، صُمِّم وبُني من البداية إلى النهاية: المتجر وصفحات المنتجات والدفع عبر البوابات الإيرانية وحساب العميل ولوحة الإدارة، على بنية تحتية داخل البلاد.',
     },
     es: {
       title: 'Fayman — tienda de moda masculina en persa RTL',
       summary:
-        'Una tienda de moda masculina en persa y de derecha a izquierda, en producción: una plantilla de comercio internacional reconstruida en torno a los pagos iraníes, la identidad solo por teléfono y un stack alojado en el país.',
+        'Una tienda de moda masculina en persa, en producción, diseñada y construida de principio a fin: tienda, fichas de producto, pago con pasarelas iraníes, cuenta de cliente y panel de administración, sobre una infraestructura alojada en el país.',
     },
     de: {
       title: 'Fayman — persischer RTL-Herrenmode-Shop',
       summary:
-        'Ein produktiver persischer Herrenmode-Shop in RTL – ein internationales Commerce-Template, neu gebaut um iranische Zahlungsarten, reine Telefon-Identität und einen Stack im Land.',
+        'Ein produktiver persischer Herrenmode-Shop, von Anfang bis Ende gestaltet und gebaut: Shop, Produktseiten, Checkout mit iranischen Zahlungsanbietern, Kundenkonto und Admin, auf einer Infrastruktur im Land.',
     },
     fr: {
       title: 'Fayman — boutique de mode masculine en persan RTL',
       summary:
-        'Une boutique de mode masculine en persan et de droite à gauche, en production — un template e-commerce international reconstruit autour des paiements iraniens, d’une identité par téléphone uniquement et d’une stack hébergée dans le pays.',
+        'Une boutique de mode masculine en persan, en production, conçue et construite de bout en bout : boutique, fiches produit, paiement par passerelles iraniennes, compte client et administration, sur une infrastructure hébergée dans le pays.',
     },
     ja: {
       title: 'Fayman — ペルシャ語RTLのメンズウェア店舗',
       summary:
-        '稼働中のペルシャ語・右から左のメンズウェアEC。国際的なコマーステンプレートを、イランの決済手段、電話番号のみの本人確認、国内完結のスタックに合わせて作り直した。',
+        '稼働中のペルシャ語メンズウェアEC。ショップ、商品ページ、イランの決済ゲートウェイによるチェックアウト、顧客アカウント、管理画面までを一貫して設計・構築し、国内完結のインフラで運用する。',
     },
   },
   'renova-plus': {

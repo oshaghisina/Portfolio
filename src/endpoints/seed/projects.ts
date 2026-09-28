@@ -521,7 +521,7 @@ export const PROJECT_SEED: ProjectSeedRow[] = [
     slug: 'faymen',
     title: 'Fayman — Persian RTL menswear storefront',
     summary:
-      'A live Persian RTL menswear storefront — an international commerce template rebuilt around Iranian payments, phone-only identity and an in-country stack.',
+      'A live Persian menswear store, designed and built end to end: shop, product pages, checkout with Iranian payments, the customer account and the admin, on an in-country stack.',
     company: INDEPENDENT,
     role: 'Product designer & developer',
     kind: ['product'],

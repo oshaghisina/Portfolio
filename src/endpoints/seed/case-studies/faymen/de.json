@@ -1,0 +1,507 @@
+{
+  "statement": "Ein Commerce-Template, umgebaut zu einem funktionierenden iranischen Herrenmode-Shop, von Shop und Checkout bis zu Kundenkonto und Admin.",
+  "industry": "Einzelhandel · E-Commerce für Herrenmode",
+  "team": "Alleiniger Designer und Entwickler, zusammen mit KI-Coding-Agents",
+  "heroCaption": "Auf dem Smartphone: der Shop, eine Produktseite und das Kundenkonto. Der Kontobildschirm stammt aus einem lokalen Build des Produktionscodes mit Testdaten.",
+  "snapshot": {
+    "problem": "Das Template setzte Stripe, Dollar, E-Mail-Login und Server voraus, die GitHub erreichen. Auf nichts davon konnte sich ein iranischer Herrenmode-Shop verlassen.",
+    "role": "Produktdesigner und Entwickler für Shop, Produktseiten, Checkout, Zahlungen, Kundenkonto, Admin und Infrastruktur; KI-Coding-Agents schrieben den Großteil des Codes.",
+    "result": "Seit Juli 2026 live unter faymen.ir und nimmt Zahlungen an; eine einzige Feedback-Meldung deckte auf, dass 113 von 166 Produkten 404 lieferten, inzwischen behoben."
+  },
+  "alt": {
+    "cover": "Fayman auf dem Smartphone: die Westenkollektion als Produktraster von rechts nach links, mit Preisen in Toman",
+    "shop": "Fayman auf dem Smartphone: die Shop-Seite mit Suchfeld, Kategorie-Tabs und Hosen mit Preisen in Toman",
+    "shoesProduct": "Fayman auf dem Smartphone: die Produktseite eines Derby-Schuhs aus Leder mit rabattiertem Toman-Preis und einem Warenkorb-Button",
+    "login": "Fayman auf dem Smartphone: die Login-Seite mit einem einzigen Feld für die Mobilnummer und einem Button, der einen Bestätigungscode anfordert",
+    "shipping": "Fayman auf dem Smartphone: die Versandseite, die ab einem Toman-Schwellenwert kostenlose Lieferung verspricht, mit Sendungsverfolgung",
+    "faq": "Fayman auf dem Smartphone: die durchsuchbare FAQ-Seite, nach Themen gruppiert",
+    "waistcoatsDesk": "Fayman auf dem Desktop: die Kategorie Westen als Raster von rechts nach links, mit Filtern rechts und durchgestrichenen Preisen",
+    "sizeGuideDesk": "Fayman auf dem Desktop: das Formular des Size Finder neben den Versprechen des Ratgebers zu kostenlosen Retouren und Beratung",
+    "fabricGuideDesk": "Fayman auf dem Desktop: der Stoffratgeber, der Stoffe mit Vergleichstabelle und Stoffmustern der passenden Jahreszeit zuordnet",
+    "productSections": "Die Showcase-Seite für die Product Section bei Fayman: drei Leisten mit Gürteln, Krawattenklammern und Hemden, jeweils beschriftet mit ihrer Quelle und der Art, wie sie Preise zeigt",
+    "filterSheet": "Fayman auf dem Smartphone: das geöffnete Filter-Sheet des Shops mit Optionen für Sortierung, Stoff und Anlass",
+    "occasionFilter": "Fayman auf dem Smartphone: die Kategorie Anzüge, gefiltert nach Hochzeit, mit einem entfernbaren Filter-Chip und einer Zahl auf dem Filter-Button",
+    "searchResults": "Fayman auf dem Smartphone: Suchergebnisse für das persische Wort für „Jacke“ mit 75 Produkten",
+    "productSizes": "Fayman, lokaler Build auf dem Smartphone: die Produktseite eines Anzugs mit gewählter Größe 50, Größe 52 als ausverkauft deaktiviert, einem Rabatt und einer Verfügbarkeitszeile",
+    "cart": "Fayman, lokaler Build auf dem Smartphone: das Warenkorb-Panel mit einem rabattierten Anzug, einem Testgutschein und der Rechnung, aufgeteilt in Listenpreis, Produktrabatt und Gutschein",
+    "checkoutSignIn": "Fayman, lokaler Build auf dem Smartphone: der Checkout für einen nicht angemeldeten Kunden, zuerst die Bestellübersicht, dann die Anmeldung per Mobilnummer",
+    "checkoutCode": "Fayman, lokaler Build auf dem Smartphone: der Schritt mit dem sechsstelligen Code im Checkout, mit maskierter Telefonnummer",
+    "checkoutPay": "Fayman, lokaler Build auf dem Smartphone: der Checkout im angemeldeten Zustand mit gespeicherter Adresse, den Zahlungsarten, einem in Worten erklärten Wallet-Fehlbetrag und dem Bezahl-Button mit Betrag",
+    "accDashboard": "Fayman, lokaler Build auf dem Smartphone: das Konto-Dashboard mit laufenden Bestellungen, Wallet-Guthaben, Anzahl der Artikel auf der Wunschliste und offenen Retouren",
+    "accDashboardWhole": "Fayman, lokaler Build auf dem Smartphone: die ganze Dashboard-Seite des Kontos bis hinunter zu den letzten drei Bestellungen",
+    "accWallet": "Fayman, lokaler Build auf dem Smartphone: die Wallet-Seite mit dem verfügbaren Guthaben und dem Anfang des Kontoauszugs",
+    "accWalletWhole": "Fayman, lokaler Build auf dem Smartphone: der ganze Wallet-Kontoauszug mit einer Geschenkgutschrift, einer aus der Wallet bezahlten Bestellung und einer Erstattung für eine Retoure",
+    "accAddresses": "Fayman, lokaler Build auf dem Smartphone: zwei gespeicherte Adressen mit Buttons zum Bearbeiten und Löschen, Telefonnummern maskiert",
+    "accAddressesWhole": "Fayman, lokaler Build auf dem Smartphone: die ganze Adressseite mit dem Button zum Hinzufügen einer neuen Adresse",
+    "accWishlist": "Fayman, lokaler Build auf dem Smartphone: die Wunschliste als Raster gespeicherter Produkte mit ausgefüllten Herzen",
+    "accWishlistWhole": "Fayman, lokaler Build auf dem Smartphone: die ganze Seite der Wunschliste",
+    "accSettings": "Fayman, lokaler Build auf dem Smartphone: Kontoeinstellungen mit einer schreibgeschützten, verifizierten und maskierten Telefonnummer und einem Namensfeld",
+    "accSettingsWhole": "Fayman, lokaler Build auf dem Smartphone: die ganze Seite der Kontoeinstellungen",
+    "accNotifications": "Fayman, lokaler Build auf dem Smartphone: Benachrichtigungseinstellungen für E-Mail und SMS sowie für Nachrichten zu Bestellungen, Retouren und Newsletter",
+    "accNotificationsWhole": "Fayman, lokaler Build auf dem Smartphone: die ganze Seite der Benachrichtigungseinstellungen mit ihrem Speichern-Button",
+    "accOrders": "Fayman, lokaler Build auf dem Smartphone: die Bestellliste mit Status-Filterchips und Produkt-Vorschaubildern",
+    "accOrdersWhole": "Fayman, lokaler Build auf dem Smartphone: die ganze Bestellliste mit drei Bestellungen, storniert, in Bearbeitung und abgeschlossen",
+    "accOrder": "Fayman, lokaler Build auf dem Smartphone: eine abgeschlossene Bestellung mit dreistufigem Verlauf, Datum, Gesamtbetrag und Status",
+    "accOrderWhole": "Fayman, lokaler Build auf dem Smartphone: die ganze Bestellseite mit den Artikeln zu ihren Kaufpreisen, der Adresse und dem Retouren-Button",
+    "accWalletOrder": "Fayman, lokaler Build auf dem Smartphone: eine Bestellung in Bearbeitung, als aus der Wallet bezahlt gekennzeichnet",
+    "accWalletOrderWhole": "Fayman, lokaler Build auf dem Smartphone: die ganze Seite einer aus der Wallet bezahlten Bestellung",
+    "accReturnForm": "Fayman, lokaler Build auf dem Smartphone: das Formular für eine Retourenanfrage mit ausgewähltem Artikel, einem Grund und einer Notiz",
+    "accReturnFormWhole": "Fayman, lokaler Build auf dem Smartphone: das ganze Formular für eine Retourenanfrage mit seinem Absenden-Button",
+    "accReturnSent": "Fayman, lokaler Build auf dem Smartphone: die Bestätigung nach einer Retourenanfrage, mit den nächsten Schritten",
+    "accReturns": "Fayman, lokaler Build auf dem Smartphone: die Retourenliste mit einer genehmigten Anfrage",
+    "accReturnsWhole": "Fayman, lokaler Build auf dem Smartphone: die ganze Retourenseite",
+    "deskDashboard": "Fayman, lokaler Build auf dem Desktop: das Konto-Dashboard neben dem Kontomenü, mit den letzten Bestellungen und ihrem Status",
+    "deskWallet": "Fayman, lokaler Build auf dem Desktop: der Wallet-Kontoauszug mit einer Geschenkgutschrift, einer Bestellzahlung und einer Erstattung für eine Retoure",
+    "adminDiscounts": "Fayman-Admin in einem lokalen Build: die Rabattkonsole mit der Anzahl rabattierter Produkte, Kategorien und Gutscheincodes",
+    "adminDashboard": "Fayman-Admin in einem lokalen Build: das Dashboard mit dem Hinweis, dass eine bezahlte Bestellung auf einen Bearbeiter wartet",
+    "adminDashboardWhole": "Fayman-Admin in einem lokalen Build: das ganze Dashboard mit den auf Farsi gruppierten Collections",
+    "adminOrders": "Fayman-Admin in einem lokalen Build: die Bestellliste mit rot hervorgehobenen, unbestätigten bezahlten Bestellungen",
+    "adminOrder": "Fayman-Admin in einem lokalen Build: eine Bestellung mit ihrem Bestätigen-Button, dem Betrag in Rial und der Zahlungsart Wallet",
+    "adminOrderWhole": "Fayman-Admin in einem lokalen Build: die ganze Bestellseite im Admin",
+    "adminSizeStock": "Fayman-Admin in einem lokalen Build: die Ansicht für Größen und Bestand mit dem Bestand je Größe für die Kategorie Anzüge",
+    "adminSizeStockWhole": "Fayman-Admin in einem lokalen Build: die ganze Ansicht für Größen und Bestand über alle Kategorien",
+    "adminWalletCredit": "Fayman-Admin in einem lokalen Build: ein neuer Wallet-Eintrag mit dem Betrag in Rial, darunter in Worten in Toman ausgeschrieben"
+  },
+  "chapters": {
+    "context": {
+      "heading": "Ein Shop für Maßkleidung auf Basis eines Commerce-Templates",
+      "body": [
+        "Fayman (فیمن) verkauft geschneiderte Herrenmode online: Anzüge, Sakkos, Hosen, Hemden, Schuhe und Accessoires, dazu einen Größenratgeber, einen Stoffratgeber und einen Maßservice. Der Shop entstand am 23. Juni 2026 aus dem offiziellen E-Commerce-Template von Payload plus einem ersten Aufräumdurchgang. Bis zum 15. September, 491 Commits später, war das meiste davon ersetzt.",
+        "Das Template lieferte einen funktionierenden Katalog, einen Warenkorb und ein Bestellmodell. Es setzte aber auch Stripe, US-Dollar, E-Mail-Konten und gehostete Tools voraus. Die Aufgabe war, daraus einen Shop zu machen, den iranische Kunden von der ersten Suche bis zur Retourenanfrage nutzen können und den das Team des Shops ohne Entwickler betreiben kann.",
+        "Von den 518 Quelldateien am Ende sind 80 gegenüber dem Template unverändert. Zahlungen, Anmeldung, Checkout und Währung wurden vollständig ersetzt; das Kundenkonto, die Admin-Werkzeuge und 17 der 25 Seitenblöcke sind neu."
+      ]
+    },
+    "problem": {
+      "heading": "Fünf Annahmen, die im Iran nicht gelten, und ein Shop, der betrieben werden muss",
+      "body": ["Jede Annahme eines internationalen Commerce-Templates musste ersetzt werden, nicht konfiguriert:"],
+      "bullets": [
+        "Zahlungen – Stripe ist im Iran nicht verfügbar. Shops werden über Shaparak-Gateways bezahlt, und jedes Gateway hat sein eigenes Protokoll.",
+        "Währung – Preise werden in Rial geführt und in Toman genannt. Eine einzige Integration, die den Faktor zehn verkehrt herum anwendet, berechnet Kunden das Zehnfache oder nur ein Zehntel.",
+        "Identität – Kunden kennen einen Shop über ihre Telefonnummer, nicht über eine E-Mail-Adresse, und der Produktionsserver hatte nie einen E-Mail-Dienst.",
+        "Infrastruktur – GitHub und Docker Hub sind von einem iranischen Server aus nicht zuverlässig erreichbar, daher kann ein Deploy, der von ihnen abhängt, genau dann scheitern, wenn ein Fix nötig ist.",
+        "Typografie – eine Designsprache, die für englische Software mit Schreibrichtung von links nach rechts geschrieben wurde, musste persischen Einzelhandel tragen.",
+        "Betrieb – das Team des Shops musste Rabatte, Bestand und Seiten selbst pflegen, auf Persisch und mit persischen Datumsangaben."
+      ]
+    },
+    "system": {
+      "customLabel": "System",
+      "heading": "Was als ein System funktionieren musste",
+      "body": [
+        "Ein Bekleidungsshop wird am Weg von der Suche bis zur zugestellten Bestellung gemessen und daran, was passiert, wenn dieser Weg abbricht. Die folgenden Teile teilen sich Daten: Das Badge auf einer Produktkarte, der Sale-Filter im Shop, die Warenkorbsumme und der an die Bank gesendete Betrag stammen alle aus einer einzigen Preisregel.",
+        "Das Design lief durch einen eigenen Review-Kreislauf: ein Screenshot eines Problems, eine Diagnose anhand des Codes und der Designsprache, eine Karte, dann die Umsetzung. Bis zum 12. September gab es 63 Designkarten, 55 davon erledigt."
+      ],
+      "insight": "Ein einziger Preis-Resolver versorgt Produktkarte, Warenkorb, Rechnung und Zahlungsprüfung, sodass der Preis, den Kunden sehen, genau der Betrag ist, der bei der Bank angefordert wird."
+    },
+    "discovery": {
+      "customLabel": "Entdecken",
+      "heading": "Das richtige Produkt finden",
+      "body": [
+        "Kunden kommen über unterschiedliche Fragen zu einem Anzug: einen Anlass, eine Kategorie, einen Sale, eine Suche oder einen geteilten Link. Die Startseite beantwortet mehrere davon, und jede Antwort endet im selben Shop.",
+        "Ihre Produktleisten stammen aus einem einzigen Block, der Product Section, mit vier Quellen: einer Kategorieregel mit Schaltern für nur Rabattiertes und nur Vorrätiges, handverlesenen Produkten, einer eingefügten Shop-URL oder einer Liste von Produktlinks. Der Block hat drei Layouts: Leiste, Raster und Spotlight. Jede Quelle läuft über die Abfrage des Shops selbst, sodass eine Leiste und der Shop sich nicht darüber widersprechen können, was rabattiert oder vorrätig ist. Das Redaktionsteam nutzt ihn heute auf der Live-Startseite für Leisten wie rabattierte Komplettsets und Einzelgrößen.",
+        "Die Zeile mit Anlässen steht über der Kategoriezeile, nach dem Feedback des Shops, dass Kunden bei „Ich habe eine Hochzeit“ anfangen, nicht bei „Ich möchte ein Sakko“. Im Shop steht jeder Filter in der URL: Stoff, Anlass, Stil, eine Preisspanne in Toman, nur vorrätig und nur rabattiert. Bestand, Rabatt und Preis werden an derselben Größe geprüft, sodass eine ausverkaufte, rabattierte Größe kein Produkt in die Ergebnisse ziehen kann. Auf dem Smartphone öffnen sich die Filter als Sheet, und aktive Filter bleiben als entfernbare Chips sichtbar.",
+        "Die Suche ist der schwächste Einstieg. Sie durchsucht nur Produkttitel und behandelt arabische und persische Buchstabenformen noch nicht als gleich. Das Lookbook ist redaktionell: Seine Looks führen zu gefilterten Shopseiten statt zu einzelnen Produkten."
+      ]
+    },
+    "product": {
+      "customLabel": "Produktseite",
+      "heading": "Unsicherheit vor dem Kauf verringern",
+      "body": [
+        "Wer geschneiderte Kleidung online kauft, hat drei Fragen: Passt es, woraus ist es gemacht, und was passiert, wenn es nicht stimmt? Die Produktseite wurde um diese Fragen herum neu gebaut: eine Kaufspalte, die neben der Galerie bleibt, eine Bestandszeile, eine Vertrauenszeile mit den Liefer- und 7-Tage-Rückgabebedingungen, ein Akkordeon für Größe, Pflege und Versand und eine Kaufleiste, die auf dem Smartphone erreichbar bleibt.",
+        "Die Größen mussten die Wahrheit sagen. Am 13. August boten 23 der 25 Produkte mit Größen mindestens eine Größe an, hinter der kein verkaufbarer Bestand stand. Eine gemeinsame Regel blendet jetzt Größen aus, in denen ein Produkt nicht gefertigt wird, deaktiviert ausverkaufte Größen und kennzeichnet ein Produkt, von dem nichts mehr übrig ist, mit «ناموجود». Unter zehn Stück zeigt die Seite, wie viele noch übrig sind.",
+        "Der Size Finder im Größenratgeber fragt das Kleidungsstück, die bevorzugte Passform und die Körpermaße ab und antwortet anhand der Größentabellen des Shops. Zwischen zwei Größen wählt er die größere, weil Einnehmen sicherer ist als Auslassen. Außerhalb des Tabellenbereichs bietet er eine Beratung zum Maßnehmen an, und bei Hemden nennt er eine Kragenweite, statt eine Buchstabengröße zu raten. Der Stoffratgeber ordnet Stoffe nach Jahreszeit und Verwendung zu, und jeder Stoff verlinkt auf den danach gefilterten Shop.",
+        "Zwei Teile sind unfertig. Der Size Finder steht nicht auf der Produktseite und liest nicht, was jedes Produkt tatsächlich verkauft, und die Produktseite zeigt nicht den Stoff des jeweiligen Produkts."
+      ]
+    },
+    "checkout": {
+      "customLabel": "Checkout",
+      "heading": "Vom Warenkorb zur bezahlten Bestellung",
+      "body": [
+        "Der Warenkorb wird auf dem Server vom selben Resolver bepreist, den die Zahlungsprüfung nutzt, sodass Warenkorb und Bank sich nicht widersprechen können. Beim Öffnen wird der Warenkorb anhand des Live-Katalogs neu berechnet: In der Produktion enthielten 4 von 15 offenen Warenkörben eine veraltete Summe. Die Rechnung zeigt Listenpreis, Produktrabatte und Gutschein als getrennte Zeilen.",
+        "Der Checkout ist eine einzige Seite. Auf dem Smartphone steht die Bestellübersicht zuerst. Nicht angemeldete Kunden melden sich mit Mobilnummer und sechsstelligem Code an, ohne die Seite zu verlassen, und für eine neue Nummer wird ein Konto angelegt. Die erste gespeicherte Adresse ist vorausgewählt. Es werden nur die Zahlungsarten angezeigt, für die die Bestellung infrage kommt, und der Button nennt den Betrag: «پرداخت … تومان». Was noch nicht nutzbar ist, wird in einem Satz erklärt statt mit einem ausgegrauten Element, etwa ein Wallet-Guthaben, dem ein genannter Betrag fehlt.",
+        "Die Zahlung läuft für jedes iranische Gateway über einen einzigen Adapter: Zarinpal, Zibal, Torob Pay, SnappPay und DigiPay, dazu die Wallet des Shops. Bevor jemand zu einer Bank weitergeleitet wird, berechnet der Server die Summe neu und verweigert die Belastung, wenn sie nicht auf den Rial genau mit dem Warenkorb übereinstimmt. Die Bestellung wird erst angelegt, nachdem das Gateway die Zahlung bestätigt hat. Ein wiederholter Callback kann keine zweite Bestellung erzeugen, und ein Job, der alle zehn Minuten läuft, übernimmt Zahlungen, deren Callback nie ankam.",
+        "Die Form des Adapters stammt aus echten Fehlern. Innerhalb von zwei Tagen im September brauchte DigiPay sieben Fixes: eine leere Endpoint-Einstellung, die den Checkout lahmlegte, ein Anfrageformat, durch das gültige Zugangsdaten ungültig wirkten, eine Rückleitung vom Gateway, die auf eine fehlende Route traf, und eine Betragseinheit, die bei einer Live-Zahlung als Rial bestätigt werden musste. Aus jedem Fehler wurde eine Regel: Der Endpoint von DigiPay ist eine Pflichteinstellung, deren leerer Wert das Gateway ausblendet, jedes Gateway akzeptiert beide Arten von Rückleitungsanfragen, und eine Betragseinheit wird nie geraten."
+      ]
+    },
+    "account": {
+      "customLabel": "Konto",
+      "heading": "Das Konto, nach und zwischen Bestellungen",
+      "body": [
+        "Wiederkehrende Kunden melden sich mit derselben Telefonnummer an und landen auf einem Dashboard, das um das herum gebaut ist, weswegen Menschen zurückkommen: laufende Bestellungen, das Wallet-Guthaben, gespeicherte Produkte, offene Retouren und die letzten drei Bestellungen. Die frühere Seite war ein Einstellungsformular, mit dem Bestellstatus erst im dritten Bereich von oben.",
+        "Die Bestellliste filtert nach Status und zeigt Produkt-Vorschaubilder, weil Kunden eine Bestellung an ihrem Inhalt erkennen. Die Bestellseite zeigt einen dreistufigen Verlauf (aufgegeben, in Bearbeitung, abgeschlossen), die damals gezahlten Preise, die Adresse und sieben Tage lang einen Retouren-Button. Sie zeigt nur, was die Daten hergeben: Der Verlauf hat für spätere Stufen keine Datumsangaben, weil das System nicht speichert, wann welche Änderung passierte.",
+        "In einer Retourenanfrage wählt man Artikel, Mengen und einen Grund, und der Server prüft den Eigentümer, die Sieben-Tage-Frist und was bereits zurückgegeben wurde. Das Team führt die Anfrage durch ihre Status. Geld fließt nicht automatisch; das Team kann die Erstattung von Hand der Wallet des Kunden gutschreiben. Die Wallet-Seite beantwortet „Warum steht mein Guthaben auf diesem Betrag?“ mit einem Kontoauszug, in dem jeder Eintrag einen Grund, einen Link zu seiner Bestellung und den Saldo danach hat. Es gibt keinen Aufladen-Button, weil es keine Aufladung gibt und ein Button sie versprechen würde.",
+        "Die hier gespeicherten Adressen sind dieselben Datensätze, die der Checkout nutzt. Die Wunschliste speichert Produkte für angemeldete Kunden. In den Einstellungen stehen ein Name und die verifizierte Telefonnummer, die dort nicht geändert werden kann. Benachrichtigungseinstellungen werden gespeichert, aber noch verschickt nichts auf ihrer Grundlage Nachrichten: Außer Anmeldecodes erhalten Kunden keine SMS."
+      ]
+    },
+    "rules": {
+      "customLabel": "Commerce-Regeln",
+      "heading": "Die Regeln hinter der Oberfläche",
+      "body": [
+        "Rabatte haben zwei Ebenen. Ein Produkt oder eine Kategorie kann einen Rabatt mit Start- und Enddatum tragen, die im persischen Kalender gesetzt werden; der eigene Rabatt des Produkts hat Vorrang, und beide werden nie addiert. Ein Gutschein gilt dann einmal pro Warenkorb, auf die bereits rabattierte Summe, und gilt erst nach einer bestätigten Zahlung als eingelöst. Das ٪-Badge, der durchgestrichene Preis, der Sale-Filter im Shop und die Sale-Leisten lesen alle dieselbe Regel.",
+        "Diese Reihenfolge ergab sich aus einem echten Warenkorb. Sechs Tage lang im August wurden Gutscheine auf den Listenpreis angewendet und ersetzten den Produktrabatt, wodurch Kunden zu viel zahlten; ein schwacher Gutschein konnte den Preis sogar erhöhen. Gutscheine gelten jetzt nach den Katalograbatten.",
+        "Der Bestand wird je Größe geführt. Er wird beim Start der Zahlung geprüft und erst nach der Bestätigung durch die Bank abgebucht, in einem einzigen abgesicherten Update, sodass nicht zwei Käufer des letzten Stücks beide Erfolg haben können. Geht der Bestand zwischen diesen beiden Schritten aus, wird die Bestellung als erstattet markiert, eine Zahlungsrückbuchung wird versucht, und bereits für diese Bestellung abgebuchter Bestand wird zurückgegeben.",
+        "Das Team verwaltet das über eine Rabattkonsole, die jeden Rabatt als aktiv, geplant, abgelaufen, ausgeschaltet oder aufgebraucht anzeigt, und über einen Generator, der Einmalcodes für eine Kampagne erzeugt."
+      ]
+    },
+    "operations": {
+      "customLabel": "Betrieb",
+      "heading": "Den Shop ohne Entwickler betreiben",
+      "body": [
+        "Der Admin ist standardmäßig auf Farsi, weil das Team im Iran sitzt, und Rabattdaten werden in einem persischen Kalender gewählt. Seiten werden aus Blöcken gebaut: Das Template hatte 8, der Shop hat 25, und 17 davon sind neu, von der Product Section bis zum Größenratgeber, den FAQ und den Rückgaberichtlinien. Header-Links, Footer-Spalten, Social-Links und die Reihenfolge der Kategorien werden im Admin bearbeitet.",
+        "Die Betriebswerkzeuge wurden für Aufgaben gebaut, die das Team tatsächlich erledigt. Bezahlte Bestellungen warten auf die Bestätigung durch einen Bearbeiter und bleiben rot markiert, bis jemand sie bestätigt. Eine Ansicht für Größen und Bestand zeigt den Bestand je Größe über jede Kategorie und warnt, bevor eine Größe gelöscht wird, die Bestellungen noch verwenden. Wallet-Gutschriften werden in Rial eingegeben und unter dem Feld in Worten in Toman ausgeschrieben, weil eine Gutschrift nicht rückgängig gemacht werden kann.",
+        "Per SMS laufen drei Ereignisse: der Anmeldecode, eine Benachrichtigung über einen Verkauf an das Team und neue Leads aus dem Firmenkundenvertrieb. Jedes hat eine bearbeitbare Vorlage und eigene Empfänger. Die Seite für Firmenkunden nimmt Anfragen ab 50 Stück als Leads auf; es gibt kein System für Staffelpreise oder Angebote.",
+        "Zwei Grenzen bleiben: Es gibt nur eine Admin-Rolle ohne eingeschränktes Mitarbeiterkonto, und die Größentabellen hinter dem Size Finder liegen im Code."
+      ]
+    },
+    "iran": {
+      "customLabel": "Für den Iran gebaut",
+      "heading": "Für den Iran gestalten, nicht für ihn übersetzen",
+      "body": [
+        "Rechts-nach-links ging über das Richtungsattribut hinaus. Das Layout wurde auf logische Properties umgestellt, die das Template überhaupt nicht nutzte; Karussells und Galerien folgen der Leserichtung auch bei der Tastaturbedienung; und Telefonnummern, Postleitzahlen und Gutscheincodes stehen in Feldern mit Schreibrichtung von links nach rechts innerhalb persischer Formulare. Preise verwenden persische Ziffern, und Datumsangaben nutzen den persischen Kalender über die eingebaute Kalenderunterstützung des Browsers statt über eine Bibliothek.",
+        "Die Designsprache wurde angepasst, nicht erfunden. Eine Anpassungsschicht über einem bestehenden System, das für englische Software geschrieben wurde, benennt, wo es einem persischen Herrenmode-Shop widerspricht, und legt fest, dass die Anpassung Vorrang hat. Ihre strengste Regel ist kein Zeichenabstand im Persischen, weil Zeichenabstand verbundene Buchstaben auseinanderreißt. Die Schriften sind selbst gehostet, sodass der Shop nie auf Google wartet.",
+        "Geld folgt lokalen Regeln: gespeichert in ganzen Rial, angezeigt in Toman, und Torob-Preis-Tags in Toman, damit das Preisvergleichsportal den richtigen Betrag listet. Der Footer trägt das E-namad-Siegel, über das Kunden zum iranischen E-Commerce-Register durchklicken können. Am 27. September listeten die öffentlichen Checkout-Einstellungen des Shops Zibal, die Wallet, Torob Pay und DigiPay.",
+        "Die Infrastruktur bleibt im Land: Code und Images auf einem selbst gehosteten Git-Server, Medien im ArvanCloud-Speicher, Deploys über Coolify und Analytics auf einem selbst gehosteten Umami. Die Architekturnotizen formulieren die Regel klar: Alles, wovon die Live-Site beim Build und Deploy abhängt, muss im Inland erreichbar sein."
+      ]
+    },
+    "reliability": {
+      "customLabel": "Zuverlässigkeit",
+      "heading": "Einen Live-Shop am Laufen halten",
+      "body": [
+        "Am 10. August meldete der Shop ein Produkt, das 404 lieferte, obwohl es im Admin noch auftauchte. Ein rein lesender Durchlauf über die Produktion zeigte das wahre Ausmaß: 113 von 166 veröffentlichten Produkten waren nicht erreichbar. Zwei Bugs lagen übereinander. Die Standard-Slug-Funktion von Payload entfernte jeden persischen Buchstaben, und Next.js übergab den Seiten ihre persischen Slugs noch prozentkodiert, sodass selbst ein korrekter Slug scheiterte. Zuerst wurde der Code korrigiert, dann wurden die 113 Slugs in der Produktion repariert, und ein zweiter Durchlauf ergab 200 für alle 166.",
+        "Releases durchlaufen ein einziges lokales Gate: Generierte Typen und Import-Maps werden geprüft, dann folgen Typprüfungen, Lint, Tests und ein Produktions-Build. Die Testsuite umfasste am 1. September etwa 1.086 Tests, davon 772 Unit-Tests, und am 12. September 1.354. Jedes Produktions-Release wird in ein nur fortschreibbares Deploy-Protokoll eingetragen. Danach prüft ein Smoke-Skript die Rückleitungsroute jedes Gateways, die Analytics und den Shop, und jede Prüfung darin existiert, weil genau dieser Fehler einmal die Produktion erreicht hat.",
+        "Ein Dependency-Durchlauf am 1. September aktualisierte 54 von 58 veralteten Paketen, in zwei verifizierten Durchgängen plus neun Major-Upgrades einzeln, und hielt fest, warum die anderen vier zurückgehalten wurden. Werte zur Seitengeschwindigkeit wurden nie gemessen, daher werden hier keine behauptet; die einzige gemessene Änderung am Build ist der Kompilierschritt, von 88 auf 18,2 Sekunden."
+      ]
+    }
+  },
+  "figures": {
+    "catalogue": {
+      "caption": "Eine Kategorieseite in Desktop-Breite: ein Raster von rechts nach links, Filter rechts, Toman-Preise mit durchgestrichenem Preis vor dem Rabatt."
+    },
+    "productSections": {
+      "caption": "Der Block Product Section auf der Showcase-Seite des Shops, die 60 Kombinationen aus Quelle, Layout und Preisanzeige auflistet. Jede Leiste nennt ihre Quelle und die Art, wie sie Preise zeigt."
+    },
+    "filters": {
+      "caption": "Filter, ein aktiver Filter und die Suche auf dem Smartphone. Der Zustand steht in der URL, sodass jede Ansicht geteilt oder neu geladen werden kann.",
+      "items": [
+        "Die Filter öffnen sich als Sheet.",
+        "Ein aktiver Anlassfilter bleibt als entfernbarer Chip stehen, mit einer Zahl auf dem Button.",
+        "Suchergebnisse sind der Shop, gefiltert nach der Suchanfrage."
+      ]
+    },
+    "productPage": {
+      "caption": "Die Produktseite auf dem Smartphone. Die Kaufleiste unten bleibt beim Scrollen erreichbar.",
+      "items": [
+        "Lokaler Build, Testdaten: eine Größe ausverkauft und deaktiviert, eine Größe gewählt, Bestand bestätigt, die Bedingungen neben dem Button.",
+        "Der Live-Shop: ein rabattiertes Produkt mit durchgestrichenem altem Preis."
+      ]
+    },
+    "guides": {
+      "caption": "Die Ratgeber beantworten Fragen zu Passform und Stoff, ohne dass man den Shop verlässt, und verlinken zurück in den Shop.",
+      "items": [
+        "Der Size Finder: Kleidungsstück, Passform und Maße, dann eine Größe.",
+        "Der Stoffratgeber: welcher Stoff zu welcher Jahreszeit und Verwendung passt, samt Pflege."
+      ]
+    },
+    "support": {
+      "caption": "Die Service-Seiten beantworten die Fragen, an denen ein Kauf scheitert: Größe, Lieferung, Retouren und Zahlung. Die Schwelle für kostenlose Lieferung steht nur im Text; der Checkout berechnet keine Versandkosten.",
+      "items": [
+        "Versand: Versandarten, Lieferzeiten und die Schwelle für kostenlose Lieferung.",
+        "Die FAQ, nach Themen gruppiert und auf Persisch durchsuchbar."
+      ]
+    },
+    "checkout": {
+      "caption": "Der Checkout auf dem Smartphone, aus einem lokalen Build des Produktionscodes mit Testdaten. Ein Test-Gateway ersetzt die Bank, und die Telefonnummer ist maskiert.",
+      "items": [
+        "Der Warenkorb: Listenpreis, Produktrabatt und ein Gutschein in getrennten Zeilen.",
+        "Nicht angemeldet: zuerst die Übersicht, dann die Anmeldung per Mobilnummer.",
+        "Der sechsstellige Code. Vorher ist kein Konto nötig.",
+        "Angemeldet: eine gespeicherte Adresse, die Zahlungsarten, ein Wallet-Fehlbetrag in Worten und der Betrag auf dem Button."
+      ]
+    },
+    "accountScreens": {
+      "caption": "Jede Kontoseite auf dem Smartphone, aus einem lokalen Build des Produktionscodes mit Testdaten. Öffnen Sie eine Seite, um sie vollständig zu sehen. Telefonnummern sind maskiert.",
+      "items": [
+        "Dashboard",
+        "Wallet",
+        "Adressen",
+        "Wunschliste",
+        "Einstellungen",
+        "Benachrichtigungen",
+        "Bestellungen",
+        "Bestellseite",
+        "Aus der Wallet bezahlt",
+        "Retourenanfrage",
+        "Retoure gesendet",
+        "Retouren"
+      ],
+      "groups": [
+        "Konto",
+        "Konto",
+        "Konto",
+        "Konto",
+        "Konto",
+        "Konto",
+        "Bestellungen und Retouren",
+        "Bestellungen und Retouren",
+        "Bestellungen und Retouren",
+        "Bestellungen und Retouren",
+        "Bestellungen und Retouren",
+        "Bestellungen und Retouren"
+      ]
+    },
+    "accountDesktop": {
+      "caption": "Dasselbe Konto in Desktop-Breite, mit dem Kontomenü neben jeder Seite (lokaler Build, Testdaten).",
+      "items": [
+        "Das Dashboard: laufende Bestellungen, Wallet, Wunschliste, offene Retouren und letzte Bestellungen.",
+        "Der Wallet-Kontoauszug: eine Geschenkgutschrift, eine aus der Wallet bezahlte Bestellung und eine Erstattung für eine Retoure."
+      ]
+    },
+    "discounts": {
+      "caption": "Die Rabattkonsole im Admin (lokaler Build, Testdaten): rabattierte Produkte und Kategorien, Gutscheincodes und was demnächst beginnt oder endet."
+    },
+    "admin": {
+      "caption": "Der Admin, aus einem lokalen Build des Produktionscodes mit Testdaten: der Hinweis auf unbestätigte Bestellungen, die Bestellliste, der Bestätigen-Button, die Ansicht für Größen und Bestand und eine in Toman ausgeschriebene Wallet-Gutschrift.",
+      "items": ["Dashboard", "Bestellungen", "Bestellung", "Größen und Bestand", "Wallet-Gutschrift"]
+    }
+  },
+  "steps": {
+    "timeline": {
+      "heading": "Zwölf Wochen, nach Datum",
+      "steps": [
+        { "label": "Template", "note": "23. Juni · Das E-Commerce-Template von Payload plus ein erster Aufräumdurchgang" },
+        { "label": "Iran-Grundlagen", "note": "28. Juni · Persisches Layout von rechts nach links, Rial-Preise, ein Shaparak-Zahlungsadapter" },
+        { "label": "Live", "note": "7. Juli · faymen.ir läuft auf einem Server im Inland" },
+        { "label": "Anmeldung per Telefon", "note": "24. Juli · Login per SMS-Code neben dem alten E-Mail-Formular" },
+        { "label": "Feedback-Wellen", "note": "10.–31. August · Feedback des Shops und Design-Reviews: Slugs, Größen, Rabatte, Checkout" },
+        { "label": "Wallet und Konto", "note": "2. September · Shop-Guthaben, das Konto-Dashboard, Torob-Preis-Tags" },
+        { "label": "Telefon zuerst", "note": "15. September · Jeder E-Mail-Pfad im Storefront durch die Mobilnummer ersetzt" }
+      ]
+    },
+    "workLoop": {
+      "heading": "Wie ein Arbeitspaket durchlief",
+      "steps": [
+        { "label": "Meldung", "note": "Ein roher Kommentar oder ein Screenshot kommt in den Tracker" },
+        { "label": "Untersuchen", "note": "Abgleich mit dem echten Code, bevor etwas gebaut wird" },
+        { "label": "Spec-Karte", "note": "Akzeptanzkriterien, nach denen ein Agent bauen kann" },
+        { "label": "Umsetzung", "note": "Ein Agent setzt sie auf einem eigenen Branch um" },
+        { "label": "Gate und Release", "note": "Typprüfungen, Tests und ein Build, dann ein im Protokoll vermerkter Deploy" }
+      ]
+    },
+    "systemMap": {
+      "heading": "Das System nach Bereichen",
+      "steps": [
+        {
+          "label": "Storefront",
+          "note": "Was Kunden sehen",
+          "parts": ["Startseite und Product Sections", "Shop und Filter", "Suche", "Produktseite", "Größen- und Stoffratgeber", "Service-Seiten"]
+        },
+        {
+          "label": "Kauf",
+          "note": "Vom Warenkorb zur bezahlten Bestellung",
+          "parts": ["Warenkorb", "Einseitiger Checkout", "Anmeldung per Telefon", "Gespeicherte Adressen", "Zahlungs-Gateways", "Wallet"]
+        },
+        {
+          "label": "Konto",
+          "note": "Nach und zwischen Bestellungen",
+          "parts": ["Dashboard", "Bestellungen", "Retouren", "Wallet-Kontoauszug", "Wunschliste", "Einstellungen"]
+        },
+        {
+          "label": "Commerce-Regeln",
+          "note": "Was die Oberfläche liest",
+          "parts": ["Rial-Preise", "Produkt- und Kategorierabatte", "Gutscheincodes", "Bestand je Größe", "Bestelldatensätze", "Wallet-Journal"]
+        },
+        {
+          "label": "Betrieb",
+          "note": "Was das Team des Shops betreibt",
+          "parts": ["Admin auf Farsi", "Seitenblöcke", "Rabattkonsole", "Ansicht für Größen und Bestand", "Bestellbestätigung", "SMS-Einstellungen"]
+        },
+        {
+          "label": "Infrastruktur",
+          "note": "Im Inland",
+          "parts": ["ArvanCloud-Speicher", "Selbst gehostetes Git", "Coolify", "Umami-Analytics", "Deploy-Protokoll"]
+        }
+      ]
+    },
+    "journey": {
+      "heading": "Ein Kauf, so wie der Code ihn ausführt",
+      "steps": [
+        { "label": "Finden", "note": "Bereiche der Startseite, Shopfilter oder Suche" },
+        { "label": "Entscheiden", "note": "Produktseite, Bestandszeile, Größen- und Stoffratgeber" },
+        { "label": "Größe wählen", "note": "Nicht gefertigte Größen ausgeblendet, ausverkaufte deaktiviert" },
+        { "label": "Warenkorb", "note": "Auf dem Server bepreist, beim Öffnen neu berechnet" },
+        { "label": "Anmelden", "note": "Mobilnummer und sechsstelliger Code, im Checkout" },
+        { "label": "Adresse und Zahlungsart", "note": "Eine gespeicherte Adresse; die Zahlungsarten, für die die Bestellung infrage kommt" },
+        { "label": "Bezahlen", "note": "Beim Gateway; die Bestellung existiert erst, wenn die Bank bestätigt" },
+        { "label": "Konto", "note": "Bestellseite, Retourenanfrage, Wallet" }
+      ]
+    },
+    "accountMap": {
+      "heading": "Das Konto nach Bereichen",
+      "steps": [
+        {
+          "label": "Anmeldung",
+          "note": "Ein Ablauf für neue und wiederkehrende Kunden",
+          "parts": ["Mobilnummer", "Sechsstelliger Code", "14-Tage-Sitzung", "Abmelden"]
+        },
+        {
+          "label": "Dashboard",
+          "note": "Weswegen Menschen zurückkommen",
+          "parts": ["Laufende Bestellungen", "Wallet-Guthaben", "Anzahl auf der Wunschliste", "Offene Retouren", "Letzte drei Bestellungen"]
+        },
+        {
+          "label": "Bestellungen",
+          "note": "Nur durch eine bestätigte Zahlung angelegt",
+          "parts": ["Statusfilter", "Bestellseite", "Dreistufiger Verlauf", "Preise zum Kaufzeitpunkt", "Retouren-Button für 7 Tage"]
+        },
+        {
+          "label": "Retouren",
+          "note": "Anfragen; das Team setzt den Status",
+          "parts": ["Anfrageformular", "Serverprüfungen", "Statusliste"]
+        },
+        {
+          "label": "Wallet",
+          "note": "Ein nur fortschreibbares Journal",
+          "parts": ["Guthaben", "Kontoauszug mit Gründen", "Bezahlt ganze Bestellungen"]
+        },
+        {
+          "label": "Gespeicherte Daten",
+          "note": "Mit dem Checkout geteilt",
+          "parts": ["Adressen", "Wunschliste", "Name und verifizierte Telefonnummer", "Benachrichtigungseinstellungen (nur gespeichert)"]
+        }
+      ]
+    },
+    "slugFix": {
+      "heading": "Die 404-Korrektur, Schritt für Schritt",
+      "steps": [
+        { "label": "Meldung", "note": "Ein Produkt liefert 404, erscheint aber im Admin" },
+        { "label": "Durchlauf", "note": "113 von 166 veröffentlichten Produkten nicht erreichbar" },
+        { "label": "Zwei Ursachen", "note": "Slugs verloren ihre persischen Buchstaben; Seiten erhielten kodierte Slugs" },
+        { "label": "Erst Fix, dann Reparatur", "note": "Zuerst der Code, dann 113 Slugs in der Produktion neu geschrieben" },
+        { "label": "Erneuter Durchlauf", "note": "166 von 166 liefern 200" }
+      ]
+    }
+  },
+  "findings": {
+    "currencyTrap": {
+      "text": "Es ist der einzige Punkt hier, der überzeugend falsche Zahlen erzeugt statt fehlender.",
+      "attribution": "Der Analytics-Plan des Shops, zur Rial/Toman-Falle",
+      "method": "Geschrieben am 27. August 2026, bevor die Analytics am 31. August live gingen"
+    },
+    "slugFix": {
+      "text": "…hätte nichts geändert, was ein Kunde sieht, da auch ein korrekter persischer Slug weiterhin 404 lieferte.",
+      "attribution": "Commit-Nachricht des Routing-Fixes, dazu, nur die Slugs zu reparieren",
+      "method": "11. August 2026, der Tag, an dem die Slugs repariert wurden"
+    }
+  },
+  "decisions": {
+    "heading": "Sechs Ersetzungen, keine Konfigurationen",
+    "lede": "Jede tauscht eine Voreinstellung des Templates gegen die Bedingung aus, die sie ignorierte.",
+    "items": [
+      {
+        "title": "Ganze Rial speichern, Toman anzeigen",
+        "why": "Preise werden in Toman genannt, aber in Rial abgerechnet. Jeder Betrag wird als ganze Rial gespeichert und an einer einzigen Stelle für die Anzeige umgerechnet, sodass ein Fehler um den Faktor zehn keine Belastung erreichen kann.",
+        "alternatives": "Toman speichern und pro Gateway umrechnen",
+        "tradeoff": "Jede Integration deklariert ihre Einheit an einer einzigen Grenze: Die Preis-Tags von Torob erwarten Toman, die Gateways Rial."
+      },
+      {
+        "title": "Die Telefonnummer zur einzigen Identität machen",
+        "why": "Anmeldung, Registrierung und Checkout verlangen eine Mobilnummer und einen Einmalcode. Die Seiten für E-Mail und Passwort wurden abgeschafft: Keine davon konnte ohne E-Mail-Dienst funktionieren, und den hatte die Produktion nie.",
+        "alternatives": "E-Mail-Login neben dem Code behalten",
+        "tradeoff": "Jede Anmeldung hängt von der SMS-Zustellung ab, daher sind Anfragen ratenbegrenzt und pro Tag gedeckelt.",
+        "evidence": "Die Live-Login-Seite: ein Feld, eine Mobilnummer und ein Button, der einen Code anfordert."
+      },
+      {
+        "title": "Die Bestellung erst nach Bestätigung durch die Bank anlegen",
+        "why": "Das Template bestätigte Bestellungen vom Browser aus. Hier verifiziert der Server die Zahlung beim Gateway, einschließlich des Betrags, und legt erst dann die Bestellung an und bucht den Bestand ab.",
+        "alternatives": "Die Bestellung anlegen, wenn der Kunde zur Bank weitergeleitet wird",
+        "tradeoff": "Läuft die Prüfung beim Gateway in ein Timeout, sieht der Kunde die Fehlerseite, obwohl das Geld abgebucht wurde. Der Zehn-Minuten-Job legt die Bestellung später an, aber der Kunde wird nicht informiert."
+      },
+      {
+        "title": "Shop-Guthaben als Zahlungsart behandeln",
+        "why": "Die Wallet hängt am selben Adapter wie die Gateways und erhält dadurch dieselbe Summenprüfung, denselben Schutz vor Duplikaten und denselben Recovery-Job. Ihr Journal ist nur fortschreibbar: Niemand, auch kein Admin, kann einen Eintrag bearbeiten oder löschen.",
+        "alternatives": "Eine Guthabenzeile, die von der Summe abgezogen wird",
+        "tradeoff": "In dieser Version muss die Wallet die ganze Bestellung abdecken; eine Zahlung teils per Wallet, teils per Karte ist für später vorgesehen."
+      },
+      {
+        "title": "Die Bestellbestätigung aus dem Bestellstatus heraushalten",
+        "why": "Das Team bestätigt jede bezahlte Bestellung im Admin. Das ist ein eigenes Flag mit Bestätigen-Button, kein fünfter Status, weil der Status Kunden angezeigt wird und interne Schritte sie nicht erreichen sollen.",
+        "alternatives": "Einen Status „bestätigt“ hinzufügen",
+        "tradeoff": "Das Team liest zwei Felder, daher werden unbestätigte Bestellungen in der Liste, im Menü und im Dashboard markiert."
+      },
+      {
+        "title": "Jede Deploy-Abhängigkeit im Inland halten",
+        "why": "Code, Container-Images, Medienspeicher, Deploys und Analytics laufen alle im Iran, sodass ein Fix auch dann ausgeliefert werden kann, wenn GitHub oder Docker Hub nicht erreichbar sind.",
+        "alternatives": "Gehostetes CI und öffentliche Registries",
+        "tradeoff": "Mehr Infrastruktur, die betrieben, überwacht und gesichert werden muss."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "Ein Designer, viele Agents",
+    "intro": "Ich habe das Produkt gestaltet und seinen Bau gesteuert. KI-Coding-Agents schrieben den Großteil des Codes nach schriftlichen Specs; Umfang, Designrichtung und jedes Produktions-Release wurden von Menschen entschieden.",
+    "own": [
+      "Informationsarchitektur, Abläufe und die Designsprache",
+      "Shop, Produktseite, Checkout und das Kundenkonto",
+      "Commerce-Regeln: Preise, Rabatte, Bestand und Zahlungen",
+      "Die Admin-Werkzeuge, mit denen der Shop läuft",
+      "Infrastruktur im Inland und der Release-Prozess"
+    ],
+    "collaborate": ["Das Feedback des Shops, über einen Tracker abgewickelt", "KI-Coding-Agents für die Umsetzung"],
+    "note": "Ein roher Kommentar wurde mit dem echten Code abgeglichen, bevor daraus eine Spec wurde, nach der ein Agent ohne Rückfrage bauen konnte. Jedes Produktions-Release wird in ein nur fortschreibbares Deploy-Protokoll eingetragen."
+  },
+  "outcomes": {
+    "heading": "Live, mit benannten Lücken",
+    "intro": "Seit dem 7. Juli 2026 live unter faymen.ir und nimmt Zahlungen an. Geschäftszahlen werden nicht veröffentlicht. Die Zahlen unten sind gemessene Korrekturen; der Rest ist gelieferter Umfang.",
+    "items": [
+      {
+        "label": "Produkte mit 404, gefunden und behoben",
+        "context": "Persische Titel erzeugten defekte Slugs; mehr als zwei Drittel des Katalogs waren nicht erreichbar.",
+        "source": "Feedback-Karte und Durchlauf über die Produktion, 11. August 2026"
+      },
+      {
+        "label": "Produkte mit Größen, die eine nicht kaufbare Größe anboten",
+        "context": "Ersetzt durch eine einzige Regel, die Größen je nach Bestand ausblendet oder deaktiviert.",
+        "source": "Karte zum Größensystem, 13. August 2026"
+      },
+      {
+        "label": "Offene Warenkörbe mit veralteter Summe",
+        "context": "Der Warenkorb berechnet sich jetzt beim Öffnen neu.",
+        "source": "Code-Notiz zur Reparatur des Warenkorbs"
+      },
+      {
+        "label": "Ein Shop, den Kunden von Anfang bis Ende nutzen können",
+        "context": "Shop, Checkout, Konto und Admin: 491 Commits in zwölf Wochen, vom Template bis zum Checkout per Telefon."
+      }
+    ],
+    "shipped": [
+      "Anmeldung nur per Telefon",
+      "Einseitiger Checkout",
+      "Kundenkonto mit Wallet und Retouren",
+      "Zweistufige Rabatte mit Konsole",
+      "Block Product Section",
+      "Ansicht für Größen und Bestand",
+      "Bestellbestätigung durch Bearbeiter",
+      "Torob-Preis-Tags und das E-namad-Siegel"
+    ]
+  },
+  "lessons": {
+    "heading": "Was der Shop gelehrt hat",
+    "items": [
+      {
+        "title": "Einschränkungen, die nach Pflichtarbeit aussehen, sind Produktentscheidungen",
+        "body": "„Docker Hub ist nicht erreichbar“ entscheidet, ob ein Fix während einer Rabattaktion ausgeliefert werden kann; „es gibt keinen E-Mail-Dienst“ hat Identität, Checkout und den Newsletter neu geschrieben."
+      },
+      {
+        "title": "Eine Meldung ist erst dann eine Aufgabe, wenn sie am Code geprüft wurde",
+        "body": "Die Meldung eines Produkts, das 404 lieferte und im Admin weiter sichtbar war, stellte sich nach dem Abgleich mit Code und Katalog als zwei Drittel des Shops und zwei getrennte Bugs heraus."
+      },
+      {
+        "title": "Nur zeigen, was die Daten hergeben",
+        "body": "Der Bestellverlauf hat keine Datumsangaben, weil keine gespeichert werden; eine Zahl, die nicht lädt, zeigt einen Strich, nicht null; die Wallet hat keinen Aufladen-Button; der Size Finder nennt keine Größe, die der Shop nicht verkaufen kann."
+      },
+      {
+        "title": "Festhalten, wo eine übernommene Designsprache widerspricht",
+        "body": "Eine bestehende Designsprache anzupassen war günstiger, als eine neue zu schreiben, und die Abweichungen, etwa der Zeichenabstand im Persischen und der Verzicht auf Illustrationen, wurden zu ihrem nützlichsten Teil."
+      }
+    ]
+  }
+}

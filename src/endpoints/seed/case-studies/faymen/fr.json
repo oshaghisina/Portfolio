@@ -1,0 +1,507 @@
+{
+  "statement": "Un modèle e-commerce devenu une boutique iranienne de mode masculine en service, du catalogue et de la commande au compte client et à l’administration.",
+  "industry": "Commerce de détail · e-commerce de mode masculine",
+  "team": "Seul designer et développeur, avec des agents de code IA",
+  "heroCaption": "Sur mobile : la boutique, une fiche produit et le compte client. L’écran du compte provient d’un build local du code de production avec des données de test.",
+  "snapshot": {
+    "problem": "Le modèle supposait Stripe, le dollar, la connexion par e-mail et des serveurs capables de joindre GitHub. Une boutique iranienne de mode masculine ne pouvait compter sur aucun d’eux.",
+    "role": "Designer produit et développeur sur la boutique, les fiches produit, le tunnel de commande, les paiements, le compte client, l’administration et l’infrastructure, avec des agents de code IA qui ont écrit l’essentiel du code.",
+    "result": "En ligne sur faymen.ir depuis juillet 2026 et encaisse des paiements ; un seul signalement a révélé 113 produits sur 166 en erreur 404, désormais corrigés."
+  },
+  "alt": {
+    "cover": "Fayman sur mobile — la collection de gilets en grille produit de droite à gauche, prix en Toman",
+    "shop": "Fayman sur mobile — la page boutique avec un champ de recherche, des onglets de catégories et des pantalons affichés en Toman",
+    "shoesProduct": "Fayman sur mobile — la fiche produit d’un derby en cuir, avec son prix remisé en Toman et un bouton d’ajout au panier",
+    "login": "Fayman sur mobile — la page de connexion avec un seul champ de numéro de mobile et un bouton pour demander un code de vérification",
+    "shipping": "Fayman sur mobile — la page de livraison, gratuite au-delà d’un seuil en Toman, avec suivi de commande",
+    "faq": "Fayman sur mobile — la foire aux questions avec recherche, classée par thème",
+    "waistcoatsDesk": "Fayman sur ordinateur — la catégorie gilets en grille de droite à gauche, filtres à droite et prix barrés",
+    "sizeGuideDesk": "Fayman sur ordinateur — le formulaire Size Finder à côté des engagements du guide : retours gratuits et conseils",
+    "fabricGuideDesk": "Fayman sur ordinateur — le guide des tissus, qui associe chaque étoffe à une saison, avec un tableau comparatif et des échantillons",
+    "productSections": "La page de démonstration du bloc Product Section de Fayman — trois rangées de ceintures, de pinces à cravate et de chemises, chacune indiquant sa source et son affichage des prix",
+    "filterSheet": "Fayman sur mobile — le panneau de filtres de la boutique ouvert, avec les options de tri, de tissu et d’occasion",
+    "occasionFilter": "Fayman sur mobile — la catégorie costumes filtrée sur les mariages, avec une étiquette de filtre amovible et un compteur sur le bouton des filtres",
+    "searchResults": "Fayman sur mobile — les résultats de recherche pour le mot persan signifiant « veste », avec 75 produits",
+    "productSizes": "Build local de Fayman sur mobile — la fiche produit d’un costume, taille 50 choisie, taille 52 désactivée car épuisée, avec une remise et une ligne de disponibilité",
+    "cart": "Build local de Fayman sur mobile — le panier latéral avec un costume remisé, un code promo de test et le récapitulatif détaillé en prix catalogue, remise produit et code promo",
+    "checkoutSignIn": "Build local de Fayman sur mobile — la commande pour un client non connecté : d’abord le récapitulatif, puis la connexion par numéro de mobile",
+    "checkoutCode": "Build local de Fayman sur mobile — l’étape du code à six chiffres dans la commande, numéro de téléphone masqué",
+    "checkoutPay": "Build local de Fayman sur mobile — la commande d’un client connecté avec une adresse enregistrée, les moyens de paiement, un solde de portefeuille insuffisant expliqué par une phrase et le bouton de paiement avec son montant",
+    "accDashboard": "Build local de Fayman sur mobile — le tableau de bord du compte avec les commandes en cours, le solde du portefeuille, le nombre d’articles en liste d’envies et les retours en cours",
+    "accDashboardWhole": "Build local de Fayman sur mobile — toute la page du tableau de bord, jusqu’aux trois dernières commandes",
+    "accWallet": "Build local de Fayman sur mobile — la page du portefeuille avec le solde disponible et le début du relevé",
+    "accWalletWhole": "Build local de Fayman sur mobile — tout le relevé du portefeuille : un crédit offert, une commande payée avec le portefeuille et un remboursement pour un retour",
+    "accAddresses": "Build local de Fayman sur mobile — deux adresses enregistrées avec des boutons modifier et supprimer, numéros de téléphone masqués",
+    "accAddressesWhole": "Build local de Fayman sur mobile — toute la page des adresses avec le bouton pour ajouter une nouvelle adresse",
+    "accWishlist": "Build local de Fayman sur mobile — la liste d’envies en grille de produits enregistrés, cœurs pleins",
+    "accWishlistWhole": "Build local de Fayman sur mobile — toute la page de la liste d’envies",
+    "accSettings": "Build local de Fayman sur mobile — les paramètres du compte avec le numéro de téléphone vérifié en lecture seule, masqué, et un champ pour le nom",
+    "accSettingsWhole": "Build local de Fayman sur mobile — toute la page des paramètres du compte",
+    "accNotifications": "Build local de Fayman sur mobile — les préférences de notification par e-mail et SMS, pour les messages de commande, de retour et de newsletter",
+    "accNotificationsWhole": "Build local de Fayman sur mobile — toute la page des préférences de notification avec son bouton d’enregistrement",
+    "accOrders": "Build local de Fayman sur mobile — la liste des commandes avec des filtres de statut et des miniatures de produits",
+    "accOrdersWhole": "Build local de Fayman sur mobile — toute la liste des commandes, avec trois commandes : annulée, en traitement et terminée",
+    "accOrder": "Build local de Fayman sur mobile — une commande terminée avec son suivi en trois étapes, sa date, son total et son statut",
+    "accOrderWhole": "Build local de Fayman sur mobile — toute la page de commande avec les articles à leur prix d’achat, l’adresse et le bouton de retour",
+    "accWalletOrder": "Build local de Fayman sur mobile — une commande en traitement, indiquée comme payée avec le portefeuille",
+    "accWalletOrderWhole": "Build local de Fayman sur mobile — toute la page d’une commande payée avec le portefeuille",
+    "accReturnForm": "Build local de Fayman sur mobile — le formulaire de demande de retour avec un article choisi, un motif et une remarque",
+    "accReturnFormWhole": "Build local de Fayman sur mobile — tout le formulaire de demande de retour avec son bouton d’envoi",
+    "accReturnSent": "Build local de Fayman sur mobile — la confirmation après une demande de retour, avec les étapes suivantes",
+    "accReturns": "Build local de Fayman sur mobile — la liste des retours avec une demande approuvée",
+    "accReturnsWhole": "Build local de Fayman sur mobile — toute la page des retours",
+    "deskDashboard": "Build local de Fayman sur ordinateur — le tableau de bord du compte à côté du menu du compte, avec les commandes récentes et leurs statuts",
+    "deskWallet": "Build local de Fayman sur ordinateur — le relevé du portefeuille avec un crédit offert, le paiement d’une commande et le remboursement d’un retour",
+    "adminDiscounts": "Administration de Fayman dans un build local — la console des remises avec le nombre de produits remisés, de catégories et de codes promo",
+    "adminDashboard": "Administration de Fayman dans un build local — le tableau de bord avec une alerte signalant qu’une commande payée attend un opérateur",
+    "adminDashboardWhole": "Administration de Fayman dans un build local — tout le tableau de bord avec les collections regroupées en persan",
+    "adminOrders": "Administration de Fayman dans un build local — la liste des commandes, les commandes payées non confirmées surlignées en rouge",
+    "adminOrder": "Administration de Fayman dans un build local — une commande avec son bouton de confirmation, le montant en rial et le paiement par portefeuille",
+    "adminOrderWhole": "Administration de Fayman dans un build local — toute la page de commande dans l’administration",
+    "adminSizeStock": "Administration de Fayman dans un build local — l’écran tailles et stock avec le stock par taille pour la catégorie costumes",
+    "adminSizeStockWhole": "Administration de Fayman dans un build local — tout l’écran tailles et stock, pour chaque catégorie",
+    "adminWalletCredit": "Administration de Fayman dans un build local — une nouvelle écriture de portefeuille, avec en dessous le montant en rial écrit en toutes lettres en toman"
+  },
+  "chapters": {
+    "context": {
+      "heading": "Une boutique de tailleur bâtie sur un modèle e-commerce",
+      "body": [
+        "Fayman (فیمن) vend en ligne des vêtements masculins de tailleur : costumes, blazers, pantalons, chemises, chaussures et accessoires, avec un guide des tailles, un guide des tissus et un service sur mesure. La boutique est partie le 23 juin 2026 du modèle e-commerce officiel de Payload, complété d’une première passe de nettoyage. Au 15 septembre, 491 commits plus tard, l’essentiel en avait été remplacé.",
+        "Le modèle fournissait un catalogue fonctionnel, un panier et un modèle de commande. Il supposait aussi Stripe, le dollar américain, des comptes par e-mail et des outils hébergés. Le travail consistait à en faire une boutique qu’un client iranien peut utiliser de la première recherche à la demande de retour, et que l’équipe de la boutique peut gérer sans développeur.",
+        "Sur les 518 fichiers source finaux, 80 sont inchangés par rapport au modèle. Les paiements, la connexion, le tunnel de commande et la devise ont été entièrement remplacés ; le compte client, les outils d’administration et 17 des 25 blocs de page sont nouveaux."
+      ]
+    },
+    "problem": {
+      "heading": "Cinq présupposés qui ne tiennent pas en Iran, et une boutique à faire tourner",
+      "body": ["Chaque présupposé d’un modèle e-commerce international devait être remplacé, pas configuré :"],
+      "bullets": [
+        "Paiements — Stripe n’opère pas en Iran. Les boutiques sont payées via des passerelles Shaparak, et chaque passerelle a son propre protocole.",
+        "Devise — les prix sont enregistrés en rial et énoncés en toman. Une seule intégration qui inverse le facteur dix facture au client dix fois trop ou dix fois trop peu.",
+        "Identité — les clients se font connaître d’une boutique par leur numéro de téléphone, pas par une adresse e-mail, et le serveur de production n’a jamais eu de service d’e-mail.",
+        "Infrastructure — GitHub et Docker Hub ne sont pas joignables de façon fiable depuis un serveur iranien, donc un déploiement qui en dépend peut échouer au moment où un correctif est nécessaire.",
+        "Typographie — un langage de design écrit pour des logiciels anglais, de gauche à droite, devait porter du commerce de détail en persan.",
+        "Exploitation — l’équipe de la boutique devait régler elle-même les remises, le stock et les pages, en persan, avec des dates persanes."
+      ]
+    },
+    "system": {
+      "customLabel": "Système",
+      "heading": "Ce qui devait fonctionner comme un seul système",
+      "body": [
+        "Une boutique de vêtements se juge sur le parcours qui va d’une recherche à une commande livrée, et sur ce qui se passe quand ce parcours casse. Les parties ci-dessous partagent leurs données : le badge d’une carte produit, le filtre promotions de la boutique, le total du panier et le montant envoyé à la banque viennent tous d’une seule règle de prix.",
+        "Le design suivait sa propre boucle de revue : une capture d’écran d’un problème, un diagnostic confronté au code et au langage de design, une fiche, puis le développement. Au 12 septembre, il y avait 63 fiches de design, dont 55 terminées."
+      ],
+      "insight": "Un seul module de calcul des prix alimente la carte produit, le panier, le récapitulatif et la vérification du paiement : le prix que voit le client est celui qui est demandé à la banque."
+    },
+    "discovery": {
+      "customLabel": "Découverte",
+      "heading": "Trouver le bon produit",
+      "body": [
+        "Les clients arrivent à un costume par différentes questions : une occasion, une catégorie, une promotion, une recherche ou un lien partagé. La page d’accueil répond à plusieurs d’entre elles, et chaque réponse mène à la même page boutique.",
+        "Ses rangées de produits viennent d’un seul bloc, Product Section, avec quatre sources : une règle de catégorie avec des options « en promotion uniquement » et « en stock », des produits choisis à la main, une URL de boutique collée, ou une liste de liens produits. Il propose trois mises en page : rangée, grille et mise en avant. Chaque source passe par la requête de la boutique elle-même, si bien qu’une rangée et la boutique ne peuvent pas diverger sur ce qui est en promotion ou en stock. Les éditeurs s’en servent aujourd’hui sur la page d’accueil en ligne pour des rangées comme les ensembles complets et les tailles isolées en promotion.",
+        "La rangée des occasions est placée au-dessus de celle des catégories, suivant le retour de la boutique : un client part de « j’ai un mariage », pas de « je veux un blazer ». Dans la boutique, chaque filtre vit dans l’URL : tissu, occasion, style, une fourchette de prix en toman, en stock uniquement et en promotion uniquement. Le stock, la promotion et le prix sont vérifiés sur la même taille, si bien qu’une taille épuisée en promotion ne peut pas faire entrer un produit dans les résultats. Sur mobile, les filtres s’ouvrent dans un panneau, et les filtres actifs restent visibles sous forme d’étiquettes amovibles.",
+        "La recherche est le point d’entrée le plus faible. Elle ne compare que les titres des produits et ne traite pas encore les formes de lettres arabes et persanes comme identiques. Le lookbook est éditorial : ses looks renvoient vers des pages boutique filtrées plutôt que vers des produits isolés."
+      ]
+    },
+    "product": {
+      "customLabel": "Fiche produit",
+      "heading": "Réduire l’incertitude avant l’achat",
+      "body": [
+        "Acheter des vêtements de tailleur en ligne soulève trois questions : est-ce que ça m’ira, en quoi est-ce fait, et que se passe-t-il si ça ne va pas. La fiche produit a été reconstruite autour d’elles : une colonne d’achat qui reste à côté de la galerie, une ligne de stock, une ligne de réassurance avec les conditions de livraison et de retour sous 7 jours, un accordéon pour la taille, l’entretien et la livraison, et une barre d’achat qui reste à portée de main sur mobile.",
+        "Les tailles devaient dire la vérité. Le 13 août, 23 des 25 produits à tailles proposaient au moins une taille que rien derrière ne permettait de vendre. Une règle commune masque désormais les tailles dans lesquelles un produit n’est pas fabriqué, désactive les tailles épuisées et marque «ناموجود» un produit qui n’a plus rien. En dessous de dix pièces, la page indique combien il en reste.",
+        "Le Size Finder du guide des tailles prend le vêtement, la coupe préférée et les mensurations, et répond à partir des tableaux de tailles de la boutique. Entre deux tailles, il choisit la plus grande, car reprendre un vêtement est plus sûr que le lâcher. Hors des tableaux, il propose une consultation de prise de mesures, et pour les chemises il donne un tour de cou au lieu de deviner une taille en lettres. Le guide des tissus associe chaque étoffe à une saison et à un usage, et chaque tissu renvoie vers la boutique filtrée sur ce tissu.",
+        "Deux parties restent inachevées. Le Size Finder n’est pas sur la fiche produit et ne lit pas ce que chaque produit vend réellement, et la fiche produit n’affiche pas le tissu de chaque produit."
+      ]
+    },
+    "checkout": {
+      "customLabel": "Commande",
+      "heading": "Du panier à la commande payée",
+      "body": [
+        "Le panier est chiffré sur le serveur par le même module de calcul que la vérification du paiement, si bien que le panier et la banque ne peuvent pas diverger. Ouvrir le panier le recalcule à partir du catalogue en ligne : en production, 4 paniers ouverts sur 15 affichaient un total devenu obsolète. Le récapitulatif montre le prix catalogue, les remises produit et le code promo sur des lignes séparées.",
+        "Le tunnel de commande tient sur une seule page. Sur mobile, le récapitulatif de commande vient en premier. Un client non connecté se connecte avec un numéro de mobile et un code à six chiffres sans quitter la page, et un nouveau numéro obtient un compte. La première adresse enregistrée est sélectionnée. Seuls les moyens de paiement auxquels la commande a droit sont affichés, et le bouton indique le montant : «پرداخت … تومان». Tout ce qui n’est pas encore utilisable est expliqué par une phrase plutôt que par un élément grisé, par exemple un solde de portefeuille insuffisant d’un montant précis.",
+        "Le paiement passe par un seul adaptateur pour toutes les passerelles iraniennes : Zarinpal, Zibal, Torob Pay, SnappPay et DigiPay, plus le portefeuille de la boutique. Avant d’envoyer qui que ce soit vers une banque, le serveur recalcule le total et refuse de débiter s’il ne correspond pas au panier au rial près. La commande n’est créée qu’après la confirmation du paiement par la passerelle. Un callback répété ne peut pas créer une seconde commande, et une tâche lancée toutes les dix minutes récupère les paiements dont le callback n’est jamais arrivé.",
+        "La forme de l’adaptateur vient de problèmes réels. En deux jours de septembre, DigiPay a demandé sept correctifs : un paramètre d’endpoint vide qui cassait la commande, un format de requête qui faisait passer des identifiants valides pour invalides, un retour de la passerelle qui tombait sur une route manquante, et une unité de montant qu’il a fallu confirmer en rial sur un paiement réel. Chacun est devenu une règle : l’endpoint de DigiPay est un paramètre obligatoire dont la valeur vide masque la passerelle, chaque passerelle accepte les deux types de requête de retour, et aucune unité de montant n’est jamais devinée."
+      ]
+    },
+    "account": {
+      "customLabel": "Compte",
+      "heading": "Le compte, après et entre les commandes",
+      "body": [
+        "Un client qui revient se connecte avec le même numéro de téléphone et arrive sur un tableau de bord construit autour de ce pour quoi on revient : les commandes en cours, le solde du portefeuille, les produits enregistrés, les retours en cours et les trois dernières commandes. La page précédente était un formulaire de paramètres, avec le statut de commande relégué au troisième panneau.",
+        "La liste des commandes se filtre par statut et affiche des miniatures de produits, car les clients reconnaissent une commande à ce qu’elle contient. La page de commande affiche un suivi en trois étapes (passée, en traitement, terminée), les prix payés à ce moment-là, l’adresse et un bouton de retour pendant sept jours. Elle n’affiche que ce que les données permettent : le suivi n’a pas de dates pour les étapes suivantes, car le système n’enregistre pas quand chaque changement a eu lieu.",
+        "Une demande de retour indique les articles, les quantités et un motif, et le serveur vérifie le propriétaire, le délai de sept jours et ce qui a déjà été retourné. L’équipe fait avancer la demande d’un statut à l’autre. Aucun argent ne bouge automatiquement ; l’équipe peut ajouter le remboursement au portefeuille du client à la main. La page du portefeuille répond à « pourquoi mon solde est-il de ce montant ? » par un relevé où chaque écriture a un motif, un lien vers sa commande et le solde qui en résulte. Il n’y a pas de bouton de rechargement, car le rechargement n’existe pas et un bouton le promettrait.",
+        "Les adresses enregistrées ici sont les mêmes que celles du tunnel de commande. La liste d’envies garde des produits pour les clients connectés. Les paramètres contiennent un nom et affichent le téléphone vérifié, qui ne peut pas y être modifié. Les préférences de notification sont enregistrées, mais rien n’envoie encore de messages à partir d’elles : à part les codes de connexion, les clients ne reçoivent aucun SMS."
+      ]
+    },
+    "rules": {
+      "customLabel": "Règles commerciales",
+      "heading": "Les règles derrière l’interface",
+      "body": [
+        "Les remises ont deux niveaux. Un produit ou une catégorie peut porter une remise avec des dates de début et de fin choisies dans un calendrier persan ; la remise propre au produit l’emporte, et les deux ne se cumulent jamais. Un code promo s’applique ensuite une fois par panier, sur le total déjà remisé, et ne compte comme utilisé qu’après un paiement confirmé. Le badge ٪, le prix barré, le filtre promotions de la boutique et les rangées de promotions lisent tous la même règle.",
+        "Cet ordre a été appris sur un vrai panier. Pendant six jours en août, les codes promo s’appliquaient au prix catalogue et remplaçaient la remise produit, ce qui faisait payer trop cher aux clients ; un code promo faible pouvait même augmenter le prix. Les codes promo s’appliquent désormais après les remises catalogue.",
+        "Le stock est tenu par taille. Il est vérifié au début du paiement et décompté seulement après la confirmation de la banque, en une seule mise à jour protégée, si bien que deux acheteurs de la dernière pièce ne peuvent pas réussir tous les deux. Si le stock s’épuise entre les deux, la commande est marquée remboursée, une annulation du paiement est tentée, et tout stock déjà décompté pour cette commande est restitué.",
+        "L’équipe gère cela depuis une console des remises qui affiche chaque remise comme active, programmée, expirée, désactivée ou épuisée, et depuis un générateur qui crée des codes à usage unique pour une campagne."
+      ]
+    },
+    "operations": {
+      "customLabel": "Exploitation",
+      "heading": "Faire tourner la boutique sans développeur",
+      "body": [
+        "L’administration est en persan par défaut, puisque l’équipe est en Iran, et les dates des remises se choisissent dans un calendrier persan. Les pages sont construites à partir de blocs : le modèle en avait 8, la boutique en a 25, dont 17 nouveaux, de Product Section au guide des tailles, à la FAQ et à la politique de retour. Les liens de l’en-tête, les colonnes du pied de page, les liens vers les réseaux sociaux et l’ordre des catégories se modifient dans l’administration.",
+        "Les outils d’exploitation ont été conçus pour les tâches que l’équipe accomplit réellement. Les commandes payées attendent la confirmation d’un opérateur et restent signalées en rouge jusqu’à ce que quelqu’un les confirme. Un écran tailles et stock montre le stock par taille dans chaque catégorie et avertit avant la suppression d’une taille encore utilisée par des commandes. Le crédit du portefeuille se saisit en rial et s’affiche en toutes lettres en toman sous le champ, car un crédit ne peut pas être annulé.",
+        "Les SMS portent trois événements : le code de connexion, une alerte de vente pour l’équipe et les nouveaux prospects des ventes aux entreprises. Chacun a un modèle modifiable et ses propres destinataires. La page des ventes aux entreprises recueille comme prospects les demandes de 50 pièces ou plus ; il n’y a ni tarif de gros ni système de devis.",
+        "Deux limites demeurent : il n’existe qu’un seul rôle d’administrateur, sans compte d’équipe aux droits plus restreints, et les tableaux de tailles du Size Finder sont dans le code."
+      ]
+    },
+    "iran": {
+      "customLabel": "Conçu pour l’Iran",
+      "heading": "Concevoir pour l’Iran, pas traduire pour l’Iran",
+      "body": [
+        "La lecture de droite à gauche est allée au-delà de l’attribut de direction. La mise en page est passée aux propriétés logiques, que le modèle n’utilisait pas du tout ; les carrousels et les galeries suivent aussi le sens de lecture au clavier ; et les numéros de téléphone, les codes postaux et les codes promo sont dans des champs de gauche à droite au sein des formulaires persans. Les prix utilisent les chiffres persans, et les dates le calendrier persan grâce à la prise en charge des calendriers intégrée au navigateur plutôt qu’à une bibliothèque.",
+        "Le langage de design a été adapté, pas inventé. Une couche d’adaptation posée sur un système existant, écrit pour des logiciels anglais, nomme les points où celui-ci diverge d’une boutique persane de mode masculine et établit que l’adaptation l’emporte. Sa règle la plus nette est un interlettrage nul sur le persan, car l’interlettrage casse les lettres liées. Les polices sont auto-hébergées, donc la boutique n’attend jamais Google.",
+        "L’argent suit les règles locales : rial entier enregistré, toman affiché, et balises de prix Torob en toman pour que le comparateur de prix affiche le bon montant. Le pied de page porte le sceau E-namad, sur lequel les clients peuvent cliquer pour accéder au registre iranien du commerce électronique. Le 27 septembre, les paramètres publics de paiement de la boutique listaient Zibal, le portefeuille, Torob Pay et DigiPay.",
+        "L’infrastructure reste dans le pays : le code et les images de conteneur sur un serveur Git auto-hébergé, les médias sur le stockage ArvanCloud, les déploiements via Coolify, et l’analytique sur un Umami auto-hébergé. Les notes d’architecture énoncent la règle clairement : tout ce dont le site en ligne dépend au moment du build et du déploiement doit être joignable depuis le pays."
+      ]
+    },
+    "reliability": {
+      "customLabel": "Fiabilité",
+      "heading": "Garder une boutique en ligne en état de marche",
+      "body": [
+        "Le 10 août, la boutique a signalé un produit qui renvoyait une 404 alors qu’il apparaissait toujours dans l’administration. Un balayage en lecture seule de la production a montré l’ampleur réelle : 113 des 166 produits publiés étaient inaccessibles. Deux bugs se superposaient. La fonction de slug par défaut de Payload supprimait toutes les lettres persanes, et Next.js transmettait aux pages leurs slugs persans encore encodés en pourcentage, si bien que même un slug correct échouait. Le code a d’abord été corrigé, puis les 113 slugs ont été réparés en production, et un second balayage a renvoyé 200 pour les 166.",
+        "Les mises en production passent par un seul contrôle local : vérification des types générés et des import maps, puis contrôle des types, lint, tests et build de production. La suite comptait environ 1 086 tests au 1er septembre, dont 772 tests unitaires, et 1 354 au 12 septembre. Chaque mise en production est inscrite dans un registre de déploiement en ajout seul. Un script de smoke test vérifie ensuite la route de retour de chaque passerelle, l’analytique et la boutique, et chaque vérification qu’il contient existe parce que ce problème a déjà atteint la production.",
+        "Une mise à jour des dépendances le 1er septembre a actualisé 54 des 58 paquets obsolètes, en deux lots vérifiés plus neuf mises à niveau majeures faites une par une, et a consigné pourquoi les quatre autres ont été retenus. Aucune mesure de vitesse des pages n’a jamais été faite, donc aucune n’est revendiquée ici ; le seul changement mesuré du build concerne l’étape de compilation, passée de 88 à 18,2 secondes."
+      ]
+    }
+  },
+  "figures": {
+    "catalogue": {
+      "caption": "Une page de catégorie en largeur ordinateur : une grille de droite à gauche, les filtres à droite, les prix en toman avec le prix avant remise barré."
+    },
+    "productSections": {
+      "caption": "Le bloc Product Section sur la page vitrine de la boutique, qui présente 60 combinaisons de source, de mise en page et d’affichage des prix. Chaque rangée indique sa source et sa façon d’afficher les prix."
+    },
+    "filters": {
+      "caption": "Les filtres, un filtre actif et la recherche sur mobile. L’état vit dans l’URL, donc toute vue peut être partagée ou rechargée.",
+      "items": [
+        "Les filtres s’ouvrent dans un panneau.",
+        "Un filtre d’occasion actif reste affiché comme étiquette amovible, avec un compteur sur le bouton.",
+        "Les résultats de recherche sont la boutique, filtrée par la requête."
+      ]
+    },
+    "productPage": {
+      "caption": "La fiche produit sur mobile. La barre d’achat en bas reste à portée de main pendant le défilement.",
+      "items": [
+        "Build local, données de test : une taille épuisée et désactivée, une taille choisie, le stock confirmé, les conditions à côté du bouton.",
+        "La boutique en ligne : un produit remisé avec son ancien prix barré."
+      ]
+    },
+    "guides": {
+      "caption": "Les guides répondent aux questions de coupe et de tissu sans quitter la boutique, et renvoient vers la page boutique.",
+      "items": [
+        "Le Size Finder : vêtement, coupe et mensurations, puis une taille.",
+        "Le guide des tissus : quelle étoffe pour quelle saison, quel usage et quel entretien."
+      ]
+    },
+    "support": {
+      "caption": "Les pages d’aide répondent aux questions qui bloquent un achat : taille, livraison, retours et paiement. Le seuil de livraison gratuite est un simple texte ; le tunnel de commande ne calcule pas de frais de livraison.",
+      "items": [
+        "Livraison : modes, délais et seuil de livraison gratuite.",
+        "La FAQ, classée par thème et consultable par recherche en persan."
+      ]
+    },
+    "checkout": {
+      "caption": "Le tunnel de commande sur mobile, depuis un build local du code de production avec des données de test. Une passerelle de test remplace la banque, et le numéro de téléphone est masqué.",
+      "items": [
+        "Le panier : prix catalogue, remise produit et code promo sur des lignes séparées.",
+        "Non connecté : d’abord le récapitulatif, puis la connexion par numéro de mobile.",
+        "Le code à six chiffres. Aucun compte n’est nécessaire au préalable.",
+        "Connecté : une adresse enregistrée, les moyens de paiement, un solde de portefeuille insuffisant expliqué par une phrase, et le montant sur le bouton."
+      ]
+    },
+    "accountScreens": {
+      "caption": "Toutes les pages du compte sur mobile, depuis un build local du code de production avec des données de test. Ouvrez une page pour la voir en entier. Les numéros de téléphone sont masqués.",
+      "items": [
+        "Tableau de bord",
+        "Portefeuille",
+        "Adresses",
+        "Liste d’envies",
+        "Paramètres",
+        "Notifications",
+        "Commandes",
+        "Page de commande",
+        "Payée avec le portefeuille",
+        "Demande de retour",
+        "Retour envoyé",
+        "Retours"
+      ],
+      "groups": [
+        "Compte",
+        "Compte",
+        "Compte",
+        "Compte",
+        "Compte",
+        "Compte",
+        "Commandes et retours",
+        "Commandes et retours",
+        "Commandes et retours",
+        "Commandes et retours",
+        "Commandes et retours",
+        "Commandes et retours"
+      ]
+    },
+    "accountDesktop": {
+      "caption": "Le même compte en largeur ordinateur, avec le menu du compte à côté de chaque page (build local, données de test).",
+      "items": [
+        "Le tableau de bord : commandes en cours, portefeuille, liste d’envies, retours en cours et commandes récentes.",
+        "Le relevé du portefeuille : un crédit offert, une commande payée avec le portefeuille et un remboursement pour un retour."
+      ]
+    },
+    "discounts": {
+      "caption": "La console des remises dans l’administration (build local, données de test) : produits et catégories en promotion, codes promo, et ce qui va commencer ou se terminer."
+    },
+    "admin": {
+      "caption": "L’administration, depuis un build local du code de production avec des données de test : l’alerte de commande non confirmée, la liste des commandes, le bouton de confirmation, l’écran tailles et stock, et un crédit de portefeuille écrit en toutes lettres en toman.",
+      "items": ["Tableau de bord", "Commandes", "Commande", "Tailles et stock", "Crédit portefeuille"]
+    }
+  },
+  "steps": {
+    "timeline": {
+      "heading": "Douze semaines, date par date",
+      "steps": [
+        { "label": "Modèle", "note": "23 juin · Le modèle e-commerce de Payload et une première passe de nettoyage" },
+        { "label": "Bases iraniennes", "note": "28 juin · Mise en page persane de droite à gauche, prix en rial, un adaptateur de paiement Shaparak" },
+        { "label": "En ligne", "note": "7 juil. · faymen.ir servi depuis un serveur dans le pays" },
+        { "label": "Connexion par téléphone", "note": "24 juil. · Connexion par code SMS à côté de l’ancien formulaire e-mail" },
+        { "label": "Vagues de retours", "note": "10–31 août · Retours de la boutique et revues de design : slugs, tailles, remises, commande" },
+        { "label": "Portefeuille et compte", "note": "2 sept. · Crédit boutique, tableau de bord du compte, balises de prix Torob" },
+        { "label": "Téléphone d’abord", "note": "15 sept. · Tous les parcours par e-mail de la boutique remplacés par le numéro de mobile" }
+      ]
+    },
+    "workLoop": {
+      "heading": "Le parcours d’une tâche",
+      "steps": [
+        { "label": "Signalement", "note": "Un commentaire brut ou une capture d’écran entre dans l’outil de suivi" },
+        { "label": "Analyse", "note": "Confronté au vrai code avant tout développement" },
+        { "label": "Fiche de spécification", "note": "Des critères d’acceptation à partir desquels un agent peut développer" },
+        { "label": "Développement", "note": "Un agent l’implémente sur sa propre branche" },
+        { "label": "Contrôle et mise en production", "note": "Contrôle des types, tests et build, puis un déploiement inscrit dans le registre" }
+      ]
+    },
+    "systemMap": {
+      "heading": "Le système, par domaine",
+      "steps": [
+        {
+          "label": "Vitrine",
+          "note": "Ce que voit le client",
+          "parts": ["Accueil et sections produits", "Boutique et filtres", "Recherche", "Fiche produit", "Guides des tailles et des tissus", "Pages d’aide"]
+        },
+        {
+          "label": "Achat",
+          "note": "Du panier à la commande payée",
+          "parts": ["Panier", "Commande sur une page", "Connexion par téléphone", "Adresses enregistrées", "Passerelles de paiement", "Portefeuille"]
+        },
+        {
+          "label": "Compte",
+          "note": "Après et entre les commandes",
+          "parts": ["Tableau de bord", "Commandes", "Retours", "Relevé du portefeuille", "Liste d’envies", "Paramètres"]
+        },
+        {
+          "label": "Règles commerciales",
+          "note": "Ce que lit l’interface",
+          "parts": ["Prix en rial", "Remises produit et catégorie", "Codes promo", "Stock par taille", "Enregistrements de commande", "Registre du portefeuille"]
+        },
+        {
+          "label": "Exploitation",
+          "note": "Ce que gère l’équipe de la boutique",
+          "parts": ["Administration en persan", "Blocs de page", "Console des remises", "Écran tailles et stock", "Confirmation des commandes", "Paramètres SMS"]
+        },
+        {
+          "label": "Infrastructure",
+          "note": "Dans le pays",
+          "parts": ["Stockage ArvanCloud", "Git auto-hébergé", "Coolify", "Analytique Umami", "Registre de déploiement"]
+        }
+      ]
+    },
+    "journey": {
+      "heading": "Un achat, tel que le code l’exécute",
+      "steps": [
+        { "label": "Trouver", "note": "Sections de l’accueil, filtres de la boutique ou recherche" },
+        { "label": "Décider", "note": "Fiche produit, ligne de stock, guides des tailles et des tissus" },
+        { "label": "Choisir une taille", "note": "Les tailles non fabriquées sont masquées, les tailles épuisées désactivées" },
+        { "label": "Panier", "note": "Chiffré sur le serveur, recalculé à l’ouverture" },
+        { "label": "Se connecter", "note": "Numéro de mobile et code à six chiffres, dans le tunnel de commande" },
+        { "label": "Adresse et moyen de paiement", "note": "Une adresse enregistrée ; les moyens auxquels la commande a droit" },
+        { "label": "Payer", "note": "Sur la passerelle ; la commande n’existe qu’après la confirmation de la banque" },
+        { "label": "Compte", "note": "Page de commande, demande de retour, portefeuille" }
+      ]
+    },
+    "accountMap": {
+      "heading": "Le compte, par domaine",
+      "steps": [
+        {
+          "label": "Connexion",
+          "note": "Un seul parcours pour les nouveaux clients et ceux qui reviennent",
+          "parts": ["Numéro de mobile", "Code à six chiffres", "Session de 14 jours", "Déconnexion"]
+        },
+        {
+          "label": "Tableau de bord",
+          "note": "Ce pour quoi on revient",
+          "parts": ["Commandes en cours", "Solde du portefeuille", "Nombre d’articles en liste d’envies", "Retours en cours", "Trois dernières commandes"]
+        },
+        {
+          "label": "Commandes",
+          "note": "Créées uniquement par un paiement confirmé",
+          "parts": ["Filtre par statut", "Page de commande", "Suivi en trois étapes", "Prix au moment de l’achat", "Bouton de retour pendant 7 jours"]
+        },
+        {
+          "label": "Retours",
+          "note": "Des demandes ; l’équipe fixe le statut",
+          "parts": ["Formulaire de demande", "Vérifications côté serveur", "Liste des statuts"]
+        },
+        {
+          "label": "Portefeuille",
+          "note": "Un registre en ajout seul",
+          "parts": ["Solde", "Relevé avec motifs", "Paie des commandes entières"]
+        },
+        {
+          "label": "Informations enregistrées",
+          "note": "Partagées avec le tunnel de commande",
+          "parts": ["Adresses", "Liste d’envies", "Nom et téléphone vérifié", "Préférences de notification (enregistrées seulement)"]
+        }
+      ]
+    },
+    "slugFix": {
+      "heading": "La correction des 404, étape par étape",
+      "steps": [
+        { "label": "Signalement", "note": "Un produit renvoie une 404 mais apparaît dans l’administration" },
+        { "label": "Balayage", "note": "113 des 166 produits publiés inaccessibles" },
+        { "label": "Deux causes", "note": "Les slugs perdaient leurs lettres persanes ; les pages recevaient des slugs encodés" },
+        { "label": "Corriger, puis réparer", "note": "Le code d’abord, puis 113 slugs réécrits en production" },
+        { "label": "Nouveau balayage", "note": "166 sur 166 renvoient 200" }
+      ]
+    }
+  },
+  "findings": {
+    "currencyTrap": {
+      "text": "C’est le seul point ici qui produit des chiffres faux avec assurance plutôt que des chiffres manquants.",
+      "attribution": "Le plan d’analytique de la boutique, à propos du piège rial/toman",
+      "method": "Rédigé le 27 août 2026, avant la mise en service de l’analytique le 31 août"
+    },
+    "slugFix": {
+      "text": "…n’aurait rien changé à ce que voit un client, puisqu’un slug persan correct renvoyait toujours une 404.",
+      "attribution": "Message de commit de la correction du routage, à propos de la seule réparation des slugs",
+      "method": "11 août 2026, le jour de la réparation des slugs"
+    }
+  },
+  "decisions": {
+    "heading": "Six remplacements, pas des configurations",
+    "lede": "Chacun remplace un choix par défaut du modèle par la contrainte qu’il ignorait.",
+    "items": [
+      {
+        "title": "Enregistrer en rial entier, afficher en toman",
+        "why": "Les prix s’énoncent en toman mais se règlent en rial. Chaque montant est enregistré en rial entier et converti à un seul endroit pour l’affichage, si bien qu’une erreur d’un facteur dix ne peut pas atteindre un débit.",
+        "alternatives": "Enregistrer en toman et convertir pour chaque passerelle",
+        "tradeoff": "Chaque intégration déclare son unité à une seule frontière : les balises de prix de Torob attendent des tomans, les passerelles des rials."
+      },
+      {
+        "title": "Faire du numéro de téléphone la seule identité",
+        "why": "La connexion, l’inscription et la commande demandent un numéro de mobile et un code à usage unique. Les pages d’e-mail et de mot de passe ont été retirées : aucune ne pouvait fonctionner sans service d’e-mail, ce que la production n’a jamais eu.",
+        "alternatives": "Garder la connexion par e-mail à côté du code",
+        "tradeoff": "Chaque connexion dépend de l’envoi d’un SMS, donc les demandes sont limitées en fréquence et plafonnées par jour.",
+        "evidence": "La page de connexion en ligne : un seul champ, un numéro de mobile, et un bouton qui demande un code."
+      },
+      {
+        "title": "Créer la commande seulement après la confirmation de la banque",
+        "why": "Le modèle confirmait les commandes depuis le navigateur. Ici, le serveur vérifie le paiement auprès de la passerelle, montant compris, et seulement ensuite crée la commande et décompte le stock.",
+        "alternatives": "Créer la commande quand le client est envoyé vers la banque",
+        "tradeoff": "Si la vérification de la passerelle expire, le client voit la page d’échec alors que l’argent a été prélevé. La tâche des dix minutes crée la commande plus tard, mais le client n’en est pas informé."
+      },
+      {
+        "title": "Traiter le crédit boutique comme un moyen de paiement",
+        "why": "Le portefeuille se branche sur le même adaptateur que les passerelles, et bénéficie donc de la même vérification du total, de la même protection contre les doublons et de la même tâche de récupération. Son registre est en ajout seul : personne, administrateurs compris, ne peut modifier ou supprimer une écriture.",
+        "alternatives": "Une ligne de solde soustraite du total",
+        "tradeoff": "Dans cette version, le portefeuille doit couvrir toute la commande ; payer en partie par portefeuille et en partie par carte est laissé pour plus tard."
+      },
+      {
+        "title": "Séparer la confirmation de commande du statut de commande",
+        "why": "L’équipe confirme chaque commande payée dans l’administration. C’est un indicateur distinct avec un bouton de confirmation, pas un cinquième statut, car le statut est montré aux clients et les étapes internes ne doivent pas leur parvenir.",
+        "alternatives": "Ajouter un statut « confirmée »",
+        "tradeoff": "L’équipe lit deux champs, donc les commandes non confirmées sont signalées dans la liste, le menu et le tableau de bord."
+      },
+      {
+        "title": "Garder toutes les dépendances de déploiement dans le pays",
+        "why": "Le code, les images de conteneur, le stockage des médias, les déploiements et l’analytique tournent tous en Iran, si bien qu’un correctif peut être mis en production quand GitHub ou Docker Hub est injoignable.",
+        "alternatives": "Une CI hébergée et des registres publics",
+        "tradeoff": "Plus d’infrastructure à faire tourner, surveiller et sauvegarder."
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "Un designer, de nombreux agents",
+    "intro": "J’ai conçu le produit et dirigé sa construction. Des agents de code IA ont écrit l’essentiel du code à partir de spécifications écrites ; le périmètre, la direction de design et chaque mise en production ont été décidés par des personnes.",
+    "own": [
+      "Architecture de l’information, parcours et langage de design",
+      "Boutique, fiche produit, tunnel de commande et compte client",
+      "Règles commerciales : prix, remises, stock et paiements",
+      "Les outils d’administration qui font tourner la boutique",
+      "Infrastructure dans le pays et processus de mise en production"
+    ],
+    "collaborate": ["Les retours de la boutique, gérés dans un outil de suivi", "Des agents de code IA, pour l’implémentation"],
+    "note": "Un commentaire brut était confronté au vrai code avant de devenir une spécification qu’un agent pouvait développer sans poser de question complémentaire. Chaque mise en production est inscrite dans un registre de déploiement en ajout seul."
+  },
+  "outcomes": {
+    "heading": "En ligne, avec les lacunes nommées",
+    "intro": "En ligne sur faymen.ir depuis le 7 juillet 2026 et encaisse des paiements. Aucun chiffre commercial n’est publié. Les chiffres ci-dessous sont des corrections mesurées ; le reste est du périmètre livré.",
+    "items": [
+      {
+        "label": "Produits renvoyant une 404, trouvés et corrigés",
+        "context": "Les titres persans produisaient des slugs cassés ; plus des deux tiers du catalogue étaient inaccessibles.",
+        "source": "Fiche de retour et balayage de la production, 11 août 2026"
+      },
+      {
+        "label": "Produits à tailles qui proposaient une taille que personne ne pouvait acheter",
+        "context": "Remplacé par une seule règle qui masque ou désactive les tailles selon le stock.",
+        "source": "Fiche du système de tailles, 13 août 2026"
+      },
+      {
+        "label": "Paniers ouverts avec un total obsolète",
+        "context": "Le panier se recalcule désormais à son ouverture.",
+        "source": "Note dans le code sur la réparation du panier"
+      },
+      {
+        "label": "Une boutique utilisable de bout en bout par les clients",
+        "context": "Boutique, commande, compte et administration : 491 commits en douze semaines, du modèle à la commande centrée sur le téléphone."
+      }
+    ],
+    "shipped": [
+      "Connexion par téléphone uniquement",
+      "Commande sur une page",
+      "Compte client avec portefeuille et retours",
+      "Remises à deux niveaux avec une console",
+      "Bloc Product Section",
+      "Écran tailles et stock",
+      "Confirmation des commandes par un opérateur",
+      "Balises de prix Torob et sceau E-namad"
+    ]
+  },
+  "lessons": {
+    "heading": "Ce que la boutique a enseigné",
+    "items": [
+      {
+        "title": "Les contraintes qui ressemblent à des corvées sont des décisions produit",
+        "body": "« Docker Hub est injoignable » décide si un correctif peut être mis en production pendant des soldes ; « il n’y a pas de service d’e-mail » a réécrit l’identité, la commande et la newsletter."
+      },
+      {
+        "title": "Un signalement n’est pas une tâche tant qu’il n’est pas confronté au code",
+        "body": "Le signalement d’un produit renvoyant une 404 tout en restant visible dans l’administration s’est révélé, une fois confronté au code et au catalogue, concerner les deux tiers de la boutique et deux bugs distincts."
+      },
+      {
+        "title": "N’afficher que ce que les données permettent",
+        "body": "Le suivi de commande n’a pas de dates car aucune n’est enregistrée ; un compteur qui ne se charge pas affiche un tiret, pas zéro ; le portefeuille n’a pas de bouton de rechargement ; le Size Finder ne propose pas une taille que la boutique ne peut pas vendre."
+      },
+      {
+        "title": "Écrire où un langage de design emprunté ne convient pas",
+        "body": "Adapter un langage de design existant coûtait moins cher qu’en écrire un nouveau, et les désaccords, comme l’interlettrage du persan et l’absence d’illustration, en sont devenus la partie la plus utile."
+      }
+    ]
+  }
+}

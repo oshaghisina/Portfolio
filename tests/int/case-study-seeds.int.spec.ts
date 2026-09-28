@@ -352,9 +352,16 @@ const GATES: Record<string, { files: RegExp[]; text: RegExp[] }> = {
     text: [/sinaosh(a|g)(g|h)i@/i],
   },
   faymen: {
-    // Home, search and cart carry a live coupon and a sales number; contact carries phones and the
-    // showroom address; about, lookbook and made-to-measure carry imagery of unconfirmed origin.
-    files: [/home/, /search/, /cart/, /checkout/, /contact/, /find-order/, /create-account/, /about/, /lookbook/, /made-to-measure/],
+    // The 2026-09-22 live captures of home, the search overlay, cart and checkout carry a live
+    // coupon and a sales number; contact carries phones and the showroom address; about, lookbook
+    // and made-to-measure carry imagery of unconfirmed origin. Cart, checkout, account and admin
+    // screens come only from the masked local-build set (2026-09-27), never from the live store.
+    files: [
+      /^(home|search|cart|checkout|about|lookbook|support|account|guides)\//,
+      /contact|find-order|create-account|made-to-measure|lookbook|about/,
+      /^study-2026-09-27\/(?!(live|phone|phone-whole|checkout|desktop|admin|admin-whole)\/)/,
+      /^study-2026-09-27\/live\/(?!(product-carousel|shop-filter-sheet-mob|shop-wedding-mob|search-mob)\.webp$)/,
+    ],
     text: [/DEAKJP/i, /09\d{9}/, /۰۹[۰-۹]{9}/, /44964292/, /reorder/i, /\bRCE\b/, /Metabase/i, /incident/i, /فایمن|فايمن/],
   },
   'nim-dang': {
