@@ -373,7 +373,7 @@ export const PageIndex: React.FC<PageIndexProps> = ({ copy, locale, pages }) => 
                     <span className="index-code shrink-0" dir="ltr">
                       {pad(index + 1)}
                     </span>
-                    <span className="text-ink-2 transition-colors duration-(--duration-fast) ease-standard group-hover:text-foreground">
+                    <span className="min-w-0 break-words hyphens-auto text-ink-2 transition-colors duration-(--duration-fast) ease-standard group-hover:text-foreground">
                       {page.label}
                     </span>
                   </span>

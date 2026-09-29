@@ -85,9 +85,13 @@ const ProcessMap: React.FC<{
             </div>
             {parts.length ? (
               // Every part opens with its own hairline, so a wrapped row never ends on a stray rule.
+              // Parts hyphenate: a German compound outruns a phone's half column.
               <ul className="grid grid-cols-2 gap-x-4 gap-y-3 ps-13 md:ps-0 md:pt-1.5 lg:grid-cols-3">
                 {parts.map((part, j) => (
-                  <li className="border-s border-line ps-3 text-small text-ink-2" key={j}>
+                  <li
+                    className="border-s border-line ps-3 text-small break-words hyphens-auto text-ink-2"
+                    key={j}
+                  >
                     {part}
                   </li>
                 ))}
