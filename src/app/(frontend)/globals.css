@@ -30,6 +30,14 @@
     font-size: unset;
   }
 
+  /* A German compound ("Eigentumsübertragung", "Cloud-Plattform-Redesign") is wider than a
+     390 px column at heading size; let a heading hyphenate, and break as a last resort. Scoped to
+     German so other locales' headings keep their line breaks. */
+  :is(h1, h2, h3, h4):lang(de) {
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
   * {
     @apply border-border outline-ring/50;
   }
