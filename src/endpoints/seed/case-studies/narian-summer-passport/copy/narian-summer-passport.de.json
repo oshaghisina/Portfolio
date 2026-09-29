@@ -1,0 +1,506 @@
+{
+  "statement": "Eine Sommerkampagne, die jeden Narian-Store zum Flughafen und jeden Kauf zum Ticket macht, ohne einen einzigen Rabatt.",
+  "industry": "Einzelhandel · Damenmode",
+  "team": "Freiberuflich; die Konzept-Renderings entstanden mit einem KI-Bildmodell, der Prototyp mit Claude",
+  "heroCaption": "Ein Konzept-Rendering einer Narian-Ladenfront, als Terminal inszeniert: Willkommens-Aufkleber auf dem Glas, ein Boarding-Gate gleich hinter der Tür und eine Startbahn bis zum Check-in.",
+  "snapshot": {
+    "problem": "Den Warenkorb vergrößern und vor der Eröffnung einer neuen Filiale eine Kundenliste aufbauen, für eine Marke, deren eigenes Markenhandbuch sie von Rabatten fernhält.",
+    "role": "Kampagnenstratege und Marketer: Konzept, Mechanik und Ökonomie, ein persisch-englischer Copy-Kanon, Skripte für das Personal, Druckvorgaben, das Stempelset und die Seite für Reisende.",
+    "result": "Eine vollständige Kampagne, bis hin zu dem Satz, den das Kassenpersonal sagt, wenn ein seltener Stempel landet. Sie ist nie gestartet, daher gibt es keine Ergebnisse."
+  },
+  "alt": {
+    "storefront": "Konzept-Rendering: eine Narian-Ladenfront in einem Einkaufszentrum, mit Aufklebern zum Narian Summer Passport auf dem Glas, einem rosa Boarding-Gate gleich hinter der Tür und einer Startbahn-Linie auf dem Boden, die zum Check-in führt",
+    "storefrontFirst": "Konzept-Rendering, erste Version: eine Narian-Ladenfront mit einem Banner „Welcome to Narian Summer Passport“ über dem Glas und einem Check-in-Schild, das im Gang des Einkaufszentrums steht",
+    "photoFront": "Foto einer Narian-Filiale vom Gang des Einkaufszentrums aus: das beleuchtete Logo über einer Glasfront, dahinter Schaufensterpuppen und Kleiderständer",
+    "photoCounter": "Foto des Kassentresens in einer Narian-Filiale: ein schwarzer Tresen vor einer grauen Wand mit dem Narian-Logo, beleuchtete Regale auf beiden Seiten",
+    "photoPlatform": "Foto in einer Narian-Filiale: drei Schaufensterpuppen auf einem runden, cremefarbenen Podest vor einer rosa Wand mit der Strichzeichnung der Tulpe",
+    "checkIn": "Konzept-Rendering: derselbe Tresen, gestaltet als Check-in-Schalter, mit einem Schild „Check-in“, Stapeln von Pässen, einem Schild zur Anmeldung, einer Tafel „Final destination: Hadish Mall“ und einer rosa Startbahn auf dem Boden",
+    "handoff": "Konzept-Rendering der Übergabe beim Check-in auf einem dunklen Tresen: ein Pass, ein Boardingpass, eine Anmeldekarte, zwei Gummistempel mit Stempelkissen und eine Box mit Gutscheinkarten",
+    "gate": "Konzept-Rendering: ein Glücksrad „Gate of Fortune“ mit neun Feldern neben dem zentralen Podest mit den Schaufensterpuppen, ein Schild zu den Reiseklassen mit Economy 1, Business 2 und First 4 und eine rosa Startbahn auf dem Boden",
+    "reward": "Konzept-Rendering nach dem frühen Briefing: ein aufgeschlagener Pass mit einem Stempel, ein 24 Stunden gültiger Sunshine-Gutschein über 20 % Rabatt, eine Karte mit einer zusätzlichen Chance (+1) für die finale Verlosung und ein Gummistempel auf seiner Ablage",
+    "terminal": "Konzept-Rendering eines ganzen Narian-Stores als Terminal: Ein rosa Pfad auf dem Boden verbindet einen Tisch als Pass-Station, ein Glücksrad „Gate of Fortune“, ein Schild zur Stempelsammlung und ein Boarding-Gate",
+    "finale": "Konzept-Rendering des Finales in der Hadish Mall: eine rosa Rückwand mit der Aufschrift „Final destination, Hadish Mall“, eine durchsichtige Box mit Loskarten auf einem Tisch „Final draw“ und eine Tafel „Final arrival“",
+    "kit": "Konzept-Rendering des gedruckten Kits, flach ausgelegt: Pass-Umschläge und eine Stempelseite, ein Boardingpass, eine Karte für die finale Verlosung, eine 24-Stunden-Gutscheinkarte, eine Merkkarte für das Personal, ein Aufsteller für den Tresen, ein Gummistempel und Etiketten",
+    "branchFlagship": "Konzept-Rendering der Front eines Flagship-Stores: ein rosa Bogen „Boarding gate“ über dem Eingang, eine Tafel in Form eines Boardingpasses und eine Abflugtafel, dazu eine Startbahn bis zum Check-in",
+    "branchInterior": "Konzept-Rendering einer kleineren Filiale: ein Schild mit „Check-in“ und „Passport“ über einem rosa Tresen, eine geschwungene Startbahn auf dem Boden und eine Abflugtafel an der Wand",
+    "branchOpening": "Konzept-Rendering der Eröffnung in der Hadish Mall: eine Abflugtafel „Final destination, Hadish Mall“ über dem Eingang, Absperrkordeln sowie Schilder „Final arrival“ und „Final draw“",
+    "roz": "KI-Porträt für die Persona Roz, 18 bis 25: eine junge Frau in einer cremefarbenen Jacke vor einem zartrosa Hintergrund",
+    "nara": "KI-Porträt für die Persona Nara, 25 bis 35: eine Frau mit langen dunklen Haaren in einem cremefarbenen Blazer vor einem zartrosa Hintergrund",
+    "sara": "KI-Porträt für die Persona Sara, 35 bis 45: eine Frau in einem cremefarbenen Blazer über einem dunklen Top vor einem zartrosa Hintergrund",
+    "stampOcean": "Der Stempel Ocean: drei blaue Wellen in einem runden Ring mit der Aufschrift „Narian“ und „Summer Passport“",
+    "stampDesert": "Der Stempel Desert: Sanddünen in Sandfarbe im selben runden Ring",
+    "stampCoast": "Der Stempel Coast: eine Sonne über Wellen in Hellblau im selben runden Ring",
+    "stampSunshine": "Der Stempel Sunshine: eine Sonne mit Strahlen in Bernsteingelb im selben runden Ring",
+    "stampPalm": "Der Stempel Palm: eine Palme in Grün im selben runden Ring",
+    "stampSunset": "Der Stempel Sunset: eine halbe Sonne am Horizont in Korallrot im selben runden Ring",
+    "stampLuckyDay": "Der Stempel Lucky Day: eine vierblättrige Tulpe mit einem Stern in Magenta, mit einem blassen, gepunkteten Außenring",
+    "stampUpgrade": "Der Stempel Upgrade: zwei nach oben zeigende Winkel in Bronze, mit einem blassen, gepunkteten Außenring",
+    "stampBoarding": "Der Stempel Boarding: ein Flugzeug und eine gepunktete Flugbahn in Blauschwarz, mit einem blassen, gepunkteten Außenring",
+    "v1Desktop": "Die erste Landingpage auf dem Desktop, erster Screen: die persische Überschrift „Diesen Sommer ist jeder Kauf ein Reiseticket“ über einem rosa getönten Rendering der Ladenfront",
+    "v1Mobile": "Die erste Landingpage auf dem Smartphone, erster Screen: die persische Überschrift, der Zeitraum der Kampagne und zwei Buttons über dem Rendering der Ladenfront",
+    "v1DesktopFull": "Die erste Landingpage auf dem Desktop, ganze Seite: die Geschichte, fünf Schritte, Reiseklassen, neun Stempel, Sofort-Gutscheine, fünf Reiseziele und das Finale",
+    "v1MobileFull": "Die erste Landingpage auf dem Smartphone, ganze Seite, von der Überschrift bis zum Footer",
+    "v2Desktop": "Die zweite Landingpage auf dem Desktop, erster Screen: die persische Überschrift „Jeder Kauf ist Ihr Reiseticket“ auf einer Karte über dem Rendering der Ladenfront, mit einem Countdown",
+    "v2Mobile": "Die zweite Landingpage auf dem Smartphone, erster Screen: die Überschrift, der Zeitraum, zwei Buttons und ein Countdown mit 31 Tagen",
+    "v2DesktopFull": "Die zweite Landingpage auf dem Desktop, ganze Seite: fünf Schritte, Reiseklassen, das Gate, neun Stempel, der Gewinn, die Anmeldung zum digitalen Pass, Filialen und Fragen",
+    "v2MobileFull": "Die zweite Landingpage auf dem Smartphone, ganze Seite, vom Countdown bis zum Footer",
+    "v2Classes": "Die zweite Seite auf dem Smartphone: die Reiseklassen, Economy ab 5 Millionen Toman mit 1 Durchgang und Business ab 8 Millionen mit 2",
+    "v2StampOpen": "Die zweite Seite auf dem Smartphone: der Stempel Lucky Day, auf einer Karte geöffnet, markiert als Premier und selten",
+    "v2Prize": "Die zweite Seite auf dem Smartphone: der Hauptgewinn, ein Reisebudget für 3 Reisende, dargestellt als Boardingpass mit dem Datum 11. August",
+    "v2SignupDone": "Die zweite Seite auf dem Smartphone nach der Anmeldung: eine Bestätigung, dass der Pass bereit ist, mit einer Platzhalter-Nummer, ein Stempelraster mit 5 von 9 und Buttons für eine Erinnerung, die nächste Filiale und eine Einladung an weitere Reisende",
+    "v2Rules": "Die zweite Seite auf dem Smartphone: die sechs Regeln der Verlosung in einem Dialog, von der Frage, wer teilnehmen darf, bis zum Zeitraum der Kampagne",
+    "v1PrizeCrop": "Der Abschnitt zu den Gewinnen auf der ersten Landingpage: „Jeder Stempel ein Sofortgewinn“, mit Gutscheinen von 10 bis 40 % Rabatt neben dem Rendering eines Sunshine-Gutscheins über 20 % Rabatt",
+    "v2PrizeCrop": "Der Abschnitt zum Gewinn auf der zweiten Landingpage: „Der Gewinn ist eine echte Reise“, mit einer Karte als Boardingpass für ein Reisebudget für 3 Gewinner"
+  },
+  "chapters": {
+    "context": {
+      "heading": "Eine neue Filiale und ein Sommer, um sie zu füllen",
+      "body": [
+        "Narian ist eine iranische Marke für Damenmode: Kleidung im Smart-Casual-Stil für moderne, urbane Frauen, hergestellt von einer Gruppe mit mehr als fünfzig Jahren Erfahrung in Textilfabriken. Ihr Slogan lautet „Smart. Stylish.“",
+        "Im Sommer 2026 stand bei Narian die Eröffnung einer neuen Filiale in der Hadish Mall in Teheran an, am 11. August (20. Mordad 1405). Für die Kampagne war der Monat davor vorgesehen, ab dem 11. Juli, in jeder Filiale und im Onlineshop.",
+        "Die Ziele waren größere Warenkörbe den ganzen Sommer über, mehr Wiederholungsbesuche, eine Liste mit Mobilnummern der Kundschaft und ein Vorlauf, der die Eröffnung zum Ereignis macht."
+      ]
+    },
+    "problem": {
+      "heading": "Größere Warenkörbe ohne Sale",
+      "body": [
+        "Das übliche Mittel für größere Warenkörbe ist ein Rabatt. Narians Markenhandbuch positioniert die Marke abseits von Hype und Show, als gelassen, praktisch und vertrauenswürdig, und die Strategienotiz der Kampagne benennt die Konsequenz: „nicht rabattgetrieben“. Ein Sommer-Sale hätte genau die Positionierung untergraben, die die Kampagne stützen sollte.",
+        "Das Schaufenster einer Filiale zeigte den Widerspruch schon: ein Sale-Schild an einem Kleiderständer neben dem eigenen Kampagnenplakat der Marke. Die Kampagne musste den Warenkorb über etwas vergrößern, das Kunden zu Ende bringen wollen, und jede Belohnung vom Preis fernhalten."
+      ],
+      "insight": "Die Belohnung musste etwas sein, das man vervollständigen will."
+    },
+    "research": {
+      "heading": "Ausgangspunkt: Markenhandbuch und Store",
+      "body": [
+        "Noch vor jeder Mechanik habe ich Narians Markenhandbuch in eine einzige Referenznotiz für die ganze Kampagne übertragen: die Palette und ihre Regeln (Zartrosa führt, Magenta steht nie neben Blauschwarz), die Schriften Peyda und Gilroy, das Tulpenzeichen nach Reliefs aus Persepolis und ein Ton, der einfach, warm und ehrlich ist. Jede spätere Notiz verweist auf sie zurück.",
+        "Die drei Personas aus dem Markenhandbuch wurden zur Zielgruppe der Kampagne, jede verknüpft mit der Klasse, in der sie am ehesten fliegen würde, und mit dem Anreiz, der sie am ehesten wiederkommen lässt.",
+        "Dann der Store. Aus elf Fotos einer Filiale, von der Front und den Schaufenstern bis zum Tresen, zu den Gängen und zur Umkleide, wurde ein Platzierungsplan: große Botschaften auf Glas und Leuchtkästen, die Mechanik am Tresen, das Gate nahe dem zentralen Podest, wo es den Gang nicht versperrt, und nichts über dem Logo."
+      ]
+    },
+    "approach": {
+      "heading": "Stores werden zu Flughäfen, Kunden zu Reisenden",
+      "body": [
+        "Die Kampagne macht aus dem Einkauf eine Reise. Jeder Store wird zum Terminal, die Kasse zum Check-in-Schalter, das Glücksrad zum Abflug-Gate und das Personal zur Flugcrew, und Kunden sind immer Reisende. Ein Satz hält alles zusammen: „Every Purchase is Your Ticket“ (jeder Kauf ist Ihr Ticket).",
+        "Jede Reise führt an denselben Ort, das Endziel: die Eröffnung in der Hadish Mall, wo die Kampagne mit einer Live-Verlosung endet. Dasselbe Konzept läuft in jeder Filiale, und die Reisethemen stecken in den neun Stempeln."
+      ]
+    },
+    "mechanic": {
+      "customLabel": "Mechanik",
+      "heading": "Drei Klassen, eine Rechnung",
+      "body": [
+        "Der Einkaufswert bestimmt die Reiseklasse, und die Klasse bestimmt, wie oft Reisende durch das Gate of Fortune gehen. Eine einzelne Rechnung ab 5.000.000 Toman ist Economy, mit einem Durchgang; ab 8.000.000 ist es Business, mit zwei; ab 15.000.000 First Class, mit vier.",
+        "Die Stufen sind bewusst gesetzt. Die Durchgänge richten sich nach der höchsten erreichten Schwelle, und Beträge dazwischen werden abgerundet, also bleiben 7.000.000 Toman Economy. Zwei Rechnungen über je 5.000.000 ergeben zwei Economy-Durchgänge, aber nie Business. Und First Class springt von zwei Durchgängen auf vier, ein Sprung, den jede Notiz zur Mechanik eigens markiert, damit ihn niemand auf drei „korrigiert“.",
+        "Jede Lücke ist auch ein Satz für das Personal: Bei 7.000.000 Toman fehlen 1.000.000 bis zum zweiten Durchgang, bei 12.000.000 fehlen 3.000.000 für vier Durchgänge. Das Skript beschreibt das als bessere Reise und mehr Chancen, nie als Aufforderung, mehr auszugeben."
+      ],
+      "insight": "Der Sprung von zwei auf vier Durchgänge ist das Upselling der Kampagne."
+    },
+    "cut": {
+      "customLabel": "Validierung",
+      "heading": "Die stärkste Mechanik wurde gestrichen",
+      "body": [
+        "Der erste Entwurf gab bei jeder Drehung einen 24-Stunden-Gutschein: neun Gutscheine, 10 bis 40 % Rabatt auf den nächsten Einkauf. Das hätte Kunden schnell zurückgebracht, und es hätte ihnen beigebracht, dass Narian Rabatte gibt.",
+        "Bei der Validierung wurde der Gutschein gestrichen. Jede Drehung bringt jetzt einen datierten Stempel im Pass und eine Chance in der finalen Verlosung, sonst nichts. Der Gewinn rückte ans Ende: ein Reisebudget für drei Gewinner, live verlost bei der Eröffnung in der Hadish Mall, bei der die Gewinner anwesend sein müssen. Er liegt außerhalb des Kampagnenbudgets, und sein Wert stand noch nicht fest.",
+        "Die frühen Konzept-Renderings und die erste Landingpage zeigen den Gutschein noch. Der Kanon, die Skripte für das Personal und die zweite Seite folgen der Streichung."
+      ],
+      "insight": "Es war die Mechanik mit der stärksten Zugkraft, und sie fiel, weil sie gegen die Marke arbeitete."
+    },
+    "collection": {
+      "customLabel": "Sammlung",
+      "heading": "Neun Stempel, gleiche Chancen",
+      "body": [
+        "Das Gate landet auf einem von neun Stempeln in drei Gruppen: Discovery (Ocean, Desert, Coast), Sunshine (Sunshine, Palm, Sunset) und Premier (Lucky Day, Upgrade, Boarding). Premier-Stempel kommen seltener vor, was das Vervollständigen des Sets zu einer echten Herausforderung macht.",
+        "Die Seltenheit zählt nur für die Sammlung. Jeder Stempel zählt als eine gleichwertige Chance in der Verlosung, die Wahrscheinlichkeiten werden nie abgedruckt, und die neun Felder des Rads sind gleich groß gezeichnet. Wer alle neun sammelt, bekommt Bonus-Chancen dazu, im Vorschlag fünf.",
+        "Jeder Stempel hat einen festen persischen Namen und eine eigene Farbe. Es sind die einzigen Farben, mit denen die Kampagne Narians Palette ergänzt. Ein kleines Skript zeichnet alle neun, sodass sie denselben Ring, dieselbe Schrift und dieselbe Strichstärke haben."
+      ]
+    },
+    "canon": {
+      "customLabel": "Copy-Kanon",
+      "heading": "Jedes Wort aus einer Notiz",
+      "body": [
+        "Eine Kampagne, die in jeder Filiale, online und im Druck läuft, hat Hunderte Stellen, an denen man das Falsche sagen kann. Deshalb haben die Worte ein einziges Zuhause: eine persisch-englische Copy-Bibliothek mit dem festgeschriebenen Claim und fünf alternativen Zeilen, den Schildern für Eingang und Wegeleitung, den Sätzen am Check-in, den Beschriftungen auf Boardingpass und Pass, den neun Stempelnamen und einem Glossar.",
+        "Ihre Regeln sind konkret. Im Text gibt es nur Reisende, keine Kunden; persische Texte verwenden persische Ziffern, nie „5M“; am Gate heißt es „Ihr Gate ist geöffnet“, nie „Drehen Sie am Rad“; und die drei Dinge namens Boarding (der Boardingpass, der Datumsstempel und der Premier-Stempel) werden nie verwechselt.",
+        "Das Skript für das Personal macht aus dem Kanon gesprochene Sprache: sieben Momente von der Begrüßung bis zur Verabschiedung, jeweils mit einem kurzen englischen Stichwort, das sich die Crew merkt, dem persischen Satz, den sie tatsächlich sagt, und dem, was sie dabei tut."
+      ]
+    },
+    "kit": {
+      "customLabel": "Druck & Raum",
+      "heading": "Ein Kit, das jede Filiale aufbauen kann",
+      "body": [
+        "Die visuellen Briefings legen jedes Objekt für Druck und Aufbau fest. Der Boardingpass ist eine Karte im Format 210 × 90 mm mit einem perforierten Abschnitt von 55 mm zum Abreißen. Der Pass ist ein Heft im Format B7, 125 × 88 mm, mit 8 bis 12 Seiten, einer geprägten Tulpe auf einem matten, cremefarbenen Umschlag und einer Seite mit neun leeren Ringen, jeweils mit einer Linie darunter für den Datumsstempel.",
+        "Das Gate ist ein Rad mit 80 bis 100 cm Durchmesser, neun gleich großen Feldern und einem Zeiger im Stil einer Abflugtafel. Die Schilder nutzen Gilroy in Großbuchstaben mit weiter Laufweite. Alles ist matt, wie es das Markenhandbuch für physische Aufbauten verlangt; Folienprägung bleibt wenigen Akzenten vorbehalten, etwa den seltenen Stempeln und der Gewinnerurkunde.",
+        "Ein Pass pro Person, für die ganze Kampagne: Einen zweiten auszustellen ist einer der drei Fehler, die das Skript für das Personal verbietet. Und ein Konzept für alle Filialen, sodass das Kit nur einmal produziert wird."
+      ]
+    },
+    "online": {
+      "customLabel": "Online",
+      "heading": "Dieselbe Reise auf dem Smartphone",
+      "body": [
+        "Auch Onlinekäufe zählen. Ein digitaler Pass, ein Online-Gate und digitale Stempel hängen an derselben Mobilnummer, sodass sich alles, was Reisende im Store und online sammeln, in einem Pass addiert.",
+        "Die Seite für Reisende durchlief zwei Generationen. Die erste vom 30. Juni erklärte die Mechanik, enthielt aber noch den Gutschein, eine Business-Schwelle von 10.000.000 Toman, um drei Tage abweichende Termine und fünf „Reiseziele“ für die Stores, darunter Oasis, das in keiner anderen Notiz vorkommt. Telefonnummern sammelte sie nicht.",
+        "Die zweite folgt dem Kanon: ein Countdown bis zur Eröffnung, die Reise in fünf Schritten, die drei Klassen, ein Demo-Gate, die neun Stempel, der Gewinn als Boardingpass, eine Anmeldung, die die Mobilnummer zum Pass macht, fünf Fragen, sechs Regeln zur Verlosung und ein Datenschutzhinweis. Ich habe sie mit Claude als funktionierenden Prototyp gebaut, auf Grundlage der Notizen der Kampagne."
+      ]
+    },
+    "result": {
+      "heading": "Startklar, aber nie gestartet",
+      "body": [
+        "Die Kampagne ist nie gestartet. Ihr Zeitfenster vom 11. Juli bis zum 11. August 2026 verstrich ohne sie. Jede Zelle der KPI-Tabelle ist leer, die Retrospektive ist eine leere Vorlage, und es gibt keine Ergebnisse zu berichten.",
+        "Die Dateien zeigen, wo die Arbeit aufhörte. Alles, was kreative oder strategische Abwägung brauchte, ist fertig. Alles, was eine Entscheidung von Narian brauchte, ist leer geblieben: kein Budget, keine Ziele, keine Liste der Filialen und kein Wert für den Gewinn."
+      ],
+      "insight": "Die Arbeit endet genau dort, wo die Entscheidungen des Auftraggebers beginnen."
+    }
+  },
+  "figures": {
+    "personas": {
+      "caption": "Die drei Personas aus dem Markenhandbuch, als KI-Porträts für die Präsentation erstellt, mit der Klasse, in der jede am ehesten fliegt.",
+      "items": [
+        "Roz, 18–25 · eher Economy · Stempel sammeln und teilen",
+        "Nara, 25–35 · eher Business · das Set komplett machen",
+        "Sara, 35–45 · eher First Class · das ruhige Terminal und das Finale"
+      ]
+    },
+    "counter": {
+      "caption": "Der Tresen einer Filiale und derselbe Tresen als Check-in-Schalter in einem Konzept-Rendering. Die Logowand bleibt frei.",
+      "items": [
+        "Der Tresen einer Filiale, fotografiert",
+        "Der Check-in-Schalter, Konzept-Rendering"
+      ]
+    },
+    "storefront": {
+      "caption": "Die Ladenfront in drei Schritten. Das Feedback zum ersten Rendering hielt den Gang der Mall frei, also wanderten die Schilder auf das Glas und das Gate nach innen.",
+      "items": [
+        "Die Front, fotografiert",
+        "Erstes Rendering: Schilder im Gang der Mall",
+        "Finales Rendering: Aufkleber auf dem Glas, das Gate drinnen"
+      ]
+    },
+    "journeyEnds": {
+      "caption": "Konzept-Renderings von zwei Stationen: der ganze Store als ein Terminal und die Verlosung bei der Eröffnung in der Hadish Mall. Das Terminal entstand nach dem frühen Briefing und hat noch ein Schild zu Gutscheinen.",
+      "items": [
+        "Das Terminal: ein Weg durch den Store",
+        "Das Endziel: die Live-Verlosung"
+      ]
+    },
+    "gate": {
+      "caption": "Das zentrale Podest der Filiale und daneben das Gate of Fortune mit dem Schild zu den Reiseklassen. Das Rendering entstand nach dem frühen Briefing, deshalb verspricht das Schild noch einen Gutschein bei jedem Durchgang.",
+      "items": [
+        "Das zentrale Podest, fotografiert",
+        "Das Gate of Fortune, Konzept-Rendering"
+      ]
+    },
+    "prize": {
+      "caption": "Die erste Landingpage (30. Juni) bot zu jedem Stempel einen Sofort-Gutschein mit 10 bis 40 % Rabatt. Die zweite bietet einen einzigen Gewinn: ein Reisebudget für drei Reisende, live verlost bei der Eröffnung.",
+      "items": [
+        "Erste Seite: ein Gutschein zu jedem Stempel",
+        "Zweite Seite: ein Gewinn, eine Reise"
+      ]
+    },
+    "stamps": {
+      "caption": "Die neun Stempel auf dem cremefarbenen Papier des Passes. Die drei Premier-Stempel tragen einen blassen zweiten Ring.",
+      "items": [
+        "Ocean · Gruppe Discovery",
+        "Desert · Gruppe Discovery",
+        "Coast · Gruppe Discovery",
+        "Sunshine · Gruppe Sunshine",
+        "Palm · Gruppe Sunshine",
+        "Sunset · Gruppe Sunshine",
+        "Lucky Day · Gruppe Premier",
+        "Upgrade · Gruppe Premier",
+        "Boarding · Gruppe Premier"
+      ]
+    },
+    "kit": {
+      "caption": "Konzept-Renderings des gedruckten Kits: die Übergabe beim Check-in und das ganze Set, flach ausgelegt. Beide entstanden nach dem frühen Briefing und enthalten noch eine Gutscheinkarte.",
+      "items": [
+        "Die Übergabe: Boardingpass, Pass, Anmeldekarte und Stempel",
+        "Das Set: Pass, Boardingpass, Merkkarte, Tresen-Aufsteller und Etiketten"
+      ]
+    },
+    "branches": {
+      "caption": "Ein Konzept für drei Arten von Filialen, als Konzept-Renderings: die Front eines Flagship-Stores, ein kleinerer Innenraum und die Eröffnung in der Hadish Mall.",
+      "items": [
+        "Eine Flagship-Front",
+        "Eine kleinere Filiale",
+        "Die Eröffnung in der Hadish Mall"
+      ]
+    },
+    "phone": {
+      "caption": "Die zweite Seite auf dem Smartphone, eingestellt auf den Morgen des Starts: die drei Klassen, ein geöffneter Stempel, der Gewinn als Boardingpass und der digitale Pass nach der Anmeldung, mit einer Platzhalter-Nummer.",
+      "items": [
+        "Reiseklassen",
+        "Ein Stempel, geöffnet",
+        "Der Gewinn",
+        "Pass erstellt"
+      ]
+    },
+    "pages": {
+      "caption": "Beide Generationen der Seite für Reisende in Desktop- und Smartphone-Breite. Öffnen Sie eine davon, um die ganze Seite zu sehen.",
+      "items": [
+        "Erste Seite, 30. Juni",
+        "Zweite Seite, der Prototyp"
+      ]
+    }
+  },
+  "steps": {
+    "storeMap": {
+      "heading": "Was im Store wohin kommt",
+      "steps": [
+        {
+          "label": "Glasfront",
+          "note": "Das Erste, was Reisende sehen",
+          "parts": [
+            "Willkommens-Aufkleber",
+            "Endziel-Schild",
+            "Eine Startbahn-Linie in den Store"
+          ]
+        },
+        {
+          "label": "Leuchtkasten und Schaufenster-Screen",
+          "note": "Große Botschaften, wenige Worte",
+          "parts": [
+            "Key Visual",
+            "Teaser „Boarding in Kürze“",
+            "Teaser „Ankunft am Endziel“"
+          ]
+        },
+        {
+          "label": "Tresen",
+          "note": "Wird zum Check-in",
+          "parts": [
+            "Check-in-Schild",
+            "Halter für Pässe und Boardingpässe",
+            "Anmeldekarte",
+            "Stempelablage"
+          ]
+        },
+        {
+          "label": "Zentrales Podest",
+          "note": "Bleibt die Bühne für die Mode",
+          "parts": [
+            "Gate of Fortune daneben",
+            "Reiseklassen-Schild"
+          ]
+        },
+        {
+          "label": "Gänge und Kleiderständer",
+          "note": "Der Weg bleibt frei",
+          "parts": [
+            "Wegweiser",
+            "Hinweis: Stempel sammeln"
+          ]
+        },
+        {
+          "label": "Umkleide",
+          "note": "Ruhig, höchstens ein Satz",
+          "parts": [
+            "„Bereit zum Boarding?“"
+          ]
+        }
+      ]
+    },
+    "journey": {
+      "heading": "Die Reise, Station für Station",
+      "steps": [
+        {
+          "label": "Flughafen-Eingang",
+          "note": "„Willkommen beim Narian Summer Passport“"
+        },
+        {
+          "label": "Check-in",
+          "note": "Vorname, Nachname und Mobilnummer; die Nummer ist die Passagier-ID"
+        },
+        {
+          "label": "Boardingpass und Pass",
+          "note": "Einmal ausgestellt, bei der ersten Rechnung ab 5.000.000 Toman"
+        },
+        {
+          "label": "Reiseklasse",
+          "note": "Die Rechnung bestimmt die Klasse, die Klasse die Durchgänge"
+        },
+        {
+          "label": "Gate of Fortune",
+          "note": "Eine Drehung pro Durchgang"
+        },
+        {
+          "label": "Stempel und Gewinnchance",
+          "note": "Ein datierter Stempel im Pass, eine Chance in der finalen Verlosung"
+        },
+        {
+          "label": "Im Transit",
+          "note": "Jede neue Rechnung ab der Schwelle öffnet das Gate erneut"
+        },
+        {
+          "label": "Endziel",
+          "note": "Die Eröffnung in der Hadish Mall und eine Live-Verlosung von drei Reisebudgets"
+        }
+      ]
+    },
+    "classes": {
+      "heading": "Der Weg zum Upgrade",
+      "steps": [
+        {
+          "label": "Economy",
+          "note": "Ab 5.000.000 Toman auf einer Rechnung: 1 Durchgang"
+        },
+        {
+          "label": "Business",
+          "note": "Ab 8.000.000 Toman: 2 Durchgänge"
+        },
+        {
+          "label": "First Class",
+          "note": "Ab 15.000.000 Toman: 4 Durchgänge"
+        }
+      ]
+    },
+    "crew": {
+      "heading": "Sieben Momente für die Crew",
+      "steps": [
+        {
+          "label": "Begrüßung",
+          "note": "„Willkommen beim Narian Summer Passport.“"
+        },
+        {
+          "label": "Check-in",
+          "note": "„Willkommen an Bord. Bereit zum Boarding?“"
+        },
+        {
+          "label": "Boardingpass",
+          "note": "„Hier ist Ihr Boardingpass. Hier beginnt Ihre Sommerreise.“"
+        },
+        {
+          "label": "Klassen-Upselling",
+          "note": "„Mit ein bisschen mehr fliegen Sie Business: zwei Durchgänge am Gate.“"
+        },
+        {
+          "label": "Einladung zum Gate",
+          "note": "„Ihr Gate ist geöffnet.“"
+        },
+        {
+          "label": "Stempel und Chance",
+          "note": "„Das ist der Ocean-Stempel, drei von neun, und eine Chance mehr bei der finalen Verlosung.“"
+        },
+        {
+          "label": "Verabschiedung",
+          "note": "„Gute Reise. Ihr Pass wartet auf den nächsten Stempel.“"
+        }
+      ]
+    }
+  },
+  "findings": {
+    "guardrail": {
+      "text": "Minimal/luxuriös halten und die Reise & die Sammlung in den Mittelpunkt stellen, nicht den Rabatt – schützt Narians Positionierung „kein Hype, nicht rabattgetrieben“.",
+      "attribution": "Die Strategienotiz der Kampagne, zur Marken-Leitplanke",
+      "method": "Strategienotiz, Juni 2026"
+    },
+    "canonRule": {
+      "text": "Keinen Namen, keinen Slogan, keinen Betrag und kein Datum umschreiben oder erfinden. Steht ein Wort nicht hier, zuerst im Kanon nachsehen; steht es auch dort nicht, als Annahme markieren und mit dem Team klären. Jeder Widerspruch zu dieser Notiz ist ein Bug.",
+      "attribution": "Copy & Naming Library, der Kanon der Kampagne",
+      "method": "Die Nutzungsregel am Anfang der Notiz, aus dem Persischen übersetzt"
+    }
+  },
+  "decisions": {
+    "heading": "Fünf Entscheidungen, die die Kampagne prägten",
+    "lede": "Jede steht mit ihrer Begründung in den Notizen der Kampagne.",
+    "items": [
+      {
+        "title": "Den Rabatt aus dem Gate nehmen",
+        "why": "Ein Gutschein bei jeder Drehung hätte Kunden innerhalb eines Tages zurückgebracht und ihnen beigebracht, auf einen Rabatt zu warten, genau die Gewohnheit, die das Markenhandbuch ausschließt. Das Gate gibt einen Stempel und eine Gewinnchance, und der einzige Gewinn ist eine Reise.",
+        "alternatives": "Ein kleinerer Gutschein oder Punkte für einen späteren Einkauf.",
+        "tradeoff": "Weniger Zugkraft am Gate und ein Gewinn, den die meisten Reisenden nicht bekommen.",
+        "evidence": "Der Kanon hält die Streichung fest, und das Skript für das Personal verbietet die Wörter „Gutschein“ und „Rabatt“."
+      },
+      {
+        "title": "Vier Durchgänge für First Class",
+        "why": "Mit 1, 2 und 3 Durchgängen wäre die höchste Klasse nur eine gewöhnliche Stufe. Der Sprung von zwei auf vier gibt allen, deren Einkauf nahe an 15.000.000 Toman liegt, einen Grund aufzustocken, und macht First Class zum schnellsten Weg, das Set zu vervollständigen.",
+        "alternatives": "Linear steigende Durchgänge oder ein Durchgang pro Million Toman.",
+        "tradeoff": "Die größten Warenkörbe sichern sich einen größeren Anteil an der Verlosung.",
+        "evidence": "In jeder Notiz zur Mechanik markiert: Die Vier darf nicht auf drei „korrigiert“ werden."
+      },
+      {
+        "title": "Eine Rechnung bestimmt die Klasse",
+        "why": "Die Klassen zählen eine einzelne Rechnung und runden ab. Zwei Rechnungen über je 5.000.000 Toman ergeben zwei Economy-Durchgänge, aber nie Business, sodass niemand den Sprung durch Aufteilen eines Einkaufs austricksen kann.",
+        "alternatives": "Die Rechnungen einer Person über den ganzen Sommer addieren.",
+        "tradeoff": "Wer in einer Woche zweimal einkauft, bekommt weniger als jemand, der einmal kauft.",
+        "evidence": "Eine Tabelle mit Grenzfällen in der Notiz zu den Reiseklassen, mit einem Satz für das Personal zu jeder Lücke."
+      },
+      {
+        "title": "Seltene Stempel, gleiche Chancen",
+        "why": "Premier-Stempel kommen seltener vor, was das Vervollständigen des Sets zur Herausforderung macht. Trotzdem ist jeder Stempel eine Chance in der Verlosung, sodass die Verlosung fair bleibt, die Wahrscheinlichkeiten nicht abgedruckt werden und die neun Felder des Rads gleich groß sind.",
+        "alternatives": "Die Verlosung nach Seltenheit gewichten.",
+        "tradeoff": "Ein seltener Stempel fühlt sich besonders an, bringt aber nichts zusätzlich.",
+        "evidence": "Regel 4 der Verlosungsregeln auf der zweiten Seite."
+      },
+      {
+        "title": "Ein Konzept in jeder Filiale",
+        "why": "Die erste Landingpage gab jeder Filiale ein eigenes Reiseziel. Der Kanon verlegte alle Reisethemen in die neun Stempel, sodass jeder Store als Narian erkennbar ist und ein Kit für alle reicht.",
+        "alternatives": "Ein thematisches Reiseziel für jede Filiale.",
+        "tradeoff": "Kein Thema, das Reisende in eine zweite Filiale lockt.",
+        "evidence": "Das Briefing für die Präsentation: „Eine ‚Oasis‘ gibt es nirgends.“"
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "Mein Anteil",
+    "intro": "Alles Folgende stammt aus meinen Kampagnendateien. Das Markenhandbuch, die Stores und das Eröffnungsdatum kamen von Narian.",
+    "own": [
+      "Das Konzept, die Marken-Leitplanke und die zentrale Idee",
+      "Die Mechanik und ihre Ökonomie: Klassen, Durchgänge und Grenzfälle",
+      "Der persisch-englische Copy-Kanon und die Skripte für das Personal",
+      "Vorgaben für Druck und Aufbau: Boardingpass, Pass, Gate, Schilder und Gewinnerurkunde",
+      "Das Set aus neun Stempeln und das Skript, das es zeichnet",
+      "Art Direction für die Konzept-Renderings, erstellt mit einem KI-Bildmodell",
+      "Die Seite für Reisende in zwei Generationen, die zweite mit Claude gebaut",
+      "Das Briefing für die Präsentation beim Auftraggeber, Folie für Folie"
+    ],
+    "collaborate": [
+      "Narian: das Markenhandbuch, die Stores und das Eröffnungsdatum in der Hadish Mall"
+    ],
+    "note": "Die Konzept-Renderings sind KI-Bilder nach meinen Briefings, gedacht für die Gestaltungsrichtung und für Briefings an Dienstleister. Sie sind keine Fotos eines fertigen Stores, und nichts davon wurde gebaut."
+  },
+  "outcomes": {
+    "heading": "Was vorliegt",
+    "intro": "Nichts ist gelaufen, also wurde nichts gemessen. Das hier sind die gelieferten Teile des Systems.",
+    "items": [
+      {
+        "label": "Reiseklassen",
+        "context": "5.000.000, 8.000.000 und 15.000.000 Toman auf einer Rechnung, für 1, 2 und 4 Durchgänge"
+      },
+      {
+        "label": "Sammelstempel",
+        "context": "Drei Gruppen, je eine gleiche Gewinnchance, Bonus-Chancen für das volle Set"
+      },
+      {
+        "label": "Momente, für die Crew ausformuliert",
+        "context": "Jeweils ein englisches Stichwort, der persische Satz und die Handlung dazu"
+      },
+      {
+        "label": "Rabatte",
+        "context": "Die Belohnung ist ein Stempel und eine Chance auf eine Reise"
+      }
+    ],
+    "shipped": [
+      "Ein Kampagnen-Kanon: Briefing, Strategie, Mechanik und eine persisch-englische Copy-Bibliothek",
+      "Vorgaben für Druck und Aufbau von Boardingpass, Pass, Gate, Schildern und Gewinnerurkunde",
+      "Neun Stempel und das Skript, das sie zeichnet",
+      "Konzept-Renderings für jede Station der Reise und drei Arten von Filialen",
+      "Zwei Generationen der Seite für Reisende",
+      "Ein Briefing für die Präsentation beim Auftraggeber, Folie für Folie"
+    ]
+  },
+  "lessons": {
+    "heading": "Was ich beibehalten und was ich ändern würde",
+    "items": [
+      {
+        "title": "Die Einschränkung vor der Mechanik aufschreiben",
+        "body": "Der Gutschein verlor, weil die Position der Marke zuerst aufgeschrieben war. Da die Leitplanke schon in der Strategienotiz stand, brauchte es nur eine ehrliche Prüfung, um die stärkste Mechanik zu streichen."
+      },
+      {
+        "title": "Ein Kanon braucht eine Kontrolle",
+        "body": "Der Kanon nennt jeden Widerspruch einen Bug, und das Briefing für die Präsentation verbot die zwei schlimmsten Abweichungen namentlich. Eine aus diesem Briefing generierte Präsentation brachte trotzdem ein Glücksrad mit Rabatten zurück und nannte fünf Gewinner statt drei. Eine Regel hält nur, wenn jedes Ergebnis daran geprüft wird, bevor es jemand sieht."
+      },
+      {
+        "title": "Die Entscheidungen des Auftraggebers sichtbar offen lassen",
+        "body": "Budget, Ziele, Filialen und den Wert des Gewinns legt Narian fest. Der Plan markiert jeden Punkt mit „festzulegen“, statt zu raten, damit er sich so, wie er ist, übergeben und kalkulieren lässt."
+      }
+    ]
+  }
+}

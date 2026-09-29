@@ -113,6 +113,13 @@ import {
   mkbLocalizedFields,
 } from './merikh-baft/study'
 import {
+  NSP_ASSETS,
+  NSP_MEDIA,
+  NSP_SHARED_FIELDS,
+  NSP_SLUG,
+  nspLocalizedFields,
+} from './narian-summer-passport/study'
+import {
   ND_ASSETS,
   ND_LOCALES,
   ND_MEDIA,
@@ -473,6 +480,20 @@ export const CASE_STUDIES: CaseStudySeedConfig<any, any>[] = [
     coverCompanionMediaKey: 'fileManager',
     sharedFields: ARV_SHARED_FIELDS,
     localizedFields: arvLocalizedFields,
+  },
+  // Narian Summer Passport (2026-09-28): the archive row (order 107) had no cover. The card leads
+  // with the traveller's page on a phone in front of the storefront render, which stays the share image.
+  {
+    label: 'Narian Summer Passport',
+    slug: NSP_SLUG,
+    assetsDir: NSP_ASSETS,
+    media: NSP_MEDIA,
+    seedLocales: LOCALES,
+    createFields: { kind: ['growth', 'concept'], order: 107, coverMediaKey: 'v2Mobile' },
+    replaceCover: true,
+    coverCompanionMediaKey: 'storefront',
+    sharedFields: NSP_SHARED_FIELDS,
+    localizedFields: nspLocalizedFields,
   },
 ]
 

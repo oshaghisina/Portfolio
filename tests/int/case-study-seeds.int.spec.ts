@@ -591,6 +591,23 @@ const GATES: Record<string, { files: RegExp[]; text: RegExp[] }> = {
     ],
     text: YARAVAN_GATE.text,
   },
+  'narian-summer-passport': {
+    // Only `study/`: concept renders from Sina's briefs, the stamp set, captures of both landing
+    // pages, the persona portraits and three store photos, each beside the render made from it
+    // (Sina, 2026-09-28). Never the generated client deck (it drifted from the canon), the off-canon
+    // digital-passport mock-up (city stamps), or the other eight store photos. No one at Narian is
+    // named, and none of the deck's invented figures (a budget, a branch count) is repeated.
+    files: [/^(?!study\/)/, /deck|online-passport|photo_2026/i, /^study\/store\/(?!(storefront|counter|platform)\.jpg$)/],
+    text: [
+      /airline|ایرلاین|إيرلاين|エアライン/i,
+      /billion|میلیارد|مليار|Milliarde|milliard|mil millones|億/i,
+      /Saffary|صفاری|صفاري/i,
+      /Mashhad|مشهد|マシュハド/i,
+      /(?<![\d۰-۹٠-٩])(10|۱۰|١٠) (branches|شعبه|فروع|Filialen|sucursales|boutiques)/i,
+      /@|gmail/i,
+      /figma\.com/i,
+    ],
+  },
 }
 
 /**

@@ -654,8 +654,8 @@ export const PROJECT_SEED: ProjectSeedRow[] = [
     liveUrl: 'https://greenrest.ir',
   },
   {
-    // PRJ-11. Designed in full and never run: listed as a concept, not featured, and no case study
-    // until the README's open questions close. See Docs/Experience/Projects/narian-summer-passport/.
+    // PRJ-11. Designed in full and never run: a concept, not featured. Case study since 2026-09-28
+    // (Sina: publish it from the campaign files). See Docs/Experience/Projects/narian-summer-passport/.
     slug: 'narian-summer-passport',
     title: 'Narian Summer Passport — retail campaign',
     summary:
@@ -666,6 +666,12 @@ export const PROJECT_SEED: ProjectSeedRow[] = [
     order: 107,
     status: 'published',
     period: { start: '2026-06-01T00:00:00.000Z' },
+    // The traveller's page (the second, canon-compliant generation) on a phone, set to launch morning.
+    cover: {
+      path: 'Docs/Experience/Projects/narian-summer-passport/assets/study/pages/mobile/v2.webp',
+      name: 'narian-summer-passport--cover.webp',
+      alt: 'The Narian Summer Passport landing page on a phone: the Persian headline Every purchase is your travel ticket, the campaign dates and a countdown showing 31 days',
+    },
   },
 ]
 

@@ -1,0 +1,506 @@
+{
+  "statement": "Una campaña de verano que convierte cada tienda de Narian en un aeropuerto y cada compra en un billete, sin un solo descuento.",
+  "industry": "Retail · moda femenina",
+  "team": "Freelance; renders conceptuales hechos con un modelo de generación de imágenes y el prototipo, con Claude",
+  "heroCaption": "Render conceptual de una tienda de Narian ambientada como terminal: vinilos de bienvenida en el cristal, una puerta de embarque nada más cruzar la entrada y una pista hasta el check-in.",
+  "snapshot": {
+    "problem": "Hacer crecer la cesta de compra y reunir una lista de clientes antes de que abriera una nueva tienda, para una marca a la que su propio manual aleja de los descuentos.",
+    "role": "Estratega de campaña y especialista en marketing: concepto, mecánica y números, un canon de textos en persa e inglés, guiones para el personal, especificaciones de impresión, la serie de sellos y la página del viajero.",
+    "result": "Una campaña completa, hasta la frase que se dice en caja cuando sale un sello raro. Nunca se lanzó, así que no hay resultados."
+  },
+  "alt": {
+    "storefront": "Render conceptual: una tienda de Narian en un centro comercial, con vinilos de Narian Summer Passport en el cristal, una puerta de embarque rosa nada más cruzar la entrada y una pista marcada en el suelo que lleva al check-in",
+    "storefrontFirst": "Render conceptual, primera versión: una tienda de Narian con un rótulo Welcome to Narian Summer Passport sobre el cristal y un cartel de check-in colocado de pie en el pasillo del centro comercial",
+    "photoFront": "Fotografía de una tienda de Narian desde el pasillo del centro comercial: el logotipo iluminado sobre una fachada de cristal, con maniquíes y percheros dentro",
+    "photoCounter": "Fotografía del mostrador de caja de una tienda de Narian: un mostrador negro delante de una pared gris con el logotipo de Narian y estantes iluminados a ambos lados",
+    "photoPlatform": "Fotografía del interior de una tienda de Narian: tres maniquíes sobre una plataforma redonda de color crema delante de una pared rosa con el dibujo lineal del tulipán",
+    "checkIn": "Render conceptual: el mismo mostrador convertido en mostrador de check-in, con una placa de Check-in, pilas de pasaportes, un cartel de registro, un panel con el texto Final destination: Hadish Mall y una pista rosa en el suelo",
+    "handoff": "Render conceptual de la entrega en el check-in sobre un mostrador oscuro: un pasaporte, una tarjeta de embarque, una tarjeta de registro, dos sellos de caucho con una almohadilla de tinta y una caja de tarjetas de vale",
+    "gate": "Render conceptual: una ruleta Gate of Fortune de nueve sectores junto a la plataforma central de maniquíes, un cartel de clases de viaje con Economy 1, Business 2 y First 4, y una pista rosa en el suelo",
+    "reward": "Render conceptual hecho a partir del brief inicial: un pasaporte abierto con un sello, un vale Sunshine del 20 % de descuento válido durante 24 horas, una tarjeta de +1 oportunidad en el sorteo final y un sello de caucho en su bandeja",
+    "terminal": "Render conceptual de una tienda de Narian entera como terminal: un camino rosa en el suelo une una mesa que hace de puesto de pasaportes, una ruleta Gate of Fortune, un cartel de la colección de sellos y una puerta de embarque",
+    "finale": "Render conceptual del gran final en Hadish Mall: un fondo rosa con el texto Final destination, Hadish Mall, una caja transparente con tarjetas del sorteo sobre una mesa con el rótulo Final draw y un panel con el rótulo Final arrival",
+    "kit": "Render conceptual del kit impreso dispuesto en plano: cubiertas de pasaporte y una página de sellos, una tarjeta de embarque, una tarjeta del sorteo final, una tarjeta de vale de 24 horas, una tarjeta de apuntes para el personal, un cartel de mostrador, un sello de caucho y etiquetas",
+    "branchFlagship": "Render conceptual de la fachada de una tienda insignia: un arco rosa con el texto Boarding gate sobre la entrada, un panel de tarjeta de embarque y un panel de salidas, con una pista que lleva al check-in",
+    "branchInterior": "Render conceptual de una tienda más pequeña: un cartel con el texto Check-in and Passport sobre un mostrador rosa, una pista curva en el suelo y un panel de salidas en la pared",
+    "branchOpening": "Render conceptual de la inauguración en Hadish Mall: un panel de salidas con el texto Final destination, Hadish Mall sobre la entrada, cordones separadores y carteles de Final arrival y Final draw",
+    "roz": "Retrato generado con IA para la persona Roz, de 18 a 25 años: una mujer joven con una chaqueta color crema sobre un fondo rosa suave",
+    "nara": "Retrato generado con IA para la persona Nara, de 25 a 35 años: una mujer de pelo largo y oscuro con un blazer color crema sobre un fondo rosa suave",
+    "sara": "Retrato generado con IA para la persona Sara, de 35 a 45 años: una mujer con un blazer color crema encima de un top oscuro, sobre un fondo rosa suave",
+    "stampOcean": "El sello Ocean: tres olas azules dentro de un anillo circular con los textos Narian y Summer Passport",
+    "stampDesert": "El sello Desert: dunas en color arena dentro del mismo anillo circular",
+    "stampCoast": "El sello Coast: un sol sobre las olas en azul pálido dentro del mismo anillo circular",
+    "stampSunshine": "El sello Sunshine: un sol con rayos en ámbar dentro del mismo anillo circular",
+    "stampPalm": "El sello Palm: una palmera en verde dentro del mismo anillo circular",
+    "stampSunset": "El sello Sunset: medio sol en el horizonte, en coral, dentro del mismo anillo circular",
+    "stampLuckyDay": "El sello Lucky Day: un tulipán de cuatro hojas con una estrella, en magenta, con un tenue anillo exterior punteado",
+    "stampUpgrade": "El sello Upgrade: dos galones apuntando hacia arriba, en bronce, con un tenue anillo exterior punteado",
+    "stampBoarding": "El sello Boarding: un avión y una ruta de vuelo punteada, en negro azulado, con un tenue anillo exterior punteado",
+    "v1Desktop": "La primera landing page en escritorio, primera pantalla: el titular en persa “Este verano, cada compra es un billete de viaje” sobre un render de la tienda teñido de rosa",
+    "v1Mobile": "La primera landing page en un móvil, primera pantalla: el titular en persa, las fechas de la campaña y dos botones sobre el render de la tienda",
+    "v1DesktopFull": "La primera landing page en escritorio, página completa: la historia, cinco pasos, las clases de viaje, nueve sellos, vales instantáneos, cinco destinos y el gran final",
+    "v1MobileFull": "La primera landing page en un móvil, página completa, del titular al pie de página",
+    "v2Desktop": "La segunda landing page en escritorio, primera pantalla: el titular en persa “Cada compra es tu billete de viaje” en una tarjeta sobre el render de la tienda, con una cuenta atrás",
+    "v2Mobile": "La segunda landing page en un móvil, primera pantalla: el titular, las fechas, dos botones y una cuenta atrás que marca 31 días",
+    "v2DesktopFull": "La segunda landing page en escritorio, página completa: cinco pasos, las clases de viaje, la puerta, nueve sellos, el premio, el registro del pasaporte digital, las tiendas y las preguntas",
+    "v2MobileFull": "La segunda landing page en un móvil, página completa, de la cuenta atrás al pie de página",
+    "v2Classes": "La segunda página en un móvil: las clases de viaje, Economy desde 5 millones de tomanes con 1 turno y Business desde 8 millones con 2",
+    "v2StampOpen": "La segunda página en un móvil: el sello Lucky Day abierto en una tarjeta, marcado como Premier y raro",
+    "v2Prize": "La segunda página en un móvil: el gran premio, una bolsa de viaje para 3 viajeros, presentada como una tarjeta de embarque con fecha del 11 de agosto",
+    "v2SignupDone": "La segunda página en un móvil tras el registro: la confirmación de que el pasaporte está listo, con un número ficticio, una cuadrícula de sellos que marca 5 de 9 y botones para un recordatorio, la tienda más cercana e invitar a un viajero",
+    "v2Rules": "La segunda página en un móvil: las seis reglas del sorteo en un cuadro de diálogo, desde quién puede participar hasta las fechas de la campaña",
+    "v1PrizeCrop": "La sección de premios de la primera landing page: “Cada sello, un premio al instante”, con vales del 10 al 40 % de descuento junto al render de un vale Sunshine del 20 % de descuento",
+    "v2PrizeCrop": "La sección del premio de la segunda landing page: “El premio es un viaje de verdad”, con una tarjeta de embarque que presenta una bolsa de viaje para 3 ganadores"
+  },
+  "chapters": {
+    "context": {
+      "heading": "Una tienda nueva y un verano para llenarla",
+      "body": [
+        "Narian es una marca iraní de moda femenina: ropa smart casual para mujeres modernas y urbanas, hecha por un grupo con más de cincuenta años de trayectoria en fábricas textiles. Su eslogan es “Smart. Stylish.”",
+        "En el verano de 2026, Narian iba a abrir una nueva tienda en Hadish Mall, en Teherán, el 11 de agosto (20 de mordad de 1405). La campaña disponía del mes anterior, desde el 11 de julio, en todas las tiendas y en la tienda online.",
+        "Los objetivos eran cestas más grandes durante todo el verano, más visitas recurrentes, una lista con los números de móvil de los clientes y una antesala que convirtiera la inauguración en un acontecimiento."
+      ]
+    },
+    "problem": {
+      "heading": "Cestas más grandes, sin rebajas",
+      "body": [
+        "La herramienta habitual para llenar más la cesta es un descuento. El manual de marca de Narian la sitúa lejos del bombo y la ostentación —serena, práctica y fiable—, y la nota de estrategia de la campaña pone por escrito la consecuencia: “sin depender de los descuentos”. Unas rebajas de verano habrían socavado el posicionamiento que la campaña debía reforzar.",
+        "El escaparate de una de las tiendas ya mostraba esa tensión: un cartel de rebajas en un perchero junto al panel de campaña de la propia marca. La campaña tenía que hacer crecer la cesta con algo que los clientes quisieran terminar, y mantener todas las recompensas lejos del precio."
+      ],
+      "insight": "La recompensa tenía que ser algo que quien compra quiera completar."
+    },
+    "research": {
+      "heading": "Empezar por el manual de marca y la tienda",
+      "body": [
+        "Antes de pensar en ninguna mecánica, convertí el manual de marca de Narian en una sola nota de referencia para toda la campaña: la paleta y sus reglas (manda el rosa suave; el magenta nunca va junto al negro azulado), las tipografías Peyda y Gilroy, el símbolo del tulipán tomado de los relieves de Persépolis y un tono sencillo, cálido y honesto. Todas las notas posteriores remiten a ella.",
+        "Las tres personas del manual de marca pasaron a ser el público de la campaña, cada una asociada a la clase en la que más probablemente volaría y al gancho con más posibilidades de hacerla volver.",
+        "Después, la tienda. Once fotos de una de ellas, de la fachada y los escaparates al mostrador, los pasillos y el probador, se convirtieron en un mapa de ubicaciones: los mensajes grandes, en el cristal y en las cajas de luz; la mecánica, en el mostrador; la puerta, cerca de la plataforma central, donde no bloqueara el pasillo, y nada encima del logotipo."
+      ]
+    },
+    "approach": {
+      "heading": "Cada tienda, un aeropuerto; cada cliente, un viajero",
+      "body": [
+        "La campaña convierte la compra en un viaje. Cada tienda pasa a ser una terminal; la caja, un mostrador de check-in; la ruleta de premios, una puerta de embarque, y el personal, una tripulación de vuelo. Quien compra es siempre un viajero. Una sola frase lo une todo: “Every Purchase is Your Ticket” (cada compra es tu billete).",
+        "Todos los viajes vuelan a un mismo lugar, el Destino Final: la inauguración en Hadish Mall, donde la campaña se cierra con un sorteo en directo. El mismo concepto funciona en todas las tiendas, y los temas de viaje viven en los nueve sellos."
+      ]
+    },
+    "mechanic": {
+      "customLabel": "Mecánica",
+      "heading": "Tres clases, una factura",
+      "body": [
+        "El gasto fija una clase de viaje, y la clase fija cuántas veces pasa el viajero por la Gate of Fortune. Una sola factura de 5.000.000 tomanes o más es Economy, con un turno; de 8.000.000, Business, con dos; de 15.000.000, First Class, con cuatro.",
+        "Los escalones son deliberados. Los turnos dependen del umbral más alto alcanzado y los importes intermedios se redondean a la baja, así que 7.000.000 tomanes siguen siendo Economy. Dos facturas de 5.000.000 dan dos turnos Economy, nunca una Business. Y First Class salta de dos turnos a cuatro, un salto que todas las notas de la mecánica señalan para que nadie lo “corrija” a tres.",
+        "Cada hueco entre umbrales es también una frase para el personal: con 7.000.000 tomanes, a un viajero le falta 1.000.000 para un segundo turno; con 12.000.000, le faltan 3.000.000 para cuatro. El guion lo presenta como un viaje mejor y más oportunidades, nunca como gastar más."
+      ],
+      "insight": "El salto de dos turnos a cuatro es el gancho de la campaña para subir de clase."
+    },
+    "cut": {
+      "customLabel": "Validación",
+      "heading": "La mecánica más potente se quedó fuera",
+      "body": [
+        "El primer diseño daba con cada giro un vale de 24 horas: nueve vales, del 10 al 40 % de descuento en la siguiente compra. Habría hecho volver rápido a los clientes, y les habría enseñado que Narian hace descuentos.",
+        "En la validación se eliminó. Ahora cada giro da un sello fechado en el pasaporte y una oportunidad en el sorteo final, y nada más. El premio pasó al final: una bolsa de viaje para tres ganadores, sorteada en directo el día de la inauguración en Hadish Mall, donde los ganadores tienen que estar presentes. Queda fuera del presupuesto de la campaña, y su importe aún estaba por fijar.",
+        "Los primeros renders conceptuales y la primera landing page todavía muestran el vale. El canon, los guiones del personal y la segunda página ya aplican el recorte."
+      ],
+      "insight": "Era la mecánica con más tirón, y se fue porque iba contra la marca."
+    },
+    "collection": {
+      "customLabel": "Colección",
+      "heading": "Nueve sellos, las mismas oportunidades",
+      "body": [
+        "La puerta cae en uno de los nueve sellos, repartidos en tres franjas: Discovery (Ocean, Desert, Coast), Sunshine (Sunshine, Palm, Sunset) y Premier (Lucky Day, Upgrade, Boarding). Los sellos Premier salen con menos frecuencia, lo que hace de completar la colección un verdadero reto.",
+        "La rareza solo cuenta para la colección. Cada sello vale una misma oportunidad en el sorteo, las probabilidades nunca se imprimen y los nueve sectores de la ruleta se dibujan del mismo tamaño. Completar los nueve suma oportunidades extra: cinco, según la propuesta.",
+        "Cada sello tiene un nombre persa fijo y su propio color, los únicos colores que la campaña añade a la paleta de Narian. Un pequeño script dibuja los nueve, así que comparten el mismo anillo, la misma tipografía y el mismo grosor de línea."
+      ]
+    },
+    "canon": {
+      "customLabel": "Canon de textos",
+      "heading": "Cada palabra, de una sola nota",
+      "body": [
+        "Una campaña que se despliega en todas las tiendas, online y en impresos tiene cientos de sitios donde decir lo que no debe. Por eso las palabras viven en un solo lugar: una biblioteca de textos en persa e inglés con la firma fija y cinco frases alternativas, los carteles de entrada y de orientación, las frases del check-in, los textos de la tarjeta de embarque y del pasaporte, los nombres de los nueve sellos y un glosario.",
+        "Sus reglas son concretas. Quien compra es siempre un viajero, nunca un cliente; los textos en persa usan cifras persas, nunca “5M”; la puerta se abre con “Tu puerta está abierta”, nunca con “gira la ruleta”, y las tres cosas que se llaman Boarding (la tarjeta, el sello fechado y el sello Premier) nunca se confunden.",
+        "El guion del personal convierte el canon en habla: siete momentos, del saludo a la despedida, cada uno escrito como un apunte breve en inglés para que la tripulación lo recuerde, la frase en persa que realmente dice y lo que hace mientras la dice."
+      ]
+    },
+    "kit": {
+      "customLabel": "Impresión y espacio",
+      "heading": "Un kit que cualquier tienda puede montar",
+      "body": [
+        "Los briefs visuales especifican cada objeto para su impresión y su montaje. La tarjeta de embarque mide 210 × 90 mm y tiene un talón perforado de 55 mm para arrancar. El pasaporte es un librito B7 de 125 × 88 mm y de 8 a 12 páginas, con el tulipán en relieve sobre una cubierta mate de color crema y una página de nueve anillos vacíos, cada uno con una línea debajo para el sello fechado.",
+        "La puerta es una ruleta de 80 a 100 cm de diámetro con nueve sectores iguales y un indicador inspirado en los paneles de salidas. Los carteles usan Gilroy en mayúsculas con un espaciado entre letras amplio. Todo es mate, como pide el manual de marca para las piezas físicas, y el foil se reserva para unos pocos detalles, como los sellos raros y el certificado del premio.",
+        "Un pasaporte por viajero para toda la campaña: emitir un segundo es uno de los tres errores que prohíbe el guion del personal. Y un solo concepto para todas las tiendas, así que el kit se produce una sola vez."
+      ]
+    },
+    "online": {
+      "customLabel": "Online",
+      "heading": "El mismo viaje en el móvil",
+      "body": [
+        "Las compras online también cuentan. Un pasaporte digital, una puerta online y unos sellos digitales van ligados al mismo número de móvil, así que lo que un viajero reúne en tienda y online se suma en un solo pasaporte.",
+        "La página del viajero tuvo dos generaciones. La primera, del 30 de junio, explicaba la mecánica pero aún incluía el vale, un umbral de Business de 10.000.000 tomanes, unas fechas desfasadas tres días y cinco “destinos” de tienda, uno de ellos, Oasis, ausente de cualquier otra nota. No recogía números de teléfono.",
+        "La segunda sigue el canon: una cuenta atrás hasta la inauguración, el viaje en cinco pasos, las tres clases, una puerta de demostración, los nueve sellos, el premio como tarjeta de embarque, un registro que convierte el número de móvil en el pasaporte, cinco preguntas, seis reglas del sorteo y una nota de privacidad. La construí como prototipo funcional con Claude, a partir de las notas de la campaña."
+      ]
+    },
+    "result": {
+      "heading": "Lista para salir, y nunca salió",
+      "body": [
+        "La campaña nunca se lanzó. Su ventana, del 11 de julio al 11 de agosto de 2026, pasó sin ella. Todas las celdas de la tabla de KPI están vacías, la retrospectiva es una plantilla en blanco y no hay resultados que contar.",
+        "Los archivos muestran dónde se detuvo el trabajo. Todo lo que requería criterio creativo o estratégico está terminado. Todo lo que requería una decisión de Narian está en blanco: sin presupuesto, sin objetivos, sin lista de tiendas y sin importe para el premio."
+      ],
+      "insight": "El trabajo se detiene justo donde empiezan las decisiones del cliente."
+    }
+  },
+  "figures": {
+    "personas": {
+      "caption": "Las tres personas del manual de marca, en retratos generados con IA para la presentación, con la clase en la que más probablemente volaría cada una.",
+      "items": [
+        "Roz, 18–25 · probablemente Economy · coleccionar y compartir sellos",
+        "Nara, 25–35 · probablemente Business · completar la colección",
+        "Sara, 35–45 · probablemente First Class · la terminal tranquila y el gran final"
+      ]
+    },
+    "counter": {
+      "caption": "El mostrador de una tienda y, en un render conceptual, ese mismo mostrador convertido en check-in. La pared del logotipo queda despejada.",
+      "items": [
+        "El mostrador de una tienda, tal como se fotografió",
+        "El mostrador de check-in, render conceptual"
+      ]
+    },
+    "storefront": {
+      "caption": "La fachada en tres pasos. Tras los comentarios sobre el primer render, el pasillo del centro comercial quedó libre, así que los carteles pasaron al cristal y la puerta, al interior.",
+      "items": [
+        "La fachada, tal como se fotografió",
+        "Primer render: carteles en el pasillo del centro comercial",
+        "Render final: vinilos en el cristal y la puerta dentro"
+      ]
+    },
+    "journeyEnds": {
+      "caption": "Renders conceptuales de dos paradas: la tienda entera como una sola terminal y el sorteo de la inauguración en Hadish Mall. Como se hizo a partir del brief inicial, la terminal todavía tiene un cartel sobre vales.",
+      "items": [
+        "La terminal: un solo recorrido por la tienda",
+        "El destino final: el sorteo en directo"
+      ]
+    },
+    "gate": {
+      "caption": "La plataforma central de la tienda y, a su lado, la Gate of Fortune con el cartel de clases de viaje. El render salió del brief inicial, así que el cartel todavía promete un vale con cada turno.",
+      "items": [
+        "La plataforma central, tal como se fotografió",
+        "La Gate of Fortune, render conceptual"
+      ]
+    },
+    "prize": {
+      "caption": "La primera landing page (30 de junio) ofrecía un vale instantáneo con cada sello, del 10 al 40 % de descuento. La segunda ofrece un solo premio: una bolsa de viaje para tres viajeros, sorteada en directo en la inauguración.",
+      "items": [
+        "Primera página: un vale con cada sello",
+        "Segunda página: un solo premio, un viaje"
+      ]
+    },
+    "stamps": {
+      "caption": "Los nueve sellos sobre el papel crema del pasaporte. Los tres sellos Premier llevan un segundo anillo tenue.",
+      "items": [
+        "Ocean · franja Discovery",
+        "Desert · franja Discovery",
+        "Coast · franja Discovery",
+        "Sunshine · franja Sunshine",
+        "Palm · franja Sunshine",
+        "Sunset · franja Sunshine",
+        "Lucky Day · franja Premier",
+        "Upgrade · franja Premier",
+        "Boarding · franja Premier"
+      ]
+    },
+    "kit": {
+      "caption": "Renders conceptuales del kit impreso: la entrega en el check-in y el conjunto completo dispuesto en plano. Los dos salieron del brief inicial y todavía incluyen una tarjeta de vale.",
+      "items": [
+        "La entrega: tarjeta de embarque, pasaporte, tarjeta de registro y sellos",
+        "El conjunto: pasaporte, tarjeta de embarque, tarjeta de apuntes, cartel de mostrador y etiquetas"
+      ]
+    },
+    "branches": {
+      "caption": "Un mismo concepto en tres tipos de tienda, en renders conceptuales: la fachada de una tienda insignia, un interior más pequeño y la inauguración en Hadish Mall.",
+      "items": [
+        "La fachada de una tienda insignia",
+        "Una tienda más pequeña",
+        "La inauguración en Hadish Mall"
+      ]
+    },
+    "phone": {
+      "caption": "La segunda página en un móvil, con la fecha fijada en la mañana del lanzamiento: las tres clases, un sello abierto, el premio como tarjeta de embarque y el pasaporte digital tras el registro, con un número ficticio.",
+      "items": [
+        "Clases de viaje",
+        "Un sello, abierto",
+        "El premio",
+        "Pasaporte creado"
+      ]
+    },
+    "pages": {
+      "caption": "Las dos generaciones de la página del viajero, en ancho de escritorio y de móvil. Abre una para ver la página completa.",
+      "items": [
+        "Primera página, 30 de junio",
+        "Segunda página, el prototipo"
+      ]
+    }
+  },
+  "steps": {
+    "storeMap": {
+      "heading": "Dónde va cada pieza en la tienda",
+      "steps": [
+        {
+          "label": "Cristal de la fachada",
+          "note": "Lo primero que ve el viajero",
+          "parts": [
+            "Vinilos de bienvenida",
+            "Cartel de destino final",
+            "Una pista que entra en la tienda"
+          ]
+        },
+        {
+          "label": "Caja de luz y pantalla del escaparate",
+          "note": "Mensajes grandes, pocas palabras",
+          "parts": [
+            "Imagen principal",
+            "Teaser “Pronto embarcamos”",
+            "Teaser “Llegada final”"
+          ]
+        },
+        {
+          "label": "Mostrador",
+          "note": "Se convierte en el check-in",
+          "parts": [
+            "Placa de check-in",
+            "Soportes para pasaportes y tarjetas de embarque",
+            "Tarjeta de registro",
+            "Bandeja de sellos"
+          ]
+        },
+        {
+          "label": "Plataforma central",
+          "note": "La moda sigue siendo la protagonista",
+          "parts": [
+            "La Gate of Fortune, a su lado",
+            "Cartel de clases de viaje"
+          ]
+        },
+        {
+          "label": "Pasillos y percheros",
+          "note": "El paso queda libre",
+          "parts": [
+            "Carteles de orientación",
+            "Recordatorio de la colección de sellos"
+          ]
+        },
+        {
+          "label": "Probador",
+          "note": "Calma: una frase como mucho",
+          "parts": [
+            "“¿Todo listo para embarcar?”"
+          ]
+        }
+      ]
+    },
+    "journey": {
+      "heading": "El viaje, parada a parada",
+      "steps": [
+        {
+          "label": "Entrada al aeropuerto",
+          "note": "“Te damos la bienvenida a Narian Summer Passport”"
+        },
+        {
+          "label": "Check-in",
+          "note": "Nombre, apellidos y número de móvil; el número es el identificador del pasajero"
+        },
+        {
+          "label": "Tarjeta de embarque y pasaporte",
+          "note": "Se emiten una sola vez, con la primera factura de 5.000.000 tomanes o más"
+        },
+        {
+          "label": "Clase de viaje",
+          "note": "La factura fija la clase; la clase fija los turnos"
+        },
+        {
+          "label": "Gate of Fortune",
+          "note": "Un giro por turno"
+        },
+        {
+          "label": "Sello y oportunidad en el sorteo",
+          "note": "Un sello fechado en el pasaporte, una oportunidad en el sorteo final"
+        },
+        {
+          "label": "En tránsito",
+          "note": "Cada nueva factura válida vuelve a abrir la puerta"
+        },
+        {
+          "label": "Destino final",
+          "note": "La inauguración en Hadish Mall y un sorteo en directo de tres bolsas de viaje"
+        }
+      ]
+    },
+    "classes": {
+      "heading": "El camino para subir de clase",
+      "steps": [
+        {
+          "label": "Economy",
+          "note": "Desde 5.000.000 tomanes en una sola factura: 1 turno"
+        },
+        {
+          "label": "Business",
+          "note": "Desde 8.000.000 tomanes: 2 turnos"
+        },
+        {
+          "label": "First Class",
+          "note": "Desde 15.000.000 tomanes: 4 turnos"
+        }
+      ]
+    },
+    "crew": {
+      "heading": "Siete momentos para la tripulación",
+      "steps": [
+        {
+          "label": "Saludo",
+          "note": "“Te damos la bienvenida a Narian Summer Passport.”"
+        },
+        {
+          "label": "Check-in",
+          "note": "“Te damos la bienvenida a bordo. ¿Todo listo para embarcar?”"
+        },
+        {
+          "label": "Tarjeta de embarque",
+          "note": "“Aquí tienes tu tarjeta de embarque. Tu viaje de verano empieza aquí.”"
+        },
+        {
+          "label": "Subir de clase",
+          "note": "“Un poco más y vuelas en Business: dos turnos en la puerta.”"
+        },
+        {
+          "label": "Invitación a la puerta",
+          "note": "“Tu puerta está abierta.”"
+        },
+        {
+          "label": "Sello y oportunidad",
+          "note": "“Es el sello Ocean: tres de nueve, y una oportunidad más en el sorteo final.”"
+        },
+        {
+          "label": "Despedida",
+          "note": "“Buen viaje. Tu pasaporte espera el próximo sello.”"
+        }
+      ]
+    }
+  },
+  "findings": {
+    "guardrail": {
+      "text": "Mantenerlo minimalista/de lujo y plantearlo en torno al viaje y la colección, no al descuento: protege el posicionamiento de Narian, “sin bombo, sin depender de los descuentos”.",
+      "attribution": "La nota de estrategia de la campaña, sobre la línea roja de la marca",
+      "method": "Nota de estrategia, junio de 2026"
+    },
+    "canonRule": {
+      "text": "No reescribas ni inventes ningún nombre, eslogan, importe ni fecha. Si una palabra no está aquí, consulta primero el canon; si tampoco está ahí, márcala como supuesto y resuélvela con el equipo. Cualquier contradicción con esta nota es un error.",
+      "attribution": "Biblioteca de textos y nombres, el canon de la campaña",
+      "method": "La regla de uso al principio de la nota, traducida del persa"
+    }
+  },
+  "decisions": {
+    "heading": "Cinco decisiones que le dieron forma",
+    "lede": "Cada una quedó escrita en las notas de la campaña, con su motivo.",
+    "items": [
+      {
+        "title": "Sacar el descuento de la puerta",
+        "why": "Un vale en cada giro habría hecho volver a los clientes en un día y les habría enseñado a esperar un descuento, el hábito que el manual de marca descarta. La puerta da un sello y una oportunidad en el sorteo, y el único premio es un viaje.",
+        "alternatives": "Un vale más pequeño, o puntos para una compra posterior.",
+        "tradeoff": "Menos tirón en la puerta, y un premio que la mayoría de los viajeros no ganará.",
+        "evidence": "El canon deja constancia de la eliminación, y el guion del personal prohíbe las palabras “vale” y “descuento”."
+      },
+      {
+        "title": "Cuatro turnos para First Class",
+        "why": "Con 1, 2 y 3 turnos, la clase más alta sería un escalón más. Saltar de dos a cuatro da a quien se queda cerca de los 15.000.000 tomanes un motivo para subir, y hace de First Class la forma más rápida de completar la colección.",
+        "alternatives": "Turnos lineales, o un turno por cada millón de tomanes.",
+        "tradeoff": "Las cestas más grandes se llevan una parte mayor del sorteo.",
+        "evidence": "Señalado en todas las notas de la mecánica: no debe “corregirse” a tres."
+      },
+      {
+        "title": "Una sola factura fija la clase",
+        "why": "Las clases cuentan una sola factura y redondean a la baja. Dos facturas de 5.000.000 tomanes dan dos turnos Economy, nunca una Business, así que dividir una compra no sirve para aprovecharse del salto.",
+        "alternatives": "Sumar las facturas de un viajero a lo largo del verano.",
+        "tradeoff": "Quien compra dos veces en una semana gana menos que quien compra una sola vez.",
+        "evidence": "Una tabla de casos límite en la nota de las clases de viaje, con una frase para el personal en cada hueco."
+      },
+      {
+        "title": "Sellos raros, mismas oportunidades",
+        "why": "Los sellos Premier salen con menos frecuencia, lo que hace de completar la colección un reto. Aun así, cada sello es una oportunidad en el sorteo, de modo que el sorteo sigue siendo justo, las probabilidades siguen sin imprimirse y los nueve sectores de la ruleta tienen el mismo tamaño.",
+        "alternatives": "Ponderar el sorteo según la rareza.",
+        "tradeoff": "Un sello raro hace ilusión, pero no gana nada extra.",
+        "evidence": "La regla 4 del sorteo, en la segunda página."
+      },
+      {
+        "title": "Un mismo concepto en todas las tiendas",
+        "why": "La primera landing page daba a cada tienda su propio destino. El canon trasladó todos los temas de viaje a los nueve sellos, así que cada tienda se lee como Narian y un solo kit sirve para todas.",
+        "alternatives": "Un destino temático para cada tienda.",
+        "tradeoff": "Ningún tema que atraiga a un viajero a una segunda tienda.",
+        "evidence": "El brief de la presentación: “No hay ningún ‘Oasis’ en ninguna parte.”"
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "Mi parte",
+    "intro": "Todo lo que sigue sale de mis archivos de la campaña. El manual de marca, las tiendas y la fecha de apertura eran de Narian.",
+    "own": [
+      "El concepto, la línea roja de la marca y la gran idea",
+      "La mecánica y sus números: clases, turnos y casos límite",
+      "El canon de textos en persa e inglés y los guiones del personal",
+      "Especificaciones de impresión y montaje: tarjeta de embarque, pasaporte, puerta, carteles y certificado del premio",
+      "La serie de nueve sellos y el script que la dibuja",
+      "La dirección de arte de los renders conceptuales, hechos con un modelo de generación de imágenes",
+      "La página del viajero en dos generaciones, la segunda construida con Claude",
+      "El brief, diapositiva a diapositiva, de la presentación para el cliente"
+    ],
+    "collaborate": [
+      "Narian: el manual de marca, las tiendas y la fecha de inauguración en Hadish Mall"
+    ],
+    "note": "Los renders conceptuales son imágenes generadas con IA a partir de mis briefs, para marcar la dirección y para los briefings a proveedores. No son fotografías de una tienda terminada, y nada de lo que aparece en ellos se construyó."
+  },
+  "outcomes": {
+    "heading": "Lo que existe",
+    "intro": "No se lanzó nada, así que no se midió nada. Estas son las partes del sistema que se entregaron.",
+    "items": [
+      {
+        "label": "clases de viaje",
+        "context": "5.000.000, 8.000.000 y 15.000.000 tomanes en una sola factura, para 1, 2 y 4 turnos"
+      },
+      {
+        "label": "sellos coleccionables",
+        "context": "Tres franjas, una misma oportunidad en el sorteo por sello y oportunidades extra por la colección completa"
+      },
+      {
+        "label": "momentos con guion para la tripulación",
+        "context": "Para cada uno, un apunte en inglés, la frase en persa y la acción"
+      },
+      {
+        "label": "descuentos",
+        "context": "La recompensa es un sello y una oportunidad de ganar un viaje"
+      }
+    ],
+    "shipped": [
+      "Un canon de campaña: brief, estrategia, mecánicas y una biblioteca de textos en persa e inglés",
+      "Especificaciones de impresión y montaje para la tarjeta de embarque, el pasaporte, la puerta, los carteles y el certificado del premio",
+      "Nueve sellos y el script que los dibuja",
+      "Renders conceptuales de cada parada del viaje y de tres tipos de tienda",
+      "Dos generaciones de la página del viajero",
+      "Un brief, diapositiva a diapositiva, para la presentación al cliente"
+    ]
+  },
+  "lessons": {
+    "heading": "Lo que mantendría y lo que cambiaría",
+    "items": [
+      {
+        "title": "Escribir la restricción antes que la mecánica",
+        "body": "El vale perdió porque el posicionamiento de la marca se puso por escrito primero. Con la línea roja ya en la nota de estrategia, eliminar la mecánica más potente solo requirió una comprobación honesta."
+      },
+      {
+        "title": "Un canon necesita un verificador",
+        "body": "El canon llama error a cualquier contradicción, y el brief de la presentación prohibía por su nombre las dos peores desviaciones. Aun así, una presentación generada a partir de ese brief volvió a traer una ruleta de descuentos y anunció cinco ganadores en lugar de tres. Una regla solo se sostiene cuando cada resultado se contrasta con ella antes de que nadie lo vea."
+      },
+      {
+        "title": "Dejar las decisiones del cliente abiertas y a la vista",
+        "body": "El presupuesto, los objetivos, las tiendas y el importe del premio los fija Narian. El plan marca cada uno como “por fijar” en lugar de adivinarlo, así que se puede entregar y presupuestar tal como está."
+      }
+    ]
+  }
+}

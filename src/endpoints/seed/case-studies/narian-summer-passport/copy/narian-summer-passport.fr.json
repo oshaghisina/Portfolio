@@ -1,0 +1,506 @@
+{
+  "statement": "Une campagne d’été qui fait de chaque boutique Narian un aéroport et de chaque achat un billet, sans la moindre remise.",
+  "industry": "Commerce de détail · prêt-à-porter féminin",
+  "team": "En freelance ; rendus conceptuels réalisés avec un modèle de génération d’images, prototype avec Claude",
+  "heroCaption": "Rendu conceptuel d’une devanture Narian habillée en terminal : des adhésifs de bienvenue sur la vitrine, une porte d’embarquement juste après l’entrée et une piste jusqu’à l’enregistrement.",
+  "snapshot": {
+    "problem": "Augmenter le panier moyen et constituer un fichier clients avant l’ouverture d’une nouvelle boutique, pour une marque que sa propre charte tient à l’écart des remises.",
+    "role": "Stratège de campagne et marketeur : concept, mécanique et économie, un référentiel éditorial persan-anglais, les scripts du personnel, les spécifications d’impression, le jeu de tampons et la page voyageur.",
+    "result": "Une campagne complète, jusqu’à la phrase prononcée en caisse quand tombe un tampon rare. Elle n’a jamais été lancée : il n’y a donc aucun résultat."
+  },
+  "alt": {
+    "storefront": "Rendu conceptuel : une devanture Narian dans un centre commercial, avec des adhésifs Narian Summer Passport sur la vitrine, une porte d’embarquement rose juste après l’entrée et un marquage de piste au sol menant à l’enregistrement",
+    "storefrontFirst": "Rendu conceptuel, première version : une devanture Narian avec une bannière de bienvenue Narian Summer Passport au-dessus de la vitrine et un panneau d’enregistrement sur pied dans la galerie du centre commercial",
+    "photoFront": "Photographie d’une boutique Narian depuis la galerie du centre commercial : le logo lumineux au-dessus d’une façade vitrée, avec des mannequins et des portants à l’intérieur",
+    "photoCounter": "Photographie de la caisse d’une boutique Narian : un comptoir noir devant un mur gris portant le logo Narian, et des étagères éclairées de chaque côté",
+    "photoPlatform": "Photographie à l’intérieur d’une boutique Narian : trois mannequins sur un podium rond crème, devant un mur rose orné du dessin au trait de la tulipe",
+    "checkIn": "Rendu conceptuel : la même caisse habillée en comptoir d’enregistrement, avec une plaque « Check-in », des piles de passeports, un panneau d’inscription, un tableau annonçant la destination finale, Hadish Mall, et une piste rose au sol",
+    "handoff": "Rendu conceptuel du kit remis à l’enregistrement, sur un comptoir sombre : un passeport, une carte d’embarquement, une fiche d’inscription, deux tampons avec un encreur et une boîte de bons de réduction",
+    "gate": "Rendu conceptuel : une roue Gate of Fortune à neuf secteurs à côté du podium central des mannequins, un panneau des classes de voyage indiquant Economy 1, Business 2 et First 4, et une piste rose au sol",
+    "reward": "Rendu conceptuel tiré du premier brief : un passeport ouvert avec un tampon, un bon Sunshine de 20 % de réduction valable 24 heures, une carte donnant une chance de plus au tirage final et un tampon sur son plateau",
+    "terminal": "Rendu conceptuel d’une boutique Narian entière transformée en terminal : un chemin rose au sol relie une table dédiée aux passeports, une roue Gate of Fortune, un panneau de collection de tampons et une porte d’embarquement",
+    "finale": "Rendu conceptuel du final au Hadish Mall : un fond rose annonçant la destination finale, Hadish Mall, une urne transparente pleine de bulletins sur la table du tirage final, et un tableau d’arrivée finale",
+    "kit": "Rendu conceptuel du kit imprimé posé à plat : couvertures de passeport et page de tampons, une carte d’embarquement, un bulletin du tirage final, un bon de réduction valable 24 heures, une fiche aide-mémoire pour le personnel, un panneau de comptoir, un tampon et des étiquettes",
+    "branchFlagship": "Rendu conceptuel de la façade d’une boutique phare : une arche rose de porte d’embarquement au-dessus de l’entrée, un panneau en forme de carte d’embarquement et un tableau des départs, avec une piste menant à l’enregistrement",
+    "branchInterior": "Rendu conceptuel d’une boutique plus petite : un panneau d’enregistrement et de passeports au-dessus d’un comptoir rose, une piste incurvée au sol et un tableau des départs au mur",
+    "branchOpening": "Rendu conceptuel de l’ouverture au Hadish Mall : un tableau des départs annonçant la destination finale, Hadish Mall, au-dessus de l’entrée, des cordons de séparation, et des panneaux d’arrivée finale et de tirage final",
+    "roz": "Portrait généré par IA pour la persona Roz, 18 à 25 ans : une jeune femme en veste crème sur un fond rose tendre",
+    "nara": "Portrait généré par IA pour la persona Nara, 25 à 35 ans : une femme aux longs cheveux foncés, en blazer crème, sur un fond rose tendre",
+    "sara": "Portrait généré par IA pour la persona Sara, 35 à 45 ans : une femme en blazer crème sur un haut sombre, sur un fond rose tendre",
+    "stampOcean": "Le tampon Ocean : trois vagues bleues dans un anneau rond où figurent les mots Narian et Summer Passport",
+    "stampDesert": "Le tampon Desert : des dunes couleur sable dans le même anneau rond",
+    "stampCoast": "Le tampon Coast : un soleil au-dessus des vagues, en bleu pâle, dans le même anneau rond",
+    "stampSunshine": "Le tampon Sunshine : un soleil rayonnant, couleur ambre, dans le même anneau rond",
+    "stampPalm": "Le tampon Palm : un palmier vert dans le même anneau rond",
+    "stampSunset": "Le tampon Sunset : un demi-soleil sur l’horizon, couleur corail, dans le même anneau rond",
+    "stampLuckyDay": "Le tampon Lucky Day : une tulipe à quatre feuilles et une étoile, en magenta, avec un léger anneau extérieur en pointillés",
+    "stampUpgrade": "Le tampon Upgrade : deux chevrons pointant vers le haut, couleur bronze, avec un léger anneau extérieur en pointillés",
+    "stampBoarding": "Le tampon Boarding : un avion et une trajectoire en pointillés, en bleu-noir, avec un léger anneau extérieur en pointillés",
+    "v1Desktop": "La première landing page sur ordinateur, premier écran : le titre persan « Cet été, chaque achat est un billet de voyage » sur un rendu de devanture teinté de rose",
+    "v1Mobile": "La première landing page sur mobile, premier écran : le titre persan, les dates de la campagne et deux boutons sur le rendu de la devanture",
+    "v1DesktopFull": "La première landing page sur ordinateur, page entière : le récit, cinq étapes, les classes de voyage, neuf tampons, des bons de réduction immédiats, cinq destinations et le final",
+    "v1MobileFull": "La première landing page sur mobile, page entière, du titre au pied de page",
+    "v2Desktop": "La seconde landing page sur ordinateur, premier écran : le titre persan « Chaque achat est votre billet de voyage » sur une carte posée sur le rendu de la devanture, avec un compte à rebours",
+    "v2Mobile": "La seconde landing page sur mobile, premier écran : le titre, les dates, deux boutons et un compte à rebours affichant 31 jours",
+    "v2DesktopFull": "La seconde landing page sur ordinateur, page entière : cinq étapes, les classes de voyage, la porte, neuf tampons, le lot, l’inscription au passeport numérique, les boutiques et les questions",
+    "v2MobileFull": "La seconde landing page sur mobile, page entière, du compte à rebours au pied de page",
+    "v2Classes": "La seconde page sur mobile : les classes de voyage, Economy dès 5 millions de tomans avec 1 passage et Business dès 8 millions avec 2",
+    "v2StampOpen": "La seconde page sur mobile : le tampon Lucky Day ouvert sur une carte, marqué Premier et rare",
+    "v2Prize": "La seconde page sur mobile : le gros lot, un budget voyage pour 3 voyageurs présenté comme une carte d’embarquement datée du 11 août",
+    "v2SignupDone": "La seconde page sur mobile après l’inscription : la confirmation que le passeport est prêt, avec un numéro fictif, une grille de tampons affichant 5 sur 9, et des boutons pour un rappel, la boutique la plus proche et l’invitation d’un voyageur",
+    "v2Rules": "La seconde page sur mobile : les six règles du tirage dans une boîte de dialogue, des conditions de participation aux dates de la campagne",
+    "v1PrizeCrop": "La section des lots de la première landing page : « Chaque tampon, un gain instantané », avec des bons de 10 à 40 % de réduction à côté du rendu d’un bon Sunshine de 20 % de réduction",
+    "v2PrizeCrop": "La section du lot de la seconde landing page : « Le lot est un vrai voyage », avec une carte d’embarquement pour un budget voyage destiné à 3 gagnants"
+  },
+  "chapters": {
+    "context": {
+      "heading": "Une nouvelle boutique, et un été pour la remplir",
+      "body": [
+        "Narian est une marque iranienne de prêt-à-porter féminin : des vêtements chic et décontractés pour des femmes modernes et citadines, fabriqués par un groupe présent dans les usines textiles depuis plus de cinquante ans. Son slogan : « Smart. Stylish. »",
+        "À l’été 2026, Narian ouvrait une nouvelle boutique au Hadish Mall, à Téhéran, le 11 août (20 Mordad 1405). La campagne disposait du mois précédent, à partir du 11 juillet, dans toutes les boutiques et sur la boutique en ligne.",
+        "Les objectifs : des paniers plus gros tout l’été, plus de clients qui reviennent, un fichier des numéros de mobile des clients, et une montée en puissance qui fasse de l’ouverture un événement."
+      ]
+    },
+    "problem": {
+      "heading": "Des paniers plus gros, sans soldes",
+      "body": [
+        "L’outil habituel pour faire grossir les paniers, c’est la remise. La charte de marque de Narian la place loin du battage et de l’esbroufe : posée, pratique, digne de confiance. La note stratégique de la campagne en tire la conséquence : « pas de logique de remise ». Des soldes d’été auraient sapé le positionnement que la campagne devait soutenir.",
+        "La vitrine d’une boutique montrait déjà cette tension : une affichette de soldes sur un portant, à côté du panneau de campagne de la marque elle-même. La campagne devait faire grossir le panier grâce à quelque chose que les clients auraient envie de terminer, et tenir toute récompense à l’écart du prix."
+      ],
+      "insight": "La récompense devait être quelque chose qu’un client a envie de compléter."
+    },
+    "research": {
+      "heading": "Partir de la charte et de la boutique",
+      "body": [
+        "Avant toute mécanique, j’ai fait de la charte de marque de Narian une note de référence unique pour toute la campagne : la palette et ses règles (le rose tendre domine, le magenta ne côtoie jamais le bleu-noir), les caractères Peyda et Gilroy, l’emblème de la tulipe tiré des bas-reliefs de Persépolis, et un ton simple, chaleureux et honnête. Chaque note écrite ensuite y renvoie.",
+        "Les trois personas de la charte sont devenues le public de la campagne, chacune associée à la classe dans laquelle elle avait le plus de chances de voyager et à l’accroche la plus à même de la faire revenir.",
+        "Puis le magasin. Onze photos d’une même boutique, de la façade et des vitrines à la caisse, aux allées et à la cabine d’essayage, sont devenues un plan d’implantation : les grands messages sur les vitres et les caissons lumineux, la mécanique au comptoir, la porte près du podium central, là où elle ne bloquerait pas l’allée, et rien par-dessus le logo."
+      ]
+    },
+    "approach": {
+      "heading": "Chaque boutique un aéroport, chaque client un voyageur",
+      "body": [
+        "La campagne fait du shopping un voyage. Chaque boutique devient un terminal, la caisse un comptoir d’enregistrement, la roue de la fortune une porte d’embarquement et le personnel un équipage, et le client est toujours un voyageur. Une seule phrase fait tenir l’ensemble : « Every Purchase is Your Ticket » (chaque achat est votre billet).",
+        "Tous les voyages mènent au même endroit, la Destination finale : l’ouverture au Hadish Mall, où la campagne se clôt par un tirage au sort en direct. Le même concept se déploie dans toutes les boutiques, et les thèmes de voyage vivent dans les neuf tampons."
+      ]
+    },
+    "mechanic": {
+      "customLabel": "Mécanique",
+      "heading": "Trois classes, une facture",
+      "body": [
+        "Le montant dépensé fixe la classe de voyage, et la classe fixe le nombre de passages du voyageur à la Gate of Fortune. Une seule facture de 5 000 000 tomans ou plus place en Economy, avec un passage ; 8 000 000, en Business, avec deux ; 15 000 000, en First Class, avec quatre.",
+        "Les paliers sont voulus. Les passages dépendent du seuil le plus élevé atteint et les montants intermédiaires sont arrondis à l’inférieur : 7 000 000 tomans, c’est donc encore Economy. Deux factures de 5 000 000 donnent deux passages Economy, jamais un passage Business. Et en First Class, on saute de deux passages à quatre, un saut que chaque note sur la mécanique signale pour que personne ne le « corrige » à trois.",
+        "Chaque écart est aussi une phrase pour le personnel : à 7 000 000 tomans, il manque 1 000 000 à un voyageur pour un deuxième passage ; à 12 000 000, il lui manque 3 000 000 pour en avoir quatre. Le script présente cela comme un meilleur voyage et plus de chances, jamais comme une dépense supplémentaire."
+      ],
+      "insight": "Le saut de deux à quatre passages est le levier de montée en gamme de la campagne."
+    },
+    "cut": {
+      "customLabel": "Validation",
+      "heading": "La mécanique la plus forte a été supprimée",
+      "body": [
+        "La première version donnait à chaque tour de roue un bon valable 24 heures : neuf bons, de 10 à 40 % de réduction sur l’achat suivant. Elle aurait fait revenir les clients rapidement, et leur aurait appris que Narian pratique la remise.",
+        "À la validation, elle a été retirée. Chaque tour donne désormais un tampon daté dans le passeport et une chance au tirage final, rien d’autre. Le lot est passé à la fin : un budget voyage pour trois gagnants, attribué par tirage au sort en direct lors de l’ouverture au Hadish Mall, où les gagnants doivent être présents. Il se situe hors du budget de la campagne, et sa valeur restait à fixer.",
+        "Les premiers rendus conceptuels et la première landing page montrent encore le bon. Le référentiel, les scripts du personnel et la seconde page intègrent la suppression."
+      ],
+      "insight": "C’était la mécanique qui attirait le plus, et elle a été retirée parce qu’elle allait contre la marque."
+    },
+    "collection": {
+      "customLabel": "Collection",
+      "heading": "Neuf tampons, des chances égales",
+      "body": [
+        "La Gate of Fortune s’arrête sur l’un des neuf tampons, répartis en trois séries : Discovery (Ocean, Desert, Coast), Sunshine (Sunshine, Palm, Sunset) et Premier (Lucky Day, Upgrade, Boarding). Les tampons Premier tombent moins souvent, ce qui fait de la collection complète un vrai défi.",
+        "La rareté ne compte que pour la collection. Chaque tampon vaut une chance égale au tirage, les probabilités ne sont jamais imprimées, et les neuf secteurs de la roue sont dessinés de la même taille. Compléter les neuf ajoute des chances supplémentaires, cinq dans la proposition.",
+        "Chaque tampon a un nom persan fixe et sa propre couleur, les seules couleurs que la campagne ajoute à la palette de Narian. Un petit script dessine les neuf, qui partagent ainsi un même anneau, une même police et une même épaisseur de trait."
+      ]
+    },
+    "canon": {
+      "customLabel": "Référentiel",
+      "heading": "Chaque mot vient d’une seule note",
+      "body": [
+        "Une campagne présente dans toutes les boutiques, en ligne et sur papier, a des centaines d’occasions de dire la mauvaise chose. Les mots n’ont donc qu’une adresse : une bibliothèque de textes persan-anglais, avec la signature verrouillée et cinq variantes, les panneaux d’entrée et d’orientation, les phrases de l’enregistrement, les libellés de la carte d’embarquement et du passeport, les noms des neuf tampons et un glossaire.",
+        "Ses règles sont précises. On dit toujours voyageur, jamais client ; les textes persans utilisent les chiffres persans, jamais « 5M » ; pour la porte, on dit « Votre porte est ouverte », jamais « faites tourner la roue » ; et les trois éléments appelés Boarding (la carte, le tampon daté et le tampon Premier) ne sont jamais confondus.",
+        "Le script du personnel transforme le référentiel en paroles : sept moments, de l’accueil à l’au revoir, chacun rédigé avec un court repère en anglais que l’équipage retient, la phrase persane réellement prononcée et le geste qui l’accompagne."
+      ]
+    },
+    "kit": {
+      "customLabel": "Impression et espace",
+      "heading": "Un kit que chaque boutique peut monter",
+      "body": [
+        "Les briefs visuels précisent chaque objet pour l’impression et la fabrication. La carte d’embarquement est un carton de 210 × 90 mm avec un talon perforé de 55 mm à détacher. Le passeport est un livret au format B7, de 125 × 88 mm et de 8 à 12 pages, avec la tulipe en relief sur une couverture crème mate et une page de neuf anneaux vides, chacun avec une ligne en dessous pour le tampon daté.",
+        "La porte est une roue de 80 à 100 cm de diamètre, à neuf secteurs égaux, avec un pointeur dans le style d’un tableau des départs. Les panneaux utilisent les capitales de Gilroy, avec un interlettrage large. Tout est mat, comme la charte le demande pour les réalisations physiques, et la dorure est réservée à quelques accents, comme les tampons rares et le certificat des gagnants.",
+        "Un passeport par voyageur, pour toute la campagne : en délivrer un second est l’une des trois erreurs que le script du personnel interdit. Et un seul concept pour toutes les boutiques, si bien que le kit n’est produit qu’une fois."
+      ]
+    },
+    "online": {
+      "customLabel": "En ligne",
+      "heading": "Le même voyage sur mobile",
+      "body": [
+        "Les achats en ligne comptent aussi. Un passeport numérique, une porte en ligne et des tampons numériques sont rattachés au même numéro de mobile : ce qu’un voyageur collecte en boutique et en ligne s’additionne dans un seul passeport.",
+        "La page voyageur a connu deux générations. La première, datée du 30 juin, expliquait la mécanique mais portait encore le bon de réduction, un seuil Business de 10 000 000 tomans, des dates décalées de trois jours et cinq « destinations » de boutique, dont l’une, Oasis, n’apparaît dans aucune autre note. Elle ne collectait aucun numéro de téléphone.",
+        "La seconde suit le référentiel : un compte à rebours jusqu’à l’ouverture, le voyage en cinq étapes, les trois classes, une porte de démonstration, les neuf tampons, le lot présenté comme une carte d’embarquement, une inscription qui fait du numéro de mobile le passeport, cinq questions, six règles du tirage et une mention sur la confidentialité. Je l’ai construite sous forme de prototype fonctionnel avec Claude, à partir des notes de la campagne."
+      ]
+    },
+    "result": {
+      "heading": "Prête, mais jamais lancée",
+      "body": [
+        "La campagne n’a jamais été lancée. Sa fenêtre, du 11 juillet au 11 août 2026, est passée sans elle. Chaque case du tableau des KPI est vide, le bilan n’est qu’un modèle vierge, et il n’y a aucun résultat à présenter.",
+        "Les fichiers montrent où le travail s’est arrêté. Tout ce qui demandait un jugement créatif ou stratégique est terminé. Tout ce qui demandait une décision de Narian est resté vide : pas de budget, pas d’objectifs, pas de liste de boutiques, et pas de valeur pour le lot."
+      ],
+      "insight": "Le travail s’arrête exactement là où commencent les décisions du client."
+    }
+  },
+  "figures": {
+    "personas": {
+      "caption": "Les trois personas de la charte, représentées en portraits générés par IA pour la présentation, avec la classe dans laquelle chacune a le plus de chances de voyager.",
+      "items": [
+        "Roz, 18–25 ans · plutôt Economy · collectionner et partager les tampons",
+        "Nara, 25–35 ans · plutôt Business · compléter la collection",
+        "Sara, 35–45 ans · plutôt First Class · le calme du terminal et le final"
+      ]
+    },
+    "counter": {
+      "caption": "La caisse d’une boutique, et la même caisse en comptoir d’enregistrement dans un rendu conceptuel. Le mur du logo reste dégagé.",
+      "items": [
+        "La caisse d’une boutique, en photo",
+        "Le comptoir d’enregistrement, rendu conceptuel"
+      ]
+    },
+    "storefront": {
+      "caption": "La devanture en trois étapes. Les retours sur le premier rendu ont imposé de laisser la galerie du centre commercial dégagée : les panneaux sont passés sur la vitrine, et la porte à l’intérieur.",
+      "items": [
+        "La façade, en photo",
+        "Premier rendu : des panneaux dans la galerie du centre commercial",
+        "Rendu final : des adhésifs sur la vitrine, la porte à l’intérieur"
+      ]
+    },
+    "journeyEnds": {
+      "caption": "Rendus conceptuels de deux escales : la boutique entière en un seul terminal, et le tirage lors de l’ouverture au Hadish Mall. Réalisé à partir du premier brief, le terminal porte encore un panneau qui parle de bons de réduction.",
+      "items": [
+        "Le terminal : un seul parcours à travers la boutique",
+        "La destination finale : le tirage en direct"
+      ]
+    },
+    "gate": {
+      "caption": "Le podium central de la boutique, et la Gate of Fortune à côté, avec le panneau des classes de voyage. Le rendu vient du premier brief : le panneau promet donc encore un bon de réduction à chaque passage.",
+      "items": [
+        "Le podium central, en photo",
+        "La Gate of Fortune, rendu conceptuel"
+      ]
+    },
+    "prize": {
+      "caption": "La première landing page (30 juin) offrait un bon de réduction immédiat à chaque tampon, de 10 à 40 %. La seconde n’offre qu’un lot : un budget voyage pour trois voyageurs, attribué par tirage au sort en direct à l’ouverture.",
+      "items": [
+        "Première page : un bon de réduction à chaque tampon",
+        "Seconde page : un seul lot, un voyage"
+      ]
+    },
+    "stamps": {
+      "caption": "Les neuf tampons sur le papier crème du passeport. Les trois tampons Premier portent un second anneau, plus discret.",
+      "items": [
+        "Ocean · série Discovery",
+        "Desert · série Discovery",
+        "Coast · série Discovery",
+        "Sunshine · série Sunshine",
+        "Palm · série Sunshine",
+        "Sunset · série Sunshine",
+        "Lucky Day · série Premier",
+        "Upgrade · série Premier",
+        "Boarding · série Premier"
+      ]
+    },
+    "kit": {
+      "caption": "Rendus conceptuels du kit imprimé : ce qui est remis à l’enregistrement, et l’ensemble posé à plat. Tous deux viennent du premier brief et comportent encore un bon de réduction.",
+      "items": [
+        "À l’enregistrement : carte d’embarquement, passeport, fiche d’inscription et tampons",
+        "L’ensemble : passeport, carte d’embarquement, fiche aide-mémoire, panneau de comptoir et étiquettes"
+      ]
+    },
+    "branches": {
+      "caption": "Un seul concept pour trois types de boutique, en rendus conceptuels : la façade d’une boutique phare, l’intérieur d’une boutique plus petite et l’ouverture au Hadish Mall.",
+      "items": [
+        "La façade d’une boutique phare",
+        "Une boutique plus petite",
+        "L’ouverture au Hadish Mall"
+      ]
+    },
+    "phone": {
+      "caption": "La seconde page sur mobile, réglée sur le matin du lancement : les trois classes, un tampon ouvert, le lot présenté comme une carte d’embarquement, et le passeport numérique après l’inscription, avec un numéro fictif.",
+      "items": [
+        "Classes de voyage",
+        "Un tampon, ouvert",
+        "Le lot",
+        "Passeport créé"
+      ]
+    },
+    "pages": {
+      "caption": "Les deux générations de la page voyageur, en largeur ordinateur et mobile. Ouvrez-en une pour voir la page entière.",
+      "items": [
+        "Première page, 30 juin",
+        "Seconde page, le prototype"
+      ]
+    }
+  },
+  "steps": {
+    "storeMap": {
+      "heading": "Où va chaque élément dans la boutique",
+      "steps": [
+        {
+          "label": "Vitrine",
+          "note": "La première chose que voit un voyageur",
+          "parts": [
+            "Adhésifs de bienvenue",
+            "Panneau « Destination finale »",
+            "Un marquage de piste vers l’intérieur"
+          ]
+        },
+        {
+          "label": "Caisson lumineux et écran de vitrine",
+          "note": "Grands messages, peu de mots",
+          "parts": [
+            "Visuel clé",
+            "Teaser « Embarquement imminent »",
+            "Teaser « Arrivée finale »"
+          ]
+        },
+        {
+          "label": "Caisse",
+          "note": "Devient le comptoir d’enregistrement",
+          "parts": [
+            "Plaque d’enregistrement",
+            "Présentoirs à passeports et à cartes d’embarquement",
+            "Fiche d’inscription",
+            "Plateau à tampons"
+          ]
+        },
+        {
+          "label": "Podium central",
+          "note": "Reste le moment mode",
+          "parts": [
+            "La Gate of Fortune à côté",
+            "Panneau des classes de voyage"
+          ]
+        },
+        {
+          "label": "Allées et portants",
+          "note": "La circulation reste libre",
+          "parts": [
+            "Signalétique d’orientation",
+            "Rappel de la collection de tampons"
+          ]
+        },
+        {
+          "label": "Cabine d’essayage",
+          "note": "Calme, une phrase au plus",
+          "parts": [
+            "« On embarque ? »"
+          ]
+        }
+      ]
+    },
+    "journey": {
+      "heading": "Le voyage, escale par escale",
+      "steps": [
+        {
+          "label": "Entrée de l’aéroport",
+          "note": "« Bienvenue au Narian Summer Passport »"
+        },
+        {
+          "label": "Enregistrement",
+          "note": "Prénom, nom et numéro de mobile ; le numéro sert d’identifiant passager"
+        },
+        {
+          "label": "Carte d’embarquement et passeport",
+          "note": "Délivrés une seule fois, dès la première facture de 5 000 000 tomans ou plus"
+        },
+        {
+          "label": "Classe de voyage",
+          "note": "La facture fixe la classe ; la classe fixe les passages"
+        },
+        {
+          "label": "Passage à la Gate of Fortune",
+          "note": "Un tour de roue par passage"
+        },
+        {
+          "label": "Tampon et chance au tirage",
+          "note": "Un tampon daté dans le passeport, une chance au tirage final"
+        },
+        {
+          "label": "En transit",
+          "note": "Chaque nouvelle facture éligible rouvre la porte"
+        },
+        {
+          "label": "Destination finale",
+          "note": "L’ouverture au Hadish Mall et un tirage en direct pour trois budgets voyage"
+        }
+      ]
+    },
+    "classes": {
+      "heading": "Le chemin du surclassement",
+      "steps": [
+        {
+          "label": "Economy",
+          "note": "Dès 5 000 000 tomans sur une seule facture : 1 passage"
+        },
+        {
+          "label": "Business",
+          "note": "Dès 8 000 000 tomans : 2 passages"
+        },
+        {
+          "label": "First Class",
+          "note": "Dès 15 000 000 tomans : 4 passages"
+        }
+      ]
+    },
+    "crew": {
+      "heading": "Sept moments pour l’équipage",
+      "steps": [
+        {
+          "label": "Accueil",
+          "note": "« Bienvenue au Narian Summer Passport. »"
+        },
+        {
+          "label": "Enregistrement",
+          "note": "« Bienvenue à bord. On embarque ? »"
+        },
+        {
+          "label": "Carte d’embarquement",
+          "note": "« Voici votre carte d’embarquement. Votre voyage d’été commence ici. »"
+        },
+        {
+          "label": "Montée en classe",
+          "note": "« Encore un peu et vous voyagez en Business : deux passages à la porte. »"
+        },
+        {
+          "label": "Invitation à la porte",
+          "note": "« Votre porte est ouverte. »"
+        },
+        {
+          "label": "Tampon et chance",
+          "note": "« Voici le tampon Ocean, trois sur neuf, et une chance de plus au tirage final. »"
+        },
+        {
+          "label": "Au revoir",
+          "note": "« Bon voyage. Votre passeport attend le prochain tampon. »"
+        }
+      ]
+    }
+  },
+  "findings": {
+    "guardrail": {
+      "text": "Rester minimal/luxe et tout axer sur le voyage et la collection, pas sur la remise — ce qui protège le positionnement de Narian, « ni battage, ni logique de remise ».",
+      "attribution": "La note stratégique de la campagne, sur le garde-fou de marque",
+      "method": "Note stratégique, juin 2026"
+    },
+    "canonRule": {
+      "text": "Ne réécrivez ni n’inventez aucun nom, slogan, montant ou date. Si un mot ne figure pas ici, consultez d’abord le référentiel ; s’il n’y est pas non plus, signalez-le comme une hypothèse et tranchez avec l’équipe. Toute contradiction avec cette note est un bug.",
+      "attribution": "Bibliothèque de textes et de noms, le référentiel de la campagne",
+      "method": "La règle d’usage en tête de la note, traduite du persan"
+    }
+  },
+  "decisions": {
+    "heading": "Cinq décisions qui l’ont façonnée",
+    "lede": "Chacune est consignée dans les notes de la campagne, avec sa raison.",
+    "items": [
+      {
+        "title": "Retirer la remise de la porte",
+        "why": "Un bon de réduction à chaque tour aurait fait revenir les clients dans la journée et leur aurait appris à attendre une remise, l’habitude que la charte exclut. La porte donne un tampon et une chance au tirage, et le seul lot est un voyage.",
+        "alternatives": "Un bon plus modeste, ou des points pour un achat ultérieur.",
+        "tradeoff": "Moins d’attrait à la porte, et un lot que la plupart des voyageurs ne gagneront pas.",
+        "evidence": "Le référentiel consigne la suppression, et le script du personnel interdit les mots « bon » et « remise »."
+      },
+      {
+        "title": "Quatre passages en First Class",
+        "why": "Un barème de 1, 2 et 3 passages ferait de la classe supérieure une marche comme les autres. Sauter de deux à quatre donne à un client proche de 15 000 000 tomans une raison de monter, et fait de la First Class le moyen le plus rapide de compléter la collection.",
+        "alternatives": "Des passages linéaires, ou un passage par million de tomans.",
+        "tradeoff": "Les plus gros paniers récoltent une plus grande part du tirage.",
+        "evidence": "Signalé dans chaque note sur la mécanique : il ne faut pas le « corriger » à trois."
+      },
+      {
+        "title": "Une seule facture fixe la classe",
+        "why": "Les classes ne comptent qu’une facture à la fois, arrondie à l’inférieur. Deux factures de 5 000 000 tomans donnent deux passages Economy, jamais un passage Business : fractionner un achat ne permet pas de jouer sur le saut.",
+        "alternatives": "Cumuler les factures d’un voyageur sur tout l’été.",
+        "tradeoff": "Quelqu’un qui achète deux fois dans la semaine gagne moins que quelqu’un qui achète une seule fois.",
+        "evidence": "Un tableau des cas limites dans la note sur les classes de voyage, avec une phrase pour le personnel à chaque écart."
+      },
+      {
+        "title": "Des tampons rares, des chances égales",
+        "why": "Les tampons Premier tombent moins souvent, ce qui fait de la collection complète un défi. Chaque tampon vaut toujours une chance au tirage : le tirage reste équitable, les probabilités ne sont pas imprimées et les neuf secteurs de la roue ont la même taille.",
+        "alternatives": "Pondérer le tirage selon la rareté.",
+        "tradeoff": "Un tampon rare a quelque chose de spécial, mais ne rapporte rien de plus.",
+        "evidence": "La règle 4 du règlement du tirage, sur la seconde page."
+      },
+      {
+        "title": "Un seul concept dans toutes les boutiques",
+        "why": "La première landing page donnait à chaque boutique sa propre destination. Le référentiel a déplacé tous les thèmes de voyage dans les neuf tampons : chaque boutique reste clairement Narian, et un seul kit les sert toutes.",
+        "alternatives": "Une destination thématique par boutique.",
+        "tradeoff": "Aucun thème pour attirer un voyageur vers une deuxième boutique.",
+        "evidence": "Le brief de la présentation : « “Oasis” n’existe nulle part. »"
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "Ma part",
+    "intro": "Tout ce qui suit vient de mes fichiers de campagne. La charte de marque, les boutiques et la date d’ouverture relevaient de Narian.",
+    "own": [
+      "Le concept, le garde-fou de marque et l’idée centrale",
+      "La mécanique et son économie : classes, passages et cas limites",
+      "Le référentiel éditorial persan-anglais et les scripts du personnel",
+      "Les spécifications d’impression et de fabrication : carte d’embarquement, passeport, porte, panneaux et certificat des gagnants",
+      "Le jeu de neuf tampons et le script qui le dessine",
+      "La direction artistique des rendus conceptuels, réalisés avec un modèle de génération d’images",
+      "La page voyageur en deux générations, la seconde construite avec Claude",
+      "Le brief diapositive par diapositive de la présentation client"
+    ],
+    "collaborate": [
+      "Narian : la charte de marque, les boutiques et la date d’ouverture au Hadish Mall"
+    ],
+    "note": "Les rendus conceptuels sont des images générées par IA à partir de mes briefs, pour la direction artistique et les briefs aux fournisseurs. Ce ne sont pas des photos d’une boutique terminée, et rien de ce qu’ils montrent n’a été construit."
+  },
+  "outcomes": {
+    "heading": "Ce qui existe",
+    "intro": "Rien n’a été lancé, donc rien n’a été mesuré. Voici les parties livrées du système.",
+    "items": [
+      {
+        "label": "classes de voyage",
+        "context": "5 000 000, 8 000 000 et 15 000 000 tomans sur une seule facture, pour 1, 2 et 4 passages"
+      },
+      {
+        "label": "tampons à collectionner",
+        "context": "Trois séries, une chance égale au tirage pour chacun, des chances supplémentaires pour la collection complète"
+      },
+      {
+        "label": "moments écrits pour l’équipage",
+        "context": "Pour chacun, un repère en anglais, la phrase en persan et le geste"
+      },
+      {
+        "label": "remise",
+        "context": "La récompense : un tampon et une chance de gagner un voyage"
+      }
+    ],
+    "shipped": [
+      "Un référentiel de campagne : brief, stratégie, mécaniques et bibliothèque de textes persan-anglais",
+      "Des spécifications d’impression et de fabrication pour la carte d’embarquement, le passeport, la porte, les panneaux et le certificat des gagnants",
+      "Neuf tampons et le script qui les dessine",
+      "Des rendus conceptuels pour chaque escale du voyage et trois types de boutique",
+      "Deux générations de la page voyageur",
+      "Un brief diapositive par diapositive pour la présentation client"
+    ]
+  },
+  "lessons": {
+    "heading": "Ce que je garderais, et ce que je changerais",
+    "items": [
+      {
+        "title": "Écrire la contrainte avant la mécanique",
+        "body": "Le bon de réduction a perdu parce que le positionnement de la marque avait été écrit en premier. Avec le garde-fou déjà inscrit dans la note stratégique, supprimer la mécanique la plus forte n’a demandé qu’une vérification honnête."
+      },
+      {
+        "title": "Un référentiel a besoin d’un contrôle",
+        "body": "Le référentiel qualifie toute contradiction de bug, et le brief de la présentation interdisait nommément les deux pires dérives. Une présentation générée à partir de ce brief a pourtant réintroduit une roue à remises et annoncé cinq gagnants au lieu de trois. Une règle ne tient que si chaque production est vérifiée par rapport à elle avant que quiconque ne la voie."
+      },
+      {
+        "title": "Laisser visiblement ouvertes les décisions du client",
+        "body": "Le budget, les objectifs, les boutiques et la valeur du lot relèvent de Narian. Le plan marque chacun « à fixer » au lieu de deviner, si bien qu’il peut être transmis et chiffré tel quel."
+      }
+    ]
+  }
+}

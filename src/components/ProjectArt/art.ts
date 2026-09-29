@@ -45,6 +45,8 @@ export const PROJECT_ART: Record<string, ProjectArtStyle> = {
   'taha-gasht-platform': { tint: '#343c7b' },
   // The console's own teal, from the Dribbble shots' palette.
   'arvan-cloud-platform-redesign': { tint: '#1b9797' },
+  // Narian's magenta accent (#D4356E in the brand book).
+  'narian-summer-passport': { tint: '#d4356e' },
 }
 
 export const projectArt = (slug: string): ProjectArtStyle =>

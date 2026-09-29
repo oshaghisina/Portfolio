@@ -1,0 +1,506 @@
+{
+  "statement": "A summer campaign that turns every Narian store into an airport and every purchase into a ticket, with no discount anywhere.",
+  "industry": "Retail · womenswear",
+  "team": "Freelance; concept renders made with an image model, the prototype with Claude",
+  "heroCaption": "A concept render of a Narian storefront dressed as a terminal: welcome decals on the glass, a boarding gate inside the door and a runway to check-in.",
+  "snapshot": {
+    "problem": "Raise basket size and build a customer list before a new branch opened, for a brand whose own book keeps it away from discounts.",
+    "role": "Campaign strategist and marketer: concept, mechanic and economics, a Persian–English copy canon, staff scripts, print specs, the stamp set and the traveller’s page.",
+    "result": "A complete campaign, down to the line a cashier says when a rare stamp lands. It never launched, so there are no results."
+  },
+  "alt": {
+    "storefront": "Concept render: a Narian storefront in a mall, with Narian Summer Passport decals on the glass, a pink boarding gate inside the door and a runway line on the floor leading to check-in",
+    "storefrontFirst": "Concept render, first version: a Narian storefront with a Welcome to Narian Summer Passport banner above the glass and a check-in sign standing in the mall corridor",
+    "photoFront": "Photograph of a Narian branch from the mall corridor: the lit logo above a glass front, with mannequins and racks inside",
+    "photoCounter": "Photograph of the checkout counter in a Narian branch: a black counter in front of a grey wall with the Narian logo, lit shelves on both sides",
+    "photoPlatform": "Photograph inside a Narian branch: three mannequins on a round cream platform in front of a pink wall with the tulip line drawing",
+    "checkIn": "Concept render: the same counter dressed as a check-in desk, with a Check-in plaque, passport stacks, a registration sign, a Final destination: Hadish Mall board and a pink runway on the floor",
+    "handoff": "Concept render of the check-in handoff on a dark counter: a passport, a boarding pass, a registration card, two rubber stamps with an ink pad and a box of voucher cards",
+    "gate": "Concept render: a Gate of Fortune wheel with nine sectors beside the central mannequin platform, a travel-class sign listing Economy 1, Business 2 and First 4, and a pink runway on the floor",
+    "reward": "Concept render from the early brief: an open passport with one stamp, a Sunshine 20% off voucher valid for 24 hours, a plus-one final draw chance card and a rubber stamp on its tray",
+    "terminal": "Concept render of a whole Narian store as a terminal: a pink path on the floor links a passport station table, a Gate of Fortune wheel, a stamp collection sign and a boarding gate",
+    "finale": "Concept render of the finale at Hadish Mall: a pink backdrop reading Final destination, Hadish Mall, a clear box of draw cards on a Final draw table and a Final arrival board",
+    "kit": "Concept render of the printed kit laid flat: passport covers and a stamp page, a boarding pass, a final draw card, a 24-hour voucher card, a staff cue card, a counter sign, a rubber stamp and labels",
+    "branchFlagship": "Concept render of a flagship front: a pink Boarding gate arch over the entrance, a boarding pass panel and a departures board, with a runway leading to check-in",
+    "branchInterior": "Concept render of a smaller branch: a Check-in and Passport sign over a pink counter, a curving runway on the floor and a departures board on the wall",
+    "branchOpening": "Concept render of the Hadish Mall opening: a Final destination, Hadish Mall departure board above the entrance, rope barriers, and Final arrival and Final draw signs",
+    "roz": "AI portrait for the persona Roz, 18 to 25: a young woman in a cream jacket against a soft pink background",
+    "nara": "AI portrait for the persona Nara, 25 to 35: a woman with long dark hair in a cream blazer against a soft pink background",
+    "sara": "AI portrait for the persona Sara, 35 to 45: a woman in a cream blazer over a dark top against a soft pink background",
+    "stampOcean": "The Ocean stamp: three blue waves inside a round ring reading Narian and Summer Passport",
+    "stampDesert": "The Desert stamp: sand dunes in a sand colour inside the same round ring",
+    "stampCoast": "The Coast stamp: a sun over waves in pale blue inside the same round ring",
+    "stampSunshine": "The Sunshine stamp: a sun with rays in amber inside the same round ring",
+    "stampPalm": "The Palm stamp: a palm tree in green inside the same round ring",
+    "stampSunset": "The Sunset stamp: a half sun on the horizon in coral inside the same round ring",
+    "stampLuckyDay": "The Lucky Day stamp: a four-leaf tulip with a star in magenta, with a faint dotted outer ring",
+    "stampUpgrade": "The Upgrade stamp: two upward chevrons in bronze, with a faint dotted outer ring",
+    "stampBoarding": "The Boarding stamp: a plane and a dotted flight path in blue-black, with a faint dotted outer ring",
+    "v1Desktop": "The first landing page on desktop, first screen: the Persian headline This summer, every purchase is a travel ticket over a pink-tinted storefront render",
+    "v1Mobile": "The first landing page on a phone, first screen: the Persian headline, the campaign dates and two buttons over the storefront render",
+    "v1DesktopFull": "The first landing page on desktop, whole page: the story, five steps, travel classes, nine stamps, instant vouchers, five destinations and the finale",
+    "v1MobileFull": "The first landing page on a phone, whole page, from the headline to the footer",
+    "v2Desktop": "The second landing page on desktop, first screen: the Persian headline Every purchase is your travel ticket on a card over the storefront render, with a countdown",
+    "v2Mobile": "The second landing page on a phone, first screen: the headline, the dates, two buttons and a countdown showing 31 days",
+    "v2DesktopFull": "The second landing page on desktop, whole page: five steps, travel classes, the gate, nine stamps, the prize, the digital passport sign-up, branches and questions",
+    "v2MobileFull": "The second landing page on a phone, whole page, from the countdown to the footer",
+    "v2Classes": "The second page on a phone: the travel classes, Economy from 5 million toman with 1 entry and Business from 8 million with 2",
+    "v2StampOpen": "The second page on a phone: the Lucky Day stamp opened on a card, marked Premier and rare",
+    "v2Prize": "The second page on a phone: the grand prize, a travel allowance for 3 travellers shown as a boarding pass dated 11 August",
+    "v2SignupDone": "The second page on a phone after sign-up: a confirmation that the passport is ready with a placeholder number, a stamp grid showing 5 of 9, and buttons for a reminder, the nearest branch and inviting a traveller",
+    "v2Rules": "The second page on a phone: the six draw rules in a dialog, from who qualifies to the campaign dates",
+    "v1PrizeCrop": "The first landing page’s prize section: Every stamp, an instant prize, with vouchers from 10% to 40% off beside a render of a Sunshine 20% off voucher",
+    "v2PrizeCrop": "The second landing page’s prize section: The prize is a real trip, with a boarding pass card for a travel allowance for 3 winners"
+  },
+  "chapters": {
+    "context": {
+      "heading": "A new branch and one summer to fill it",
+      "body": [
+        "Narian is an Iranian womenswear brand: smart-casual clothes for modern, urban women, made by a group with more than fifty years in textile mills. Its slogan is “Smart. Stylish.”",
+        "In summer 2026 Narian was opening a new branch at Hadish Mall in Tehran, on 11 August (20 Mordad 1405). The campaign had the month before it, from 11 July, in every branch and in the online store.",
+        "The goals were bigger baskets through the summer, more return visits, a list of customers’ mobile numbers, and a run-up that made the opening an event."
+      ]
+    },
+    "problem": {
+      "heading": "Bigger baskets, with no sale",
+      "body": [
+        "The usual tool for bigger baskets is a discount. Narian’s brand book places the brand away from hype and show: composed, practical and trustworthy, and the campaign’s strategy note spells out the consequence, “not discount-driven”. A summer sale would have undercut the position the campaign was meant to support.",
+        "One branch’s window already showed the tension: a sale sign on a rack beside the brand’s own campaign panel. The campaign had to grow the basket through something shoppers would want to finish, and keep every reward away from price."
+      ],
+      "insight": "The reward had to be something a shopper wants to complete."
+    },
+    "research": {
+      "heading": "Start from the brand book and the store",
+      "body": [
+        "Before any mechanic, I turned Narian’s brand book into one reference note for the whole campaign: the palette and its rules (soft pink leads, magenta never sits next to blue-black), the Peyda and Gilroy typefaces, the tulip mark drawn from Persepolis reliefs, and a tone that is simple, warm and honest. Every later note points back to it.",
+        "The brand book’s three personas became the campaign’s audience, each matched to the class she was most likely to fly and the hook most likely to bring her back.",
+        "Then the store. Eleven photos of one branch, from the front and windows to the counter, the aisles and the fitting room, became a placement map: big messages on glass and lightboxes, the mechanics at the counter, the gate near the central platform where it wouldn’t block the aisle, and nothing over the logo."
+      ]
+    },
+    "approach": {
+      "heading": "Every store an airport, every shopper a traveller",
+      "body": [
+        "The campaign turns shopping into a trip. Each store becomes a terminal, the till a check-in counter, the prize wheel a departure gate and the staff a flight crew, and the shopper is always a traveller. One line holds it together: “Every Purchase is Your Ticket.”",
+        "Every journey flies to one place, the Final Destination: the Hadish Mall opening, where the campaign closes with a live draw. The same concept runs in every branch, and the travel themes live in the nine stamps."
+      ]
+    },
+    "mechanic": {
+      "customLabel": "Mechanic",
+      "heading": "Three classes, one invoice",
+      "body": [
+        "Spending sets a travel class, and the class sets how many times the traveller enters the Gate of Fortune. A single invoice of 5,000,000 toman or more is Economy, with one entry; 8,000,000 is Business, with two; 15,000,000 is First Class, with four.",
+        "The steps are deliberate. Entries go by the highest threshold met and amounts in between round down, so 7,000,000 toman is still Economy. Two invoices of 5,000,000 give two Economy entries, never one Business. And First Class jumps from two entries to four, a jump every mechanic note flags so nobody “corrects” it to three.",
+        "Each gap is also a line for the staff: at 7,000,000 toman a traveller is 1,000,000 short of a second entry; at 12,000,000, 3,000,000 short of four. The script frames it as a better trip and more chances, never as spending more."
+      ],
+      "insight": "The jump from two entries to four is the campaign’s upsell."
+    },
+    "cut": {
+      "customLabel": "Validation",
+      "heading": "The strongest mechanic was cut",
+      "body": [
+        "The first design gave every spin a 24-hour voucher: nine vouchers, 10 to 40% off the next purchase. It would have brought shoppers back fast, and it would have taught them that Narian discounts.",
+        "At validation it was removed. Each spin now gives a dated stamp in the passport and one chance in the final draw, and nothing else. The prize moved to the end: a travel allowance for three winners, drawn live at the Hadish Mall opening, where winners have to be present. It sits outside the campaign budget, and its value was still to be set.",
+        "The early concept renders and the first landing page still show the voucher. The canon, the staff scripts and the second page follow the cut."
+      ],
+      "insight": "It was the mechanic with the strongest pull, and it went because it fought the brand."
+    },
+    "collection": {
+      "customLabel": "Collection",
+      "heading": "Nine stamps, equal chances",
+      "body": [
+        "The gate lands on one of nine stamps in three bands: Discovery (Ocean, Desert, Coast), Sunshine (Sunshine, Palm, Sunset) and Premier (Lucky Day, Upgrade, Boarding). Premier stamps come up less often, which makes finishing the set a real challenge.",
+        "Rarity is only for the collection. Every stamp is worth one equal chance in the draw, the odds are never printed, and the nine sectors of the wheel are drawn the same size. Completing all nine adds bonus chances, five in the proposal.",
+        "Each stamp has a fixed Persian name and its own colour, the only colours the campaign adds to Narian’s palette. A small script draws all nine, so they share one ring, one typeface and one line weight."
+      ]
+    },
+    "canon": {
+      "customLabel": "Copy canon",
+      "heading": "Every word from one note",
+      "body": [
+        "A campaign that runs in every branch, online and in print has hundreds of places to say the wrong thing. So the words have one home: a Persian–English copy library with the locked signature and five alternative lines, the entrance and wayfinding signs, the check-in lines, the labels on the boarding pass and passport, the nine stamp names, and a glossary.",
+        "Its rules are specific. The shopper is always a traveller, never a customer; Persian copy uses Persian numerals, never “5M”; the gate opens with “Your gate is open”, never “spin the wheel”; and the three things called Boarding (the pass, the dated stamp and the Premier stamp) are never mixed up.",
+        "The staff script turns the canon into speech: seven moments from the greeting to the farewell, each written as a short English cue for the crew to remember, the Persian line they actually say, and what they do while saying it."
+      ]
+    },
+    "kit": {
+      "customLabel": "Print & space",
+      "heading": "A kit every branch can build",
+      "body": [
+        "The visual briefs specify each object for print and build. The boarding pass is a 210 × 90 mm card with a 55 mm perforated stub to tear off. The passport is a B7 booklet, 125 × 88 mm and 8 to 12 pages, with the tulip embossed on a matte cream cover and a page of nine empty rings, each with a line below for the dated stamp.",
+        "The gate is a wheel 80 to 100 cm across with nine equal sectors and a pointer styled on a departures board. Signs use Gilroy capitals with open tracking. Everything is matte, as the brand book asks for physical builds, with foil kept for a few accents such as the rare stamps and the prize certificate.",
+        "One passport per traveller, for the whole campaign: issuing a second is one of the three errors the staff script forbids. And one concept for every branch, so the kit is produced once."
+      ]
+    },
+    "online": {
+      "customLabel": "Online",
+      "heading": "The same journey on a phone",
+      "body": [
+        "Online purchases count too. A digital passport, an online gate and digital stamps are keyed to the same mobile number, so what a traveller collects in a store and online adds up in one passport.",
+        "The traveller’s page went through two generations. The first, on 30 June, explained the mechanic but still carried the voucher, a Business threshold of 10,000,000 toman, dates three days off, and five store “destinations”, one of them, Oasis, in no other note. It collected no phone numbers.",
+        "The second follows the canon: a countdown to the opening, the journey in five steps, the three classes, a demo gate, the nine stamps, the prize as a boarding pass, a sign-up that makes the mobile number the passport, five questions, six draw rules and a privacy note. I built it as a working prototype with Claude, from the campaign’s notes."
+      ]
+    },
+    "result": {
+      "heading": "Ready to run, never run",
+      "body": [
+        "The campaign never launched. Its window, 11 July to 11 August 2026, passed without it. Every cell of the KPI table is empty, the retrospective is a blank template, and there are no results to report.",
+        "The files show where the work stopped. Everything that needed creative or strategic judgement is finished. Everything that needed a decision from Narian is blank: no budget, no targets, no list of branches, and no value for the prize."
+      ],
+      "insight": "The work stops exactly where the client’s decisions begin."
+    }
+  },
+  "figures": {
+    "personas": {
+      "caption": "The brand book’s three personas, drawn as AI portraits for the deck, with the class each is most likely to fly.",
+      "items": [
+        "Roz, 18–25 · likely Economy · collecting and sharing stamps",
+        "Nara, 25–35 · likely Business · finishing the set",
+        "Sara, 35–45 · likely First Class · the calm terminal and the finale"
+      ]
+    },
+    "counter": {
+      "caption": "The counter in one branch, and the same counter as the check-in desk in a concept render. The logo wall stays clear.",
+      "items": [
+        "A branch’s counter, as photographed",
+        "The check-in desk, concept render"
+      ]
+    },
+    "storefront": {
+      "caption": "The storefront in three steps. Feedback on the first render kept the mall corridor clear, so the signs moved onto the glass and the gate moved inside.",
+      "items": [
+        "The front, as photographed",
+        "First render: signs in the mall corridor",
+        "Final render: decals on the glass, the gate inside"
+      ]
+    },
+    "journeyEnds": {
+      "caption": "Concept renders of two stops: the whole store as one terminal, and the draw at the Hadish Mall opening. Made from the early brief, the terminal still has a sign about vouchers.",
+      "items": [
+        "The terminal: one path through the store",
+        "The final destination: the live draw"
+      ]
+    },
+    "gate": {
+      "caption": "The branch’s central platform, and the Gate of Fortune beside it with the travel-class sign. The render came from the early brief, so the sign still promises a voucher with every entry.",
+      "items": [
+        "The central platform, as photographed",
+        "The Gate of Fortune, concept render"
+      ]
+    },
+    "prize": {
+      "caption": "The first landing page (30 June) offered an instant voucher with every stamp, 10 to 40% off. The second offers one prize: a travel allowance for three travellers, drawn live at the opening.",
+      "items": [
+        "First page: a voucher with every stamp",
+        "Second page: one prize, a trip"
+      ]
+    },
+    "stamps": {
+      "caption": "The nine stamps on the passport’s cream paper. The three Premier stamps carry a faint second ring.",
+      "items": [
+        "Ocean · Discovery",
+        "Desert · Discovery",
+        "Coast · Discovery",
+        "Sunshine · Sunshine band",
+        "Palm · Sunshine band",
+        "Sunset · Sunshine band",
+        "Lucky Day · Premier",
+        "Upgrade · Premier",
+        "Boarding · Premier"
+      ]
+    },
+    "kit": {
+      "caption": "Concept renders of the printed kit: the handoff at check-in, and the whole set laid flat. Both came from the early brief and still include a voucher card.",
+      "items": [
+        "The handoff: boarding pass, passport, registration card and stamps",
+        "The set: passport, boarding pass, cue card, counter sign and labels"
+      ]
+    },
+    "branches": {
+      "caption": "One concept across three kinds of branch, as concept renders: a flagship front, a smaller interior and the opening at Hadish Mall.",
+      "items": [
+        "A flagship front",
+        "A smaller branch",
+        "The Hadish Mall opening"
+      ]
+    },
+    "phone": {
+      "caption": "The second page on a phone, set to launch morning: the three classes, one stamp opened, the prize as a boarding pass, and the digital passport after sign-up, with a placeholder number.",
+      "items": [
+        "Travel classes",
+        "A stamp, opened",
+        "The prize",
+        "Passport created"
+      ]
+    },
+    "pages": {
+      "caption": "Both generations of the traveller’s page at desktop and phone width. Open one to see the whole page.",
+      "items": [
+        "First page, 30 June",
+        "Second page, the prototype"
+      ]
+    }
+  },
+  "steps": {
+    "storeMap": {
+      "heading": "Where each piece goes in the store",
+      "steps": [
+        {
+          "label": "Storefront glass",
+          "note": "The first thing a traveller sees",
+          "parts": [
+            "Welcome decals",
+            "Final destination sign",
+            "A runway line into the store"
+          ]
+        },
+        {
+          "label": "Lightbox and window screen",
+          "note": "Big messages, few words",
+          "parts": [
+            "Key visual",
+            "“Boarding soon” teaser",
+            "“Final arrival” teaser"
+          ]
+        },
+        {
+          "label": "Counter",
+          "note": "Becomes check-in",
+          "parts": [
+            "Check-in plaque",
+            "Passport and boarding pass holders",
+            "Registration card",
+            "Stamp tray"
+          ]
+        },
+        {
+          "label": "Central platform",
+          "note": "Stays the fashion moment",
+          "parts": [
+            "Gate of Fortune beside it",
+            "Travel-class sign"
+          ]
+        },
+        {
+          "label": "Aisles and racks",
+          "note": "The path stays clear",
+          "parts": [
+            "Wayfinding signs",
+            "Stamp collection cue"
+          ]
+        },
+        {
+          "label": "Fitting room",
+          "note": "Calm, one line at most",
+          "parts": [
+            "“Ready for boarding?”"
+          ]
+        }
+      ]
+    },
+    "journey": {
+      "heading": "The journey, stop by stop",
+      "steps": [
+        {
+          "label": "Airport entrance",
+          "note": "“Welcome to Narian Summer Passport”"
+        },
+        {
+          "label": "Check-in",
+          "note": "Name, surname and mobile number; the number is the passenger ID"
+        },
+        {
+          "label": "Boarding pass and passport",
+          "note": "Issued once, on the first invoice of 5,000,000 toman or more"
+        },
+        {
+          "label": "Travel class",
+          "note": "The invoice sets the class; the class sets the entries"
+        },
+        {
+          "label": "Gate of Fortune",
+          "note": "One spin per entry"
+        },
+        {
+          "label": "Stamp and draw chance",
+          "note": "A dated stamp in the passport, one chance in the final draw"
+        },
+        {
+          "label": "In transit",
+          "note": "Each new qualifying invoice opens the gate again"
+        },
+        {
+          "label": "Final destination",
+          "note": "The Hadish Mall opening and a live draw for three travel allowances"
+        }
+      ]
+    },
+    "classes": {
+      "heading": "The upgrade path",
+      "steps": [
+        {
+          "label": "Economy",
+          "note": "From 5,000,000 toman on one invoice: 1 entry"
+        },
+        {
+          "label": "Business",
+          "note": "From 8,000,000 toman: 2 entries"
+        },
+        {
+          "label": "First Class",
+          "note": "From 15,000,000 toman: 4 entries"
+        }
+      ]
+    },
+    "crew": {
+      "heading": "Seven moments for the crew",
+      "steps": [
+        {
+          "label": "Greeting",
+          "note": "“Welcome to Narian Summer Passport.”"
+        },
+        {
+          "label": "Check-in",
+          "note": "“Welcome onboard. Ready for boarding?”"
+        },
+        {
+          "label": "Boarding pass",
+          "note": "“Here’s your boarding pass. Your summer journey starts here.”"
+        },
+        {
+          "label": "Class upsell",
+          "note": "“A little more and you’re flying Business: two entries at the gate.”"
+        },
+        {
+          "label": "Gate invite",
+          "note": "“Your gate is open.”"
+        },
+        {
+          "label": "Stamp and chance",
+          "note": "“That’s the Ocean stamp, three of nine, and one more chance in the final draw.”"
+        },
+        {
+          "label": "Farewell",
+          "note": "“Safe travels. Your passport is waiting for the next stamp.”"
+        }
+      ]
+    }
+  },
+  "findings": {
+    "guardrail": {
+      "text": "Keep it minimal/luxury and frame around the journey & collection, not the discount — protects Narian’s “not hype, not discount-driven” positioning.",
+      "attribution": "The campaign’s strategy note, on the brand guardrail",
+      "method": "Strategy note, June 2026"
+    },
+    "canonRule": {
+      "text": "Do not rewrite or invent any name, slogan, amount or date. If a word isn’t here, check the canon first; if it isn’t there either, mark it as an assumption and settle it with the team. Every contradiction with this note is a bug.",
+      "attribution": "Copy & Naming Library, the campaign’s canon",
+      "method": "The usage rule at the top of the note, translated from Persian"
+    }
+  },
+  "decisions": {
+    "heading": "Five decisions that shaped it",
+    "lede": "Each one is written into the campaign’s notes with its reason.",
+    "items": [
+      {
+        "title": "Take the discount out of the gate",
+        "why": "A voucher on every spin would have brought shoppers back within a day and taught them to wait for a discount, the habit the brand book rules out. The gate gives a stamp and a draw chance, and the only prize is a trip.",
+        "alternatives": "A smaller voucher, or points toward a later purchase.",
+        "tradeoff": "Less pull at the gate, and a prize most travellers won’t win.",
+        "evidence": "The canon records the removal, and the staff script forbids the words “voucher” and “discount”."
+      },
+      {
+        "title": "Four entries for First Class",
+        "why": "Entries of 1, 2 and 3 would make the top class an ordinary step. Jumping from two to four gives a shopper near 15,000,000 toman a reason to go up, and makes First Class the fastest way to finish the set.",
+        "alternatives": "Linear entries, or one entry per million toman.",
+        "tradeoff": "The biggest baskets collect a bigger share of the draw.",
+        "evidence": "Flagged in every mechanic note: it must not be “corrected” to three."
+      },
+      {
+        "title": "One invoice sets the class",
+        "why": "Classes count a single invoice and round down. Two invoices of 5,000,000 toman give two Economy entries, never one Business, so splitting a purchase can’t game the jump.",
+        "alternatives": "Add up a traveller’s invoices across the summer.",
+        "tradeoff": "Someone who shops twice in a week gains less than someone who buys once.",
+        "evidence": "An edge-case table in the travel-class note, with a staff line for each gap."
+      },
+      {
+        "title": "Rare stamps, equal chances",
+        "why": "Premier stamps come up less often, which makes finishing the set a challenge. Each stamp is still one chance in the draw, so the draw stays fair, the odds stay unprinted and the wheel’s nine sectors are the same size.",
+        "alternatives": "Weight the draw by rarity.",
+        "tradeoff": "A rare stamp feels special but wins nothing extra.",
+        "evidence": "Rule 4 of the draw rules on the second page."
+      },
+      {
+        "title": "One concept in every branch",
+        "why": "The first landing page gave each branch its own destination. The canon moved every travel theme into the nine stamps, so every store reads as Narian and one kit serves them all.",
+        "alternatives": "A themed destination for each branch.",
+        "tradeoff": "No theme to draw a traveller to a second branch.",
+        "evidence": "The deck brief: “There is no ‘Oasis’ anywhere.”"
+      }
+    ]
+  },
+  "ownership": {
+    "heading": "My part",
+    "intro": "Everything below comes from my campaign files. The brand book, the stores and the opening date were Narian’s.",
+    "own": [
+      "The concept, the brand guardrail and the big idea",
+      "The mechanic and its economics: classes, entries and edge cases",
+      "The Persian–English copy canon and the staff scripts",
+      "Print and build specs: boarding pass, passport, gate, signs and prize certificate",
+      "The nine-stamp set and the script that draws it",
+      "Art direction for the concept renders, made with an image model",
+      "The traveller’s page in two generations, the second built with Claude",
+      "The slide-by-slide brief for the client deck"
+    ],
+    "collaborate": [
+      "Narian: the brand book, the stores and the Hadish Mall opening date"
+    ],
+    "note": "The concept renders are AI images made from my briefs, for direction and vendor briefings. They are not photographs of a finished store, and nothing in them was built."
+  },
+  "outcomes": {
+    "heading": "What exists",
+    "intro": "Nothing ran, so nothing was measured. These are the delivered parts of the system.",
+    "items": [
+      {
+        "label": "travel classes",
+        "context": "5,000,000, 8,000,000 and 15,000,000 toman on one invoice, for 1, 2 and 4 entries"
+      },
+      {
+        "label": "collectible stamps",
+        "context": "Three bands, one equal draw chance each, bonus chances for the full set"
+      },
+      {
+        "label": "moments scripted for the crew",
+        "context": "An English cue, the Persian line and the action for each"
+      },
+      {
+        "label": "discounts",
+        "context": "The reward is a stamp and a chance at a trip"
+      }
+    ],
+    "shipped": [
+      "A campaign canon: brief, strategy, mechanics and a Persian–English copy library",
+      "Print and build specs for the boarding pass, passport, gate, signs and prize certificate",
+      "Nine stamps and the script that draws them",
+      "Concept renders for each stop of the journey and three kinds of branch",
+      "Two generations of the traveller’s page",
+      "A slide-by-slide brief for the client deck"
+    ]
+  },
+  "lessons": {
+    "heading": "What I’d keep, and what I’d change",
+    "items": [
+      {
+        "title": "Write the constraint before the mechanic",
+        "body": "The voucher lost because the brand’s position was written down first. With the guardrail already in the strategy note, cutting the strongest mechanic took one honest check."
+      },
+      {
+        "title": "A canon needs a checker",
+        "body": "The canon calls every contradiction a bug, and the deck brief banned the two worst drifts by name. A deck generated from that brief still brought back a discount wheel and named five winners instead of three. A rule only holds when every output is checked against it before anyone sees it."
+      },
+      {
+        "title": "Leave the client’s decisions visibly open",
+        "body": "Budget, targets, branches and the prize’s value are Narian’s to set. The plan marks each one “to set” instead of guessing, so it can be handed over and priced as it is."
+      }
+    ]
+  }
+}
