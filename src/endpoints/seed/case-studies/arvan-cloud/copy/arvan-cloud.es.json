@@ -14,6 +14,10 @@
     "siteToPanel": "Dos gráficos de Google Analytics: la proporción de eventos de la página de inicio, la página de servidores en la nube, su botón en la página de inicio y su botón Comprar; debajo, un embudo desde la página de servidores en la nube hasta el asistente de creación de servidores de la consola, con las cifras difuminadas",
     "heapRequirements": "Un tablero en persa titulado «Requisitos de una herramienta de análisis del comportamiento de los usuarios», presentado por Sina Oshaghi: lo que necesita el equipo, las cinco herramientas estudiadas y los motivos para elegir Heap",
     "metricsKpi": "Un tablero en persa titulado «Métricas del lado de la consola»: conversión desde el inicio de la consola a la lista de servidores, de la lista a un servidor nuevo y de la elección del centro de datos al final del asistente, y una puntuación de lo difícil que fue crear un servidor",
+    "trackHome": "Un tablero en persa del plan de seguimiento para el inicio de la consola: la pantalla con los productos de Arvan y la tarjeta de servidores en la nube numerada, y debajo las medidas: el camino hacia el producto, el tiempo hasta encontrar el botón, los abandonos y un mapa de calor de clics",
+    "trackProductFirst": "Un tablero en persa del plan de seguimiento para la página de servidores en la nube en una primera visita: una página vacía que explica qué es un Abrak, con un botón de nuevo servidor, y medidas para encontrar el botón y la guía, los abandonos, el éxito tras leer la guía y un mapa de calor",
+    "trackProduct": "Un tablero en persa del plan de seguimiento para la página de servidores en la nube: una pestaña por centro de datos, el botón de nuevo servidor y tres enlaces a guías numerados, y medidas de los clics en cada centro de datos, los abandonos, encontrar el botón y las guías, y un mapa de calor",
+    "trackDataCentre": "Un tablero en persa del plan de seguimiento para el paso del centro de datos en el asistente: los centros disponibles, los que llegarán pronto y los botones del paso numerados, y medidas del uso de cada centro de datos, los clics en los que llegarán pronto, el avance, los abandonos, el tiempo y un mapa de calor",
     "wizardFunnel": "Un embudo de Heap con los siete pasos para crear un servidor, de la lista de servidores a los detalles del servidor, con la conversión entre cada par de pasos; la mayor caída llega tras elegir el tamaño, y el 52,19 % termina",
     "effort": "El análisis de esfuerzo de Heap sobre los mismos siete pasos: conversión, interacciones, tiempo de uso y tasa de regreso entre cada par de pasos, todo en su peor punto después de elegir el tamaño",
     "sizeOptions": "Dos versiones del paso de elegir tamaño, en persa: la opción 1, una tabla de tamaños listos con CPU, memoria, disco y precio mensual; la opción 2, deslizadores de CPU, memoria y disco junto al precio mensual y por hora",
@@ -48,10 +52,17 @@
       "insight": "La prueba y la analítica coincidían: la gente se perdía primero en las palabras y después en el paso del tamaño."
     },
     "research": {
-      "heading": "Decidir qué medir y después medirlo",
+      "heading": "Elegir la herramienta de análisis",
       "body": [
-        "Sina escribió para el equipo un documento de requisitos para una herramienta de análisis del comportamiento de los usuarios y lo presentó. La herramienta debía registrar el comportamiento sin tener que definir eventos antes, ser lo bastante sencilla para todos los equipos, convertir los objetivos en métricas compartidas y no ralentizar nunca el producto ni debilitar su seguridad. Se compararon Google Analytics, Mixpanel, Amplitude, FullStory y Heap, y se eligió Heap: registra cada interacción, así que cualquier pregunta nueva puede responderse con comportamiento ya capturado, y llevaba varios meses funcionando sin problemas en la consola.",
-        "Después llegó un plan de seguimiento del asistente, paso a paso, cada medida con la pregunta que responde: clics y tiempo hasta encontrar el botón de crear servidor, mapas de calor del inicio de la consola, abandonos en cada paso, qué centros de datos y sistemas operativos se eligen, cuánto se desplazan las tablas de tamaños, cuánto tiempo se pasa en el tamaño personalizado, si se añaden redes privadas o cortafuegos, si se crean varios servidores a la vez o se les cambia el nombre, y si en la última página se copian los datos del servidor. Las métricas del lado de la consola lo unían todo: conversión desde el inicio de la consola a la lista de servidores, de la lista a un servidor nuevo y del centro de datos al final del asistente, además de una puntuación de lo difícil que resultaba crear un servidor.",
+        "Sina escribió para el equipo un documento de requisitos para una herramienta de análisis del comportamiento de los usuarios y lo presentó. La herramienta debía registrar el comportamiento sin tener que definir eventos antes, ser lo bastante sencilla para todos los equipos, convertir los objetivos en métricas compartidas y no ralentizar nunca el producto ni debilitar su seguridad. Se compararon Google Analytics, Mixpanel, Amplitude, FullStory y Heap, y se eligió Heap: registra cada interacción, así que cualquier pregunta nueva puede responderse con comportamiento ya capturado, y llevaba varios meses funcionando sin problemas en la consola."
+      ]
+    },
+    "tracking": {
+      "heading": "Medido por la conversión del flujo de usuario",
+      "customLabel": "Plan de seguimiento",
+      "body": [
+        "Todo el flujo se midió por conversión: de quienes llegan a una pantalla, la proporción que llega a la siguiente. Las métricas del lado de la consola fijaron las tres conversiones con las que se juzgaría la consola: del inicio de la consola a la lista de servidores, de la lista a un servidor nuevo y del centro de datos al final del asistente. Una puntuación al final del asistente añadiría lo difícil que resultaba crear un servidor.",
+        "Después, un plan de seguimiento recorrió el flujo pantalla por pantalla, con un tablero para cada una, fechados en septiembre y octubre de 2021. Cada tablero numera los elementos de la pantalla y dice, para cada uno, qué registrar, con qué herramienta y por qué: Heap para clics, tiempo y abandonos, el BI de Arvan para los sistemas operativos e imágenes del marketplace instalados, y Hotjar o Hantana para los mapas de calor. En conjunto eso significaba: clics y tiempo hasta encontrar el botón de crear servidor, abandonos en cada paso, qué centros de datos y sistemas operativos se eligen, cuánto se desplazan las tablas de tamaños, cuánto tiempo se pasa en el tamaño personalizado, si se añaden redes privadas o cortafuegos, si se crean varios servidores a la vez o se les cambia el nombre, y si en la última página se copian los datos del servidor.",
         "Heap convirtió el asistente en un embudo de siete pasos: la lista de servidores, la página de centros de datos, después la elección del sistema operativo, el tamaño, el método de acceso y el nombre, y por último los detalles del servidor. Cada paso de una etapa a la siguiente se midió de cuatro formas: cuántas personas lo superaron, cuántas interacciones hicieron falta, cuánto tiempo llevó y cuántas salieron del producto y volvieron.",
         "Un paso destacaba en todas las medidas. Tras elegir el tamaño solo continuó el 73,09 %, frente al 89-99 % de los demás pasos. Ese avance llevó una mediana de 5 interacciones y 23 segundos, el doble aproximado que los otros, y el 3,8 % salió del producto y volvió antes de seguir, más que en cualquier otro paso. Elegir el sistema operativo también hacía perder gente, sobre todo a quienes buscaban algo distinto de los sistemas más usados o en el marketplace. En total, el 52,19 % de quienes empezaron el asistente lo terminó."
       ],
@@ -106,6 +117,15 @@
       "items": [
         "Requisitos de una herramienta de análisis, y por qué Heap",
         "Métricas del lado de la consola"
+      ]
+    },
+    "trackingPlan": {
+      "caption": "Cuatro tableros del plan de seguimiento, en persa: cada uno numera los elementos de una pantalla y dice qué registrar de cada uno, con qué herramienta y por qué. Los tableros de los pasos posteriores del asistente muestran pantallas del otro diseñador y se han dejado fuera.",
+      "items": [
+        "Inicio de la consola",
+        "Página de servidores en la nube, primera visita",
+        "Página de servidores en la nube, con centros de datos",
+        "Asistente: elegir el centro de datos"
       ]
     },
     "wizardFunnel": {

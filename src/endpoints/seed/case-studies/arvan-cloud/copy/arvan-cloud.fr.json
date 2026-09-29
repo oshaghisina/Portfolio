@@ -14,6 +14,10 @@
     "siteToPanel": "Deux graphiques Google Analytics : la part des événements pour la page d’accueil, la page des serveurs cloud, son bouton sur la page d’accueil et son bouton Acheter ; en dessous, un entonnoir de la page des serveurs cloud jusqu’à l’assistant de création de serveur de la console, chiffres floutés",
     "heapRequirements": "Un tableau en persan intitulé « Besoins pour un outil d’analyse du comportement des utilisateurs », présenté par Sina Oshaghi : les besoins de l’équipe, les cinq outils étudiés et les raisons du choix de Heap",
     "metricsKpi": "Un tableau en persan intitulé « Indicateurs côté console » : conversion de l’accueil de la console vers la liste des serveurs, de la liste vers un nouveau serveur et du choix du centre de données jusqu’à la fin de l’assistant, et une note de la difficulté de création d’un serveur",
+    "trackHome": "Un tableau en persan du plan de suivi pour l’accueil de la console : l’écran avec les produits d’Arvan et la tuile des serveurs cloud numérotée, et en dessous les mesures : le chemin vers le produit, le temps pour trouver le bouton, les abandons et une carte de chaleur des clics",
+    "trackProductFirst": "Un tableau en persan du plan de suivi pour la page des serveurs cloud lors d’une première visite : une page vide qui explique ce qu’est un Abrak, avec un bouton Nouveau serveur, et des mesures pour trouver le bouton et le guide, les abandons, la réussite après lecture du guide et une carte de chaleur",
+    "trackProduct": "Un tableau en persan du plan de suivi pour la page des serveurs cloud : un onglet par centre de données, le bouton Nouveau serveur et trois liens vers des guides numérotés, et des mesures des clics sur chaque centre de données, des abandons, de la découverte du bouton et des guides, et une carte de chaleur",
+    "trackDataCentre": "Un tableau en persan du plan de suivi pour l’étape du centre de données dans l’assistant : les centres disponibles, ceux à venir et les boutons de l’étape numérotés, et des mesures de l’usage de chaque centre, des clics sur ceux à venir, du passage à l’étape suivante, des abandons, du temps et une carte de chaleur",
     "wizardFunnel": "Un entonnoir Heap des sept étapes de création d’un serveur, de la liste des serveurs aux détails du serveur, avec la conversion entre chaque paire d’étapes ; la plus forte chute suit le choix de la taille, et 52,19 % vont au bout",
     "effort": "L’analyse d’effort de Heap sur les mêmes sept étapes : conversion, interactions, temps d’engagement et taux de retour entre chaque paire d’étapes, tous au plus mal après le choix de la taille",
     "sizeOptions": "Deux versions de l’étape du choix de la taille, en persan : option 1, un tableau de tailles prêtes avec processeur, mémoire, disque et prix mensuel ; option 2, des curseurs pour le processeur, la mémoire et le disque à côté du prix mensuel et horaire",
@@ -48,10 +52,17 @@
       "insight": "Le test et les analyses concordaient : on se perdait d’abord dans les mots, puis à l’étape de la taille."
     },
     "research": {
-      "heading": "Choisir ce qu’on mesure, puis le mesurer",
+      "heading": "Choisir l’outil d’analyse",
       "body": [
-        "Sina a rédigé pour l’équipe un cahier des besoins pour un outil d’analyse du comportement des utilisateurs, puis l’a présenté. L’outil devait capter le comportement sans qu’il faille d’abord définir des événements, rester assez simple pour toutes les équipes, traduire les objectifs en indicateurs partagés, et ne jamais ralentir le produit ni affaiblir sa sécurité. Google Analytics, Mixpanel, Amplitude, FullStory et Heap ont été comparés, et Heap a été retenu : il enregistre chaque interaction, de sorte qu’une nouvelle question trouve sa réponse dans un comportement déjà capté, et il tournait sans souci sur la console depuis plusieurs mois.",
-        "Est venu ensuite un plan de suivi de l’assistant, étape par étape, chaque mesure accompagnée de la question à laquelle elle répond : clics et temps pour trouver le bouton de création de serveur, cartes de chaleur de l’accueil de la console, abandons à chaque étape, centres de données et systèmes d’exploitation choisis, défilement dans les tableaux de tailles, temps passé sur la taille personnalisée, ajout de réseaux privés ou de pare-feu, création de plusieurs serveurs d’un coup ou renommage, et copie des informations du serveur sur la dernière page. Les indicateurs côté console reliaient le tout : conversion de l’accueil de la console vers la liste des serveurs, de la liste vers un nouveau serveur et du centre de données jusqu’à la fin de l’assistant, plus une note de la difficulté ressentie à créer un serveur.",
+        "Sina a rédigé pour l’équipe un cahier des besoins pour un outil d’analyse du comportement des utilisateurs, puis l’a présenté. L’outil devait capter le comportement sans qu’il faille d’abord définir des événements, rester assez simple pour toutes les équipes, traduire les objectifs en indicateurs partagés, et ne jamais ralentir le produit ni affaiblir sa sécurité. Google Analytics, Mixpanel, Amplitude, FullStory et Heap ont été comparés, et Heap a été retenu : il enregistre chaque interaction, de sorte qu’une nouvelle question trouve sa réponse dans un comportement déjà capté, et il tournait sans souci sur la console depuis plusieurs mois."
+      ]
+    },
+    "tracking": {
+      "heading": "Mesuré par la conversion du parcours utilisateur",
+      "customLabel": "Plan de suivi",
+      "body": [
+        "Tout le parcours a été mesuré par la conversion : parmi les personnes qui atteignent un écran, la part qui atteint le suivant. Les indicateurs côté console fixaient les trois conversions sur lesquelles la console serait jugée : de l’accueil de la console vers la liste des serveurs, de la liste vers un nouveau serveur, et du centre de données jusqu’à la fin de l’assistant. Une note en fin d’assistant devait y ajouter la difficulté ressentie à créer un serveur.",
+        "Un plan de suivi a ensuite parcouru le flux écran par écran, un tableau par écran, datés de septembre et octobre 2021. Chaque tableau numérote les éléments de l’écran et indique pour chacun ce qu’il faut enregistrer, avec quel outil et pourquoi : Heap pour les clics, le temps et les abandons, le BI d’Arvan pour les systèmes d’exploitation et images de la place de marché installés, Hotjar ou Hantana pour les cartes de chaleur. Sur l’ensemble des tableaux, cela voulait dire : clics et temps pour trouver le bouton de création de serveur, abandons à chaque étape, centres de données et systèmes d’exploitation choisis, défilement dans les tableaux de tailles, temps passé sur la taille personnalisée, ajout de réseaux privés ou de pare-feu, création de plusieurs serveurs d’un coup ou renommage, et copie des informations du serveur sur la dernière page.",
         "Heap a transformé l’assistant en entonnoir de sept étapes : la liste des serveurs, la page des centres de données, puis le choix du système d’exploitation, de la taille, du mode d’accès et d’un nom, et enfin les détails du serveur. Chaque passage d’une étape à la suivante a été mesuré de quatre façons : combien l’ont franchi, combien d’interactions il a fallu, combien de temps cela a pris, et combien ont quitté le produit avant de revenir.",
         "Une étape ressortait sur chaque mesure. Après le choix de la taille, seuls 73,09 % ont continué, contre 89 à 99 % à toutes les autres étapes. Ce passage a demandé en médiane 5 interactions et 23 secondes, environ deux fois plus que les autres, et 3,8 % ont quitté le produit puis sont revenus avant de poursuivre, le plus haut taux de toutes les étapes. Le choix du système d’exploitation faisait aussi perdre du monde, surtout parmi ceux qui cherchaient autre chose que les systèmes courants ou dans la place de marché. Au total, 52,19 % des personnes qui ont commencé l’assistant l’ont terminé."
       ],
@@ -106,6 +117,15 @@
       "items": [
         "Besoins pour un outil d’analyse, et pourquoi Heap",
         "Indicateurs côté console"
+      ]
+    },
+    "trackingPlan": {
+      "caption": "Quatre tableaux du plan de suivi, en persan : chacun numérote les éléments d’un écran et indique, pour chacun, ce qu’il faut enregistrer, avec quel outil et pourquoi. Les tableaux des étapes suivantes de l’assistant montrent des écrans de l’autre designer et sont laissés de côté.",
+      "items": [
+        "Accueil de la console",
+        "Page des serveurs cloud, première visite",
+        "Page des serveurs cloud, avec les centres de données",
+        "Assistant : choix du centre de données"
       ]
     },
     "wizardFunnel": {

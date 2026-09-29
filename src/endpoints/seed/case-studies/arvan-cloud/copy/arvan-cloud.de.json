@@ -14,6 +14,10 @@
     "siteToPanel": "Zwei Diagramme aus Google Analytics: Anteile der Ereignisse für die Startseite, die Cloud-Server-Seite, deren Button auf der Startseite und deren Kaufen-Button; darunter ein Trichter von der Cloud-Server-Seite in den Assistenten der Konsole zum Anlegen eines Servers, die Zahlen unkenntlich gemacht",
     "heapRequirements": "Eine Tafel auf Persisch mit dem Titel „Anforderungen an ein Tool zur Analyse des Nutzerverhaltens“, präsentiert von Sina Oshaghi: was das Team braucht, die fünf geprüften Tools und die Gründe für Heap",
     "metricsKpi": "Eine Tafel auf Persisch mit dem Titel „Kennzahlen auf Konsolenseite“: Conversion von der Konsolen-Startseite zur Serverliste, von der Liste zu einem neuen Server und von der Wahl des Rechenzentrums bis zum Ende des Assistenten, dazu eine Bewertung, wie schwer das Anlegen eines Servers fiel",
+    "trackHome": "Eine Tafel auf Persisch aus dem Tracking-Plan für die Konsolen-Startseite: der Screen mit Arvans Produkten und der nummerierten Kachel für Cloud-Server, darunter die Messungen: Weg ins Produkt, Zeit bis zum Button, Abbrüche und eine Klick-Heatmap",
+    "trackProductFirst": "Eine Tafel auf Persisch aus dem Tracking-Plan für die Seite der Cloud-Server beim ersten Besuch: eine leere Seite, die erklärt, was ein Abrak ist, mit einem Button für einen neuen Server, dazu Messungen zum Finden von Button und Anleitung, zu Abbrüchen, zum Erfolg nach dem Lesen der Anleitung und eine Heatmap",
+    "trackProduct": "Eine Tafel auf Persisch aus dem Tracking-Plan für die Seite der Cloud-Server: ein Tab pro Rechenzentrum, der Button für einen neuen Server und drei Anleitungslinks nummeriert, dazu Messungen der Klicks pro Rechenzentrum, der Abbrüche, des Findens von Button und Anleitungen und eine Heatmap",
+    "trackDataCentre": "Eine Tafel auf Persisch aus dem Tracking-Plan für den Schritt Rechenzentrum im Assistenten: verfügbare und bald kommende Rechenzentren und die Buttons des Schritts nummeriert, dazu Messungen der Nutzung jedes Rechenzentrums, der Klicks auf bald kommende, des Weitergehens, der Abbrüche, der Zeit und eine Heatmap",
     "wizardFunnel": "Ein Heap-Trichter der sieben Schritte zum Anlegen eines Servers, von der Serverliste bis zu den Serverdetails, mit der Conversion zwischen je zwei Schritten; der größte Abfall kommt nach der Größenwahl, und 52,19 % kommen ans Ende",
     "effort": "Heaps Aufwandsanalyse derselben sieben Schritte: Conversion, Interaktionen, aktive Zeit und Rückkehrquote zwischen je zwei Schritten, alle am schlechtesten nach der Größenwahl",
     "sizeOptions": "Zwei Versionen des Schritts zur Größenwahl, auf Persisch: Option 1 eine Tabelle fertiger Größen mit CPU, Arbeitsspeicher, Festplatte und Monatspreis; Option 2 Schieberegler für CPU, Arbeitsspeicher und Festplatte neben dem Monats- und Stundenpreis",
@@ -48,10 +52,17 @@
       "insight": "Test und Analytics waren sich einig: Die Leute verloren sich zuerst in Begriffen, dann beim Schritt zur Größe."
     },
     "research": {
-      "heading": "Erst festlegen, was gemessen wird, dann messen",
+      "heading": "Die Wahl des Analyse-Tools",
       "body": [
-        "Sina schrieb für das Team ein Anforderungsdokument für ein Tool zur Analyse des Nutzerverhaltens und stellte es vor. Das Tool sollte Verhalten erfassen, ohne dass vorher Ereignisse eingerichtet werden, einfach genug für alle Teams sein, Ziele in gemeinsame Kennzahlen übersetzen und das Produkt nie verlangsamen oder seine Sicherheit schwächen. Verglichen wurden Google Analytics, Mixpanel, Amplitude, FullStory und Heap; gewählt wurde Heap. Es zeichnet jede Interaktion auf, sodass sich eine neue Frage aus bereits erfasstem Verhalten beantworten lässt, und es lief schon seit mehreren Monaten problemlos in der Konsole.",
-        "Dann folgte ein Tracking-Plan für den Assistenten, Schritt für Schritt, und zu jeder Messung die Frage, die sie beantwortet: Klicks und Zeit bis zum Button zum Anlegen eines Servers, Heatmaps der Konsolen-Startseite, Abbrüche in jedem Schritt, welche Rechenzentren und Betriebssysteme gewählt werden, wie weit die Größentabellen gescrollt werden, wie lange die Leute bei der eigenen Größe bleiben, ob sie private Netzwerke oder Firewalls hinzufügen, mehrere Server auf einmal anlegen oder umbenennen und ob sie auf der letzten Seite die Daten ihres Servers kopieren. Kennzahlen auf Konsolenseite verbanden alles: Conversion von der Konsolen-Startseite zur Serverliste, von der Liste zu einem neuen Server und vom Rechenzentrum bis zum Ende des Assistenten, dazu eine Bewertung, wie schwer sich das Anlegen eines Servers anfühlte.",
+        "Sina schrieb für das Team ein Anforderungsdokument für ein Tool zur Analyse des Nutzerverhaltens und stellte es vor. Das Tool sollte Verhalten erfassen, ohne dass vorher Ereignisse eingerichtet werden, einfach genug für alle Teams sein, Ziele in gemeinsame Kennzahlen übersetzen und das Produkt nie verlangsamen oder seine Sicherheit schwächen. Verglichen wurden Google Analytics, Mixpanel, Amplitude, FullStory und Heap; gewählt wurde Heap. Es zeichnet jede Interaktion auf, sodass sich eine neue Frage aus bereits erfasstem Verhalten beantworten lässt, und es lief schon seit mehreren Monaten problemlos in der Konsole."
+      ]
+    },
+    "tracking": {
+      "heading": "Gemessen an der Conversion des Nutzerflusses",
+      "customLabel": "Tracking-Plan",
+      "body": [
+        "Gemessen wurde der ganze Ablauf an der Conversion: welcher Anteil derer, die einen Screen erreichen, auch den nächsten erreicht. Die Kennzahlen auf Konsolenseite legten drei Conversions fest, an denen die Konsole gemessen werden sollte: von der Konsolen-Startseite zur Serverliste, von der Liste zu einem neuen Server und vom Rechenzentrum bis zum Ende des Assistenten. Eine Bewertung am Ende des Assistenten sollte ergänzen, wie schwer sich das Anlegen eines Servers anfühlte.",
+        "Ein Tracking-Plan ging den Ablauf dann Screen für Screen durch, mit einer Tafel pro Screen, datiert September und Oktober 2021. Jede Tafel nummeriert die Elemente des Screens und nennt zu jedem, was erfasst wird, mit welchem Tool und warum: Heap für Klicks, Zeit und Abbrüche, Arvans BI für installierte Betriebssysteme und Marketplace-Images, Hotjar oder Hantana für Heatmaps. Über alle Tafeln hinweg hieß das: Klicks und Zeit bis zum Button zum Anlegen eines Servers, Abbrüche in jedem Schritt, welche Rechenzentren und Betriebssysteme gewählt werden, wie weit die Größentabellen gescrollt werden, wie lange die Leute bei der eigenen Größe bleiben, ob sie private Netzwerke oder Firewalls hinzufügen, mehrere Server auf einmal anlegen oder umbenennen und ob sie auf der letzten Seite die Daten ihres Servers kopieren.",
         "Heap machte aus dem Assistenten einen Trichter mit sieben Schritten: die Serverliste, die Seite der Rechenzentren, dann die Wahl von Betriebssystem, Größe, Zugangsart und Name und schließlich die Serverdetails. Jeder Übergang von einem Schritt zum nächsten wurde auf vier Arten gemessen: wie viele weiterkamen, wie viele Interaktionen es brauchte, wie lange es dauerte und wie viele das Produkt verließen und zurückkehrten.",
         "Ein Schritt fiel bei jeder Messung auf. Nach der Größenwahl gingen nur 73,09 % weiter, gegenüber 89 bis 99 % bei jedem anderen Schritt. Dieser Übergang dauerte im Median 5 Interaktionen und 23 Sekunden, etwa doppelt so lang wie die anderen, und 3,8 % verließen das Produkt und kamen zurück, bevor sie weitermachten – mehr als bei jedem anderen Schritt. Auch die Wahl des Betriebssystems kostete Leute, vor allem jene, die etwas jenseits der gängigen Systeme oder im Marketplace suchten. Insgesamt schlossen 52,19 % derer, die den Assistenten begannen, ihn ab."
       ],
@@ -106,6 +117,15 @@
       "items": [
         "Anforderungen an ein Analyse-Tool, und warum Heap",
         "Kennzahlen auf Konsolenseite"
+      ]
+    },
+    "trackingPlan": {
+      "caption": "Vier Tafeln aus dem Tracking-Plan, auf Persisch: Jede nummeriert die Elemente eines Screens und nennt zu jedem, was erfasst wird, mit welchem Tool und warum. Die Tafeln für die späteren Schritte des Assistenten zeigen Screens des anderen Designers und sind weggelassen.",
+      "items": [
+        "Startseite der Konsole",
+        "Seite der Cloud-Server, erster Besuch",
+        "Seite der Cloud-Server, mit Rechenzentren",
+        "Assistent: Wahl des Rechenzentrums"
       ]
     },
     "wizardFunnel": {

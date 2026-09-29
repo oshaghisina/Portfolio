@@ -27,9 +27,11 @@ import ja from './copy/arvan-cloud.ja.json'
  *   counts blurred (as Sina blurred them in the funnel shot), the two panel screens cropped out of
  *   their Dribbble frames, and Figma exports of Sina-named frames and Sina's research boards. Never
  *   the Dribbble title card (a 3D hand-and-tablet mock-up), the usability board with the
- *   participant's details, boards that show the pre-redesign console, or frames whose header carries
- *   another account name: a second designer worked on the console with Sina (Sina, 2026-09-27), so
- *   those frames are that designer's (README Q7). The copy says so without naming them.
+ *   participant's details, or frames whose header carries another account name: a second designer
+ *   worked on the console with Sina (Sina, 2026-09-27), so those frames are that designer's (README
+ *   Q7). The copy says so without naming them. Of the wizard's tracking-plan boards (Sina asked for
+ *   them on 2026-09-28, "measured by user-flow conversion"), only the four whose screen carries
+ *   Sina's name are uploaded: `study/research/tracking/01`–`04`; the later steps' boards stay out.
  * - The usability test is told in words, without the participant's name, age or city.
  * - The size comparison was a real A/B test (Sina, 2026-09-27, README Q2), but the write-up's
  *   "100.00% vs 87.74%" is not repeated as a win: it is the share of each group that reached the size
@@ -55,6 +57,13 @@ const FILES = {
   siteToPanel: { file: 'study/research/site-to-panel.jpg', name: `${N}site-to-panel.jpg` },
   heapRequirements: { file: 'study/research/heap-requirements.jpg', name: `${N}heap-requirements.jpg` },
   metricsKpi: { file: 'study/research/metrics-kpi.jpg', name: `${N}metrics-kpi.jpg` },
+  trackHome: { file: 'study/research/tracking/01-home.jpg', name: `${N}tracking-home.jpg` },
+  trackProductFirst: {
+    file: 'study/research/tracking/02-product-first-visit.jpg',
+    name: `${N}tracking-product-first-visit.jpg`,
+  },
+  trackProduct: { file: 'study/research/tracking/03-product.jpg', name: `${N}tracking-product.jpg` },
+  trackDataCentre: { file: 'study/research/tracking/04-data-centre.jpg', name: `${N}tracking-data-centre.jpg` },
   wizardFunnel: { file: 'study/research/wizard-funnel.jpg', name: `${N}wizard-funnel.jpg` },
   effort: { file: 'study/research/effort-analysis.jpg', name: `${N}effort-analysis.jpg` },
   sizeOptions: { file: 'study/wizard/size-options.jpg', name: `${N}size-options.jpg` },
@@ -79,6 +88,14 @@ const STUDY: CspStudy<Key> = {
     { type: 'narrative', key: 'research', label: 'research' },
     // Two tall Persian text boards: a grid of first screens, each opening whole.
     { type: 'figure', key: 'boards', layout: 'pages', treatment: 'plain', media: ['heapRequirements', 'metricsKpi'] },
+    { type: 'narrative', key: 'tracking', label: 'custom' },
+    {
+      type: 'figure',
+      key: 'trackingPlan',
+      layout: 'pages',
+      treatment: 'plain',
+      media: ['trackHome', 'trackProductFirst', 'trackProduct', 'trackDataCentre'],
+    },
     { type: 'process', codes: ['VOC', 'TOOL', 'PLAN', 'FNL', 'OPT', 'CMP'] },
     { type: 'figure', key: 'wizardFunnel', layout: 'full', treatment: 'plain', media: ['wizardFunnel'] },
     { type: 'figure', key: 'effort', layout: 'full', treatment: 'plain', media: ['effort'] },

@@ -520,8 +520,9 @@ const GATES: Record<string, { files: RegExp[]; text: RegExp[] }> = {
     // the title card (a 3D hand-and-tablet mock-up). No company superlatives, NPS or satisfaction
     // claim, sanctions context, prices or absolute counts; the write-up's "100% vs 87.74%" is not
     // repeated as the sliders' win (README, "Reading the group analysis"). "A/B" is allowed since
-    // 2026-09-27: Sina confirmed the size comparison was a real A/B test.
-    files: [/^(?!study\/)/, /title-card|mock-?up/i],
+    // 2026-09-27: Sina confirmed the size comparison was a real A/B test. Of the tracking-plan boards,
+    // only the four whose screen carries Sina's name (01–04); later steps show the other designer's.
+    files: [/^(?!study\/)/, /title-card|mock-?up/i, /tracking\/(?!0[1-4]-)/],
     text: [
       /\bNPS\b|net promoter/i,
       /frustrat/i,

@@ -14,6 +14,10 @@
     "siteToPanel": "Two Google Analytics charts: event shares for the home page, the cloud-server page, that page’s button on the home page and its Buy button; below, a funnel from the cloud-server page into the console’s create-server wizard, its counts blurred",
     "heapRequirements": "A board in Persian titled “Requirements for a user-behaviour analytics tool”, presented by Sina Oshaghi: what the team needs, the five tools considered, and the reasons for choosing Heap",
     "metricsKpi": "A board in Persian titled “Panel-side metrics”: conversion from the panel home to the server list, from the list to a new server, and from choosing a data centre to the end of the wizard, and a score for how hard creating a server was",
+    "trackHome": "A board in Persian from the tracking plan for the console’s home: the screen with Arvan’s products and the cloud-server tile numbered, and below it the measures: the way into the product, time to find the button, drop-off and a click heat map",
+    "trackProductFirst": "A board in Persian from the tracking plan for the cloud-server page on a first visit: an empty page explaining what an Abrak is, with a New server button, and measures for finding the button and the guide, drop-off, success after reading the guide, and a heat map",
+    "trackProduct": "A board in Persian from the tracking plan for the cloud-server page: a tab per data centre, the New server button and three guide links numbered, and measures for clicks on each data centre, drop-off, finding the button and the guides, and a heat map",
+    "trackDataCentre": "A board in Persian from the tracking plan for the wizard’s data-centre step: the available data centres, those coming soon and the step’s buttons numbered, and measures for use of each data centre, clicks on those coming soon, moving on, drop-off, time and a heat map",
     "wizardFunnel": "A Heap funnel of the seven create-server steps, from the server list to the server’s details, with the conversion between each pair of steps; the drop after choosing a size is the largest, and 52.19% finish",
     "effort": "Heap’s effort analysis of the same seven steps: conversion, interactions, time engaged and revisit rate between each pair of steps, all at their worst after choosing a size",
     "sizeOptions": "Two versions of the choose-a-size step, in Persian: option 1, a table of ready-made sizes with CPU, memory, disk and a monthly price; option 2, sliders for CPU, memory and disk beside the monthly and hourly price",
@@ -48,10 +52,17 @@
       "insight": "The test and the analytics agreed: people were lost first in words, then at the size step."
     },
     "research": {
-      "heading": "Choosing what to measure, then measuring it",
+      "heading": "Choosing the analytics tool",
       "body": [
-        "Sina wrote the team a requirements document for a user-behaviour analytics tool and presented it. The tool had to capture behaviour without events being set up first, be simple enough for every team to use, turn goals into shared metrics, and never slow the product down or weaken its security. Google Analytics, Mixpanel, Amplitude, FullStory and Heap were compared, and Heap was chosen: it records every interaction, so a new question can be answered from behaviour already captured, and it had run without trouble on the panel for several months.",
-        "Next came a tracking plan for the wizard, step by step, each measure with the question it answers: clicks and time to find the create-server button, heat maps of the console’s home, drop-off at every step, which data centres and operating systems people pick, how far they scroll the size tables, how long they stay on the custom size, whether they add private networks or firewalls, create several servers at once or rename them, and whether they copy their server’s details on the last page. Panel-side metrics tied it together: conversion from the console’s home to the server list, from the list to a new server, and from the data centre to the end of the wizard, plus a score for how hard creating a server felt.",
+        "Sina wrote the team a requirements document for a user-behaviour analytics tool and presented it. The tool had to capture behaviour without events being set up first, be simple enough for every team to use, turn goals into shared metrics, and never slow the product down or weaken its security. Google Analytics, Mixpanel, Amplitude, FullStory and Heap were compared, and Heap was chosen: it records every interaction, so a new question can be answered from behaviour already captured, and it had run without trouble on the panel for several months."
+      ]
+    },
+    "tracking": {
+      "heading": "Measured by user-flow conversion",
+      "customLabel": "Tracking plan",
+      "body": [
+        "The whole flow was measured by conversion: of the people who reach one screen, the share who reach the next. Panel-side metrics set the three conversions the console would be judged by: from the console’s home to the server list, from the list to a new server, and from the data centre to the end of the wizard. A score at the end of the wizard would add how hard creating a server felt.",
+        "A tracking plan then took the flow screen by screen, one board for each, dated September and October 2021. Each board numbers the screen’s elements and says, for each one, what to record, with which tool and why: Heap for clicks, time and drop-off, Arvan’s BI for the operating systems and marketplace images installed, and Hotjar or Hantana for heat maps. Across the boards that meant clicks and time to find the create-server button, drop-off at every step, which data centres and operating systems people pick, how far they scroll the size tables, how long they stay on the custom size, whether they add private networks or firewalls, create several servers at once or rename them, and whether they copy their server’s details on the last page.",
         "Heap turned the wizard into a seven-step funnel: the server list, the data-centre page, then choosing the operating system, the size, the access method and a name, and finally the server’s details. Each move from one step to the next was measured four ways: how many people made it, how many interactions it took, how long they spent, and how many left the product and came back.",
         "One step stood out on every measure. After choosing a size, only 73.09% moved on, against 89–99% at every other step. That move took a median of 5 interactions and 23 seconds, about twice as long as the others, and 3.8% of people left and came back before going on, the most of any step. Choosing the operating system lost people too, above all those looking for something beyond the popular systems or in the marketplace. Overall, 52.19% of the people who started the wizard finished it."
       ],
@@ -106,6 +117,15 @@
       "items": [
         "Requirements for an analytics tool, and why Heap",
         "Panel-side metrics"
+      ]
+    },
+    "trackingPlan": {
+      "caption": "Four boards from the tracking plan, in Persian: each numbers a screen’s elements and says what to record for each, with which tool and why. The boards for the later wizard steps show the other designer’s screens and are left out.",
+      "items": [
+        "The console’s home",
+        "The cloud-server page, first visit",
+        "The cloud-server page, with data centres",
+        "The wizard: choosing a data centre"
       ]
     },
     "wizardFunnel": {
