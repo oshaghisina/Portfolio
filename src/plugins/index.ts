@@ -12,6 +12,7 @@ import {
   submissionKeyField,
 } from '@/hooks/contactSubmission'
 import { revalidateRedirects } from '@/hooks/revalidateRedirects'
+import { mcpTools } from '@/plugins/mcpTools'
 import { GenerateTitle, GenerateURL } from '@payloadcms/plugin-seo/types'
 import { FixedToolbarFeature, HeadingFeature, lexicalEditor } from '@payloadcms/richtext-lexical'
 import { searchFields } from '@/search/fieldOverrides'
@@ -152,11 +153,23 @@ export const plugins: Plugin[] = [
       experiences: { enabled: true, description: 'Work experience catalogue.' },
       media: { enabled: true, description: 'Uploads / images.' },
       categories: { enabled: true, description: 'Taxonomy for posts.' },
+      // Narrowest access that does the job. Each key still needs the tool ticked under
+      // Admin → MCP → API Keys. Users stay out on purpose.
+      redirects: {
+        enabled: { find: true, create: true, update: true },
+        description: 'Old-path redirects. Add one before renaming a slug.',
+      },
+      forms: { enabled: { find: true }, description: 'Form set-up (read only).' },
+      'form-submissions': {
+        enabled: { find: true },
+        description: 'Contact messages people sent (read only; contains personal data).',
+      },
     },
     globals: {
       header: { enabled: true },
       footer: { enabled: true },
       about: { enabled: true },
     },
+    mcp: { tools: mcpTools },
   }),
 ]

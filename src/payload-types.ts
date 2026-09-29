@@ -384,7 +384,6 @@ export interface Media {
     };
     [k: string]: unknown;
   } | null;
-  _objectKey?: string | null;
   folder?: (string | null) | FolderInterface;
   updatedAt: string;
   createdAt: string;
@@ -2455,6 +2454,32 @@ export interface PayloadMcpApiKey {
      */
     delete?: boolean | null;
   };
+  redirects?: {
+    /**
+     * Allow clients to find redirects.
+     */
+    find?: boolean | null;
+    /**
+     * Allow clients to create redirects.
+     */
+    create?: boolean | null;
+    /**
+     * Allow clients to update redirects.
+     */
+    update?: boolean | null;
+  };
+  forms?: {
+    /**
+     * Allow clients to find forms.
+     */
+    find?: boolean | null;
+  };
+  formSubmissions?: {
+    /**
+     * Allow clients to find form-submissions.
+     */
+    find?: boolean | null;
+  };
   header?: {
     /**
      * Allow clients to find header global.
@@ -2484,6 +2509,16 @@ export interface PayloadMcpApiKey {
      * Allow clients to update about global.
      */
     update?: boolean | null;
+  };
+  'payload-mcp-tool'?: {
+    /**
+     * Refresh cached site data without a restart: the sitemaps (default), the header, footer or about, or specific page paths. Use after a change that skipped the normal save hooks, such as a case-study sync.
+     */
+    revalidateSite?: boolean | null;
+    /**
+     * Publish or hide one project in every language in a single call. Publishing puts the latest saved draft live and skips languages without their own copy. Use dryRun to preview.
+     */
+    setProjectVisibility?: boolean | null;
   };
   updatedAt: string;
   createdAt: string;
@@ -3569,7 +3604,6 @@ export interface CaseStudyLessonsBlockSelect<T extends boolean = true> {
 export interface MediaSelect<T extends boolean = true> {
   alt?: T;
   caption?: T;
-  _objectKey?: T;
   folder?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -3976,6 +4010,23 @@ export interface PayloadMcpApiKeysSelect<T extends boolean = true> {
         update?: T;
         delete?: T;
       };
+  redirects?:
+    | T
+    | {
+        find?: T;
+        create?: T;
+        update?: T;
+      };
+  forms?:
+    | T
+    | {
+        find?: T;
+      };
+  formSubmissions?:
+    | T
+    | {
+        find?: T;
+      };
   header?:
     | T
     | {
@@ -3993,6 +4044,12 @@ export interface PayloadMcpApiKeysSelect<T extends boolean = true> {
     | {
         find?: T;
         update?: T;
+      };
+  'payload-mcp-tool'?:
+    | T
+    | {
+        revalidateSite?: T;
+        setProjectVisibility?: T;
       };
   updatedAt?: T;
   createdAt?: T;
